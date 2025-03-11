@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bb13lcap1d54e"]
+
+[ext_resource type="FontFile" uid="uid://bb5ydacvqgysd" path="res://assets/fonts/fields_of_mistria/fields-of-mistria.ttf" id="1_x504n"]
+
+[resource]
+default_font = ExtResource("1_x504n")
