@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=4 format=4 uid="uid://dsuyyr5og7ilh"]
 
+[ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Texture2D" uid="uid://bmoldywnrmtos" path="res://assets/sprites/potions/coloured_sheet.png" id="2_ffvsa"]
 [ext_resource type="TileSet" uid="uid://beelur5ybttc6" path="res://resources/64prototype_tile_set.tres" id="3_xd4uy"]
 
 [node name="Battle" type="Node2D"]
+script = ExtResource("1_xd4uy")
 
 [node name="Arena64" type="Node2D" parent="."]
 position = Vector2(63, 180)
@@ -33,3 +35,17 @@ position = Vector2(287, -85)
 texture = ExtResource("2_ffvsa")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Battle Scene"
+
+[node name="Button" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Return to map"

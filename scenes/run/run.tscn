@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://r76gjny5escp"]
+
+[ext_resource type="Script" uid="uid://b88pduqxgjpng" path="res://scenes/run/run.gd" id="1_l7o68"]
+[ext_resource type="PackedScene" uid="uid://b2i3e6qlmmf13" path="res://scenes/map/map.tscn" id="2_wdonh"]
+
+[node name="Run" type="Node"]
+script = ExtResource("1_l7o68")
+
+[node name="CurrentView" type="Node" parent="."]
+
+[node name="Map" parent="." instance=ExtResource("2_wdonh")]
