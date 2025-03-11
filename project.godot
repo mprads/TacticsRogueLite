@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="TacticsRogueLite"
-run/main_scene="uid://dsuyyr5og7ilh"
+run/main_scene="uid://r76gjny5escp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Events="*res://global/events.gd"
 
 [display]
 
@@ -24,6 +28,11 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[gui]
+
+theme/custom="uid://bb13lcap1d54e"
+theme/custom_font="uid://c1y4wbigdjqow"
 
 [rendering]
 
