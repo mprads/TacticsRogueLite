@@ -1,0 +1,27 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cj4tw4q3rajlb"]
+
+[ext_resource type="Texture2D" uid="uid://umkdym2owgdt" path="res://assets/sprites/tiles/32x32iso_sheet.png" id="1_eftpb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwf1e"]
+resource_name = "Protoype"
+texture = ExtResource("1_eftpb")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -8)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -8)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, -8)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, -8)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, -8)
+
+[resource]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(32, 16)
+sources/0 = SubResource("TileSetAtlasSource_nwf1e")
