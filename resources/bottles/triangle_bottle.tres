@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Bottle" load_steps=2 format=3 uid="uid://dq1krx3jsbqei"]
+
+[ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="1_ruqw2"]
+
+[resource]
+script = ExtResource("1_ruqw2")
+sprite_coordinates = Vector2i(2, 0)
+name = "Triangle Bottle"
+base_health = 10
+max_oz = 15
+base_movement = 5
+metadata/_custom_type_script = "uid://cene0083pbi52"

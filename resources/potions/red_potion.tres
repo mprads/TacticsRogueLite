@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=2 format=3 uid="uid://cp15dkcrutp2i"]
+
+[ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="1_bai3c"]
+
+[resource]
+script = ExtResource("1_bai3c")
+color = Color(0.694118, 0.145098, 0.219608, 1)
+name = "Red Potion"
+metadata/_custom_type_script = "uid://dgy3brauklt5w"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://43dujorcxsl6"]
+
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="1_b68vk"]
+[ext_resource type="Texture2D" uid="uid://0ga0vi657us1" path="res://assets/icons/32x32venom.png" id="1_hxvaf"]
+
+[resource]
+script = ExtResource("1_b68vk")
+name = "Venom"
+key = 2
+icon = ExtResource("1_hxvaf")
+gold_cost = 30
+is_plant = false
+metadata/_custom_type_script = "uid://dtp5lwmsrrerr"

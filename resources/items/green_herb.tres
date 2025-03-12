@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ddgsppdhtad44"]
+
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="1_33o35"]
+[ext_resource type="Texture2D" uid="uid://cm28hb7ibki0v" path="res://assets/icons/32x32green_herb.png" id="1_lluwp"]
+
+[resource]
+script = ExtResource("1_33o35")
+name = "Green Herb"
+key = 0
+icon = ExtResource("1_lluwp")
+gold_cost = 0
+is_plant = true
+metadata/_custom_type_script = "uid://dtp5lwmsrrerr"
