@@ -55,8 +55,9 @@ func _on_battle_entered() -> void:
 
 
 func _on_shop_entered() -> void:
-	_change_view(SHOP_SCENE)
-
+	var shop := _change_view(SHOP_SCENE)
+	Events.shop_entered.emit(shop)
+	shop.populate_shop()
 
 func _on_brewing_entered() -> void:
 	_change_view(BREWING_SCENE)

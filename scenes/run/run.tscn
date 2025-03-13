@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://r76gjny5escp"]
+[gd_scene load_steps=10 format=3 uid="uid://r76gjny5escp"]
 
 [ext_resource type="Script" uid="uid://b88pduqxgjpng" path="res://scenes/run/run.gd" id="1_l7o68"]
 [ext_resource type="PackedScene" uid="uid://b2i3e6qlmmf13" path="res://scenes/map/map.tscn" id="2_wdonh"]
+[ext_resource type="Texture2D" uid="uid://i8gt7xkjcggt" path="res://assets/icons/tile_0125.png" id="3_ux63y"]
+[ext_resource type="Texture2D" uid="uid://cpbgt2u54t4ap" path="res://assets/icons/tile_0126.png" id="4_yeia0"]
+[ext_resource type="Texture2D" uid="uid://etibe4bbt0q" path="res://assets/icons/tile_0127.png" id="5_g42ja"]
+[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="6_cnkn7"]
+[ext_resource type="Texture2D" uid="uid://beqyjc42cuq58" path="res://assets/icons/16x16backpack.png" id="7_7yo0l"]
+[ext_resource type="Texture2D" uid="uid://37vv6hcnk2gl" path="res://assets/icons/16x16map.png" id="8_fo0ly"]
+[ext_resource type="Texture2D" uid="uid://eum7lvresw1s" path="res://assets/icons/16x16cog.png" id="9_x53nd"]
 
 [node name="Run" type="Node"]
 script = ExtResource("1_l7o68")
@@ -9,3 +16,96 @@ script = ExtResource("1_l7o68")
 [node name="CurrentView" type="Node" parent="."]
 
 [node name="Map" parent="." instance=ExtResource("2_wdonh")]
+
+[node name="TopBar" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ColorRect" type="ColorRect" parent="TopBar"]
+custom_minimum_size = Vector2(0, 28)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.188235, 0.188235, 0.286275, 0.631373)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
+custom_minimum_size = Vector2(0, 28)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="ArtifactUI" type="HBoxContainer" parent="TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(150, 28)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Label" type="Label" parent="TopBar/HBoxContainer/ArtifactUI"]
+layout_mode = 2
+text = "Arifacts displayed here"
+
+[node name="VialUI" type="HBoxContainer" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Vial1" type="TextureRect" parent="TopBar/HBoxContainer/VialUI"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("3_ux63y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Vial2" type="TextureRect" parent="TopBar/HBoxContainer/VialUI"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("4_yeia0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Vial3" type="TextureRect" parent="TopBar/HBoxContainer/VialUI"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("5_g42ja")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldUI" type="HBoxContainer" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/HBoxContainer/GoldUI"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("6_cnkn7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TopBar/HBoxContainer/GoldUI"]
+layout_mode = 2
+text = "125"
+
+[node name="NavigationUI" type="HBoxContainer" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
+[node name="InventoryIcon" type="TextureRect" parent="TopBar/HBoxContainer/NavigationUI"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("7_7yo0l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MapIcon" type="TextureRect" parent="TopBar/HBoxContainer/NavigationUI"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("8_fo0ly")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsIcon" type="TextureRect" parent="TopBar/HBoxContainer/NavigationUI"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("9_x53nd")
+expand_mode = 1
+stretch_mode = 5

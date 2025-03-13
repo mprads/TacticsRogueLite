@@ -1,13 +1,19 @@
 extends Node2D
+class_name Shop
 
 const SHOP_ITEM = preload("res://scenes/shop/shop_item.tscn")
+const PLANTER_ITEM = preload("res://scenes/shop/planter_item.tscn")
 
-@export var available_shop_items: Array[Item]
+@export var shop_items: Array[Item]
+@export var shop_plants: Array[Item]
+
+@export var item_count := 4
+@export var plant_count := 2
 
 @onready var button: Button = $UI/VBoxContainer/Button
-@onready var shop_contents: VBoxContainer = %ShopContents
 @onready var item_shelf: HBoxContainer = %ItemShelf
 @onready var artifact_shelf: HBoxContainer = %ArtifactShelf
+@onready var planter_contents: HBoxContainer = %PlanterContents
 
 
 func _ready() -> void:
@@ -18,12 +24,27 @@ func _ready() -> void:
 	
 	for shop_item in artifact_shelf.get_children():
 		shop_item.queue_free()
+		
+	for shop_plant in planter_contents.get_children():
+		shop_plant.queue_free()
 
 
 func populate_shop() -> void:
 	_generate_shop_items()
+	_generate_planter_items()
+	# TODO generate artifacts
 
 
 func _generate_shop_items() -> void:
-	var shop_items_array: Array[Item] = []
-	ItemConfig
+	for index in item_count:
+		var new_shop_item  := SHOP_ITEM.instantiate()
+		item_shelf.add_child(new_shop_item)
+		new_shop_item.item = RNG.array_pick_random(shop_items)
+
+
+func _generate_planter_items() -> void:
+	for index in plant_count:
+		var new_shop_plant  := PLANTER_ITEM.instantiate()
+		planter_contents.add_child(new_shop_plant)
+		new_shop_plant.plant = RNG.array_pick_random(shop_plants)
+	
