@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RunStats" load_steps=5 format=3 uid="uid://cog76ftpquwhv"]
+
+[ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
+[ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
+[ext_resource type="Resource" uid="uid://ybhl6runwoys" path="res://resources/units/test_unit.tres" id="2_c6ufj"]
+[ext_resource type="Resource" uid="uid://dy6mfv30bqjgl" path="res://resources/units/test_empty_unit.tres" id="3_c6ufj"]
+
+[resource]
+script = ExtResource("2_3wu10")
+gold = 125
+inventory = Dictionary[int, int]({
+0: 4,
+1: 6,
+2: 12,
+3: 1,
+4: 3
+})
+party = Array[ExtResource("1_23n1j")]([ExtResource("2_c6ufj"), ExtResource("3_c6ufj")])
+party_size = 6
+metadata/_custom_type_script = "uid://caa81aywox71a"

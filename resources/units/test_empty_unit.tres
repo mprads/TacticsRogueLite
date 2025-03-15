@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://dy6mfv30bqjgl"]
+
+[ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="1_dxqd5"]
+[ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_nsjuq"]
+
+[resource]
+script = ExtResource("1_nsjuq")
+bottle = ExtResource("1_dxqd5")
+max_health = 1
+metadata/_custom_type_script = "uid://l8imbubpscrj"

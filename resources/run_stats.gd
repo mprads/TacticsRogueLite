@@ -1,13 +1,13 @@
 extends Resource
 class_name RunStats
 
-signal gold_changed
-signal inventory_changed
-
 const STARTING_GOLD := 50
+const STARTING_PARTY_SIZE := 6
 
-@export var gold := STARTING_GOLD : set = _set_gold
+@export var gold := STARTING_GOLD
 @export var inventory: Dictionary[ItemConfig.KEYS, int]
+@export var party: Array[UnitStats]
+@export var party_size := STARTING_PARTY_SIZE
 
 
 func add_item_to_inventory(key: ItemConfig.KEYS) -> void:
@@ -17,8 +17,6 @@ func add_item_to_inventory(key: ItemConfig.KEYS) -> void:
 		inventory[key] += 1
 	else:
 		inventory[key] = 1
-	
-	inventory_changed.emit()
 
 
 func remove_item_from_inventory(key: ItemConfig.KEYS) -> void:
@@ -29,10 +27,3 @@ func remove_item_from_inventory(key: ItemConfig.KEYS) -> void:
 		inventory[key] -= 1
 	else:
 		inventory.erase(key)
-	
-	inventory_changed.emit()
-
-
-func _set_gold(value: int) -> void:
-	gold = value
-	gold_changed.emit()

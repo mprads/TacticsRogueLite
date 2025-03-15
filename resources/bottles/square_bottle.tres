@@ -6,6 +6,7 @@
 script = ExtResource("1_d1wuy")
 name = "Square Bottle"
 sprite_coordinates = Vector2i(1, 0)
+sprite_size = 32
 base_health = 20
 max_oz = 10
 base_movement = 3

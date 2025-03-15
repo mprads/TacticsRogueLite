@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg1bm2w70bw5i"]
+
+[ext_resource type="Script" uid="uid://bjy04jhtmlsly" path="res://managers/party_manager.gd" id="1_p3h8p"]
+
+[node name="PartyManager" type="Node"]
+script = ExtResource("1_p3h8p")

@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_ruqw2")
-sprite_coordinates = Vector2i(2, 0)
 name = "Triangle Bottle"
+sprite_coordinates = Vector2i(2, 0)
+sprite_size = 32
 base_health = 10
 max_oz = 15
 base_movement = 5
