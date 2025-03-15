@@ -23,8 +23,8 @@ func _ready() -> void:
 		run_stats = RunStats.new()
 	
 	_set_up_managers()
-	_set_up_event_connections()
 	_set_up_top_bar()
+	_set_up_event_connections()
 
 
 func _set_up_managers() -> void:
@@ -41,7 +41,7 @@ func _set_up_event_connections() -> void:
 
 
 func _set_up_top_bar() -> void:
-	inventory_button.pressed.connect(inventory_ui.show_view)
+	inventory_button.pressed.connect(inventory_ui.toggle_view)
 	gold_ui.inventory_manager = inventory_manager
 	inventory_ui.inventory_manager = inventory_manager
 	inventory_ui.party_manager = party_manager
@@ -85,6 +85,7 @@ func _on_battle_entered() -> void:
 func _on_shop_entered() -> void:
 	var shop := _change_view(SHOP_SCENE)
 	Events.shop_entered.emit(shop)
+	shop.inventory_manager = inventory_manager
 	shop.populate_shop()
 
 

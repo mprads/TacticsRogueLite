@@ -17,5 +17,4 @@ func _ready() -> void:
 	var unit_data = TEST_UNIT.duplicate()
 	unit_data.bottle = SQUARE_BOTTLE.duplicate()
 	unit_data.potion = YELLOW_POTION.duplicate()
-	print(Vector2(unit_data.bottle.sprite_coordinates))
 	new_unit.stats = unit_data

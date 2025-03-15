@@ -18,8 +18,8 @@ func _ready() -> void:
 	hide()
 
 
-func show_view() -> void:
-	show()
+func toggle_view() -> void:
+	visible = !visible
 
 
 func _update_inventory() -> void:

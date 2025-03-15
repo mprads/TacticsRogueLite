@@ -10,7 +10,7 @@ var tween: Tween
 
 func _ready() -> void:
 	label.text = "0"
-	
+
 
 func _set_inventory_manager(value: InventoryManager) -> void:
 	inventory_manager = value
@@ -23,8 +23,8 @@ func _set_inventory_manager(value: InventoryManager) -> void:
 func _update_gold() -> void:
 	if tween:
 		tween.kill()
-	else: 
-		tween = create_tween()
+	
+	tween = create_tween()
 	
 	tween.tween_property(label, "text", str(inventory_manager.get_gold()), .5)
 	tween.set_trans(Tween.TRANS_ELASTIC)
