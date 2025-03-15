@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://o0flfk67550c"]
+
+[ext_resource type="Script" uid="uid://cau61ofs5nsej" path="res://scenes/ui/gold_ui.gd" id="1_h4fjr"]
+[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="1_xf85s"]
+
+[node name="GoldUI" type="HBoxContainer"]
+size_flags_horizontal = 6
+alignment = 1
+script = ExtResource("1_h4fjr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("1_xf85s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "125"

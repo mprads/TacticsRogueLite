@@ -43,8 +43,8 @@ const BREWING_RECIPE_RESOURCE_PATH := {
 
 
 static func get_item_resource(key: KEYS) -> Item:
-	return load(ITEM_RESOURCE_PATHS.get(key))
+	return load(ITEM_RESOURCE_PATHS[key])
 
 
 static func get_brewable_recipe(key: KEYS) -> BrewingRecipe:
-	return load(BREWING_RECIPE_RESOURCE_PATH.get(key))
+	return load(BREWING_RECIPE_RESOURCE_PATH[key])
