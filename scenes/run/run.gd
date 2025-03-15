@@ -7,18 +7,29 @@ const BREWING_SCENE := preload("res://scenes/brewing/brewing.tscn")
 const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 
 @export var run_stats: RunStats
+@onready var inventory_manager: InventoryManager = $InventoryManager
+@onready var party_manager: PartyManager = $PartyManager
 
 @onready var gold_ui: HBoxContainer = %GoldUI
+@onready var inventory_button: TextureButton = %InventoryButton
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
+@onready var inventory_ui: InventoryUI = $TopBar/InventoryUI
 
 
 func _ready() -> void:
-	run_stats = RunStats.new()
+	if not run_stats:
+		run_stats = RunStats.new()
 	
+	_set_up_managers()
 	_set_up_event_connections()
 	_set_up_top_bar()
+
+
+func _set_up_managers() -> void:
+	inventory_manager.run_stats = run_stats
+	party_manager.run_stats = run_stats
 
 
 func _set_up_event_connections() -> void:
@@ -30,8 +41,10 @@ func _set_up_event_connections() -> void:
 
 
 func _set_up_top_bar() -> void:
-	gold_ui.run_stats = run_stats
-
+	inventory_button.pressed.connect(inventory_ui.show_view)
+	gold_ui.inventory_manager = inventory_manager
+	inventory_ui.inventory_manager = inventory_manager
+	inventory_ui.party_manager = party_manager
 
 func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
@@ -73,6 +86,7 @@ func _on_shop_entered() -> void:
 	var shop := _change_view(SHOP_SCENE)
 	Events.shop_entered.emit(shop)
 	shop.populate_shop()
+
 
 func _on_brewing_entered() -> void:
 	_change_view(BREWING_SCENE)

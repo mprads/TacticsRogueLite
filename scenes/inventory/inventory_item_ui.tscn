@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8xh1jbh84qru"]
+[gd_scene load_steps=3 format=3 uid="uid://b8xh1jbh84qru"]
 
-[ext_resource type="Texture2D" uid="uid://omr8v7dmu35c" path="res://assets/icons/32x32sulfur.png" id="1_dy5qy"]
+[ext_resource type="Script" uid="uid://wmq81pef0sus" path="res://scenes/inventory/inventory_item_ui.gd" id="1_5sqqe"]
+[ext_resource type="Texture2D" uid="uid://omr8v7dmu35c" path="res://assets/icons/32x32sulfur.png" id="2_kswu2"]
 
-[node name="InventoryItem" type="Control"]
+[node name="InventoryItemUI" type="Control"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_5sqqe")
 
 [node name="Panel2" type="Panel" parent="."]
 layout_mode = 1
@@ -29,7 +31,7 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_dy5qy")
+texture = ExtResource("2_kswu2")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Panel2"]

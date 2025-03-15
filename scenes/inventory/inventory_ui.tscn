@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpxmxey3qs0o6"]
+[gd_scene load_steps=17 format=3 uid="uid://dpxmxey3qs0o6"]
 
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="1_4axmw"]
-[ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/inventory/inventory_item.tscn" id="1_tvok8"]
+[ext_resource type="Script" uid="uid://fhmp1dkucxds" path="res://scenes/inventory/inventory_ui.gd" id="1_bxceu"]
+[ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/inventory/inventory_item_ui.tscn" id="1_tvok8"]
 [ext_resource type="PackedScene" uid="uid://cnvnj7pvvkjhu" path="res://scenes/inventory/inventory_unit_ui.tscn" id="2_bxceu"]
 [ext_resource type="Texture2D" uid="uid://cjh7q57rx3hfu" path="res://assets/sprites/potions/outline_sheet.png" id="2_el5y6"]
 
@@ -53,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bxceu")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
@@ -73,13 +75,13 @@ theme_override_constants/margin_bottom = 24
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
+theme_override_constants/separation = 24
 
 [node name="InventoryItems" type="GridContainer" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 312)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 6

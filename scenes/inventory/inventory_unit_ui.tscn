@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnvnj7pvvkjhu"]
+[gd_scene load_steps=6 format=3 uid="uid://cnvnj7pvvkjhu"]
 
+[ext_resource type="Script" uid="uid://nxhu47ih1nti" path="res://scenes/inventory/inventory_unit_ui.gd" id="1_2hjec"]
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="1_forai"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tvok8"]
@@ -15,6 +16,7 @@ region = Rect2(64, 0, 32, 32)
 
 [node name="InventoryUnitUI" type="HBoxContainer"]
 custom_minimum_size = Vector2(160, 0)
+script = ExtResource("1_2hjec")
 
 [node name="UnitIconPanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(48, 48)
