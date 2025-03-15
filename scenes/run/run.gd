@@ -6,16 +6,31 @@ const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const BREWING_SCENE := preload("res://scenes/brewing/brewing.tscn")
 const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 
+@export var run_stats: RunStats
+
+@onready var gold_ui: HBoxContainer = %GoldUI
+
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
 
 
 func _ready() -> void:
+	run_stats = RunStats.new()
+	
+	_set_up_event_connections()
+	_set_up_top_bar()
+
+
+func _set_up_event_connections() -> void:
 	Events.battle_exited.connect(_show_map)
 	Events.shop_exited.connect(_show_map)
 	Events.brewing_exited.connect(_show_map)
 	Events.kiln_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
+
+
+func _set_up_top_bar() -> void:
+	gold_ui.run_stats = run_stats
 
 
 func _change_view(scene: PackedScene) -> Node:

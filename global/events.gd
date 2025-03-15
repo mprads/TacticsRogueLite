@@ -15,3 +15,7 @@ signal kiln_exited
 
 #Map Events
 signal map_exited(room: String)
+
+#Inventory Events
+signal request_add_item(item: Item)
+signal request_remove_item(item: Item)
