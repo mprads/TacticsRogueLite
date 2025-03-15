@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpkwnxxboplpn"]
+
+[ext_resource type="Texture2D" uid="uid://cjh7q57rx3hfu" path="res://assets/sprites/potions/outline_sheet.png" id="1_fvc8g"]
+[ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
+[ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="2_vh40f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlit"]
+size = Vector2(36, 36)
+
+[node name="Unit" type="Area2D"]
+script = ExtResource("1_vh40f")
+
+[node name="Visuals" type="CanvasGroup" parent="."]
+
+[node name="Outline" type="Sprite2D" parent="Visuals"]
+position = Vector2(16, 8)
+texture = ExtResource("1_fvc8g")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Filling" type="Sprite2D" parent="Visuals"]
+position = Vector2(16, 8)
+texture = ExtResource("2_vh40f")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 8)
+shape = SubResource("RectangleShape2D_bhlit")

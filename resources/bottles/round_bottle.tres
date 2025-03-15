@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Bottle" load_steps=2 format=3 uid="uid://3dqm06n0wu44"]
+
+[ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="1_44iwc"]
+
+[resource]
+script = ExtResource("1_44iwc")
+name = "Round Bottle"
+sprite_coordinates = Vector2i(0, 0)
+sprite_size = 32
+base_health = 15
+max_oz = 10
+base_movement = 5
+metadata/_custom_type_script = "uid://cene0083pbi52"
