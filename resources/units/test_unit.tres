@@ -8,5 +8,8 @@
 script = ExtResource("1_wqpsq")
 potion = ExtResource("2_ufhrx")
 bottle = ExtResource("1_yb52f")
-max_health = 1
+max_oz = 1
+oz = 0
+max_health = 20
+health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"

@@ -2,13 +2,13 @@ extends Control
 class_name InventoryUI
 
 const INVENTORY_ITEM_UI = preload("res://scenes/inventory/inventory_item_ui.tscn")
-const INVENTORY_UNIT_UI = preload("res://scenes/inventory/inventory_unit_ui.tscn")
+const PARTY_UNIT_UI = preload("res://scenes/ui/party_unit_ui.tscn")
 
 @export var inventory_manager: InventoryManager : set = _set_inventory_manager
 @export var party_manager: PartyManager : set = _set_party_manager
 
 @onready var inventory_items: GridContainer = %InventoryItems
-@onready var inventory_party_ui: VBoxContainer = %InventoryPartyUI
+@onready var party_ui: VBoxContainer = %PartyUI
 
 var inventory: Dictionary[ItemConfig.KEYS, int]
 var party: Array[UnitStats]
@@ -38,12 +38,12 @@ func _update_inventory() -> void:
 func _update_party() -> void:
 	party = party_manager.get_party()
 	
-	for unit_ui in inventory_party_ui.get_children():
+	for unit_ui in party_ui.get_children():
 		unit_ui.queue_free()
 	
 	for index in party_manager.get_party_size():
-		var unit_ui_instance = INVENTORY_UNIT_UI.instantiate()
-		inventory_party_ui.add_child(unit_ui_instance)
+		var unit_ui_instance = PARTY_UNIT_UI.instantiate()
+		party_ui.add_child(unit_ui_instance)
 		
 		if index <= party.size() - 1:
 			unit_ui_instance.unit = party[index]

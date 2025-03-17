@@ -46,6 +46,7 @@ func _set_up_top_bar() -> void:
 	inventory_ui.inventory_manager = inventory_manager
 	inventory_ui.party_manager = party_manager
 
+
 func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
@@ -94,4 +95,6 @@ func _on_brewing_entered() -> void:
 
 
 func _on_kiln_entered() -> void:
-	_change_view(KILN_SCNE)
+	var kiln := _change_view(KILN_SCNE)
+	kiln.party_manager = party_manager
+	

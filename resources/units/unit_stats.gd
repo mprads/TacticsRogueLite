@@ -4,8 +4,8 @@ class_name UnitStats
 @export var potion: Potion : set = set_potion
 @export var bottle: Bottle : set = set_bottle
 
-var max_oz := 1
-var oz: int : set = set_oz
+@export var max_oz := 1
+@export var oz: int : set = set_oz
 
 
 func refill(amount: int) -> void:
