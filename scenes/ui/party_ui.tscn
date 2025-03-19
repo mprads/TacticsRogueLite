@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://0ek8bcdoiphi"]
+[gd_scene load_steps=14 format=3 uid="uid://0ek8bcdoiphi"]
 
 [ext_resource type="PackedScene" uid="uid://cnvnj7pvvkjhu" path="res://scenes/ui/party_unit_ui.tscn" id="1_nk53i"]
+[ext_resource type="Script" uid="uid://dogqqcw6qw7ut" path="res://scenes/ui/party_ui.gd" id="1_wmevu"]
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="2_wmevu"]
 [ext_resource type="Texture2D" uid="uid://cjh7q57rx3hfu" path="res://assets/sprites/potions/outline_sheet.png" id="3_tbw65"]
 
@@ -40,11 +41,14 @@ atlas = SubResource("CompressedTexture2D_l6cit")
 region = Rect2(0, 0, 32, 32)
 
 [node name="PartyUI" type="VBoxContainer"]
-custom_minimum_size = Vector2(96, 32)
+custom_minimum_size = Vector2(215, 48)
+offset_right = 215.0
+offset_bottom = 308.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/separation = 4
 alignment = 2
+script = ExtResource("1_wmevu")
 
 [node name="InventoryUnitUI" parent="." instance=ExtResource("1_nk53i")]
 layout_mode = 2

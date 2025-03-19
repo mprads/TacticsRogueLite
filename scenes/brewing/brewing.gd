@@ -5,15 +5,19 @@ const RECIPE_PANEL = preload("res://scenes/ui/recipe_panel.tscn")
 const ITEM_PANEL = preload("res://scenes/ui/item_panel.tscn")
 
 @export var inventory_manager: InventoryManager : set = _set_inventory_manager
+@export var party_manager: PartyManager : set = _set_party_manager
 
 @onready var cauldron_contents: TextureRect = %CauldronContents
 @onready var recipe_container: VBoxContainer = %RecipeContainer
 @onready var component_container: HBoxContainer = %ComponentContainer
+@onready var party_ui: PartyUI = %PartyUI
 
 var all_recipes_keys: Array[int] = []
 
 
 func _ready() -> void:
+	party_ui.unit_selected.connect(_on_party_unit_selected)
+	
 	for recipe in ItemConfig.POTION_KEYS:
 		all_recipes_keys.append(recipe)
 
@@ -52,5 +56,18 @@ func _set_inventory_manager(value: InventoryManager) -> void:
 	_update_recipes()
 
 
+func _set_party_manager(value: PartyManager) -> void:
+	if not is_node_ready():
+		await ready
+
+	party_manager = value
+	# TODO Ew prop drilling
+	party_ui.party_manager = party_manager
+
+
 func _on_recipe_panel_pressed(potion: Potion, recipe: BrewingRecipe) -> void:
 	_update_cauldron(potion, recipe)
+
+
+func _on_party_unit_selected(unit: UnitStats) -> void:
+	print(unit)

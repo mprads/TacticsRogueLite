@@ -3,22 +3,35 @@
 [ext_resource type="Script" uid="uid://nxhu47ih1nti" path="res://scenes/ui/party_unit_ui.gd" id="1_cgww7"]
 [ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="2_cgww7"]
 
-[node name="PartyUnitUI" type="HBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
-mouse_filter = 0
+[node name="PartyUnitUI" type="Button"]
+custom_minimum_size = Vector2(215, 48)
+offset_right = 8.0
+offset_bottom = 8.0
 script = ExtResource("1_cgww7")
 
-[node name="UnitIconPanel" parent="." instance=ExtResource("2_cgww7")]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="UnitIconPanel" parent="HBoxContainer" instance=ExtResource("2_cgww7")]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="UnitDetailsPanel" type="Panel" parent="."]
+[node name="UnitDetailsPanel" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(160, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="UnitDetailsPanel"]
+[node name="Label" type="Label" parent="HBoxContainer/UnitDetailsPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5

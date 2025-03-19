@@ -1,10 +1,10 @@
-extends HBoxContainer
+extends Button
 class_name PartyUnitUI
 
 @export var unit: UnitStats : set = _set_unit
 
-@onready var unit_icon_panel: Panel = $UnitIconPanel
-@onready var label: Label = $UnitDetailsPanel/Label
+@onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
+@onready var label: Label = %Label
 
 
 func _set_unit(value: UnitStats) -> void:
