@@ -10,6 +10,7 @@ signal request_purchase_item(item: Item)
 
 #Brewing Events
 signal brewing_exited
+signal brewing_entered(brewing: Brewing)
 
 #Kiln Events
 signal kiln_exited
