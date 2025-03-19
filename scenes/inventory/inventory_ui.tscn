@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dpxmxey3qs0o6"]
 
 [ext_resource type="Script" uid="uid://fhmp1dkucxds" path="res://scenes/inventory/inventory_ui.gd" id="1_bxceu"]
-[ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/inventory/inventory_item_ui.tscn" id="1_tvok8"]
+[ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="1_tvok8"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="3_8ojme"]
 
 [sub_resource type="Gradient" id="Gradient_tvok8"]

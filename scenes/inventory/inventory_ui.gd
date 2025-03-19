@@ -1,7 +1,7 @@
 extends Control
 class_name InventoryUI
 
-const INVENTORY_ITEM_UI = preload("res://scenes/inventory/inventory_item_ui.tscn")
+const ITEM_PANEL_UI = preload("res://scenes/ui/item_panel.tscn")
 const PARTY_UNIT_UI = preload("res://scenes/ui/party_unit_ui.tscn")
 
 @export var inventory_manager: InventoryManager : set = _set_inventory_manager
@@ -29,7 +29,7 @@ func _update_inventory() -> void:
 		item_ui.queue_free()
 
 	for item in inventory:
-		var item_ui_instance = INVENTORY_ITEM_UI.instantiate()
+		var item_ui_instance = ITEM_PANEL_UI.instantiate()
 		inventory_items.add_child(item_ui_instance)
 		item_ui_instance.item = ItemConfig.get_item_resource(item)
 		item_ui_instance.count = inventory[item]
@@ -52,6 +52,9 @@ func _update_party() -> void:
 
 
 func _set_inventory_manager(value: InventoryManager) -> void:
+	if not is_node_ready():
+		await ready
+	
 	inventory_manager = value
 	
 	if not inventory_manager.inventory_changed.is_connected(_update_inventory):
@@ -60,6 +63,9 @@ func _set_inventory_manager(value: InventoryManager) -> void:
 
 
 func _set_party_manager(value: PartyManager) -> void:
+	if not is_node_ready():
+		await ready
+
 	party_manager = value
 	
 	if not party_manager.party_changed.is_connected(_update_party):

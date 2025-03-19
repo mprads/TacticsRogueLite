@@ -39,7 +39,7 @@ func populate_shop() -> void:
 
 func _generate_shop_items() -> void:
 	for index in item_count:
-		var new_shop_item  := SHOP_ITEM.instantiate()
+		var new_shop_item := SHOP_ITEM.instantiate()
 		item_shelf.add_child(new_shop_item)
 		new_shop_item.item = RNG.array_pick_random(shop_items)
 		new_shop_item.update(inventory_manager.get_gold())
@@ -47,7 +47,7 @@ func _generate_shop_items() -> void:
 
 func _generate_planter_items() -> void:
 	for index in plant_count:
-		var new_shop_plant  := PLANTER_ITEM.instantiate()
+		var new_shop_plant := PLANTER_ITEM.instantiate()
 		planter_contents.add_child(new_shop_plant)
 		new_shop_plant.plant = RNG.array_pick_random(shop_plants)
 

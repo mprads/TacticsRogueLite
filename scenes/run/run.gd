@@ -85,13 +85,15 @@ func _on_battle_entered() -> void:
 
 func _on_shop_entered() -> void:
 	var shop := _change_view(SHOP_SCENE)
-	Events.shop_entered.emit(shop)
 	shop.inventory_manager = inventory_manager
 	shop.populate_shop()
+	Events.shop_entered.emit(shop)
 
 
 func _on_brewing_entered() -> void:
-	_change_view(BREWING_SCENE)
+	var brewing := _change_view(BREWING_SCENE)
+	brewing.inventory_manager = inventory_manager
+	Events.brewing_entered.emit(brewing)
 
 
 func _on_kiln_entered() -> void:
