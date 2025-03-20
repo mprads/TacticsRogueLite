@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Vial" load_steps=7 format=3 uid="uid://bsdweqfkcpb0i"]
+
+[ext_resource type="Texture2D" uid="uid://5oi2bllm7rar" path="res://assets/sprites/vials/16x16filling.png" id="1_mv3nn"]
+[ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="1_p0orm"]
+[ext_resource type="Texture2D" uid="uid://dsbwfeiqngofu" path="res://assets/sprites/vials/32x32outline.png" id="2_luyiv"]
+[ext_resource type="Texture2D" uid="uid://cwtn2kdsu34di" path="res://assets/sprites/vials/16x16outline.png" id="3_hs26u"]
+[ext_resource type="Texture2D" uid="uid://dwt1my1akl0h7" path="res://assets/sprites/vials/32x32filling.png" id="4_1l4d8"]
+[ext_resource type="Resource" uid="uid://clfji10vn38yo" path="res://resources/potions/green_potion.tres" id="5_luyiv"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_p0orm")
+outline_16 = ExtResource("3_hs26u")
+fillint_16 = ExtResource("1_mv3nn")
+outline_32 = ExtResource("4_1l4d8")
+fillint_32 = ExtResource("2_luyiv")
+potion = ExtResource("5_luyiv")
+quantity = 1
+metadata/_custom_type_script = "uid://bkslv2wck48to"
