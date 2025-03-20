@@ -9,6 +9,8 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 @export var run_stats: RunStats
 @onready var inventory_manager: InventoryManager = $InventoryManager
 @onready var party_manager: PartyManager = $PartyManager
+@onready var vial_manager: VialManager = $VialManager
+
 
 @onready var gold_ui: HBoxContainer = %GoldUI
 @onready var inventory_button: TextureButton = %InventoryButton
@@ -30,6 +32,7 @@ func _ready() -> void:
 func _set_up_managers() -> void:
 	inventory_manager.run_stats = run_stats
 	party_manager.run_stats = run_stats
+	vial_manager.run_stats = run_stats
 
 
 func _set_up_event_connections() -> void:
@@ -93,6 +96,8 @@ func _on_shop_entered() -> void:
 func _on_brewing_entered() -> void:
 	var brewing := _change_view(BREWING_SCENE)
 	brewing.inventory_manager = inventory_manager
+	brewing.party_manager = party_manager
+	brewing.vial_manager = vial_manager
 	Events.brewing_entered.emit(brewing)
 
 

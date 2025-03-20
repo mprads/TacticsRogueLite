@@ -40,6 +40,7 @@ func _update_components() -> void:
 func _potion_key(value: int) -> void:
 	if not is_node_ready():
 		await ready
+
 	potion_key = value
 	
 	potion = ItemConfig.get_potion_resource(potion_key)

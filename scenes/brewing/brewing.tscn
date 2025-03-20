@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkokbdb73arai"]
+[gd_scene load_steps=10 format=3 uid="uid://dkokbdb73arai"]
 
 [ext_resource type="Script" uid="uid://bypkjjcfg5vrv" path="res://scenes/brewing/brewing.gd" id="1_vb5it"]
 [ext_resource type="Texture2D" uid="uid://b728al2il4cpu" path="res://assets/sprites/brewing/cauldron.png" id="2_m1eth"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="5_b2k4q"]
 [ext_resource type="PackedScene" uid="uid://dir2ch11l46uj" path="res://scenes/ui/recipe_panel.tscn" id="5_ix4mr"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="5_m1eth"]
+[ext_resource type="PackedScene" uid="uid://6m8egyaev33y" path="res://scenes/ui/vial_panel.tscn" id="8_jra8c"]
 
 [sub_resource type="Gradient" id="Gradient_vb5it"]
 offsets = PackedFloat32Array(0.259434, 0.938679)
@@ -36,20 +37,43 @@ offset_left = 372.0
 offset_top = 105.0
 offset_right = 583.0
 offset_bottom = 251.0
+mouse_filter = 2
 
 [node name="CauldronBody" type="TextureRect" parent="BackgroundLayer/Cauldron"]
 layout_mode = 0
 offset_right = 211.0
 offset_bottom = 146.0
+mouse_filter = 2
 texture = ExtResource("2_m1eth")
 stretch_mode = 5
 
 [node name="CauldronContents" type="TextureRect" parent="BackgroundLayer/Cauldron"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_right = 202.0
 offset_bottom = 70.0
+mouse_filter = 2
 texture = ExtResource("3_b2k4q")
+
+[node name="ComponentContainer" type="HBoxContainer" parent="BackgroundLayer/Cauldron"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+offset_left = 44.0
+offset_top = -47.0
+offset_right = 165.0
+offset_bottom = 1.0
+size_flags_vertical = 0
+mouse_filter = 2
+alignment = 1
+
+[node name="ItemPanel" parent="BackgroundLayer/Cauldron/ComponentContainer" instance=ExtResource("5_m1eth")]
+layout_mode = 2
+
+[node name="ItemPanel2" parent="BackgroundLayer/Cauldron/ComponentContainer" instance=ExtResource("5_m1eth")]
+layout_mode = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -60,6 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
@@ -70,55 +95,91 @@ custom_minimum_size = Vector2(0, 310)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/HBoxContainer"]
-visible = false
+[node name="RecipeScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RecipeContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/ScrollContainer"]
+[node name="RecipeContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 310)
 layout_mode = 2
 
-[node name="RecipePanel" parent="UI/MarginContainer/HBoxContainer/ScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
+[node name="RecipePanel" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
 layout_mode = 2
 
-[node name="RecipePanel2" parent="UI/MarginContainer/HBoxContainer/ScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
+[node name="RecipePanel2" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
 layout_mode = 2
 
-[node name="RecipePanel3" parent="UI/MarginContainer/HBoxContainer/ScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
+[node name="RecipePanel3" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
 layout_mode = 2
 
 [node name="PartyUI" parent="UI/MarginContainer/HBoxContainer" instance=ExtResource("5_b2k4q")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ComponentContainer" type="HBoxContainer" parent="UI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="VialContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_vertical = 0
-alignment = 1
-
-[node name="ItemPanel" parent="UI/MarginContainer/HBoxContainer/VBoxContainer/ComponentContainer" instance=ExtResource("5_m1eth")]
+visible = false
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 
-[node name="ItemPanel2" parent="UI/MarginContainer/HBoxContainer/VBoxContainer/ComponentContainer" instance=ExtResource("5_m1eth")]
+[node name="VialPanel" parent="UI/MarginContainer/HBoxContainer/VialContainer" instance=ExtResource("8_jra8c")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="VialPanel2" parent="UI/MarginContainer/HBoxContainer/VialContainer" instance=ExtResource("8_jra8c")]
 layout_mode = 2
-size_flags_vertical = 10
 
-[node name="Button" type="Button" parent="UI/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="VialPanel3" parent="UI/MarginContainer/HBoxContainer/VialContainer" instance=ExtResource("8_jra8c")]
+layout_mode = 2
+
+[node name="ButtonContainer" type="Control" parent="UI/MarginContainer"]
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="SelectionButtons" type="VBoxContainer" parent="UI/MarginContainer/ButtonContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="PotionButton" type="Button" parent="UI/MarginContainer/ButtonContainer/SelectionButtons"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Brew Potion"
 
-[node name="Button2" type="Button" parent="UI/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="VialButton" type="Button" parent="UI/MarginContainer/ButtonContainer/SelectionButtons"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Brew Vial"
+
+[node name="BackButton" type="Button" parent="UI/MarginContainer/ButtonContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -113.0
+offset_right = -2.0
+offset_bottom = -81.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back"

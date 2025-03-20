@@ -10,21 +10,17 @@ const PARTY_UNIT_UI = preload("res://scenes/ui/party_unit_ui.tscn")
 var party: Array[UnitStats] = []
 
 
-func _populate_party() -> void:
+func _update_party() -> void:
 	party = party_manager.get_party()
 	
 	for unit_ui in get_children():
 		unit_ui.queue_free()
 	
-	for index in party_manager.get_party_size():
+	for unit in party:
 		var unit_ui_instance = PARTY_UNIT_UI.instantiate()
 		add_child(unit_ui_instance)
-		
-		if index <= party.size() - 1:
-			unit_ui_instance.unit = party[index]
-			unit_ui_instance.pressed.connect(_on_unit_ui_pressed.bind(party[index]))
-		else:
-			unit_ui_instance.unit = null
+		unit_ui_instance.unit = unit
+		unit_ui_instance.pressed.connect(_on_unit_ui_pressed.bind(unit))
 
 
 func _set_party_manager(value: PartyManager) -> void:
@@ -33,8 +29,14 @@ func _set_party_manager(value: PartyManager) -> void:
 
 	party_manager = value
 	
-	_populate_party()
+	if not party_manager.party_changed.is_connected(_update_party):
+		party_manager.party_changed.connect(_update_party)
+		_update_party()
+	
+	_update_party()
 
 
 func _on_unit_ui_pressed(unit: UnitStats) -> void:
+	if not unit: return
+
 	unit_selected.emit(unit)
