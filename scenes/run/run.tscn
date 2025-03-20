@@ -28,7 +28,6 @@ run_stats = ExtResource("2_cnkn7")
 [node name="PartyManager" parent="." instance=ExtResource("5_7yo0l")]
 
 [node name="VialManager" parent="." instance=ExtResource("6_fo0ly")]
-run_stats = ExtResource("2_cnkn7")
 
 [node name="TopBar" type="CanvasLayer" parent="."]
 layer = 3

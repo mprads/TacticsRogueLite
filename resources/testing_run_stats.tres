@@ -39,7 +39,7 @@ outline_16 = ExtResource("9_isr74")
 fillint_16 = ExtResource("7_i18qs")
 outline_32 = ExtResource("10_ncqbe")
 fillint_32 = ExtResource("8_mnkgj")
-quantity = 1
+refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [sub_resource type="Resource" id="Resource_asbe1"]
@@ -50,7 +50,7 @@ fillint_16 = ExtResource("7_i18qs")
 outline_32 = ExtResource("10_ncqbe")
 fillint_32 = ExtResource("8_mnkgj")
 potion = ExtResource("11_fq33t")
-quantity = 1
+refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [sub_resource type="Resource" id="Resource_35bd7"]
@@ -61,7 +61,7 @@ fillint_16 = ExtResource("7_i18qs")
 outline_32 = ExtResource("10_ncqbe")
 fillint_32 = ExtResource("8_mnkgj")
 potion = ExtResource("12_ls2tb")
-quantity = 1
+refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [resource]

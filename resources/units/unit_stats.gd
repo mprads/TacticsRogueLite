@@ -29,3 +29,4 @@ func set_bottle(value: Bottle) -> void:
 
 func set_potion(value: Potion) -> void:
 	potion = value
+	emit_changed()

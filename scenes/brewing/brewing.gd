@@ -26,7 +26,7 @@ const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 
 var all_recipes_keys: Array[int] = []
 var current_stage := STAGE.RECIPE
-
+var current_potion: Potion
 
 func _ready() -> void:
 	party_ui.unit_selected.connect(_on_party_unit_selected)
@@ -50,6 +50,8 @@ func _update_view(next_stage: STAGE) -> void:
 			component_container.hide()
 			selection_buttons.hide()
 			back_button.hide()
+			current_potion = null
+			
 		STAGE.SELECTION:
 			recipe_scroll_container.hide()
 			party_ui.hide()
@@ -58,6 +60,7 @@ func _update_view(next_stage: STAGE) -> void:
 			component_container.show()
 			selection_buttons.show()
 			back_button.show()
+			
 		STAGE.POTION:
 			recipe_scroll_container.hide()
 			party_ui.show()
@@ -66,6 +69,7 @@ func _update_view(next_stage: STAGE) -> void:
 			component_container.show()
 			selection_buttons.hide()
 			back_button.show()
+			
 		STAGE.VIAL:
 			recipe_scroll_container.hide()
 			party_ui.hide()
@@ -117,6 +121,12 @@ func _update_vials() -> void:
 		var vial_panel_instance := VIAL_PANEL.instantiate()
 		vial_container.add_child(vial_panel_instance)
 		vial_panel_instance.potion = vial.potion
+		vial_panel_instance.pressed.connect(_on_vial_panel_pressed.bind(vial))
+
+
+func _request_remove_components() -> void:
+	for component in component_container.get_children():
+		Events.request_remove_item.emit(component.item, component.count)
 
 
 func _set_inventory_manager(value: InventoryManager) -> void:
@@ -141,12 +151,14 @@ func _set_vial_manager(value: VialManager) -> void:
 		await ready
 
 	vial_manager = value
+	vial_manager.vials_changed.connect(_update_vials)
 	_update_vials()
 
 
 func _on_recipe_panel_pressed(potion: Potion, recipe: BrewingRecipe) -> void:
 	_update_cauldron(potion, recipe)
 	_update_buttons(potion)
+	current_potion = potion
 	
 	_update_view(STAGE.SELECTION)
 
@@ -156,15 +168,21 @@ func _on_potion_button_pressed() -> void:
 
 
 func _on_vial_button_pressed() -> void:
-	for component in cauldron_contents.get_children():
+	for component in component_container.get_children():
 		component.count = clampi(component.count / 2, 1, component.count)
 	
 	_update_view(STAGE.VIAL)
 
 
 func _on_party_unit_selected(unit: UnitStats) -> void:
-	print(unit)
+	unit.potion = current_potion
+	_request_remove_components()
+	Events.brewing_exited.emit()
 
+func _on_vial_panel_pressed(vial: Vial) -> void:
+	vial.potion = current_potion
+	_request_remove_components()
+	Events.brewing_exited.emit()
 
 func _on_back_button_pressed() -> void:
 	match current_stage:

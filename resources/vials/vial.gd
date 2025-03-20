@@ -7,5 +7,10 @@ class_name Vial
 @export var outline_32: Texture2D
 @export var fillint_32: Texture2D
 
-@export var potion: Potion
-@export var quantity := 1
+@export var potion: Potion : set = set_potion
+@export var refill_quantity := 1
+
+
+func set_potion(value: Potion) -> void:
+	potion = value
+	emit_changed()
