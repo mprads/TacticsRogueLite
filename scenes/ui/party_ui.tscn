@@ -1,0 +1,344 @@
+[gd_scene load_steps=14 format=3 uid="uid://0ek8bcdoiphi"]
+
+[ext_resource type="PackedScene" uid="uid://cnvnj7pvvkjhu" path="res://scenes/ui/party_unit_ui.tscn" id="1_nk53i"]
+[ext_resource type="Script" uid="uid://dogqqcw6qw7ut" path="res://scenes/ui/party_ui.gd" id="1_wmevu"]
+[ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="2_wmevu"]
+[ext_resource type="Texture2D" uid="uid://cjh7q57rx3hfu" path="res://assets/sprites/potions/outline_sheet.png" id="3_tbw65"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxceu"]
+atlas = ExtResource("2_wmevu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8e04"]
+atlas = ExtResource("3_tbw65")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4axmw"]
+atlas = ExtResource("2_wmevu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l6cit"]
+load_path = "res://.godot/imported/outline_sheet.png-8b25bd81e000666fdf310f5690c429bd.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6cit"]
+atlas = SubResource("CompressedTexture2D_l6cit")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1nyl"]
+atlas = SubResource("CompressedTexture2D_l6cit")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxst"]
+atlas = ExtResource("2_wmevu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4j3l"]
+atlas = ExtResource("2_wmevu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el5y6"]
+atlas = SubResource("CompressedTexture2D_l6cit")
+region = Rect2(0, 0, 32, 32)
+
+[node name="PartyUI" type="VBoxContainer"]
+custom_minimum_size = Vector2(215, 48)
+offset_right = 215.0
+offset_bottom = 308.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+alignment = 2
+script = ExtResource("1_wmevu")
+
+[node name="InventoryUnitUI" parent="." instance=ExtResource("1_nk53i")]
+layout_mode = 2
+
+[node name="InventoryUnitUI6" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="UnitIconPanel" type="Panel" parent="InventoryUnitUI6"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="InventoryUnitIcon" type="Control" parent="InventoryUnitUI6/UnitIconPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Potion" type="TextureRect" parent="InventoryUnitUI6/UnitIconPanel/InventoryUnitIcon"]
+modulate = Color(1, 1, 0.168627, 1)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_bxceu")
+stretch_mode = 5
+
+[node name="Bottle" type="TextureRect" parent="InventoryUnitUI6/UnitIconPanel/InventoryUnitIcon"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_v8e04")
+stretch_mode = 5
+
+[node name="UnitDetailsPanel" type="Panel" parent="InventoryUnitUI6"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="InventoryUnitUI6/UnitDetailsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -23.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unit details go here"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InventoryUnitUI7" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="UnitIconPanel" type="Panel" parent="InventoryUnitUI7"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="InventoryUnitIcon" type="Control" parent="InventoryUnitUI7/UnitIconPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Potion" type="TextureRect" parent="InventoryUnitUI7/UnitIconPanel/InventoryUnitIcon"]
+modulate = Color(0.772549, 0, 0.235294, 1)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_4axmw")
+stretch_mode = 5
+
+[node name="Bottle" type="TextureRect" parent="InventoryUnitUI7/UnitIconPanel/InventoryUnitIcon"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_l6cit")
+stretch_mode = 5
+
+[node name="UnitDetailsPanel" type="Panel" parent="InventoryUnitUI7"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="InventoryUnitUI7/UnitDetailsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -23.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unit details go here"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InventoryUnitUI8" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="UnitIconPanel" type="Panel" parent="InventoryUnitUI8"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="InventoryUnitIcon" type="Control" parent="InventoryUnitUI8/UnitIconPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottle" type="TextureRect" parent="InventoryUnitUI8/UnitIconPanel/InventoryUnitIcon"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_g1nyl")
+stretch_mode = 5
+
+[node name="Potion" type="TextureRect" parent="InventoryUnitUI8/UnitIconPanel/InventoryUnitIcon"]
+modulate = Color(0, 0.705882, 0, 1)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_efxst")
+stretch_mode = 5
+
+[node name="UnitDetailsPanel" type="Panel" parent="InventoryUnitUI8"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="InventoryUnitUI8/UnitDetailsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -23.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unit details go here"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InventoryUnitUI9" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="UnitIconPanel" type="Panel" parent="InventoryUnitUI9"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="InventoryUnitIcon" type="Control" parent="InventoryUnitUI9/UnitIconPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Potion" type="TextureRect" parent="InventoryUnitUI9/UnitIconPanel/InventoryUnitIcon"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_x4j3l")
+stretch_mode = 5
+
+[node name="Bottle" type="TextureRect" parent="InventoryUnitUI9/UnitIconPanel/InventoryUnitIcon"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_el5y6")
+stretch_mode = 5
+
+[node name="UnitDetailsPanel" type="Panel" parent="InventoryUnitUI9"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="InventoryUnitUI9/UnitDetailsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -23.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unit details go here"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InventoryUnitUI10" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="UnitIconPanel" type="Panel" parent="InventoryUnitUI10"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="InventoryUnitIcon" type="Control" parent="InventoryUnitUI10/UnitIconPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Potion" type="TextureRect" parent="InventoryUnitUI10/UnitIconPanel/InventoryUnitIcon"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_x4j3l")
+stretch_mode = 5
+
+[node name="Bottle" type="TextureRect" parent="InventoryUnitUI10/UnitIconPanel/InventoryUnitIcon"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_el5y6")
+stretch_mode = 5
+
+[node name="UnitDetailsPanel" type="Panel" parent="InventoryUnitUI10"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="InventoryUnitUI10/UnitDetailsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -23.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unit details go here"
+horizontal_alignment = 1
+autowrap_mode = 2

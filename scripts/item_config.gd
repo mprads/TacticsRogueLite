@@ -15,7 +15,7 @@ enum KEYS {
 	GREEN_POTION,
 }
 
-const BREWABLE_ITEM_KEYS: Array[KEYS] = [
+const POTION_KEYS: Array[KEYS] = [
 	KEYS.RED_POTION,
 	KEYS.YELLOW_POTION,
 	KEYS.GREEN_POTION,
@@ -29,10 +29,12 @@ const ITEM_RESOURCE_PATHS := {
 	KEYS.VENOM: "res://resources/items/venom.tres",
 	KEYS.ZINC: "res://resources/items/zinc.tres",
 	KEYS.SULFUR: "res://resources/items/sulfur.tres",
-	#potions
+}
+
+const POTION_RESOURCE_PATH := {
 	KEYS.RED_POTION: "res://resources/potions/red_potion.tres",
-	KEYS.YELLOW_POTION: "res://resources/potions/green_potion.tres",
 	KEYS.GREEN_POTION: "res://resources/potions/green_potion.tres",
+	KEYS.YELLOW_POTION: "res://resources/potions/yellow_potion.tres",
 }
 
 const BREWING_RECIPE_RESOURCE_PATH := {
@@ -46,5 +48,9 @@ static func get_item_resource(key: KEYS) -> Item:
 	return load(ITEM_RESOURCE_PATHS[key])
 
 
-static func get_brewable_recipe(key: KEYS) -> BrewingRecipe:
+static func get_potion_resource(key: KEYS) -> Potion:
+	return load(POTION_RESOURCE_PATH[key])
+
+
+static func get_brewing_recipe(key: KEYS) -> BrewingRecipe:
 	return load(BREWING_RECIPE_RESOURCE_PATH[key])

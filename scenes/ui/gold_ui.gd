@@ -17,8 +17,9 @@ func _set_inventory_manager(value: InventoryManager) -> void:
 	
 	if not inventory_manager.gold_changed.is_connected(_update_gold):
 		inventory_manager.gold_changed.connect(_update_gold)
-		_update_gold()
-		
+	
+	_update_gold()
+
 
 func _update_gold() -> void:
 	if tween:

@@ -1,9 +1,68 @@
-[gd_resource type="Resource" script_class="RunStats" load_steps=5 format=3 uid="uid://cog76ftpquwhv"]
+[gd_resource type="Resource" script_class="RunStats" load_steps=18 format=3 uid="uid://cog76ftpquwhv"]
 
 [ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
 [ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
-[ext_resource type="Resource" uid="uid://ybhl6runwoys" path="res://resources/units/test_unit.tres" id="2_c6ufj"]
-[ext_resource type="Resource" uid="uid://dy6mfv30bqjgl" path="res://resources/units/test_empty_unit.tres" id="3_c6ufj"]
+[ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="2_pij53"]
+[ext_resource type="Resource" uid="uid://bs6aq03gqfb2v" path="res://resources/potions/yellow_potion.tres" id="3_7qsao"]
+[ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="4_pbn6o"]
+[ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
+[ext_resource type="Texture2D" uid="uid://5oi2bllm7rar" path="res://assets/sprites/vials/16x16filling.png" id="7_i18qs"]
+[ext_resource type="Texture2D" uid="uid://dsbwfeiqngofu" path="res://assets/sprites/vials/32x32outline.png" id="8_mnkgj"]
+[ext_resource type="Texture2D" uid="uid://cwtn2kdsu34di" path="res://assets/sprites/vials/16x16outline.png" id="9_isr74"]
+[ext_resource type="Texture2D" uid="uid://dwt1my1akl0h7" path="res://assets/sprites/vials/32x32filling.png" id="10_ncqbe"]
+[ext_resource type="Resource" uid="uid://cp15dkcrutp2i" path="res://resources/potions/red_potion.tres" id="11_fq33t"]
+[ext_resource type="Resource" uid="uid://clfji10vn38yo" path="res://resources/potions/green_potion.tres" id="12_ls2tb"]
+
+[sub_resource type="Resource" id="Resource_pb28d"]
+script = ExtResource("1_23n1j")
+potion = ExtResource("3_7qsao")
+bottle = ExtResource("2_pij53")
+max_oz = 1
+oz = 0
+max_health = 20
+health = 13
+metadata/_custom_type_script = "uid://l8imbubpscrj"
+
+[sub_resource type="Resource" id="Resource_p44xe"]
+script = ExtResource("1_23n1j")
+bottle = ExtResource("4_pbn6o")
+max_oz = 1
+oz = 0
+max_health = 15
+health = 7
+metadata/_custom_type_script = "uid://l8imbubpscrj"
+
+[sub_resource type="Resource" id="Resource_l5ffo"]
+resource_local_to_scene = true
+script = ExtResource("5_bk1v7")
+outline_16 = ExtResource("9_isr74")
+fillint_16 = ExtResource("7_i18qs")
+outline_32 = ExtResource("10_ncqbe")
+fillint_32 = ExtResource("8_mnkgj")
+refill_quantity = 1
+metadata/_custom_type_script = "uid://bkslv2wck48to"
+
+[sub_resource type="Resource" id="Resource_asbe1"]
+resource_local_to_scene = true
+script = ExtResource("5_bk1v7")
+outline_16 = ExtResource("9_isr74")
+fillint_16 = ExtResource("7_i18qs")
+outline_32 = ExtResource("10_ncqbe")
+fillint_32 = ExtResource("8_mnkgj")
+potion = ExtResource("11_fq33t")
+refill_quantity = 1
+metadata/_custom_type_script = "uid://bkslv2wck48to"
+
+[sub_resource type="Resource" id="Resource_35bd7"]
+resource_local_to_scene = true
+script = ExtResource("5_bk1v7")
+outline_16 = ExtResource("9_isr74")
+fillint_16 = ExtResource("7_i18qs")
+outline_32 = ExtResource("10_ncqbe")
+fillint_32 = ExtResource("8_mnkgj")
+potion = ExtResource("12_ls2tb")
+refill_quantity = 1
+metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [resource]
 script = ExtResource("2_3wu10")
@@ -11,10 +70,12 @@ gold = 50
 inventory = Dictionary[int, int]({
 0: 4,
 1: 6,
-2: 12,
+2: 1,
 3: 1,
 4: 3
 })
-party = Array[ExtResource("1_23n1j")]([ExtResource("2_c6ufj"), ExtResource("3_c6ufj")])
-party_size = 6
+party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pb28d"), SubResource("Resource_p44xe")])
+max_party_size = 5
+vials = Array[ExtResource("5_bk1v7")]([SubResource("Resource_l5ffo"), SubResource("Resource_asbe1"), SubResource("Resource_35bd7")])
+max_vial_count = 3
 metadata/_custom_type_script = "uid://caa81aywox71a"

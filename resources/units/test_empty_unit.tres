@@ -6,5 +6,8 @@
 [resource]
 script = ExtResource("1_nsjuq")
 bottle = ExtResource("1_dxqd5")
-max_health = 1
+max_oz = 1
+oz = 0
+max_health = 15
+health = 7
 metadata/_custom_type_script = "uid://l8imbubpscrj"

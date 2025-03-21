@@ -2,8 +2,7 @@ extends Resource
 class_name Stats
 
 @export var max_health := 1
-
-var health: int : set = set_health
+@export var health: int : set = set_health
 
 
 func set_health(value : int) -> void:

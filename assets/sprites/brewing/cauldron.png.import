@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://etibe4bbt0q"
-path="res://.godot/imported/tile_0127.png-d12d1e781a83528b0db8204942d50108.ctex"
+uid="uid://b728al2il4cpu"
+path="res://.godot/imported/cauldron.png-d84c2621c604c50ff5e5cd5db767ab26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/tile_0127.png"
-dest_files=["res://.godot/imported/tile_0127.png-d12d1e781a83528b0db8204942d50108.ctex"]
+source_file="res://assets/sprites/brewing/cauldron.png"
+dest_files=["res://.godot/imported/cauldron.png-d84c2621c604c50ff5e5cd5db767ab26.ctex"]
 
 [params]
 
