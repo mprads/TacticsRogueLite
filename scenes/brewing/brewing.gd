@@ -25,8 +25,11 @@ const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 @onready var back_button: Button = %BackButton
 
 var all_recipes_keys: Array[int] = []
+var filtered_recipes_keys: Array[int] =[]
 var current_stage := STAGE.RECIPE
 var current_potion: Potion
+var current_recipe: BrewingRecipe
+
 
 func _ready() -> void:
 	party_ui.unit_selected.connect(_on_party_unit_selected)
@@ -51,6 +54,7 @@ func _update_view(next_stage: STAGE) -> void:
 			selection_buttons.hide()
 			back_button.hide()
 			current_potion = null
+			current_recipe = null
 			
 		STAGE.SELECTION:
 			recipe_scroll_container.hide()
@@ -82,11 +86,28 @@ func _update_view(next_stage: STAGE) -> void:
 	current_stage = next_stage
 
 
+func _filter_recipes() -> void:
+	var inventory = inventory_manager.get_inventory()
+	
+	filtered_recipes_keys = all_recipes_keys.filter(func(recipe_key):
+		var recipe = ItemConfig.get_brewing_recipe(recipe_key)
+		
+		for cost in recipe.costs:
+			if inventory.has(cost.item_key):
+				if inventory[cost.item_key] < clampi(cost.amount / 2, 1, cost.amount):
+					return false
+			else: 
+				return false
+		
+		return true
+		)
+
+
 func _update_recipes() -> void:
 	for child in recipe_container.get_children():
 		child.queue_free()
 
-	for key in all_recipes_keys:
+	for key in filtered_recipes_keys:
 		var recipe_panel_instance := RECIPE_PANEL.instantiate()
 		recipe_container.add_child(recipe_panel_instance)
 		recipe_panel_instance.potion_key = key
@@ -108,9 +129,16 @@ func _update_cauldron(potion: Potion, recipe: BrewingRecipe) -> void:
 	cauldron_contents.modulate = potion.color
 
 
-func _update_buttons(potion: Potion) -> void:
+func _update_buttons(potion: Potion, recipe: BrewingRecipe) -> void:
+	var inventory = inventory_manager.get_inventory()
+	
 	potion_button.text = "Brew %s Potion" %potion.name
 	vial_button.text = "Brew %s Vial" %potion.name
+	potion_button.disabled = false
+	
+	for cost in recipe.costs:
+		if inventory[cost.item_key] < cost.amount:
+			potion_button.disabled = true
 
 
 func _update_vials() -> void:
@@ -129,11 +157,23 @@ func _request_remove_components() -> void:
 		Events.request_remove_item.emit(component.item, component.count)
 
 
+func _update_component_cost(is_vial: bool) -> void:
+	for component in component_container.get_children():
+		var cost_index = current_recipe.costs.find_custom(func(cost): return cost.item_key == component.item.key)
+		var cost = current_recipe.costs[cost_index]
+		
+		if is_vial:
+			component.count = clampi(cost.amount / 2, 1, cost.amount)
+		else:
+			component.count = cost.amount
+
+
 func _set_inventory_manager(value: InventoryManager) -> void:
 	if not is_node_ready():
 		await ready
 	
 	inventory_manager = value
+	_filter_recipes()
 	_update_recipes()
 
 
@@ -156,21 +196,22 @@ func _set_vial_manager(value: VialManager) -> void:
 
 
 func _on_recipe_panel_pressed(potion: Potion, recipe: BrewingRecipe) -> void:
-	_update_cauldron(potion, recipe)
-	_update_buttons(potion)
 	current_potion = potion
+	current_recipe = recipe
+	
+	_update_cauldron(potion, recipe)
+	_update_buttons(potion, recipe)
 	
 	_update_view(STAGE.SELECTION)
 
 
 func _on_potion_button_pressed() -> void:
+	_update_component_cost(false)
 	_update_view(STAGE.POTION)
 
 
 func _on_vial_button_pressed() -> void:
-	for component in component_container.get_children():
-		component.count = clampi(component.count / 2, 1, component.count)
-	
+	_update_component_cost(true)
 	_update_view(STAGE.VIAL)
 
 
@@ -179,10 +220,12 @@ func _on_party_unit_selected(unit: UnitStats) -> void:
 	_request_remove_components()
 	Events.brewing_exited.emit()
 
+
 func _on_vial_panel_pressed(vial: Vial) -> void:
 	vial.potion = current_potion
 	_request_remove_components()
 	Events.brewing_exited.emit()
+
 
 func _on_back_button_pressed() -> void:
 	match current_stage:

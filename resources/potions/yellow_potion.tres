@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_8f752")
+key = 6
 name = "Yellow"
 color = Color(0.773417, 0.611081, 0.105434, 1)
 metadata/_custom_type_script = "uid://dgy3brauklt5w"
