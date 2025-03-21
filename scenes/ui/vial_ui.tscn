@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg1lcvjde6tv6"]
+
+[ext_resource type="Script" uid="uid://plxfhcgjum06" path="res://scenes/ui/vial_ui.gd" id="1_qw3ji"]
+[ext_resource type="PackedScene" uid="uid://bkyqjyhlg3ia0" path="res://scenes/ui/vial_button.tscn" id="2_xt8fb"]
+
+[node name="VialUI" type="HBoxContainer"]
+size_flags_horizontal = 6
+script = ExtResource("1_qw3ji")
+
+[node name="VialButton" parent="." instance=ExtResource("2_xt8fb")]
+layout_mode = 2
