@@ -3,7 +3,7 @@ class_name VialUI
 
 const VIAL_BUTTON = preload("res://scenes/ui/vial_button.tscn")
 
-@export var vial_manager: VialManager : set = _set_vial_manager
+@export var vial_manager: VialManager : set = set_vial_manager
 
 
 func _update_vials() -> void:
@@ -16,7 +16,7 @@ func _update_vials() -> void:
 		vial_button_instance.vial = vial
 
 
-func _set_vial_manager(value: VialManager) -> void:
+func set_vial_manager(value: VialManager) -> void:
 	vial_manager = value
 	
 	if not vial_manager.vials_changed.is_connected(_update_vials):

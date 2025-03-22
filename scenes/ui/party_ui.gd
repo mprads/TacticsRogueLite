@@ -5,7 +5,7 @@ signal unit_selected(unit: UnitStats)
 
 const PARTY_UNIT_UI = preload("res://scenes/ui/party_unit_ui.tscn")
 
-@export var party_manager: PartyManager : set = _set_party_manager
+@export var party_manager: PartyManager : set = set_party_manager
 
 var party: Array[UnitStats] = []
 
@@ -23,7 +23,7 @@ func _update_party() -> void:
 		unit_ui_instance.pressed.connect(_on_unit_ui_pressed.bind(unit))
 
 
-func _set_party_manager(value: PartyManager) -> void:
+func set_party_manager(value: PartyManager) -> void:
 	if not is_node_ready():
 		await ready
 

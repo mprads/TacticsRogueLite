@@ -10,7 +10,7 @@ const PLANTER_ITEM = preload("res://scenes/shop/planter_item.tscn")
 @export var item_count := 4
 @export var plant_count := 2
 
-@export var inventory_manager: InventoryManager : set = _set_inventory_manager
+@export var inventory_manager: InventoryManager : set = set_inventory_manager
 
 @onready var button: Button = $UI/VBoxContainer/Button
 @onready var item_shelf: HBoxContainer = %ItemShelf
@@ -52,7 +52,7 @@ func _generate_planter_items() -> void:
 		new_shop_plant.plant = RNG.array_pick_random(shop_plants)
 
 
-func _set_inventory_manager(value: InventoryManager) -> void:
+func set_inventory_manager(value: InventoryManager) -> void:
 	inventory_manager = value
 	
 	if not inventory_manager.gold_changed.is_connected(_on_inventory_gold_changed):

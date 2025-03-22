@@ -7,9 +7,9 @@ const RECIPE_PANEL = preload("res://scenes/ui/recipe_panel.tscn")
 const ITEM_PANEL = preload("res://scenes/ui/item_panel.tscn")
 const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 
-@export var inventory_manager: InventoryManager : set = _set_inventory_manager
-@export var party_manager: PartyManager : set = _set_party_manager
-@export var vial_manager: VialManager : set = _set_vial_manager
+@export var inventory_manager: InventoryManager : set = set_inventory_manager
+@export var party_manager: PartyManager : set = set_party_manager
+@export var vial_manager: VialManager : set = set_vial_manager
 
 @onready var recipe_scroll_container: ScrollContainer = %RecipeScrollContainer
 @onready var recipe_container: VBoxContainer = %RecipeContainer
@@ -168,7 +168,7 @@ func _update_component_cost(is_vial: bool) -> void:
 			component.count = cost.amount
 
 
-func _set_inventory_manager(value: InventoryManager) -> void:
+func set_inventory_manager(value: InventoryManager) -> void:
 	if not is_node_ready():
 		await ready
 	
@@ -177,7 +177,7 @@ func _set_inventory_manager(value: InventoryManager) -> void:
 	_update_recipes()
 
 
-func _set_party_manager(value: PartyManager) -> void:
+func set_party_manager(value: PartyManager) -> void:
 	if not is_node_ready():
 		await ready
 
@@ -186,7 +186,7 @@ func _set_party_manager(value: PartyManager) -> void:
 	party_ui.party_manager = party_manager
 
 
-func _set_vial_manager(value: VialManager) -> void:
+func set_vial_manager(value: VialManager) -> void:
 	if not is_node_ready():
 		await ready
 

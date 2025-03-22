@@ -3,8 +3,8 @@ class_name InventoryUI
 
 const ITEM_PANEL_UI = preload("res://scenes/ui/item_panel.tscn")
 
-@export var inventory_manager: InventoryManager : set = _set_inventory_manager
-@export var party_manager: PartyManager : set = _set_party_manager
+@export var inventory_manager: InventoryManager : set = set_inventory_manager
+@export var party_manager: PartyManager : set = set_party_manager
 
 @onready var inventory_items: GridContainer = %InventoryItems
 @onready var party_ui: VBoxContainer = %PartyUI
@@ -33,7 +33,7 @@ func _update_inventory() -> void:
 		item_ui_instance.count = inventory[item]
 
 
-func _set_inventory_manager(value: InventoryManager) -> void:
+func set_inventory_manager(value: InventoryManager) -> void:
 	if not is_node_ready():
 		await ready
 	
@@ -44,7 +44,7 @@ func _set_inventory_manager(value: InventoryManager) -> void:
 		_update_inventory()
 
 
-func _set_party_manager(value: PartyManager) -> void:
+func set_party_manager(value: PartyManager) -> void:
 	if not is_node_ready():
 		await ready
 

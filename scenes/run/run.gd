@@ -68,19 +68,18 @@ func _show_map() -> void:
 		current_view.get_child(0).queue_free()
 		
 	map.show_map()
+	map.unlock_next_rooms()
 
 
-func _on_map_exited(room_name: String) -> void:
-	# TODO replace with room type matching
-	
-	match room_name:
-		'battle':
+func _on_map_exited(room: Room) -> void:
+	match room.type:
+		Room.TYPE.BATTLE:
 			_on_battle_entered()
-		'shop':
+		Room.TYPE.SHOP:
 			_on_shop_entered()
-		'brewing':
+		Room.TYPE.BREWING:
 			_on_brewing_entered()
-		'kiln':
+		Room.TYPE.KILN:
 			_on_kiln_entered()
 
 
