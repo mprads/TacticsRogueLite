@@ -1,19 +1,9 @@
-@tool
 extends Node2D
 class_name Map
-
-@export_tool_button("GenerateMap")
-var toolbutton_generate_map = generate_new_map
 
 const SCROLL_SPEED := 15
 const MAP_ROOM := preload("res://scenes/map/map_room.tscn")
 const MAP_LINE := preload("res://scenes/map/map_line.tscn")
-
-@onready var ui: CanvasLayer = $UI
-@onready var battle_button: Button = $UI/VBoxContainer/BattleButton
-@onready var shop_button: Button = $UI/VBoxContainer/ShopButton
-@onready var brewing_button: Button = $UI/VBoxContainer/BrewingButton
-@onready var kiln_button: Button = $UI/VBoxContainer/KilnButton
 
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var visuals: Node2D = %Visuals
@@ -28,25 +18,23 @@ var last_room: Room
 var camera_edge_x: float
 
 
-func _ready() -> void:
-	battle_button.pressed.connect(_on_button_shortcut.bind('battle'))
-	shop_button.pressed.connect(_on_button_shortcut.bind('shop'))
-	brewing_button.pressed.connect(_on_button_shortcut.bind('brewing'))
-	kiln_button.pressed.connect(_on_button_shortcut.bind('kiln'))
-	
-	camera_edge_x = MapGenerator.X_DIST * (MapGenerator.TOTAL_ENCOUNTERS - 1)
+func _ready() -> void:	
+	# TODO find a better value to clamp max
+	camera_edge_x = MapGenerator.X_DIST * (MapGenerator.TOTAL_ENCOUNTERS - 3)
 	
 	generate_new_map()
 	_unlock_row(0)
 
 
 func _input(event: InputEvent) -> void:
+	if not visible: return
+	
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.x += SCROLL_SPEED
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.x -= SCROLL_SPEED
 	
-	camera_2d.position.x = clamp(camera_2d.position.x, camera_edge_x, 0)
+	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
 
 
 func show_map() -> void:
@@ -65,6 +53,12 @@ func generate_new_map() -> void:
 	_create_map()
 
 
+func unlock_next_rooms() -> void:
+	for map_room: MapRoom in rooms.get_children():
+		if last_room.next_rooms.has(map_room.room):
+			map_room.available = true
+
+
 func _create_map() -> void:
 	for current_floor in map_data:
 		for room: Room in current_floor:
@@ -73,8 +67,6 @@ func _create_map() -> void:
 	
 	var middle := floori(MapGenerator.MAP_HEIGHT * 0.5)
 	_spawn_room(map_data[MapGenerator.TOTAL_ENCOUNTERS - 1][middle])
-	
-	visuals.position.x = get_viewport_rect().size.x / 2
 
 
 func _unlock_row(row: int = encounters) -> void:

@@ -4,18 +4,16 @@ class_name MapRoom
 signal selected(room: Room)
 
 const ICONS := {
-	Room.Type.NOT_ASSIGNED: [null, Vector2.ONE],
-	Room.Type.KILN: [preload("res://assets/sprites/map/Kiln.png"), Vector2.ONE],
-	Room.Type.BREWING: [preload("res://assets/sprites/map/Brewing.png"), Vector2.ONE],
-	Room.Type.SHOP: [preload("res://assets/sprites/map/Shop.png"), Vector2.ONE],
-	Room.Type.BATTLE: [preload("res://assets/sprites/map/Battle.png"), Vector2.ONE],
+	Room.TYPE.NOT_ASSIGNED: [null, Vector2.ONE],
+	Room.TYPE.KILN: [preload("res://assets/sprites/map/Kiln.png"), Vector2.ONE],
+	Room.TYPE.BREWING: [preload("res://assets/sprites/map/Brewing.png"), Vector2.ONE],
+	Room.TYPE.SHOP: [preload("res://assets/sprites/map/Shop.png"), Vector2.ONE],
+	Room.TYPE.BATTLE: [preload("res://assets/sprites/map/Battle.png"), Vector2.ONE],
 }
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var line_2d: Line2D = $Visuals/Line2D
 @onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
-
-@onready var label: Label = $Label
 
 var available := false : set = set_available
 var room: Room : set = set_room
@@ -26,11 +24,8 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 		return
 	
 	room.selected = true
+	line_2d.visible = true  
 	selected.emit(room)
-
-
-func show_selected() -> void:
-	line_2d.modulate = Color.WHITE
 
 
 func set_room(value: Room) -> void:
@@ -39,9 +34,13 @@ func set_room(value: Room) -> void:
 	line_2d.rotation_degrees = randi_range(0, 360)
 	sprite_2d.texture = ICONS[room.type][0]
 	sprite_2d.scale = ICONS[room.type][1]
-	label.text = str(room.type)
 
 
 func set_available(value: bool) -> void:
 	# TODO activate outline highlighter and play pulsing animation
 	available = value
+
+	if available:
+		sprite_2d.modulate.a = 1
+	else:
+		sprite_2d.modulate.a = 0.4

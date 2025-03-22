@@ -17,15 +17,13 @@ script = ExtResource("1_gyfd6")
 visible = false
 points = PackedVector2Array(-14, -15, -19, -8, -20, -2, -20, 8, -14, 16, -8, 18, -1, 19, 6, 18, 15, 15, 18, 8, 18, -1, 18, -7, 15, -13, 8, -18, 0, -19, -9, -19)
 closed = true
-width = 2.0
-default_color = Color(0.412152, 0.412152, 0.412152, 1)
+width = 4.0
+default_color = Color(0.868692, 0.788272, 0.677068, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+modulate = Color(1, 1, 1, 0.156863)
 texture = ExtResource("1_hwhxx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_gyfd6")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 22.0

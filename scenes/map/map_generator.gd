@@ -1,13 +1,13 @@
-@tool
 extends Node
 class_name MapGenerator
 
-const X_DIST := 65
-const Y_DIST := 50
+const X_DIST := 150
+const Y_DIST := 55
 const PLACEMENT_RANDOMNESS := 5
 const TOTAL_ENCOUNTERS := 15
-const MAP_HEIGHT := 7
-const MAX_STARTS := 6
+const MAP_HEIGHT := 6
+const MAX_STARTS := 5
+const Min_STARTS := 3
 
 const BREWING_ROOM_WEIGHT := 2.5
 const KILN_ROOM_WEIGHT := 2.5
@@ -15,10 +15,10 @@ const SHOP_ROOM_WEIGHT := 2.5
 const BATTLE_ROOM_WEIGHT := 10.0
 
 var random_room_type_weights = {
-	Room.Type.BATTLE: 0.0,
-	Room.Type.KILN: 0.0,
-	Room.Type.BREWING: 0.0,
-	Room.Type.SHOP: 0.0,
+	Room.TYPE.BATTLE: 0.0,
+	Room.TYPE.KILN: 0.0,
+	Room.TYPE.BREWING: 0.0,
+	Room.TYPE.SHOP: 0.0,
 }
 
 var random_room_type_total_weight := 0
@@ -71,7 +71,7 @@ func _get_random_starting_points() -> Array[int]:
 	var indexes: Array[int]
 	var unique_points: int = 0
 	
-	while unique_points < 2:
+	while unique_points < Min_STARTS:
 		unique_points = 0
 		indexes = []
 		
@@ -132,35 +132,35 @@ func _setup_boss_room() -> void:
 			current_room.next_rooms.append(boss_room)
 	
 	# TODO change to boss type when added
-	boss_room.type = Room.Type.BATTLE
+	boss_room.type = Room.TYPE.BATTLE
 
 
 func _setup_random_room_weights() -> void:
-	random_room_type_weights[Room.Type.BATTLE] = BATTLE_ROOM_WEIGHT
-	random_room_type_weights[Room.Type.KILN] = BATTLE_ROOM_WEIGHT + KILN_ROOM_WEIGHT
-	random_room_type_weights[Room.Type.BREWING] = BATTLE_ROOM_WEIGHT + KILN_ROOM_WEIGHT + BREWING_ROOM_WEIGHT
-	random_room_type_weights[Room.Type.SHOP] = BATTLE_ROOM_WEIGHT + KILN_ROOM_WEIGHT + BREWING_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
+	random_room_type_weights[Room.TYPE.BATTLE] = BATTLE_ROOM_WEIGHT
+	random_room_type_weights[Room.TYPE.KILN] = BATTLE_ROOM_WEIGHT + KILN_ROOM_WEIGHT
+	random_room_type_weights[Room.TYPE.BREWING] = BATTLE_ROOM_WEIGHT + KILN_ROOM_WEIGHT + BREWING_ROOM_WEIGHT
+	random_room_type_weights[Room.TYPE.SHOP] = BATTLE_ROOM_WEIGHT + KILN_ROOM_WEIGHT + BREWING_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
 
-	random_room_type_total_weight = random_room_type_weights[Room.Type.SHOP]
+	random_room_type_total_weight = random_room_type_weights[Room.TYPE.SHOP]
 
 
 func _setup_room_types() -> void:
 	for room: Room in map_data[0]:
 		if room.next_rooms.size():
-			room.type = Room.Type.BATTLE
+			room.type = Room.TYPE.BATTLE
 
 	for room: Room in map_data[floori(TOTAL_ENCOUNTERS / 2)]:
 		if room.next_rooms.size():
-			room.type = Room.Type.KILN
+			room.type = Room.TYPE.KILN
 
 	for room: Room in map_data[TOTAL_ENCOUNTERS - 2]:
 		if room.next_rooms.size():
-			room.type = Room.Type.KILN
+			room.type = Room.TYPE.KILN
 
 	for current_row in map_data:
 		for room: Room in current_row:
 			for next_room: Room in room.next_rooms:
-				if next_room.type == Room.Type.NOT_ASSIGNED:
+				if next_room.type == Room.TYPE.NOT_ASSIGNED:
 					_set_room_randomly(next_room)
 
 
@@ -173,7 +173,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 	var kiln_before_half := true
 	var kiln_before_boss := true
 
-	var type_candidate: Room.Type
+	var type_candidate: Room.TYPE
 	
 	while (early_kiln 
 		or early_brewing 
@@ -185,15 +185,12 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		):
 		type_candidate = _get_random_room_type_by_weight()
 
-		var is_kiln := type_candidate == Room.Type.KILN
-		var has_kiln_parent := _room_has_parent_of_type(room_to_set, Room.Type.KILN)
-		#print("kiln parent: %s"  % has_kiln_parent)
-		var is_brewing := type_candidate == Room.Type.BREWING
-		var has_brewing_parent := _room_has_parent_of_type(room_to_set, Room.Type.BREWING)
-		#print("brew parent: %s"  % has_brewing_parent)
-		var is_shop := type_candidate == Room.Type.SHOP
-		var has_shop_parent := _room_has_parent_of_type(room_to_set, Room.Type.SHOP)
-		#print("shop parent: %s"  % has_shop_parent)
+		var is_kiln := type_candidate == Room.TYPE.KILN
+		var has_kiln_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.KILN)
+		var is_brewing := type_candidate == Room.TYPE.BREWING
+		var has_brewing_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.BREWING)
+		var is_shop := type_candidate == Room.TYPE.SHOP
+		var has_shop_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.SHOP)
 #
 		early_kiln = is_kiln and room_to_set.row < 3
 		early_brewing = is_brewing and room_to_set.row < 3
@@ -202,28 +199,26 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		consecutive_shop = is_shop and has_shop_parent
 		kiln_before_half = is_kiln and room_to_set.row == (floori(TOTAL_ENCOUNTERS / 2)) - 1
 		kiln_before_boss = is_kiln and room_to_set.row == TOTAL_ENCOUNTERS - 2
-		print("end of while")
-		
-	print("out of while")
+
 	room_to_set.type = type_candidate
 
-	if type_candidate == Room.Type.BATTLE:
+	if type_candidate == Room.TYPE.BATTLE:
 		if room_to_set.row > floori(TOTAL_ENCOUNTERS / 3):
 			#TODO Increase difficulty of battle based on rooms traveled
 			pass
 
 
-func _get_random_room_type_by_weight() -> Room.Type:
+func _get_random_room_type_by_weight() -> Room.TYPE:
 	var roll := randf_range(0.0, random_room_type_total_weight)
 
-	for type: Room.Type in random_room_type_weights:
+	for type: Room.TYPE in random_room_type_weights:
 		if random_room_type_weights[type] > roll:
 			return type
 
-	return Room.Type.BATTLE
+	return Room.TYPE.BATTLE
 
 
-func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:
+func _room_has_parent_of_type(room: Room, type: Room.TYPE) -> bool:
 	var parents: Array[Room] = []
 	
 	if room.column > 0 and room.row > 0:

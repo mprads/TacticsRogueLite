@@ -16,7 +16,7 @@ signal brewing_entered(brewing: Brewing)
 signal kiln_exited
 
 #Map Events
-signal map_exited(room: String)
+signal map_exited(room: Room)
 
 #Inventory Events
 signal request_add_item(item: Item, count: int)
