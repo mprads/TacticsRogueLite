@@ -4,14 +4,14 @@ class_name UnitIconPanel
 const FILLING_SHEET = preload("res://assets/sprites/potions/filling_sheet.png")
 const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 
-@export var unit: UnitStats : set = _set_unit
+@export var unit: UnitStats : set = set_unit
 
 @onready var potion: TextureRect = %Potion
 @onready var bottle: TextureRect = %Bottle
 @onready var unit_icon: Control = $UnitIcon
 
 
-func _set_unit(value: UnitStats) -> void:
+func set_unit(value: UnitStats) -> void:
 	unit = value
 	
 	_set_visuals()

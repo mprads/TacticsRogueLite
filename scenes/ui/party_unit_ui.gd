@@ -1,13 +1,13 @@
 extends Button
 class_name PartyUnitUI
 
-@export var unit: UnitStats : set = _set_unit
+@export var unit: UnitStats : set = set_unit
 
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var label: Label = %Label
 
 
-func _set_unit(value: UnitStats) -> void:
+func set_unit(value: UnitStats) -> void:
 	unit = value
 	
 	if not unit: return 

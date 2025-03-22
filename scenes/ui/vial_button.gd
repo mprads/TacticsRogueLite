@@ -1,7 +1,7 @@
 extends Button
 class_name VialButton
 
-@export var vial: Vial : set = _set_vial
+@export var vial: Vial : set = set_vial
 
 @onready var vial_filling: TextureRect = %VialFilling
 
@@ -14,6 +14,6 @@ func _update_visuals() -> void:
 		vial_filling.visible = false
 
 
-func _set_vial(value: Vial) -> void:
+func set_vial(value: Vial) -> void:
 	vial = value
 	_update_visuals()

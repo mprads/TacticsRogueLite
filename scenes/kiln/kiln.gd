@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var party_manager: PartyManager : set = _set_party_manager
+@export var party_manager: PartyManager : set = set_party_manager
 
 @onready var party_ui: VBoxContainer = %PartyUI
 @onready var kiln_unit_icon_panel: UnitIconPanel = %UnitIconPanel
@@ -12,7 +12,7 @@ func _ready() -> void:
 	party_ui.unit_selected.connect(_on_party_unit_selected)
 
 
-func _set_party_manager(value: PartyManager) -> void:
+func set_party_manager(value: PartyManager) -> void:
 	if not is_node_ready():
 		await ready
 

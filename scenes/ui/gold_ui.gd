@@ -1,7 +1,7 @@
 extends HBoxContainer
 class_name GoldUI
 
-@export var inventory_manager: InventoryManager : set = _set_inventory_manager
+@export var inventory_manager: InventoryManager : set = set_inventory_manager
 
 @onready var label: Label = $Label
 
@@ -12,7 +12,7 @@ func _ready() -> void:
 	label.text = "0"
 
 
-func _set_inventory_manager(value: InventoryManager) -> void:
+func set_inventory_manager(value: InventoryManager) -> void:
 	inventory_manager = value
 	
 	if not inventory_manager.gold_changed.is_connected(_update_gold):
