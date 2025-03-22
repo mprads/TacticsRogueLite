@@ -1,7 +1,7 @@
 extends Resource
 class_name Room
 
-enum Type {NOT_ASSIGNED, KILN, BREWING, SHOP, BATTLE}
+enum Type {NOT_ASSIGNED, BATTLE, KILN, BREWING, SHOP}
 
 @export var type: Type
 @export var row: int
@@ -9,3 +9,7 @@ enum Type {NOT_ASSIGNED, KILN, BREWING, SHOP, BATTLE}
 @export var position: Vector2
 @export var next_rooms: Array[Room]
 @export var selected := false
+
+
+func _to_string() -> String:
+	return "%s (%s)" % [column, Type.keys()[type][0]]

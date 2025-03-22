@@ -23,11 +23,15 @@ unique_name_in_owner = true
 [node name="Rooms" type="Node2D" parent="Visuals"]
 unique_name_in_owner = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(320, 180)
+
 [node name="MapGenerator" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_tqkkf")
 
 [node name="Background" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
 anchors_preset = 15
