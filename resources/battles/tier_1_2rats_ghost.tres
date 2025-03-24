@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=9 format=3 uid="uid://hxhvlofmgclm"]
+
+[ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_6wf6y"]
+[ext_resource type="Resource" uid="uid://cdoqw6gma0bsq" path="res://resources/enemies/rat.tres" id="2_204jn"]
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="2_btp8x"]
+[ext_resource type="Script" uid="uid://dvv6iov5fd7fy" path="res://resources/battles/battle_stats.gd" id="3_e0v1j"]
+[ext_resource type="Resource" uid="uid://diod565xfdrwf" path="res://resources/enemies/ghost.tres" id="3_kdbe1"]
+[ext_resource type="Resource" uid="uid://ddgsppdhtad44" path="res://resources/items/green_herb.tres" id="5_r1vei"]
+[ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/red_mushroom.tres" id="6_dfpcj"]
+[ext_resource type="Resource" uid="uid://43dujorcxsl6" path="res://resources/items/venom.tres" id="7_45rb0"]
+
+[resource]
+script = ExtResource("3_e0v1j")
+tier = 0
+weight = 1.5
+min_gold_reward = 35
+max_gold_reward = 50
+enemy_drops = Array[ExtResource("2_btp8x")]([ExtResource("5_r1vei"), ExtResource("6_dfpcj"), ExtResource("7_45rb0")])
+enemies = Array[ExtResource("1_6wf6y")]([ExtResource("2_204jn"), ExtResource("2_204jn"), ExtResource("3_kdbe1")])
+metadata/_custom_type_script = "uid://dvv6iov5fd7fy"

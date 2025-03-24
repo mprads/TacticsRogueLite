@@ -11,7 +11,6 @@ const MAP_LINE := preload("res://scenes/map/map_line.tscn")
 @onready var rooms: Node2D = %Rooms
 @onready var map_generator: MapGenerator = %MapGenerator
 
-
 var map_data: Array[Array]
 var encounters: int
 var last_room: Room
@@ -21,9 +20,7 @@ var camera_edge_x: float
 func _ready() -> void:	
 	# TODO find a better value to clamp max
 	camera_edge_x = MapGenerator.X_DIST * (MapGenerator.TOTAL_ENCOUNTERS - 3)
-	
-	generate_new_map()
-	_unlock_row(0)
+
 
 
 func _input(event: InputEvent) -> void:
@@ -37,6 +34,12 @@ func _input(event: InputEvent) -> void:
 	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
 
 
+func generate_new_map() -> void:
+	encounters = 0
+	map_data = map_generator.generate_map()
+	_create_map()
+
+
 func show_map() -> void:
 	show()
 	camera_2d.enabled = true
@@ -47,10 +50,10 @@ func hide_map() -> void:
 	camera_2d.enabled = false
 
 
-func generate_new_map() -> void:
-	encounters = 0
-	map_data = map_generator.generate_map()
-	_create_map()
+func unlock_row(row: int = encounters) -> void:
+	for map_room: MapRoom in rooms.get_children():
+		if map_room.room.row == row:
+			map_room.available = true
 
 
 func unlock_next_rooms() -> void:
@@ -67,12 +70,6 @@ func _create_map() -> void:
 	
 	var middle := floori(MapGenerator.MAP_HEIGHT * 0.5)
 	_spawn_room(map_data[MapGenerator.TOTAL_ENCOUNTERS - 1][middle])
-
-
-func _unlock_row(row: int = encounters) -> void:
-	for map_room: MapRoom in rooms.get_children():
-		if map_room.room.row == row:
-			map_room.available = true
 
 
 func _unlock_next_rooms() -> void:

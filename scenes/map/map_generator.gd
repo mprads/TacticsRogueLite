@@ -14,6 +14,8 @@ const KILN_ROOM_WEIGHT := 2.5
 const SHOP_ROOM_WEIGHT := 2.5
 const BATTLE_ROOM_WEIGHT := 10.0
 
+@export var battle_stats_pool: BattleStatsPool
+
 var random_room_type_weights = {
 	Room.TYPE.BATTLE: 0.0,
 	Room.TYPE.KILN: 0.0,
@@ -34,6 +36,8 @@ func generate_map() -> Array[Array]:
 		var current_point := index
 		for i in TOTAL_ENCOUNTERS - 1:
 			current_point = _setup_connection(i, current_point)
+
+	battle_stats_pool.setup()
 
 	_setup_boss_room()
 	_setup_random_room_weights()
@@ -133,6 +137,7 @@ func _setup_boss_room() -> void:
 	
 	# TODO change to boss type when added
 	boss_room.type = Room.TYPE.BATTLE
+	boss_room.battle_stats = battle_stats_pool.get_battle_in_tier(2)
 
 
 func _setup_random_room_weights() -> void:
@@ -148,6 +153,7 @@ func _setup_room_types() -> void:
 	for room: Room in map_data[0]:
 		if room.next_rooms.size():
 			room.type = Room.TYPE.BATTLE
+			room.battle_stats = battle_stats_pool.get_battle_in_tier(0)
 
 	for room: Room in map_data[floori(TOTAL_ENCOUNTERS / 2)]:
 		if room.next_rooms.size():
@@ -203,9 +209,11 @@ func _set_room_randomly(room_to_set: Room) -> void:
 	room_to_set.type = type_candidate
 
 	if type_candidate == Room.TYPE.BATTLE:
+		var battle_room_tier := 0
+		
 		if room_to_set.row > floori(TOTAL_ENCOUNTERS / 3):
-			#TODO Increase difficulty of battle based on rooms traveled
-			pass
+			battle_room_tier = 1
+			room_to_set.battle_stats = battle_stats_pool.get_battle_in_tier(battle_room_tier)
 
 
 func _get_random_room_type_by_weight() -> Room.TYPE:

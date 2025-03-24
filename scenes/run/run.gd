@@ -23,10 +23,19 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 func _ready() -> void:
 	if not run_stats:
 		run_stats = RunStats.new()
-	
+		_start_run()
+	else:
+		#TODO add loading a run from save state
+		_start_run()
+
+
+func _start_run() -> void:	
 	_set_up_managers()
 	_set_up_top_bar()
 	_set_up_event_connections()
+	
+	map.generate_new_map()
+	map.unlock_row(0)
 
 
 func _set_up_managers() -> void:
@@ -37,6 +46,7 @@ func _set_up_managers() -> void:
 
 func _set_up_event_connections() -> void:
 	Events.battle_exited.connect(_show_map)
+	Events.battle_reward_exited.connect(_show_map)
 	Events.shop_exited.connect(_show_map)
 	Events.brewing_exited.connect(_show_map)
 	Events.kiln_exited.connect(_show_map)

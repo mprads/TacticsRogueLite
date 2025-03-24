@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=7 format=3 uid="uid://7r0othjistts"]
+
+[ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_ra8gv"]
+[ext_resource type="Resource" uid="uid://cdoqw6gma0bsq" path="res://resources/enemies/rat.tres" id="2_s51ow"]
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="3_tpycx"]
+[ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/red_mushroom.tres" id="4_5vngm"]
+[ext_resource type="Resource" uid="uid://ddgsppdhtad44" path="res://resources/items/green_herb.tres" id="5_dxxwu"]
+[ext_resource type="Script" uid="uid://dvv6iov5fd7fy" path="res://resources/battles/battle_stats.gd" id="6_3oor8"]
+
+[resource]
+script = ExtResource("6_3oor8")
+tier = 0
+weight = 3.0
+min_gold_reward = 25
+max_gold_reward = 40
+enemy_drops = Array[ExtResource("3_tpycx")]([ExtResource("4_5vngm"), ExtResource("5_dxxwu")])
+enemies = Array[ExtResource("1_ra8gv")]([ExtResource("2_s51ow"), ExtResource("2_s51ow")])
+metadata/_custom_type_script = "uid://dvv6iov5fd7fy"
