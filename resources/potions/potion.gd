@@ -6,3 +6,5 @@ class_name Potion
 @export_category("Visuals")
 @export var name: String
 @export var color: Color
+
+@export var abilities: Array[Ability]

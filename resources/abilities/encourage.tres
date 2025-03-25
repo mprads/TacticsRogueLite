@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://buwltkkp5pnbj"]
+
+[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_hana2"]
+
+[resource]
+script = ExtResource("1_hana2")
+name = "Encourage"
+cost = 5
+type = 1
+target = 1
+range = 5
+metadata/_custom_type_script = "uid://dxqix5ovn77hl"

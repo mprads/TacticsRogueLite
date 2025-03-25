@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="Potion" load_steps=2 format=3 uid="uid://raksx0j8qtki"]
+[gd_resource type="Resource" script_class="Potion" load_steps=5 format=3 uid="uid://raksx0j8qtki"]
 
 [ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="1_f07hf"]
+[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_tu4kn"]
+[ext_resource type="Resource" uid="uid://dng0wsglcwumd" path="res://resources/abilities/cleanse.tres" id="2_lmvvj"]
+[ext_resource type="Resource" uid="uid://buwltkkp5pnbj" path="res://resources/abilities/encourage.tres" id="3_kgypf"]
 
 [resource]
 script = ExtResource("1_f07hf")
 key = 9
 name = "Support"
 color = Color(0.301961, 0.607843, 0.901961, 1)
+abilities = Array[ExtResource("1_tu4kn")]([ExtResource("2_lmvvj"), ExtResource("3_kgypf")])
 metadata/_custom_type_script = "uid://dgy3brauklt5w"

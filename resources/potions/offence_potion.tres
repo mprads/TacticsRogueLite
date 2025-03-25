@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="Potion" load_steps=2 format=3 uid="uid://dghx2h1qrhdv"]
+[gd_resource type="Resource" script_class="Potion" load_steps=5 format=3 uid="uid://dghx2h1qrhdv"]
 
+[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_6h6ix"]
 [ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="1_prak7"]
+[ext_resource type="Resource" uid="uid://b8w5c510evcfa" path="res://resources/abilities/fireball.tres" id="2_oqjad"]
+[ext_resource type="Resource" uid="uid://cq02o4i8pw4gn" path="res://resources/abilities/lightning_strike.tres" id="3_cvlcb"]
 
 [resource]
 script = ExtResource("1_prak7")
 key = 6
 name = "Offence"
 color = Color(0.909804, 0.231373, 0.231373, 1)
+abilities = Array[ExtResource("1_6h6ix")]([ExtResource("2_oqjad"), ExtResource("3_cvlcb")])
 metadata/_custom_type_script = "uid://dgy3brauklt5w"

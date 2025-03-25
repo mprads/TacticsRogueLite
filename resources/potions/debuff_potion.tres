@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="Potion" load_steps=2 format=3 uid="uid://bpwmv3lov181i"]
+[gd_resource type="Resource" script_class="Potion" load_steps=5 format=3 uid="uid://bpwmv3lov181i"]
 
 [ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="1_4k3nb"]
+[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_bb76u"]
+[ext_resource type="Resource" uid="uid://c8dola213qoyd" path="res://resources/abilities/enfeeble.tres" id="2_6bth3"]
+[ext_resource type="Resource" uid="uid://bytfe5idb40vq" path="res://resources/abilities/weaken.tres" id="3_x5q70"]
 
 [resource]
 script = ExtResource("1_4k3nb")
 key = 8
 name = "Debuff"
 color = Color(0.0862745, 0.352941, 0.298039, 1)
+abilities = Array[ExtResource("1_bb76u")]([ExtResource("2_6bth3"), ExtResource("3_x5q70")])
 metadata/_custom_type_script = "uid://dgy3brauklt5w"

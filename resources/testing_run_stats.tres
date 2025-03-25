@@ -1,21 +1,30 @@
-[gd_resource type="Resource" script_class="RunStats" load_steps=16 format=3 uid="uid://cog76ftpquwhv"]
+[gd_resource type="Resource" script_class="RunStats" load_steps=19 format=3 uid="uid://cog76ftpquwhv"]
 
 [ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
 [ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
+[ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="2_eqed4"]
 [ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="2_pij53"]
 [ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="4_pbn6o"]
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
+[ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="7_pij53"]
 [ext_resource type="Texture2D" uid="uid://bs1lylhmwysak" path="res://assets/sprites/vials/vial_filling.png" id="7_wchyp"]
 [ext_resource type="Resource" uid="uid://dkprjh86h5yx4" path="res://resources/potions/defence_potion.tres" id="8_wchyp"]
 [ext_resource type="Texture2D" uid="uid://du7qqpfyjfxw4" path="res://assets/sprites/vials/base_vial.png" id="8_xa4qb"]
 [ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="9_xa4qb"]
 
-[sub_resource type="Resource" id="Resource_ic41n"]
-metadata/__load_path__ = "res://resources/potions/yellow_potion.tres"
-
-[sub_resource type="Resource" id="Resource_pb28d"]
+[sub_resource type="Resource" id="Resource_pbn6o"]
 script = ExtResource("1_23n1j")
-potion = SubResource("Resource_ic41n")
+potion = ExtResource("9_xa4qb")
+bottle = ExtResource("2_eqed4")
+max_oz = 1
+oz = 0
+max_health = 20
+health = 13
+metadata/_custom_type_script = "uid://l8imbubpscrj"
+
+[sub_resource type="Resource" id="Resource_i18qs"]
+script = ExtResource("1_23n1j")
+potion = ExtResource("8_wchyp")
 bottle = ExtResource("2_pij53")
 max_oz = 1
 oz = 0
@@ -23,7 +32,17 @@ max_health = 20
 health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
-[sub_resource type="Resource" id="Resource_p44xe"]
+[sub_resource type="Resource" id="Resource_mnkgj"]
+script = ExtResource("1_23n1j")
+potion = ExtResource("7_pij53")
+bottle = ExtResource("4_pbn6o")
+max_oz = 1
+oz = 0
+max_health = 20
+health = 13
+metadata/_custom_type_script = "uid://l8imbubpscrj"
+
+[sub_resource type="Resource" id="Resource_isr74"]
 script = ExtResource("1_23n1j")
 bottle = ExtResource("4_pbn6o")
 max_oz = 1
@@ -68,7 +87,7 @@ inventory = Dictionary[int, int]({
 3: 10,
 4: 10
 })
-party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pb28d"), SubResource("Resource_p44xe")])
+party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pbn6o"), SubResource("Resource_i18qs"), SubResource("Resource_mnkgj"), SubResource("Resource_isr74")])
 max_party_size = 5
 vials = Array[ExtResource("5_bk1v7")]([SubResource("Resource_eqed4"), SubResource("Resource_pij53"), SubResource("Resource_7qsao")])
 max_vial_count = 3
