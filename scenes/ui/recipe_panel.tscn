@@ -1,7 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dir2ch11l46uj"]
+[gd_scene load_steps=14 format=3 uid="uid://dir2ch11l46uj"]
 
 [ext_resource type="Script" uid="uid://3yfbh6o15bpf" path="res://scenes/ui/recipe_panel.gd" id="1_1frvh"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="2_ppbwj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1frvh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppbwj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0nwo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvc3i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6sdw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_visod"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1frvh"]
 resource_local_to_scene = true
@@ -29,6 +41,12 @@ border_color = Color(0.536823, 0.536823, 9.62615e-07, 1)
 custom_minimum_size = Vector2(300, 100)
 offset_right = 300.0
 offset_bottom = 100.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1frvh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ppbwj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_c0nwo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gvc3i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p6sdw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_visod")
 script = ExtResource("1_1frvh")
 
 [node name="Background" type="ColorRect" parent="."]

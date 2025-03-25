@@ -11,7 +11,7 @@
 
 [resource]
 script = ExtResource("3_e0v1j")
-tier = 0
+tier = 1
 weight = 1.5
 min_gold_reward = 35
 max_gold_reward = 50

@@ -213,7 +213,8 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		
 		if room_to_set.row > floori(TOTAL_ENCOUNTERS / 3):
 			battle_room_tier = 1
-			room_to_set.battle_stats = battle_stats_pool.get_battle_in_tier(battle_room_tier)
+		
+		room_to_set.battle_stats = battle_stats_pool.get_battle_in_tier(battle_room_tier)
 
 
 func _get_random_room_type_by_weight() -> Room.TYPE:

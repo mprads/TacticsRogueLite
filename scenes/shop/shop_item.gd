@@ -38,4 +38,4 @@ func set_item(value: Item) -> void:
 
 func _on_purchase_item() -> void:
 	item_container.queue_free()
-	Events.request_purchase_item.emit(item, 1)
+	Events.request_purchase_item.emit(item)

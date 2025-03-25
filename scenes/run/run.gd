@@ -2,6 +2,7 @@ extends Node
 class_name Run
 
 const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
+const BATTLE_REWARD_SCENE = preload("res://scenes/battle_reward/battle_reward.tscn")
 const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const BREWING_SCENE := preload("res://scenes/brewing/brewing.tscn")
 const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
@@ -46,6 +47,7 @@ func _set_up_managers() -> void:
 
 func _set_up_event_connections() -> void:
 	Events.battle_exited.connect(_show_map)
+	Events.battle_won.connect(_on_battle_won)
 	Events.battle_reward_exited.connect(_show_map)
 	Events.shop_exited.connect(_show_map)
 	Events.brewing_exited.connect(_show_map)
@@ -81,6 +83,11 @@ func _show_map() -> void:
 	map.unlock_next_rooms()
 
 
+func _show_battle_reward() -> void:
+	var reward_scene := _change_view(BATTLE_REWARD_SCENE)
+	reward_scene.battle_stats = map.last_room.battle_stats
+
+
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.TYPE.BATTLE:
@@ -95,6 +102,10 @@ func _on_map_exited(room: Room) -> void:
 
 func _on_battle_entered() -> void:
 	_change_view(BATTLE_SCENE)
+
+
+func _on_battle_won() -> void:
+	_show_battle_reward()
 
 
 func _on_shop_entered() -> void:

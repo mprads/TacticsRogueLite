@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource("6_3oor8")
 tier = 0
-weight = 3.0
+weight = 1.5
 min_gold_reward = 25
 max_gold_reward = 40
 enemy_drops = Array[ExtResource("3_tpycx")]([ExtResource("4_5vngm"), ExtResource("5_dxxwu")])

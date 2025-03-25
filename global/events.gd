@@ -2,6 +2,7 @@ extends Node
 
 #Battle Events
 signal battle_exited
+signal battle_won
 
 #Battle Reward Events
 signal battle_reward_exited
@@ -22,5 +23,6 @@ signal kiln_exited
 signal map_exited(room: Room)
 
 #Inventory Events
-signal request_add_item(item: Item, count: int)
+signal request_add_item(item: Item)
+signal request_add_gold(amount: int)
 signal request_remove_item(item: Item, count: int)
