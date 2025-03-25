@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsbwfeiqngofu"
-path="res://.godot/imported/32x32outline.png-b4f241893b5d59531670350f43079c27.ctex"
+uid="uid://bs1lylhmwysak"
+path="res://.godot/imported/vial_filling.png-b9fcac9eb4208627a937a0a5e1c4c87a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/vials/32x32outline.png"
-dest_files=["res://.godot/imported/32x32outline.png-b4f241893b5d59531670350f43079c27.ctex"]
+source_file="res://assets/sprites/vials/vial_filling.png"
+dest_files=["res://.godot/imported/vial_filling.png-b9fcac9eb4208627a937a0a5e1c4c87a.ctex"]
 
 [params]
 

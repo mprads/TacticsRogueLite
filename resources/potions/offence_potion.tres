@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=2 format=3 uid="uid://dghx2h1qrhdv"]
+
+[ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="1_prak7"]
+
+[resource]
+script = ExtResource("1_prak7")
+key = 6
+name = "Offence"
+color = Color(0.909804, 0.231373, 0.231373, 1)
+metadata/_custom_type_script = "uid://dgy3brauklt5w"

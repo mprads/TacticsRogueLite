@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=2 format=3 uid="uid://bpwmv3lov181i"]
+
+[ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="1_4k3nb"]
+
+[resource]
+script = ExtResource("1_4k3nb")
+key = 8
+name = "Debuff"
+color = Color(0.0862745, 0.352941, 0.298039, 1)
+metadata/_custom_type_script = "uid://dgy3brauklt5w"
