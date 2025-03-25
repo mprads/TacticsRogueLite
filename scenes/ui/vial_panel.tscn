@@ -1,6 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://6m8egyaev33y"]
+[gd_scene load_steps=13 format=3 uid="uid://6m8egyaev33y"]
 
 [ext_resource type="Script" uid="uid://b0ubd3d6nstte" path="res://scenes/ui/vial_panel.gd" id="1_wtuiq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtuiq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv7aw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xtt4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_007u0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0i02h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t8np3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7prdj"]
 resource_local_to_scene = true
@@ -28,6 +40,12 @@ border_color = Color(0.259911, 0.841639, 0.944516, 1)
 custom_minimum_size = Vector2(300, 100)
 offset_right = 300.0
 offset_bottom = 100.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wtuiq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fv7aw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_2xtt4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_007u0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0i02h")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t8np3")
 script = ExtResource("1_wtuiq")
 
 [node name="Background" type="ColorRect" parent="."]

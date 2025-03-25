@@ -1,13 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnvnj7pvvkjhu"]
+[gd_scene load_steps=8 format=3 uid="uid://cnvnj7pvvkjhu"]
 
 [ext_resource type="Script" uid="uid://nxhu47ih1nti" path="res://scenes/ui/party_unit_ui.gd" id="1_cgww7"]
 [ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="2_cgww7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgww7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jw2qo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c784x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vr33k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c26iq"]
 
 [node name="PartyUnitUI" type="Button"]
 custom_minimum_size = Vector2(215, 48)
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cgww7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jw2qo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_c784x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vr33k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c26iq")
 script = ExtResource("1_cgww7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

@@ -14,6 +14,7 @@ const ICONS := {
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var line_2d: Line2D = $Visuals/Line2D
 @onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
+@onready var label: Label = $Label
 
 var available := false : set = set_available
 var room: Room : set = set_room
@@ -34,6 +35,12 @@ func set_room(value: Room) -> void:
 	line_2d.rotation_degrees = randi_range(0, 360)
 	sprite_2d.texture = ICONS[room.type][0]
 	sprite_2d.scale = ICONS[room.type][1]
+	
+	# TODO remove this once better debugging tools added
+	if room.battle_stats:
+		label.visible = true
+		var text = room.battle_stats.resource_path.split("/")
+		label.text = text[4]
 
 
 func set_available(value: bool) -> void:

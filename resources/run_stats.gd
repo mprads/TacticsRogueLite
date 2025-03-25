@@ -13,11 +13,11 @@ const STARTING_VIAL_COUNT := 3
 @export var max_vial_count := STARTING_VIAL_COUNT
 
 
-func add_item_to_inventory(key: ItemConfig.KEYS, count: int) -> void:	
+func add_item_to_inventory(key: ItemConfig.KEYS) -> void:	
 	if inventory.has(key):
-		inventory[key] += count
+		inventory[key] += 1
 	else:
-		inventory[key] = count
+		inventory[key] = 1
 
 
 func remove_item_from_inventory(key: ItemConfig.KEYS, count: int) -> void:

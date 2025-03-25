@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://do85c02nl7l33"]
+[gd_scene load_steps=5 format=3 uid="uid://do85c02nl7l33"]
 
 [ext_resource type="Script" uid="uid://fiydsahgaxay" path="res://scenes/map/map_room.gd" id="1_gyfd6"]
 [ext_resource type="Texture2D" uid="uid://cna447ovou157" path="res://assets/sprites/map/Battle.png" id="1_hwhxx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyfd6"]
 radius = 21.0238
+
+[sub_resource type="LabelSettings" id="LabelSettings_gyfd6"]
+font_size = 8
 
 [node name="MapRoom" type="Area2D"]
 collision_layer = 8
@@ -27,3 +30,12 @@ texture = ExtResource("1_hwhxx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_gyfd6")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = 7.0
+offset_right = 20.0
+offset_bottom = 29.0
+text = "null"
+label_settings = SubResource("LabelSettings_gyfd6")

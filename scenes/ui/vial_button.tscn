@@ -1,11 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkyqjyhlg3ia0"]
+[gd_scene load_steps=9 format=3 uid="uid://bkyqjyhlg3ia0"]
 
 [ext_resource type="Script" uid="uid://c4xe268gffkp3" path="res://scenes/ui/vial_button.gd" id="1_dhlm0"]
 [ext_resource type="Texture2D" uid="uid://cwtn2kdsu34di" path="res://assets/sprites/vials/16x16outline.png" id="1_y42ib"]
 [ext_resource type="Texture2D" uid="uid://5oi2bllm7rar" path="res://assets/sprites/vials/16x16filling.png" id="2_dhlm0"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dhlm0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76heb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_752eq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vngn7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_45lri"]
+
 [node name="VialButton" type="Button"]
 custom_minimum_size = Vector2(28, 28)
+offset_right = 28.0
+offset_bottom = 28.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dhlm0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_76heb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_752eq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vngn7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_45lri")
 script = ExtResource("1_dhlm0")
 
 [node name="VialOutline" type="TextureRect" parent="."]

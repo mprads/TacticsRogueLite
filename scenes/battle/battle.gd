@@ -10,7 +10,7 @@ const YELLOW_POTION = preload("res://resources/potions/yellow_potion.tres")
 
 
 func _ready() -> void:
-	button.pressed.connect(Events.battle_exited.emit)
+	button.pressed.connect(Events.battle_won.emit)
 	
 	var new_unit = UNIT.instantiate()
 	add_child(new_unit)
