@@ -26,7 +26,6 @@ func _update_visuals() -> void:
 	border_sb.border_color = potion.color
 	
 	#TODO Create a proper reusbale attack panel with tool tips
-	printt(potion.abilities[0].name,potion.abilities[1].name)
 	ability_label_1.text = potion.abilities[0].name
 	ability_label_2.text = potion.abilities[1].name
 	

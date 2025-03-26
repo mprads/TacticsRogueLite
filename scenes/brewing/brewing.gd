@@ -23,6 +23,8 @@ const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 @onready var potion_button: Button = %PotionButton
 @onready var vial_button: Button = %VialButton
 @onready var back_button: Button = %BackButton
+@onready var leave_button: Button = %LeaveButton
+@onready var no_recipes_label: Label = %NoRecipesLabel
 
 var all_recipes_keys: Array[int] = []
 var filtered_recipes_keys: Array[int] =[]
@@ -36,6 +38,7 @@ func _ready() -> void:
 	potion_button.pressed.connect(_on_potion_button_pressed)
 	vial_button.pressed.connect(_on_vial_button_pressed)
 	back_button.pressed.connect(_on_back_button_pressed)
+	leave_button.pressed.connect(Events.brewing_exited.emit)
 	
 	for recipe in ItemConfig.POTION_KEYS:
 		all_recipes_keys.append(recipe)
@@ -53,6 +56,7 @@ func _update_view(next_stage: STAGE) -> void:
 			component_container.hide()
 			selection_buttons.hide()
 			back_button.hide()
+			leave_button.show()
 			current_potion = null
 			current_recipe = null
 			
@@ -64,6 +68,7 @@ func _update_view(next_stage: STAGE) -> void:
 			component_container.show()
 			selection_buttons.show()
 			back_button.show()
+			leave_button.hide()
 			
 		STAGE.POTION:
 			recipe_scroll_container.hide()
@@ -73,6 +78,7 @@ func _update_view(next_stage: STAGE) -> void:
 			component_container.show()
 			selection_buttons.hide()
 			back_button.show()
+			leave_button.hide()
 			
 		STAGE.VIAL:
 			recipe_scroll_container.hide()
@@ -82,6 +88,7 @@ func _update_view(next_stage: STAGE) -> void:
 			component_container.show()
 			selection_buttons.hide()
 			back_button.show()
+			leave_button.hide()
 
 	current_stage = next_stage
 
@@ -114,6 +121,16 @@ func _update_recipes() -> void:
 		recipe_panel_instance.pressed.connect(
 			_on_recipe_panel_pressed.bind(recipe_panel_instance.potion, recipe_panel_instance.recipe)
 		)
+		
+	_handle_no_recipes()
+
+
+func _handle_no_recipes() -> void:
+	print(filtered_recipes_keys.is_empty())
+	if filtered_recipes_keys.is_empty():
+		no_recipes_label.show()
+	else:
+		no_recipes_label.hide()
 
 
 func _update_cauldron(potion: Potion, recipe: BrewingRecipe) -> void:	
