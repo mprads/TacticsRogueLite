@@ -12,14 +12,14 @@ const PLANTER_ITEM = preload("res://scenes/shop/planter_item.tscn")
 
 @export var inventory_manager: InventoryManager : set = set_inventory_manager
 
-@onready var button: Button = $UI/VBoxContainer/Button
 @onready var item_shelf: HBoxContainer = %ItemShelf
 @onready var artifact_shelf: HBoxContainer = %ArtifactShelf
 @onready var planter_contents: HBoxContainer = %PlanterContents
+@onready var leave_button: Button = %LeaveButton
 
 
 func _ready() -> void:
-	button.pressed.connect(Events.shop_exited.emit)
+	leave_button.pressed.connect(Events.shop_exited.emit)
 	
 	for shop_item in item_shelf.get_children():
 		shop_item.queue_free()

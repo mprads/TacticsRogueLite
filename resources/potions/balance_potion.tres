@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=5 format=3 uid="uid://db7k12qw1ywca"]
+
+[ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="1_51d0s"]
+[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_vs634"]
+[ext_resource type="Resource" uid="uid://b8w5c510evcfa" path="res://resources/abilities/fireball.tres" id="2_g7hbl"]
+[ext_resource type="Resource" uid="uid://b5r4cpgwt0p4n" path="res://resources/abilities/shield.tres" id="3_upu0t"]
+
+[resource]
+script = ExtResource("1_51d0s")
+key = 7
+name = "Balance"
+color = Color(0.984314, 0.419608, 0.113725, 1)
+abilities = Array[ExtResource("1_vs634")]([ExtResource("2_g7hbl"), ExtResource("3_upu0t")])
+metadata/_custom_type_script = "uid://dgy3brauklt5w"

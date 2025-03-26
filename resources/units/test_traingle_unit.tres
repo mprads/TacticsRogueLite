@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=4 format=3 uid="uid://bttcgj86bf7h7"]
+
+[ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="1_1bgwm"]
+[ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="2_7gm2b"]
+[ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="3_k32bb"]
+
+[resource]
+script = ExtResource("3_k32bb")
+potion = ExtResource("2_7gm2b")
+bottle = ExtResource("1_1bgwm")
+max_oz = 1
+oz = 0
+max_health = 20
+health = 13
+metadata/_custom_type_script = "uid://l8imbubpscrj"

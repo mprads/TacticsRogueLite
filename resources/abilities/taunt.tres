@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://4i7pwdm7f8yq"]
+
+[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_6ny0t"]
+
+[resource]
+script = ExtResource("1_6ny0t")
+name = "Taunt"
+cost = 5
+type = 1
+target = 0
+range = 0
+metadata/_custom_type_script = "uid://dxqix5ovn77hl"

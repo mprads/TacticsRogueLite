@@ -5,11 +5,15 @@ extends Node2D
 @onready var party_ui: VBoxContainer = %PartyUI
 @onready var kiln_unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var heal_button: Button = %HealButton
+@onready var leave_button: Button = %LeaveButton
 
 
 func _ready() -> void:
 	heal_button.pressed.connect(_on_heal_button_pressed)
+	leave_button.pressed.connect(Events.kiln_exited.emit)
 	party_ui.unit_selected.connect(_on_party_unit_selected)
+	
+	kiln_unit_icon_panel.unit = null
 
 
 func set_party_manager(value: PartyManager) -> void:

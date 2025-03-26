@@ -64,26 +64,38 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="UI/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_vertical = 8
 mouse_filter = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_right = 64
 
-[node name="KilnContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 84
-alignment = 1
-
-[node name="UnitIconPanel" parent="UI/MarginContainer/HBoxContainer/MarginContainer/KilnContainer" instance=ExtResource("4_11imp")]
+[node name="UnitIconPanel" parent="UI/MarginContainer/HBoxContainer/Control" instance=ExtResource("4_11imp")]
 unique_name_in_owner = true
 layout_mode = 2
+offset_left = -176.0
+offset_top = -239.0
+offset_right = -128.0
+offset_bottom = -191.0
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="HealButton" type="Button" parent="UI/MarginContainer/HBoxContainer/MarginContainer/KilnContainer"]
+[node name="HealButton" type="Button" parent="UI/MarginContainer/HBoxContainer/Control"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 32)
 layout_mode = 2
+offset_left = -226.0
+offset_top = -104.0
+offset_right = -76.0
+offset_bottom = -72.0
 text = "Heal 25%"
+
+[node name="LeaveButton" type="Button" parent="UI/MarginContainer/HBoxContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+offset_left = -40.0
+offset_top = -26.0
+offset_right = 40.0
+offset_bottom = 6.0
+text = "Leave"

@@ -15,10 +15,18 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 @onready var vial_ui: VialUI = %VialUI
 @onready var gold_ui: HBoxContainer = %GoldUI
 @onready var inventory_button: TextureButton = %InventoryButton
+@onready var settings_button: TextureButton = %SettingsButton
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
 @onready var inventory_ui: InventoryUI = $TopBar/InventoryUI
+
+# temp debug shorcuts
+@onready var debug_menu: Control = %DebugMenu
+@onready var map_button: Button = %MapButton
+@onready var kiln_button: Button = %KilnButton
+@onready var brewing_button: Button = %BrewingButton
+@onready var shop_button: Button = %ShopButton
 
 
 func _ready() -> void:
@@ -35,8 +43,30 @@ func _start_run() -> void:
 	_set_up_top_bar()
 	_set_up_event_connections()
 	
+	_set_up_debug()
+	
 	map.generate_new_map()
 	map.unlock_row(0)
+
+
+func _set_up_debug() -> void:
+	settings_button.pressed.connect(func(): debug_menu.visible = !debug_menu.visible)
+	map_button.pressed.connect(func():
+		debug_menu.visible = !debug_menu.visible
+		_show_map()
+	)
+	kiln_button.pressed.connect(func():
+		debug_menu.visible = !debug_menu.visible
+		_on_kiln_entered()
+	)
+	brewing_button.pressed.connect(func():
+		debug_menu.visible = !debug_menu.visible
+		_on_brewing_entered()
+	)
+	shop_button.pressed.connect(func():
+		debug_menu.visible = !debug_menu.visible
+		_on_shop_entered()
+	)
 
 
 func _set_up_managers() -> void:

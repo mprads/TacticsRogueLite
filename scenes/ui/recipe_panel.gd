@@ -9,6 +9,8 @@ const ITEM_PANEL = preload("res://scenes/ui/item_panel.tscn")
 @onready var potion_label: Label = %PotionLabel
 @onready var component_container: HBoxContainer = %ComponentContainer
 @onready var attack_container: HBoxContainer = %AttackContainer
+@onready var ability_label_1: Label = %AbilityLabel1
+@onready var ability_label_2: Label = %AbilityLabel2
 
 @onready var header: Panel = %Header
 @onready var border: Panel = %Border
@@ -22,6 +24,10 @@ func _update_visuals() -> void:
 	potion_label.text = potion.name
 	header_sb.bg_color = potion.color
 	border_sb.border_color = potion.color
+	
+	#TODO Create a proper reusbale attack panel with tool tips
+	ability_label_1.text = potion.abilities[0].name
+	ability_label_2.text = potion.abilities[1].name
 	
 	_update_components()
 	

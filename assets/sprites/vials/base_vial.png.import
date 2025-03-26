@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwtn2kdsu34di"
-path="res://.godot/imported/16x16outline.png-e3a02765fe0735ed35c5675da036ed42.ctex"
+uid="uid://du7qqpfyjfxw4"
+path="res://.godot/imported/base_vial.png-a112a88a49ad9ff76511f23a760e9de3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/vials/16x16outline.png"
-dest_files=["res://.godot/imported/16x16outline.png-e3a02765fe0735ed35c5675da036ed42.ctex"]
+source_file="res://assets/sprites/vials/base_vial.png"
+dest_files=["res://.godot/imported/base_vial.png-a112a88a49ad9ff76511f23a760e9de3.ctex"]
 
 [params]
 

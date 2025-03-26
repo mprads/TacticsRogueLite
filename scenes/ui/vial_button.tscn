@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bkyqjyhlg3ia0"]
 
 [ext_resource type="Script" uid="uid://c4xe268gffkp3" path="res://scenes/ui/vial_button.gd" id="1_dhlm0"]
-[ext_resource type="Texture2D" uid="uid://cwtn2kdsu34di" path="res://assets/sprites/vials/16x16outline.png" id="1_y42ib"]
-[ext_resource type="Texture2D" uid="uid://5oi2bllm7rar" path="res://assets/sprites/vials/16x16filling.png" id="2_dhlm0"]
+[ext_resource type="Texture2D" uid="uid://du7qqpfyjfxw4" path="res://assets/sprites/vials/base_vial.png" id="2_dhlm0"]
+[ext_resource type="Texture2D" uid="uid://bs1lylhmwysak" path="res://assets/sprites/vials/vial_filling.png" id="3_76heb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dhlm0"]
 
@@ -32,7 +32,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_y42ib")
+texture = ExtResource("2_dhlm0")
+stretch_mode = 5
 
 [node name="VialFilling" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -42,4 +43,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_dhlm0")
+texture = ExtResource("3_76heb")
+stretch_mode = 5

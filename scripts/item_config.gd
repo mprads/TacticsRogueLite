@@ -10,15 +10,19 @@ enum KEYS {
 	ZINC,
 	SULFUR,
 	#potions
-	RED_POTION,
-	YELLOW_POTION,
-	GREEN_POTION,
+	DEFENCE_POTION,
+	OFFENCE_POTION,
+	BALANCE_POTION,
+	DEBUFF_POTION,
+	SUPPORT_POTION,
 }
 
 const POTION_KEYS: Array[KEYS] = [
-	KEYS.RED_POTION,
-	KEYS.YELLOW_POTION,
-	KEYS.GREEN_POTION,
+	KEYS.DEFENCE_POTION,
+	KEYS.OFFENCE_POTION,
+	KEYS.BALANCE_POTION,
+	KEYS.DEBUFF_POTION,
+	KEYS.SUPPORT_POTION,
 ]
 
 const ITEM_RESOURCE_PATHS := {
@@ -32,15 +36,19 @@ const ITEM_RESOURCE_PATHS := {
 }
 
 const POTION_RESOURCE_PATH := {
-	KEYS.RED_POTION: "res://resources/potions/red_potion.tres",
-	KEYS.GREEN_POTION: "res://resources/potions/green_potion.tres",
-	KEYS.YELLOW_POTION: "res://resources/potions/yellow_potion.tres",
+	KEYS.DEFENCE_POTION: "res://resources/potions/defence_potion.tres",
+	KEYS.OFFENCE_POTION: "res://resources/potions/offence_potion.tres",
+	KEYS.BALANCE_POTION: "res://resources/potions/balance_potion.tres",
+	KEYS.DEBUFF_POTION: "res://resources/potions/debuff_potion.tres",
+	KEYS.SUPPORT_POTION: "res://resources/potions/support_potion.tres",
 }
 
 const BREWING_RECIPE_RESOURCE_PATH := {
-	KEYS.RED_POTION: "res://resources/brewing_recipe/red_potion_recipe.tres",
-	KEYS.GREEN_POTION: "res://resources/brewing_recipe/green_potion_recipe.tres",
-	KEYS.YELLOW_POTION: "res://resources/brewing_recipe/yellow_potion_recipe.tres",
+	KEYS.DEFENCE_POTION: "res://resources/brewing_recipe/defence_potion_recipe.tres",
+	KEYS.OFFENCE_POTION: "res://resources/brewing_recipe/offence_potion_recipe.tres",
+	KEYS.BALANCE_POTION: "res://resources/brewing_recipe/balance_potion_recipe.tres",
+	KEYS.DEBUFF_POTION: "res://resources/brewing_recipe/debuff_potion_recipe.tres",
+	KEYS.SUPPORT_POTION: "res://resources/brewing_recipe/support_potion_recipe.tres",
 }
 
 
