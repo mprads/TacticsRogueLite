@@ -131,7 +131,9 @@ func _on_map_exited(room: Room) -> void:
 
 
 func _on_battle_entered() -> void:
-	_change_view(BATTLE_SCENE)
+	var battle := _change_view(BATTLE_SCENE)
+	battle.party_manager = party_manager
+	battle.generate_map()
 
 
 func _on_battle_won() -> void:

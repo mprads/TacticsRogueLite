@@ -1,40 +1,40 @@
-[gd_scene load_steps=4 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=7 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
-[ext_resource type="Texture2D" uid="uid://bmoldywnrmtos" path="res://assets/sprites/potions/coloured_sheet.png" id="2_ffvsa"]
+[ext_resource type="Resource" uid="uid://tqul7q8whaw6" path="res://resources/battle_maps/testing_6x6.tres" id="2_xd4uy"]
+[ext_resource type="Script" uid="uid://cydy5jbmlcs0f" path="res://scenes/battle/battle_manager.gd" id="3_0yh6x"]
 [ext_resource type="TileSet" uid="uid://beelur5ybttc6" path="res://resources/64prototype_tile_set.tres" id="3_xd4uy"]
+[ext_resource type="Script" uid="uid://bm6kd3ocw6acs" path="res://components/arena.gd" id="5_fh7rg"]
+[ext_resource type="Script" uid="uid://dymludwl8mc4g" path="res://components/arena_grid.gd" id="5_h0kxc"]
 
-[node name="Battle" type="Node2D"]
+[node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
+map = ExtResource("2_xd4uy")
+battle_manager = NodePath("BattleManager")
 
-[node name="Arena64" type="Node2D" parent="."]
-position = Vector2(63, 180)
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("arena", "arena_grid")]
+unique_name_in_owner = true
+script = ExtResource("3_0yh6x")
+arena = NodePath("ArenaTileMap")
+arena_grid = NodePath("ArenaTileMap/ArenaGrid")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Arena64"]
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPj/AAAAAAAAAAABAPj/AAAAAAAAAAACAPj/AAAAAAAAAAADAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAABAPn/AAAAAAAAAAABAPr/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAADAPn/AAAAAAAAAAACAPn/AAAAAAAAAAACAPr/AAAAAAAAAAACAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAPv/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPn/AAAAAAAAAAA=")
+[node name="ArenaTileMap" type="TileMapLayer" parent="BattleManager"]
+position = Vector2(196, 157)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
+script = ExtResource("5_fh7rg")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="Arena64"]
-tile_map_data = PackedByteArray("AAACAPz/AAADAAAAAAADAPz/AAADAAAAAAAEAPv/AAAEAAAAAAAEAPr/AAAEAAAAAAAEAPn/AAAEAAAAAAABAPz/AAADAAAAAAADAPv/AAAAAAAAAAACAPv/AAAAAAAAAAABAPv/AAAAAAAAAAABAPr/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPj/AAAFAAAAAAACAPj/AAAFAAAAAAABAPj/AAAFAAAAAAAAAPv/AAAGAAAAAAAAAPr/AAAGAAAAAAAAAPn/AAAGAAAAAAA=")
+[node name="ArenaGrid" type="Node2D" parent="BattleManager/ArenaTileMap"]
+script = ExtResource("5_h0kxc")
+
+[node name="BenchTileMap" type="TileMapLayer" parent="BattleManager"]
+position = Vector2(67, 189)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
+script = ExtResource("5_fh7rg")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Arena64"]
-position = Vector2(188, 23)
-texture = ExtResource("2_ffvsa")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Arena64"]
-position = Vector2(384, 26)
-texture = ExtResource("2_ffvsa")
-region_enabled = true
-region_rect = Rect2(64, 0, 32, 32)
-
-[node name="Sprite2D5" type="Sprite2D" parent="Arena64"]
-position = Vector2(287, -85)
-texture = ExtResource("2_ffvsa")
-region_enabled = true
-region_rect = Rect2(32, 0, 32, 32)
+[node name="BenchGrid" type="Node2D" parent="BattleManager/BenchTileMap"]
+script = ExtResource("5_h0kxc")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

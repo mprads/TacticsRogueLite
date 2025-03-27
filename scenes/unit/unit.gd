@@ -20,4 +20,6 @@ func set_stats(value: UnitStats) -> void:
 
 	outline.region_rect.position = Vector2(stats.bottle.sprite_coordinates) * 32
 	filling.region_rect.position = Vector2(stats.bottle.sprite_coordinates) * 32
-	filling.modulate = stats.potion.color
+	
+	if stats.potion:
+		filling.modulate = stats.potion.color

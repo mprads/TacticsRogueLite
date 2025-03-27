@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlit"]
 size = Vector2(36, 36)
 
-[node name="Unit" type="Area2D"]
+[node name="Unit" type="Area2D" groups=["player_unit"]]
 script = ExtResource("1_vh40f")
 
 [node name="Visuals" type="CanvasGroup" parent="."]
