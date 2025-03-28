@@ -112,12 +112,12 @@ func _would_cross_existing_path(row: int, column: int, room: Room) -> bool:
 		right_neighbour = map_data[row][column + 1]
 	
 	if right_neighbour and room.column > column:
-		for next_room: Room in right_neighbour.next_rooms:
+		for next_room in right_neighbour.next_rooms:
 			if next_room.column < room.column:
 				return true
 
 	if left_neighbour and room.column < column:
-		for next_room: Room in left_neighbour.next_rooms:
+		for next_room in left_neighbour.next_rooms:
 			if next_room.column > room.column:
 				return true
 
@@ -150,22 +150,22 @@ func _setup_random_room_weights() -> void:
 
 
 func _setup_room_types() -> void:
-	for room: Room in map_data[0]:
+	for room in map_data[0]:
 		if room.next_rooms.size():
 			room.type = Room.TYPE.BATTLE
 			room.battle_stats = battle_stats_pool.get_battle_in_tier(0)
 
-	for room: Room in map_data[floori(TOTAL_ENCOUNTERS / 2)]:
+	for room in map_data[floori(TOTAL_ENCOUNTERS / 2)]:
 		if room.next_rooms.size():
 			room.type = Room.TYPE.KILN
 
-	for room: Room in map_data[TOTAL_ENCOUNTERS - 2]:
+	for room in map_data[TOTAL_ENCOUNTERS - 2]:
 		if room.next_rooms.size():
 			room.type = Room.TYPE.KILN
 
 	for current_row in map_data:
-		for room: Room in current_row:
-			for next_room: Room in room.next_rooms:
+		for room in current_row:
+			for next_room in room.next_rooms:
 				if next_room.type == Room.TYPE.NOT_ASSIGNED:
 					_set_room_randomly(next_room)
 
@@ -220,7 +220,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 func _get_random_room_type_by_weight() -> Room.TYPE:
 	var roll := randf_range(0.0, random_room_type_total_weight)
 
-	for type: Room.TYPE in random_room_type_weights:
+	for type in random_room_type_weights:
 		if random_room_type_weights[type] > roll:
 			return type
 

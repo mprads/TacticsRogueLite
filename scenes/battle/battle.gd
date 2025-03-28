@@ -3,8 +3,8 @@ class_name Battle
 
 const TESTING_6X_6 = preload("res://resources/battle_maps/testing_6x6.tres")
 
-const CELL_SIZE := Vector2(64, 64)
-const HALF_CELL_SIZE := Vector2(32, 32)
+const CELL_SIZE := Vector2(32, 32)
+const HALF_CELL_SIZE := Vector2(16, 16)
 
 @export var map: BattleMap
 @export var battle_manager: BattleManager
@@ -25,4 +25,5 @@ func generate_map() -> void:
 	
 	battle_manager.map = map
 	battle_manager.party_manager = party_manager
-	battle_manager.generate_map()
+	battle_manager.generate_arena()
+	battle_manager.generate_bench()

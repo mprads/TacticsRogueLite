@@ -6,8 +6,8 @@ signal arena_grid_changed
 var tiles: Dictionary[Vector2i, Node]
 
 
-func populate_grid(map: BattleMap) -> void:
-	for tile in map.tiles:
+func populate_grid(arena: Array[Vector2i]) -> void:
+	for tile in arena:
 		tiles[tile] = null
 
 
