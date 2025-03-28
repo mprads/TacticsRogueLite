@@ -22,8 +22,6 @@ func set_stats(value: UnitStats) -> void:
 	
 	if not is_node_ready():
 		await ready
-		
-	stats = value
 
 	outline.region_rect.position = Vector2(stats.bottle.sprite_coordinates) * 32
 	filling.region_rect.position = Vector2(stats.bottle.sprite_coordinates) * 32

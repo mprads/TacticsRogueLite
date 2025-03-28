@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=10 format=3 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://tqul7q8whaw6" path="res://resources/battle_maps/testing_6x6.tres" id="2_xd4uy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dymludwl8mc4g" path="res://components/arena_grid.gd" id="5_h0kxc"]
 [ext_resource type="Script" uid="uid://b0vqbai5132oe" path="res://components/unit_mover.gd" id="7_pll4o"]
 [ext_resource type="Script" uid="uid://dmyacoedl35kb" path="res://components/tile_highlighter.gd" id="7_py4tk"]
+[ext_resource type="Script" uid="uid://bf0vtbnu18chl" path="res://scenes/battle/enemy_manager.gd" id="9_agsc7"]
 
 [node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
@@ -63,6 +64,9 @@ tile = Vector2i(2, 0)
 [node name="UnitMover" type="Node" parent="BattleManager" node_paths=PackedStringArray("arenas")]
 script = ExtResource("7_pll4o")
 arenas = [NodePath("../ArenaTileMap"), NodePath("../BenchTileMap")]
+
+[node name="EnemyManager" type="Node2D" parent="BattleManager"]
+script = ExtResource("9_agsc7")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

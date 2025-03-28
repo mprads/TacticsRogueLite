@@ -35,7 +35,7 @@ func _get_arena_for_position(global: Vector2) -> int:
 
 func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) -> void:
 	var i := _get_arena_for_position(starting_position)
-	var tile := arenas[i].get_tile_from_global(starting_position + Battle.HALF_CELL_SIZE)
+	var tile := arenas[i].get_tile_from_global(starting_position)
 	 
 	unit.reset_after_dragging(starting_position)
 	arenas[i].arena_grid.add_unit(tile, unit)
@@ -43,16 +43,16 @@ func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) ->
 
 func _move_unit(unit: Unit, arena: Arena, tile: Vector2i) -> void:
 	arena.arena_grid.add_unit(tile, unit)
-	unit.global_position = arena.get_global_from_tile(tile) - Battle.HALF_CELL_SIZE
+	unit.global_position = arena.get_global_from_tile(tile)
 	unit.reparent(arena.arena_grid)
 
 
 func _on_unit_drag_started(unit: Unit) -> void:
 	_set_highlters(true)
-	var i := _get_arena_for_position(unit.global_position + Battle.HALF_CELL_SIZE)
+	var i := _get_arena_for_position(unit.global_position)
 
 	if i > -1:
-		var tile := arenas[i].get_tile_from_global(unit.global_position + Battle.HALF_CELL_SIZE)
+		var tile := arenas[i].get_tile_from_global(unit.global_position)
 		arenas[i].arena_grid.remove_unit(tile)
 
 
@@ -72,7 +72,7 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 		return
 	
 	var old_area := arenas[old_area_index]
-	var old_tile := old_area.get_tile_from_global(starting_position + Battle.HALF_CELL_SIZE)
+	var old_tile := old_area.get_tile_from_global(starting_position)
 	var new_area := arenas[drop_area_index]
 	var new_tile := new_area.get_hovered_tile()
 
