@@ -1,12 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene load_steps=12 format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Texture2D" uid="uid://cjh7q57rx3hfu" path="res://assets/sprites/potions/outline_sheet.png" id="1_fvc8g"]
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="2_vh40f"]
 [ext_resource type="Script" uid="uid://ubw0jaxdt4pp" path="res://components/drag_and_drop.gd" id="4_bhlit"]
+[ext_resource type="Script" uid="uid://dj6o3c6q523ek" path="res://scenes/unit/unit_state_machine.gd" id="5_vgvef"]
+[ext_resource type="Script" uid="uid://doeygxuksv75i" path="res://scenes/unit/unit_states/unit_idle_state.gd" id="6_vqlpx"]
+[ext_resource type="Script" uid="uid://dyqcj18d2dg5x" path="res://scenes/unit/unit_states/unit_moving_state.gd" id="7_l0n34"]
+[ext_resource type="Script" uid="uid://dtc5tw0bxxhcq" path="res://scenes/unit/unit_states/unit_ability_state.gd" id="8_5im7a"]
+[ext_resource type="Script" uid="uid://c67q2xdfkxbh8" path="res://scenes/unit/unit_states/unit_disabled_state.gd" id="9_7jhsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlit"]
 size = Vector2(36, 36)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqlpx"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
 
 [node name="Unit" type="Area2D" groups=["player_unit"]]
 script = ExtResource("1_vh40f")
@@ -25,9 +34,48 @@ region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_bhlit")
 
 [node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_bhlit")
+enabled = false
 target = NodePath("..")
+
+[node name="UnitStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_vgvef")
+initial_state = NodePath("UnitIdleState")
+
+[node name="UnitIdleState" type="Node" parent="UnitStateMachine" node_paths=PackedStringArray("drag_and_drop")]
+script = ExtResource("6_vqlpx")
+drag_and_drop = NodePath("../../DragAndDrop")
+
+[node name="UnitMovingState" type="Node" parent="UnitStateMachine" node_paths=PackedStringArray("drag_and_drop")]
+script = ExtResource("7_l0n34")
+drag_and_drop = NodePath("../../DragAndDrop")
+state = 1
+
+[node name="UnitAbilityState" type="Node" parent="UnitStateMachine"]
+script = ExtResource("8_5im7a")
+state = 2
+
+[node name="UnitDisabledState" type="Node" parent="UnitStateMachine"]
+script = ExtResource("9_7jhsn")
+state = 3
+
+[node name="StateDebug" type="Label" parent="."]
+offset_left = -33.0
+offset_top = -55.0
+offset_right = 43.0
+offset_bottom = -33.0
+text = "no state"
+label_settings = SubResource("LabelSettings_vqlpx")
+
+[node name="MoveableDebug" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -44.0
+offset_right = 42.0
+offset_bottom = -22.0
+text = "moveable"
+label_settings = SubResource("LabelSettings_vqlpx")

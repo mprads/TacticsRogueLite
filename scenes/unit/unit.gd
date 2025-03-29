@@ -3,15 +3,25 @@ class_name Unit
 
 @export var stats: UnitStats : set = set_stats
 
+@onready var visuals: CanvasGroup = $Visuals
 @onready var outline: Sprite2D = $Visuals/Outline
 @onready var filling: Sprite2D = $Visuals/Filling
 
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
+@onready var unit_state_machine: UnitStateMachine = $UnitStateMachine
+
+@onready var moveable_debug: Label = $MoveableDebug
+
+var moveable := true : set = set_moveable
+var disabled := false : set = set_disabled
 
 
 func _ready() -> void:
-	drag_and_drop.drag_started.connect(_on_drag_started)
-	drag_and_drop.drag_cancelled.connect(_on_drag_cancelled)
+	unit_state_machine.init(self)
+
+
+func _input(event: InputEvent) -> void:
+	unit_state_machine.on_input(event)
 
 
 func set_stats(value: UnitStats) -> void:
@@ -31,13 +41,18 @@ func set_stats(value: UnitStats) -> void:
 		filling.modulate = stats.potion.color
 
 
-func reset_after_dragging(starting_position: Vector2) -> void:
-	global_position = starting_position
+func set_moveable(value: bool) -> void:
+	moveable = value
+	if moveable:
+		moveable_debug.text = "Moveable" 
+	else:
+		moveable_debug.text = "Moved"
 
 
-func _on_drag_started() -> void:
-	pass
-
-
-func _on_drag_cancelled(starting_position: Vector2) -> void:
-	reset_after_dragging(starting_position)
+func set_disabled(value: bool) -> void:
+	disabled = value
+	
+	if disabled:
+		visuals.modulate = Color("3a3a3a")
+	else:
+		visuals.modulate = Color.WHITE

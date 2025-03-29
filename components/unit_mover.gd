@@ -37,14 +37,13 @@ func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) ->
 	var i := _get_arena_for_position(starting_position)
 	var tile := arenas[i].get_tile_from_global(starting_position)
 	 
-	unit.reset_after_dragging(starting_position)
+	unit.global_position = starting_position
 	arenas[i].arena_grid.add_unit(tile, unit)
 
 
 func _move_unit(unit: Unit, arena: Arena, tile: Vector2i) -> void:
 	arena.arena_grid.add_unit(tile, unit)
 	unit.global_position = arena.get_global_from_tile(tile)
-	unit.reparent(arena.arena_grid)
 
 
 func _on_unit_drag_started(unit: Unit) -> void:

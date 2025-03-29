@@ -3,6 +3,8 @@ extends Node
 #Battle Events
 signal battle_exited
 signal battle_won
+signal player_turn_ended
+signal enemy_turn_ended
 
 #Battle Reward Events
 signal battle_reward_exited
