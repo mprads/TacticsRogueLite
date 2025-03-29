@@ -5,6 +5,18 @@ class_name Arena
 @export var tile_highlighter: TileHighlighter
 
 
+func _process(_delta: float) -> void:
+	if not tile_highlighter.enabled: return
+	
+	var selected_tile := get_hovered_tile()
+	
+	if not is_tile_in_bounds(selected_tile):
+		tile_highlighter.clear()
+		return
+	
+	tile_highlighter._update_tile(selected_tile)
+
+
 func get_tile_from_global(global: Vector2) -> Vector2i:
 	return local_to_map(to_local(global))
 

@@ -12,7 +12,7 @@ bg_color = Color(0.222923, 0.102412, 0.0593943, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3pup"]
 bg_color = Color(0.207843, 0.803922, 0.211765, 1)
 
-[node name="Enemy" type="Area2D"]
+[node name="Enemy" type="Area2D" groups=["enemy_unit"]]
 script = ExtResource("1_a3pup")
 
 [node name="Visuals" type="CanvasGroup" parent="."]

@@ -36,9 +36,8 @@ tile_set = ExtResource("3_xd4uy")
 [node name="ArenaGrid" type="Node2D" parent="BattleManager/ArenaTileMap"]
 script = ExtResource("5_h0kxc")
 
-[node name="ArenaHighlighter" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("arena", "highlight_layer")]
+[node name="ArenaHighlighter" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("7_py4tk")
-arena = NodePath("..")
 highlight_layer = NodePath("../HighlightLayer")
 tile = Vector2i(2, 0)
 
@@ -55,9 +54,8 @@ tile_set = ExtResource("3_xd4uy")
 [node name="BenchGrid" type="Node2D" parent="BattleManager/BenchTileMap"]
 script = ExtResource("5_h0kxc")
 
-[node name="BenchHightlighter" type="Node" parent="BattleManager/BenchTileMap" node_paths=PackedStringArray("arena", "highlight_layer")]
+[node name="BenchHightlighter" type="Node" parent="BattleManager/BenchTileMap" node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("7_py4tk")
-arena = NodePath("..")
 highlight_layer = NodePath("../HighlightLayer")
 tile = Vector2i(2, 0)
 
