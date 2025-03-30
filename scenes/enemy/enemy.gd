@@ -1,6 +1,8 @@
 extends Area2D
 class_name Enemy
 
+signal turn_completed
+
 @export var stats: EnemyStats : set = set_enemy_stats
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
@@ -25,6 +27,10 @@ func set_enemy_stats(value: EnemyStats) -> void:
 		
 	update_enemy()
 
+
+func take_turn() -> void:
+	print("Turn completed %s" % stats.name)
+	turn_completed.emit()
 
 func _on_stats_changed() -> void:
 	update_enemy()

@@ -16,6 +16,15 @@ var party: Array[UnitStats] = []
 var map: BattleMap
 
 
+func _ready() -> void:
+	Events.enemy_turn_ended.connect(_on_enemy_turn_ended)
+	Events.player_turn_ended.connect(_on_player_turn_ended)
+
+
+func start_battle() -> void:
+	player_manager.start_turn()
+
+
 func generate_arena() -> void:
 	if not map: return
 	
@@ -65,3 +74,11 @@ func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 		new_label.text = str(tile)
 		new_label.modulate = Color.BLACK
 		new_label.scale = Vector2(.65, .65)
+
+
+func _on_enemy_turn_ended() -> void:
+	player_manager.start_turn()
+
+
+func _on_player_turn_ended() -> void:
+	enemy_manager.start_turn()

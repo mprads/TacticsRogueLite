@@ -45,7 +45,7 @@ target = NodePath("..")
 
 [node name="UnitStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_vgvef")
-initial_state = NodePath("UnitIdleState")
+initial_state = NodePath("UnitDisabledState")
 
 [node name="UnitIdleState" type="Node" parent="UnitStateMachine" node_paths=PackedStringArray("drag_and_drop")]
 script = ExtResource("6_vqlpx")

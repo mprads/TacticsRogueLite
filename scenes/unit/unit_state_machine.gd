@@ -36,9 +36,9 @@ func _on_transition_requested(from: UnitState, to: UnitState.STATE) -> void:
 	
 	if current_state: current_state.exit()
 	
-	new_state.enter()
 	current_state = new_state
-	
+	current_state.enter()
+
 	_update_debug_state_label()
 
 

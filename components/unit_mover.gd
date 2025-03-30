@@ -70,8 +70,8 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 		_reset_unit_to_starting_position(starting_position, unit)
 		return
 	
-	var old_area := arenas[old_area_index]
-	var old_tile := old_area.get_tile_from_global(starting_position)
+	#var old_area := arenas[old_area_index]
+	#var old_tile := old_area.get_tile_from_global(starting_position)
 	var new_area := arenas[drop_area_index]
 	var new_tile := new_area.get_hovered_tile()
 

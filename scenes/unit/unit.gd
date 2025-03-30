@@ -1,6 +1,8 @@
 extends Area2D
 class_name Unit
 
+signal turn_complete
+
 @export var stats: UnitStats : set = set_stats
 
 @onready var visuals: CanvasGroup = $Visuals
