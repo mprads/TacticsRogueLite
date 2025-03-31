@@ -3,6 +3,7 @@ class_name Arena
 
 @export var arena_grid: ArenaGrid
 @export var tile_highlighter: TileHighlighter
+@export var flood_filler: FloodFiller
 
 
 func _process(_delta: float) -> void:
@@ -30,4 +31,4 @@ func get_hovered_tile() -> Vector2i:
 
 
 func is_tile_in_bounds(tile: Vector2i) -> bool:
-	return arena_grid.tiles.has(tile)
+	return arena_grid.get_tiles().has(tile)

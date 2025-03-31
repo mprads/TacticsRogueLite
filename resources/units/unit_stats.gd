@@ -8,6 +8,7 @@ class_name UnitStats
 
 @export var oz: int : set = set_oz
 
+var movement: int
 var max_oz: int
 
 
@@ -20,11 +21,16 @@ func set_oz(value: int) -> void:
 	emit_changed()
 
 
+func set_movement(value: int) -> void:
+	movement = value
+
+
 func set_bottle(value: Bottle) -> void:
 	bottle = value
 	
 	max_health = bottle.base_health
 	max_oz = bottle.max_oz
+	movement = bottle.base_movement
 
 	health = max_health
 

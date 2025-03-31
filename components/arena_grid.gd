@@ -11,6 +11,10 @@ func populate_grid(arena: Array[Vector2i]) -> void:
 		tiles[tile] = null
 
 
+func get_tiles() ->  Dictionary[Vector2i, Node]:
+	return tiles
+
+
 func add_unit(tile: Vector2i, unit: Node) -> void:
 	tiles[tile] = unit
 	arena_grid_changed.emit()

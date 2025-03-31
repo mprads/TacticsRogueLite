@@ -24,6 +24,12 @@ func _set_highlters(enabled: bool) -> void:
 		arena.tile_highlighter.enabled = enabled
 
 
+func _set_flood_fillers(enabled: bool) -> void:
+	for arena in arenas:
+		if arena.flood_filler:
+			arena.flood_filler.enabled = enabled
+
+
 func _get_arena_for_position(global: Vector2) -> int:
 	var dropped_area_index := -1
 	
@@ -50,20 +56,26 @@ func _move_unit(unit: Unit, arena: Arena, tile: Vector2i) -> void:
 
 func _on_unit_drag_started(unit: Unit) -> void:
 	_set_highlters(true)
+	_set_flood_fillers(true)
 	var i := _get_arena_for_position(unit.global_position)
 
 	if i > -1:
 		var tile := arenas[i].get_tile_from_global(unit.global_position)
 		arenas[i].arena_grid.remove_unit(tile)
 
+		if arenas[i].flood_filler:
+			arenas[i].flood_filler.flood_fill_from_tile(tile, unit.stats.movement, true)
+
 
 func _on_unit_drag_cancelled(starting_position: Vector2, unit: Unit) -> void:
 	_set_highlters(false)
+	_set_flood_fillers(false)
 	_reset_unit_to_starting_position(starting_position, unit)
 
 
 func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	_set_highlters(false)
+	_set_flood_fillers(false)
 	
 	var old_arena_index := _get_arena_for_position(starting_position)
 	var drop_arena_index := _get_arena_for_position(unit.get_global_mouse_position())
@@ -81,7 +93,7 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	if new_arena.arena_grid.is_tile_occupied(new_tile):
 		_reset_unit_to_starting_position(starting_position, unit)
 		# TODO only enable swapping places during unit placement
-		#var old_unit: Unit = new_arena.arena_grid.tiles[new_tile]
+		#var old_unit: Unit = new_arena.arena_grid.get_tiles()[new_tile]
 		#new_arena.arena_grid.remove_unit(new_tile)
 		#_move_unit(old_unit, old_arena, old_tile)
 	else :
