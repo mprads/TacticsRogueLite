@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2i3e6qlmmf13"]
+[gd_scene load_steps=4 format=3 uid="uid://b2i3e6qlmmf13"]
 
 [ext_resource type="Script" uid="uid://b2j1u6d8rdmeh" path="res://scenes/map/map.gd" id="1_sxf4j"]
 [ext_resource type="Script" uid="uid://d1u1r3ppplyaa" path="res://scenes/map/map_generator.gd" id="2_tqkkf"]
 [ext_resource type="Resource" uid="uid://bvw6m71aaj4ta" path="res://resources/battles/battle_stats_pool.tres" id="3_a2pkv"]
-
-[sub_resource type="Gradient" id="Gradient_sxf4j"]
-colors = PackedColorArray(0.215902, 0.215902, 0.215902, 1, 0.641253, 0.506242, 0.405253, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tqkkf"]
-gradient = SubResource("Gradient_sxf4j")
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_sxf4j")
@@ -40,4 +34,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_tqkkf")
