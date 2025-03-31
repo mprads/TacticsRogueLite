@@ -1,6 +1,7 @@
 extends Area2D
 class_name Unit
 
+signal movement_complete
 signal turn_complete
 
 @export var stats: UnitStats : set = set_stats
@@ -41,6 +42,8 @@ func set_stats(value: UnitStats) -> void:
 	if stats.potion:
 		filling.visible = true
 		filling.modulate = stats.potion.color
+	else:
+		filling.visible = false
 
 
 func set_moveable(value: bool) -> void:

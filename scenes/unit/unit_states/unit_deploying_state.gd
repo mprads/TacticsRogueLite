@@ -1,12 +1,14 @@
 extends UnitState
-class_name UnitMovingState
+class_name UnitDeployingState
 
 @export var drag_and_drop:DragAndDrop
 
 
 func enter() -> void:
+	Events.player_turn_started.connect(_on_player_turn_started)
 	drag_and_drop.drag_cancelled.connect(_on_drag_cancelled)
 	drag_and_drop.dropped.connect(_on_drag_dropped)
+	drag_and_drop.enabled = true
 
 
 func exit() -> void:
@@ -18,16 +20,14 @@ func reset_after_dragging(starting_position: Vector2) -> void:
 	unit.global_position = starting_position
 
 
+func _on_player_turn_started() -> void:
+	transition_requested.emit(self, UnitState.STATE.IDLE)
+
+
 func _on_drag_dropped(starting_position: Vector2) -> void:
-	if starting_position != unit.global_position:
-		unit.moveable = false
-		drag_and_drop.enabled = false
-		unit.movement_complete.emit()
-		transition_requested.emit(self, UnitState.STATE.DISABLED)
-	else:
-		transition_requested.emit(self, UnitState.STATE.IDLE)
+	# emit signal for battle manager to add selection ui to scene
+	pass
 
 
 func _on_drag_cancelled(starting_position: Vector2) -> void:
 	reset_after_dragging(starting_position)
-	transition_requested.emit(self, UnitState.STATE.IDLE)

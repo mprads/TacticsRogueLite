@@ -6,10 +6,11 @@
 
 [resource]
 script = ExtResource("3_bv2ih")
+name = "Bottlesworth"
 potion = ExtResource("2_5bdd7")
 bottle = ExtResource("1_5bdd7")
-max_oz = 1
-oz = 0
+max_oz = 10
+oz = 3
 max_health = 20
 health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"

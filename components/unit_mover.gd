@@ -1,6 +1,8 @@
 extends Node
 class_name UnitMover
 
+signal unit_moved_arenas(new_arena: Arena)
+
 @export var arenas: Array[Arena]
 
 
@@ -63,24 +65,27 @@ func _on_unit_drag_cancelled(starting_position: Vector2, unit: Unit) -> void:
 func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	_set_highlters(false)
 	
-	var old_area_index := _get_arena_for_position(starting_position)
-	var drop_area_index := _get_arena_for_position(unit.get_global_mouse_position())
+	var old_arena_index := _get_arena_for_position(starting_position)
+	var drop_arena_index := _get_arena_for_position(unit.get_global_mouse_position())
 
-	if drop_area_index == -1:
+	if drop_arena_index == -1:
 		_reset_unit_to_starting_position(starting_position, unit)
 		return
 	
-	#var old_area := arenas[old_area_index]
-	#var old_tile := old_area.get_tile_from_global(starting_position)
-	var new_area := arenas[drop_area_index]
-	var new_tile := new_area.get_hovered_tile()
+	var old_arena := arenas[old_arena_index]
+	#var old_tile := old_arena.get_tile_from_global(starting_position)
+	var new_arena := arenas[drop_arena_index]
+	var new_tile := new_arena.get_hovered_tile()
 
 	
-	if new_area.arena_grid.is_tile_occupied(new_tile):
+	if new_arena.arena_grid.is_tile_occupied(new_tile):
 		_reset_unit_to_starting_position(starting_position, unit)
 		# TODO only enable swapping places during unit placement
-		#var old_unit: Unit = new_area.arena_grid.tiles[new_tile]
-		#new_area.arena_grid.remove_unit(new_tile)
-		#_move_unit(old_unit, old_area, old_tile)
+		#var old_unit: Unit = new_arena.arena_grid.tiles[new_tile]
+		#new_arena.arena_grid.remove_unit(new_tile)
+		#_move_unit(old_unit, old_arena, old_tile)
 	else :
-		_move_unit(unit, new_area, new_tile)
+		_move_unit(unit, new_arena, new_tile)
+		
+		if new_arena != old_arena:
+			unit_moved_arenas.emit(new_arena)

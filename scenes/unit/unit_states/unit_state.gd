@@ -1,7 +1,7 @@
 extends Node
 class_name UnitState
 
-enum STATE { IDLE, MOVING, ABILITY, DISABLED }
+enum STATE { IDLE, MOVING, ABILITY, DISABLED, DEPLOYING }
 
 signal transition_requested(from: UnitState, to: STATE)
 

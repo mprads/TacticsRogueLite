@@ -34,3 +34,7 @@ func get_first_empty_tile() -> Vector2i:
 			return tile
 	
 	return Vector2i(-1, -1)
+
+
+func get_all_units() -> Array[Node]:
+	return tiles.values().filter(func(unit): return unit)

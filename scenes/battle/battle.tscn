@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=13 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://tqul7q8whaw6" path="res://resources/battle_maps/testing_6x6.tres" id="2_xd4uy"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://dmyacoedl35kb" path="res://components/tile_highlighter.gd" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://bf0vtbnu18chl" path="res://scenes/battle/enemy_manager.gd" id="9_agsc7"]
 [ext_resource type="Script" uid="uid://c2nuy484o6op5" path="res://scenes/battle/player_manager.gd" id="9_oiw7q"]
+[ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="11_fisqk"]
+[ext_resource type="PackedScene" uid="uid://bgioejj4mplt5" path="res://scenes/ui/battle/unit_context_menu.tscn" id="12_mxe8n"]
 
 [node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
@@ -25,7 +27,8 @@ bench = NodePath("BenchTileMap")
 bench_grid = NodePath("BenchTileMap/BenchGrid")
 
 [node name="ArenaTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
-position = Vector2(196, 157)
+position = Vector2(210, 157)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAPz/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
 script = ExtResource("5_fh7rg")
 arena_grid = NodePath("ArenaGrid")
@@ -43,7 +46,8 @@ highlight_layer = NodePath("../HighlightLayer")
 tile = Vector2i(2, 0)
 
 [node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
-position = Vector2(132, 221)
+position = Vector2(146, 221)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
 script = ExtResource("5_fh7rg")
 arena_grid = NodePath("BenchGrid")
@@ -74,10 +78,17 @@ script = ExtResource("9_agsc7")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
-offset_left = 492.0
-offset_top = 289.0
-offset_right = 624.0
-offset_bottom = 345.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -332.0
+offset_right = -8.0
+offset_bottom = -276.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Label" type="Label" parent="UI/VBoxContainer"]
 layout_mode = 2
@@ -86,3 +97,47 @@ text = "Battle Scene"
 [node name="Button" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
 text = "Return to map"
+
+[node name="PartySelectionContainer" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+offset_left = 12.0
+offset_top = 34.0
+offset_right = 132.0
+offset_bottom = 70.0
+
+[node name="UnitSelectButton" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton2" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton3" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton4" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton5" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton6" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitContextMenu" parent="UI" instance=ExtResource("12_mxe8n")]
+unique_name_in_owner = true
+visible = false
+offset_left = 14.0
+offset_top = 286.0
+offset_right = -426.0
+offset_bottom = -14.0
+
+[node name="StartBattleButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 26)
+offset_left = 499.0
+offset_top = 312.0
+offset_right = 620.0
+offset_bottom = 338.0
+disabled = true
+text = "Start Battle"

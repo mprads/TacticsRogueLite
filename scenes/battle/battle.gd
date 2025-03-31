@@ -24,7 +24,7 @@ func start_battle() -> void:
 	battle_manager.party_manager = party_manager
 	battle_manager.map = map
 	_generate_map()
-	battle_manager.start_battle()
+	battle_manager.start_deployment()
 
 
 func _generate_map() -> void:	
@@ -32,4 +32,3 @@ func _generate_map() -> void:
 		return
 	
 	battle_manager.generate_arena()
-	battle_manager.generate_bench()

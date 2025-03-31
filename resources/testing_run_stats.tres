@@ -14,41 +14,41 @@
 
 [sub_resource type="Resource" id="Resource_pbn6o"]
 script = ExtResource("1_23n1j")
-potion = ExtResource("9_xa4qb")
-bottle = ExtResource("2_eqed4")
-max_oz = 1
+name = "Bottlesworth"
+bottle = ExtResource("4_pbn6o")
 oz = 0
-max_health = 20
-health = 13
+max_health = 15
+health = 7
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_i18qs"]
 script = ExtResource("1_23n1j")
-potion = ExtResource("8_wchyp")
-bottle = ExtResource("2_pij53")
-max_oz = 1
-oz = 0
+name = "Bottlesworth"
+bottle = ExtResource("4_pbn6o")
+potion = ExtResource("7_pij53")
+oz = 5
 max_health = 20
 health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_mnkgj"]
 script = ExtResource("1_23n1j")
-potion = ExtResource("7_pij53")
-bottle = ExtResource("4_pbn6o")
-max_oz = 1
-oz = 0
+name = "Bottlesworth"
+bottle = ExtResource("2_pij53")
+potion = ExtResource("8_wchyp")
+oz = 3
 max_health = 20
 health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_isr74"]
 script = ExtResource("1_23n1j")
-bottle = ExtResource("4_pbn6o")
-max_oz = 1
-oz = 0
-max_health = 15
-health = 7
+name = "Bottlesworth"
+bottle = ExtResource("2_eqed4")
+potion = ExtResource("9_xa4qb")
+oz = 10
+max_health = 20
+health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_eqed4"]
