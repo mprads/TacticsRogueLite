@@ -85,10 +85,17 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 		return
 	
 	var old_arena := arenas[old_arena_index]
-	#var old_tile := old_arena.get_tile_from_global(starting_position)
+	var old_tile := old_arena.get_tile_from_global(starting_position)
 	var new_arena := arenas[drop_arena_index]
 	var new_tile := new_arena.get_hovered_tile()
 
+	if new_arena == old_arena:
+		var delta: Vector2i = (new_tile - old_tile).abs()
+		var distance := int(delta.x + delta.y)
+		
+		if distance > unit.stats.movement:
+			_reset_unit_to_starting_position(starting_position, unit)
+			return
 	
 	if new_arena.arena_grid.is_tile_occupied(new_tile):
 		_reset_unit_to_starting_position(starting_position, unit)
