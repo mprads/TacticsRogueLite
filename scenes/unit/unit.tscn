@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dj6o3c6q523ek" path="res://scenes/unit/unit_state_machine.gd" id="5_vgvef"]
 [ext_resource type="Script" uid="uid://doeygxuksv75i" path="res://scenes/unit/unit_states/unit_idle_state.gd" id="6_vqlpx"]
 [ext_resource type="Script" uid="uid://dyqcj18d2dg5x" path="res://scenes/unit/unit_states/unit_moving_state.gd" id="7_l0n34"]
-[ext_resource type="Script" uid="uid://dtc5tw0bxxhcq" path="res://scenes/unit/unit_states/unit_ability_state.gd" id="8_5im7a"]
+[ext_resource type="Script" uid="uid://dtc5tw0bxxhcq" path="res://scenes/unit/unit_states/unit_aiming_state.gd" id="8_5im7a"]
 [ext_resource type="Script" uid="uid://c67q2xdfkxbh8" path="res://scenes/unit/unit_states/unit_disabled_state.gd" id="9_7jhsn"]
 [ext_resource type="Script" uid="uid://3qq3koxdgvti" path="res://scenes/unit/unit_states/unit_deploying_state.gd" id="10_l0n34"]
 
@@ -62,7 +62,7 @@ script = ExtResource("7_l0n34")
 drag_and_drop = NodePath("../../DragAndDrop")
 state = 1
 
-[node name="UnitAbilityState" type="Node" parent="UnitStateMachine"]
+[node name="UnitAimingState" type="Node" parent="UnitStateMachine"]
 script = ExtResource("8_5im7a")
 state = 2
 

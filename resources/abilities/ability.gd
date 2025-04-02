@@ -12,4 +12,4 @@ enum TARGET { SELF, SINGLE_ALLY, SINGLE_ENEMY, ALL_ENEMIES, AOE }
 @export var type: TYPE
 @export var target: TARGET
 @export var shape: Array[Vector2i]
-@export var range := 1
+@export var max_range := 1

@@ -1,7 +1,7 @@
 extends Node
 class_name UnitMover
 
-signal unit_moved_arenas(new_arena: Arena)
+signal unit_moved_arenas()
 
 @export var arenas: Array[Arena]
 
@@ -107,4 +107,4 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 		_move_unit(unit, new_arena, new_tile)
 		
 		if new_arena != old_arena:
-			unit_moved_arenas.emit(new_arena)
+			unit_moved_arenas.emit()

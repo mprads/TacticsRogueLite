@@ -1,51 +1,120 @@
-[gd_resource type="Resource" script_class="RunStats" load_steps=19 format=3 uid="uid://cog76ftpquwhv"]
+[gd_resource type="Resource" script_class="RunStats" load_steps=31 format=3 uid="uid://cog76ftpquwhv"]
 
 [ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
 [ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
-[ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="2_eqed4"]
-[ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="2_pij53"]
-[ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="4_pbn6o"]
+[ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="2_mnkgj"]
+[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="3_isr74"]
+[ext_resource type="Resource" uid="uid://c8dola213qoyd" path="res://resources/abilities/enfeeble.tres" id="4_ncqbe"]
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
-[ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="7_pij53"]
+[ext_resource type="Resource" uid="uid://bytfe5idb40vq" path="res://resources/abilities/weaken.tres" id="5_fq33t"]
+[ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="6_ls2tb"]
+[ext_resource type="Resource" uid="uid://b5r4cpgwt0p4n" path="res://resources/abilities/shield.tres" id="7_pb28d"]
 [ext_resource type="Texture2D" uid="uid://bs1lylhmwysak" path="res://assets/sprites/vials/vial_filling.png" id="7_wchyp"]
+[ext_resource type="Resource" uid="uid://4i7pwdm7f8yq" path="res://resources/abilities/taunt.tres" id="8_p44xe"]
 [ext_resource type="Resource" uid="uid://dkprjh86h5yx4" path="res://resources/potions/defence_potion.tres" id="8_wchyp"]
 [ext_resource type="Texture2D" uid="uid://du7qqpfyjfxw4" path="res://assets/sprites/vials/base_vial.png" id="8_xa4qb"]
+[ext_resource type="Resource" uid="uid://b8w5c510evcfa" path="res://resources/abilities/fireball.tres" id="9_l5ffo"]
 [ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="9_xa4qb"]
+[ext_resource type="Resource" uid="uid://cq02o4i8pw4gn" path="res://resources/abilities/lightning_strike.tres" id="10_asbe1"]
 
-[sub_resource type="Resource" id="Resource_pbn6o"]
+[sub_resource type="Resource" id="Resource_35bd7"]
+script = ExtResource("2_mnkgj")
+name = "Round Bottle"
+sprite_coordinates = Vector2i(0, 0)
+sprite_size = 32
+base_health = 15
+max_oz = 10
+base_movement = 3
+metadata/_custom_type_script = "uid://cene0083pbi52"
+
+[sub_resource type="Resource" id="Resource_dj4pj"]
 script = ExtResource("1_23n1j")
 name = "Bottlesworth"
-bottle = ExtResource("4_pbn6o")
+bottle = SubResource("Resource_35bd7")
 oz = 0
 max_health = 15
 health = 7
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
-[sub_resource type="Resource" id="Resource_i18qs"]
+[sub_resource type="Resource" id="Resource_5c5c0"]
+script = ExtResource("2_mnkgj")
+name = "Round Bottle"
+sprite_coordinates = Vector2i(0, 0)
+sprite_size = 32
+base_health = 15
+max_oz = 10
+base_movement = 3
+metadata/_custom_type_script = "uid://cene0083pbi52"
+
+[sub_resource type="Resource" id="Resource_hcd5x"]
+script = ExtResource("6_ls2tb")
+key = 8
+name = "Debuff"
+color = Color(0.0862745, 0.352941, 0.298039, 1)
+abilities = Array[ExtResource("3_isr74")]([ExtResource("4_ncqbe"), ExtResource("5_fq33t")])
+metadata/_custom_type_script = "uid://dgy3brauklt5w"
+
+[sub_resource type="Resource" id="Resource_2m8go"]
 script = ExtResource("1_23n1j")
 name = "Bottlesworth"
-bottle = ExtResource("4_pbn6o")
-potion = ExtResource("7_pij53")
+bottle = SubResource("Resource_5c5c0")
+potion = SubResource("Resource_hcd5x")
 oz = 5
 max_health = 20
 health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
-[sub_resource type="Resource" id="Resource_mnkgj"]
+[sub_resource type="Resource" id="Resource_qn745"]
+script = ExtResource("2_mnkgj")
+name = "Square Bottle"
+sprite_coordinates = Vector2i(1, 0)
+sprite_size = 32
+base_health = 20
+max_oz = 10
+base_movement = 2
+metadata/_custom_type_script = "uid://cene0083pbi52"
+
+[sub_resource type="Resource" id="Resource_cah5c"]
+script = ExtResource("6_ls2tb")
+key = 5
+name = "Defence"
+color = Color(0.976471, 0.760784, 0.168627, 1)
+abilities = Array[ExtResource("3_isr74")]([ExtResource("7_pb28d"), ExtResource("8_p44xe")])
+metadata/_custom_type_script = "uid://dgy3brauklt5w"
+
+[sub_resource type="Resource" id="Resource_1l1ep"]
 script = ExtResource("1_23n1j")
 name = "Bottlesworth"
-bottle = ExtResource("2_pij53")
-potion = ExtResource("8_wchyp")
+bottle = SubResource("Resource_qn745")
+potion = SubResource("Resource_cah5c")
 oz = 3
 max_health = 20
 health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
-[sub_resource type="Resource" id="Resource_isr74"]
+[sub_resource type="Resource" id="Resource_6iuv3"]
+script = ExtResource("2_mnkgj")
+name = "Triangle Bottle"
+sprite_coordinates = Vector2i(2, 0)
+sprite_size = 32
+base_health = 10
+max_oz = 15
+base_movement = 4
+metadata/_custom_type_script = "uid://cene0083pbi52"
+
+[sub_resource type="Resource" id="Resource_r24ud"]
+script = ExtResource("6_ls2tb")
+key = 6
+name = "Offence"
+color = Color(0.909804, 0.231373, 0.231373, 1)
+abilities = Array[ExtResource("3_isr74")]([ExtResource("9_l5ffo"), ExtResource("10_asbe1")])
+metadata/_custom_type_script = "uid://dgy3brauklt5w"
+
+[sub_resource type="Resource" id="Resource_er5q5"]
 script = ExtResource("1_23n1j")
 name = "Bottlesworth"
-bottle = ExtResource("2_eqed4")
-potion = ExtResource("9_xa4qb")
+bottle = SubResource("Resource_6iuv3")
+potion = SubResource("Resource_r24ud")
 oz = 10
 max_health = 20
 health = 13
@@ -81,7 +150,7 @@ metadata/_custom_type_script = "uid://bkslv2wck48to"
 script = ExtResource("2_3wu10")
 gold = 50
 inventory = Dictionary[int, int]({})
-party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pbn6o"), SubResource("Resource_i18qs"), SubResource("Resource_mnkgj"), SubResource("Resource_isr74")])
+party = Array[ExtResource("1_23n1j")]([SubResource("Resource_dj4pj"), SubResource("Resource_2m8go"), SubResource("Resource_1l1ep"), SubResource("Resource_er5q5")])
 max_party_size = 5
 vials = Array[ExtResource("5_bk1v7")]([SubResource("Resource_eqed4"), SubResource("Resource_pij53"), SubResource("Resource_7qsao")])
 max_vial_count = 3

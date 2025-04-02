@@ -26,6 +26,7 @@ var map: BattleMap
 func _ready() -> void:
 	Events.enemy_turn_ended.connect(_on_enemy_turn_ended)
 	Events.player_turn_ended.connect(_on_player_turn_ended)
+	Events.unit_selected.connect(_on_unit_selected)
 	unit_mover.unit_moved_arenas.connect(_on_unit_moved_arenas)
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
 
@@ -123,10 +124,15 @@ func _on_start_battle_pressed() -> void:
 	_start_battle()
 
 
-func _on_unit_moved_arenas(new_arena: Arena) -> void:
+func _on_unit_moved_arenas() -> void:
 	var has_unit = arena_grid.get_all_units().filter(func(entity): return entity is Unit).is_empty()
 
 	if has_unit:
 		start_battle_button.disabled = true
 	else:
 		start_battle_button.disabled = false
+
+
+func _on_unit_selected(unit: Unit) -> void:
+	unit_context_menu.visible = true
+	unit_context_menu.unit = unit

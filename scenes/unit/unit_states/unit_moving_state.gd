@@ -14,6 +14,10 @@ func exit() -> void:
 	drag_and_drop.dropped.disconnect(_on_drag_dropped)
 
 
+func on_mouse_exited() -> void:
+	unit.selectable = false
+
+
 func reset_after_dragging(starting_position: Vector2) -> void:
 	unit.global_position = starting_position
 

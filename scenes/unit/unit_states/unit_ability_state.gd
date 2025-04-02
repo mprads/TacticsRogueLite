@@ -1,2 +1,0 @@
-extends UnitState
-class_name UnitAbilityState

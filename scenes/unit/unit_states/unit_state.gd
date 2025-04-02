@@ -1,7 +1,7 @@
 extends Node
 class_name UnitState
 
-enum STATE { IDLE, MOVING, ABILITY, DISABLED, DEPLOYING }
+enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING }
 
 signal transition_requested(from: UnitState, to: STATE)
 
@@ -19,4 +19,12 @@ func exit() -> void:
 
 
 func on_input(_event: InputEvent) -> void:
+	pass
+
+
+func on_mouse_entered() -> void:
+	pass
+
+
+func on_mouse_exited() -> void:
 	pass

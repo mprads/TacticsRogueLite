@@ -28,6 +28,16 @@ func on_input(event: InputEvent) -> void:
 		current_state.on_input(event)
 
 
+func on_mouse_entered() -> void:
+	if current_state:
+		current_state.on_mouse_entered()
+
+
+func on_mouse_exited() -> void:
+	if current_state:
+		current_state.on_mouse_exited()
+
+
 func _on_transition_requested(from: UnitState, to: UnitState.STATE) -> void:
 	if from != current_state: return
 	

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgioejj4mplt5"]
+[gd_scene load_steps=5 format=3 uid="uid://bgioejj4mplt5"]
+
+[ext_resource type="Script" uid="uid://04x20oorpcqe" path="res://scenes/ui/battle/unit_context_menu.gd" id="1_oqchr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpiah"]
 resource_local_to_scene = true
-bg_color = Color(0.301961, 0.607843, 0.901961, 1)
+bg_color = Color(0.780392, 0.862745, 0.815686, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_38vls"]
 font_size = 14
@@ -14,7 +16,7 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.301961, 0.607843, 0.901961, 1)
+border_color = Color(0.780392, 0.862745, 0.815686, 1)
 
 [node name="UnitContextMenu" type="Control"]
 custom_minimum_size = Vector2(200, 60)
@@ -27,6 +29,7 @@ offset_bottom = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_oqchr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -102,20 +105,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="AbilityButton" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+[node name="AbilityButton1" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 28)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 8
-text = "Fireball"
+text = "Ability 1"
 autowrap_mode = 2
 
 [node name="AbilityButton2" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 28)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 8
-text = "Lightning Strike"
+text = "Ability 2"
 autowrap_mode = 2
 
 [node name="Border" type="Panel" parent="."]

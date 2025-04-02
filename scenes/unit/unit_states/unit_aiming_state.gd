@@ -1,0 +1,2 @@
+extends UnitState
+class_name UnitAimingState

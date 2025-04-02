@@ -17,10 +17,13 @@ signal turn_complete
 
 var moveable := true : set = set_moveable
 var disabled := false : set = set_disabled
+var selectable := false
 
 
 func _ready() -> void:
 	unit_state_machine.init(self)
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 
 func _input(event: InputEvent) -> void:
@@ -61,3 +64,11 @@ func set_disabled(value: bool) -> void:
 		visuals.modulate = Color("3a3a3a")
 	else:
 		visuals.modulate = Color.WHITE
+
+
+func _on_mouse_entered() -> void:
+	unit_state_machine.on_mouse_entered()
+
+
+func _on_mouse_exited() -> void:
+	unit_state_machine.on_mouse_exited()
