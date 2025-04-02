@@ -82,8 +82,9 @@ arenas = [NodePath("../ArenaTileMap"), NodePath("../BenchTileMap")]
 script = ExtResource("9_oiw7q")
 unit_mover = NodePath("../UnitMover")
 
-[node name="EnemyManager" type="Node2D" parent="BattleManager"]
+[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover")]
 script = ExtResource("9_agsc7")
+unit_mover = NodePath("../UnitMover")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

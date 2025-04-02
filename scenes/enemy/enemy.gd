@@ -1,12 +1,20 @@
 extends Area2D
 class_name Enemy
 
+signal request_enemy_move
 signal turn_completed
+signal request_flood_fill(max_distance: int, atlas_coord: Vector2i)
+signal request_clear_fill_layer
 
 @export var stats: EnemyStats : set = set_enemy_stats
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar
+
+
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 
 func update_enemy() -> void:
@@ -29,8 +37,23 @@ func set_enemy_stats(value: EnemyStats) -> void:
 
 
 func take_turn() -> void:
+	request_enemy_move.emit()
 	print("Turn completed %s" % stats.name)
 	turn_completed.emit()
 
+
 func _on_stats_changed() -> void:
 	update_enemy()
+
+
+func _on_mouse_entered() -> void:
+	# Clunky but when two enemies are next to each other the area2ds overlap
+	# and mouse entered signal seems to have priority over exit signal
+	# so create a lambda and delay till end of frame
+	(func():
+		request_flood_fill.emit(stats.movement, Vector2i(4, 0))
+		).call_deferred()
+
+
+func _on_mouse_exited() -> void:
+	request_clear_fill_layer.emit()

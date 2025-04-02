@@ -40,5 +40,16 @@ func get_first_empty_tile() -> Vector2i:
 	return Vector2i(-1, -1)
 
 
+func get_random_empty_tile() -> Vector2i:
+	var keys := tiles.keys()
+	var tile: Vector2i = keys.pick_random()
+	
+	while is_tile_occupied(tile):
+		keys.erase(tile)
+		tile = keys.pick_random()
+	
+	return tile
+
+
 func get_all_units() -> Array[Node]:
 	return tiles.values().filter(func(unit): return unit)
