@@ -4,6 +4,7 @@ class_name EnemyManager
 const ENEMY = preload("res://scenes/enemy/enemy.tscn")
 
 @export var unit_mover: UnitMover
+@export var flood_filler: FloodFiller
 
 var enemies_to_act: Array[Enemy] = [] 
 
@@ -18,8 +19,10 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 		var enemy_instance := ENEMY.instantiate()
 		add_child(enemy_instance)
 		enemy_instance.stats = stats.duplicate()
-		enemy_instance.turn_completed.connect(_on_enemy_turn_completed)
 		unit_mover.setup_enemy(enemy_instance)
+		enemy_instance.turn_completed.connect(_on_enemy_turn_completed)
+		enemy_instance.request_flood_fill.connect(_on_enemy_request_flood_fill.bind(enemy_instance))
+		enemy_instance.request_clear_fill_layer.connect(_on_enemy_request_clear_fill_layer.bind(enemy_instance))
 
 
 func add_enemies_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
@@ -41,15 +44,29 @@ func start_turn() -> void:
 
 func _next_enemy_turn() -> void:
 	if enemies_to_act.is_empty():
-		await get_tree().create_timer(.5).timeout
+		await get_tree().create_timer(.25).timeout
 		Events.enemy_turn_ended.emit()
 		return
 	# TODO replace this with start and end of turn once dots are added
 	var enemy = enemies_to_act[0]
 	enemies_to_act.erase(enemy)
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(.25).timeout
 	enemy.take_turn()
 
 
 func _on_enemy_turn_completed() -> void:
 	_next_enemy_turn()
+
+
+func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enemy: Enemy) -> void:
+	if not unit_mover.is_dragging():
+		flood_filler.enabled = true
+		var i := unit_mover.get_arena_for_position(enemy.global_position)
+		var tile := unit_mover.arenas[i].get_tile_from_global(enemy.global_position)
+		flood_filler.flood_fill_from_tile(tile, max_distance, true, atlas_coord)
+
+
+func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:
+	if not unit_mover.is_dragging():
+		flood_filler.enabled = false
+		flood_filler.clear()

@@ -7,6 +7,7 @@ signal unit_moved_arenas()
 
 var dragging := false
 
+
 func setup_unit(unit: Unit) -> void:
 	unit.drag_and_drop.drag_started.connect(_on_unit_drag_started.bind(unit))
 	unit.drag_and_drop.drag_cancelled.connect(_on_unit_drag_cancelled.bind(unit))
@@ -14,9 +15,22 @@ func setup_unit(unit: Unit) -> void:
 
 
 func setup_enemy(enemy: Enemy) -> void:
-	enemy.request_flood_fill.connect(_on_enemy_request_flood_fill.bind(enemy))
-	enemy.request_clear_fill_layer.connect(_on_enemy_request_clear_fill_layer.bind(enemy))
 	enemy.request_enemy_move.connect(_on_enemy_request_move.bind(enemy))
+
+
+func is_dragging() -> bool:
+	return dragging
+
+
+func get_arena_for_position(global: Vector2) -> int:
+	var dropped_area_index := -1
+	
+	for i in arenas.size():
+		var tile := arenas[i].get_tile_from_global(global)
+		if arenas[i].is_tile_in_bounds(tile):
+			dropped_area_index = i
+
+	return dropped_area_index
 
 
 func _set_highlters(enabled: bool) -> void:
@@ -30,19 +44,8 @@ func _set_flood_fillers(enabled: bool) -> void:
 			arena.flood_filler.enabled = enabled
 
 
-func _get_arena_for_position(global: Vector2) -> int:
-	var dropped_area_index := -1
-	
-	for i in arenas.size():
-		var tile := arenas[i].get_tile_from_global(global)
-		if arenas[i].is_tile_in_bounds(tile):
-			dropped_area_index = i
-
-	return dropped_area_index
-
-
 func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) -> void:
-	var i := _get_arena_for_position(starting_position)
+	var i := get_arena_for_position(starting_position)
 	var tile := arenas[i].get_tile_from_global(starting_position)
 	 
 	unit.global_position = starting_position
@@ -58,7 +61,7 @@ func _on_unit_drag_started(unit: Unit) -> void:
 	dragging = true
 	_set_highlters(true)
 	_set_flood_fillers(true)
-	var i := _get_arena_for_position(unit.global_position)
+	var i := get_arena_for_position(unit.global_position)
 
 	if i > -1:
 		var tile := arenas[i].get_tile_from_global(unit.global_position)
@@ -80,8 +83,8 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	_set_highlters(false)
 	_set_flood_fillers(false)
 	
-	var old_arena_index := _get_arena_for_position(starting_position)
-	var drop_arena_index := _get_arena_for_position(unit.get_global_mouse_position())
+	var old_arena_index := get_arena_for_position(starting_position)
+	var drop_arena_index := get_arena_for_position(unit.get_global_mouse_position())
 
 	if drop_arena_index == -1:
 		_reset_unit_to_starting_position(starting_position, unit)
@@ -113,23 +116,8 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 			unit_moved_arenas.emit()
 
 
-func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enemy: Enemy) -> void:
-	if not dragging:
-		_set_flood_fillers(true)
-		var i := _get_arena_for_position(enemy.global_position)
-		var tile := arenas[i].get_tile_from_global(enemy.global_position)
-		arenas[i].flood_filler.flood_fill_from_tile(tile, max_distance, false, atlas_coord)
-
-
-func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:
-	if not dragging:
-		_set_flood_fillers(false)
-		var i := _get_arena_for_position(enemy.global_position)
-		arenas[i].flood_filler.clear()
-
-
 func _on_enemy_request_move(enemy: Enemy) -> void:
-	var i := _get_arena_for_position(enemy.global_position)
+	var i := get_arena_for_position(enemy.global_position)
 	var tile := arenas[i].get_tile_from_global(enemy.global_position)
 	arenas[i].arena_grid.remove_unit(tile)
 	

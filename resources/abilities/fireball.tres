@@ -8,5 +8,6 @@ name = "Fireball"
 cost = 5
 type = 0
 target = 2
-range = 5
+shape = Array[Vector2i]([])
+max_range = 3
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

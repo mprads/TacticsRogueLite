@@ -5,6 +5,7 @@ class_name UnitIdleState
 
 
 func enter() -> void:
+	unit.ability_selected.connect(_on_ability_selected)
 	drag_and_drop.drag_started.connect(_on_drag_started)
 	unit.selectable = false
 	
@@ -13,6 +14,7 @@ func enter() -> void:
 
 
 func exit() -> void:
+	unit.ability_selected.disconnect(_on_ability_selected)
 	drag_and_drop.drag_started.disconnect(_on_drag_started)
 
 
@@ -28,6 +30,11 @@ func on_mouse_entered() -> void:
 
 func on_mouse_exited() -> void:
 	unit.selectable = false
+
+
+func _on_ability_selected(ability: Ability) -> void:
+	unit.selected_ability = ability
+	transition_requested.emit(self, UnitState.STATE.AIMING)
 
 
 func _on_drag_started() -> void:

@@ -78,13 +78,15 @@ tile = Vector2i(2, 0)
 script = ExtResource("7_pll4o")
 arenas = [NodePath("../ArenaTileMap"), NodePath("../BenchTileMap")]
 
-[node name="PlayerManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover")]
+[node name="PlayerManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
 script = ExtResource("9_oiw7q")
 unit_mover = NodePath("../UnitMover")
+flood_filler = NodePath("../ArenaTileMap/ArenaFloodFiller")
 
-[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover")]
+[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
 script = ExtResource("9_agsc7")
 unit_mover = NodePath("../UnitMover")
+flood_filler = NodePath("../ArenaTileMap/ArenaFloodFiller")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

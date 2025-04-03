@@ -19,7 +19,7 @@ func flood_fill_from_tile(
 	atlas_coord: Vector2i) -> void:
 	var tiles: Array[Vector2i] = []
 	var queue: Array[Vector2i] = [starting_tile]
-	
+
 	while not queue.is_empty():
 		var current_tile: Vector2i = queue.pop_back()
 		
@@ -28,7 +28,8 @@ func flood_fill_from_tile(
 		elif not arena_grid.get_tiles().has(current_tile):
 			continue
 		elif exclude_occupied and arena_grid.is_tile_occupied(current_tile):
-			continue
+			if current_tile != starting_tile:
+				continue
 		
 		var delta: Vector2i = (current_tile - starting_tile).abs()
 		var distance := int(delta.x + delta.y)
@@ -41,7 +42,9 @@ func flood_fill_from_tile(
 		for direction in DIRECTIONS:
 			var next_tile: Vector2i = current_tile + direction
 			
-			if arena_grid.get_tiles().has(next_tile) and arena_grid.is_tile_occupied(next_tile):
+			if not arena_grid.get_tiles().has(next_tile):
+				continue
+			elif exclude_occupied and arena_grid.is_tile_occupied(next_tile):
 				continue
 			elif tiles.has(next_tile):
 				continue

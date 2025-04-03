@@ -4,6 +4,7 @@ class_name PlayerManager
 const UNIT = preload("res://scenes/unit/unit.tscn")
 
 @export var unit_mover: UnitMover
+@export var flood_filler: FloodFiller
 
 
 func setup_party(party_stats: Array[UnitStats]) -> void:
@@ -17,6 +18,8 @@ func setup_party(party_stats: Array[UnitStats]) -> void:
 		add_child(unit_instance)
 		unit_instance.stats = stats
 		unit_instance.turn_complete.connect(_on_unit_turn_complete)
+		unit_instance.aim_started.connect(_on_unit_aim_started.bind(unit_instance))
+		unit_instance.aim_stopped.connect(_on_unit_aim_stopped)
 
 
 func add_party_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
@@ -37,3 +40,15 @@ func _on_unit_turn_complete() -> void:
 		if not unit.disabled: return
 	
 	Events.player_turn_ended.emit()
+
+
+func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
+	flood_filler.enabled = true
+	var i := unit_mover.get_arena_for_position(unit.global_position)
+	var tile := unit_mover.arenas[i].get_tile_from_global(unit.global_position)
+	flood_filler.flood_fill_from_tile(tile, ability.max_range, false, Vector2i(4,0))
+
+
+func _on_unit_aim_stopped() -> void:
+	flood_filler.clear()
+	flood_filler.enabled = false

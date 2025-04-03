@@ -8,5 +8,6 @@ name = "Taunt"
 cost = 5
 type = 1
 target = 0
-range = 0
+shape = Array[Vector2i]([])
+max_range = 0
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

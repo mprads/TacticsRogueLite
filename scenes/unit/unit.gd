@@ -2,6 +2,9 @@ extends Area2D
 class_name Unit
 
 signal movement_complete
+signal aim_started(ability: Ability)
+signal aim_stopped
+signal ability_selected(ability: Ability)
 signal turn_complete
 
 @export var stats: UnitStats : set = set_stats
@@ -18,6 +21,8 @@ signal turn_complete
 var moveable := true : set = set_moveable
 var disabled := false : set = set_disabled
 var selectable := false
+
+var selected_ability: Ability
 
 
 func _ready() -> void:
