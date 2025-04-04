@@ -6,6 +6,7 @@
 script = ExtResource("1_0mn1m")
 name = "Enfeeble"
 cost = 5
+atlas_coord = Vector2i(6, 0)
 type = 1
 target = 2
 shape = Array[Vector2i]([])

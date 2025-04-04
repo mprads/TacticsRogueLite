@@ -7,6 +7,7 @@ enum TARGET { SELF, SINGLE_ALLY, SINGLE_ENEMY, ALL_ENEMIES, AOE }
 @export_category("Visuals")
 @export var name: String
 @export var cost := 1
+@export var atlas_coord: Vector2i
 
 @export_category("Effects")
 @export var type: TYPE

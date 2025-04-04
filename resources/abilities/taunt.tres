@@ -6,6 +6,7 @@
 script = ExtResource("1_6ny0t")
 name = "Taunt"
 cost = 5
+atlas_coord = Vector2i(5, 0)
 type = 1
 target = 0
 shape = Array[Vector2i]([])

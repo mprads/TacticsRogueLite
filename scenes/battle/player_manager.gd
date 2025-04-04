@@ -46,7 +46,7 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	flood_filler.enabled = true
 	var i := unit_mover.get_arena_for_position(unit.global_position)
 	var tile := unit_mover.arenas[i].get_tile_from_global(unit.global_position)
-	flood_filler.flood_fill_from_tile(tile, ability.max_range, false, Vector2i(4,0))
+	flood_filler.flood_fill_from_tile(tile, ability.max_range, false, ability.atlas_coord)
 
 
 func _on_unit_aim_stopped() -> void:

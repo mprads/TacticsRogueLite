@@ -6,6 +6,7 @@
 script = ExtResource("1_d4awf")
 name = "Cleanse"
 cost = 5
+atlas_coord = Vector2i(5, 0)
 type = 1
 target = 1
 shape = Array[Vector2i]([])
