@@ -68,5 +68,5 @@ func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enem
 
 func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:
 	if not unit_mover.is_dragging():
-		flood_filler.enabled = false
-		flood_filler.clear()
+		var i := unit_mover.get_arena_for_position(enemy.global_position)
+		unit_mover.arenas[i].clear_flood_filler("ENEMY")

@@ -20,7 +20,7 @@ func exit() -> void:
 func on_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse"):
 		if unit.selectable:
-			Events.unit_selected.emit(unit)
+			unit.unit_selected.emit(unit)
 
 
 func on_mouse_entered() -> void:

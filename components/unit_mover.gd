@@ -40,8 +40,8 @@ func _set_highlters(enabled: bool) -> void:
 
 func _set_flood_fillers(enabled: bool) -> void:
 	for arena in arenas:
-		if arena.flood_filler:
-			arena.flood_filler.enabled = enabled
+		if arena.player_flood_filler:
+			arena.player_flood_filler.enabled = enabled
 
 
 func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) -> void:
@@ -67,8 +67,8 @@ func _on_unit_drag_started(unit: Unit) -> void:
 		var tile := arenas[i].get_tile_from_global(unit.global_position)
 		arenas[i].arena_grid.remove_unit(tile)
 
-		if arenas[i].flood_filler:
-			arenas[i].flood_filler.flood_fill_from_tile(tile, unit.stats.movement, true, Vector2i(3, 0))
+		if arenas[i].player_flood_filler:
+			arenas[i].player_flood_filler.flood_fill_from_tile(tile, unit.stats.movement, true, Vector2i(3, 0))
 
 
 func _on_unit_drag_cancelled(starting_position: Vector2, unit: Unit) -> void:

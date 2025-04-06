@@ -6,7 +6,6 @@ signal battle_won
 signal player_turn_ended
 signal player_turn_started
 signal enemy_turn_ended
-signal unit_selected(unit: Unit)
 
 #Battle Reward Events
 signal battle_reward_exited

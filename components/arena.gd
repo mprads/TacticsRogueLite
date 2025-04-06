@@ -3,7 +3,8 @@ class_name Arena
 
 @export var arena_grid: ArenaGrid
 @export var tile_highlighter: TileHighlighter
-@export var flood_filler: FloodFiller
+@export var player_flood_filler: FloodFiller
+@export var enemy_flood_filler: FloodFiller
 
 
 func _process(_delta: float) -> void:
@@ -32,3 +33,27 @@ func get_hovered_tile() -> Vector2i:
 
 func is_tile_in_bounds(tile: Vector2i) -> bool:
 	return arena_grid.get_tiles().has(tile)
+
+# I hate check the string, the battle manager passing a reference seems incorrect
+# and an enum seems overkill
+func enable_flood_filler(layer: String) -> void:
+	match layer:
+		"PLAYER":
+			player_flood_filler.enabled = true
+		"ENEMY":
+			enemy_flood_filler.enabled = true
+		_:
+			pass
+
+
+func clear_flood_filler(layer: String) -> void:
+	match layer:
+		"PLAYER":
+			print(layer)
+			player_flood_filler.enabled = false
+		"ENEMY":
+			print(layer)
+			enemy_flood_filler.enabled = false
+		_:
+			pass
+	

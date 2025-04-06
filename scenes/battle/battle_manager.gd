@@ -13,6 +13,7 @@ const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.ts
 
 @onready var enemy_manager: EnemyManager = $EnemyManager
 @onready var player_manager: PlayerManager = $PlayerManager
+@onready var attack_manager: Node2D = $AttackManager
 @onready var unit_mover: UnitMover = $UnitMover
 
 @onready var party_selection_container: VBoxContainer = %PartySelectionContainer
@@ -26,7 +27,9 @@ var map: BattleMap
 func _ready() -> void:
 	Events.enemy_turn_ended.connect(_on_enemy_turn_ended)
 	Events.player_turn_ended.connect(_on_player_turn_ended)
-	Events.unit_selected.connect(_on_unit_selected)
+	player_manager.unit_selected.connect(_on_unit_selected)
+	player_manager.unit_aim_started.connect(_on_unit_aim_started)
+	player_manager.unit_aim_stopped.connect(_on_unit_aim_stopped)
 	unit_mover.unit_moved_arenas.connect(_on_unit_moved_arenas)
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
 
@@ -136,3 +139,14 @@ func _on_unit_moved_arenas() -> void:
 func _on_unit_selected(unit: Unit) -> void:
 	unit_context_menu.visible = true
 	unit_context_menu.unit = unit
+
+
+func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
+	arena.enable_flood_filler("PLAYER")
+	var i := unit_mover.get_arena_for_position(unit.global_position)
+	var tile := unit_mover.arenas[i].get_tile_from_global(unit.global_position)
+	arena.player_flood_filler.flood_fill_from_tile(tile, ability.max_range, false, ability.atlas_coord)
+
+
+func _on_unit_aim_stopped() -> void:
+	arena.clear_flood_filler("PLAYER")

@@ -6,6 +6,7 @@ signal aim_started(ability: Ability)
 signal aim_stopped
 signal ability_selected(ability: Ability)
 signal turn_complete
+signal unit_selected(unit: Unit)
 
 @export var stats: UnitStats : set = set_stats
 
