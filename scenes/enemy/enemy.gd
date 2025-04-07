@@ -3,6 +3,7 @@ class_name Enemy
 
 signal request_enemy_move
 signal turn_completed
+signal enemy_selected(enemy: Enemy)
 signal request_flood_fill(max_distance: int, atlas_coord: Vector2i)
 signal request_clear_fill_layer
 
@@ -11,10 +12,19 @@ signal request_clear_fill_layer
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar
 
+var selectable := false
+
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+
+
+func _input(event: InputEvent) -> void:
+	if not selectable: return
+	
+	if event.is_action_pressed("left_mouse"):	
+		enemy_selected.emit(self)
 
 
 func update_enemy() -> void:
@@ -47,6 +57,7 @@ func _on_stats_changed() -> void:
 
 
 func _on_mouse_entered() -> void:
+	selectable = true
 	# Clunky but when two enemies are next to each other the area2ds overlap
 	# and mouse entered signal seems to have priority over exit signal
 	# so create a lambda and delay till end of frame
@@ -56,4 +67,5 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	selectable = false
 	request_clear_fill_layer.emit()

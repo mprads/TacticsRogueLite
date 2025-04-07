@@ -1,6 +1,8 @@
 extends Node2D
 class_name EnemyManager
 
+signal enemy_selected(enemy: Enemy)
+
 const ENEMY = preload("res://scenes/enemy/enemy.tscn")
 
 @export var unit_mover: UnitMover
@@ -21,6 +23,7 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 		enemy_instance.stats = stats.duplicate()
 		unit_mover.setup_enemy(enemy_instance)
 		enemy_instance.turn_completed.connect(_on_enemy_turn_completed)
+		enemy_instance.enemy_selected.connect(_on_enemy_selected)
 		enemy_instance.request_flood_fill.connect(_on_enemy_request_flood_fill.bind(enemy_instance))
 		enemy_instance.request_clear_fill_layer.connect(_on_enemy_request_clear_fill_layer.bind(enemy_instance))
 
@@ -56,6 +59,10 @@ func _next_enemy_turn() -> void:
 
 func _on_enemy_turn_completed() -> void:
 	_next_enemy_turn()
+
+
+func _on_enemy_selected(enemy: Enemy) -> void:
+	enemy_selected.emit(enemy)
 
 
 func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enemy: Enemy) -> void:

@@ -14,5 +14,11 @@ func exit() -> void:
 	unit.moveable = true
 
 
+func on_input(event: InputEvent) -> void:
+	if event.is_action_pressed("left_mouse"):
+		if unit.selectable:
+			unit.unit_selected.emit(unit)
+
+
 func _on_player_turn_started() -> void:
 	transition_requested.emit(self, UnitState.STATE.IDLE)

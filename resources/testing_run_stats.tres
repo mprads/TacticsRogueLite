@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://cene0083pbi52"
 
 [sub_resource type="Resource" id="Resource_dj4pj"]
 script = ExtResource("1_23n1j")
-name = "Bottlesworth"
+name = "Empty"
 bottle = SubResource("Resource_35bd7")
 oz = 0
 max_health = 15
@@ -56,7 +56,7 @@ metadata/_custom_type_script = "uid://dgy3brauklt5w"
 
 [sub_resource type="Resource" id="Resource_2m8go"]
 script = ExtResource("1_23n1j")
-name = "Bottlesworth"
+name = "Debuffer"
 bottle = SubResource("Resource_5c5c0")
 potion = SubResource("Resource_hcd5x")
 oz = 5
@@ -84,7 +84,7 @@ metadata/_custom_type_script = "uid://dgy3brauklt5w"
 
 [sub_resource type="Resource" id="Resource_1l1ep"]
 script = ExtResource("1_23n1j")
-name = "Bottlesworth"
+name = "Shielder"
 bottle = SubResource("Resource_qn745")
 potion = SubResource("Resource_cah5c")
 oz = 3
@@ -112,7 +112,7 @@ metadata/_custom_type_script = "uid://dgy3brauklt5w"
 
 [sub_resource type="Resource" id="Resource_er5q5"]
 script = ExtResource("1_23n1j")
-name = "Bottlesworth"
+name = "Attacker"
 bottle = SubResource("Resource_6iuv3")
 potion = SubResource("Resource_r24ud")
 oz = 10

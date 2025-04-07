@@ -18,6 +18,10 @@ func exit() -> void:
 	pass
 
 
+func use_ability(target: Area2D) -> void:
+	pass
+
+
 func on_input(_event: InputEvent) -> void:
 	pass
 

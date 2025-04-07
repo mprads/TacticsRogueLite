@@ -13,7 +13,7 @@ const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.ts
 
 @onready var enemy_manager: EnemyManager = $EnemyManager
 @onready var player_manager: PlayerManager = $PlayerManager
-@onready var attack_manager: Node2D = $AttackManager
+@onready var ability_manager: AbilityManager = $AbilityManager
 @onready var unit_mover: UnitMover = $UnitMover
 
 @onready var party_selection_container: VBoxContainer = %PartySelectionContainer
@@ -27,9 +27,11 @@ var map: BattleMap
 func _ready() -> void:
 	Events.enemy_turn_ended.connect(_on_enemy_turn_ended)
 	Events.player_turn_ended.connect(_on_player_turn_ended)
+	player_manager.change_active_unit.connect(_on_change_active_unit)
 	player_manager.unit_selected.connect(_on_unit_selected)
 	player_manager.unit_aim_started.connect(_on_unit_aim_started)
 	player_manager.unit_aim_stopped.connect(_on_unit_aim_stopped)
+	enemy_manager.enemy_selected.connect(_on_enemy_selected)
 	unit_mover.unit_moved_arenas.connect(_on_unit_moved_arenas)
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
 
@@ -123,7 +125,9 @@ func _on_player_turn_ended() -> void:
 
 func _on_start_battle_pressed() -> void:
 	start_battle_button.hide()
-	bench.visible = false
+	#bench.visible = false
+	unit_mover.arenas.erase(bench)
+	bench.queue_free()
 	_start_battle()
 
 
@@ -136,7 +140,9 @@ func _on_unit_moved_arenas() -> void:
 		start_battle_button.disabled = false
 
 
-func _on_unit_selected(unit: Unit) -> void:
+func _on_change_active_unit(unit: Unit) -> void:
+	if ability_manager.has_active_ability(): return
+	
 	unit_context_menu.visible = true
 	unit_context_menu.unit = unit
 
@@ -146,7 +152,20 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	var i := unit_mover.get_arena_for_position(unit.global_position)
 	var tile := unit_mover.arenas[i].get_tile_from_global(unit.global_position)
 	arena.player_flood_filler.flood_fill_from_tile(tile, ability.max_range, false, ability.atlas_coord)
+	player_manager.disable_drag_and_drop()
+	ability_manager.handle_unit_aim(unit, ability)
 
 
 func _on_unit_aim_stopped() -> void:
 	arena.clear_flood_filler("PLAYER")
+	player_manager.enable_drag_and_drop()
+	ability_manager.handle_aim_stopped()
+
+
+func _on_unit_selected(unit: Unit) -> void:
+	ability_manager.handle_selected_unit(unit)
+
+
+
+func _on_enemy_selected(enemy: Enemy) -> void:
+	ability_manager.handle_selected_enemy(enemy)

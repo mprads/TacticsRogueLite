@@ -9,8 +9,7 @@ func enter() -> void:
 	drag_and_drop.drag_started.connect(_on_drag_started)
 	unit.selectable = false
 	
-	if unit.moveable:
-		drag_and_drop.enabled = true
+	enable_drap_and_drop()
 
 
 func exit() -> void:
@@ -21,6 +20,7 @@ func exit() -> void:
 func on_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse"):
 		if unit.selectable:
+			unit.request_change_active_unit.emit(unit)
 			unit.unit_selected.emit(unit)
 
 
@@ -30,6 +30,15 @@ func on_mouse_entered() -> void:
 
 func on_mouse_exited() -> void:
 	unit.selectable = false
+
+
+func disable_drag_and_drop() -> void:
+	drag_and_drop.enabled = false
+
+
+func enable_drap_and_drop() -> void:
+	if unit.moveable:
+		drag_and_drop.enabled = true
 
 
 func _on_ability_selected(ability: Ability) -> void:

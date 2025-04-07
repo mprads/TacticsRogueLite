@@ -49,10 +49,8 @@ func enable_flood_filler(layer: String) -> void:
 func clear_flood_filler(layer: String) -> void:
 	match layer:
 		"PLAYER":
-			print(layer)
 			player_flood_filler.enabled = false
 		"ENEMY":
-			print(layer)
 			enemy_flood_filler.enabled = false
 		_:
 			pass

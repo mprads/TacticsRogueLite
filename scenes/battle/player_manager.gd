@@ -1,6 +1,7 @@
 extends Node2D
 class_name PlayerManager
 
+signal change_active_unit(unit: Unit)
 signal unit_selected(unit: Unit)
 signal unit_aim_started(ability: Ability, unit: Unit)
 signal unit_aim_stopped(unit: Unit)
@@ -24,6 +25,7 @@ func setup_party(party_stats: Array[UnitStats]) -> void:
 		unit_instance.turn_complete.connect(_on_unit_turn_complete)
 		unit_instance.aim_started.connect(_on_unit_aim_started.bind(unit_instance))
 		unit_instance.aim_stopped.connect(_on_unit_aim_stopped)
+		unit_instance.request_change_active_unit.connect(_on_request_change_active_unit)
 		unit_instance.unit_selected.connect(_on_unit_selected)
 
 
@@ -40,11 +42,27 @@ func start_turn() -> void:
 	Events.player_turn_started.emit()
 
 
+func enable_drag_and_drop() -> void:
+	for unit in get_children():
+		if not unit.disabled:
+			unit.drag_and_drop.enabled = true
+
+
+func disable_drag_and_drop() -> void:
+	for unit in get_children():
+		if not unit.disabled:
+			unit.drag_and_drop.enabled = false
+
+
 func _on_unit_turn_complete() -> void:
 	for unit in get_children():
 		if not unit.disabled: return
 	
 	Events.player_turn_ended.emit()
+
+
+func _on_request_change_active_unit(unit: Unit) -> void:
+	change_active_unit.emit(unit)
 
 
 func _on_unit_selected(unit: Unit) -> void:

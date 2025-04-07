@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://bf0vtbnu18chl" path="res://scenes/battle/enemy_manager.gd" id="9_agsc7"]
 [ext_resource type="Script" uid="uid://c2nuy484o6op5" path="res://scenes/battle/player_manager.gd" id="9_oiw7q"]
 [ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="11_fisqk"]
-[ext_resource type="Script" uid="uid://c0xa4g4qcwni3" path="res://scenes/battle/attack_manager.gd" id="11_kd6yx"]
+[ext_resource type="Script" uid="uid://c0xa4g4qcwni3" path="res://scenes/battle/ability_manager.gd" id="11_kd6yx"]
 [ext_resource type="PackedScene" uid="uid://bgioejj4mplt5" path="res://scenes/ui/battle/unit_context_menu.tscn" id="12_mxe8n"]
 
 [node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
@@ -93,7 +93,7 @@ script = ExtResource("9_oiw7q")
 unit_mover = NodePath("../UnitMover")
 flood_filler = NodePath("../ArenaTileMap/PlayerFloodFiller")
 
-[node name="AttackManager" type="Node2D" parent="BattleManager"]
+[node name="AbilityManager" type="Node2D" parent="BattleManager"]
 script = ExtResource("11_kd6yx")
 
 [node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
@@ -153,17 +153,17 @@ layout_mode = 2
 [node name="UnitContextMenu" parent="UI" instance=ExtResource("12_mxe8n")]
 unique_name_in_owner = true
 visible = false
-offset_left = 14.0
-offset_top = 286.0
-offset_right = -426.0
-offset_bottom = -14.0
+offset_left = 427.0
+offset_top = 287.0
+offset_right = -13.0
+offset_bottom = -13.0
 
 [node name="StartBattleButton" type="Button" parent="UI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 26)
-offset_left = 499.0
-offset_top = 312.0
-offset_right = 620.0
-offset_bottom = 338.0
+offset_left = 506.0
+offset_top = 249.0
+offset_right = 627.0
+offset_bottom = 275.0
 disabled = true
 text = "Start Battle"
