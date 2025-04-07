@@ -9,5 +9,5 @@ sprite_coordinates = Vector2i(1, 0)
 sprite_size = 32
 base_health = 20
 max_oz = 10
-base_movement = 3
+base_movement = 2
 metadata/_custom_type_script = "uid://cene0083pbi52"

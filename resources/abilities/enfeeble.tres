@@ -6,7 +6,9 @@
 script = ExtResource("1_0mn1m")
 name = "Enfeeble"
 cost = 5
+atlas_coord = Vector2i(6, 0)
 type = 1
-target = 0
-range = 0
+target = 2
+shape = Array[Vector2i]([])
+max_range = 3
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

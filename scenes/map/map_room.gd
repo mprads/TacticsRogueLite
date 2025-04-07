@@ -20,7 +20,7 @@ var available := false : set = set_available
 var room: Room : set = set_room
 
 
-func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if not available or not event.is_action_pressed("left_mouse"):
 		return
 	

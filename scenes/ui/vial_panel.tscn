@@ -16,7 +16,7 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7prdj"]
 resource_local_to_scene = true
-bg_color = Color(0.259911, 0.841639, 0.944516, 1)
+bg_color = Color(0.780392, 0.862745, 0.815686, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_u6oys"]
 font_size = 24
@@ -34,7 +34,7 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.259911, 0.841639, 0.944516, 1)
+border_color = Color(0.780392, 0.862745, 0.815686, 1)
 
 [node name="VialPanel" type="Button"]
 custom_minimum_size = Vector2(300, 100)

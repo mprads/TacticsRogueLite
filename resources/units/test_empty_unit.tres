@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("1_nsjuq")
+name = "Bottlesworth"
 bottle = ExtResource("1_dxqd5")
-max_oz = 1
+max_oz = 10
 oz = 0
 max_health = 15
 health = 7

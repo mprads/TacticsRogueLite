@@ -51,20 +51,20 @@ func hide_map() -> void:
 
 
 func unlock_row(row: int = encounters) -> void:
-	for map_room: MapRoom in rooms.get_children():
+	for map_room in rooms.get_children():
 		if map_room.room.row == row:
 			map_room.available = true
 
 
 func unlock_next_rooms() -> void:
-	for map_room: MapRoom in rooms.get_children():
+	for map_room in rooms.get_children():
 		if last_room.next_rooms.has(map_room.room):
 			map_room.available = true
 
 
 func _create_map() -> void:
 	for current_floor in map_data:
-		for room: Room in current_floor:
+		for room in current_floor:
 			if room.next_rooms.size() > 0:
 				_spawn_room(room)
 	
@@ -73,7 +73,7 @@ func _create_map() -> void:
 
 
 func _unlock_next_rooms() -> void:
-	for map_room: MapRoom in rooms.get_children():
+	for map_room in rooms.get_children():
 		if last_room.next_rooms.has(map_room.room):
 			map_room.available = true
 
@@ -89,7 +89,7 @@ func _spawn_room(room: Room) -> void:
 func _connect_lines(room: Room) -> void:
 	if room.next_rooms.is_empty(): return
 	
-	for next_room: Room in room.next_rooms:
+	for next_room in room.next_rooms:
 		var line_instance := MAP_LINE.instantiate()
 		line_instance.add_point(room.position)
 		line_instance.add_point(next_room.position)
@@ -97,7 +97,7 @@ func _connect_lines(room: Room) -> void:
 	
 
 func _on_map_room_selected(room: Room) -> void:
-	for map_room: MapRoom in rooms.get_children():
+	for map_room in rooms.get_children():
 		if map_room.room.row == room.row:
 			map_room.available = false
 	

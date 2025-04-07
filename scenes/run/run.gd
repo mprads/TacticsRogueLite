@@ -121,7 +121,7 @@ func _show_battle_reward() -> void:
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.TYPE.BATTLE:
-			_on_battle_entered()
+			_on_battle_entered(room)
 		Room.TYPE.SHOP:
 			_on_shop_entered()
 		Room.TYPE.BREWING:
@@ -130,8 +130,11 @@ func _on_map_exited(room: Room) -> void:
 			_on_kiln_entered()
 
 
-func _on_battle_entered() -> void:
-	_change_view(BATTLE_SCENE)
+func _on_battle_entered(room: Room) -> void:
+	var battle := _change_view(BATTLE_SCENE)
+	battle.battle_stats = room.battle_stats
+	battle.party_manager = party_manager
+	battle.start_battle()
 
 
 func _on_battle_won() -> void:

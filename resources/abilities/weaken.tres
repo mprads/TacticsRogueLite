@@ -6,7 +6,9 @@
 script = ExtResource("1_kmler")
 name = "Weaken"
 cost = 5
+atlas_coord = Vector2i(6, 0)
 type = 1
 target = 2
-range = 5
+shape = Array[Vector2i]([])
+max_range = 3
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

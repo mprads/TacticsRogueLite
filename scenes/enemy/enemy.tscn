@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7xiv7x5cv04q"]
+
+[ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="1_4a83h"]
+[ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
+size = Vector2(32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a83h"]
+bg_color = Color(0.222923, 0.102412, 0.0593943, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3pup"]
+bg_color = Color(0.207843, 0.803922, 0.211765, 1)
+
+[node name="Enemy" type="Area2D" groups=["enemy_unit"]]
+script = ExtResource("1_a3pup")
+
+[node name="Visuals" type="CanvasGroup" parent="."]
+position = Vector2(0, -11)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+unique_name_in_owner = true
+texture = ExtResource("1_4a83h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -11)
+shape = SubResource("RectangleShape2D_a3pup")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(30, 4)
+offset_left = -14.0
+offset_top = -33.0
+offset_right = 16.0
+offset_bottom = -29.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4a83h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a3pup")
+value = 50.0
+show_percentage = false

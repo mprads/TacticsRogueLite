@@ -126,7 +126,6 @@ func _update_recipes() -> void:
 
 
 func _handle_no_recipes() -> void:
-	print(filtered_recipes_keys.is_empty())
 	if filtered_recipes_keys.is_empty():
 		no_recipes_label.show()
 	else:

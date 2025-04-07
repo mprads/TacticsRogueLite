@@ -1,48 +1,120 @@
-[gd_scene load_steps=4 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=15 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
-[ext_resource type="Texture2D" uid="uid://bmoldywnrmtos" path="res://assets/sprites/potions/coloured_sheet.png" id="2_ffvsa"]
+[ext_resource type="Resource" uid="uid://tqul7q8whaw6" path="res://resources/battle_maps/testing_6x6.tres" id="2_xd4uy"]
+[ext_resource type="Script" uid="uid://cydy5jbmlcs0f" path="res://scenes/battle/battle_manager.gd" id="3_0yh6x"]
 [ext_resource type="TileSet" uid="uid://beelur5ybttc6" path="res://resources/64prototype_tile_set.tres" id="3_xd4uy"]
+[ext_resource type="Script" uid="uid://bm6kd3ocw6acs" path="res://components/arena.gd" id="5_fh7rg"]
+[ext_resource type="Script" uid="uid://dymludwl8mc4g" path="res://components/arena_grid.gd" id="5_h0kxc"]
+[ext_resource type="Script" uid="uid://b0vqbai5132oe" path="res://components/unit_mover.gd" id="7_pll4o"]
+[ext_resource type="Script" uid="uid://dmyacoedl35kb" path="res://components/tile_highlighter.gd" id="7_py4tk"]
+[ext_resource type="Script" uid="uid://c01d0h1645ul8" path="res://components/flood_filler.gd" id="8_icoan"]
+[ext_resource type="Script" uid="uid://bf0vtbnu18chl" path="res://scenes/battle/enemy_manager.gd" id="9_agsc7"]
+[ext_resource type="Script" uid="uid://c2nuy484o6op5" path="res://scenes/battle/player_manager.gd" id="9_oiw7q"]
+[ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="11_fisqk"]
+[ext_resource type="Script" uid="uid://c0xa4g4qcwni3" path="res://scenes/battle/ability_manager.gd" id="11_kd6yx"]
+[ext_resource type="PackedScene" uid="uid://bgioejj4mplt5" path="res://scenes/ui/battle/unit_context_menu.tscn" id="12_mxe8n"]
 
-[node name="Battle" type="Node2D"]
+[node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
+map = ExtResource("2_xd4uy")
+battle_manager = NodePath("BattleManager")
 
-[node name="Arena64" type="Node2D" parent="."]
-position = Vector2(63, 180)
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("arena", "arena_grid", "bench", "bench_grid")]
+unique_name_in_owner = true
+script = ExtResource("3_0yh6x")
+arena = NodePath("ArenaTileMap")
+arena_grid = NodePath("ArenaTileMap/ArenaGrid")
+bench = NodePath("BenchTileMap")
+bench_grid = NodePath("BenchTileMap/BenchGrid")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Arena64"]
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPj/AAAAAAAAAAABAPj/AAAAAAAAAAACAPj/AAAAAAAAAAADAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAABAPn/AAAAAAAAAAABAPr/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAADAPn/AAAAAAAAAAACAPn/AAAAAAAAAAACAPr/AAAAAAAAAAACAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAPv/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPn/AAAAAAAAAAA=")
+[node name="ArenaTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter", "player_flood_filler", "enemy_flood_filler")]
+position = Vector2(210, 157)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAPz/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAA=")
+tile_set = ExtResource("3_xd4uy")
+script = ExtResource("5_fh7rg")
+arena_grid = NodePath("ArenaGrid")
+tile_highlighter = NodePath("ArenaHighlighter")
+player_flood_filler = NodePath("PlayerFloodFiller")
+enemy_flood_filler = NodePath("EnemyFloodFiller")
+
+[node name="PlayerFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
 tile_set = ExtResource("3_xd4uy")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="Arena64"]
-tile_map_data = PackedByteArray("AAACAPz/AAADAAAAAAADAPz/AAADAAAAAAAEAPv/AAAEAAAAAAAEAPr/AAAEAAAAAAAEAPn/AAAEAAAAAAABAPz/AAADAAAAAAADAPv/AAAAAAAAAAACAPv/AAAAAAAAAAABAPv/AAAAAAAAAAABAPr/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPj/AAAFAAAAAAACAPj/AAAFAAAAAAABAPj/AAAFAAAAAAAAAPv/AAAGAAAAAAAAAPr/AAAGAAAAAAAAAPn/AAAGAAAAAAA=")
+[node name="EnemyFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
 tile_set = ExtResource("3_xd4uy")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Arena64"]
-position = Vector2(188, 23)
-texture = ExtResource("2_ffvsa")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+[node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
+tile_set = ExtResource("3_xd4uy")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Arena64"]
-position = Vector2(384, 26)
-texture = ExtResource("2_ffvsa")
-region_enabled = true
-region_rect = Rect2(64, 0, 32, 32)
+[node name="ArenaGrid" type="Node2D" parent="BattleManager/ArenaTileMap"]
+script = ExtResource("5_h0kxc")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Arena64"]
-position = Vector2(287, -85)
-texture = ExtResource("2_ffvsa")
-region_enabled = true
-region_rect = Rect2(32, 0, 32, 32)
+[node name="PlayerFloodFiller" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("fill_layer", "arena_grid")]
+script = ExtResource("8_icoan")
+fill_layer = NodePath("../PlayerFillLayer")
+arena_grid = NodePath("../ArenaGrid")
+
+[node name="EnemyFloodFiller" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("fill_layer", "arena_grid")]
+script = ExtResource("8_icoan")
+fill_layer = NodePath("../EnemyFillLayer")
+arena_grid = NodePath("../ArenaGrid")
+
+[node name="ArenaHighlighter" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("highlight_layer")]
+script = ExtResource("7_py4tk")
+highlight_layer = NodePath("../HighlightLayer")
+tile = Vector2i(2, 0)
+
+[node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
+position = Vector2(146, 221)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAA=")
+tile_set = ExtResource("3_xd4uy")
+script = ExtResource("5_fh7rg")
+arena_grid = NodePath("BenchGrid")
+tile_highlighter = NodePath("BenchHightlighter")
+
+[node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/BenchTileMap"]
+tile_set = ExtResource("3_xd4uy")
+
+[node name="BenchGrid" type="Node2D" parent="BattleManager/BenchTileMap"]
+script = ExtResource("5_h0kxc")
+
+[node name="BenchHightlighter" type="Node" parent="BattleManager/BenchTileMap" node_paths=PackedStringArray("highlight_layer")]
+script = ExtResource("7_py4tk")
+highlight_layer = NodePath("../HighlightLayer")
+tile = Vector2i(2, 0)
+
+[node name="UnitMover" type="Node" parent="BattleManager" node_paths=PackedStringArray("arenas")]
+script = ExtResource("7_pll4o")
+arenas = [NodePath("../ArenaTileMap"), NodePath("../BenchTileMap")]
+
+[node name="PlayerManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
+script = ExtResource("9_oiw7q")
+unit_mover = NodePath("../UnitMover")
+flood_filler = NodePath("../ArenaTileMap/PlayerFloodFiller")
+
+[node name="AbilityManager" type="Node2D" parent="BattleManager"]
+script = ExtResource("11_kd6yx")
+
+[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
+script = ExtResource("9_agsc7")
+unit_mover = NodePath("../UnitMover")
+flood_filler = NodePath("../ArenaTileMap/EnemyFloodFiller")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
-offset_left = 492.0
-offset_top = 289.0
-offset_right = 624.0
-offset_bottom = 345.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -332.0
+offset_right = -8.0
+offset_bottom = -276.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Label" type="Label" parent="UI/VBoxContainer"]
 layout_mode = 2
@@ -51,3 +123,47 @@ text = "Battle Scene"
 [node name="Button" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
 text = "Return to map"
+
+[node name="PartySelectionContainer" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+offset_left = 12.0
+offset_top = 34.0
+offset_right = 132.0
+offset_bottom = 70.0
+
+[node name="UnitSelectButton" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton2" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton3" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton4" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton5" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitSelectButton6" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
+layout_mode = 2
+
+[node name="UnitContextMenu" parent="UI" instance=ExtResource("12_mxe8n")]
+unique_name_in_owner = true
+visible = false
+offset_left = 427.0
+offset_top = 287.0
+offset_right = -13.0
+offset_bottom = -13.0
+
+[node name="StartBattleButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 26)
+offset_left = 506.0
+offset_top = 249.0
+offset_right = 627.0
+offset_bottom = 275.0
+disabled = true
+text = "Start Battle"
