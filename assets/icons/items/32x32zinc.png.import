@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm28hb7ibki0v"
-path="res://.godot/imported/32x32green_herb.png-e5bd9fd5aa7134a7199af805e0b3dd25.ctex"
+uid="uid://b2rw2tu2er3pm"
+path="res://.godot/imported/32x32zinc.png-7ac5b9f79f98524e0f0f13b23e3b12a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/32x32green_herb.png"
-dest_files=["res://.godot/imported/32x32green_herb.png-e5bd9fd5aa7134a7199af805e0b3dd25.ctex"]
+source_file="res://assets/icons/items/32x32zinc.png"
+dest_files=["res://.godot/imported/32x32zinc.png-7ac5b9f79f98524e0f0f13b23e3b12a4.ctex"]
 
 [params]
 

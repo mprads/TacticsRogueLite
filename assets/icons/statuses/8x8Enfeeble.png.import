@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ga0vi657us1"
-path="res://.godot/imported/32x32venom.png-ee76bbd1ad87fd1c158a0a77f4716770.ctex"
+uid="uid://dwfsl2ykquhk7"
+path="res://.godot/imported/8x8Enfeeble.png-978a0ff16485795e5bdc809799e53deb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/32x32venom.png"
-dest_files=["res://.godot/imported/32x32venom.png-ee76bbd1ad87fd1c158a0a77f4716770.ctex"]
+source_file="res://assets/icons/statuses/8x8Enfeeble.png"
+dest_files=["res://.godot/imported/8x8Enfeeble.png-978a0ff16485795e5bdc809799e53deb.ctex"]
 
 [params]
 
