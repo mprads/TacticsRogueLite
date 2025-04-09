@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_fedew")
-name = "Rat"
+name = "Golem"
 sprite = ExtResource("2_fedew")
 movement = 2
 max_health = 20

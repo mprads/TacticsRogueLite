@@ -4,4 +4,6 @@ extends Ability
 
 
 func apply_effects(targets: Array[Node]) -> void:
-	pass
+	var shield_effect := ShieldEffect.new()
+	shield_effect.amount = base_shield
+	shield_effect.execute(targets)

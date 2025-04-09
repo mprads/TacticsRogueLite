@@ -11,6 +11,7 @@ signal request_clear_fill_layer
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var shield_bar: ProgressBar = $ShieldBar
 
 var selectable := false
 
@@ -40,6 +41,8 @@ func update_enemy() -> void:
 	sprite_2d.texture = stats.sprite
 	health_bar.max_value = stats.max_health
 	health_bar.value = stats.health
+	shield_bar.max_value = stats.max_health
+	shield_bar.value = stats.shield
 
 
 func set_enemy_stats(value: EnemyStats) -> void:
