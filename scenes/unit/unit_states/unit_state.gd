@@ -18,7 +18,7 @@ func exit() -> void:
 	pass
 
 
-func use_ability(target: Area2D) -> void:
+func use_ability(targets: Array[Node]) -> void:
 	pass
 
 

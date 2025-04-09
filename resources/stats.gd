@@ -14,6 +14,7 @@ func take_damage(damage: int) -> void:
 	if damage <= 0:
 		return
 	
+	print("taking %s damage" % damage)
 	health -= damage
 
 

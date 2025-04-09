@@ -14,3 +14,7 @@ enum TARGET { SELF, SINGLE_ALLY, SINGLE_ENEMY, ALL_ENEMIES, AOE }
 @export var target: TARGET
 @export var shape: Array[Vector2i]
 @export var max_range := 1
+
+
+func apply_effects(_targets: Array[Node]) -> void:
+	pass

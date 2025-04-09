@@ -37,6 +37,12 @@ func _input(event: InputEvent) -> void:
 	unit_state_machine.on_input(event)
 
 
+func take_damage(damage: int) -> void:
+	if not stats: return
+	
+	stats.take_damage(damage)
+
+
 func set_stats(value: UnitStats) -> void:
 	stats = value
 	

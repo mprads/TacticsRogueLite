@@ -27,6 +27,12 @@ func _input(event: InputEvent) -> void:
 		enemy_selected.emit(self)
 
 
+func take_damage(damage: int) -> void:
+	if not stats: return
+	
+	stats.take_damage(damage)
+
+
 func update_enemy() -> void:
 	if not stats: return
 	if not is_node_ready(): await ready

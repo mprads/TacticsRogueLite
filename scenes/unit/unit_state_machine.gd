@@ -38,9 +38,9 @@ func on_mouse_exited() -> void:
 		current_state.on_mouse_exited()
 
 
-func use_ability(target: Area2D) -> void:
+func use_ability(targets: Array[Node]) -> void:
 	if current_state:
-		current_state.use_ability(target)
+		current_state.use_ability(targets)
 
 func _on_transition_requested(from: UnitState, to: UnitState.STATE) -> void:
 	if from != current_state: return

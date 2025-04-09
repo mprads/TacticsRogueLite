@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://c8dola213qoyd"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c8dola213qoyd"]
 
-[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_0mn1m"]
+[ext_resource type="Script" uid="uid://bg8nyof0clqc4" path="res://resources/abilities/enfeeble.gd" id="1_l2w4l"]
+[ext_resource type="Resource" uid="uid://cul7li777uqqw" path="res://resources/statuses/enfeeble.tres" id="2_k3eyk"]
 
 [resource]
-script = ExtResource("1_0mn1m")
+script = ExtResource("1_l2w4l")
+status = ExtResource("2_k3eyk")
 name = "Enfeeble"
 cost = 5
 atlas_coord = Vector2i(6, 0)

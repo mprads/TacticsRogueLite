@@ -25,10 +25,10 @@ func handle_selected_unit(target: Unit) -> void:
 	match current_ability.target:
 		Ability.TARGET.SELF:
 			if target == aiming_unit:
-				aiming_unit.unit_state_machine.use_ability(target)
+				aiming_unit.unit_state_machine.use_ability([target])
 		Ability.TARGET.SINGLE_ALLY:
 			if target.is_in_group("player_unit") and target != aiming_unit:
-				aiming_unit.unit_state_machine.use_ability(target)
+				aiming_unit.unit_state_machine.use_ability([target])
 
 
 func handle_selected_enemy(target: Enemy) -> void:
@@ -36,4 +36,4 @@ func handle_selected_enemy(target: Enemy) -> void:
 	
 	if current_ability.target == Ability.TARGET.SINGLE_ENEMY:
 		if target.is_in_group("enemy_unit"):
-			aiming_unit.unit_state_machine.use_ability(target)
+			aiming_unit.unit_state_machine.use_ability([target])
