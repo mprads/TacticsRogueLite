@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://buwltkkp5pnbj"]
 
-[ext_resource type="Script" uid="uid://c1xnmqgad7q5g" path="res://resources/abilities/encourage.gd" id="1_hana2"]
+[ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_hana2"]
 [ext_resource type="Resource" uid="uid://278cm8aqrmdj" path="res://resources/statuses/encourage.tres" id="2_o1hnt"]
 
 [resource]

@@ -9,6 +9,8 @@ signal request_clear_fill_layer
 
 @export var stats: EnemyStats : set = set_enemy_stats
 
+@onready var status_manager: StatusManager = $StatusManager
+
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var shield_bar: ProgressBar = $ShieldBar
@@ -19,6 +21,8 @@ var selectable := false
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	
+	status_manager.status_owner = self
 
 
 func _input(event: InputEvent) -> void:

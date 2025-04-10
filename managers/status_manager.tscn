@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgd0velq3mde1"]
+
+[ext_resource type="Script" uid="uid://bwa4qgoeydcu5" path="res://managers/status_manager.gd" id="1_m8k0w"]
+
+[node name="StatusManager" type="GridContainer"]
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 15
+columns = 3
+script = ExtResource("1_m8k0w")

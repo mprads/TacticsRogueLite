@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://48bqo12l658s"
-path="res://.godot/imported/8x8Weaken.png-d146b6c88c0c2eea4562ac330045d342.ctex"
+uid="uid://mld865oytrka"
+path="res://.godot/imported/10x10Enfeeble.png-4f0bd1abe22798dca3560ed0b978488a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/statuses/8x8Weaken.png"
-dest_files=["res://.godot/imported/8x8Weaken.png-d146b6c88c0c2eea4562ac330045d342.ctex"]
+source_file="res://assets/icons/statuses/10x10Enfeeble.png"
+dest_files=["res://.godot/imported/10x10Enfeeble.png-4f0bd1abe22798dca3560ed0b978488a.ctex"]
 
 [params]
 

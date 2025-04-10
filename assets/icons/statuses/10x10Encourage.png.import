@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyp306un2ydha"
-path="res://.godot/imported/8x8Taunt.png-1b387df60ef1b4fa301b767d637089a6.ctex"
+uid="uid://bydvvcfeqb5jf"
+path="res://.godot/imported/10x10Encourage.png-9167558984752778166dd57994a46a45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/statuses/8x8Taunt.png"
-dest_files=["res://.godot/imported/8x8Taunt.png-1b387df60ef1b4fa301b767d637089a6.ctex"]
+source_file="res://assets/icons/statuses/10x10Encourage.png"
+dest_files=["res://.godot/imported/10x10Encourage.png-9167558984752778166dd57994a46a45.ctex"]
 
 [params]
 

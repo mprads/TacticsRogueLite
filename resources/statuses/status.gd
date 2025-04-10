@@ -2,11 +2,11 @@ extends Resource
 class_name Status
 
 signal status_applied(status: Status)
-signal status_changed
 
 enum TYPE { START_OF_TURN, END_OF_TURN }
 enum STACK_TYPE { NONE, INTENSITY, DURATION }
 
+@export var id: String
 @export var name: String
 @export var type: TYPE
 @export var stack_type: STACK_TYPE
@@ -19,7 +19,8 @@ enum STACK_TYPE { NONE, INTENSITY, DURATION }
 
 
 func init(_target: Node) -> void:
-	pass
+	print("init status %s on %s" % [id, _target.name])
+	# TODO set up modifiers for the status here
 
 
 func apply(_target: Node) -> void:
@@ -31,8 +32,10 @@ func get_tooltip(_target: Node) -> String:
 
 
 func set_duration(value: int) -> void:
-	pass
+	duration = value
+	emit_changed()
 
 
 func set_stacks(value: int) -> void:
-	pass
+	stacks = value
+	emit_changed()

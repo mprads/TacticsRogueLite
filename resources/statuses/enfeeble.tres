@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://cul7li777uqqw"]
 
-[ext_resource type="Texture2D" uid="uid://dwfsl2ykquhk7" path="res://assets/icons/statuses/8x8Enfeeble.png" id="1_286xf"]
+[ext_resource type="Texture2D" uid="uid://mld865oytrka" path="res://assets/icons/statuses/10x10Enfeeble.png" id="1_286xf"]
 [ext_resource type="Script" uid="uid://cwaglw3nkm6mf" path="res://resources/statuses/status.gd" id="1_uvd8s"]
 
 [resource]
 script = ExtResource("1_uvd8s")
+id = "enfeeble"
 name = "Enfeeble"
 type = 0
 stack_type = 2
-duration = 1
-stacks = 1
+duration = 2
+stacks = 0
 icon = ExtResource("1_286xf")
 tooltip = "take 25% more damage for n turns"
 metadata/_custom_type_script = "uid://cwaglw3nkm6mf"

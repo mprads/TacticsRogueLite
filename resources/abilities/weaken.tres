@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bytfe5idb40vq"]
 
-[ext_resource type="Script" uid="uid://b4okk36eu84rc" path="res://resources/abilities/weaken.gd" id="1_kmler"]
+[ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_kmler"]
 [ext_resource type="Resource" uid="uid://7setwuc4h8j6" path="res://resources/statuses/weaken.tres" id="2_dd3jy"]
 
 [resource]

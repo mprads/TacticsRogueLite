@@ -1,6 +1,6 @@
 extends Ability
 
-@export var base_damage := 8
+@export var base_damage := 1
 
 
 func apply_effects(targets: Array[Node]) -> void:

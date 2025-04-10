@@ -9,4 +9,4 @@ func execute(targets: Array[Node]) -> void:
 		if not target: continue
 		
 		if target is Enemy or target is Unit:
-			target.add_status(status)
+			target.status_manager.add_status(status)

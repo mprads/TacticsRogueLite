@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://vh15m4qw1i4k"]
+
+[ext_resource type="Script" uid="uid://cawbehtjs2o67" path="res://scenes/ui/status_ui.gd" id="1_qlv4y"]
+[ext_resource type="Texture2D" uid="uid://mld865oytrka" path="res://assets/icons/statuses/10x10Enfeeble.png" id="2_1aqle"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1aqle"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_h3ruk"]
+font_size = 8
+
+[node name="StatusUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qlv4y")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("2_1aqle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Duration" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 16.0
+offset_bottom = 17.0
+text = "3"
+label_settings = SubResource("LabelSettings_1aqle")
+
+[node name="Stacks" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 16.0
+offset_bottom = 17.0
+text = "3"
+label_settings = SubResource("LabelSettings_h3ruk")
