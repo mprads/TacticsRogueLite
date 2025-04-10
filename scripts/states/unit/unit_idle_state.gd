@@ -1,8 +1,6 @@
 extends UnitState
 class_name UnitIdleState
 
-var drag_and_drop: DragAndDrop
-
 
 func enter() -> void:
 	unit.selectable = false
@@ -26,12 +24,12 @@ func on_mouse_exited() -> void:
 
 
 func disable_drag_and_drop() -> void:
-	drag_and_drop.enabled = false
+	unit.drag_and_drop.enabled = false
 
 
 func enable_drap_and_drop() -> void:
 	if unit.moveable:
-		drag_and_drop.enabled = true
+		unit.drag_and_drop.enabled = true
 
 
 func on_ability_selected(ability: Ability) -> void:

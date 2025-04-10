@@ -5,8 +5,6 @@ enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING }
 
 @export var initial_state: STATE
 
-@export var drag_and_drop: DragAndDrop
-
 @onready var state_debug: Label = $"../StateDebug"
 
 var current_state: UnitState
@@ -16,18 +14,14 @@ var states: Dictionary[STATE, UnitState] = {}
 func init(unit: Unit) -> void:
 	Events.player_turn_started.connect(_on_player_turn_started)
 	unit.ability_selected.connect(_on_ability_selected)
-	drag_and_drop.drag_started.connect(_on_drag_started)
+	unit.drag_and_drop.drag_started.connect(_on_drag_started)
 	unit.movement_cancelled.connect(_on_movement_cancelled)
 
 	states[STATE.IDLE] = UnitIdleState.new()
-	states[STATE.IDLE].drag_and_drop = drag_and_drop
 	states[STATE.MOVING] = UnitMovingState.new()
-	states[STATE.MOVING].drag_and_drop = drag_and_drop
 	states[STATE.AIMING] = UnitAimingState.new()
 	states[STATE.DISABLED] = UnitDisabledState.new()
-	states[STATE.DISABLED].drag_and_drop = drag_and_drop
 	states[STATE.DEPLOYING] = UnitDeployingState.new()
-	states[STATE.DEPLOYING].drag_and_drop = drag_and_drop
 
 	for state in states.values():
 		state.unit = unit

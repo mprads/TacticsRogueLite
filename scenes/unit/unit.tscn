@@ -38,10 +38,9 @@ shape = SubResource("RectangleShape2D_bhlit")
 script = ExtResource("4_bhlit")
 target = NodePath("..")
 
-[node name="UnitStateMachine" type="Node" parent="." node_paths=PackedStringArray("drag_and_drop")]
+[node name="UnitStateMachine" type="Node" parent="."]
 script = ExtResource("5_vgvef")
 initial_state = 4
-drag_and_drop = NodePath("../DragAndDrop")
 
 [node name="StateDebug" type="Label" parent="."]
 offset_left = -33.0

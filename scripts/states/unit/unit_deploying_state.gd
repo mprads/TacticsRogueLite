@@ -1,11 +1,9 @@
 extends UnitState
 class_name UnitDeployingState
 
-var drag_and_drop: DragAndDrop
-
 
 func enter() -> void:
-	drag_and_drop.enabled = true
+	unit.drag_and_drop.enabled = true
 	unit.selectable = false
 
 
