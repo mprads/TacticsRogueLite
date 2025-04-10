@@ -15,6 +15,7 @@ func add_status(status: Status) -> void:
 		add_child(status_ui_instance)
 		status_ui_instance.status = status
 		status_ui_instance.status.init(status_owner)
+		return
 	
 	if not is_duration and not is_stacking: return
 	
