@@ -50,11 +50,13 @@ func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) ->
 	 
 	unit.global_position = starting_position
 	arenas[i].arena_grid.add_unit(tile, unit)
+	unit.movement_cancelled.emit()
 
 
 func _move_unit(unit: Node, arena: Arena, tile: Vector2i) -> void:
 	arena.arena_grid.add_unit(tile, unit)
 	unit.global_position = arena.get_global_from_tile(tile)
+	unit.move_cleanup()
 
 
 func _on_unit_drag_started(unit: Unit) -> void:
@@ -94,7 +96,10 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	var old_tile := old_arena.get_tile_from_global(starting_position)
 	var new_arena := arenas[drop_arena_index]
 	var new_tile := new_arena.get_hovered_tile()
-
+	
+	if new_tile == old_tile:
+		_reset_unit_to_starting_position(starting_position, unit)
+	
 	if new_arena == old_arena:
 		var delta: Vector2i = (new_tile - old_tile).abs()
 		var distance := int(delta.x + delta.y)

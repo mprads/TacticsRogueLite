@@ -38,6 +38,10 @@ func take_damage(damage: int) -> void:
 	stats.take_damage(damage)
 
 
+func move_cleanup() -> void:
+	pass
+
+
 func update_enemy() -> void:
 	if not stats: return
 	if not is_node_ready(): await ready

@@ -1,15 +1,16 @@
 extends UnitState
 class_name UnitDisabledState
 
+var drag_and_drop: DragAndDrop
 
 func enter() -> void:
-	Events.player_turn_started.connect(_on_player_turn_started)
+	drag_and_drop.enabled = false
 	unit.disabled = true
+	unit.moveable = false
 	unit.turn_complete.emit()
 
 
 func exit() -> void:
-	Events.player_turn_started.disconnect(_on_player_turn_started)
 	unit.disabled = false
 	unit.moveable = true
 
@@ -20,5 +21,5 @@ func on_input(event: InputEvent) -> void:
 			unit.unit_selected.emit(unit)
 
 
-func _on_player_turn_started() -> void:
-	transition_requested.emit(self, UnitState.STATE.IDLE)
+func on_player_turn_started() -> void:
+	transition_requested.emit(self, UnitStateMachine.STATE.IDLE)

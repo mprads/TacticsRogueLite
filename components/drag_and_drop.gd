@@ -2,8 +2,8 @@ extends Node
 class_name DragAndDrop
 
 signal drag_cancelled(starting_position: Vector2)
-signal drag_started
 signal dropped(starting_position: Vector2)
+signal drag_started
 
 @export var enabled: bool = true
 @export var target: Area2D

@@ -2,6 +2,7 @@ extends Area2D
 class_name Unit
 
 signal movement_complete
+signal movement_cancelled
 signal aim_started(ability: Ability)
 signal aim_stopped
 signal ability_selected(ability: Ability)
@@ -41,6 +42,10 @@ func take_damage(damage: int) -> void:
 	if not stats: return
 	
 	stats.take_damage(damage)
+
+
+func move_cleanup() -> void:
+	unit_state_machine.on_movement_complete()
 
 
 func set_stats(value: UnitStats) -> void:
