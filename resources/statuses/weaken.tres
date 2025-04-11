@@ -7,7 +7,7 @@
 script = ExtResource("1_jeus3")
 id = "weaken"
 name = "Weaken"
-type = 0
+type = 1
 stack_type = 2
 duration = 2
 stacks = 0

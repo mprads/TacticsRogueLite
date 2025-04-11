@@ -12,7 +12,6 @@ func exit() -> void:
 
 
 func use_ability(targets: Array[Node]) -> void:
-	print("%s ability on %s" % [unit.selected_ability.target,unit.stats.name])
 	unit.selected_ability.apply_effects(targets)
 	unit.stats.oz -= unit.selected_ability.cost
 	transition_requested.emit(self, UnitStateMachine.STATE.DISABLED)

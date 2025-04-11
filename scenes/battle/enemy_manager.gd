@@ -22,7 +22,8 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 		add_child(enemy_instance)
 		enemy_instance.stats = stats.duplicate()
 		unit_mover.setup_enemy(enemy_instance)
-		enemy_instance.turn_completed.connect(_on_enemy_turn_completed)
+		enemy_instance.status_manager.statuses_applied.connect(_on_enemy_statuses_applied.bind(enemy_instance))
+		enemy_instance.turn_completed.connect(_on_enemy_turn_completed.bind(enemy_instance))
 		enemy_instance.enemy_selected.connect(_on_enemy_selected)
 		enemy_instance.request_flood_fill.connect(_on_enemy_request_flood_fill.bind(enemy_instance))
 		enemy_instance.request_clear_fill_layer.connect(_on_enemy_request_clear_fill_layer.bind(enemy_instance))
@@ -41,6 +42,7 @@ func start_turn() -> void:
 	enemies_to_act.clear()
 	for enemy in get_children():
 		enemies_to_act.append(enemy)
+		enemy.status_manager.apply_statuses_by_type(Status.TYPE.START_OF_TURN)
 
 	_next_enemy_turn()
 
@@ -50,15 +52,22 @@ func _next_enemy_turn() -> void:
 		await get_tree().create_timer(.25).timeout
 		Events.enemy_turn_ended.emit()
 		return
-	# TODO replace this with start and end of turn once dots are added
-	var enemy = enemies_to_act[0]
-	enemies_to_act.erase(enemy)
+	
 	await get_tree().create_timer(.25).timeout
-	enemy.take_turn()
+	enemies_to_act[0].status_manager.apply_statuses_by_type(Status.TYPE.START_OF_TURN)
 
 
-func _on_enemy_turn_completed() -> void:
-	_next_enemy_turn()
+func _on_enemy_turn_completed(enemy: Enemy) -> void:
+	enemy.status_manager.apply_statuses_by_type(Status.TYPE.END_OF_TURN)
+
+
+func _on_enemy_statuses_applied(type: Status.TYPE, enemy: Enemy) -> void:
+	match type:
+		Status.TYPE.START_OF_TURN:
+			enemy.take_turn()
+		Status.TYPE.END_OF_TURN:
+			enemies_to_act.erase(enemy)
+			_next_enemy_turn()
 
 
 func _on_enemy_selected(enemy: Enemy) -> void:
