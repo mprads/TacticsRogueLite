@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene load_steps=9 format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Texture2D" uid="uid://cjh7q57rx3hfu" path="res://assets/sprites/potions/outline_sheet.png" id="1_fvc8g"]
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="2_vh40f"]
 [ext_resource type="Script" uid="uid://ubw0jaxdt4pp" path="res://components/drag_and_drop.gd" id="4_bhlit"]
 [ext_resource type="Script" uid="uid://dj6o3c6q523ek" path="res://scripts/states/unit_state_machine.gd" id="5_vgvef"]
+[ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="6_3po7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlit"]
 size = Vector2(36, 36)
@@ -41,6 +42,9 @@ target = NodePath("..")
 [node name="UnitStateMachine" type="Node" parent="."]
 script = ExtResource("5_vgvef")
 initial_state = 4
+
+[node name="StatusManager" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("6_3po7s")]
+status_owner = NodePath("..")
 
 [node name="StateDebug" type="Label" parent="."]
 offset_left = -33.0
