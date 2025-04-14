@@ -19,6 +19,7 @@ signal unit_selected(unit: Unit)
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
 @onready var unit_state_machine: UnitStateMachine = $UnitStateMachine
 @onready var status_manager: StatusManager = $StatusManager
+@onready var modifier_manager: ModifierManager = $ModifierManager
 
 @onready var moveable_debug: Label = $MoveableDebug
 

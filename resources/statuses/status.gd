@@ -12,15 +12,18 @@ enum STACK_TYPE { NONE, INTENSITY, DURATION }
 @export var stack_type: STACK_TYPE
 @export var duration: int : set = set_duration
 @export var stacks: int : set = set_stacks
+@export var modifier_type: Modifier.TYPE
+@export var value: float
 
 @export_category("Visuals")
 @export var icon: Texture2D
 @export_multiline var tooltip: String
 
 
-func init(_target: Node) -> void:
-	print("init status %s on %s" % [id, _target.name])
-	# TODO set up modifiers for the status here
+func init(target: Node) -> void:
+	assert(target.get("modifier_manager"), "No modifier manager on %s" % target)
+	
+	target.modifier_manager.add_modifier(id, type, Modifier.VALUE_MODIFIER.PERCENT, value)
 
 
 func apply(_target: Node) -> void:

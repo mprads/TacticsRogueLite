@@ -10,6 +10,7 @@ signal request_clear_fill_layer
 @export var stats: EnemyStats : set = set_enemy_stats
 
 @onready var status_manager: StatusManager = $StatusManager
+@onready var modifier_manager: ModifierManager = $ModifierManager
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar

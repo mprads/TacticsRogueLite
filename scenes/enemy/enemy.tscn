@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7xiv7x5cv04q"]
+[gd_scene load_steps=10 format=3 uid="uid://b7xiv7x5cv04q"]
 
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
 [ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="3_40wdo"]
+[ext_resource type="PackedScene" uid="uid://0ec0jkwp2ku4" path="res://managers/modifier_manager.tscn" id="3_tjssy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
 size = Vector2(32, 32)
@@ -33,6 +34,14 @@ visible = false
 position = Vector2(1, -11)
 shape = SubResource("RectangleShape2D_a3pup")
 
+[node name="ModifierManager" parent="." instance=ExtResource("3_tjssy")]
+
+[node name="StatusManager" parent="." instance=ExtResource("3_40wdo")]
+offset_left = -15.0
+offset_top = 5.0
+offset_right = 9.0
+offset_bottom = 20.0
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(30, 4)
 offset_left = -14.0
@@ -54,9 +63,3 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_a3pup")
 theme_override_styles/fill = SubResource("StyleBoxFlat_40wdo")
 value = 25.0
 show_percentage = false
-
-[node name="StatusManager" parent="." instance=ExtResource("3_40wdo")]
-offset_left = -15.0
-offset_top = 5.0
-offset_right = 9.0
-offset_bottom = 20.0
