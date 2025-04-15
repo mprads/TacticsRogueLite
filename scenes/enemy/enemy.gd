@@ -29,7 +29,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not selectable: return
 	
-	if event.is_action_pressed("left_mouse"):	
+	if event.is_action_pressed("left_mouse"):
 		enemy_selected.emit(self)
 
 

@@ -97,7 +97,7 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	var new_arena := arenas[drop_arena_index]
 	var new_tile := new_arena.get_hovered_tile()
 	
-	if new_tile == old_tile:
+	if new_tile == old_tile and new_arena == old_arena:
 		_reset_unit_to_starting_position(starting_position, unit)
 	
 	if new_arena == old_arena:
