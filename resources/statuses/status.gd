@@ -23,7 +23,11 @@ enum STACK_TYPE { NONE, INTENSITY, DURATION }
 func init(target: Node) -> void:
 	assert(target.get("modifier_manager"), "No modifier manager on %s" % target)
 
-	target.modifier_manager.add_modifier(id, modifier_type, Modifier.VALUE_MODIFIER.PERCENT, value)
+	if not target.modifier_manager.get_modifier(id):
+		target.modifier_manager.add_modifier(id, modifier_type, Modifier.VALUE_MODIFIER.PERCENT, value)
+	
+	if not changed.is_connected(_on_status_changed):
+		changed.connect(_on_status_changed.bind(target.modifier_manager)) 
 
 
 func apply(_target: Node) -> void:
@@ -42,3 +46,11 @@ func set_duration(value: int) -> void:
 func set_stacks(value: int) -> void:
 	stacks = value
 	emit_changed()
+
+
+func _on_status_changed(modifier_manager: ModifierManager) -> void:
+	if duration <= 0 and stack_type == STACK_TYPE.DURATION and modifier_manager:
+		modifier_manager.remove_modifier(id)
+
+	if stack_type == STACK_TYPE.INTENSITY and modifier_manager:
+		modifier_manager.increase_modifier_value(id, value)

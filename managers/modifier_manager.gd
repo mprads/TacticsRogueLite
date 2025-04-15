@@ -15,6 +15,22 @@ func add_modifier(
 	modifiers[source] = modifier_instance
 
 
+func remove_modifier(source: String) -> void:
+	modifiers.erase(source)
+
+
+func get_modifier(source: String) -> Modifier:
+	return modifiers.get(source)
+
+
+func increase_modifier_value(source: String, value: float) -> void:
+	var modifier = get_modifier(source)
+	
+	if not modifier: return
+	
+	modifier.percent_value += value
+
+
 func get_modifiers_by_type(type: Modifier.TYPE) -> Array[Modifier]:
 	var results: Array[Modifier] = []
 	
