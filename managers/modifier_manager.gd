@@ -19,7 +19,25 @@ func get_modifiers_by_type(type: Modifier.TYPE) -> Array[Modifier]:
 	var results: Array[Modifier] = []
 	
 	for modifier in modifiers.values():
+
 		if modifier.type == type:
 			results.append(modifier)
 	
 	return results
+
+
+func get_modified_value(base: int, type: Modifier.TYPE) -> int:
+	var mods = get_modifiers_by_type(type)
+
+	var flat_result := base
+	var percent_result := 1.0
+	
+	for mod in mods:
+		if mod.value_modifier == Modifier.VALUE_MODIFIER.PERCENT:
+			percent_result += mod.percent_value
+
+	for mod in mods:
+		if mod.value_modifier == Modifier.VALUE_MODIFIER.FLAT:
+			flat_result += mod.percent_value
+
+	return floori(flat_result * percent_result)

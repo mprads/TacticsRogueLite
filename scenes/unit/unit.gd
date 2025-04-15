@@ -42,8 +42,9 @@ func _input(event: InputEvent) -> void:
 
 func take_damage(damage: int) -> void:
 	if not stats: return
-	
-	stats.take_damage(damage)
+
+	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
+	stats.take_damage(modified_damage)
 
 
 func move_cleanup() -> void:

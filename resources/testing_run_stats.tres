@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="RunStats" load_steps=31 format=3 uid="uid://cog76ftpquwhv"]
+[gd_resource type="Resource" script_class="RunStats" load_steps=32 format=3 uid="uid://cog76ftpquwhv"]
 
 [ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
 [ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
 [ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="2_mnkgj"]
 [ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="3_isr74"]
+[ext_resource type="Resource" uid="uid://raksx0j8qtki" path="res://resources/potions/support_potion.tres" id="3_ncqbe"]
 [ext_resource type="Resource" uid="uid://c8dola213qoyd" path="res://resources/abilities/enfeeble.tres" id="4_ncqbe"]
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
 [ext_resource type="Resource" uid="uid://bytfe5idb40vq" path="res://resources/abilities/weaken.tres" id="5_fq33t"]
@@ -31,7 +32,8 @@ metadata/_custom_type_script = "uid://cene0083pbi52"
 script = ExtResource("1_23n1j")
 name = "Empty"
 bottle = SubResource("Resource_35bd7")
-oz = 0
+potion = ExtResource("3_ncqbe")
+oz = 10
 max_health = 15
 health = 7
 metadata/_custom_type_script = "uid://l8imbubpscrj"

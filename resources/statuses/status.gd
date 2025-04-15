@@ -22,8 +22,8 @@ enum STACK_TYPE { NONE, INTENSITY, DURATION }
 
 func init(target: Node) -> void:
 	assert(target.get("modifier_manager"), "No modifier manager on %s" % target)
-	
-	target.modifier_manager.add_modifier(id, type, Modifier.VALUE_MODIFIER.PERCENT, value)
+
+	target.modifier_manager.add_modifier(id, modifier_type, Modifier.VALUE_MODIFIER.PERCENT, value)
 
 
 func apply(_target: Node) -> void:
