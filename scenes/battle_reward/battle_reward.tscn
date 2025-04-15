@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctvath266c3y7"]
+[gd_scene load_steps=5 format=3 uid="uid://ctvath266c3y7"]
 
 [ext_resource type="Script" uid="uid://cuglhyehj33xg" path="res://scenes/battle_reward/battle_reward.gd" id="1_d75l8"]
 [ext_resource type="PackedScene" uid="uid://dueqwsk87m66w" path="res://scenes/battle_reward/reward_button.tscn" id="2_dv6k8"]
@@ -8,9 +8,6 @@ colors = PackedColorArray(0.25098, 0.25098, 0.25098, 1, 0, 0.34902, 0.243137, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_d75l8"]
 gradient = SubResource("Gradient_5xku6")
-
-[sub_resource type="LabelSettings" id="LabelSettings_dv6k8"]
-font_size = 32
 
 [node name="BattleReward" type="Control"]
 layout_mode = 3
@@ -48,8 +45,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Rewards"
-label_settings = SubResource("LabelSettings_dv6k8")
 horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
@@ -83,4 +80,5 @@ layout_mode = 2
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Continue"

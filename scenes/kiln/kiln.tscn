@@ -88,6 +88,7 @@ offset_left = -226.0
 offset_top = -104.0
 offset_right = -76.0
 offset_bottom = -72.0
+theme_override_font_sizes/font_size = 16
 text = "Heal 25%"
 
 [node name="LeaveButton" type="Button" parent="UI/MarginContainer/HBoxContainer/Control"]
@@ -98,4 +99,5 @@ offset_left = -40.0
 offset_top = -26.0
 offset_right = 40.0
 offset_bottom = 6.0
+theme_override_font_sizes/font_size = 16
 text = "Leave"

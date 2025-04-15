@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dir2ch11l46uj"]
+[gd_scene load_steps=11 format=3 uid="uid://dir2ch11l46uj"]
 
 [ext_resource type="Script" uid="uid://3yfbh6o15bpf" path="res://scenes/ui/recipe_panel.gd" id="1_1frvh"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="2_ppbwj"]
@@ -18,15 +18,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1frvh"]
 resource_local_to_scene = true
 bg_color = Color(0.536823, 0.536823, 9.62615e-07, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_u6oys"]
-font_size = 24
-
-[sub_resource type="LabelSettings" id="LabelSettings_v1i2h"]
-font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_kqwth"]
-font_size = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppbwj"]
 resource_local_to_scene = true
@@ -85,10 +76,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 24
 text = "Potion Name"
-label_settings = SubResource("LabelSettings_u6oys")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PotionVisuals"]
@@ -135,7 +127,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.03009, 0.994731)
 text = "Lightning Strike"
-label_settings = SubResource("LabelSettings_v1i2h")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -156,7 +147,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.998954, 0.994731)
 text = "Fireball"
-label_settings = SubResource("LabelSettings_kqwth")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

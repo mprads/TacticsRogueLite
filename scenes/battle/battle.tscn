@@ -109,19 +109,21 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -332.0
-offset_right = -8.0
-offset_bottom = -276.0
+offset_left = -188.0
+offset_top = -318.0
+offset_right = -5.0
+offset_bottom = -255.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="UI/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Battle Scene"
 
 [node name="Button" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Return to map"
 
 [node name="PartySelectionContainer" type="VBoxContainer" parent="UI"]
@@ -165,5 +167,6 @@ offset_left = 506.0
 offset_top = 249.0
 offset_right = 627.0
 offset_bottom = 275.0
+theme_override_font_sizes/font_size = 16
 disabled = true
 text = "Start Battle"

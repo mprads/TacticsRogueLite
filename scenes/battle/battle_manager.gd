@@ -112,7 +112,6 @@ func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 		new_label.global_position = area.get_global_from_tile(tile) - Battle.HALF_CELL_SIZE + Vector2(0, 8)
 		new_label.text = str(tile)
 		new_label.modulate = Color.BLACK
-		new_label.scale = Vector2(.65, .65)
 
 
 func _on_enemy_turn_ended() -> void:
@@ -125,7 +124,6 @@ func _on_player_turn_ended() -> void:
 
 func _on_start_battle_pressed() -> void:
 	start_battle_button.hide()
-	#bench.visible = false
 	unit_mover.arenas.erase(bench)
 	bench.queue_free()
 	_start_battle()

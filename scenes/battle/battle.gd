@@ -27,7 +27,7 @@ func start_battle() -> void:
 	battle_manager.start_deployment()
 
 
-func _generate_map() -> void:	
+func _generate_map() -> void:
 	if not map and not battle_manager:
 		return
 	
