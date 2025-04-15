@@ -29,7 +29,7 @@ bench = NodePath("BenchTileMap")
 bench_grid = NodePath("BenchTileMap/BenchGrid")
 
 [node name="ArenaTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter", "player_flood_filler", "enemy_flood_filler")]
-position = Vector2(210, 157)
+position = Vector2(168, 173)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAPz/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
 script = ExtResource("5_fh7rg")
@@ -66,7 +66,7 @@ highlight_layer = NodePath("../HighlightLayer")
 tile = Vector2i(2, 0)
 
 [node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
-position = Vector2(146, 221)
+position = Vector2(72, 220)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
 script = ExtResource("5_fh7rg")
@@ -93,8 +93,9 @@ script = ExtResource("9_oiw7q")
 unit_mover = NodePath("../UnitMover")
 flood_filler = NodePath("../ArenaTileMap/PlayerFloodFiller")
 
-[node name="AbilityManager" type="Node2D" parent="BattleManager"]
+[node name="AbilityManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("arena")]
 script = ExtResource("11_kd6yx")
+arena = NodePath("../ArenaTileMap")
 
 [node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
 script = ExtResource("9_agsc7")
@@ -155,18 +156,18 @@ layout_mode = 2
 [node name="UnitContextMenu" parent="UI" instance=ExtResource("12_mxe8n")]
 unique_name_in_owner = true
 visible = false
-offset_left = 427.0
-offset_top = 287.0
-offset_right = -13.0
-offset_bottom = -13.0
+offset_left = 439.0
+offset_top = 238.0
+offset_right = -1.0
+offset_bottom = -2.0
 
 [node name="StartBattleButton" type="Button" parent="UI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 26)
-offset_left = 506.0
-offset_top = 249.0
-offset_right = 627.0
-offset_bottom = 275.0
+offset_left = 516.0
+offset_top = 209.0
+offset_right = 637.0
+offset_bottom = 235.0
 theme_override_font_sizes/font_size = 16
 disabled = true
 text = "Start Battle"
