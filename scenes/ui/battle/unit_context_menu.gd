@@ -4,7 +4,7 @@ class_name UnitContextMenu
 @export var unit: Unit : set = set_unit
 
 @onready var header_label: Label = %HeaderLabel
-@onready var ability_container: HBoxContainer = %AbilityContainer
+@onready var ability_container: VBoxContainer = %AbilityContainer
 @onready var ability_button_1: Button = %AbilityButton1
 @onready var ability_button_2: Button = %AbilityButton2
 
