@@ -15,6 +15,7 @@ const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.ts
 @onready var player_manager: PlayerManager = $PlayerManager
 @onready var ability_manager: AbilityManager = $AbilityManager
 @onready var unit_mover: UnitMover = $UnitMover
+@onready var target_selector_ui: TargetSelectorUI = $TargetSelectorUI
 
 @onready var party_selection_container: VBoxContainer = %PartySelectionContainer
 @onready var unit_context_menu: Control = %UnitContextMenu
@@ -147,15 +148,21 @@ func _on_change_active_unit(unit: Unit) -> void:
 
 func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	arena.enable_flood_filler("PLAYER")
+	target_selector_ui.enabled = true
+	target_selector_ui.starting_position = unit.global_position
 	var i := unit_mover.get_arena_for_position(unit.global_position)
 	var tile := unit_mover.arenas[i].get_tile_from_global(unit.global_position)
 	arena.player_flood_filler.flood_fill_from_tile(tile, ability.max_range, false, ability.atlas_coord)
 	player_manager.disable_drag_and_drop()
 	ability_manager.handle_unit_aim(unit, ability)
+	
+	
 
 
 func _on_unit_aim_stopped() -> void:
 	arena.clear_flood_filler("PLAYER")
+	target_selector_ui.enabled = false
+	target_selector_ui.starting_position = Vector2.ZERO
 	player_manager.enable_drag_and_drop()
 	ability_manager.handle_aim_stopped()
 

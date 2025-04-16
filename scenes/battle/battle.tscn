@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=16 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://tqul7q8whaw6" path="res://resources/battle_maps/testing_6x6.tres" id="2_xd4uy"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="11_fisqk"]
 [ext_resource type="Script" uid="uid://c0xa4g4qcwni3" path="res://scenes/battle/ability_manager.gd" id="11_kd6yx"]
 [ext_resource type="PackedScene" uid="uid://bgioejj4mplt5" path="res://scenes/ui/battle/unit_context_menu.tscn" id="12_mxe8n"]
+[ext_resource type="PackedScene" uid="uid://mle1y0lql1qp" path="res://scenes/target_selector_ui/target_selector.tscn" id="13_t1kk3"]
 
 [node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
@@ -29,7 +30,7 @@ bench = NodePath("BenchTileMap")
 bench_grid = NodePath("BenchTileMap/BenchGrid")
 
 [node name="ArenaTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter", "player_flood_filler", "enemy_flood_filler")]
-position = Vector2(168, 173)
+position = Vector2(138, 158)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAPz/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
 script = ExtResource("5_fh7rg")
@@ -67,7 +68,7 @@ highlight_layer = NodePath("../HighlightLayer")
 tile = Vector2i(2, 0)
 
 [node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
-position = Vector2(72, 220)
+position = Vector2(74, 222)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
 script = ExtResource("5_fh7rg")
@@ -103,6 +104,8 @@ arena = NodePath("../ArenaTileMap")
 script = ExtResource("9_agsc7")
 unit_mover = NodePath("../UnitMover")
 flood_filler = NodePath("../ArenaTileMap/EnemyFloodFiller")
+
+[node name="TargetSelectorUI" parent="BattleManager" instance=ExtResource("13_t1kk3")]
 
 [node name="UI" type="CanvasLayer" parent="."]
 

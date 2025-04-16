@@ -26,6 +26,12 @@ func on_input(event: InputEvent) -> void:
 			unit.unit_selected.emit(unit)
 
 
+func on_ability_selected(ability: Ability) -> void:
+	unit.selected_ability = ability
+	unit.aim_stopped.emit()
+	unit.aim_started.emit(unit.selected_ability)
+
+
 func on_mouse_entered() -> void:
 	unit.selectable = true
 

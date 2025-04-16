@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://mle1y0lql1qp"]
+
+[ext_resource type="Script" uid="uid://etyxvtkdpd6h" path="res://scenes/target_selector_ui/target_selector.gd" id="1_ut0kj"]
+
+[sub_resource type="Curve" id="Curve_icg0e"]
+_limits = [0.2, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.902439, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="TargetSelectorUI" type="Node2D"]
+script = ExtResource("1_ut0kj")
+
+[node name="MousePoint" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer"]
+width = 4.0
+width_curve = SubResource("Curve_icg0e")
+default_color = Color(0.419608, 0.243137, 0.458824, 1)
