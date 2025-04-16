@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_hana2")
 status = ExtResource("2_o1hnt")
+color = Color(0.984314, 0.419608, 0.113725, 1)
 name = "Encourage"
 cost = 5
 atlas_coord = Vector2i(5, 0)

@@ -1,6 +1,34 @@
-[gd_resource type="Resource" script_class="Bottle" load_steps=2 format=3 uid="uid://dq1krx3jsbqei"]
+[gd_resource type="Resource" script_class="Bottle" load_steps=8 format=3 uid="uid://dq1krx3jsbqei"]
 
+[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_jdw3e"]
 [ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="1_ruqw2"]
+[ext_resource type="Script" uid="uid://c6mm720la6mee" path="res://resources/abilities/attack.gd" id="2_s35gh"]
+[ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="3_5u07d"]
+[ext_resource type="Resource" uid="uid://glh47ax4w5r" path="res://resources/statuses/brace.tres" id="4_3xc5q"]
+
+[sub_resource type="Resource" id="Resource_53x5n"]
+script = ExtResource("2_s35gh")
+base_damage = 5
+name = "Melee"
+cost = 0
+atlas_coord = Vector2i(4, 0)
+type = 0
+target = 3
+shape = Array[Vector2i]([])
+max_range = 1
+metadata/_custom_type_script = "uid://dxqix5ovn77hl"
+
+[sub_resource type="Resource" id="Resource_a84ej"]
+script = ExtResource("3_5u07d")
+status = ExtResource("4_3xc5q")
+name = "Defend"
+cost = 0
+atlas_coord = Vector2i(5, 0)
+type = 1
+target = 0
+shape = Array[Vector2i]([])
+max_range = 0
+metadata/_custom_type_script = "uid://dxqix5ovn77hl"
 
 [resource]
 script = ExtResource("1_ruqw2")
@@ -10,4 +38,5 @@ sprite_size = 32
 base_health = 10
 max_oz = 15
 base_movement = 4
+base_abilities = Array[ExtResource("1_jdw3e")]([SubResource("Resource_53x5n"), SubResource("Resource_a84ej")])
 metadata/_custom_type_script = "uid://cene0083pbi52"

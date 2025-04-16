@@ -4,16 +4,13 @@
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="2_vh40f"]
 [ext_resource type="Script" uid="uid://ubw0jaxdt4pp" path="res://components/drag_and_drop.gd" id="4_bhlit"]
+[ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="4_w7udy"]
 [ext_resource type="Script" uid="uid://dj6o3c6q523ek" path="res://scripts/states/unit_state_machine.gd" id="5_vgvef"]
 [ext_resource type="PackedScene" uid="uid://0ec0jkwp2ku4" path="res://managers/modifier_manager.tscn" id="6_0wuuu"]
 [ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="6_3po7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlit"]
 size = Vector2(36, 36)
-
-[sub_resource type="LabelSettings" id="LabelSettings_vqlpx"]
-font_size = 8
-font_color = Color(0, 0, 0, 1)
 
 [node name="Unit" type="Area2D" groups=["player_unit"]]
 script = ExtResource("1_vh40f")
@@ -36,6 +33,10 @@ visible = false
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_bhlit")
 
+[node name="FloatingTextSpawner" type="Node2D" parent="."]
+position = Vector2(-1, -12)
+script = ExtResource("4_w7udy")
+
 [node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_bhlit")
 target = NodePath("..")
@@ -54,13 +55,13 @@ offset_left = -39.0
 offset_top = -46.0
 offset_right = 39.0
 offset_bottom = -24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "no state"
-label_settings = SubResource("LabelSettings_vqlpx")
 
 [node name="MoveableDebug" type="Label" parent="."]
-offset_left = -39.0
+offset_left = -25.0
 offset_top = -37.0
-offset_right = 53.0
+offset_right = 67.0
 offset_bottom = -15.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "moveable"
-label_settings = SubResource("LabelSettings_vqlpx")

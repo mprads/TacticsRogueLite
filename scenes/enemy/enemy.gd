@@ -11,6 +11,7 @@ signal request_clear_fill_layer
 
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
+@onready var floating_text_spawner: FloatingTextSpawner = $FloatingTextSpawner
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar
@@ -38,6 +39,13 @@ func take_damage(damage: int) -> void:
 	
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 	stats.take_damage(modified_damage)
+	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+
+
+func spawn_floating_text(text: String, text_color) -> void:
+	if not floating_text_spawner: return
+	
+	floating_text_spawner.spawn_text(text, text_color)
 
 
 func move_cleanup() -> void:

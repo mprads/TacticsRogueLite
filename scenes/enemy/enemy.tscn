@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7xiv7x5cv04q"]
+[gd_scene load_steps=11 format=3 uid="uid://b7xiv7x5cv04q"]
 
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
 [ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="3_40wdo"]
+[ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="3_gl05p"]
 [ext_resource type="PackedScene" uid="uid://0ec0jkwp2ku4" path="res://managers/modifier_manager.tscn" id="3_tjssy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
@@ -33,6 +34,10 @@ texture = ExtResource("1_4a83h")
 visible = false
 position = Vector2(1, -11)
 shape = SubResource("RectangleShape2D_a3pup")
+
+[node name="FloatingTextSpawner" type="Node2D" parent="."]
+position = Vector2(0, -11)
+script = ExtResource("3_gl05p")
 
 [node name="ModifierManager" parent="." instance=ExtResource("3_tjssy")]
 

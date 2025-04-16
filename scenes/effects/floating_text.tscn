@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf5eeolalu6dd"]
+
+[ext_resource type="Script" uid="uid://c0s1rqjykftur" path="res://scenes/effects/floating_text.gd" id="1_rxnrs"]
+
+[node name="FloatingText" type="Node2D"]
+script = ExtResource("1_rxnrs")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "10"

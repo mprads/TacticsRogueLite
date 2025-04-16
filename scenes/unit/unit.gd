@@ -20,6 +20,7 @@ signal unit_selected(unit: Unit)
 @onready var unit_state_machine: UnitStateMachine = $UnitStateMachine
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
+@onready var floating_text_spawner: FloatingTextSpawner = $FloatingTextSpawner
 
 @onready var moveable_debug: Label = $MoveableDebug
 
@@ -45,6 +46,14 @@ func take_damage(damage: int) -> void:
 	
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 	stats.take_damage(modified_damage)
+	# Would prefer if this was handled in the effect resource, but need modified value
+	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+
+
+func spawn_floating_text(text: String, text_color) -> void:
+	if not floating_text_spawner: return
+	
+	floating_text_spawner.spawn_text(text, text_color)
 
 
 func move_cleanup() -> void:

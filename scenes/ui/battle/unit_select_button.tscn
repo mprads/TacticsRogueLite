@@ -23,7 +23,7 @@ bg_color = Color(0.207843, 0.803922, 0.211765, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqp6i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_057j8"]
-bg_color = Color(0.976471, 0.760784, 0.168627, 0.588235)
+bg_color = Color(0.976471, 0.760784, 0.168627, 0.784314)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp0f2"]
 bg_color = Color(0.222923, 0.102412, 0.0593943, 1)
@@ -103,7 +103,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_3ktk7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5j4w4")
-value = 50.0
+value = 100.0
 show_percentage = false
 
 [node name="ShieldBar" type="ProgressBar" parent="MarginContainer/InventoryUnitUI6/VBoxContainer/Control"]
@@ -117,7 +117,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_eqp6i")
 theme_override_styles/fill = SubResource("StyleBoxFlat_057j8")
-value = 25.0
+value = 75.0
 show_percentage = false
 
 [node name="PotionBar" type="ProgressBar" parent="MarginContainer/InventoryUnitUI6/VBoxContainer"]

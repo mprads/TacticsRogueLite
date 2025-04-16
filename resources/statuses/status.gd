@@ -17,6 +17,7 @@ enum STACK_TYPE { NONE, INTENSITY, DURATION }
 
 @export_category("Visuals")
 @export var icon: Texture2D
+@export var color: Color
 @export_multiline var tooltip: String
 
 

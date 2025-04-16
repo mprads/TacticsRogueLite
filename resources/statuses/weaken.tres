@@ -14,5 +14,6 @@ stacks = 0
 modifier_type = 0
 value = -0.5
 icon = ExtResource("1_asimt")
+color = Color(0.0862745, 0.352941, 0.298039, 1)
 tooltip = "Deal 50% less damage for n turns"
 metadata/_custom_type_script = "uid://cwaglw3nkm6mf"

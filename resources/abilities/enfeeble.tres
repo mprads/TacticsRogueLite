@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_0mn1m")
 status = ExtResource("2_k3eyk")
+color = Color(0.0862745, 0.352941, 0.298039, 1)
 name = "Enfeeble"
 cost = 5
 atlas_coord = Vector2i(6, 0)

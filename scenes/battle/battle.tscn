@@ -37,6 +37,7 @@ arena_grid = NodePath("ArenaGrid")
 tile_highlighter = NodePath("ArenaHighlighter")
 player_flood_filler = NodePath("PlayerFloodFiller")
 enemy_flood_filler = NodePath("EnemyFloodFiller")
+metadata/_edit_lock_ = true
 
 [node name="PlayerFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
 tile_set = ExtResource("3_xd4uy")
@@ -72,6 +73,7 @@ tile_set = ExtResource("3_xd4uy")
 script = ExtResource("5_fh7rg")
 arena_grid = NodePath("BenchGrid")
 tile_highlighter = NodePath("BenchHightlighter")
+metadata/_edit_lock_ = true
 
 [node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/BenchTileMap"]
 tile_set = ExtResource("3_xd4uy")

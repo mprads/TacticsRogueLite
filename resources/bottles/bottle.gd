@@ -10,3 +10,4 @@ class_name Bottle
 @export var base_health := 1
 @export var max_oz := 1
 @export var base_movement := 1
+@export var base_abilities: Array[Ability]
