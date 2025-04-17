@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsme3d6yq3mxs"
-path.s3tc="res://.godot/imported/filling_sheet.png-12385f0d1a66b64aac01ae834a969156.s3tc.ctex"
+uid="uid://ds4rnuhypjs8a"
+path="res://.godot/imported/godot_logo.png-89258be532bb292e475149e3c00d215d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/potions/filling_sheet.png"
-dest_files=["res://.godot/imported/filling_sheet.png-12385f0d1a66b64aac01ae834a969156.s3tc.ctex"]
+source_file="res://addons/shaderV/examples/godot_logo.png"
+dest_files=["res://.godot/imported/godot_logo.png-89258be532bb292e475149e3c00d215d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
