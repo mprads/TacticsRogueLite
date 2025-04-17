@@ -60,6 +60,21 @@ func move_cleanup() -> void:
 	unit_state_machine.on_movement_complete()
 
 
+func update_visuals() -> void:
+	if not stats: return
+	
+	outline.texture = stats.bottle.bottle_sprite
+	filling.texture = stats.bottle.liquid_mask
+	
+	if stats.potion:
+		filling.visible = true
+		filling.material.set_shader_parameter('Mask', stats.bottle.liquid_mask)
+		filling.material.set_shader_parameter('Color', stats.potion.color)
+		filling.material.set_shader_parameter('Fill', (float(stats.oz) / float(stats.bottle.max_oz)))
+	else:
+		filling.visible = false
+
+
 func set_stats(value: UnitStats) -> void:
 	stats = value
 	
@@ -69,14 +84,7 @@ func set_stats(value: UnitStats) -> void:
 	if not is_node_ready():
 		await ready
 
-	outline.region_rect.position = Vector2(stats.bottle.sprite_coordinates) * 32
-	filling.region_rect.position = Vector2(stats.bottle.sprite_coordinates) * 32
-	
-	if stats.potion:
-		filling.visible = true
-		filling.modulate = stats.potion.color
-	else:
-		filling.visible = false
+	update_visuals()
 
 
 func set_moveable(value: bool) -> void:

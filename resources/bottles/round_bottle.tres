@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Bottle" load_steps=8 format=3 uid="uid://3dqm06n0wu44"]
+[gd_resource type="Resource" script_class="Bottle" load_steps=10 format=3 uid="uid://3dqm06n0wu44"]
 
 [ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="1_44iwc"]
 [ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_gw2ly"]
 [ext_resource type="Script" uid="uid://c6mm720la6mee" path="res://resources/abilities/attack.gd" id="2_m0m78"]
 [ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="3_qr7tq"]
 [ext_resource type="Resource" uid="uid://glh47ax4w5r" path="res://resources/statuses/brace.tres" id="4_p3ih0"]
+[ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="5_qr7tq"]
+[ext_resource type="Texture2D" uid="uid://dnxmwngq5lcri" path="res://assets/sprites/potions/round_liquid_mask.png" id="6_p3ih0"]
 
 [sub_resource type="Resource" id="Resource_861o8"]
 script = ExtResource("2_m0m78")
@@ -35,6 +37,8 @@ script = ExtResource("1_44iwc")
 name = "Round Bottle"
 sprite_coordinates = Vector2i(0, 0)
 sprite_size = 32
+bottle_sprite = ExtResource("5_qr7tq")
+liquid_mask = ExtResource("6_p3ih0")
 base_health = 15
 max_oz = 10
 base_movement = 3

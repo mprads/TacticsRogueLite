@@ -175,7 +175,7 @@ func _request_remove_components() -> void:
 
 func _update_component_cost(is_vial: bool) -> void:
 	for component in component_container.get_children():
-		var cost_index = current_recipe.costs.find_custom(func(cost): return cost.item_key == component.item.key)
+		var cost_index = current_recipe.costs.find_custom(func(item): return item.item_key == component.item.key)
 		var cost = current_recipe.costs[cost_index]
 		
 		if is_vial:

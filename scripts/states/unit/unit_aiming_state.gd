@@ -14,6 +14,7 @@ func exit() -> void:
 func use_ability(targets: Array[Node]) -> void:
 	unit.selected_ability.apply_effects(targets, unit.modifier_manager)
 	unit.stats.oz -= unit.selected_ability.cost
+	unit.update_visuals()
 	transition_requested.emit(self, UnitStateMachine.STATE.DISABLED)
 
 

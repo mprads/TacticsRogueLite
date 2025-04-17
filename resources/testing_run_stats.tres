@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RunStats" load_steps=43 format=3 uid="uid://cog76ftpquwhv"]
+[gd_resource type="Resource" script_class="RunStats" load_steps=49 format=3 uid="uid://cog76ftpquwhv"]
 
 [ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
 [ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
 [ext_resource type="Resource" uid="uid://bytfe5idb40vq" path="res://resources/abilities/weaken.tres" id="5_fq33t"]
 [ext_resource type="Resource" uid="uid://glh47ax4w5r" path="res://resources/statuses/brace.tres" id="5_p44xe"]
+[ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="6_dj4pj"]
 [ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="6_ls2tb"]
+[ext_resource type="Texture2D" uid="uid://dnxmwngq5lcri" path="res://assets/sprites/potions/round_liquid_mask.png" id="7_5c5c0"]
 [ext_resource type="Resource" uid="uid://b5r4cpgwt0p4n" path="res://resources/abilities/shield.tres" id="7_pb28d"]
 [ext_resource type="Texture2D" uid="uid://bs1lylhmwysak" path="res://assets/sprites/vials/vial_filling.png" id="7_wchyp"]
 [ext_resource type="Resource" uid="uid://4i7pwdm7f8yq" path="res://resources/abilities/taunt.tres" id="8_p44xe"]
@@ -20,6 +22,10 @@
 [ext_resource type="Resource" uid="uid://b8w5c510evcfa" path="res://resources/abilities/fireball.tres" id="9_l5ffo"]
 [ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="9_xa4qb"]
 [ext_resource type="Resource" uid="uid://cq02o4i8pw4gn" path="res://resources/abilities/lightning_strike.tres" id="10_asbe1"]
+[ext_resource type="Texture2D" uid="uid://br1cxrj8gb3wu" path="res://assets/sprites/potions/base_square.png" id="13_hcd5x"]
+[ext_resource type="Texture2D" uid="uid://wqowok1fo7ey" path="res://assets/sprites/potions/square_liquid_mask.png" id="14_2m8go"]
+[ext_resource type="Texture2D" uid="uid://dp2ah3k7uejr3" path="res://assets/sprites/potions/base_triangle.png" id="17_qn745"]
+[ext_resource type="Texture2D" uid="uid://da5gib3xmdpqp" path="res://assets/sprites/potions/triangle_liquid_mask.png" id="18_cah5c"]
 
 [sub_resource type="Resource" id="Resource_l5ffo"]
 script = ExtResource("3_ls2tb")
@@ -50,8 +56,10 @@ script = ExtResource("2_mnkgj")
 name = "Round Bottle"
 sprite_coordinates = Vector2i(0, 0)
 sprite_size = 32
+bottle_sprite = ExtResource("6_dj4pj")
+liquid_mask = ExtResource("7_5c5c0")
 base_health = 15
-max_oz = 10
+max_oz = 20
 base_movement = 3
 base_abilities = Array[ExtResource("3_isr74")]([SubResource("Resource_l5ffo"), SubResource("Resource_asbe1")])
 metadata/_custom_type_script = "uid://cene0083pbi52"
@@ -61,7 +69,7 @@ script = ExtResource("1_23n1j")
 name = "Empty"
 bottle = SubResource("Resource_35bd7")
 potion = ExtResource("3_ncqbe")
-oz = 10
+oz = 20
 max_health = 15
 health = 7
 metadata/_custom_type_script = "uid://l8imbubpscrj"
@@ -95,8 +103,10 @@ script = ExtResource("2_mnkgj")
 name = "Round Bottle"
 sprite_coordinates = Vector2i(0, 0)
 sprite_size = 32
+bottle_sprite = ExtResource("6_dj4pj")
+liquid_mask = ExtResource("7_5c5c0")
 base_health = 15
-max_oz = 10
+max_oz = 20
 base_movement = 3
 base_abilities = Array[ExtResource("3_isr74")]([SubResource("Resource_kg6ig"), SubResource("Resource_geoi6")])
 metadata/_custom_type_script = "uid://cene0083pbi52"
@@ -114,7 +124,7 @@ script = ExtResource("1_23n1j")
 name = "Debuffer"
 bottle = SubResource("Resource_5c5c0")
 potion = SubResource("Resource_hcd5x")
-oz = 5
+oz = 10
 max_health = 20
 health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"
@@ -148,8 +158,10 @@ script = ExtResource("2_mnkgj")
 name = "Square Bottle"
 sprite_coordinates = Vector2i(1, 0)
 sprite_size = 32
+bottle_sprite = ExtResource("13_hcd5x")
+liquid_mask = ExtResource("14_2m8go")
 base_health = 20
-max_oz = 10
+max_oz = 20
 base_movement = 2
 base_abilities = Array[ExtResource("3_isr74")]([SubResource("Resource_u00lk"), SubResource("Resource_o8gc1")])
 metadata/_custom_type_script = "uid://cene0083pbi52"
@@ -167,7 +179,7 @@ script = ExtResource("1_23n1j")
 name = "Shielder"
 bottle = SubResource("Resource_qn745")
 potion = SubResource("Resource_cah5c")
-oz = 10
+oz = 15
 max_health = 20
 health = 13
 metadata/_custom_type_script = "uid://l8imbubpscrj"
@@ -201,6 +213,8 @@ script = ExtResource("2_mnkgj")
 name = "Triangle Bottle"
 sprite_coordinates = Vector2i(2, 0)
 sprite_size = 32
+bottle_sprite = ExtResource("17_qn745")
+liquid_mask = ExtResource("18_cah5c")
 base_health = 10
 max_oz = 15
 base_movement = 4

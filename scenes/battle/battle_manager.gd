@@ -155,8 +155,6 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	arena.player_flood_filler.flood_fill_from_tile(tile, ability.max_range, false, ability.atlas_coord)
 	player_manager.disable_drag_and_drop()
 	ability_manager.handle_unit_aim(unit, ability)
-	
-	
 
 
 func _on_unit_aim_stopped() -> void:
