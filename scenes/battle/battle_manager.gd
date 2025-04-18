@@ -101,6 +101,7 @@ func _start_battle() -> void:
 	for unit in player_manager.get_children():
 		var selection_ui_instance := UNIT_SELECT_BUTTON.instantiate()
 		party_selection_container.add_child(selection_ui_instance)
+		selection_ui_instance.pressed.connect(_on_change_active_unit.bind(unit))
 		selection_ui_instance.unit = unit
 
 	player_manager.start_turn()
