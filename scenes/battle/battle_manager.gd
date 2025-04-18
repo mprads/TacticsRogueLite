@@ -15,6 +15,7 @@ const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.ts
 @onready var player_manager: PlayerManager = $PlayerManager
 @onready var ability_manager: AbilityManager = $AbilityManager
 @onready var unit_mover: UnitMover = $UnitMover
+@onready var target_selector_ui: TargetSelectorUI = $TargetSelectorUI
 
 @onready var party_selection_container: VBoxContainer = %PartySelectionContainer
 @onready var unit_context_menu: Control = %UnitContextMenu
@@ -100,6 +101,7 @@ func _start_battle() -> void:
 	for unit in player_manager.get_children():
 		var selection_ui_instance := UNIT_SELECT_BUTTON.instantiate()
 		party_selection_container.add_child(selection_ui_instance)
+		selection_ui_instance.pressed.connect(_on_change_active_unit.bind(unit))
 		selection_ui_instance.unit = unit
 
 	player_manager.start_turn()
@@ -112,7 +114,6 @@ func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 		new_label.global_position = area.get_global_from_tile(tile) - Battle.HALF_CELL_SIZE + Vector2(0, 8)
 		new_label.text = str(tile)
 		new_label.modulate = Color.BLACK
-		new_label.scale = Vector2(.65, .65)
 
 
 func _on_enemy_turn_ended() -> void:
@@ -125,7 +126,6 @@ func _on_player_turn_ended() -> void:
 
 func _on_start_battle_pressed() -> void:
 	start_battle_button.hide()
-	#bench.visible = false
 	unit_mover.arenas.erase(bench)
 	bench.queue_free()
 	_start_battle()
@@ -149,6 +149,8 @@ func _on_change_active_unit(unit: Unit) -> void:
 
 func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	arena.enable_flood_filler("PLAYER")
+	target_selector_ui.enabled = true
+	target_selector_ui.starting_position = unit.global_position
 	var i := unit_mover.get_arena_for_position(unit.global_position)
 	var tile := unit_mover.arenas[i].get_tile_from_global(unit.global_position)
 	arena.player_flood_filler.flood_fill_from_tile(tile, ability.max_range, false, ability.atlas_coord)
@@ -158,6 +160,8 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 
 func _on_unit_aim_stopped() -> void:
 	arena.clear_flood_filler("PLAYER")
+	target_selector_ui.enabled = false
+	target_selector_ui.starting_position = Vector2.ZERO
 	player_manager.enable_drag_and_drop()
 	ability_manager.handle_aim_stopped()
 

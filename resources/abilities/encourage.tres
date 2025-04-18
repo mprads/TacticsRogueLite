@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://buwltkkp5pnbj"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://buwltkkp5pnbj"]
 
-[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_hana2"]
+[ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_hana2"]
+[ext_resource type="Resource" uid="uid://278cm8aqrmdj" path="res://resources/statuses/encourage.tres" id="2_o1hnt"]
 
 [resource]
 script = ExtResource("1_hana2")
+status = ExtResource("2_o1hnt")
+color = Color(0.984314, 0.419608, 0.113725, 1)
 name = "Encourage"
 cost = 5
 atlas_coord = Vector2i(5, 0)

@@ -161,11 +161,13 @@ size_flags_vertical = 8
 [node name="PotionButton" type="Button" parent="UI/MarginContainer/ButtonContainer/SelectionButtons"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Brew Potion"
 
 [node name="VialButton" type="Button" parent="UI/MarginContainer/ButtonContainer/SelectionButtons"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Brew Vial"
 
 [node name="BackButton" type="Button" parent="UI/MarginContainer/ButtonContainer"]
@@ -184,6 +186,7 @@ offset_right = -2.0
 offset_bottom = -81.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 16
 text = "Back"
 
 [node name="LeaveButton" type="Button" parent="UI/MarginContainer/ButtonContainer"]
@@ -195,6 +198,7 @@ offset_left = 98.0
 offset_top = -49.0
 offset_right = 198.0
 offset_bottom = -17.0
+theme_override_font_sizes/font_size = 16
 text = "Leave"
 
 [node name="NoRecipesLabel" type="Label" parent="UI/MarginContainer/ButtonContainer"]
@@ -205,5 +209,6 @@ offset_left = -367.0
 offset_top = -180.0
 offset_right = -74.0
 offset_bottom = -133.0
+theme_override_font_sizes/font_size = 16
 text = "Looks like you have no brewable
 recipes"

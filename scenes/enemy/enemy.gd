@@ -9,8 +9,13 @@ signal request_clear_fill_layer
 
 @export var stats: EnemyStats : set = set_enemy_stats
 
+@onready var status_manager: StatusManager = $StatusManager
+@onready var modifier_manager: ModifierManager = $ModifierManager
+@onready var floating_text_spawner: FloatingTextSpawner = $FloatingTextSpawner
+
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var shield_bar: ProgressBar = $ShieldBar
 
 var selectable := false
 
@@ -18,13 +23,33 @@ var selectable := false
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	
+	status_manager.status_owner = self
 
 
 func _input(event: InputEvent) -> void:
 	if not selectable: return
 	
-	if event.is_action_pressed("left_mouse"):	
+	if event.is_action_pressed("left_mouse"):
 		enemy_selected.emit(self)
+
+
+func take_damage(damage: int) -> void:
+	if not stats: return
+	
+	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
+	stats.take_damage(modified_damage)
+	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+
+
+func spawn_floating_text(text: String, text_color) -> void:
+	if not floating_text_spawner: return
+	
+	floating_text_spawner.spawn_text(text, text_color)
+
+
+func move_cleanup() -> void:
+	pass
 
 
 func update_enemy() -> void:
@@ -34,6 +59,8 @@ func update_enemy() -> void:
 	sprite_2d.texture = stats.sprite
 	health_bar.max_value = stats.max_health
 	health_bar.value = stats.health
+	shield_bar.max_value = stats.max_health
+	shield_bar.value = stats.shield
 
 
 func set_enemy_stats(value: EnemyStats) -> void:

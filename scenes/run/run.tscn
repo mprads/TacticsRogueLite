@@ -61,6 +61,7 @@ size_flags_horizontal = 2
 
 [node name="Label" type="Label" parent="TopBar/MarginContainer/HBoxContainer/ArtifactUI"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Arifacts displayed here"
 
 [node name="VialUI" parent="TopBar/MarginContainer/HBoxContainer" instance=ExtResource("8_cnkn7")]

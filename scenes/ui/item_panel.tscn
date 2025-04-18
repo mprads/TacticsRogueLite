@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8xh1jbh84qru"]
 
 [ext_resource type="Script" uid="uid://wmq81pef0sus" path="res://scenes/ui/item_panel.gd" id="1_0k6an"]
-[ext_resource type="Texture2D" uid="uid://omr8v7dmu35c" path="res://assets/icons/32x32sulfur.png" id="2_ogmfo"]
+[ext_resource type="Texture2D" uid="uid://omr8v7dmu35c" path="res://assets/icons/items/32x32sulfur.png" id="2_ogmfo"]
 
 [node name="ItemPanel" type="Control"]
 custom_minimum_size = Vector2(48, 48)

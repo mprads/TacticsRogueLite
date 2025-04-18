@@ -39,6 +39,9 @@ func add_party_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
 
 
 func start_turn() -> void:
+	for unit in get_children():
+		unit.status_manager.apply_statuses_by_type(Status.TYPE.START_OF_TURN)
+
 	Events.player_turn_started.emit()
 
 
@@ -56,6 +59,7 @@ func disable_drag_and_drop() -> void:
 
 func _on_unit_turn_complete() -> void:
 	for unit in get_children():
+		unit.status_manager.apply_statuses_by_type(Status.TYPE.END_OF_TURN)
 		if not unit.disabled: return
 	
 	Events.player_turn_ended.emit()

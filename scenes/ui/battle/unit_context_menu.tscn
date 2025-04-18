@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgioejj4mplt5"]
+[gd_scene load_steps=4 format=3 uid="uid://bgioejj4mplt5"]
 
 [ext_resource type="Script" uid="uid://04x20oorpcqe" path="res://scenes/ui/battle/unit_context_menu.gd" id="1_oqchr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpiah"]
 resource_local_to_scene = true
 bg_color = Color(0.780392, 0.862745, 0.815686, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_38vls"]
-font_size = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6fa2"]
 resource_local_to_scene = true
@@ -19,13 +16,13 @@ border_width_bottom = 4
 border_color = Color(0.780392, 0.862745, 0.815686, 1)
 
 [node name="UnitContextMenu" type="Control"]
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(150, 120)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -440.0
-offset_bottom = -300.0
+offset_right = -490.0
+offset_bottom = -240.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -53,7 +50,7 @@ theme_override_constants/separation = -4
 
 [node name="Header" type="Panel" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 18)
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
@@ -68,36 +65,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 16
 text = "Unit Name"
-label_settings = SubResource("LabelSettings_38vls")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 28)
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 28)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 mouse_filter = 2
 
-[node name="BaseOption" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 28)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-alignment = 1
-
-[node name="DefendButton" type="Button" parent="VBoxContainer/HBoxContainer/BaseOption"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 28)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 8
-text = "Defend"
-autowrap_mode = 2
-
-[node name="AbilityContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="AbilityContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
@@ -107,7 +87,7 @@ mouse_filter = 2
 
 [node name="AbilityButton1" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 28)
+custom_minimum_size = Vector2(60, 18)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 8
@@ -116,11 +96,36 @@ autowrap_mode = 2
 
 [node name="AbilityButton2" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 28)
+custom_minimum_size = Vector2(60, 18)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 8
 text = "Ability 2"
+autowrap_mode = 2
+
+[node name="BaseOption" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+alignment = 1
+
+[node name="MeleeButton" type="Button" parent="VBoxContainer/HBoxContainer/BaseOption"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 18)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 8
+text = "Melee"
+autowrap_mode = 2
+
+[node name="DefendButton" type="Button" parent="VBoxContainer/HBoxContainer/BaseOption"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 18)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 8
+text = "Defend"
 autowrap_mode = 2
 
 [node name="Border" type="Panel" parent="."]

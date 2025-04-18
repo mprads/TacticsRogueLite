@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bytfe5idb40vq"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bytfe5idb40vq"]
 
-[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_kmler"]
+[ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_kmler"]
+[ext_resource type="Resource" uid="uid://7setwuc4h8j6" path="res://resources/statuses/weaken.tres" id="2_dd3jy"]
 
 [resource]
 script = ExtResource("1_kmler")
+status = ExtResource("2_dd3jy")
+color = Color(0.0862745, 0.352941, 0.298039, 1)
 name = "Weaken"
 cost = 5
 atlas_coord = Vector2i(6, 0)
 type = 1
-target = 2
+target = 3
 shape = Array[Vector2i]([])
 max_range = 3
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://7setwuc4h8j6"]
+
+[ext_resource type="Texture2D" uid="uid://iplda7kh0cux" path="res://assets/icons/statuses/10x10Weaken.png" id="1_asimt"]
+[ext_resource type="Script" uid="uid://cwaglw3nkm6mf" path="res://resources/statuses/status.gd" id="1_jeus3"]
+
+[resource]
+script = ExtResource("1_jeus3")
+id = "weaken"
+name = "Weaken"
+type = 1
+stack_type = 2
+duration = 2
+stacks = 0
+modifier_type = 0
+value = -0.5
+icon = ExtResource("1_asimt")
+color = Color(0.0862745, 0.352941, 0.298039, 1)
+tooltip = "Deal 50% less damage for n turns"
+metadata/_custom_type_script = "uid://cwaglw3nkm6mf"

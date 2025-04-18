@@ -12,6 +12,7 @@ const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 @onready var potion_icon: TextureRect = %PotionIcon
 @onready var bottle_icon: TextureRect = %BottleIcon
 @onready var health_bar: ProgressBar = %HealthBar
+@onready var shield_bar: ProgressBar = %ShieldBar
 @onready var potion_bar: ProgressBar = %PotionBar
 
 
@@ -53,6 +54,8 @@ func _update_visuals() -> void:
 		
 		health_bar.max_value = unit.stats.max_health
 		health_bar.value = unit.stats.health
+		shield_bar.max_value = unit.stats.max_health
+		shield_bar.value = unit.stats.shield
 		
 		if unit.stats.potion:
 			potion_icon.visible = true

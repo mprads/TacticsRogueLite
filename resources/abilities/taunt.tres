@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://4i7pwdm7f8yq"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://4i7pwdm7f8yq"]
 
-[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_6ny0t"]
+[ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_6ny0t"]
+[ext_resource type="Resource" uid="uid://1pv8b0wkesmg" path="res://resources/statuses/taunt.tres" id="2_qqhpg"]
 
 [resource]
 script = ExtResource("1_6ny0t")
+status = ExtResource("2_qqhpg")
+color = Color(0.984314, 0.419608, 0.113725, 1)
 name = "Taunt"
 cost = 5
 atlas_coord = Vector2i(5, 0)

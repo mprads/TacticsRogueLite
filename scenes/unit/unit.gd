@@ -2,6 +2,7 @@ extends Area2D
 class_name Unit
 
 signal movement_complete
+signal movement_cancelled
 signal aim_started(ability: Ability)
 signal aim_stopped
 signal ability_selected(ability: Ability)
@@ -17,6 +18,9 @@ signal unit_selected(unit: Unit)
 
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
 @onready var unit_state_machine: UnitStateMachine = $UnitStateMachine
+@onready var status_manager: StatusManager = $StatusManager
+@onready var modifier_manager: ModifierManager = $ModifierManager
+@onready var floating_text_spawner: FloatingTextSpawner = $FloatingTextSpawner
 
 @onready var moveable_debug: Label = $MoveableDebug
 
@@ -37,6 +41,40 @@ func _input(event: InputEvent) -> void:
 	unit_state_machine.on_input(event)
 
 
+func take_damage(damage: int) -> void:
+	if not stats: return
+	
+	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
+	stats.take_damage(modified_damage)
+	# Would prefer if this was handled in the effect resource, but need modified value
+	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+
+
+func spawn_floating_text(text: String, text_color) -> void:
+	if not floating_text_spawner: return
+	
+	floating_text_spawner.spawn_text(text, text_color)
+
+
+func move_cleanup() -> void:
+	unit_state_machine.on_movement_complete()
+
+
+func update_visuals() -> void:
+	if not stats: return
+	
+	outline.texture = stats.bottle.bottle_sprite
+	filling.texture = stats.bottle.liquid_mask
+	
+	if stats.potion:
+		filling.visible = true
+		filling.material.set_shader_parameter('Mask', stats.bottle.liquid_mask)
+		filling.material.set_shader_parameter('Color', stats.potion.color)
+		filling.material.set_shader_parameter('Fill', (float(stats.oz) / float(stats.bottle.max_oz)))
+	else:
+		filling.visible = false
+
+
 func set_stats(value: UnitStats) -> void:
 	stats = value
 	
@@ -46,14 +84,7 @@ func set_stats(value: UnitStats) -> void:
 	if not is_node_ready():
 		await ready
 
-	outline.region_rect.position = Vector2(stats.bottle.sprite_coordinates) * 32
-	filling.region_rect.position = Vector2(stats.bottle.sprite_coordinates) * 32
-	
-	if stats.potion:
-		filling.visible = true
-		filling.modulate = stats.potion.color
-	else:
-		filling.visible = false
+	update_visuals()
 
 
 func set_moveable(value: bool) -> void:

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://bb13lcap1d54e"]
 
-[ext_resource type="FontFile" uid="uid://bb5ydacvqgysd" path="res://assets/fonts/fields_of_mistria/fields-of-mistria.ttf" id="1_x504n"]
+[ext_resource type="FontFile" uid="uid://djlcyps6kpr80" path="res://assets/fonts/pixel_arial_11/PIXEARG_.TTF" id="1_x504n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1q2c"]
 bg_color = Color(0.18822, 0.197748, 0.186671, 1)
@@ -87,6 +87,7 @@ corner_radius_bottom_left = 3
 
 [resource]
 default_font = ExtResource("1_x504n")
+default_font_size = 8
 Button/styles/disabled = SubResource("StyleBoxFlat_f1q2c")
 Button/styles/focus = SubResource("StyleBoxFlat_btemj")
 Button/styles/hover = SubResource("StyleBoxFlat_f8kr5")

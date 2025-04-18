@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b8w5c510evcfa"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b8w5c510evcfa"]
 
-[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_51cym"]
+[ext_resource type="Script" uid="uid://c6mm720la6mee" path="res://resources/abilities/attack.gd" id="1_51cym"]
 
 [resource]
 script = ExtResource("1_51cym")
+base_damage = 5
 name = "Fireball"
 cost = 5
 atlas_coord = Vector2i(4, 0)
 type = 0
-target = 2
+target = 3
 shape = Array[Vector2i]([])
 max_range = 3
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"
