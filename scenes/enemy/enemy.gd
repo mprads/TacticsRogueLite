@@ -42,8 +42,6 @@ func take_damage(damage: int) -> void:
 	stats.take_damage(modified_damage)
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 	
-	await get_tree().create_timer(1).timeout
-	
 	if stats.health <= 0:
 		Events.enemy_died.emit(self)
 		queue_free()
@@ -79,7 +77,6 @@ func take_turn() -> void:
 	await get_tree().create_timer(.5).timeout
 	use_ability()
 
-	print("Turn completed %s" % stats.name)
 	turn_completed.emit()
 
 

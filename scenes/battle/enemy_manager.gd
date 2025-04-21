@@ -2,6 +2,7 @@ extends Node2D
 class_name EnemyManager
 
 signal enemy_selected(enemy: Enemy)
+signal all_enemies_defeated
 
 const ENEMY = preload("res://scenes/enemy/enemy.tscn")
 const BASE_AI = preload("res://resources/enemy_ai/base_ai.tres")
@@ -11,6 +12,10 @@ const BASE_AI = preload("res://resources/enemy_ai/base_ai.tres")
 @export var arena: Arena
 
 var enemies_to_act: Array[Enemy] = [] 
+
+
+func _ready() -> void:
+	Events.enemy_died.connect(_on_enemy_died)
 
 
 func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
@@ -123,6 +128,14 @@ func _on_enemy_statuses_applied(type: Status.TYPE, enemy: Enemy) -> void:
 
 func _on_enemy_selected(enemy: Enemy) -> void:
 	enemy_selected.emit(enemy)
+
+
+func _on_enemy_died(enemy: Enemy) -> void:
+	enemies_to_act.erase(enemy)
+	remove_child(enemy)
+	# TODO once dots are added going to to need to call _next_enemy_turn
+	if get_child_count() == 0:
+		all_enemies_defeated.emit()
 
 
 func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enemy: Enemy) -> void:

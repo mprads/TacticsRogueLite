@@ -32,7 +32,9 @@ func _ready() -> void:
 	player_manager.unit_selected.connect(_on_unit_selected)
 	player_manager.unit_aim_started.connect(_on_unit_aim_started)
 	player_manager.unit_aim_stopped.connect(_on_unit_aim_stopped)
+	player_manager.all_units_defeated.connect(_on_player_manager_all_units_defeated)
 	enemy_manager.enemy_selected.connect(_on_enemy_selected)
+	enemy_manager.all_enemies_defeated.connect(_on_enemy_manager_all_enemies_defeated)
 	unit_mover.unit_moved_arenas.connect(_on_unit_moved_arenas)
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
 
@@ -117,11 +119,21 @@ func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 
 
 func _on_enemy_turn_ended() -> void:
+	if player_manager.get_child_count() == 0: return
 	player_manager.start_turn()
 
 
+func _on_enemy_manager_all_enemies_defeated() -> void:
+	Events.battle_won.emit()
+
+
 func _on_player_turn_ended() -> void:
+	if enemy_manager.get_child_count() == 0: return
 	enemy_manager.start_turn()
+
+
+func _on_player_manager_all_units_defeated() -> void:
+	Events.battle_lost.emit()
 
 
 func _on_start_battle_pressed() -> void:
@@ -168,7 +180,6 @@ func _on_unit_aim_stopped() -> void:
 
 func _on_unit_selected(unit: Unit) -> void:
 	ability_manager.handle_selected_unit(unit)
-
 
 
 func _on_enemy_selected(enemy: Enemy) -> void:

@@ -5,11 +5,16 @@ signal change_active_unit(unit: Unit)
 signal unit_selected(unit: Unit)
 signal unit_aim_started(ability: Ability, unit: Unit)
 signal unit_aim_stopped(unit: Unit)
+signal all_units_defeated
 
 const UNIT = preload("res://scenes/unit/unit.tscn")
 
 @export var unit_mover: UnitMover
 @export var flood_filler: FloodFiller
+
+
+func _ready() -> void:
+	Events.unit_died.connect(_on_unit_died)
 
 
 func setup_party(party_stats: Array[UnitStats]) -> void:
@@ -79,3 +84,10 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 
 func _on_unit_aim_stopped() -> void:
 	unit_aim_stopped.emit( )
+
+
+func _on_unit_died(unit: Unit) -> void:
+	remove_child(unit)
+	
+	if get_child_count() == 0:
+		all_units_defeated.emit()
