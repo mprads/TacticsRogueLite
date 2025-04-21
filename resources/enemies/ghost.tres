@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://diod565xfdrwf"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://diod565xfdrwf"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_6khb5"]
+[ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="1_fadr6"]
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="2_6khb5"]
 
 [resource]
@@ -8,6 +9,8 @@ script = ExtResource("1_6khb5")
 name = "Ghost"
 sprite = ExtResource("2_6khb5")
 movement = 6
+attack_range = 1
+ability = ExtResource("1_fadr6")
 max_health = 5
 health = 5
 metadata/_custom_type_script = "uid://co20nystqenxu"
