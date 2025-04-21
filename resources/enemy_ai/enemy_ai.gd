@@ -38,8 +38,9 @@ func select_target() -> void:
 		# weight less movement higher
 		for tile in tiles:
 			var distance := Utils.get_distance_between_tiles(starting_tile, tile)
-			var max_weight := owner.stats.movement / 100
-			var movement_weight := max_weight - (distance / 100)
+			var max_weight := float(owner.stats.movement) / 100
+			var movement_weight := max_weight - (float(distance) / 100)
+
 			weight_by_tiles[tile] = movement_weight
 			
 			if movement_weight > highest_tile_weight:
