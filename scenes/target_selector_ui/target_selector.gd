@@ -19,8 +19,7 @@ func _process(_delta: float) -> void:
 
 func _get_points() -> Array:
 	var points := []
-	
-	starting_position.x
+
 	var target := get_local_mouse_position()
 	var distance := (target - starting_position)
 	

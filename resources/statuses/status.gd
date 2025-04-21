@@ -13,7 +13,7 @@ enum STACK_TYPE { NONE, INTENSITY, DURATION }
 @export var duration: int : set = set_duration
 @export var stacks: int : set = set_stacks
 @export var modifier_type: Modifier.TYPE
-@export var value: float
+@export var modifier_value: float
 
 @export_category("Visuals")
 @export var icon: Texture2D
@@ -25,7 +25,7 @@ func init(target: Node) -> void:
 	assert(target.get("modifier_manager"), "No modifier manager on %s" % target)
 
 	if not target.modifier_manager.get_modifier(id):
-		target.modifier_manager.add_modifier(id, modifier_type, Modifier.VALUE_MODIFIER.PERCENT, value)
+		target.modifier_manager.add_modifier(id, modifier_type, Modifier.VALUE_MODIFIER.PERCENT, modifier_value)
 	
 	if not changed.is_connected(_on_status_changed):
 		changed.connect(_on_status_changed.bind(target.modifier_manager)) 
@@ -54,4 +54,4 @@ func _on_status_changed(modifier_manager: ModifierManager) -> void:
 		modifier_manager.remove_modifier(id)
 
 	if stack_type == STACK_TYPE.INTENSITY and modifier_manager:
-		modifier_manager.increase_modifier_value(id, value)
+		modifier_manager.increase_modifier_value(id, modifier_value)

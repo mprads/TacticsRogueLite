@@ -121,7 +121,6 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 
 
 func _on_enemy_request_move(new_tile: Vector2i, enemy: Enemy) -> void:
-	print(new_tile)
 	var i := get_arena_for_position(enemy.global_position)
 	var tile := arenas[i].get_tile_from_global(enemy.global_position)
 	arenas[i].arena_grid.remove_unit(tile)

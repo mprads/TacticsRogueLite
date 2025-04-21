@@ -14,7 +14,7 @@ func exit() -> void:
 	pass
 
 
-func use_ability(targets: Array[Node]) -> void:
+func use_ability(_targets: Array[Node]) -> void:
 	pass
 
 

@@ -13,6 +13,7 @@ tier = 0
 weight = 1.5
 min_gold_reward = 25
 max_gold_reward = 40
+max_drops = 1
 enemy_drops = Array[ExtResource("3_tpycx")]([ExtResource("4_5vngm"), ExtResource("5_dxxwu")])
 enemies = Array[ExtResource("1_ra8gv")]([ExtResource("2_s51ow"), ExtResource("2_s51ow")])
 metadata/_custom_type_script = "uid://dvv6iov5fd7fy"

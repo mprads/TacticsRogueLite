@@ -65,7 +65,10 @@ func update_enemy_intent(enemy: Enemy) -> void:
 		var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 		
 		var distance := Utils.get_distance_between_tiles(enemy_tile, target_tile)
-	
+		
+		# TODO once there is path finding implement back up for when there is
+		# no target within attack range to find furthest tile to move towards
+		
 		if distance <= enemy.stats.movement + enemy.stats.attack_range:
 			var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
 			var filtered_neighbours := neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:

@@ -47,7 +47,7 @@ func handle_selected_enemy(target: Enemy) -> void:
 			aiming_unit.unit_state_machine.use_ability([target])
 
 
-func _within_range(target: Node) -> bool:
+func _within_range(_target: Node) -> bool:
 	var aiming_tile := arena.get_tile_from_global(aiming_unit.global_position)
 	var target_tile := arena.get_hovered_tile()
 	

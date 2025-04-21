@@ -27,7 +27,7 @@ func select_target() -> void:
 		# TODO added modifier logic to calculation. Maybe add shield to calc but can make for interesting 
 		# gameplay baiting attacks on a low life unit
 		var new_health: int = clampi(target_unit.stats.health - owner.stats.ability.base_damage, 0, target_unit.stats.health)
-		var remaining_percent := new_health / target_unit.stats.max_health
+		var remaining_percent := float(new_health) / target_unit.stats.max_health
 		
 		var damage_weight = 1 - remaining_percent
 		
