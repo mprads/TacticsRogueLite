@@ -22,7 +22,6 @@ func _ready() -> void:
 	camera_edge_x = MapGenerator.X_DIST * (MapGenerator.TOTAL_ENCOUNTERS - 3)
 
 
-
 func _input(event: InputEvent) -> void:
 	if not visible: return
 	

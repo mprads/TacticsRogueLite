@@ -131,7 +131,7 @@ text = "Battle Scene"
 [node name="Button" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Return to map"
+text = "End Battle"
 
 [node name="PartySelectionContainer" type="VBoxContainer" parent="UI"]
 unique_name_in_owner = true

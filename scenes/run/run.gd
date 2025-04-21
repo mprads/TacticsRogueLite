@@ -3,6 +3,7 @@ class_name Run
 
 const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE = preload("res://scenes/battle_reward/battle_reward.tscn")
+const BATTLE_LOST_SCENE = preload("res://scenes/battle_lost/battle_lost.tscn")
 const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const BREWING_SCENE := preload("res://scenes/brewing/brewing.tscn")
 const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
@@ -78,6 +79,8 @@ func _set_up_managers() -> void:
 func _set_up_event_connections() -> void:
 	Events.battle_exited.connect(_show_map)
 	Events.battle_won.connect(_on_battle_won)
+	Events.battle_lost.connect(_on_battle_lost)
+	Events.retry_battle.connect(_on_retry_battle)
 	Events.battle_reward_exited.connect(_show_map)
 	Events.shop_exited.connect(_show_map)
 	Events.brewing_exited.connect(_show_map)
@@ -118,6 +121,11 @@ func _show_battle_reward() -> void:
 	reward_scene.battle_stats = map.last_room.battle_stats
 
 
+func _show_battle_lost() -> void:
+	var lost_scene := _change_view(BATTLE_LOST_SCENE)
+	lost_scene.party_manager = party_manager
+
+
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.TYPE.BATTLE:
@@ -139,6 +147,14 @@ func _on_battle_entered(room: Room) -> void:
 
 func _on_battle_won() -> void:
 	_show_battle_reward()
+
+
+func _on_battle_lost() -> void:
+	_show_battle_lost()
+
+
+func _on_retry_battle() -> void:
+	_on_battle_entered(map.last_room)
 
 
 func _on_shop_entered() -> void:
