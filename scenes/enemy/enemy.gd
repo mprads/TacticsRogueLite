@@ -24,13 +24,13 @@ var selectable := false
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-	
+
 	status_manager.status_owner = self
 
 
 func _input(event: InputEvent) -> void:
 	if not selectable: return
-	
+
 	if event.is_action_pressed("left_mouse"):
 		enemy_selected.emit(self)
 
@@ -41,14 +41,22 @@ func take_damage(damage: int) -> void:
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 	stats.take_damage(modified_damage)
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+	
+	await get_tree().create_timer(1).timeout
+	
+	if stats.health <= 0:
+		Events.enemy_died.emit(self)
+		queue_free()
 
 
 func spawn_floating_text(text: String, text_color) -> void:
 	if not floating_text_spawner: return
-	
+
 	floating_text_spawner.spawn_text(text, text_color)
 
 
+# TODO this is only hear because the unitMover calls this to trigger a 
+# state change in unit state machine. Move to event
 func move_cleanup() -> void:
 	pass
 
@@ -56,7 +64,7 @@ func move_cleanup() -> void:
 func update_enemy() -> void:
 	if not stats: return
 	if not is_node_ready(): await ready
-	
+
 	sprite_2d.texture = stats.sprite
 	health_bar.max_value = stats.max_health
 	health_bar.value = stats.health
@@ -65,15 +73,23 @@ func update_enemy() -> void:
 
 
 func take_turn() -> void:
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(.5).timeout
 	request_enemy_move.emit(ai.next_tile)
+
+	await get_tree().create_timer(.5).timeout
+	use_ability()
+
 	print("Turn completed %s" % stats.name)
 	turn_completed.emit()
 
 
+func use_ability() -> void:
+	stats.ability.apply_effects([ai.current_target], modifier_manager)
+
+
 func set_enemy_stats(value: EnemyStats) -> void:
 	stats = value
-	
+
 	if not stats: return
 	if not stats.changed.is_connected(_on_stats_changed):
 		stats.changed.connect(_on_stats_changed)
@@ -83,7 +99,6 @@ func set_enemy_stats(value: EnemyStats) -> void:
 
 func set_enemy_ai(value: EnemyAI) -> void:
 	ai = value
-
 	ai.owner = self
 
 

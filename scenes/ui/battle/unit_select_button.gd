@@ -25,6 +25,7 @@ func set_unit(value: Unit) -> void:
 	if not unit: return
 	
 	Events.player_turn_started.connect(_on_player_turn_started)
+	Events.unit_died.connect(_on_unit_died)
 	unit.movement_complete.connect(_on_movement_complete)
 	unit.stats.changed.connect(_update_visuals)
 	_update_visuals()
@@ -77,3 +78,9 @@ func _on_movement_complete() -> void:
 
 func _on_player_turn_started() -> void:
 	move_icon.modulate = Color.WHITE
+
+
+func _on_unit_died(dead_unit: Unit) -> void:
+	if not unit == dead_unit: return
+	
+	queue_free()

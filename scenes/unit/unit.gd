@@ -49,6 +49,11 @@ func take_damage(damage: int) -> void:
 	# Would prefer if this was handled in the effect resource, but need modified value
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
+	if stats.health <= 0:
+		Events.unit_died.emit(self)
+		queue_free()
+		
+
 
 func spawn_floating_text(text: String, text_color) -> void:
 	if not floating_text_spawner: return

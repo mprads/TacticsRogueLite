@@ -72,7 +72,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 		if distance <= enemy.stats.movement + enemy.stats.attack_range:
 			var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
 			var filtered_neighbours := neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
-				if arena.arena_grid.is_tile_occupied(neighbour_tile):
+				if arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile:
 					return false
 					
 				var neighbour_distance := Utils.get_distance_between_tiles(enemy_tile, neighbour_tile)
