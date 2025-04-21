@@ -1,13 +1,14 @@
 extends Area2D
 class_name Enemy
 
-signal request_enemy_move
+signal request_enemy_move(tile: Vector2i)
 signal turn_completed
 signal enemy_selected(enemy: Enemy)
 signal request_flood_fill(max_distance: int, atlas_coord: Vector2i)
 signal request_clear_fill_layer
 
 @export var stats: EnemyStats : set = set_enemy_stats
+@export var ai: EnemyAI : set = set_enemy_ai
 
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
@@ -63,20 +64,27 @@ func update_enemy() -> void:
 	shield_bar.value = stats.shield
 
 
+func take_turn() -> void:
+	await get_tree().create_timer(1).timeout
+	request_enemy_move.emit(ai.next_tile)
+	print("Turn completed %s" % stats.name)
+	turn_completed.emit()
+
+
 func set_enemy_stats(value: EnemyStats) -> void:
 	stats = value
 	
 	if not stats: return
 	if not stats.changed.is_connected(_on_stats_changed):
 		stats.changed.connect(_on_stats_changed)
-		
+
 	update_enemy()
 
 
-func take_turn() -> void:
-	request_enemy_move.emit()
-	print("Turn completed %s" % stats.name)
-	turn_completed.emit()
+func set_enemy_ai(value: EnemyAI) -> void:
+	ai = value
+
+	ai.owner = self
 
 
 func _on_stats_changed() -> void:

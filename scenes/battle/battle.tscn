@@ -100,10 +100,11 @@ flood_filler = NodePath("../ArenaTileMap/PlayerFloodFiller")
 script = ExtResource("11_kd6yx")
 arena = NodePath("../ArenaTileMap")
 
-[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
+[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler", "arena")]
 script = ExtResource("9_agsc7")
 unit_mover = NodePath("../UnitMover")
 flood_filler = NodePath("../ArenaTileMap/EnemyFloodFiller")
+arena = NodePath("../ArenaTileMap")
 
 [node name="TargetSelectorUI" parent="BattleManager" instance=ExtResource("13_t1kk3")]
 

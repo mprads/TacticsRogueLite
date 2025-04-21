@@ -1,6 +1,8 @@
 extends TileMapLayer
 class_name Arena
 
+const DIRECTIONS = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
+
 @export var arena_grid: ArenaGrid
 @export var tile_highlighter: TileHighlighter
 @export var player_flood_filler: FloodFiller
@@ -33,6 +35,17 @@ func get_hovered_tile() -> Vector2i:
 
 func is_tile_in_bounds(tile: Vector2i) -> bool:
 	return arena_grid.get_tiles().has(tile)
+
+
+func get_neighbour_tiles(tile: Vector2i) -> Array[Vector2i]:
+	var results: Array[Vector2i] = []
+	
+	for direction in DIRECTIONS:
+		if is_tile_in_bounds(tile + direction):
+			results.append(tile + direction)
+	
+	return results
+
 
 # I hate check the string, the battle manager passing a reference seems incorrect
 # and an enum seems overkill

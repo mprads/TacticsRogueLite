@@ -101,8 +101,7 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 		_reset_unit_to_starting_position(starting_position, unit)
 	
 	if new_arena == old_arena:
-		var delta: Vector2i = (new_tile - old_tile).abs()
-		var distance := int(delta.x + delta.y)
+		var distance := Utils.get_distance_between_tiles(old_tile, new_tile)
 		
 		if distance > unit.stats.movement:
 			_reset_unit_to_starting_position(starting_position, unit)
@@ -121,11 +120,11 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 			unit_moved_arenas.emit()
 
 
-func _on_enemy_request_move(enemy: Enemy) -> void:
+func _on_enemy_request_move(new_tile: Vector2i, enemy: Enemy) -> void:
+	print(new_tile)
 	var i := get_arena_for_position(enemy.global_position)
 	var tile := arenas[i].get_tile_from_global(enemy.global_position)
 	arenas[i].arena_grid.remove_unit(tile)
 	
-	var new_tile := arenas[i].arena_grid.get_random_empty_tile()
 	_move_unit(enemy, arenas[i], new_tile)
 	
