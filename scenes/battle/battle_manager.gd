@@ -35,6 +35,8 @@ func _ready() -> void:
 	player_manager.unit_aim_stopped.connect(_on_unit_aim_stopped)
 	player_manager.all_units_defeated.connect(_on_player_manager_all_units_defeated)
 	enemy_manager.enemy_selected.connect(_on_enemy_selected)
+	enemy_manager.show_enemy_intent.connect(_on_show_enemy_intent)
+	enemy_manager.request_clear_intent.connect(_on_request_clear_intent)
 	enemy_manager.all_enemies_defeated.connect(_on_enemy_manager_all_enemies_defeated)
 	unit_mover.unit_moved_arenas.connect(_on_unit_moved_arenas)
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
@@ -107,7 +109,11 @@ func _start_battle() -> void:
 		party_selection_container.add_child(selection_ui_instance)
 		selection_ui_instance.pressed.connect(_on_change_active_unit.bind(unit))
 		selection_ui_instance.unit = unit
-
+	
+	for enemy in enemy_manager.get_children():
+		enemy_manager.verify_intent(enemy)
+	
+	unit_context_menu.unit = null
 	player_manager.start_turn()
 
 
@@ -130,6 +136,8 @@ func _on_enemy_manager_all_enemies_defeated() -> void:
 
 
 func _on_player_turn_ended() -> void:
+	unit_context_menu.unit = null
+
 	if enemy_manager.get_child_count() == 0: return
 	enemy_manager.start_turn()
 
@@ -182,6 +190,16 @@ func _on_unit_aim_stopped() -> void:
 
 func _on_unit_selected(unit: Unit) -> void:
 	ability_manager.handle_selected_unit(unit)
+
+
+func _on_show_enemy_intent(enemy: Enemy) -> void:
+	target_selector_ui.starting_position = enemy.global_position
+	target_selector_ui.ending_position = enemy.ai.current_target.global_position
+
+
+func _on_request_clear_intent() -> void:
+	target_selector_ui.starting_position = Vector2.ZERO
+	target_selector_ui.ending_position = Vector2.ZERO
 
 
 func _on_enemy_selected(enemy: Enemy) -> void:

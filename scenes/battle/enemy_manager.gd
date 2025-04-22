@@ -2,6 +2,8 @@ extends Node2D
 class_name EnemyManager
 
 signal enemy_selected(enemy: Enemy)
+signal show_enemy_intent(enemy: Enemy)
+signal request_clear_intent
 signal all_enemies_defeated
 
 const ENEMY = preload("res://scenes/enemy/enemy.tscn")
@@ -33,6 +35,8 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 		enemy_instance.status_manager.statuses_applied.connect(_on_enemy_statuses_applied.bind(enemy_instance))
 		enemy_instance.turn_completed.connect(_on_enemy_turn_completed.bind(enemy_instance))
 		enemy_instance.enemy_selected.connect(_on_enemy_selected)
+		enemy_instance.show_intent.connect(_on_enemy_show_intent)
+		enemy_instance.request_clear_intent.connect(_on_enemy_request_clear_intent)
 		enemy_instance.request_flood_fill.connect(_on_enemy_request_flood_fill.bind(enemy_instance))
 		enemy_instance.request_clear_fill_layer.connect(_on_enemy_request_clear_fill_layer.bind(enemy_instance))
 
@@ -130,6 +134,10 @@ func _on_enemy_selected(enemy: Enemy) -> void:
 	enemy_selected.emit(enemy)
 
 
+func _on_enemy_show_intent(enemy: Enemy) -> void:
+	show_enemy_intent.emit(enemy)
+
+
 func _on_enemy_died(enemy: Enemy) -> void:
 	enemies_to_act.erase(enemy)
 	remove_child(enemy)
@@ -144,6 +152,10 @@ func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enem
 		var i := unit_mover.get_arena_for_position(enemy.global_position)
 		var tile := unit_mover.arenas[i].get_tile_from_global(enemy.global_position)
 		flood_filler.flood_fill_from_tile(tile, max_distance, true, atlas_coord)
+
+
+func _on_enemy_request_clear_intent() -> void:
+	request_clear_intent.emit()
 
 
 func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:

@@ -28,9 +28,10 @@ func set_unit(value: Unit) -> void:
 
 	unit = value
 	
-	if not unit: return
-	
-	_set_visuals()
+	if unit:
+		_set_visuals()
+	else:
+		visible = false
 
 
 func _set_visuals() -> void:

@@ -4,6 +4,8 @@ class_name Enemy
 signal request_enemy_move(tile: Vector2i)
 signal turn_completed
 signal enemy_selected(enemy: Enemy)
+signal show_intent(enemy: Enemy)
+signal request_clear_intent
 signal request_flood_fill(max_distance: int, atlas_coord: Vector2i)
 signal request_clear_fill_layer
 
@@ -106,9 +108,13 @@ func _on_mouse_entered() -> void:
 	# so create a lambda and delay till end of frame
 	(func():
 		request_flood_fill.emit(stats.movement, Vector2i(4, 0))
+		
+		if ai.current_target:
+			show_intent.emit(self)
 		).call_deferred()
 
 
 func _on_mouse_exited() -> void:
 	selectable = false
 	request_clear_fill_layer.emit()
+	request_clear_intent.emit()
