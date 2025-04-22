@@ -4,6 +4,7 @@ class_name UnitMover
 signal unit_moved_arenas()
 
 @export var arenas: Array[Arena]
+@export var navigation: Navigation
 
 var dragging := false
 
@@ -57,6 +58,19 @@ func _move_unit(unit: Node, arena: Arena, tile: Vector2i) -> void:
 	arena.arena_grid.add_unit(tile, unit)
 	unit.global_position = arena.get_global_from_tile(tile)
 	unit.move_cleanup()
+
+
+func _move_along_path(unit: Node, arena: Arena, path: Array[Vector2i]) -> void:
+	var current_tile = path.pop_front()
+
+	if not path.is_empty():
+		arena.arena_grid.remove_unit(current_tile)
+		arena.arena_grid.add_unit(path[0], unit)
+		unit.global_position = arena.get_global_from_tile(path[0])
+		await get_tree().create_timer(.25).timeout
+		_move_along_path(unit, arena, path)
+	else:
+		unit.move_cleanup()
 
 
 func _on_unit_drag_started(unit: Unit) -> void:
@@ -123,7 +137,6 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 func _on_enemy_request_move(new_tile: Vector2i, enemy: Enemy) -> void:
 	var i := get_arena_for_position(enemy.global_position)
 	var tile := arenas[i].get_tile_from_global(enemy.global_position)
-	arenas[i].arena_grid.remove_unit(tile)
 	
-	_move_unit(enemy, arenas[i], new_tile)
-	
+	var id_path := navigation.create_id_path(tile, new_tile)
+	_move_along_path(enemy, arenas[i], id_path)
