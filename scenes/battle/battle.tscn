@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=17 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://tqul7q8whaw6" path="res://resources/battle_maps/testing_6x6.tres" id="2_xd4uy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dmyacoedl35kb" path="res://components/tile_highlighter.gd" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://c01d0h1645ul8" path="res://components/flood_filler.gd" id="8_icoan"]
 [ext_resource type="Script" uid="uid://bf0vtbnu18chl" path="res://scenes/battle/enemy_manager.gd" id="9_agsc7"]
+[ext_resource type="Script" uid="uid://bp58d70as6utw" path="res://components/navigation.gd" id="9_n6gaa"]
 [ext_resource type="Script" uid="uid://c2nuy484o6op5" path="res://scenes/battle/player_manager.gd" id="9_oiw7q"]
 [ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="11_fisqk"]
 [ext_resource type="Script" uid="uid://c0xa4g4qcwni3" path="res://scenes/battle/ability_manager.gd" id="11_kd6yx"]
@@ -87,9 +88,13 @@ script = ExtResource("7_py4tk")
 highlight_layer = NodePath("../HighlightLayer")
 tile = Vector2i(2, 0)
 
-[node name="UnitMover" type="Node" parent="BattleManager" node_paths=PackedStringArray("arenas")]
+[node name="Navigation" type="Node" parent="BattleManager"]
+script = ExtResource("9_n6gaa")
+
+[node name="UnitMover" type="Node" parent="BattleManager" node_paths=PackedStringArray("arenas", "navigation")]
 script = ExtResource("7_pll4o")
 arenas = [NodePath("../ArenaTileMap"), NodePath("../BenchTileMap")]
+navigation = NodePath("../Navigation")
 
 [node name="PlayerManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
 script = ExtResource("9_oiw7q")

@@ -15,6 +15,7 @@ const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.ts
 @onready var player_manager: PlayerManager = $PlayerManager
 @onready var ability_manager: AbilityManager = $AbilityManager
 @onready var unit_mover: UnitMover = $UnitMover
+@onready var navigation: Navigation = $Navigation
 @onready var target_selector_ui: TargetSelectorUI = $TargetSelectorUI
 
 @onready var party_selection_container: VBoxContainer = %PartySelectionContainer
@@ -59,6 +60,7 @@ func generate_arena() -> void:
 		arena.set_cell(tile, 0, Vector2i(0, 0))
 		
 	arena_grid.populate_grid(map.tiles)
+	navigation.init(arena.get_used_rect())
 	
 	enemy_manager.setup_enemies(battle_stats.enemies)
 	enemy_manager.add_enemies_to_grid(arena_grid, arena)

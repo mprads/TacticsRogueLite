@@ -56,7 +56,7 @@ func spawn_floating_text(text: String, text_color) -> void:
 # TODO this is only hear because the unitMover calls this to trigger a 
 # state change in unit state machine. Move to event
 func move_cleanup() -> void:
-	pass
+	use_ability()
 
 
 func update_enemy() -> void:
@@ -71,17 +71,13 @@ func update_enemy() -> void:
 
 
 func take_turn() -> void:
-	await get_tree().create_timer(.5).timeout
 	request_enemy_move.emit(ai.next_tile)
-
-	await get_tree().create_timer(.5).timeout
-	use_ability()
-
-	turn_completed.emit()
 
 
 func use_ability() -> void:
 	stats.ability.apply_effects([ai.current_target], modifier_manager)
+	await get_tree().create_timer(.5).timeout
+	turn_completed.emit()
 
 
 func set_enemy_stats(value: EnemyStats) -> void:
