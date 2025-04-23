@@ -54,42 +54,42 @@ func start_deployment() -> void:
 
 func generate_arena() -> void:
 	if not map: return
-	
+
 	arena.clear()
-	
+
 	arena.tile_set = map.tile_set
-	
+
 	for tile in map.tiles:
 		arena.set_cell(tile, 0, Vector2i(0, 0))
-		
+
 	arena_grid.populate_grid(map.tiles)
 	navigation.init(arena.get_used_rect())
-	
+
 	enemy_manager.setup_enemies(battle_stats.enemies)
 	enemy_manager.add_enemies_to_grid(arena_grid, arena)
-	
+
 	_grid_label_helper(map.tiles, arena)
 
 
 func set_party_manager(value: PartyManager) -> void:
 	party_manager = value
-	
+
 	if not party_manager: return
-	
+
 	party =  party_manager.get_party()
 
 
 func _generate_bench() -> void:
 	if not party: return
 	if not map: return
-	
+
 	bench.clear()
-	
+
 	bench.tile_set = map.tile_set
-	
+
 	for slot in party.size():
 		bench.set_cell(Vector2i(slot, 0), 0, Vector2i(1, 0))
-	
+
 	bench_grid.populate_grid(bench.get_used_cells())
 
 	player_manager.setup_party(party)
@@ -165,8 +165,7 @@ func _on_unit_moved_arenas() -> void:
 
 func _on_change_active_unit(unit: Unit) -> void:
 	if ability_manager.has_active_ability(): return
-	
-	unit_context_menu.visible = true
+
 	unit_context_menu.unit = unit
 
 
@@ -187,6 +186,7 @@ func _on_unit_aim_stopped() -> void:
 	target_selector_ui.starting_position = Vector2.ZERO
 	player_manager.enable_drag_and_drop()
 	ability_manager.handle_aim_stopped()
+	unit_context_menu.unit = null
 
 
 func _on_unit_selected(unit: Unit) -> void:
@@ -206,3 +206,4 @@ func _on_request_clear_intent() -> void:
 
 func _on_enemy_selected(enemy: Enemy) -> void:
 	ability_manager.handle_selected_enemy(enemy)
+	_on_request_clear_intent()

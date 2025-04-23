@@ -29,6 +29,7 @@ func set_unit(value: Unit) -> void:
 	unit = value
 
 	if unit:
+		visible = true
 		_set_visuals()
 	else:
 		visible = false
