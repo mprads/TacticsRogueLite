@@ -192,6 +192,8 @@ func _on_unit_aim_stopped() -> void:
 func _on_unit_selected(unit: Unit) -> void:
 	ability_manager.handle_selected_unit(unit)
 
+	unit_context_menu.unit = unit
+
 
 func _on_show_enemy_intent(enemy: Enemy) -> void:
 	enemy_target_selector_ui.starting_position = enemy.global_position
