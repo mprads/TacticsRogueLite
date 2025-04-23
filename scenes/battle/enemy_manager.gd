@@ -56,6 +56,7 @@ func start_turn() -> void:
 		enemies_to_act.append(enemy)
 		update_enemy_intent(enemy)
 
+	RNG.array_shuffle(enemies_to_act)
 	_next_enemy_turn()
 
 
