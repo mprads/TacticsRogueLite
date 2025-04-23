@@ -17,6 +17,7 @@ const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.ts
 @onready var unit_mover: UnitMover = $UnitMover
 @onready var navigation: Navigation = $Navigation
 @onready var target_selector_ui: TargetSelectorUI = $TargetSelectorUI
+@onready var enemy_target_selector_ui: TargetSelectorUI = $EnemyTargetSelectorUI
 
 @onready var party_selection_container: VBoxContainer = %PartySelectionContainer
 @onready var unit_context_menu: Control = %UnitContextMenu
@@ -193,13 +194,14 @@ func _on_unit_selected(unit: Unit) -> void:
 
 
 func _on_show_enemy_intent(enemy: Enemy) -> void:
-	target_selector_ui.starting_position = enemy.global_position
-	target_selector_ui.ending_position = enemy.ai.current_target.global_position
+	enemy_target_selector_ui.starting_position = enemy.global_position
+	enemy_target_selector_ui.ending_position = enemy.ai.current_target.global_position
+	arena.enemy_flood_filler.fill_tile(enemy.ai.next_tile, Vector2i(2, 0))
 
 
 func _on_request_clear_intent() -> void:
-	target_selector_ui.starting_position = Vector2.ZERO
-	target_selector_ui.ending_position = Vector2.ZERO
+	enemy_target_selector_ui.starting_position = Vector2.ZERO
+	enemy_target_selector_ui.ending_position = Vector2.ZERO
 
 
 func _on_enemy_selected(enemy: Enemy) -> void:
