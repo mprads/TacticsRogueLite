@@ -40,7 +40,7 @@ func set_unit(value: Unit) -> void:
 		defend_button.pressed.disconnect(_on_ability_button_pressed)
 
 	unit = value
-	print("set unit")
+
 	if unit:
 		visible = true
 		_set_visuals()
