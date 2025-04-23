@@ -23,7 +23,7 @@ var room: Room : set = set_room
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if not available or not event.is_action_pressed("left_mouse"):
 		return
-	
+
 	room.selected = true
 	line_2d.visible = true  
 	selected.emit(room)
@@ -35,7 +35,7 @@ func set_room(value: Room) -> void:
 	line_2d.rotation_degrees = randi_range(0, 360)
 	sprite_2d.texture = ICONS[room.type][0]
 	sprite_2d.scale = ICONS[room.type][1]
-	
+
 	# TODO remove this once better debugging tools added
 	if room.battle_stats:
 		label.visible = true

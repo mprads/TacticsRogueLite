@@ -23,7 +23,7 @@ func _potion(value: Potion) -> void:
 		await ready
 
 	potion = value
-	
+
 	if not potion: return
-	
+
 	_update_visuals()

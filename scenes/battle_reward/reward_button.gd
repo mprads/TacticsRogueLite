@@ -14,17 +14,17 @@ func _ready() -> void:
 
 func set_reward_icon(value: Texture2D) -> void:
 	reward_icon = value
-	
+
 	if not is_node_ready():
 		await ready
-	
+
 	texture_rect.texture = reward_icon
 
 
 func set_reward_text(value: String) -> void:
 	reward_text = value
-	
+
 	if not is_node_ready():
 		await ready
-	
+
 	label.text = reward_text

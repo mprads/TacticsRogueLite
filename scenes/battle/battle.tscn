@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=19 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://tqul7q8whaw6" path="res://resources/battle_maps/testing_6x6.tres" id="2_xd4uy"]
@@ -10,11 +10,18 @@
 [ext_resource type="Script" uid="uid://dmyacoedl35kb" path="res://components/tile_highlighter.gd" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://c01d0h1645ul8" path="res://components/flood_filler.gd" id="8_icoan"]
 [ext_resource type="Script" uid="uid://bf0vtbnu18chl" path="res://scenes/battle/enemy_manager.gd" id="9_agsc7"]
+[ext_resource type="Script" uid="uid://bp58d70as6utw" path="res://components/navigation.gd" id="9_n6gaa"]
 [ext_resource type="Script" uid="uid://c2nuy484o6op5" path="res://scenes/battle/player_manager.gd" id="9_oiw7q"]
 [ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="11_fisqk"]
 [ext_resource type="Script" uid="uid://c0xa4g4qcwni3" path="res://scenes/battle/ability_manager.gd" id="11_kd6yx"]
 [ext_resource type="PackedScene" uid="uid://bgioejj4mplt5" path="res://scenes/ui/battle/unit_context_menu.tscn" id="12_mxe8n"]
 [ext_resource type="PackedScene" uid="uid://mle1y0lql1qp" path="res://scenes/target_selector_ui/target_selector.tscn" id="13_t1kk3"]
+[ext_resource type="Script" uid="uid://etyxvtkdpd6h" path="res://scenes/target_selector_ui/target_selector.gd" id="15_6ofp8"]
+
+[sub_resource type="Curve" id="Curve_icg0e"]
+_limits = [0.2, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.902439, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
@@ -87,9 +94,13 @@ script = ExtResource("7_py4tk")
 highlight_layer = NodePath("../HighlightLayer")
 tile = Vector2i(2, 0)
 
-[node name="UnitMover" type="Node" parent="BattleManager" node_paths=PackedStringArray("arenas")]
+[node name="Navigation" type="Node" parent="BattleManager"]
+script = ExtResource("9_n6gaa")
+
+[node name="UnitMover" type="Node" parent="BattleManager" node_paths=PackedStringArray("arenas", "navigation")]
 script = ExtResource("7_pll4o")
 arenas = [NodePath("../ArenaTileMap"), NodePath("../BenchTileMap")]
+navigation = NodePath("../Navigation")
 
 [node name="PlayerManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
 script = ExtResource("9_oiw7q")
@@ -100,12 +111,25 @@ flood_filler = NodePath("../ArenaTileMap/PlayerFloodFiller")
 script = ExtResource("11_kd6yx")
 arena = NodePath("../ArenaTileMap")
 
-[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
+[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler", "arena")]
 script = ExtResource("9_agsc7")
 unit_mover = NodePath("../UnitMover")
 flood_filler = NodePath("../ArenaTileMap/EnemyFloodFiller")
+arena = NodePath("../ArenaTileMap")
 
 [node name="TargetSelectorUI" parent="BattleManager" instance=ExtResource("13_t1kk3")]
+
+[node name="EnemyTargetSelectorUI" type="Node2D" parent="BattleManager"]
+script = ExtResource("15_6ofp8")
+
+[node name="MousePoint" type="Node2D" parent="BattleManager/EnemyTargetSelectorUI"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="BattleManager/EnemyTargetSelectorUI"]
+
+[node name="Line2D" type="Line2D" parent="BattleManager/EnemyTargetSelectorUI/CanvasLayer"]
+width = 4.0
+width_curve = SubResource("Curve_icg0e")
+default_color = Color(0.984314, 0.419608, 0.113725, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -130,7 +154,7 @@ text = "Battle Scene"
 [node name="Button" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Return to map"
+text = "End Battle"
 
 [node name="PartySelectionContainer" type="VBoxContainer" parent="UI"]
 unique_name_in_owner = true

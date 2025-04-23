@@ -20,13 +20,13 @@ const PLANTER_ITEM = preload("res://scenes/shop/planter_item.tscn")
 
 func _ready() -> void:
 	leave_button.pressed.connect(Events.shop_exited.emit)
-	
+
 	for shop_item in item_shelf.get_children():
 		shop_item.queue_free()
-	
+
 	for shop_item in artifact_shelf.get_children():
 		shop_item.queue_free()
-		
+
 	for shop_plant in planter_contents.get_children():
 		shop_plant.queue_free()
 
@@ -54,7 +54,7 @@ func _generate_planter_items() -> void:
 
 func set_inventory_manager(value: InventoryManager) -> void:
 	inventory_manager = value
-	
+
 	if not inventory_manager.gold_changed.is_connected(_on_inventory_gold_changed):
 		inventory_manager.gold_changed.connect(_on_inventory_gold_changed)
 		_on_inventory_gold_changed()

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://dnh12v0qg35cr"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://dnh12v0qg35cr"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_fedew"]
+[ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="1_t2e0f"]
 [ext_resource type="Texture2D" uid="uid://bpka0wu7fe7v2" path="res://assets/sprites/enemies/Golem.png" id="2_fedew"]
 
 [resource]
@@ -8,6 +9,8 @@ script = ExtResource("1_fedew")
 name = "Golem"
 sprite = ExtResource("2_fedew")
 movement = 2
+attack_range = 1
+ability = ExtResource("1_t2e0f")
 max_health = 20
 health = 20
 metadata/_custom_type_script = "uid://co20nystqenxu"

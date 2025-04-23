@@ -15,7 +15,9 @@ const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.ts
 @onready var player_manager: PlayerManager = $PlayerManager
 @onready var ability_manager: AbilityManager = $AbilityManager
 @onready var unit_mover: UnitMover = $UnitMover
+@onready var navigation: Navigation = $Navigation
 @onready var target_selector_ui: TargetSelectorUI = $TargetSelectorUI
+@onready var enemy_target_selector_ui: TargetSelectorUI = $EnemyTargetSelectorUI
 
 @onready var party_selection_container: VBoxContainer = %PartySelectionContainer
 @onready var unit_context_menu: Control = %UnitContextMenu
@@ -32,7 +34,11 @@ func _ready() -> void:
 	player_manager.unit_selected.connect(_on_unit_selected)
 	player_manager.unit_aim_started.connect(_on_unit_aim_started)
 	player_manager.unit_aim_stopped.connect(_on_unit_aim_stopped)
+	player_manager.all_units_defeated.connect(_on_player_manager_all_units_defeated)
 	enemy_manager.enemy_selected.connect(_on_enemy_selected)
+	enemy_manager.show_enemy_intent.connect(_on_show_enemy_intent)
+	enemy_manager.request_clear_intent.connect(_on_request_clear_intent)
+	enemy_manager.all_enemies_defeated.connect(_on_enemy_manager_all_enemies_defeated)
 	unit_mover.unit_moved_arenas.connect(_on_unit_moved_arenas)
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
 
@@ -48,41 +54,42 @@ func start_deployment() -> void:
 
 func generate_arena() -> void:
 	if not map: return
-	
+
 	arena.clear()
-	
+
 	arena.tile_set = map.tile_set
-	
+
 	for tile in map.tiles:
 		arena.set_cell(tile, 0, Vector2i(0, 0))
-		
+
 	arena_grid.populate_grid(map.tiles)
-	
+	navigation.init(arena.get_used_rect())
+
 	enemy_manager.setup_enemies(battle_stats.enemies)
 	enemy_manager.add_enemies_to_grid(arena_grid, arena)
-	
+
 	_grid_label_helper(map.tiles, arena)
 
 
 func set_party_manager(value: PartyManager) -> void:
 	party_manager = value
-	
+
 	if not party_manager: return
-	
+
 	party =  party_manager.get_party()
 
 
 func _generate_bench() -> void:
 	if not party: return
 	if not map: return
-	
+
 	bench.clear()
-	
+
 	bench.tile_set = map.tile_set
-	
+
 	for slot in party.size():
 		bench.set_cell(Vector2i(slot, 0), 0, Vector2i(1, 0))
-	
+
 	bench_grid.populate_grid(bench.get_used_cells())
 
 	player_manager.setup_party(party)
@@ -104,6 +111,10 @@ func _start_battle() -> void:
 		selection_ui_instance.pressed.connect(_on_change_active_unit.bind(unit))
 		selection_ui_instance.unit = unit
 
+	for enemy in enemy_manager.get_children():
+		enemy_manager.verify_intent(enemy)
+
+	unit_context_menu.unit = null
 	player_manager.start_turn()
 
 
@@ -117,11 +128,23 @@ func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 
 
 func _on_enemy_turn_ended() -> void:
+	if player_manager.get_child_count() == 0: return
 	player_manager.start_turn()
 
 
+func _on_enemy_manager_all_enemies_defeated() -> void:
+	Events.battle_won.emit()
+
+
 func _on_player_turn_ended() -> void:
+	unit_context_menu.unit = null
+
+	if enemy_manager.get_child_count() == 0: return
 	enemy_manager.start_turn()
+
+
+func _on_player_manager_all_units_defeated() -> void:
+	Events.battle_lost.emit()
 
 
 func _on_start_battle_pressed() -> void:
@@ -142,8 +165,7 @@ func _on_unit_moved_arenas() -> void:
 
 func _on_change_active_unit(unit: Unit) -> void:
 	if ability_manager.has_active_ability(): return
-	
-	unit_context_menu.visible = true
+
 	unit_context_menu.unit = unit
 
 
@@ -164,12 +186,26 @@ func _on_unit_aim_stopped() -> void:
 	target_selector_ui.starting_position = Vector2.ZERO
 	player_manager.enable_drag_and_drop()
 	ability_manager.handle_aim_stopped()
+	unit_context_menu.unit = null
 
 
 func _on_unit_selected(unit: Unit) -> void:
 	ability_manager.handle_selected_unit(unit)
 
+	unit_context_menu.unit = unit
+
+
+func _on_show_enemy_intent(enemy: Enemy) -> void:
+	enemy_target_selector_ui.starting_position = enemy.global_position
+	enemy_target_selector_ui.ending_position = enemy.ai.current_target.global_position
+	arena.enemy_flood_filler.fill_tile(enemy.ai.next_tile, Vector2i(2, 0))
+
+
+func _on_request_clear_intent() -> void:
+	enemy_target_selector_ui.starting_position = Vector2.ZERO
+	enemy_target_selector_ui.ending_position = Vector2.ZERO
 
 
 func _on_enemy_selected(enemy: Enemy) -> void:
 	ability_manager.handle_selected_enemy(enemy)
+	_on_request_clear_intent()

@@ -10,7 +10,7 @@ class_name InventoryItemUI
 
 func set_item(value: Item) -> void:
 	item = value
-	
+
 	item_icon.texture = item.icon 
 
 

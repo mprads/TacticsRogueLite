@@ -14,9 +14,9 @@ func _ready() -> void:
 
 func update(player_gold: int) -> void:
 	if not item or not item_container: return
-	
+
 	gold_cost.text = str(item.gold_cost)
-	
+
 	if item.gold_cost > player_gold:
 		item_icon_button.disabled = true
 		gold_cost.modulate = Color.RED
@@ -28,9 +28,9 @@ func update(player_gold: int) -> void:
 func set_item(value: Item) -> void:
 	if not is_node_ready():
 		await ready
-	
+
 	item = value
-	
+
 	gold_cost.text = str(item.gold_cost)
 	item_icon_button.texture_normal = item.icon
 	item_icon_button.texture_disabled = item.icon

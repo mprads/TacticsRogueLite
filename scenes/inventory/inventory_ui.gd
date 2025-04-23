@@ -36,9 +36,9 @@ func _update_inventory() -> void:
 func set_inventory_manager(value: InventoryManager) -> void:
 	if not is_node_ready():
 		await ready
-	
+
 	inventory_manager = value
-	
+
 	if not inventory_manager.inventory_changed.is_connected(_update_inventory):
 		inventory_manager.inventory_changed.connect(_update_inventory)
 		_update_inventory()

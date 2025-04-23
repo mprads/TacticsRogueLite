@@ -57,10 +57,10 @@ func _drop() -> void:
 
 func _on_target_input_event(_viewport: Node, event: InputEvent) -> void:
 	if not enabled: return
-	
+
 	var dragging_object := get_tree().get_first_node_in_group("dragging")
-	
+
 	if not dragging and dragging_object: return
-	
+
 	if not dragging and event.is_action_pressed("left_mouse"):
 		_start_dragging()

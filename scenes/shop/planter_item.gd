@@ -14,9 +14,9 @@ func _ready() -> void:
 func set_plant(value: Item) -> void:
 	if not is_node_ready():
 		await ready
-	
+
 	plant = value
-	
+
 	plant_icon_button.texture_normal = plant.icon
 
 

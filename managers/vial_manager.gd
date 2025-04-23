@@ -12,7 +12,7 @@ func get_vials() -> Array[Vial]:
 
 func set_run_stats(value: RunStats) -> void:
 	run_stats = value
-	
+
 	if not run_stats: return
 
 	for vial in run_stats.vials:

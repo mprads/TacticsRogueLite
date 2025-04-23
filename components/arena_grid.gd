@@ -22,7 +22,7 @@ func add_unit(tile: Vector2i, unit: Node) -> void:
 
 func remove_unit(tile: Vector2i) -> void:
 	var unit := tiles[tile]
-	
+
 	if not unit: return
 	tiles[tile] = null
 	arena_grid_changed.emit()
@@ -36,7 +36,7 @@ func get_first_empty_tile() -> Vector2i:
 	for tile in tiles:
 		if not is_tile_occupied(tile):
 			return tile
-	
+
 	return Vector2i(-1, -1)
 
 
@@ -47,7 +47,7 @@ func get_random_empty_tile() -> Vector2i:
 	while is_tile_occupied(tile):
 		keys.erase(tile)
 		tile = keys.pick_random()
-	
+
 	return tile
 
 

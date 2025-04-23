@@ -16,6 +16,19 @@ class_name UnitContextMenu
 @onready var border_sb: StyleBoxFlat = border.get_theme_stylebox("panel")
 
 
+func _input(event: InputEvent) -> void:
+	if not unit: return
+
+	if event.is_action_pressed("ability_1"):
+		_on_ability_button_pressed(unit.stats.potion.abilities[0])
+	elif event.is_action_pressed("ability_2"):
+		_on_ability_button_pressed(unit.stats.potion.abilities[1])
+	elif event.is_action_pressed("melee"):
+		_on_ability_button_pressed(unit.stats.bottle.base_abilities[0])
+	elif event.is_action_pressed("defend"):
+		_on_ability_button_pressed(unit.stats.bottle.base_abilities[1])
+
+
 func set_unit(value: Unit) -> void:
 	if ability_button_1.pressed.is_connected(_on_ability_button_pressed):
 		ability_button_1.pressed.disconnect(_on_ability_button_pressed)
@@ -27,34 +40,36 @@ func set_unit(value: Unit) -> void:
 		defend_button.pressed.disconnect(_on_ability_button_pressed)
 
 	unit = value
-	
-	if not unit: return
-	
-	_set_visuals()
+
+	if unit:
+		visible = true
+		_set_visuals()
+	else:
+		visible = false
 
 
 func _set_visuals() -> void:
 	header_label.text = unit.stats.name
-	
+
 	if unit.stats.potion:
 		header_sb.bg_color = unit.stats.potion.color
 		border_sb.border_color = unit.stats.potion.color
 		ability_container.visible = true
-		ability_button_1.text = unit.stats.potion.abilities[0].name
 		ability_button_1.pressed.connect(_on_ability_button_pressed.bind(unit.stats.potion.abilities[0]))
+		ability_button_1.text = unit.stats.potion.abilities[0].name + " [Q]"
 		ability_button_1.disabled = unit.stats.oz < unit.stats.potion.abilities[0].cost
-		ability_button_2.text = unit.stats.potion.abilities[1].name
 		ability_button_2.pressed.connect(_on_ability_button_pressed.bind(unit.stats.potion.abilities[1]))
+		ability_button_2.text = unit.stats.potion.abilities[1].name + " [W]"
 		ability_button_2.disabled = unit.stats.oz < unit.stats.potion.abilities[1].cost
 	else:
 		ability_container.visible = false
 		header_sb.bg_color = Color("c7dcd0")
 		border_sb.border_color = Color("c7dcd0")
-	
+
 	melee_button.pressed.connect(_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[0]))
-	melee_button.text = unit.stats.bottle.base_abilities[0].name
+	melee_button.text = unit.stats.bottle.base_abilities[0].name + " [E]"
 	defend_button.pressed.connect(_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[1]))
-	defend_button.text = unit.stats.bottle.base_abilities[1].name
+	defend_button.text = unit.stats.bottle.base_abilities[1].name + " [R]"
 
 
 func _on_ability_button_pressed(ability: Ability) -> void:

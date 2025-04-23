@@ -3,6 +3,7 @@ class_name Run
 
 const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE = preload("res://scenes/battle_reward/battle_reward.tscn")
+const BATTLE_LOST_SCENE = preload("res://scenes/battle_lost/battle_lost.tscn")
 const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const BREWING_SCENE := preload("res://scenes/brewing/brewing.tscn")
 const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
@@ -42,9 +43,9 @@ func _start_run() -> void:
 	_set_up_managers()
 	_set_up_top_bar()
 	_set_up_event_connections()
-	
+
 	_set_up_debug()
-	
+
 	map.generate_new_map()
 	map.unlock_row(0)
 
@@ -78,6 +79,8 @@ func _set_up_managers() -> void:
 func _set_up_event_connections() -> void:
 	Events.battle_exited.connect(_show_map)
 	Events.battle_won.connect(_on_battle_won)
+	Events.battle_lost.connect(_on_battle_lost)
+	Events.retry_battle.connect(_on_retry_battle)
 	Events.battle_reward_exited.connect(_show_map)
 	Events.shop_exited.connect(_show_map)
 	Events.brewing_exited.connect(_show_map)
@@ -87,7 +90,7 @@ func _set_up_event_connections() -> void:
 
 func _set_up_top_bar() -> void:
 	inventory_button.pressed.connect(inventory_ui.toggle_view)
-	
+
 	vial_ui.vial_manager = vial_manager
 	gold_ui.inventory_manager = inventory_manager
 	inventory_ui.inventory_manager = inventory_manager
@@ -97,7 +100,7 @@ func _set_up_top_bar() -> void:
 func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
-		
+
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
 	map.hide_map()
@@ -108,7 +111,7 @@ func _change_view(scene: PackedScene) -> Node:
 func _show_map() -> void:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
-		
+
 	map.show_map()
 	map.unlock_next_rooms()
 
@@ -116,6 +119,11 @@ func _show_map() -> void:
 func _show_battle_reward() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE)
 	reward_scene.battle_stats = map.last_room.battle_stats
+
+
+func _show_battle_lost() -> void:
+	var lost_scene := _change_view(BATTLE_LOST_SCENE)
+	lost_scene.party_manager = party_manager
 
 
 func _on_map_exited(room: Room) -> void:
@@ -141,6 +149,14 @@ func _on_battle_won() -> void:
 	_show_battle_reward()
 
 
+func _on_battle_lost() -> void:
+	_show_battle_lost()
+
+
+func _on_retry_battle() -> void:
+	_on_battle_entered(map.last_room)
+
+
 func _on_shop_entered() -> void:
 	var shop := _change_view(SHOP_SCENE)
 	shop.inventory_manager = inventory_manager
@@ -159,4 +175,3 @@ func _on_brewing_entered() -> void:
 func _on_kiln_entered() -> void:
 	var kiln := _change_view(KILN_SCNE)
 	kiln.party_manager = party_manager
-	

@@ -5,6 +5,7 @@ signal change_active_unit(unit: Unit)
 signal unit_selected(unit: Unit)
 signal unit_aim_started(ability: Ability, unit: Unit)
 signal unit_aim_stopped(unit: Unit)
+signal all_units_defeated
 
 const UNIT = preload("res://scenes/unit/unit.tscn")
 
@@ -12,12 +13,16 @@ const UNIT = preload("res://scenes/unit/unit.tscn")
 @export var flood_filler: FloodFiller
 
 
+func _ready() -> void:
+	Events.unit_died.connect(_on_unit_died)
+
+
 func setup_party(party_stats: Array[UnitStats]) -> void:
 	for unit in get_children():
 		unit.queue_free()
 
 	if party_stats.is_empty(): return
-	
+
 	for stats in party_stats:
 		var unit_instance := UNIT.instantiate()
 		add_child(unit_instance)
@@ -32,7 +37,7 @@ func setup_party(party_stats: Array[UnitStats]) -> void:
 func add_party_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
 	for unit in get_children():
 		var empty_tile = grid.get_first_empty_tile()
-		
+
 		grid.add_unit(empty_tile, unit)
 		unit.global_position = tile_map.get_global_from_tile(empty_tile)
 		unit_mover.setup_unit(unit)
@@ -59,9 +64,10 @@ func disable_drag_and_drop() -> void:
 
 func _on_unit_turn_complete() -> void:
 	for unit in get_children():
-		unit.status_manager.apply_statuses_by_type(Status.TYPE.END_OF_TURN)
 		if not unit.disabled: return
-	
+
+		unit.status_manager.apply_statuses_by_type(Status.TYPE.END_OF_TURN)
+
 	Events.player_turn_ended.emit()
 
 
@@ -79,3 +85,10 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 
 func _on_unit_aim_stopped() -> void:
 	unit_aim_stopped.emit( )
+
+
+func _on_unit_died(unit: Unit) -> void:
+	remove_child(unit)
+
+	if get_child_count() == 0:
+		all_units_defeated.emit()

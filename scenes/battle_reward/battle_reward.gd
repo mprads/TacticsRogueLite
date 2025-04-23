@@ -12,7 +12,7 @@ const GOLD_ICON = preload("res://assets/icons/gold.png")
 
 func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_button_pressed)
-	
+
 	for child in rewards.get_children():
 		child.queue_free()
 
@@ -34,7 +34,7 @@ func _roll_gold_reward() -> void:
 
 func _roll_loot_reward() -> void:
 	var drops = battle_stats.get_drop_reward()
-	
+
 	for drop in drops:
 		var loot_reward := REWARD_BUTTON.instantiate()
 		loot_reward.reward_icon = drop.icon
