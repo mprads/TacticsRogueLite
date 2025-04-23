@@ -4,7 +4,7 @@ class_name UnitIdleState
 
 func enter() -> void:
 	unit.selectable = false
-	
+
 	enable_drap_and_drop()
 
 

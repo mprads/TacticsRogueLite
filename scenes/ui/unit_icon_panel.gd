@@ -13,7 +13,7 @@ const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 
 func set_unit(value: UnitStats) -> void:
 	unit = value
-	
+
 	_set_visuals()
 
 
@@ -34,10 +34,10 @@ func _set_visuals() -> void:
 			coords[1] * sprite_size,
 			sprite_size,
 			sprite_size)
-		
+
 		bottle.texture = outline
 		potion.texture = filling
-		
+
 		if unit.potion:
 			potion.visible = true
 			potion.modulate = unit.potion.color

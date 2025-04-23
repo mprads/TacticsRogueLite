@@ -24,12 +24,12 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if not visible: return
-	
+
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.x += SCROLL_SPEED
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.x -= SCROLL_SPEED
-	
+
 	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
 
 
@@ -87,19 +87,19 @@ func _spawn_room(room: Room) -> void:
 
 func _connect_lines(room: Room) -> void:
 	if room.next_rooms.is_empty(): return
-	
+
 	for next_room in room.next_rooms:
 		var line_instance := MAP_LINE.instantiate()
 		line_instance.add_point(room.position)
 		line_instance.add_point(next_room.position)
 		lines.add_child(line_instance)
-	
+
 
 func _on_map_room_selected(room: Room) -> void:
 	for map_room in rooms.get_children():
 		if map_room.room.row == room.row:
 			map_room.available = false
-	
+
 	last_room = room
 	encounters += 1
 	Events.map_exited.emit(room)

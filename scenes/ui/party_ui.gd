@@ -12,10 +12,10 @@ var party: Array[UnitStats] = []
 
 func _update_party() -> void:
 	party = party_manager.get_party()
-	
+
 	for unit_ui in get_children():
 		unit_ui.queue_free()
-	
+
 	for unit in party:
 		var unit_ui_instance = PARTY_UNIT_UI.instantiate()
 		add_child(unit_ui_instance)
@@ -28,11 +28,11 @@ func set_party_manager(value: PartyManager) -> void:
 		await ready
 
 	party_manager = value
-	
+
 	if not party_manager.party_changed.is_connected(_update_party):
 		party_manager.party_changed.connect(_update_party)
 		_update_party()
-	
+
 	_update_party()
 
 

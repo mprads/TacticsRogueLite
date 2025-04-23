@@ -27,7 +27,7 @@ func set_movement(value: int) -> void:
 
 func set_bottle(value: Bottle) -> void:
 	bottle = value
-	
+
 	max_health = bottle.base_health
 	max_oz = bottle.max_oz
 	movement = bottle.base_movement

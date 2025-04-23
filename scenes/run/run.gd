@@ -43,9 +43,9 @@ func _start_run() -> void:
 	_set_up_managers()
 	_set_up_top_bar()
 	_set_up_event_connections()
-	
+
 	_set_up_debug()
-	
+
 	map.generate_new_map()
 	map.unlock_row(0)
 
@@ -90,7 +90,7 @@ func _set_up_event_connections() -> void:
 
 func _set_up_top_bar() -> void:
 	inventory_button.pressed.connect(inventory_ui.toggle_view)
-	
+
 	vial_ui.vial_manager = vial_manager
 	gold_ui.inventory_manager = inventory_manager
 	inventory_ui.inventory_manager = inventory_manager
@@ -100,7 +100,7 @@ func _set_up_top_bar() -> void:
 func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
-		
+
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
 	map.hide_map()
@@ -111,7 +111,7 @@ func _change_view(scene: PackedScene) -> Node:
 func _show_map() -> void:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
-		
+
 	map.show_map()
 	map.unlock_next_rooms()
 
@@ -175,4 +175,3 @@ func _on_brewing_entered() -> void:
 func _on_kiln_entered() -> void:
 	var kiln := _change_view(KILN_SCNE)
 	kiln.party_manager = party_manager
-	

@@ -9,12 +9,12 @@ class_name PartyUnitUI
 
 func set_unit(value: UnitStats) -> void:
 	unit = value
-	
+
 	if not unit: return 
-	
+
 	if not unit.changed.is_connected(_set_details):
 		unit.changed.connect(_set_details)
-	
+
 	unit_icon_panel.unit = unit
 	_set_details()
 

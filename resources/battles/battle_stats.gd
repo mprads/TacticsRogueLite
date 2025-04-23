@@ -20,5 +20,5 @@ func get_drop_reward() -> Array[Item]:
 	var drops: Array[Item] = []
 	for roll in RNG.instance.randi_range(1, max_drops):
 		drops.append(RNG.array_pick_random(enemy_drops))
-	
+
 	return drops

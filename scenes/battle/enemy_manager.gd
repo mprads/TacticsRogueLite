@@ -23,9 +23,9 @@ func _ready() -> void:
 func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 	for enemy in get_children():
 		enemy.queue_free()
-		
+
 	if enemy_stats.is_empty(): return
-	
+
 	for stats in enemy_stats:
 		var enemy_instance := ENEMY.instantiate()
 		add_child(enemy_instance)
@@ -50,7 +50,7 @@ func add_enemies_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
 
 func start_turn() -> void:
 	if get_child_count() == 0 : return
-	
+
 	enemies_to_act.clear()
 	for enemy in get_children():
 		enemies_to_act.append(enemy)
@@ -62,7 +62,7 @@ func start_turn() -> void:
 func update_enemy_intent(enemy: Enemy) -> void:
 	var targets = get_tree().get_nodes_in_group("player_unit")
 	var targets_in_range: Array[Dictionary] = []
-	
+
 	for target in targets:
 		var result := {
 			"target": target,
@@ -72,9 +72,9 @@ func update_enemy_intent(enemy: Enemy) -> void:
 
 		var target_tile := arena.get_tile_from_global(target.global_position)
 		var enemy_tile := arena.get_tile_from_global(enemy.global_position)
-		
+
 		var distance := Utils.get_distance_between_tiles(enemy_tile, target_tile)
-		
+
 		# TODO once there is path finding implement back up for when there is
 		# no target within attack range to find furthest tile to move towards
 		
@@ -83,11 +83,11 @@ func update_enemy_intent(enemy: Enemy) -> void:
 			var filtered_neighbours := neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
 				if arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile:
 					return false
-					
+
 				var neighbour_distance := Utils.get_distance_between_tiles(enemy_tile, neighbour_tile)
 				return neighbour_distance <= enemy.stats.movement
 			)
-			
+
 			if not filtered_neighbours.is_empty():
 				result["tiles"] = filtered_neighbours
 				result["starting_tile"] = enemy_tile
@@ -112,7 +112,7 @@ func _next_enemy_turn() -> void:
 	if enemies_to_act.is_empty():
 		Events.enemy_turn_ended.emit()
 		return
-	
+
 	enemies_to_act[0].status_manager.apply_statuses_by_type(Status.TYPE.START_OF_TURN)
 
 

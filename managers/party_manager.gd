@@ -22,7 +22,7 @@ func set_run_stats(value: RunStats) -> void:
 	run_stats = value
 
 	if not run_stats: return
-	
+
 	for unit in run_stats.party:
 		unit.changed.connect(party_changed.emit)
 

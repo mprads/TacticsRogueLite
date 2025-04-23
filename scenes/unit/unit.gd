@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
 
 func take_damage(damage: int) -> void:
 	if not stats: return
-	
+
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 	stats.take_damage(modified_damage)
 	# Would prefer if this was handled in the effect resource, but need modified value
@@ -52,12 +52,11 @@ func take_damage(damage: int) -> void:
 	if stats.health <= 0:
 		Events.unit_died.emit(self)
 		queue_free()
-		
 
 
 func spawn_floating_text(text: String, text_color) -> void:
 	if not floating_text_spawner: return
-	
+
 	floating_text_spawner.spawn_text(text, text_color)
 
 
@@ -67,10 +66,10 @@ func move_cleanup() -> void:
 
 func update_visuals() -> void:
 	if not stats: return
-	
+
 	outline.texture = stats.bottle.bottle_sprite
 	filling.texture = stats.bottle.liquid_mask
-	
+
 	if stats.potion:
 		filling.visible = true
 		filling.material.set_shader_parameter('Mask', stats.bottle.liquid_mask)
@@ -82,10 +81,10 @@ func update_visuals() -> void:
 
 func set_stats(value: UnitStats) -> void:
 	stats = value
-	
+
 	if value == null:
 		return
-	
+
 	if not is_node_ready():
 		await ready
 
@@ -102,7 +101,7 @@ func set_moveable(value: bool) -> void:
 
 func set_disabled(value: bool) -> void:
 	disabled = value
-	
+
 	if disabled:
 		visuals.modulate = Color("3a3a3a")
 	else:

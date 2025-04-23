@@ -25,7 +25,7 @@ func is_dragging() -> bool:
 
 func get_arena_for_position(global: Vector2) -> int:
 	var dropped_area_index := -1
-	
+
 	for i in arenas.size():
 		var tile := arenas[i].get_tile_from_global(global)
 		if arenas[i].is_tile_in_bounds(tile):
@@ -48,7 +48,7 @@ func _set_flood_fillers(enabled: bool) -> void:
 func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) -> void:
 	var i := get_arena_for_position(starting_position)
 	var tile := arenas[i].get_tile_from_global(starting_position)
-	 
+ 
 	unit.global_position = starting_position
 	arenas[i].arena_grid.add_unit(tile, unit)
 	unit.movement_cancelled.emit()
@@ -98,29 +98,29 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	dragging = false
 	_set_highlters(false)
 	_set_flood_fillers(false)
-	
+
 	var old_arena_index := get_arena_for_position(starting_position)
 	var drop_arena_index := get_arena_for_position(unit.get_global_mouse_position())
 
 	if drop_arena_index == -1:
 		_reset_unit_to_starting_position(starting_position, unit)
 		return
-	
+
 	var old_arena := arenas[old_arena_index]
 	var old_tile := old_arena.get_tile_from_global(starting_position)
 	var new_arena := arenas[drop_arena_index]
 	var new_tile := new_arena.get_hovered_tile()
-	
+
 	if new_tile == old_tile and new_arena == old_arena:
 		_reset_unit_to_starting_position(starting_position, unit)
-	
+
 	if new_arena == old_arena:
 		var distance := Utils.get_distance_between_tiles(old_tile, new_tile)
 		
 		if distance > unit.stats.movement:
 			_reset_unit_to_starting_position(starting_position, unit)
 			return
-	
+
 	if new_arena.arena_grid.is_tile_occupied(new_tile):
 		_reset_unit_to_starting_position(starting_position, unit)
 		# TODO only enable swapping places during unit placement
@@ -137,6 +137,6 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 func _on_enemy_request_move(new_tile: Vector2i, enemy: Enemy) -> void:
 	var i := get_arena_for_position(enemy.global_position)
 	var tile := arenas[i].get_tile_from_global(enemy.global_position)
-	
+
 	var id_path := navigation.create_id_path(tile, new_tile)
 	_move_along_path(enemy, arenas[i], id_path)

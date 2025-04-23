@@ -39,11 +39,11 @@ func _input(event: InputEvent) -> void:
 
 func take_damage(damage: int) -> void:
 	if not stats: return
-	
+
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 	stats.take_damage(modified_damage)
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
-	
+
 	if stats.health <= 0:
 		Events.enemy_died.emit(self)
 		queue_free()
@@ -108,7 +108,7 @@ func _on_mouse_entered() -> void:
 	# so create a lambda and delay till end of frame
 	(func():
 		request_flood_fill.emit(stats.movement, Vector2i(4, 0))
-		
+
 		if ai.current_target:
 			show_intent.emit(self)
 		).call_deferred()

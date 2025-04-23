@@ -19,11 +19,11 @@ const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 func set_unit(value: Unit) -> void:
 	if not is_node_ready():
 		await ready
-		
+
 	unit = value
-	
+
 	if not unit: return
-	
+
 	Events.player_turn_started.connect(_on_player_turn_started)
 	Events.unit_died.connect(_on_unit_died)
 	unit.movement_complete.connect(_on_movement_complete)
@@ -49,15 +49,15 @@ func _update_visuals() -> void:
 			coords[1] * sprite_size,
 			sprite_size,
 			sprite_size)
-		
+
 		bottle_icon.texture = outline
 		potion_icon.texture = filling
-		
+
 		health_bar.max_value = unit.stats.max_health
 		health_bar.value = unit.stats.health
 		shield_bar.max_value = unit.stats.max_health
 		shield_bar.value = unit.stats.shield
-		
+
 		if unit.stats.potion:
 			potion_icon.visible = true
 			potion_icon.modulate = unit.stats.potion.color
@@ -82,5 +82,5 @@ func _on_player_turn_started() -> void:
 
 func _on_unit_died(dead_unit: Unit) -> void:
 	if not unit == dead_unit: return
-	
+
 	queue_free()

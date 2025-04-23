@@ -12,7 +12,7 @@ func clear() -> void:
 
 func set_enabled(value: bool) -> void:
 	enabled = value
-	
+
 	if not enabled:
 		highlight_layer.clear()
 

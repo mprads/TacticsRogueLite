@@ -26,12 +26,11 @@ func init(unit: Unit) -> void:
 	for state in states.values():
 		state.unit = unit
 		state.transition_requested.connect(_on_transition_requested)
-	
 
 	if initial_state:
 		states[initial_state].enter()
 		current_state = states[initial_state]
-		
+
 		_update_debug_state_label()
 
 
@@ -62,12 +61,12 @@ func on_movement_complete() -> void:
 
 func _on_transition_requested(from: UnitState, to: STATE) -> void:
 	if from != current_state: return
-	
+
 	var new_state := states[to]
 	if not new_state: return
-	
+
 	if current_state: current_state.exit()
-	
+
 	current_state = new_state
 	current_state.enter()
 

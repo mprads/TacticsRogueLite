@@ -20,17 +20,17 @@ const ITEM_PANEL = preload("res://scenes/ui/item_panel.tscn")
 
 func _update_visuals() -> void:
 	if not potion or not recipe: return
-	
+
 	potion_label.text = potion.name
 	header_sb.bg_color = potion.color
 	border_sb.border_color = potion.color
-	
+
 	#TODO Create a proper reusbale attack panel with tool tips
 	ability_label_1.text = potion.abilities[0].name
 	ability_label_2.text = potion.abilities[1].name
-	
+
 	_update_components()
-	
+
 
 func _update_components() -> void:
 	for child in component_container.get_children():
@@ -48,7 +48,7 @@ func _potion_key(value: int) -> void:
 		await ready
 
 	potion_key = value
-	
+
 	potion = ItemConfig.get_potion_resource(potion_key)
 	recipe = ItemConfig.get_brewing_recipe(potion_key)
 	_update_visuals()

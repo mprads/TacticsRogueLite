@@ -22,7 +22,7 @@ func flood_fill_from_tile(
 
 	while not queue.is_empty():
 		var current_tile: Vector2i = queue.pop_back()
-		
+
 		if tiles.has(current_tile):
 			continue
 		elif not arena_grid.get_tiles().has(current_tile):
@@ -30,27 +30,27 @@ func flood_fill_from_tile(
 		elif exclude_occupied and arena_grid.is_tile_occupied(current_tile):
 			if current_tile != starting_tile:
 				continue
-		
+
 		var delta: Vector2i = (current_tile - starting_tile).abs()
 		var distance := int(delta.x + delta.y)
-		
+
 		if distance > max_distance:
 			continue
-		
+
 		tiles.append(current_tile)
-		
+
 		for direction in DIRECTIONS:
 			var next_tile: Vector2i = current_tile + direction
-			
+
 			if not arena_grid.get_tiles().has(next_tile):
 				continue
 			elif exclude_occupied and arena_grid.is_tile_occupied(next_tile):
 				continue
 			elif tiles.has(next_tile):
 				continue
-			
+
 			queue.append(next_tile)
-		
+
 	for tile in tiles:
 		fill_tile(tile, atlas_coord)
 
@@ -61,6 +61,6 @@ func fill_tile(coords: Vector2i, atlas_coord: Vector2i) -> void:
 
 func set_enabled(value: bool) -> void:
 	enabled = value
-	
+
 	if not enabled:
 		fill_layer.clear()

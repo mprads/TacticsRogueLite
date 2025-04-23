@@ -30,5 +30,5 @@ func start_battle() -> void:
 func _generate_map() -> void:
 	if not map and not battle_manager:
 		return
-	
+
 	battle_manager.generate_arena()

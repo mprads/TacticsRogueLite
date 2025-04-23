@@ -11,13 +11,13 @@ const DIRECTIONS = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
 
 func _process(_delta: float) -> void:
 	if not tile_highlighter.enabled: return
-	
+
 	var selected_tile := get_hovered_tile()
-	
+
 	if not is_tile_in_bounds(selected_tile):
 		tile_highlighter.clear()
 		return
-	
+
 	tile_highlighter._update_tile(selected_tile)
 
 
@@ -39,11 +39,11 @@ func is_tile_in_bounds(tile: Vector2i) -> bool:
 
 func get_neighbour_tiles(tile: Vector2i) -> Array[Vector2i]:
 	var results: Array[Vector2i] = []
-	
+
 	for direction in DIRECTIONS:
 		if is_tile_in_bounds(tile + direction):
 			results.append(tile + direction)
-	
+
 	return results
 
 
@@ -67,4 +67,3 @@ func clear_flood_filler(layer: String) -> void:
 			enemy_flood_filler.enabled = false
 		_:
 			pass
-	

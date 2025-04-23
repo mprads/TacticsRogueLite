@@ -12,7 +12,7 @@ var ending_position: Vector2 : set = set_ending_position
 
 func _process(_delta: float) -> void:
 	if not enabled: return
-	
+
 	mouse_point.position = get_local_mouse_position()
 	line_2d.points = _get_points(mouse_point.position)
 
@@ -21,15 +21,15 @@ func _get_points(target: Vector2) -> Array:
 	var points := []
 
 	var distance := (target - starting_position)
-	
+
 	for i in ARC_POINTS:
 		var t := (1.0 / ARC_POINTS) * i
 		var x := starting_position.x + (distance.x / ARC_POINTS) * i
 		var y := starting_position.y + _ease_out_cubic(t) * distance.y
 		points.append(Vector2(x, y))
-	
+
 	points.append(target)
-	
+
 	return points
 
 

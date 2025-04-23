@@ -27,7 +27,7 @@ func set_unit(value: Unit) -> void:
 		defend_button.pressed.disconnect(_on_ability_button_pressed)
 
 	unit = value
-	
+
 	if unit:
 		_set_visuals()
 	else:
@@ -36,7 +36,7 @@ func set_unit(value: Unit) -> void:
 
 func _set_visuals() -> void:
 	header_label.text = unit.stats.name
-	
+
 	if unit.stats.potion:
 		header_sb.bg_color = unit.stats.potion.color
 		border_sb.border_color = unit.stats.potion.color
@@ -51,7 +51,7 @@ func _set_visuals() -> void:
 		ability_container.visible = false
 		header_sb.bg_color = Color("c7dcd0")
 		border_sb.border_color = Color("c7dcd0")
-	
+
 	melee_button.pressed.connect(_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[0]))
 	melee_button.text = unit.stats.bottle.base_abilities[0].name
 	defend_button.pressed.connect(_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[1]))

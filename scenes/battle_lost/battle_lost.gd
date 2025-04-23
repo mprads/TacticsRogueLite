@@ -18,9 +18,9 @@ func set_party_manager(value: PartyManager) -> void:
 		await ready
 
 	party_manager = value
-	
+
 	party_ui.party_manager = party_manager
-	
+
 	if party_ui.party.size() == 0:
 		retry_button.disabled = true
 

@@ -26,7 +26,7 @@ func init(target: Node) -> void:
 
 	if not target.modifier_manager.get_modifier(id):
 		target.modifier_manager.add_modifier(id, modifier_type, Modifier.VALUE_MODIFIER.PERCENT, modifier_value)
-	
+
 	if not changed.is_connected(_on_status_changed):
 		changed.connect(_on_status_changed.bind(target.modifier_manager)) 
 
