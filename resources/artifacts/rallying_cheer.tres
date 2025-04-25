@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Artifact" load_steps=3 format=3 uid="uid://b8kbihmrh2sbq"]
+
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_g8oru"]
+[ext_resource type="Texture2D" uid="uid://bc6m08md0erqw" path="res://assets/icons/artifacts/24x24Speaker.png" id="1_i3p0d"]
+
+[resource]
+script = ExtResource("1_g8oru")
+name = "Rallying Cheer"
+id = "rallying_cheer"
+type = 2
+icon = ExtResource("1_i3p0d")
+tooltip = "Encourage a random unit at the start of combat"
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

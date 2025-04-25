@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Artifact" load_steps=3 format=3 uid="uid://cyi8lynrukcin"]
+
+[ext_resource type="Texture2D" uid="uid://gfiw0f4ic4r0" path="res://assets/icons/artifacts/24x24Shield.png" id="1_nf447"]
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_o5qov"]
+
+[resource]
+script = ExtResource("1_o5qov")
+name = "Lasting Shield"
+id = "lasting_shield"
+type = 4
+icon = ExtResource("1_nf447")
+tooltip = "Gain an additional 5 shield"
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

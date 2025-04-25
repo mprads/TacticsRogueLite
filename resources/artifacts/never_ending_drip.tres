@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Artifact" load_steps=3 format=3 uid="uid://b81l0dgu2txuq"]
+
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_dobns"]
+[ext_resource type="Texture2D" uid="uid://sw1ysyf2l78i" path="res://assets/icons/artifacts/24x24Drip.png" id="1_vsak0"]
+
+[resource]
+script = ExtResource("1_dobns")
+name = "Never Ending Drip"
+id = "never_ending_dr"
+type = 1
+icon = ExtResource("1_vsak0")
+tooltip = "At the end of each unit's turn gain back 2oz"
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

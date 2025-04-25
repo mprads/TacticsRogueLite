@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://06s5o3dm2r31"]
+
+[ext_resource type="Script" uid="uid://bwjh54dagy23x" path="res://scenes/ui/artifacts/artifact_ui.gd" id="1_tngxx"]
+
+[node name="ArtifactUI" type="TextureRect"]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 5
+script = ExtResource("1_tngxx")

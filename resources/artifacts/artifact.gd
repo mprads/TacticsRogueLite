@@ -1,6 +1,18 @@
 extends Resource
 class_name Artifact
 
+enum TYPE { START_OF_TURN, END_OF_TURN, START_OF_COMBAT, END_OF_COMBAT, EVENT }
+
 @export var name: String
 @export var id: String
+@export var type: TYPE
 @export var icon: Texture
+@export_multiline var tooltip: String
+
+
+func activate_artifact() -> void:
+	pass
+
+
+func get_tooltip() -> String:
+	return tooltip
