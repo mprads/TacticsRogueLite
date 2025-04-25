@@ -1,4 +1,5 @@
 extends Control
+class_name ResolutionButton
 
 const RESOLUTION_DICTIONARY: Dictionary[String, Vector2i] = {
 	"1920X1080": Vector2i(1920, 1080),
@@ -6,7 +7,7 @@ const RESOLUTION_DICTIONARY: Dictionary[String, Vector2i] = {
 	"640x360": Vector2i(640, 360),
 }
 
-@onready var option_button: OptionButton = $HBoxContainer/OptionButton
+@onready var option_button: OptionButton = %OptionButton
 
 
 func _ready() -> void:

@@ -1,4 +1,5 @@
 extends Control
+class_name  WindowModeButton
 
 const WINDOW_MODE_ARRAY: Array[String] = [
 	"Windowed Borderless",
@@ -7,7 +8,7 @@ const WINDOW_MODE_ARRAY: Array[String] = [
 	"Fullscreen",
 ]
 
-@onready var option_button: OptionButton = $HBoxContainer/OptionButton
+@onready var option_button: OptionButton = %OptionButton
 
 
 func _ready() -> void:
