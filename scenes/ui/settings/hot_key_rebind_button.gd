@@ -16,7 +16,6 @@ func _ready() -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	print(event)
 	_rebind_action_key(event)
 	button.button_pressed = false
 

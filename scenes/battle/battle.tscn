@@ -12,11 +12,11 @@
 [ext_resource type="Script" uid="uid://bf0vtbnu18chl" path="res://scenes/battle/enemy_manager.gd" id="9_agsc7"]
 [ext_resource type="Script" uid="uid://bp58d70as6utw" path="res://components/navigation.gd" id="9_n6gaa"]
 [ext_resource type="Script" uid="uid://c2nuy484o6op5" path="res://scenes/battle/player_manager.gd" id="9_oiw7q"]
-[ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="11_fisqk"]
 [ext_resource type="Script" uid="uid://c0xa4g4qcwni3" path="res://scenes/battle/ability_manager.gd" id="11_kd6yx"]
 [ext_resource type="PackedScene" uid="uid://bgioejj4mplt5" path="res://scenes/ui/battle/unit_context_menu.tscn" id="12_mxe8n"]
 [ext_resource type="PackedScene" uid="uid://mle1y0lql1qp" path="res://scenes/target_selector_ui/target_selector.tscn" id="13_t1kk3"]
 [ext_resource type="Script" uid="uid://etyxvtkdpd6h" path="res://scenes/target_selector_ui/target_selector.gd" id="15_6ofp8"]
+[ext_resource type="PackedScene" uid="uid://dm2vpxif7k43a" path="res://scenes/ui/battle/party_selection_container.tscn" id="16_6ofp8"]
 
 [sub_resource type="Curve" id="Curve_icg0e"]
 _limits = [0.2, 1.0, 0.0, 1.0]
@@ -156,31 +156,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "End Battle"
 
-[node name="PartySelectionContainer" type="VBoxContainer" parent="UI"]
+[node name="PartySelectionContainer" parent="UI" instance=ExtResource("16_6ofp8")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 36)
-offset_left = 12.0
-offset_top = 34.0
-offset_right = 132.0
-offset_bottom = 70.0
-
-[node name="UnitSelectButton" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
-layout_mode = 2
-
-[node name="UnitSelectButton2" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
-layout_mode = 2
-
-[node name="UnitSelectButton3" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
-layout_mode = 2
-
-[node name="UnitSelectButton4" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
-layout_mode = 2
-
-[node name="UnitSelectButton5" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
-layout_mode = 2
-
-[node name="UnitSelectButton6" parent="UI/PartySelectionContainer" instance=ExtResource("11_fisqk")]
-layout_mode = 2
 
 [node name="UnitContextMenu" parent="UI" instance=ExtResource("12_mxe8n")]
 unique_name_in_owner = true

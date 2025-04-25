@@ -152,3 +152,11 @@ size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("4_rufao")
 stretch_mode = 5
+
+[node name="KeybindLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 11.0
+offset_right = 186.0
+offset_bottom = 22.0
+text = "[Unassigned]"

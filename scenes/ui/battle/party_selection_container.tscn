@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm2vpxif7k43a"]
+
+[ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="1_dn27q"]
+[ext_resource type="Script" uid="uid://4fpfvvni2jsr" path="res://scenes/ui/battle/party_selection_container.gd" id="1_mv4ic"]
+
+[node name="PartySelectionContainer" type="VBoxContainer"]
+custom_minimum_size = Vector2(120, 36)
+offset_left = 12.0
+offset_top = 34.0
+offset_right = 132.0
+offset_bottom = 70.0
+script = ExtResource("1_mv4ic")
+
+[node name="UnitSelectButton" parent="." instance=ExtResource("1_dn27q")]
+layout_mode = 2
+
+[node name="UnitSelectButton2" parent="." instance=ExtResource("1_dn27q")]
+layout_mode = 2
+
+[node name="UnitSelectButton3" parent="." instance=ExtResource("1_dn27q")]
+layout_mode = 2
+
+[node name="UnitSelectButton4" parent="." instance=ExtResource("1_dn27q")]
+layout_mode = 2
+
+[node name="UnitSelectButton5" parent="." instance=ExtResource("1_dn27q")]
+layout_mode = 2
+
+[node name="UnitSelectButton6" parent="." instance=ExtResource("1_dn27q")]
+layout_mode = 2
