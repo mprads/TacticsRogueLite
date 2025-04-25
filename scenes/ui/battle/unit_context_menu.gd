@@ -56,10 +56,12 @@ func _set_visuals() -> void:
 		border_sb.border_color = unit.stats.potion.color
 		ability_container.visible = true
 		ability_button_1.pressed.connect(_on_ability_button_pressed.bind(unit.stats.potion.abilities[0]))
-		ability_button_1.text = unit.stats.potion.abilities[0].name + " [Q]"
+		var keycode_1 = Utils.get_keycode_from_input_id("ability_1")
+		ability_button_1.text = unit.stats.potion.abilities[0].name + " [%s]" % keycode_1
 		ability_button_1.disabled = unit.stats.oz < unit.stats.potion.abilities[0].cost
 		ability_button_2.pressed.connect(_on_ability_button_pressed.bind(unit.stats.potion.abilities[1]))
-		ability_button_2.text = unit.stats.potion.abilities[1].name + " [W]"
+		var keycode_2 = Utils.get_keycode_from_input_id("ability_2")
+		ability_button_2.text = unit.stats.potion.abilities[1].name + " [%s]" % keycode_2
 		ability_button_2.disabled = unit.stats.oz < unit.stats.potion.abilities[1].cost
 	else:
 		ability_container.visible = false
@@ -67,9 +69,11 @@ func _set_visuals() -> void:
 		border_sb.border_color = Color("c7dcd0")
 
 	melee_button.pressed.connect(_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[0]))
-	melee_button.text = unit.stats.bottle.base_abilities[0].name + " [E]"
+	var keycode_melee = Utils.get_keycode_from_input_id("melee")
+	melee_button.text = unit.stats.bottle.base_abilities[0].name + " [%s]" % keycode_melee
 	defend_button.pressed.connect(_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[1]))
-	defend_button.text = unit.stats.bottle.base_abilities[1].name + " [R]"
+	var keycode_defend = Utils.get_keycode_from_input_id("defend")
+	defend_button.text = unit.stats.bottle.base_abilities[1].name + " [%s]" % keycode_defend
 
 
 func _on_ability_button_pressed(ability: Ability) -> void:

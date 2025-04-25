@@ -19,7 +19,7 @@ func use_ability(targets: Array[Node]) -> void:
 
 
 func on_input(event: InputEvent) -> void:
-	if event.is_action_pressed("right_mouse"):
+	if event.is_action_pressed("cancel") or event.is_action_pressed("right_mouse"):
 		unit.aim_stopped.emit()
 		transition_requested.emit(self, UnitStateMachine.STATE.IDLE)
 	elif event.is_action_pressed("left_mouse"):

@@ -14,6 +14,15 @@ const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var shield_bar: ProgressBar = %ShieldBar
 @onready var potion_bar: ProgressBar = %PotionBar
+@onready var keybind_label: Label = $KeybindLabel
+
+var keycode: String = "Unassigned"
+var input_map_id: String = ""
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed(input_map_id):
+		pressed.emit()
 
 
 func set_unit(value: Unit) -> void:
@@ -32,7 +41,9 @@ func set_unit(value: Unit) -> void:
 
 
 func _update_visuals() -> void:
-	# TODO this if fully repeated in party unit ui, make a shared scene
+	# TODO this is fully repeated in party unit ui, make a shared scene
+	keybind_label.text = "[%s]" % keycode
+
 	if unit:
 		var coords = unit.stats.bottle.sprite_coordinates
 		var sprite_size = unit.stats.bottle.sprite_size

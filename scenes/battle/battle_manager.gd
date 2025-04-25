@@ -1,8 +1,6 @@
 extends Node2D
 class_name BattleManager
 
-const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.tscn")
-
 @export var party_manager: PartyManager : set = set_party_manager
 @export var battle_stats: BattleStats
 
@@ -44,6 +42,7 @@ func _ready() -> void:
 
 	for child in party_selection_container.get_children():
 		child.queue_free()
+
 
 
 func start_deployment() -> void:
@@ -105,11 +104,8 @@ func _start_battle() -> void:
 		unit.queue_free()
 		await unit.tree_exited
 
-	for unit in player_manager.get_children():
-		var selection_ui_instance := UNIT_SELECT_BUTTON.instantiate()
-		party_selection_container.add_child(selection_ui_instance)
-		selection_ui_instance.pressed.connect(_on_change_active_unit.bind(unit))
-		selection_ui_instance.unit = unit
+	party_selection_container.create_unit_select_buttons(player_manager.get_children())
+	party_selection_container.unit_selected.connect(_on_change_active_unit)
 
 	for enemy in enemy_manager.get_children():
 		enemy_manager.verify_intent(enemy)
