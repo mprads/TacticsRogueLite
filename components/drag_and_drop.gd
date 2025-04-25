@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if dragging and event.is_action_pressed("right_mouse"):
+	if dragging and (event.is_action_pressed("cancel") or event.is_action_pressed("right_mouse")):
 		_cancel_dragging()
 	elif dragging and event.is_action_released("left_mouse"):
 		_drop()
