@@ -14,6 +14,9 @@ signal enemy_died(enemy: Enemy)
 #Battle Reward Events
 signal battle_reward_exited
 
+#Artifact Events
+signal activate_artifacts_by_type(type: Artifact.TYPE)
+
 #Shop Events
 signal shop_exited
 signal shop_entered(shop: Shop)

@@ -47,6 +47,7 @@ func start_turn() -> void:
 	for unit in get_children():
 		unit.status_manager.apply_statuses_by_type(Status.TYPE.START_OF_TURN)
 
+	Events.activate_artifacts_by_type.emit(Artifact.TYPE.START_OF_TURN)
 	Events.player_turn_started.emit()
 
 
@@ -67,7 +68,8 @@ func _on_unit_turn_complete() -> void:
 		if not unit.disabled: return
 
 		unit.status_manager.apply_statuses_by_type(Status.TYPE.END_OF_TURN)
-
+	
+	Events.activate_artifacts_by_type.emit(Artifact.TYPE.END_OF_TURN)
 	Events.player_turn_ended.emit()
 
 

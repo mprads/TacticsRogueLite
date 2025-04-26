@@ -1,6 +1,8 @@
 extends Resource
 class_name Artifact
 
+signal activated
+
 enum TYPE { START_OF_TURN, END_OF_TURN, START_OF_COMBAT, END_OF_COMBAT, EVENT }
 
 @export var name: String
@@ -11,7 +13,7 @@ enum TYPE { START_OF_TURN, END_OF_TURN, START_OF_COMBAT, END_OF_COMBAT, EVENT }
 
 
 func activate_artifact() -> void:
-	pass
+	activated.emit()
 
 
 func get_tooltip() -> String:
