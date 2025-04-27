@@ -14,7 +14,6 @@ func set_artifact(value: Artifact) -> void:
 
 
 func _on_artifact_activated() -> void:
-	print("activated")
 	var tween := create_tween()
 	tween.tween_property(self, "scale", Vector2(1.25, 1.25), .25)
 	tween.tween_property(self, "scale", Vector2(1, 1), .1)

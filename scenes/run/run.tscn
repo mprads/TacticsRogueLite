@@ -59,17 +59,6 @@ custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 alignment = 1
 
-[node name="ArtifactPlaceholder" type="HBoxContainer" parent="TopBar/MarginContainer/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(150, 28)
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="Label" type="Label" parent="TopBar/MarginContainer/HBoxContainer/ArtifactPlaceholder"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Arifacts displayed here"
-
 [node name="ArtifactUI" parent="TopBar/MarginContainer/HBoxContainer" instance=ExtResource("8_7yo0l")]
 unique_name_in_owner = true
 layout_mode = 2

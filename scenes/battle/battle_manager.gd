@@ -44,7 +44,6 @@ func _ready() -> void:
 		child.queue_free()
 
 
-
 func start_deployment() -> void:
 	_generate_bench()
 	start_battle_button.disabled = true
@@ -111,6 +110,7 @@ func _start_battle() -> void:
 		enemy_manager.verify_intent(enemy)
 
 	unit_context_menu.unit = null
+	Events.activate_artifacts_by_type.emit(Artifact.TYPE.START_OF_COMBAT)
 	player_manager.start_turn()
 
 
@@ -129,6 +129,7 @@ func _on_enemy_turn_ended() -> void:
 
 
 func _on_enemy_manager_all_enemies_defeated() -> void:
+	Events.activate_artifacts_by_type.emit(Artifact.TYPE.END_OF_COMBAT)
 	Events.battle_won.emit()
 
 
@@ -140,6 +141,7 @@ func _on_player_turn_ended() -> void:
 
 
 func _on_player_manager_all_units_defeated() -> void:
+	Events.activate_artifacts_by_type.emit(Artifact.TYPE.END_OF_COMBAT)
 	Events.battle_lost.emit()
 
 
