@@ -17,6 +17,7 @@ signal battle_reward_exited
 #Artifact Events
 signal activate_artifacts_by_type(type: Artifact.TYPE)
 signal artifacts_activated(type: Artifact.TYPE)
+signal unit_shielded(unit: Unit)
 
 #Shop Events
 signal shop_exited
