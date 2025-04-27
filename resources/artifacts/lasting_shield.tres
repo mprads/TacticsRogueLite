@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Artifact" load_steps=3 format=3 uid="uid://cyi8lynrukcin"]
+[gd_resource type="Resource" script_class="LastingShield" load_steps=3 format=3 uid="uid://cyi8lynrukcin"]
 
 [ext_resource type="Texture2D" uid="uid://gfiw0f4ic4r0" path="res://assets/icons/artifacts/24x24Shield.png" id="1_nf447"]
-[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_o5qov"]
+[ext_resource type="Script" uid="uid://bdvax2xku7th" path="res://resources/artifacts/lasting_shield.gd" id="2_nf447"]
 
 [resource]
-script = ExtResource("1_o5qov")
+script = ExtResource("2_nf447")
 name = "Lasting Shield"
 id = "lasting_shield"
 type = 4

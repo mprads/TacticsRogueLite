@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Artifact" load_steps=3 format=3 uid="uid://b81l0dgu2txuq"]
+[gd_resource type="Resource" script_class="NeverEndingDrip" load_steps=3 format=3 uid="uid://b81l0dgu2txuq"]
 
-[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_dobns"]
+[ext_resource type="Script" uid="uid://dloon67vdkp7o" path="res://resources/artifacts/never_ending_drip.gd" id="1_dobns"]
 [ext_resource type="Texture2D" uid="uid://sw1ysyf2l78i" path="res://assets/icons/artifacts/24x24Drip.png" id="1_vsak0"]
 
 [resource]
