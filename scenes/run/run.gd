@@ -144,6 +144,8 @@ func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.TYPE.BATTLE:
 			_on_battle_entered(room)
+		Room.TYPE.ELITE:
+			_on_battle_entered(room)
 		Room.TYPE.SHOP:
 			_on_shop_entered()
 		Room.TYPE.BREWING:

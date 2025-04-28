@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqxnj7v55fakb"]
 
-[ext_resource type="Texture2D" uid="uid://deofj72lgrhxd" path="res://assets/sprites/map/Line.png" id="1_hx6oq"]
+[ext_resource type="Texture2D" uid="uid://deofj72lgrhxd" path="res://assets/icons/map/Line.png" id="1_hx6oq"]
 
 [node name="MapLine" type="Line2D"]
 texture_repeat = 2
