@@ -18,6 +18,10 @@ func refill(amount: int) -> void:
 
 func set_oz(value: int) -> void:
 	oz = clampi(value, 0, max_oz)
+	
+	if oz == 0:
+		potion = null
+
 	emit_changed()
 
 

@@ -15,6 +15,7 @@ const UNIT = preload("res://scenes/unit/unit.tscn")
 
 func _ready() -> void:
 	Events.unit_died.connect(_on_unit_died)
+	Events.artifacts_activated.connect(_on_artifacts_activated)
 
 
 func setup_party(party_stats: Array[UnitStats]) -> void:
@@ -46,8 +47,8 @@ func add_party_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
 func start_turn() -> void:
 	for unit in get_children():
 		unit.status_manager.apply_statuses_by_type(Status.TYPE.START_OF_TURN)
-
-	Events.player_turn_started.emit()
+	Events.activate_artifacts_by_type.emit(Artifact.TYPE.START_OF_TURN)
+	
 
 
 func enable_drag_and_drop() -> void:
@@ -66,9 +67,10 @@ func _on_unit_turn_complete() -> void:
 	for unit in get_children():
 		if not unit.disabled: return
 
+	for unit in get_children():
 		unit.status_manager.apply_statuses_by_type(Status.TYPE.END_OF_TURN)
 
-	Events.player_turn_ended.emit()
+	Events.activate_artifacts_by_type.emit(Artifact.TYPE.END_OF_TURN)
 
 
 func _on_request_change_active_unit(unit: Unit) -> void:
@@ -92,3 +94,11 @@ func _on_unit_died(unit: Unit) -> void:
 
 	if get_child_count() == 0:
 		all_units_defeated.emit()
+
+
+func _on_artifacts_activated(type: Artifact.TYPE) -> void:
+	match type:
+		Artifact.TYPE.START_OF_TURN:
+			Events.player_turn_started.emit()
+		Artifact.TYPE.END_OF_TURN:
+			Events.player_turn_ended.emit()

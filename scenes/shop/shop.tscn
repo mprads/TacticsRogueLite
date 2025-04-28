@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://q7xyee7lyj2t"]
+[gd_scene load_steps=15 format=3 uid="uid://q7xyee7lyj2t"]
 
 [ext_resource type="Script" uid="uid://dkc5fw5v2355l" path="res://scenes/shop/shop.gd" id="1_100s2"]
 [ext_resource type="PackedScene" uid="uid://bx3amx8rinwo" path="res://scenes/shop/shop_item.tscn" id="2_7lxhl"]
@@ -9,12 +9,17 @@
 [ext_resource type="Resource" uid="uid://d0rt6xe2qw4c" path="res://resources/items/zinc.tres" id="5_vk20h"]
 [ext_resource type="Resource" uid="uid://ddgsppdhtad44" path="res://resources/items/green_herb.tres" id="6_tp26b"]
 [ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/red_mushroom.tres" id="7_vk20h"]
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="8_131kw"]
+[ext_resource type="Resource" uid="uid://cyi8lynrukcin" path="res://resources/artifacts/lasting_shield.tres" id="9_xoc10"]
+[ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/never_ending_drip.tres" id="10_k5co3"]
 [ext_resource type="PackedScene" uid="uid://bqjho2cnvyfic" path="res://scenes/shop/planter_item.tscn" id="10_vk20h"]
+[ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="11_6kbe7"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_100s2")
 shop_items = Array[ExtResource("2_ge4d2")]([ExtResource("3_xcdpw"), ExtResource("4_tp26b"), ExtResource("5_vk20h")])
 shop_plants = Array[ExtResource("2_ge4d2")]([ExtResource("6_tp26b"), ExtResource("7_vk20h")])
+shop_artifacts = Array[ExtResource("8_131kw")]([ExtResource("9_xoc10"), ExtResource("10_k5co3"), ExtResource("11_6kbe7")])
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = 0

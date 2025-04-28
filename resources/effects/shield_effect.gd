@@ -11,3 +11,5 @@ func execute(targets: Array[Node]) -> void:
 		if target is Enemy or target is Unit:
 			target.stats.shield += amount
 			target.spawn_floating_text(str(amount), ColourHelper.get_colour(ColourHelper.KEYS.SHIELD))
+			if target is Unit:
+				Events.unit_shielded.emit(target)

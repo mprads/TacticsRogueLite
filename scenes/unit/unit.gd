@@ -47,7 +47,6 @@ func take_damage(damage: int) -> void:
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 
 	stats.take_damage(modified_damage)
-	# Would prefer if this was handled in the effect resource, but need modified value
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
 	if stats.health <= 0:

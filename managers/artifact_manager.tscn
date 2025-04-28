@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://buxnp67tgf6nt"]
+
+[ext_resource type="Script" uid="uid://mr05hbk8c26o" path="res://managers/artifact_manager.gd" id="1_x0ob0"]
+
+[node name="ArtifactManager" type="Node"]
+script = ExtResource("1_x0ob0")

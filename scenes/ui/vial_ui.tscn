@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bkyqjyhlg3ia0" path="res://scenes/ui/vial_button.tscn" id="2_xt8fb"]
 
 [node name="VialUI" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
 size_flags_horizontal = 6
+alignment = 1
 script = ExtResource("1_qw3ji")
 
 [node name="VialButton" parent="." instance=ExtResource("2_xt8fb")]

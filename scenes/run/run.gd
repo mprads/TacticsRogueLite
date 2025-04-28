@@ -12,7 +12,9 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 @onready var inventory_manager: InventoryManager = $InventoryManager
 @onready var party_manager: PartyManager = $PartyManager
 @onready var vial_manager: VialManager = $VialManager
+@onready var artifact_manager: ArtifactManager = $ArtifactManager
 
+@onready var artifact_ui: HBoxContainer = %ArtifactUI
 @onready var vial_ui: VialUI = %VialUI
 @onready var gold_ui: HBoxContainer = %GoldUI
 @onready var inventory_button: TextureButton = %InventoryButton
@@ -83,6 +85,8 @@ func _set_up_managers() -> void:
 	inventory_manager.run_stats = run_stats
 	party_manager.run_stats = run_stats
 	vial_manager.run_stats = run_stats
+	artifact_manager.run_stats = run_stats
+	artifact_manager.artifact_ui = artifact_ui
 
 
 func _set_up_event_connections() -> void:
@@ -100,6 +104,7 @@ func _set_up_event_connections() -> void:
 func _set_up_top_bar() -> void:
 	inventory_button.pressed.connect(inventory_ui.toggle_view)
 
+	artifact_manager.init_artifacts()
 	vial_ui.vial_manager = vial_manager
 	gold_ui.inventory_manager = inventory_manager
 	inventory_ui.inventory_manager = inventory_manager
@@ -169,6 +174,7 @@ func _on_retry_battle() -> void:
 func _on_shop_entered() -> void:
 	var shop := _change_view(SHOP_SCENE)
 	shop.inventory_manager = inventory_manager
+	shop.artifact_manager = artifact_manager
 	shop.populate_shop()
 	Events.shop_entered.emit(shop)
 
