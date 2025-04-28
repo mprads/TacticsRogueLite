@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=8 format=3 uid="uid://topc3rypefwm"]
+
+[ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_l6i05"]
+[ext_resource type="Resource" uid="uid://dn4qyxauut4vk" path="res://resources/enemies/knight.tres" id="2_6ru5m"]
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="2_yfw5s"]
+[ext_resource type="Script" uid="uid://dvv6iov5fd7fy" path="res://resources/battles/battle_stats.gd" id="3_6ru5m"]
+[ext_resource type="Resource" uid="uid://d0rt6xe2qw4c" path="res://resources/items/zinc.tres" id="4_6yaoh"]
+[ext_resource type="Resource" uid="uid://43dujorcxsl6" path="res://resources/items/venom.tres" id="5_2xdi8"]
+[ext_resource type="Resource" uid="uid://d1aqyupi7ysw3" path="res://resources/items/sulfur.tres" id="6_6ua81"]
+
+[resource]
+script = ExtResource("3_6ru5m")
+tier = 0
+weight = 1.0
+min_gold_reward = 50
+max_gold_reward = 70
+max_drops = 3
+enemy_drops = Array[ExtResource("2_yfw5s")]([ExtResource("4_6yaoh"), ExtResource("5_2xdi8"), ExtResource("6_6ua81")])
+enemies = Array[ExtResource("1_l6i05")]([ExtResource("2_6ru5m")])
+metadata/_custom_type_script = "uid://dvv6iov5fd7fy"
