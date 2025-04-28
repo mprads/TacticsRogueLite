@@ -18,11 +18,13 @@ signal battle_reward_exited
 signal activate_artifacts_by_type(type: Artifact.TYPE)
 signal artifacts_activated(type: Artifact.TYPE)
 signal unit_shielded(unit: Unit)
+signal request_add_artifact(artifact: Artifact)
 
 #Shop Events
 signal shop_exited
 signal shop_entered(shop: Shop)
 signal request_purchase_item(item: Item)
+signal request_purchase_artifact(artifact: Artifact)
 
 #Brewing Events
 signal brewing_exited

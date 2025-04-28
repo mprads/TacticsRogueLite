@@ -174,6 +174,7 @@ func _on_retry_battle() -> void:
 func _on_shop_entered() -> void:
 	var shop := _change_view(SHOP_SCENE)
 	shop.inventory_manager = inventory_manager
+	shop.artifact_manager = artifact_manager
 	shop.populate_shop()
 	Events.shop_entered.emit(shop)
 

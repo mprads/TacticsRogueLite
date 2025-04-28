@@ -1,15 +1,13 @@
-[gd_resource type="Resource" script_class="RunStats" load_steps=53 format=3 uid="uid://cog76ftpquwhv"]
+[gd_resource type="Resource" script_class="RunStats" load_steps=51 format=3 uid="uid://cog76ftpquwhv"]
 
 [ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
 [ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_qn745"]
 [ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
-[ext_resource type="Resource" uid="uid://cyi8lynrukcin" path="res://resources/artifacts/lasting_shield.tres" id="2_cah5c"]
 [ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="2_mnkgj"]
 [ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/never_ending_drip.tres" id="3_1l1ep"]
 [ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="3_isr74"]
 [ext_resource type="Script" uid="uid://c6mm720la6mee" path="res://resources/abilities/attack.gd" id="3_ls2tb"]
 [ext_resource type="Resource" uid="uid://raksx0j8qtki" path="res://resources/potions/support_potion.tres" id="3_ncqbe"]
-[ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="4_6iuv3"]
 [ext_resource type="Resource" uid="uid://c8dola213qoyd" path="res://resources/abilities/enfeeble.tres" id="4_ncqbe"]
 [ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="4_pb28d"]
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
@@ -271,9 +269,9 @@ metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [resource]
 script = ExtResource("2_3wu10")
-gold = 50
+gold = 150
 inventory = Dictionary[int, int]({})
-artifacts = Array[ExtResource("1_qn745")]([ExtResource("4_6iuv3"), ExtResource("2_cah5c"), ExtResource("3_1l1ep")])
+artifacts = Array[ExtResource("1_qn745")]([ExtResource("3_1l1ep")])
 party = Array[ExtResource("1_23n1j")]([SubResource("Resource_dj4pj"), SubResource("Resource_2m8go"), SubResource("Resource_1l1ep"), SubResource("Resource_er5q5")])
 max_party_size = 5
 vials = Array[ExtResource("5_bk1v7")]([SubResource("Resource_eqed4"), SubResource("Resource_pij53"), SubResource("Resource_7qsao")])

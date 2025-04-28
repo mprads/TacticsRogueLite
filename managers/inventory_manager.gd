@@ -10,6 +10,7 @@ signal inventory_changed
 func _ready() -> void:
 	Events.request_add_item.connect(_on_request_add_item)
 	Events.request_purchase_item.connect(_on_request_purchase_item)
+	Events.request_purchase_artifact.connect(_on_request_purchase_artifact)
 	Events.request_remove_item.connect(_on_request_remove_item)
 	Events.request_add_gold.connect(_update_gold)
 
@@ -48,3 +49,8 @@ func _on_request_remove_item(item: Item, count: int) -> void:
 func _on_request_purchase_item(item: Item) -> void:
 	_update_gold(-item.gold_cost)
 	_add_item(item.key)
+
+
+func _on_request_purchase_artifact(artifact: Artifact) -> void:
+	_update_gold(-artifact.gold_cost)
+	Events.request_add_artifact.emit(artifact)

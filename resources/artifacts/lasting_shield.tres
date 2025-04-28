@@ -5,9 +5,14 @@
 
 [resource]
 script = ExtResource("2_nf447")
+shield_amount = 5
 name = "Lasting Shield"
 id = "lasting_shield"
 type = 4
 icon = ExtResource("1_nf447")
 tooltip = "Gain an additional 5 shield"
+can_appear_in_shop = true
+can_be_reward = true
+elite_reward = false
+gold_cost = 150
 metadata/_custom_type_script = "uid://d03wgd6dnkyes"

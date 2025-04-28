@@ -5,9 +5,14 @@
 
 [resource]
 script = ExtResource("1_dobns")
+refill_amount = 2
 name = "Never Ending Drip"
 id = "never_ending_dr"
 type = 1
 icon = ExtResource("1_vsak0")
 tooltip = "At the end of each unit's turn gain back 2oz"
+can_appear_in_shop = true
+can_be_reward = true
+elite_reward = false
+gold_cost = 200
 metadata/_custom_type_script = "uid://d03wgd6dnkyes"
