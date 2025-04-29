@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="BattleStats" load_steps=11 format=3 uid="uid://ccbymmnt281vp"]
+[gd_resource type="Resource" script_class="BattleStats" load_steps=13 format=3 uid="uid://ccbymmnt281vp"]
 
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_8kova"]
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_i37ws"]
 [ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="2_2anw2"]
+[ext_resource type="Resource" uid="uid://cyi8lynrukcin" path="res://resources/artifacts/lasting_shield.tres" id="2_4srls"]
 [ext_resource type="Resource" uid="uid://dn4qyxauut4vk" path="res://resources/enemies/knight.tres" id="2_6qabx"]
 [ext_resource type="Resource" uid="uid://cdoqw6gma0bsq" path="res://resources/enemies/rat.tres" id="3_8kova"]
 [ext_resource type="Script" uid="uid://dvv6iov5fd7fy" path="res://resources/battles/battle_stats.gd" id="3_pw3ik"]
@@ -20,4 +22,6 @@ max_gold_reward = 100
 max_drops = 5
 enemy_drops = Array[ExtResource("2_2anw2")]([ExtResource("5_4srls"), ExtResource("6_0ogqi"), ExtResource("7_50jxf"), ExtResource("8_lc2a3"), ExtResource("9_hlhse")])
 enemies = Array[ExtResource("1_i37ws")]([ExtResource("2_6qabx"), ExtResource("2_6qabx"), ExtResource("3_8kova")])
+artifact_drop = Array[ExtResource("1_8kova")]([ExtResource("2_4srls")])
+is_elite = true
 metadata/_custom_type_script = "uid://dvv6iov5fd7fy"
