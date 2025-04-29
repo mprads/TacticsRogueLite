@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2i3e6qlmmf13"]
+[gd_scene load_steps=5 format=3 uid="uid://b2i3e6qlmmf13"]
 
 [ext_resource type="Script" uid="uid://b2j1u6d8rdmeh" path="res://scenes/map/map.gd" id="1_sxf4j"]
 [ext_resource type="Script" uid="uid://d1u1r3ppplyaa" path="res://scenes/map/map_generator.gd" id="2_tqkkf"]
 [ext_resource type="Resource" uid="uid://bvw6m71aaj4ta" path="res://resources/battles/battle_stats_pool.tres" id="3_a2pkv"]
+[ext_resource type="Resource" uid="uid://c57pduwq6dht" path="res://resources/battles/elite_battle_stats_pool.tres" id="4_ph54e"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_sxf4j")
@@ -24,6 +25,7 @@ offset = Vector2(320, 180)
 unique_name_in_owner = true
 script = ExtResource("2_tqkkf")
 battle_stats_pool = ExtResource("3_a2pkv")
+elite_battle_stats_pool = ExtResource("4_ph54e")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1

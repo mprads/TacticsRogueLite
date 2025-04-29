@@ -21,6 +21,7 @@ func set_battle_stats(value: BattleStats) -> void:
 	battle_stats = value
 	_roll_gold_reward()
 	_roll_loot_reward()
+	_roll_artifact_reward()
 
 
 func _roll_gold_reward() -> void:
@@ -29,7 +30,7 @@ func _roll_gold_reward() -> void:
 	var gold = battle_stats.get_gold_reward()
 	gold_reward.reward_text = "%s Gold" % gold
 	rewards.add_child(gold_reward)
-	gold_reward.pressed.connect(_on_gold_reward_take.bind(gold))
+	gold_reward.pressed.connect(_on_gold_reward_taken.bind(gold))
 
 
 func _roll_loot_reward() -> void:
@@ -40,15 +41,31 @@ func _roll_loot_reward() -> void:
 		loot_reward.reward_icon = drop.icon
 		loot_reward.reward_text = drop.name
 		rewards.add_child(loot_reward)
-		loot_reward.pressed.connect(_on_loot_reward_take.bind(drop))
+		loot_reward.pressed.connect(_on_loot_reward_taken.bind(drop))
 
 
-func _on_gold_reward_take(gold: int) -> void:
+func _roll_artifact_reward() -> void:
+	var drop = battle_stats.get_artifact_reward()
+
+	if not drop: return
+
+	var artifact_reward := REWARD_BUTTON.instantiate()
+	artifact_reward.reward_icon = drop.icon
+	artifact_reward.reward_text = drop.name
+	rewards.add_child(artifact_reward)
+	artifact_reward.pressed.connect(_on_artifact_reward_taken.bind(drop))
+
+
+func _on_gold_reward_taken(gold: int) -> void:
 	Events.request_add_gold.emit(gold)
 
 
-func _on_loot_reward_take(item: Item) -> void:
+func _on_loot_reward_taken(item: Item) -> void:
 	Events.request_add_item.emit(item)
+
+
+func _on_artifact_reward_taken(artifact: Artifact) -> void:
+	Events.request_add_artifact.emit(artifact)
 
 
 func _on_continue_button_pressed() -> void:

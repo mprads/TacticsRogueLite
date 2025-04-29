@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2xnp6yfra23r"
-path="res://.godot/imported/Brewing.png-2a6a06900edd52522a84fe2e8fca58e1.ctex"
+uid="uid://dl767tu8oy851"
+path="res://.godot/imported/Shop.png-5bc85500d0d47cb8a60a8a1ea7f5d12d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/map/Brewing.png"
-dest_files=["res://.godot/imported/Brewing.png-2a6a06900edd52522a84fe2e8fca58e1.ctex"]
+source_file="res://assets/icons/map/Shop.png"
+dest_files=["res://.godot/imported/Shop.png-5bc85500d0d47cb8a60a8a1ea7f5d12d.ctex"]
 
 [params]
 

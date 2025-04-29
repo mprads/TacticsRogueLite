@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://do85c02nl7l33"]
 
 [ext_resource type="Script" uid="uid://fiydsahgaxay" path="res://scenes/map/map_room.gd" id="1_gyfd6"]
-[ext_resource type="Texture2D" uid="uid://cna447ovou157" path="res://assets/sprites/map/Battle.png" id="1_hwhxx"]
+[ext_resource type="Texture2D" uid="uid://cna447ovou157" path="res://assets/icons/map/Battle.png" id="1_hwhxx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyfd6"]
 radius = 21.0238

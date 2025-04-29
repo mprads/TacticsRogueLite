@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=10 format=3 uid="uid://c7aljtvk55ec"]
+
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_4xf42"]
+[ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_33ct7"]
+[ext_resource type="Resource" uid="uid://cyi8lynrukcin" path="res://resources/artifacts/lasting_shield.tres" id="2_jrexj"]
+[ext_resource type="Resource" uid="uid://dn4qyxauut4vk" path="res://resources/enemies/knight.tres" id="2_mxbgy"]
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="2_uq16s"]
+[ext_resource type="Script" uid="uid://dvv6iov5fd7fy" path="res://resources/battles/battle_stats.gd" id="3_mxbgy"]
+[ext_resource type="Resource" uid="uid://d0rt6xe2qw4c" path="res://resources/items/zinc.tres" id="4_f030t"]
+[ext_resource type="Resource" uid="uid://d1aqyupi7ysw3" path="res://resources/items/sulfur.tres" id="5_4xf42"]
+[ext_resource type="Resource" uid="uid://43dujorcxsl6" path="res://resources/items/venom.tres" id="6_jrexj"]
+
+[resource]
+script = ExtResource("3_mxbgy")
+tier = 1
+weight = 1.0
+min_gold_reward = 70
+max_gold_reward = 90
+max_drops = 4
+enemy_drops = Array[ExtResource("2_uq16s")]([ExtResource("4_f030t"), ExtResource("5_4xf42"), ExtResource("6_jrexj")])
+enemies = Array[ExtResource("1_33ct7")]([ExtResource("2_mxbgy"), ExtResource("2_mxbgy")])
+artifact_drop = Array[ExtResource("1_4xf42")]([ExtResource("2_jrexj")])
+is_elite = true
+metadata/_custom_type_script = "uid://dvv6iov5fd7fy"

@@ -18,7 +18,7 @@ func init_artifacts() -> void:
 		child.queue_free()
 	
 	for artifact in get_artifacts():
-		init_artifact(artifact)
+		init_artifact(artifact) 
 
 
 func init_artifact(artifact: Artifact) -> void:
@@ -55,5 +55,8 @@ func set_run_stats(value: RunStats) -> void:
 
 
 func _on_request_add_artifact(artifact: Artifact) -> void:
-	init_artifact(artifact)
-	run_stats.artifacts.append(artifact)
+	if run_stats.artifacts.has(artifact):
+		Events.request_add_gold.emit(floori(artifact.gold_cost / 3))
+	else:
+		init_artifact(artifact)
+		run_stats.artifacts.append(artifact)

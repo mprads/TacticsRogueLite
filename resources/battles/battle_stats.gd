@@ -8,6 +8,8 @@ class_name BattleStats
 @export var max_drops := 1
 @export var enemy_drops: Array[Item]
 @export var enemies: Array[EnemyStats]
+@export var artifact_drop: Array[Artifact]
+@export var is_elite: bool
 
 var accumulated_weight := 0.0
 
@@ -22,3 +24,9 @@ func get_drop_reward() -> Array[Item]:
 		drops.append(RNG.array_pick_random(enemy_drops))
 
 	return drops
+
+
+func get_artifact_reward() -> Artifact:
+	if artifact_drop.is_empty(): return null
+
+	return RNG.array_pick_random(artifact_drop)
