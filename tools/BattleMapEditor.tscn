@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=4 uid="uid://dbo4qt3dib03c"]
+
+[ext_resource type="Script" uid="uid://bih3kl556waw7" path="res://tools/battle_map_editor.gd" id="1_1lmwt"]
+[ext_resource type="TileSet" uid="uid://beelur5ybttc6" path="res://resources/64prototype_tile_set.tres" id="2_fv4wy"]
+[ext_resource type="Script" uid="uid://bm6kd3ocw6acs" path="res://components/arena.gd" id="3_tts6l"]
+[ext_resource type="PackedScene" uid="uid://dm2vpxif7k43a" path="res://scenes/ui/battle/party_selection_container.tscn" id="4_tts6l"]
+[ext_resource type="PackedScene" uid="uid://bgioejj4mplt5" path="res://scenes/ui/battle/unit_context_menu.tscn" id="5_6etuk"]
+
+[node name="BattleMapEditor" type="Node2D" node_paths=PackedStringArray("test_arena", "file_name")]
+script = ExtResource("1_1lmwt")
+test_arena = NodePath("Arena")
+file_name = NodePath("file_name")
+
+[node name="Arena" type="TileMapLayer" parent="."]
+position = Vector2(138, 158)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAP//AAAAAAAAAAABAP//AAABAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAAAAP7/AAABAAAAAAAAAP3/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAADAPz/AAAAAAAAAAADAP7/AAAAAAAAAAADAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAPv/AAACAAAAAAAFAPv/AAACAAAAAAAEAPv/AAACAAAAAAAEAPr/AAACAAAAAAAFAPr/AAACAAAAAAAAAPz/AAABAAAAAAADAPv/AAACAAAAAAADAPr/AAACAAAAAAAGAPr/AAACAAAAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAFAP//AAAAAAAAAAD///z/AAAAAAAAAAD///3/AAABAAAAAAD///7/AAAAAAAAAAD/////AAABAAAAAAD//wAAAAAAAAAAAAA=")
+tile_set = ExtResource("2_fv4wy")
+script = ExtResource("3_tts6l")
+metadata/_custom_type_script = "uid://bm6kd3ocw6acs"
+metadata/_edit_lock_ = true
+
+[node name="file_name" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 11.0
+text = "choke_point"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -318.0
+offset_right = -5.0
+offset_bottom = -255.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Battle Scene"
+
+[node name="Button" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "End Battle"
+
+[node name="PartySelectionContainer" parent="UI" instance=ExtResource("4_tts6l")]
+unique_name_in_owner = true
+
+[node name="UnitContextMenu" parent="UI" instance=ExtResource("5_6etuk")]
+unique_name_in_owner = true
+offset_left = 439.0
+offset_top = 238.0
+offset_right = -1.0
+offset_bottom = -2.0
+
+[node name="StartBattleButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 26)
+offset_left = 516.0
+offset_top = 209.0
+offset_right = 637.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "Start Battle"
