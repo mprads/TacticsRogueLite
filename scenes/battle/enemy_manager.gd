@@ -101,12 +101,15 @@ func update_enemy_intent(enemy: Enemy) -> void:
 func verify_intent(enemy: Enemy) -> void:
 	if not enemy.ai.current_target: 
 		update_enemy_intent(enemy)
+		return
 
 	if not get_tree().get_nodes_in_group("player_unit").has(enemy.ai.current_target):
 		update_enemy_intent(enemy)
+		return
 
 	if arena.arena_grid.is_tile_occupied(enemy.ai.next_tile):
 		update_enemy_intent(enemy)
+		return
 
 
 func _next_enemy_turn() -> void:
