@@ -63,6 +63,7 @@ func _move_unit(unit: Node, arena: Arena, tile: Vector2i) -> void:
 	navigation.set_id_occupied(tile)
 	unit.global_position = arena.get_global_from_tile(tile)
 	unit.move_cleanup()
+	Events.request_update_enemy_intent.emit()
 
 
 func _move_along_path(unit: Node, arena: Arena, path: Array[Vector2i]) -> void:

@@ -18,6 +18,7 @@ var enemies_to_act: Array[Enemy] = []
 
 func _ready() -> void:
 	Events.enemy_died.connect(_on_enemy_died)
+	Events.request_update_enemy_intent.connect(_on_request_update_enemy_intent)
 
 
 func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
@@ -175,3 +176,8 @@ func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:
 	if not unit_mover.is_dragging():
 		var i := unit_mover.get_arena_for_position(enemy.global_position)
 		unit_mover.arenas[i].clear_flood_filler("ENEMY")
+
+
+func _on_request_update_enemy_intent() -> void:
+	for enemy in get_children():
+		update_enemy_intent(enemy)

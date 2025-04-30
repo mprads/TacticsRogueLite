@@ -10,6 +10,7 @@ signal player_turn_started
 signal unit_died(unit: Unit)
 signal enemy_turn_ended
 signal enemy_died(enemy: Enemy)
+signal request_update_enemy_intent
 
 #Battle Reward Events
 signal battle_reward_exited
