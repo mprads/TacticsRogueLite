@@ -63,7 +63,7 @@ func generate_arena() -> void:
 		coords.append(tile.coord)
 
 	arena_grid.populate_grid(coords)
-	navigation.init(arena.get_used_rect())
+	navigation.init(arena.get_used_rect(), coords)
 
 	enemy_manager.setup_enemies(battle_stats.enemies)
 	enemy_manager.add_enemies_to_grid(arena_grid, arena)
@@ -199,7 +199,7 @@ func _on_unit_selected(unit: Unit) -> void:
 func _on_show_enemy_intent(enemy: Enemy) -> void:
 	enemy_target_selector_ui.starting_position = enemy.global_position
 	enemy_target_selector_ui.ending_position = enemy.ai.current_target.global_position
-	arena.enemy_flood_filler.fill_tile(enemy.ai.next_tile, Vector2i(2, 0))
+	arena.enemy_flood_filler.fill_tile(enemy.ai.next_tile, Vector2i(2, 2))
 
 
 func _on_request_clear_intent() -> void:

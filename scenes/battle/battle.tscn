@@ -73,7 +73,6 @@ arena_grid = NodePath("../ArenaGrid")
 [node name="ArenaHighlighter" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("7_py4tk")
 highlight_layer = NodePath("../HighlightLayer")
-tile = Vector2i(2, 0)
 
 [node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
 position = Vector2(74, 222)
@@ -85,7 +84,7 @@ tile_highlighter = NodePath("BenchHightlighter")
 metadata/_edit_lock_ = true
 
 [node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/BenchTileMap"]
-tile_set = ExtResource("3_xd4uy")
+tile_set = ExtResource("6_mvulk")
 
 [node name="BenchGrid" type="Node2D" parent="BattleManager/BenchTileMap"]
 script = ExtResource("5_h0kxc")
@@ -93,7 +92,6 @@ script = ExtResource("5_h0kxc")
 [node name="BenchHightlighter" type="Node" parent="BattleManager/BenchTileMap" node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("7_py4tk")
 highlight_layer = NodePath("../HighlightLayer")
-tile = Vector2i(2, 0)
 
 [node name="Navigation" type="Node" parent="BattleManager"]
 script = ExtResource("9_n6gaa")

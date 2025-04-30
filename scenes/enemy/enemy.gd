@@ -107,7 +107,7 @@ func _on_mouse_entered() -> void:
 	# and mouse entered signal seems to have priority over exit signal
 	# so create a lambda and delay till end of frame
 	(func():
-		request_flood_fill.emit(stats.movement, Vector2i(4, 0))
+		request_flood_fill.emit(stats.movement, Vector2i(2, 0))
 
 		if ai.current_target:
 			show_intent.emit(self)
