@@ -57,16 +57,18 @@ func generate_arena() -> void:
 
 	arena.tile_set = map.tile_set
 
+	var coords: Array[Vector2i] = []
 	for tile in map.tiles:
-		arena.set_cell(tile, 0, Vector2i(0, 0))
+		arena.set_cell(tile.coord, tile.source_id, tile.atlas_coord)
+		coords.append(tile.coord)
 
-	arena_grid.populate_grid(map.tiles)
+	arena_grid.populate_grid(coords)
 	navigation.init(arena.get_used_rect())
 
 	enemy_manager.setup_enemies(battle_stats.enemies)
 	enemy_manager.add_enemies_to_grid(arena_grid, arena)
 
-	_grid_label_helper(map.tiles, arena)
+	_grid_label_helper(coords, arena)
 
 
 func set_party_manager(value: PartyManager) -> void:
@@ -86,7 +88,7 @@ func _generate_bench() -> void:
 	bench.tile_set = map.tile_set
 
 	for slot in party.size():
-		bench.set_cell(Vector2i(slot, 0), 0, Vector2i(1, 0))
+		bench.set_cell(Vector2i(slot, 0), 0, Vector2i(3, 0))
 
 	bench_grid.populate_grid(bench.get_used_cells())
 
