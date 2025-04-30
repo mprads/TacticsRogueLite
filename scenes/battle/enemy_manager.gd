@@ -63,6 +63,7 @@ func start_turn() -> void:
 func update_enemy_intent(enemy: Enemy) -> bool:
 	var targets = get_tree().get_nodes_in_group("player_unit")
 	var targets_in_range: Array[Dictionary] = []
+	var targets_out_of_range: Array[Dictionary] = []
 
 	for target in targets:
 		var result := {
@@ -75,10 +76,11 @@ func update_enemy_intent(enemy: Enemy) -> bool:
 		var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 
 		var distance := Utils.get_distance_between_tiles(enemy_tile, target_tile)
+		var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
+		var filtered_neighbours: Array[Vector2i] = []
 
 		if distance <= enemy.stats.movement + enemy.stats.attack_range:
-			var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
-			var filtered_neighbours := neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
+			filtered_neighbours = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
 				if arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile:
 					return false
 
@@ -86,20 +88,23 @@ func update_enemy_intent(enemy: Enemy) -> bool:
 
 				return neighbour_distance <= enemy.stats.movement
 			)
+		else:
+			filtered_neighbours = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
+				return not arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile
+			)
 
-			if not filtered_neighbours.is_empty():
-				result["tiles"] = filtered_neighbours
-				result["starting_tile"] = enemy_tile
+		if not filtered_neighbours.is_empty():
+			result["tiles"] = filtered_neighbours
+			result["starting_tile"] = enemy_tile
+			if distance <= enemy.stats.movement + enemy.stats.attack_range:
 				targets_in_range.append(result)
+			else:
+				targets_out_of_range.append(result)
 
-	if targets_in_range.is_empty():
-		# TODO once there is path finding implement back up for when there is
-		# no target within attack range to find furthest tile to move towards
-		return false
-	else:
-		enemy.ai.targets_in_range = targets_in_range
-		enemy.ai.select_target(unit_mover.get_id_path)
-		return true
+	enemy.ai.targets_in_range = targets_in_range
+	enemy.ai.targets_out_of_range = targets_out_of_range
+	enemy.ai.select_target(unit_mover.get_id_path)
+	return true
 
 
 func verify_intent(enemy: Enemy) -> void:
