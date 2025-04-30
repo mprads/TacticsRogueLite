@@ -60,7 +60,7 @@ func start_turn() -> void:
 	_next_enemy_turn()
 
 
-func update_enemy_intent(enemy: Enemy) -> void:
+func update_enemy_intent(enemy: Enemy) -> bool:
 	var targets = get_tree().get_nodes_in_group("player_unit")
 	var targets_in_range: Array[Dictionary] = []
 
@@ -76,9 +76,6 @@ func update_enemy_intent(enemy: Enemy) -> void:
 
 		var distance := Utils.get_distance_between_tiles(enemy_tile, target_tile)
 
-		# TODO once there is path finding implement back up for when there is
-		# no target within attack range to find furthest tile to move towards
-		
 		if distance <= enemy.stats.movement + enemy.stats.attack_range:
 			var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
 			var filtered_neighbours := neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
@@ -86,6 +83,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 					return false
 
 				var neighbour_distance := Utils.get_distance_between_tiles(enemy_tile, neighbour_tile)
+
 				return neighbour_distance <= enemy.stats.movement
 			)
 
@@ -94,21 +92,27 @@ func update_enemy_intent(enemy: Enemy) -> void:
 				result["starting_tile"] = enemy_tile
 				targets_in_range.append(result)
 
-	enemy.ai.targets_in_range = targets_in_range
-	enemy.ai.select_target()
+	if targets_in_range.is_empty():
+		# TODO once there is path finding implement back up for when there is
+		# no target within attack range to find furthest tile to move towards
+		return false
+	else:
+		enemy.ai.targets_in_range = targets_in_range
+		enemy.ai.select_target(unit_mover.get_id_path)
+		return true
 
 
 func verify_intent(enemy: Enemy) -> void:
 	if not enemy.ai.current_target: 
-		update_enemy_intent(enemy)
+		await update_enemy_intent(enemy)
 		return
 
 	if not get_tree().get_nodes_in_group("player_unit").has(enemy.ai.current_target):
-		update_enemy_intent(enemy)
+		await update_enemy_intent(enemy)
 		return
 
 	if arena.arena_grid.is_tile_occupied(enemy.ai.next_tile):
-		update_enemy_intent(enemy)
+		await update_enemy_intent(enemy)
 		return
 
 

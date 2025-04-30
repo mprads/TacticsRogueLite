@@ -34,6 +34,10 @@ func get_arena_for_position(global: Vector2) -> int:
 	return dropped_area_index
 
 
+func get_id_path(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
+	return navigation.create_id_path(start, end)
+
+
 func _set_highlters(enabled: bool) -> void:
 	for arena in arenas:
 		arena.tile_highlighter.enabled = enabled
@@ -62,8 +66,9 @@ func _move_unit(unit: Node, arena: Arena, tile: Vector2i) -> void:
 
 
 func _move_along_path(unit: Node, arena: Arena, path: Array[Vector2i]) -> void:
-	var current_tile = path.pop_front()
-	if not current_tile: 
+	var current_tile: Vector2i = path.pop_front()
+	
+	if not current_tile and path.is_empty():
 		unit.move_cleanup()
 		return
 
@@ -146,5 +151,6 @@ func _on_enemy_request_move(new_tile: Vector2i, enemy: Enemy) -> void:
 	var tile := arenas[i].get_tile_from_global(enemy.global_position)
 
 	var id_path := navigation.create_id_path(tile, new_tile)
+
 	navigation.set_id_empty(tile)
 	_move_along_path(enemy, arenas[i], id_path)
