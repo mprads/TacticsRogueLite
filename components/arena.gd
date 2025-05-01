@@ -47,6 +47,14 @@ func get_neighbour_tiles(tile: Vector2i) -> Array[Vector2i]:
 	return results
 
 
+func get_enemy_spawns() -> Array[Vector2i]:
+	var tiles := get_used_cells()
+	return tiles.filter(func(tile) -> bool:
+		var data := get_cell_tile_data(tile)
+		return data.get_custom_data("enemy_spawn")
+	)
+
+
 # I hate check the string, the battle manager passing a reference seems incorrect
 # and an enum seems overkill
 func enable_flood_filler(layer: String) -> void:

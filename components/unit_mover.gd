@@ -122,8 +122,14 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	var new_arena := arenas[drop_arena_index]
 	var new_tile := new_arena.get_hovered_tile()
 
+	if unit.unit_state_machine.current_state is UnitDeployingState:
+		if not new_arena.get_cell_tile_data(new_tile).get_custom_data("player_spawn"):
+			_reset_unit_to_starting_position(starting_position, unit)
+			return
+
 	if new_tile == old_tile and new_arena == old_arena:
 		_reset_unit_to_starting_position(starting_position, unit)
+		return
 
 	if new_arena == old_arena:
 		var distance := Utils.get_distance_between_tiles(old_tile, new_tile)

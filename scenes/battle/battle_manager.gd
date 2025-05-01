@@ -88,7 +88,7 @@ func _generate_bench() -> void:
 	bench.tile_set = map.tile_set
 
 	for slot in party.size():
-		bench.set_cell(Vector2i(slot, 0), 0, Vector2i(3, 0))
+		bench.set_cell(Vector2i(slot, 0), 0, Vector2i(1, 0))
 
 	bench_grid.populate_grid(bench.get_used_cells())
 

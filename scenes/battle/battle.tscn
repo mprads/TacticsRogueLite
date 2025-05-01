@@ -76,7 +76,7 @@ highlight_layer = NodePath("../HighlightLayer")
 
 [node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
 position = Vector2(74, 222)
-tile_map_data = PackedByteArray("AAAAAAAAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAADAAAAAAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
 script = ExtResource("5_fh7rg")
 arena_grid = NodePath("BenchGrid")

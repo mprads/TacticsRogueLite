@@ -43,8 +43,10 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 
 
 func add_enemies_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
+	var spawn_tiles := arena.get_enemy_spawns()
 	for enemy in get_children():
-		var empty_tile = grid.get_first_empty_tile()
+		var empty_tile = RNG.array_pick_random(spawn_tiles)
+		spawn_tiles.erase(empty_tile)
 		enemy.global_position = tile_map.get_global_from_tile(empty_tile)
 		grid.add_unit(empty_tile, enemy)
 
