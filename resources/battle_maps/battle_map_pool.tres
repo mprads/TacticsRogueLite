@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BattleMapPool" load_steps=7 format=3 uid="uid://ccxsj7lmuvtu4"]
+
+[ext_resource type="Script" uid="uid://c4nhtfaiomcsl" path="res://resources/battle_maps/battle_map.gd" id="1_25asy"]
+[ext_resource type="Script" uid="uid://d3wpyr2advgh5" path="res://resources/battle_maps/battle_map_pool.gd" id="2_4wead"]
+[ext_resource type="Resource" uid="uid://cxgo5l02uei7m" path="res://resources/battle_maps/square_6x6.tres" id="2_qn303"]
+[ext_resource type="Resource" uid="uid://dbbryw3skd3fl" path="res://resources/battle_maps/donut.tres" id="3_uqnyj"]
+[ext_resource type="Resource" uid="uid://oqskmcc8i7ay" path="res://resources/battle_maps/tee.tres" id="4_f3p47"]
+[ext_resource type="Resource" uid="uid://cfweochyqwgxx" path="res://resources/battle_maps/choke_point.tres" id="5_f3p47"]
+
+[resource]
+script = ExtResource("2_4wead")
+pool = Array[ExtResource("1_25asy")]([ExtResource("3_uqnyj"), ExtResource("5_f3p47"), ExtResource("2_qn303"), ExtResource("4_f3p47")])
+metadata/_custom_type_script = "uid://d3wpyr2advgh5"

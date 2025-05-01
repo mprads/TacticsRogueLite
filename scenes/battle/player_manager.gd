@@ -48,7 +48,6 @@ func start_turn() -> void:
 	for unit in get_children():
 		unit.status_manager.apply_statuses_by_type(Status.TYPE.START_OF_TURN)
 	Events.activate_artifacts_by_type.emit(Artifact.TYPE.START_OF_TURN)
-	
 
 
 func enable_drag_and_drop() -> void:

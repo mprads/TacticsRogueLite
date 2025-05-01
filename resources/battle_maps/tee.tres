@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="BattleMap" load_steps=3 format=3 uid="uid://oqskmcc8i7ay"]
+
+[ext_resource type="Script" uid="uid://c4nhtfaiomcsl" path="res://resources/battle_maps/battle_map.gd" id="1_55eoh"]
+[ext_resource type="TileSet" uid="uid://beelur5ybttc6" path="res://resources/64prototype_tile_set.tres" id="2_0wiji"]
+
+[resource]
+script = ExtResource("1_55eoh")
+tiles = Array[Dictionary]([{
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(2, -1),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(3, -1),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -2),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -2),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -3),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -4),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -4),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -3),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(0, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(1, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(2, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(3, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(4, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(5, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(0, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(1, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(2, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(3, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(4, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(5, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(-1, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(-1, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(6, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(6, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(2, 0),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(3, 0),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(2, 1),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(3, 1),
+"source_id": 0
+}])
+tile_set = ExtResource("2_0wiji")

@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=20 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
-[ext_resource type="Resource" uid="uid://tqul7q8whaw6" path="res://resources/battle_maps/testing_6x6.tres" id="2_xd4uy"]
+[ext_resource type="Resource" uid="uid://ccxsj7lmuvtu4" path="res://resources/battle_maps/battle_map_pool.tres" id="2_mvulk"]
 [ext_resource type="Script" uid="uid://cydy5jbmlcs0f" path="res://scenes/battle/battle_manager.gd" id="3_0yh6x"]
 [ext_resource type="TileSet" uid="uid://beelur5ybttc6" path="res://resources/64prototype_tile_set.tres" id="3_xd4uy"]
 [ext_resource type="Script" uid="uid://bm6kd3ocw6acs" path="res://components/arena.gd" id="5_fh7rg"]
 [ext_resource type="Script" uid="uid://dymludwl8mc4g" path="res://components/arena_grid.gd" id="5_h0kxc"]
+[ext_resource type="TileSet" uid="uid://ca0qebwsp8kx3" path="res://resources/highlight_tile_set.tres" id="6_mvulk"]
 [ext_resource type="Script" uid="uid://b0vqbai5132oe" path="res://components/unit_mover.gd" id="7_pll4o"]
 [ext_resource type="Script" uid="uid://dmyacoedl35kb" path="res://components/tile_highlighter.gd" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://c01d0h1645ul8" path="res://components/flood_filler.gd" id="8_icoan"]
@@ -25,8 +26,8 @@ point_count = 3
 
 [node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
-map = ExtResource("2_xd4uy")
 battle_manager = NodePath("BattleManager")
+battle_map_pool = ExtResource("2_mvulk")
 
 [node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("arena", "arena_grid", "bench", "bench_grid")]
 unique_name_in_owner = true
@@ -48,13 +49,13 @@ enemy_flood_filler = NodePath("EnemyFloodFiller")
 metadata/_edit_lock_ = true
 
 [node name="PlayerFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
-tile_set = ExtResource("3_xd4uy")
+tile_set = ExtResource("6_mvulk")
 
 [node name="EnemyFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
-tile_set = ExtResource("3_xd4uy")
+tile_set = ExtResource("6_mvulk")
 
 [node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
-tile_set = ExtResource("3_xd4uy")
+tile_set = ExtResource("6_mvulk")
 
 [node name="ArenaGrid" type="Node2D" parent="BattleManager/ArenaTileMap"]
 script = ExtResource("5_h0kxc")
@@ -72,7 +73,6 @@ arena_grid = NodePath("../ArenaGrid")
 [node name="ArenaHighlighter" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("7_py4tk")
 highlight_layer = NodePath("../HighlightLayer")
-tile = Vector2i(2, 0)
 
 [node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
 position = Vector2(74, 222)
@@ -84,7 +84,7 @@ tile_highlighter = NodePath("BenchHightlighter")
 metadata/_edit_lock_ = true
 
 [node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/BenchTileMap"]
-tile_set = ExtResource("3_xd4uy")
+tile_set = ExtResource("6_mvulk")
 
 [node name="BenchGrid" type="Node2D" parent="BattleManager/BenchTileMap"]
 script = ExtResource("5_h0kxc")
@@ -92,7 +92,6 @@ script = ExtResource("5_h0kxc")
 [node name="BenchHightlighter" type="Node" parent="BattleManager/BenchTileMap" node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("7_py4tk")
 highlight_layer = NodePath("../HighlightLayer")
-tile = Vector2i(2, 0)
 
 [node name="Navigation" type="Node" parent="BattleManager"]
 script = ExtResource("9_n6gaa")

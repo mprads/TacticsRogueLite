@@ -18,6 +18,7 @@ var enemies_to_act: Array[Enemy] = []
 
 func _ready() -> void:
 	Events.enemy_died.connect(_on_enemy_died)
+	Events.request_update_enemy_intent.connect(_on_request_update_enemy_intent)
 
 
 func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
@@ -42,8 +43,10 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 
 
 func add_enemies_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
+	var spawn_tiles := arena.get_enemy_spawns()
 	for enemy in get_children():
-		var empty_tile = grid.get_first_empty_tile()
+		var empty_tile = RNG.array_pick_random(spawn_tiles)
+		spawn_tiles.erase(empty_tile)
 		enemy.global_position = tile_map.get_global_from_tile(empty_tile)
 		grid.add_unit(empty_tile, enemy)
 
@@ -60,9 +63,10 @@ func start_turn() -> void:
 	_next_enemy_turn()
 
 
-func update_enemy_intent(enemy: Enemy) -> void:
+func update_enemy_intent(enemy: Enemy) -> bool:
 	var targets = get_tree().get_nodes_in_group("player_unit")
 	var targets_in_range: Array[Dictionary] = []
+	var targets_out_of_range: Array[Dictionary] = []
 
 	for target in targets:
 		var result := {
@@ -75,38 +79,49 @@ func update_enemy_intent(enemy: Enemy) -> void:
 		var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 
 		var distance := Utils.get_distance_between_tiles(enemy_tile, target_tile)
+		var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
+		var filtered_neighbours: Array[Vector2i] = []
 
-		# TODO once there is path finding implement back up for when there is
-		# no target within attack range to find furthest tile to move towards
-		
 		if distance <= enemy.stats.movement + enemy.stats.attack_range:
-			var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
-			var filtered_neighbours := neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
+			filtered_neighbours = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
 				if arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile:
 					return false
 
 				var neighbour_distance := Utils.get_distance_between_tiles(enemy_tile, neighbour_tile)
+
 				return neighbour_distance <= enemy.stats.movement
 			)
+		else:
+			filtered_neighbours = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
+				return not arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile
+			)
 
-			if not filtered_neighbours.is_empty():
-				result["tiles"] = filtered_neighbours
-				result["starting_tile"] = enemy_tile
+		if not filtered_neighbours.is_empty():
+			result["tiles"] = filtered_neighbours
+			result["starting_tile"] = enemy_tile
+			if distance <= enemy.stats.movement + enemy.stats.attack_range:
 				targets_in_range.append(result)
+			else:
+				targets_out_of_range.append(result)
 
 	enemy.ai.targets_in_range = targets_in_range
-	enemy.ai.select_target()
+	enemy.ai.targets_out_of_range = targets_out_of_range
+	enemy.ai.select_target(unit_mover.get_id_path)
+	return true
 
 
 func verify_intent(enemy: Enemy) -> void:
 	if not enemy.ai.current_target: 
-		update_enemy_intent(enemy)
+		await update_enemy_intent(enemy)
+		return
 
 	if not get_tree().get_nodes_in_group("player_unit").has(enemy.ai.current_target):
-		update_enemy_intent(enemy)
+		await update_enemy_intent(enemy)
+		return
 
 	if arena.arena_grid.is_tile_occupied(enemy.ai.next_tile):
-		update_enemy_intent(enemy)
+		await update_enemy_intent(enemy)
+		return
 
 
 func _next_enemy_turn() -> void:
@@ -163,3 +178,8 @@ func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:
 	if not unit_mover.is_dragging():
 		var i := unit_mover.get_arena_for_position(enemy.global_position)
 		unit_mover.arenas[i].clear_flood_filler("ENEMY")
+
+
+func _on_request_update_enemy_intent() -> void:
+	for enemy in get_children():
+		update_enemy_intent(enemy)

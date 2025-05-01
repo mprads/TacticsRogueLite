@@ -6,10 +6,9 @@
 [resource]
 script = ExtResource("1_6m60s")
 status = ExtResource("2_2sgek")
-color = Color(0.984314, 0.419608, 0.113725, 1)
 name = "Defend"
 cost = 0
-atlas_coord = Vector2i(5, 0)
+atlas_coord = Vector2i(3, 0)
 type = 1
 target = 0
 shape = Array[Vector2i]([])

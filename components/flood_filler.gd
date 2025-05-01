@@ -27,9 +27,6 @@ func flood_fill_from_tile(
 			continue
 		elif not arena_grid.get_tiles().has(current_tile):
 			continue
-		elif exclude_occupied and arena_grid.is_tile_occupied(current_tile):
-			if current_tile != starting_tile:
-				continue
 
 		var delta: Vector2i = (current_tile - starting_tile).abs()
 		var distance := int(delta.x + delta.y)
@@ -44,14 +41,15 @@ func flood_fill_from_tile(
 
 			if not arena_grid.get_tiles().has(next_tile):
 				continue
-			elif exclude_occupied and arena_grid.is_tile_occupied(next_tile):
-				continue
 			elif tiles.has(next_tile):
 				continue
 
 			queue.append(next_tile)
 
 	for tile in tiles:
+		if exclude_occupied and arena_grid.is_tile_occupied(tile):
+			continue
+
 		fill_tile(tile, atlas_coord)
 
 
