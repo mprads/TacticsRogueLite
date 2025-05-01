@@ -3,17 +3,18 @@ class_name EnemyAI
 
 var owner: Enemy
 var targets_in_range: Array[Dictionary]
+var targets_out_of_range: Array[Dictionary]
 var current_target: Unit
 var next_tile: Vector2i
-var path: Array[Vector2i]
+var in_range := false
 
 
-func select_target() -> void:
+func select_target(get_id_path: Callable) -> void:
 	current_target = null
 	next_tile = Vector2i.ZERO
-	path = []
 
-	if targets_in_range.is_empty(): return
+	if targets_in_range.is_empty():
+		_find_closest_target(get_id_path)
 
 	var highest_weight := 0.0
 
@@ -37,8 +38,11 @@ func select_target() -> void:
 		# For each tile in range of target unit check the distance to starting tile
 		# weight less movement higher
 		for tile in tiles:
-			var distance := Utils.get_distance_between_tiles(starting_tile, tile)
-			var max_weight := float(owner.stats.movement) / 100
+			var temp_path: Array[Vector2i] = get_id_path.call(starting_tile, tile)
+			if temp_path.size() - 1 > owner.stats.movement: continue
+			
+			var distance := temp_path.size()
+			var max_weight := (float(owner.stats.movement) / 100) + 0.1
 			var movement_weight := max_weight - (float(distance) / 100)
 
 			weight_by_tiles[tile] = movement_weight
@@ -47,11 +51,43 @@ func select_target() -> void:
 				highest_tile_weight = movement_weight
 
 		var weight_sum = damage_weight + highest_tile_weight
-		
+
+		if weight_by_tiles.is_empty() or highest_tile_weight == 0.0: continue
+
 		# Should target the unit it can put the closest to low % hp, movement should only matter 
 		# if the % hp remaining of two targets is tied
 		if weight_sum > highest_weight:
 			current_target = target_unit
 			next_tile = weight_by_tiles.find_key(highest_tile_weight)
+			in_range = true
 
 			highest_weight = weight_sum
+
+	if not current_target:
+		_find_closest_target(get_id_path)
+
+
+func _find_closest_target(get_id_path: Callable) -> void:
+	current_target = null
+	next_tile = Vector2i.ZERO
+	in_range = false
+
+	var shortest_distance := 99
+
+	for target in targets_out_of_range:
+		var target_unit: Unit = target["target"]
+		var tiles: Array[Vector2i] = target["tiles"]
+		var starting_tile: Vector2i = target["starting_tile"]
+
+		var distance_by_tiles: Dictionary[Vector2i, int] = {}
+
+		for tile in tiles:
+			var temp_path: Array[Vector2i] = get_id_path.call(starting_tile, tile)
+			if temp_path.is_empty(): continue
+			var distance := temp_path.size()
+
+			distance_by_tiles[tile] = distance
+			
+			if distance < shortest_distance:
+				current_target = target_unit
+				next_tile = temp_path[clampi(owner.stats.movement, 0, temp_path.size())]

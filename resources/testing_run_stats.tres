@@ -20,7 +20,7 @@ name = "Bottlesworth"
 bottle = ExtResource("4_7qsao")
 oz = 0
 max_health = 15
-health = 7
+health = 5
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_i18qs"]
@@ -30,7 +30,7 @@ bottle = ExtResource("4_7qsao")
 potion = ExtResource("5_pbn6o")
 oz = 20
 max_health = 20
-health = 13
+health = 20
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_mnkgj"]
@@ -40,7 +40,7 @@ bottle = ExtResource("6_i18qs")
 potion = ExtResource("8_wchyp")
 oz = 17
 max_health = 20
-health = 13
+health = 20
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_isr74"]
@@ -50,7 +50,7 @@ bottle = ExtResource("8_mnkgj")
 potion = ExtResource("9_xa4qb")
 oz = 20
 max_health = 20
-health = 13
+health = 20
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_eqed4"]
