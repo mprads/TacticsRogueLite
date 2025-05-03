@@ -9,6 +9,8 @@ status = ExtResource("2_qqhpg")
 name = "Taunt"
 cost = 5
 atlas_coord = Vector2i(0, 2)
+tooltip = "Give yourself TAUNT forcing all enemies in range to targat you
+Cost: 5"
 type = 1
 target = 0
 shape = Array[Vector2i]([])

@@ -8,6 +8,8 @@ base_shield = 10
 name = "Shield"
 cost = 5
 atlas_coord = Vector2i(3, 0)
+tooltip = "Give an ally unit 10 SHIELD
+Cost: 5"
 type = 1
 target = 1
 shape = Array[Vector2i]([])

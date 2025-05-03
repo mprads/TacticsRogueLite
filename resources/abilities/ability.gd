@@ -8,6 +8,7 @@ enum TARGET { SELF, SINGLE_ALLY, ALL_ALLIES, SINGLE_ENEMY, ALL_ENEMIES, AOE }
 @export var name: String
 @export var cost := 1
 @export var atlas_coord: Vector2i
+@export_multiline var tooltip: String
 
 @export_category("Effects")
 @export var type: TYPE
@@ -18,3 +19,7 @@ enum TARGET { SELF, SINGLE_ALLY, ALL_ALLIES, SINGLE_ENEMY, ALL_ENEMIES, AOE }
 
 func apply_effects(_targets: Array[Node], _modifier_manager: ModifierManager) -> void:
 	pass
+
+
+func get_tooltip() -> String:
+	return tooltip
