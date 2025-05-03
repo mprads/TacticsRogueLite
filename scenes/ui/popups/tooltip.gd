@@ -10,8 +10,14 @@ func _ready() -> void:
 	Events.hide_tooltip.connect(_on_hide_tooltip)
 
 
-func _on_request_show_tooltip(name: String, description: String, position: Vector2) -> void:
-	global_position = position
+func _on_request_show_tooltip(name: String, description: String, owner: Node) -> void:
+	global_position = owner.global_position
+	printt(owner.global_position.x, get_viewport_rect().size.x / 2)
+	if owner.global_position.x <= (get_viewport_rect().size.x / 2):
+		global_position.x = owner.global_position.x + owner.size.x
+	else:
+		global_position.x = owner.global_position.x - size.x
+	printt(get_viewport_rect().size, position)
 	name_label.text = name
 	description_label.text = description
 	visible = true

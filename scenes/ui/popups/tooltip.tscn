@@ -5,6 +5,7 @@
 [node name="Tooltip" type="Panel"]
 offset_right = 150.0
 offset_bottom = 80.0
+mouse_filter = 2
 script = ExtResource("1_x5xom")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

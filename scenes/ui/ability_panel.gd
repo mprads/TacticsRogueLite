@@ -15,9 +15,12 @@ func set_ability(value: Ability) -> void:
 	ability = value
 	ability_label.text = ability.name
 
+	if ability.get("status"):
+		print("has status")
+
 
 func _on_mouse_entered() -> void:
-	Events.request_show_tooltip.emit(ability.name, ability.get_tooltip(), global_position)
+	Events.request_show_tooltip.emit(ability.name, ability.get_tooltip(), self)
 
 
 func _on_mouse_exited() -> void:

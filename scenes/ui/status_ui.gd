@@ -41,7 +41,7 @@ func _on_status_changed() -> void:
 
 
 func _on_mouse_entered() -> void:
-	Events.request_show_tooltip.emit(status.name, status.get_tooltip(), global_position)
+	Events.request_show_tooltip.emit(status.name, status.get_tooltip(), self)
 
 
 func _on_mouse_exited() -> void:
