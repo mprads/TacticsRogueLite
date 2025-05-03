@@ -9,7 +9,7 @@ status = ExtResource("2_k3eyk")
 name = "Enfeeble"
 cost = 5
 atlas_coord = Vector2i(0, 1)
-tooltip = "Inflict an enemy with ENFEEBLE for 2 turns
+tooltip = "Inflict an enemy with [color=\"165a4c\"]ENFEEBLE[/color] for 2 turns
 Cost: 5"
 type = 1
 target = 3
