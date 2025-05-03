@@ -23,7 +23,7 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
-@onready var inventory_ui: InventoryUI = $TopBar/InventoryUI
+@onready var inventory_ui: InventoryUI = %InventoryUI
 
 # temp debug shorcuts
 @onready var debug: PanelContainer = $TopBar/Debug
@@ -31,7 +31,6 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 @onready var kiln_button: Button = %KilnButton
 @onready var brewing_button: Button = %BrewingButton
 @onready var shop_button: Button = %ShopButton
-
 
 
 func _ready() -> void:

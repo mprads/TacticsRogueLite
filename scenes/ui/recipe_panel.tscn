@@ -104,20 +104,20 @@ layout_mode = 2
 [node name="ItemPanel2" parent="PotionVisuals/HBoxContainer/ComponentContainer" instance=ExtResource("2_ppbwj")]
 layout_mode = 2
 
-[node name="AttackContainer" type="HBoxContainer" parent="PotionVisuals/HBoxContainer"]
+[node name="AbilityContainter" type="HBoxContainer" parent="PotionVisuals/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="PotionVisuals/HBoxContainer/AttackContainer"]
+[node name="Ability1" type="Panel" parent="PotionVisuals/HBoxContainer/AbilityContainter"]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="AbilityLabel1" type="Label" parent="PotionVisuals/HBoxContainer/AttackContainer/Panel"]
+[node name="AbilityLabel1" type="Label" parent="PotionVisuals/HBoxContainer/AbilityContainter/Ability1"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -131,13 +131,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Panel2" type="Panel" parent="PotionVisuals/HBoxContainer/AttackContainer"]
+[node name="Ability2" type="Panel" parent="PotionVisuals/HBoxContainer/AbilityContainter"]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="AbilityLabel2" type="Label" parent="PotionVisuals/HBoxContainer/AttackContainer/Panel2"]
+[node name="AbilityLabel2" type="Label" parent="PotionVisuals/HBoxContainer/AbilityContainter/Ability2"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

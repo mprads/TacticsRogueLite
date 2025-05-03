@@ -41,3 +41,7 @@ signal map_exited(room: Room)
 signal request_add_item(item: Item)
 signal request_add_gold(amount: int)
 signal request_remove_item(item: Item, count: int)
+
+#Tooltip Events
+signal request_show_tooltip(name: String, description: String, position: Vector2)
+signal hide_tooltip
