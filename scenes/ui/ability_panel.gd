@@ -17,16 +17,17 @@ func set_ability(value: Ability) -> void:
 
 
 func _on_mouse_entered() -> void:
-	var tooltip_contents = []
 	var main_tooltip := { "name": ability.name, "description": ability.get_tooltip() }
+	var secondary := []
+
 	if ability.get("status") :
 		var status_tooltip := {
 			"name": ability.status.name,
 			"description": ability.status.get_tooltip()
 		}
-		tooltip_contents.append(status_tooltip)
+		secondary.append(status_tooltip)
 
-	Events.request_show_tooltip.emit(tooltip_contents, self)
+	Events.request_show_tooltip.emit(self, main_tooltip, secondary)
 
 
 func _on_mouse_exited() -> void:

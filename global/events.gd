@@ -43,5 +43,5 @@ signal request_add_gold(amount: int)
 signal request_remove_item(item: Item, count: int)
 
 #Tooltip Events
-signal request_show_tooltip(contents: Array[Dictionary], owner: Node)
+signal request_show_tooltip(owner: Node, contents: Dictionary, secondary: Array)
 signal hide_tooltip

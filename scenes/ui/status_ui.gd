@@ -41,7 +41,8 @@ func _on_status_changed() -> void:
 
 
 func _on_mouse_entered() -> void:
-	Events.request_show_tooltip.emit(status.name, status.get_tooltip(), self)
+	var tooltip := { "name": status.name, "description": status.get_tooltip() }
+	Events.request_show_tooltip.emit(self, tooltip, [])
 
 
 func _on_mouse_exited() -> void:
