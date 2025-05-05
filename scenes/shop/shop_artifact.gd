@@ -46,8 +46,6 @@ func _on_purchase_artifact() -> void:
 
 
 func _on_mouse_entered() -> void:
-	print("enter")
-	print(artifact.name)
 	var main_tooltip := { "name": artifact.name, "description": artifact.get_tooltip() }
 	var secondary := []
 
@@ -62,5 +60,4 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
-	print("exit")
 	Events.hide_tooltip.emit()
