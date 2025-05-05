@@ -105,6 +105,11 @@ layout_mode = 2
 action_name = "Cancel"
 input_map_id = "cancel"
 
+[node name="ExpandRebind2" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_dmrhn")]
+layout_mode = 2
+action_name = "Expand"
+input_map_id = "expand"
+
 [node name="Unit1Rebind" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_dmrhn")]
 layout_mode = 2
 action_name = "Unit 1"

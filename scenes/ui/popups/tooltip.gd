@@ -45,7 +45,10 @@ func _on_request_show_tooltip(tooltip_owner: Node, main: Dictionary, secondary: 
 	main_tooltip.visible = true
 
 	if not secondary.is_empty():
+		var keycode = Utils.get_keycode_from_input_id("expand")
+		main_tooltip.get_node("%ExpandLabel").text =  "[%s] to expand" % keycode
 		main_tooltip.get_node("%ExpandLabel").visible = true
+
 
 	var secondary_count := 1
 	for secondary_tooltip in secondary:
