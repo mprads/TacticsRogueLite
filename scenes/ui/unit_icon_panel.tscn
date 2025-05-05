@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://cspy1rjky5jjl" path="res://scenes/ui/unit_icon_panel.gd" id="1_j3g1x"]
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="1_vcnjc"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cgww7"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j3g1x"]
 load_path = "res://.godot/imported/outline_sheet.png-8b25bd81e000666fdf310f5690c429bd.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kl7fi"]
-atlas = SubResource("CompressedTexture2D_cgww7")
+atlas = SubResource("CompressedTexture2D_j3g1x")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tvok8"]

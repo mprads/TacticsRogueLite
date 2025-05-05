@@ -1,0 +1,40 @@
+extends Control
+class_name MainMenu
+
+const RUN_SCENE := preload("res://scenes/run/run.tscn")
+
+@onready var contiune_button: Button = %ContiuneButton
+@onready var new_run_button: Button = %NewRunButton
+@onready var setting_button: Button = %SettingButton
+@onready var exit_button: Button = %ExitButton
+@onready var settings_ui: Control = %SettingsUI
+
+@onready var unit: Unit = $Unit
+
+
+func _ready() -> void:
+	contiune_button.pressed.connect(_on_continue_button_pressed)
+	new_run_button.pressed.connect(_on_new_run_button_pressed)
+	setting_button.pressed.connect(_on_setting_button_pressed)
+	exit_button.pressed.connect(_on_exit_button_pressed)
+
+	var tween := create_tween().set_loops()
+
+	tween.tween_property(unit, "position:x", unit.position.x + 50, .5)
+	tween.tween_property(unit, "position:x", unit.position.x - 50, 1)
+
+
+func _on_continue_button_pressed() -> void:
+	pass
+
+
+func _on_new_run_button_pressed() -> void:
+	get_tree().change_scene_to_packed(RUN_SCENE)
+
+
+func _on_setting_button_pressed() -> void:
+	settings_ui.visible = true
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()

@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://r7l5dv2hbg2g"]
+
+[ext_resource type="Script" uid="uid://dno8aa2qkwhud" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
+[ext_resource type="PackedScene" uid="uid://bpkwnxxboplpn" path="res://scenes/unit/unit.tscn" id="2_uqeha"]
+[ext_resource type="Resource" uid="uid://rh433c6ika0r" path="res://resources/units/test_round_unit.tres" id="3_ob46e"]
+[ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="4_uqeha"]
+[ext_resource type="PackedScene" uid="uid://c3ndgvvb3dsdg" path="res://scenes/ui/settings/settings_ui.tscn" id="5_wem23"]
+
+[sub_resource type="Gradient" id="Gradient_1b6gl"]
+colors = PackedColorArray(0.197848, 0.000479815, 0.372599, 1, 0.196078, 0, 0.372549, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fsom3"]
+gradient = SubResource("Gradient_1b6gl")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqeha")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_fsom3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="ContiuneButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 28)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "Continue"
+
+[node name="NewRunButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 28)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "New Run"
+
+[node name="SettingButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 28)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 28)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Exit"
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 40
+text = "Naming is Hard :)"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Unit" parent="." instance=ExtResource("2_uqeha")]
+position = Vector2(310, 185)
+scale = Vector2(5, 5)
+stats = ExtResource("3_ob46e")
+
+[node name="Enemy" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 37.0
+offset_right = 456.0
+offset_bottom = 77.0
+scale = Vector2(5, 5)
+texture = ExtResource("4_uqeha")
+
+[node name="SettingsUI" parent="." instance=ExtResource("5_wem23")]
+unique_name_in_owner = true
+layout_mode = 1
