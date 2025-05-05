@@ -8,6 +8,8 @@ base_damage = 5
 name = "Fireball"
 cost = 5
 atlas_coord = Vector2i(2, 1)
+tooltip = "Deal base 5 damage from range
+Cost: 5"
 type = 0
 target = 3
 shape = Array[Vector2i]([])

@@ -4,12 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://mld865oytrka" path="res://assets/icons/statuses/10x10Enfeeble.png" id="2_1aqle"]
 
 [node name="StatusUI" type="Control"]
+custom_minimum_size = Vector2(10, 15)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 10.0
+offset_bottom = 15.0
 script = ExtResource("1_qlv4y")
 
 [node name="Icon" type="TextureRect" parent="."]

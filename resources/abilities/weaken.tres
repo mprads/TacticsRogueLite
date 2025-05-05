@@ -9,6 +9,8 @@ status = ExtResource("2_dd3jy")
 name = "Weaken"
 cost = 5
 atlas_coord = Vector2i(0, 1)
+tooltip = "Inflict an enemy with [color=\"165a4c\"]WEAKEN[/color] for 2 turns
+Cost: 5"
 type = 1
 target = 3
 shape = Array[Vector2i]([])

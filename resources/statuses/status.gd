@@ -35,7 +35,7 @@ func apply(_target: Node) -> void:
 	status_applied.emit(self)
 
 
-func get_tooltip(_target: Node) -> String:
+func get_tooltip() -> String:
 	return tooltip
 
 

@@ -50,9 +50,10 @@ func start_turn() -> void:
 	Events.activate_artifacts_by_type.emit(Artifact.TYPE.START_OF_TURN)
 
 
+# TODO This should be moved into the state machine and be calling a function here
 func enable_drag_and_drop() -> void:
 	for unit in get_children():
-		if not unit.disabled:
+		if not unit.disabled and unit.moveable:
 			unit.drag_and_drop.enabled = true
 
 

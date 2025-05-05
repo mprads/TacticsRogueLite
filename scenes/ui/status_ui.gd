@@ -8,6 +8,11 @@ class_name StatusUI
 @onready var stacks: Label = $Stacks
 
 
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
+
 func set_status(value: Status) -> void:
 	if not is_node_ready(): await ready
 
@@ -33,3 +38,12 @@ func _on_status_changed() -> void:
 
 	duration.text = str(status.duration)
 	stacks.text = str(status.stacks)
+
+
+func _on_mouse_entered() -> void:
+	var tooltip := { "name": status.name, "description": status.get_tooltip() }
+	Events.request_show_tooltip.emit(self, tooltip, [])
+
+
+func _on_mouse_exited() -> void:
+	Events.hide_tooltip.emit()

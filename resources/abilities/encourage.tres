@@ -9,6 +9,8 @@ status = ExtResource("2_o1hnt")
 name = "Encourage"
 cost = 5
 atlas_coord = Vector2i(3, 0)
+tooltip = "Gives a friendly ally 1 stack of [color=\"fb6b1d\"]ENCOURAGE[/color]
+Cost: 5"
 type = 1
 target = 1
 shape = Array[Vector2i]([])

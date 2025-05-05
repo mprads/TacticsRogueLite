@@ -15,5 +15,5 @@ modifier_type = 1
 modifier_value = 0.25
 icon = ExtResource("1_286xf")
 color = Color(0.0862745, 0.352941, 0.298039, 1)
-tooltip = "take 25% more damage for n turns"
+tooltip = "take 25% more damage"
 metadata/_custom_type_script = "uid://cwaglw3nkm6mf"

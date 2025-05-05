@@ -82,7 +82,12 @@ metadata/_custom_type_script = "uid://bkslv2wck48to"
 [resource]
 script = ExtResource("2_3wu10")
 gold = 150
-inventory = Dictionary[int, int]({})
+inventory = Dictionary[int, int]({
+0: 5,
+1: 5,
+2: 7,
+3: 4
+})
 artifacts = Array[ExtResource("1_qn745")]([ExtResource("3_1l1ep")])
 party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pbn6o"), SubResource("Resource_i18qs"), SubResource("Resource_mnkgj"), SubResource("Resource_isr74")])
 max_party_size = 5

@@ -1,7 +1,7 @@
 extends Object
 class_name ColourHelper
 
-enum KEYS { DAMAGE, SHIELD, BUFF, DEBUFF}
+enum KEYS { DAMAGE, SHIELD, BUFF, DEBUFF }
 
 const colours := {
 	KEYS.DAMAGE: Color("#ea3b3b"),

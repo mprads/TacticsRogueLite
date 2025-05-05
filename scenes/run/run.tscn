@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://r76gjny5escp"]
+[gd_scene load_steps=16 format=3 uid="uid://r76gjny5escp"]
 
 [ext_resource type="Script" uid="uid://b88pduqxgjpng" path="res://scenes/run/run.gd" id="1_l7o68"]
 [ext_resource type="Resource" uid="uid://cog76ftpquwhv" path="res://resources/testing_run_stats.tres" id="2_cnkn7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://eum7lvresw1s" path="res://assets/icons/16x16cog.png" id="9_x53nd"]
 [ext_resource type="PackedScene" uid="uid://dpxmxey3qs0o6" path="res://scenes/inventory/inventory_ui.tscn" id="11_g42ja"]
 [ext_resource type="PackedScene" uid="uid://c3ndgvvb3dsdg" path="res://scenes/ui/settings/settings_ui.tscn" id="12_cnkn7"]
+[ext_resource type="PackedScene" uid="uid://delw0ryy5peue" path="res://scenes/ui/popups/tooltip.tscn" id="15_x53nd"]
 
 [node name="Run" type="Node"]
 script = ExtResource("1_l7o68")
@@ -32,10 +33,7 @@ run_stats = ExtResource("2_cnkn7")
 [node name="ArtifactManager" parent="." instance=ExtResource("7_fo0ly")]
 
 [node name="TopBar" type="CanvasLayer" parent="."]
-layer = 3
-
-[node name="InventoryUI" parent="TopBar" instance=ExtResource("11_g42ja")]
-visible = false
+layer = 5
 
 [node name="ColorRect" type="ColorRect" parent="TopBar"]
 custom_minimum_size = Vector2(0, 28)
@@ -97,9 +95,6 @@ texture_normal = ExtResource("9_x53nd")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="SettingsUI" parent="TopBar" instance=ExtResource("12_cnkn7")]
-unique_name_in_owner = true
-
 [node name="Debug" type="PanelContainer" parent="TopBar"]
 visible = false
 offset_left = 507.0
@@ -143,3 +138,15 @@ text = "Brewing"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Shop"
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="SettingsUI" parent="UI" instance=ExtResource("12_cnkn7")]
+unique_name_in_owner = true
+
+[node name="InventoryUI" parent="UI" instance=ExtResource("11_g42ja")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Tooltip" parent="UI" instance=ExtResource("15_x53nd")]
