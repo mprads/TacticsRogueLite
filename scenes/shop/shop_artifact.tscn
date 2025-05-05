@@ -18,6 +18,7 @@ layout_mode = 2
 offset_top = 22.0
 offset_right = 32.0
 offset_bottom = 54.0
+mouse_filter = 2
 texture = ExtResource("2_wrpmr")
 stretch_mode = 5
 
@@ -40,12 +41,14 @@ stretch_mode = 5
 [node name="CostContainer" type="HBoxContainer" parent="ArtifactContainer"]
 custom_minimum_size = Vector2(32, 10)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="GoldIcon" type="TextureRect" parent="ArtifactContainer/CostContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("4_fa1dj")
 expand_mode = 1
 stretch_mode = 5

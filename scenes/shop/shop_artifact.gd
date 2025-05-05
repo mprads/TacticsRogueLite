@@ -10,6 +10,10 @@ class_name ShopArtifact
 
 func _ready() -> void:
 	artifact_icon_button.pressed.connect(_on_purchase_artifact)
+	artifact_icon_button.mouse_entered.connect(_on_mouse_entered)
+	artifact_icon_button.mouse_exited.connect(_on_mouse_exited)
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 
 func update(player_gold: int) -> void:
@@ -39,3 +43,24 @@ func set_artifact(value: Artifact) -> void:
 func _on_purchase_artifact() -> void:
 	artifact_container.queue_free()
 	Events.request_purchase_artifact.emit(artifact)
+
+
+func _on_mouse_entered() -> void:
+	print("enter")
+	print(artifact.name)
+	var main_tooltip := { "name": artifact.name, "description": artifact.get_tooltip() }
+	var secondary := []
+
+	if artifact.get("status") :
+		var status_tooltip := {
+			"name": artifact.status.name,
+			"description": artifact.status.get_tooltip()
+		}
+		secondary.append(status_tooltip)
+
+	Events.request_show_tooltip.emit(self, main_tooltip, secondary)
+
+
+func _on_mouse_exited() -> void:
+	print("exit")
+	Events.hide_tooltip.emit()
