@@ -1,13 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhcicj086k725"]
+[gd_scene load_steps=4 format=3 uid="uid://dhcicj086k725"]
 
 [ext_resource type="Script" uid="uid://oh22iqqgtwo6" path="res://scenes/battle_lost/battle_lost.gd" id="1_tckur"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_mst5s"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="2_tckur"]
-
-[sub_resource type="Gradient" id="Gradient_5xku6"]
-colors = PackedColorArray(0.25098, 0.25098, 0.25098, 1, 0.492369, 0.165348, 0.173312, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_d75l8"]
-gradient = SubResource("Gradient_5xku6")
 
 [node name="BattleReward" type="Control"]
 layout_mode = 3
@@ -18,14 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tckur")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="AnimatedBackground" parent="." instance=ExtResource("2_mst5s")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture1D_d75l8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

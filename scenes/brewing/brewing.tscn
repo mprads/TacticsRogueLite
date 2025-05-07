@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkokbdb73arai"]
+[gd_scene load_steps=9 format=3 uid="uid://dkokbdb73arai"]
 
 [ext_resource type="Script" uid="uid://bypkjjcfg5vrv" path="res://scenes/brewing/brewing.gd" id="1_vb5it"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_jra8c"]
 [ext_resource type="Texture2D" uid="uid://b728al2il4cpu" path="res://assets/sprites/brewing/cauldron.png" id="2_m1eth"]
 [ext_resource type="Texture2D" uid="uid://dqyyo508w5ksl" path="res://assets/sprites/brewing/cauldron_contents.png" id="3_b2k4q"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="5_b2k4q"]
@@ -8,26 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="5_m1eth"]
 [ext_resource type="PackedScene" uid="uid://6m8egyaev33y" path="res://scenes/ui/vial_panel.tscn" id="8_jra8c"]
 
-[sub_resource type="Gradient" id="Gradient_vb5it"]
-offsets = PackedFloat32Array(0.259434, 0.938679)
-colors = PackedColorArray(0.0923971, 0.0923971, 0.0923971, 1, 0.220995, 3.32343e-05, 0.220993, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8iax"]
-gradient = SubResource("Gradient_vb5it")
-
 [node name="Brewing" type="Node2D"]
 script = ExtResource("1_vb5it")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Background" type="TextureRect" parent="BackgroundLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_n8iax")
+[node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_jra8c")]
 
 [node name="Cauldron" type="Control" parent="BackgroundLayer"]
 custom_minimum_size = Vector2(211, 146)

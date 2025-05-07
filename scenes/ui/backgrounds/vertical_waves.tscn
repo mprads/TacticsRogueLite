@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7oi1gr3n8n25"]
+
+[ext_resource type="Shader" uid="uid://73w1cyhrn7vl" path="res://assets/shaders/BoundedBattleBackground.tres" id="1_p8yue"]
+[ext_resource type="Texture2D" uid="uid://dqm03gl4ng4dh" path="res://assets/backgrounds/Vertical.png" id="3_2og0v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qk8ne"]
+shader = ExtResource("1_p8yue")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(-1, 0)
+shader_parameter/sprite_scroll_speed = 0.01
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.05
+shader_parameter/horizontal_wave_frequency = 12.0
+shader_parameter/horizontal_wave_speed = 0.01
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.1
+shader_parameter/horizontal_deform_frequency = 8.0
+shader_parameter/horizontal_deform_speed = 0.01
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 640.0
+shader_parameter/height = 360.0
+shader_parameter/palette_cycling_speed = 0.0
+
+[node name="VerticalWaves" type="TextureRect"]
+texture_filter = 4
+texture_repeat = 3
+material = SubResource("ShaderMaterial_qk8ne")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_2og0v")
