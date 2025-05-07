@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://x7wbmg7h50ei"]
+[gd_scene load_steps=3 format=3 uid="uid://x7wbmg7h50ei"]
 
 [ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="1_p8dku"]
+[ext_resource type="PackedScene" uid="uid://bkyqjyhlg3ia0" path="res://scenes/ui/vial_button.tscn" id="1_rlmpa"]
 
 [node name="StartingItemPanel" type="Panel"]
 custom_minimum_size = Vector2(0, 36)
@@ -21,6 +22,11 @@ theme_override_constants/margin_right = 10
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
+
+[node name="VialButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_rlmpa")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true

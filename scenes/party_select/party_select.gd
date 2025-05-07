@@ -4,6 +4,7 @@ class_name PartySelect
 const UNIT_SELECT_PANEL_SCENE = preload("res://scenes/party_select/unit_select_panel.tscn")
 const UNIT_ICON_PANEL_SCENE = preload("res://scenes/ui/unit_icon_panel.tscn")
 const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
+const VIAL_BUTTON_SCENE = preload("res://scenes/ui/vial_button.tscn")
 const OPTION_COUNT := 3
 
 @export_category("Pools")
@@ -30,6 +31,7 @@ const OPTION_COUNT := 3
 @onready var party_container: HBoxContainer = %PartyContainer
 @onready var vial_container: HBoxContainer = %VialContainer
 @onready var inventory_container: HBoxContainer = %InventoryContainer
+@onready var gold_ui: GoldUI = %GoldUI
 
 
 func _ready() -> void:
@@ -47,10 +49,11 @@ func _set_up_managers() -> void:
 	vial_manager.run_stats = run_stats
 	artifact_manager.run_stats = run_stats
 
+	gold_ui.inventory_manager = inventory_manager
+
 
 func _set_up_connections() -> void:
 	inventory_manager.inventory_changed.connect(_on_inventory_changed)
-	inventory_manager.gold_changed.connect(_on_gold_changed)
 	party_manager.party_changed.connect(_on_party_changed)
 	vial_manager.vials_changed.connect(_on_vials_changed)
 
@@ -82,25 +85,30 @@ func _generate_items() -> Array:
 	for item in OPTION_COUNT:
 			var chance := randf_range(0.0, 1.0)
 
-			if chance > gold_odds:
+			if chance <= vial_odds:
+				var vial := Vial.new()
+				var potion: Potion = RNG.array_pick_random(starter_potions)
+				vial.potion = potion
+				item_contents.append({ "item": vial, "quantity": 1 })
+			elif chance <= gold_odds:
+				var gold_value := RNG.instance.randi_range(gold_min, gold_max)
+				item_contents.append({ "item": "gold", "quantity": gold_value })
+			else:
 				var starter_item: Item = RNG.array_pick_random(starter_items)
 				var quantity := RNG.instance.randi_range(item_quantity_min, item_quantity_max)
 				item_contents.append({ "item": starter_item, "quantity": quantity })
-			else:
-				var gold_value := RNG.instance.randi_range(gold_min, gold_max)
-				item_contents.append({ "item": "gold", "quantity": gold_value })
 
 	return item_contents
 
 
 func _on_panel_selected(unit_stats: UnitStats, contents: Array) -> void:
 	party_manager.add_unit(unit_stats)
-	
+
 	for content in contents:
 		if content.item is Item:
 			inventory_manager.add_item(content.item, content.quantity)
 		elif content.item is Vial:
-			pass
+			vial_manager.add_vial(content.item)
 		elif content is Artifact:
 			pass
 		else:
@@ -120,10 +128,6 @@ func _on_inventory_changed() -> void:
 		item_panel_instance.count = inventory[item]
 
 
-func _on_gold_changed() -> void:
-	pass
-
-
 func _on_party_changed() -> void:
 	for child in party_container.get_children():
 		child.queue_free()
@@ -137,4 +141,12 @@ func _on_party_changed() -> void:
 
 
 func _on_vials_changed() -> void:
-	pass
+	for child in vial_container.get_children():
+		child.queue_free()
+
+	var vials := vial_manager.get_vials()
+
+	for vial in vials:
+		var vial_button_instance := VIAL_BUTTON_SCENE.instantiate()
+		vial_container.add_child(vial_button_instance)
+		vial_button_instance.vial = vial

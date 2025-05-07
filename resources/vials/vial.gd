@@ -6,7 +6,6 @@ class_name Vial
 @export var filling: Texture2D
 
 @export var potion: Potion : set = set_potion
-@export var refill_quantity := 1
 
 
 func set_potion(value: Potion) -> void:

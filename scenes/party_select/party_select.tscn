@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dyaf53aaous6t"]
+[gd_scene load_steps=30 format=3 uid="uid://dyaf53aaous6t"]
 
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="1_4jmb0"]
 [ext_resource type="Script" uid="uid://bkfym5x8dw3p2" path="res://scenes/party_select/party_select.gd" id="1_vhtjw"]
@@ -25,9 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://cjdocmvvhnve6" path="res://scenes/party_select/unit_select_panel.tscn" id="21_xrrf1"]
 [ext_resource type="Script" uid="uid://d1vqvvglo106p" path="res://managers/vial_manager.gd" id="22_lc1ic"]
 [ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="22_pfcfj"]
-[ext_resource type="PackedScene" uid="uid://bg1lcvjde6tv6" path="res://scenes/ui/vial_ui.tscn" id="23_iompe"]
 [ext_resource type="Script" uid="uid://mr05hbk8c26o" path="res://managers/artifact_manager.gd" id="23_syo35"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="23_xokv3"]
+[ext_resource type="PackedScene" uid="uid://bkyqjyhlg3ia0" path="res://scenes/ui/vial_button.tscn" id="27_rrx7l"]
+[ext_resource type="PackedScene" uid="uid://o0flfk67550c" path="res://scenes/ui/gold_ui.tscn" id="29_rrx7l"]
 
 [node name="PartySelect" type="Control"]
 layout_mode = 3
@@ -41,6 +42,7 @@ starter_bottles = Array[ExtResource("2_xuhjc")]([ExtResource("3_xrrf1"), ExtReso
 starter_potions = Array[ExtResource("6_iompe")]([ExtResource("7_14uic"), ExtResource("8_ro4lv"), ExtResource("9_r3g8i"), ExtResource("10_227sm")])
 starter_items = Array[ExtResource("11_rrx7l")]([ExtResource("12_lc1ic"), ExtResource("13_syo35"), ExtResource("14_up3xa"), ExtResource("15_xgag4"), ExtResource("16_5a20k")])
 starter_artifacts = Array[ExtResource("17_ayv8d")]([ExtResource("18_2x60m"), ExtResource("19_lapu6")])
+vial_odds = 0.1
 gold_odds = 0.25
 gold_min = 25
 gold_max = 50
@@ -98,14 +100,17 @@ layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
+theme_override_constants/separation = 24
 
 [node name="PartyContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 10
 
 [node name="UnitIconPanel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer" instance=ExtResource("22_pfcfj")]
@@ -117,12 +122,12 @@ layout_mode = 2
 [node name="VialContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 
-[node name="VialUI" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" instance=ExtResource("23_iompe")]
+[node name="VialButton" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" instance=ExtResource("27_rrx7l")]
 layout_mode = 2
 
-[node name="VialUI2" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" instance=ExtResource("23_iompe")]
+[node name="VialButton2" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" instance=ExtResource("27_rrx7l")]
 layout_mode = 2
 
 [node name="InventoryContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -142,3 +147,8 @@ layout_mode = 2
 
 [node name="ItemPanel4" parent="MarginContainer/VBoxContainer/HBoxContainer2/InventoryContainer" instance=ExtResource("23_xokv3")]
 layout_mode = 2
+
+[node name="GoldUI" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("29_rrx7l")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10

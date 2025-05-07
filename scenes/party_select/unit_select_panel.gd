@@ -64,6 +64,11 @@ func set_contents(value: Array) -> void:
 		if lineitem.item is Item:
 			item_panel_instance.get_node("%Icon").texture = lineitem.item.icon
 			item_panel_instance.get_node("%ContentLabel").text = "%s %s" %[str(lineitem.quantity), lineitem.item.name]
+		elif lineitem.item is Vial:
+			item_panel_instance.get_node("%Icon").visible = false
+			item_panel_instance.get_node("%VialButton").visible = true
+			item_panel_instance.get_node("%VialButton").vial = lineitem.item
+			item_panel_instance.get_node("%ContentLabel").text = lineitem.item.potion.name
 		else:
 			item_panel_instance.get_node("%Icon").texture = GOLD_ICON
 			item_panel_instance.get_node("%ContentLabel").text = "%s Gold"  % str(lineitem.quantity)

@@ -10,6 +10,11 @@ func get_vials() -> Array[Vial]:
 	return run_stats.vials
 
 
+func add_vial(vial: Vial) -> void:
+	run_stats.vials.append(vial)
+	vials_changed.emit()
+
+
 func set_run_stats(value: RunStats) -> void:
 	run_stats = value
 
