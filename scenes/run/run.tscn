@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://b88pduqxgjpng" path="res://scenes/run/run.gd" id="1_l7o68"]
 [ext_resource type="Resource" uid="uid://cog76ftpquwhv" path="res://resources/testing_run_stats.tres" id="2_cnkn7"]
 [ext_resource type="PackedScene" uid="uid://b2i3e6qlmmf13" path="res://scenes/map/map.tscn" id="2_wdonh"]
-[ext_resource type="PackedScene" uid="uid://bkyki6fnsyp3" path="res://managers/inventory_manager.tscn" id="3_yeia0"]
-[ext_resource type="PackedScene" uid="uid://bg1bm2w70bw5i" path="res://managers/party_manager.tscn" id="5_7yo0l"]
-[ext_resource type="PackedScene" uid="uid://corlwdlpqbv6t" path="res://managers/vial_manager.tscn" id="6_fo0ly"]
+[ext_resource type="Script" uid="uid://ctiuirox8gkl7" path="res://managers/inventory_manager.gd" id="4_x53nd"]
+[ext_resource type="Script" uid="uid://bjy04jhtmlsly" path="res://managers/party_manager.gd" id="5_l6p45"]
+[ext_resource type="Script" uid="uid://d1vqvvglo106p" path="res://managers/vial_manager.gd" id="6_kdgoc"]
 [ext_resource type="PackedScene" uid="uid://o0flfk67550c" path="res://scenes/ui/gold_ui.tscn" id="6_ux63y"]
 [ext_resource type="Texture2D" uid="uid://beqyjc42cuq58" path="res://assets/icons/16x16backpack.png" id="7_7yo0l"]
-[ext_resource type="PackedScene" uid="uid://buxnp67tgf6nt" path="res://managers/artifact_manager.tscn" id="7_fo0ly"]
+[ext_resource type="Script" uid="uid://mr05hbk8c26o" path="res://managers/artifact_manager.gd" id="7_y3spc"]
 [ext_resource type="PackedScene" uid="uid://digq3nyeei1di" path="res://scenes/ui/artifacts/artifact_ui.tscn" id="8_7yo0l"]
 [ext_resource type="PackedScene" uid="uid://bg1lcvjde6tv6" path="res://scenes/ui/vial_ui.tscn" id="8_cnkn7"]
 [ext_resource type="Texture2D" uid="uid://eum7lvresw1s" path="res://assets/icons/16x16cog.png" id="9_x53nd"]
@@ -24,13 +24,17 @@ run_stats = ExtResource("2_cnkn7")
 
 [node name="Map" parent="." instance=ExtResource("2_wdonh")]
 
-[node name="InventoryManager" parent="." instance=ExtResource("3_yeia0")]
+[node name="InventoryManager" type="Node" parent="."]
+script = ExtResource("4_x53nd")
 
-[node name="PartyManager" parent="." instance=ExtResource("5_7yo0l")]
+[node name="PartyManager" type="Node" parent="."]
+script = ExtResource("5_l6p45")
 
-[node name="VialManager" parent="." instance=ExtResource("6_fo0ly")]
+[node name="VialManager" type="Node" parent="."]
+script = ExtResource("6_kdgoc")
 
-[node name="ArtifactManager" parent="." instance=ExtResource("7_fo0ly")]
+[node name="ArtifactManager" type="Node" parent="."]
+script = ExtResource("7_y3spc")
 
 [node name="TopBar" type="CanvasLayer" parent="."]
 layer = 5

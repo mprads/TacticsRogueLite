@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkyki6fnsyp3"]
-
-[ext_resource type="Script" uid="uid://ctiuirox8gkl7" path="res://managers/inventory_manager.gd" id="1_kr4tq"]
-
-[node name="ItemManager" type="Node"]
-script = ExtResource("1_kr4tq")

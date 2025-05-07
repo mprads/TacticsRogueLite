@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://corlwdlpqbv6t"]
-
-[ext_resource type="Script" uid="uid://d1vqvvglo106p" path="res://managers/vial_manager.gd" id="1_5oyt2"]
-
-[node name="VialManager" type="Node"]
-script = ExtResource("1_5oyt2")
