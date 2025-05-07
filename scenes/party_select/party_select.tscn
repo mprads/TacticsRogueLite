@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyaf53aaous6t"]
+[gd_scene load_steps=29 format=3 uid="uid://dyaf53aaous6t"]
 
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="1_4jmb0"]
 [ext_resource type="Script" uid="uid://bkfym5x8dw3p2" path="res://scenes/party_select/party_select.gd" id="1_vhtjw"]
@@ -20,7 +20,14 @@
 [ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="17_ayv8d"]
 [ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/never_ending_drip.tres" id="18_2x60m"]
 [ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="19_lapu6"]
+[ext_resource type="Script" uid="uid://ctiuirox8gkl7" path="res://managers/inventory_manager.gd" id="20_227sm"]
+[ext_resource type="Script" uid="uid://bjy04jhtmlsly" path="res://managers/party_manager.gd" id="21_rrx7l"]
 [ext_resource type="PackedScene" uid="uid://cjdocmvvhnve6" path="res://scenes/party_select/unit_select_panel.tscn" id="21_xrrf1"]
+[ext_resource type="Script" uid="uid://d1vqvvglo106p" path="res://managers/vial_manager.gd" id="22_lc1ic"]
+[ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="22_pfcfj"]
+[ext_resource type="PackedScene" uid="uid://bg1lcvjde6tv6" path="res://scenes/ui/vial_ui.tscn" id="23_iompe"]
+[ext_resource type="Script" uid="uid://mr05hbk8c26o" path="res://managers/artifact_manager.gd" id="23_syo35"]
+[ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="23_xokv3"]
 
 [node name="PartySelect" type="Control"]
 layout_mode = 3
@@ -40,33 +47,98 @@ gold_max = 50
 item_quantity_min = 2
 item_quantity_max = 4
 
+[node name="InventoryManager" type="Node" parent="."]
+script = ExtResource("20_227sm")
+
+[node name="PartyManager" type="Node" parent="."]
+script = ExtResource("21_rrx7l")
+
+[node name="VialManager" type="Node" parent="."]
+script = ExtResource("22_lc1ic")
+
+[node name="ArtifactManager" type="Node" parent="."]
+script = ExtResource("23_syo35")
+
 [node name="AnimatedBackground" parent="." instance=ExtResource("1_4jmb0")]
 layout_mode = 1
 
-[node name="SelectionContainer" type="HBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -304.0
-offset_top = -164.0
-offset_right = 304.0
-offset_bottom = 86.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SelectionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(608, 250)
+layout_mode = 2
+size_flags_vertical = 0
 alignment = 1
 
-[node name="UnitSelectPanel" parent="SelectionContainer" instance=ExtResource("21_xrrf1")]
+[node name="UnitSelectPanel" parent="MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("21_xrrf1")]
 visible = false
 layout_mode = 2
 
-[node name="UnitSelectPanel2" parent="SelectionContainer" instance=ExtResource("21_xrrf1")]
+[node name="UnitSelectPanel2" parent="MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("21_xrrf1")]
 visible = false
 layout_mode = 2
 
-[node name="UnitSelectPanel3" parent="SelectionContainer" instance=ExtResource("21_xrrf1")]
+[node name="UnitSelectPanel3" parent="MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("21_xrrf1")]
 visible = false
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="PartyContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="UnitIconPanel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer" instance=ExtResource("22_pfcfj")]
+layout_mode = 2
+
+[node name="UnitIconPanel2" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer" instance=ExtResource("22_pfcfj")]
+layout_mode = 2
+
+[node name="VialContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="VialUI" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" instance=ExtResource("23_iompe")]
+layout_mode = 2
+
+[node name="VialUI2" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" instance=ExtResource("23_iompe")]
+layout_mode = 2
+
+[node name="InventoryContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="ItemPanel" parent="MarginContainer/VBoxContainer/HBoxContainer2/InventoryContainer" instance=ExtResource("23_xokv3")]
+layout_mode = 2
+
+[node name="ItemPanel2" parent="MarginContainer/VBoxContainer/HBoxContainer2/InventoryContainer" instance=ExtResource("23_xokv3")]
+layout_mode = 2
+
+[node name="ItemPanel3" parent="MarginContainer/VBoxContainer/HBoxContainer2/InventoryContainer" instance=ExtResource("23_xokv3")]
+layout_mode = 2
+
+[node name="ItemPanel4" parent="MarginContainer/VBoxContainer/HBoxContainer2/InventoryContainer" instance=ExtResource("23_xokv3")]
 layout_mode = 2

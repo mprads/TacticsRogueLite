@@ -1,16 +1,150 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjdocmvvhnve6"]
+[gd_scene load_steps=10 format=3 uid="uid://cjdocmvvhnve6"]
 
 [ext_resource type="Script" uid="uid://vpw60phgdmen" path="res://scenes/party_select/unit_select_panel.gd" id="1_b4pj3"]
 [ext_resource type="PackedScene" uid="uid://cnvnj7pvvkjhu" path="res://scenes/ui/party_unit_ui.tscn" id="1_m7b6t"]
 [ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="2_b4pj3"]
 
+[sub_resource type="Animation" id="Animation_b4pj3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ctdop"]
+resource_name = "discard"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0512672, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.53073, 4.71239]
+}
+
+[sub_resource type="Animation" id="Animation_uvuja"]
+resource_name = "hover"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0872665, 0.0, -0.0872665, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_m7b6t"]
+resource_name = "in"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hwfjf"]
+resource_name = "selected"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ctdop"]
+_data = {
+&"RESET": SubResource("Animation_b4pj3"),
+&"discard": SubResource("Animation_ctdop"),
+&"hover": SubResource("Animation_uvuja"),
+&"in": SubResource("Animation_m7b6t"),
+&"selected": SubResource("Animation_hwfjf")
+}
+
 [node name="UnitSelectPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(200, 250)
-offset_right = 180.0
+offset_right = 200.0
 offset_bottom = 250.0
+pivot_offset = Vector2(101, 132)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_b4pj3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ctdop")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -19,23 +153,23 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Contents" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContentsContainer" type="VBoxContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PartyUnitUI" parent="MarginContainer/Contents" instance=ExtResource("1_m7b6t")]
+[node name="PartyUnitUI" parent="MarginContainer/ContentsContainer" instance=ExtResource("1_m7b6t")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityContainer" type="HBoxContainer" parent="MarginContainer/Contents"]
+[node name="AbilityContainer" type="HBoxContainer" parent="MarginContainer/ContentsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityPanel" parent="MarginContainer/Contents/AbilityContainer" instance=ExtResource("2_b4pj3")]
+[node name="AbilityPanel" parent="MarginContainer/ContentsContainer/AbilityContainer" instance=ExtResource("2_b4pj3")]
 layout_mode = 2
 
-[node name="AbilityPanel2" parent="MarginContainer/Contents/AbilityContainer" instance=ExtResource("2_b4pj3")]
+[node name="AbilityPanel2" parent="MarginContainer/ContentsContainer/AbilityContainer" instance=ExtResource("2_b4pj3")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/Contents"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ContentsContainer"]
 layout_mode = 2
