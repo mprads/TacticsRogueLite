@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ssldd00qq1w"]
+
+[ext_resource type="Texture2D" uid="uid://e2b6q7hyp2w7" path="res://assets/icons/items/32x32red_mushroom.png" id="1_dg58n"]
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="2_vd0r8"]
+
+[resource]
+script = ExtResource("2_vd0r8")
+name = "Mushroom"
+key = 1
+icon = ExtResource("1_dg58n")
+gold_cost = 0
+is_plant = true
+is_loot = false
+metadata/_custom_type_script = "uid://dtp5lwmsrrerr"

@@ -2,7 +2,7 @@ extends Button
 class_name RewardButton
 
 @export var reward_icon: Texture2D : set = set_reward_icon
-@export var reward_text: String : set= set_reward_text
+@export var reward_text: String : set = set_reward_text
 
 @onready var texture_rect: TextureRect = $MarginContainer/HBoxContainer/TextureRect
 @onready var label: Label = $MarginContainer/HBoxContainer/Label
