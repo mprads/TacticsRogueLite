@@ -4,7 +4,8 @@ class_name PartyUnitUI
 @export var unit: UnitStats : set = set_unit
 
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
-@onready var label: Label = %Label
+@onready var health_label: Label = %HealthLabel
+@onready var oz_label: Label = %OzLabel
 
 
 func set_unit(value: UnitStats) -> void:
@@ -21,5 +22,7 @@ func set_unit(value: UnitStats) -> void:
 
 func _set_details() -> void:
 	if unit:
-		var string = "HP: %s / %s \nOZ: %s / %s"
-		label.text =  string % [str(unit.health), str(unit.max_health), str(unit.oz), str(unit.max_oz)]
+		var health_string = "HP: %s / %s"
+		var oz_string = "OZ: %s / %s"
+		health_label.text = health_string % [str(unit.health), str(unit.max_health)]
+		oz_label.text = health_string % [str(unit.oz), str(unit.max_oz)]

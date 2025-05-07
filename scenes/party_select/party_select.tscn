@@ -1,0 +1,72 @@
+[gd_scene load_steps=22 format=3 uid="uid://dyaf53aaous6t"]
+
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="1_4jmb0"]
+[ext_resource type="Script" uid="uid://bkfym5x8dw3p2" path="res://scenes/party_select/party_select.gd" id="1_vhtjw"]
+[ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="2_xuhjc"]
+[ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="3_xrrf1"]
+[ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="4_pfcfj"]
+[ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="5_xokv3"]
+[ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="6_iompe"]
+[ext_resource type="Resource" uid="uid://db7k12qw1ywca" path="res://resources/potions/balance_potion.tres" id="7_14uic"]
+[ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="8_ro4lv"]
+[ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="9_r3g8i"]
+[ext_resource type="Resource" uid="uid://raksx0j8qtki" path="res://resources/potions/support_potion.tres" id="10_227sm"]
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="11_rrx7l"]
+[ext_resource type="Resource" uid="uid://ddgsppdhtad44" path="res://resources/items/herb.tres" id="12_lc1ic"]
+[ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/mushroom.tres" id="13_syo35"]
+[ext_resource type="Resource" uid="uid://d1aqyupi7ysw3" path="res://resources/items/sulfur.tres" id="14_up3xa"]
+[ext_resource type="Resource" uid="uid://43dujorcxsl6" path="res://resources/items/venom.tres" id="15_xgag4"]
+[ext_resource type="Resource" uid="uid://d0rt6xe2qw4c" path="res://resources/items/zinc.tres" id="16_5a20k"]
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="17_ayv8d"]
+[ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/never_ending_drip.tres" id="18_2x60m"]
+[ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="19_lapu6"]
+[ext_resource type="PackedScene" uid="uid://cjdocmvvhnve6" path="res://scenes/party_select/unit_select_panel.tscn" id="21_xrrf1"]
+
+[node name="PartySelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vhtjw")
+starter_bottles = Array[ExtResource("2_xuhjc")]([ExtResource("3_xrrf1"), ExtResource("4_pfcfj"), ExtResource("5_xokv3")])
+starter_potions = Array[ExtResource("6_iompe")]([ExtResource("7_14uic"), ExtResource("8_ro4lv"), ExtResource("9_r3g8i"), ExtResource("10_227sm")])
+starter_items = Array[ExtResource("11_rrx7l")]([ExtResource("12_lc1ic"), ExtResource("13_syo35"), ExtResource("14_up3xa"), ExtResource("15_xgag4"), ExtResource("16_5a20k")])
+starter_artifacts = Array[ExtResource("17_ayv8d")]([ExtResource("18_2x60m"), ExtResource("19_lapu6")])
+gold_odds = 0.25
+gold_min = 25
+gold_max = 50
+item_quantity_min = 2
+item_quantity_max = 4
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("1_4jmb0")]
+layout_mode = 1
+
+[node name="SelectionContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -164.0
+offset_right = 304.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="UnitSelectPanel" parent="SelectionContainer" instance=ExtResource("21_xrrf1")]
+visible = false
+layout_mode = 2
+
+[node name="UnitSelectPanel2" parent="SelectionContainer" instance=ExtResource("21_xrrf1")]
+visible = false
+layout_mode = 2
+
+[node name="UnitSelectPanel3" parent="SelectionContainer" instance=ExtResource("21_xrrf1")]
+visible = false
+layout_mode = 2

@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjdocmvvhnve6"]
+[gd_scene load_steps=4 format=3 uid="uid://cjdocmvvhnve6"]
 
 [ext_resource type="Script" uid="uid://vpw60phgdmen" path="res://scenes/party_select/unit_select_panel.gd" id="1_b4pj3"]
 [ext_resource type="PackedScene" uid="uid://cnvnj7pvvkjhu" path="res://scenes/ui/party_unit_ui.tscn" id="1_m7b6t"]
 [ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="2_b4pj3"]
-[ext_resource type="PackedScene" uid="uid://x7wbmg7h50ei" path="res://scenes/party_select/starting_item_panel.tscn" id="4_b4pj3"]
 
 [node name="UnitSelectPanel" type="PanelContainer"]
-custom_minimum_size = Vector2(100, 100)
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(200, 250)
+offset_right = 180.0
+offset_bottom = 250.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_b4pj3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -18,31 +19,23 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="PartyUnitUI" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_m7b6t")]
+[node name="Contents" type="VBoxContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="PartyUnitUI" parent="MarginContainer/Contents" instance=ExtResource("1_m7b6t")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityPanel" parent="MarginContainer/VBoxContainer/AbilityContainer" instance=ExtResource("2_b4pj3")]
+[node name="AbilityContainer" type="HBoxContainer" parent="MarginContainer/Contents"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityPanel2" parent="MarginContainer/VBoxContainer/AbilityContainer" instance=ExtResource("2_b4pj3")]
+[node name="AbilityPanel" parent="MarginContainer/Contents/AbilityContainer" instance=ExtResource("2_b4pj3")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="AbilityPanel2" parent="MarginContainer/Contents/AbilityContainer" instance=ExtResource("2_b4pj3")]
 layout_mode = 2
 
-[node name="StartingItemPanel" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_b4pj3")]
-layout_mode = 2
-
-[node name="StartingItemPanel2" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_b4pj3")]
-layout_mode = 2
-
-[node name="StartingItemPanel3" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_b4pj3")]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Contents"]
 layout_mode = 2
