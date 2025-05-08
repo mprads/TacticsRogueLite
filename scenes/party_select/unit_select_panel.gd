@@ -35,7 +35,7 @@ func play_discard() -> void:
 	_play_animation("discard")
 
 
-func _update_ability_visuals(unit_stats: UnitStats) -> void:
+func _update_ability_visuals() -> void:
 	for child in ability_container.get_children():
 		child.queue_free()
 
@@ -48,20 +48,19 @@ func _update_ability_visuals(unit_stats: UnitStats) -> void:
 
 
 func _play_animation(id: String) -> void:
-	printt("play", disabled)
 	if disabled: return
-	print("after")
-	if animation_player.is_playing():
-		animation_player.stop()
 
-	animation_player.play(id)
+	if animation_player.is_playing():
+		animation_player.queue(id)
+	else:
+		animation_player.play(id)
 
 
 func set_unit_stats(value: UnitStats) -> void:
 	unit_stats = value
 	party_unit_ui.unit = unit_stats
 
-	_update_ability_visuals(unit_stats)
+	_update_ability_visuals()
 
 
 func set_contents(value: Array) -> void:

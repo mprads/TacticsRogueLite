@@ -1,6 +1,7 @@
 extends Control
 class_name PartySelect
 
+const RUN_SCENE = preload("res://scenes/run/run.tscn")
 const UNIT_SELECT_PANEL_SCENE = preload("res://scenes/party_select/unit_select_panel.tscn")
 const UNIT_ICON_PANEL_SCENE = preload("res://scenes/ui/unit_icon_panel.tscn")
 const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
@@ -169,4 +170,8 @@ func _on_vials_changed() -> void:
 func _on_unit_created(unit_stats: UnitStats) -> void:
 	unit_creator_ui.visible = false
 	party_manager.add_unit(unit_stats)
-	_generate_options()
+
+	if party_manager.get_party().size() >= 3:
+		SceneChanger.change_scene(RUN_SCENE, run_stats)
+	else:
+		_generate_options()

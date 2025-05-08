@@ -25,4 +25,4 @@ func _set_details() -> void:
 		var health_string = "HP: %s / %s"
 		var oz_string = "OZ: %s / %s"
 		health_label.text = health_string % [str(unit.health), str(unit.max_health)]
-		oz_label.text = health_string % [str(unit.oz), str(unit.max_oz)]
+		oz_label.text = oz_string % [str(unit.oz), str(unit.max_oz)]

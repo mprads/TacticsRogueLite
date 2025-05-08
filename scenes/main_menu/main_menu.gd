@@ -2,6 +2,8 @@ extends Control
 class_name MainMenu
 
 const RUN_SCENE := preload("res://scenes/run/run.tscn")
+const TESTING_RUN_STATS = preload("res://resources/testing_run_stats.tres")
+const PARTY_SELECT = preload("res://scenes/party_select/party_select.tscn")
 
 @onready var contiune_button: Button = %ContiuneButton
 @onready var new_run_button: Button = %NewRunButton
@@ -25,11 +27,11 @@ func _ready() -> void:
 
 
 func _on_continue_button_pressed() -> void:
-	pass
+	SceneChanger.change_scene(RUN_SCENE, TESTING_RUN_STATS)
 
 
 func _on_new_run_button_pressed() -> void:
-	get_tree().change_scene_to_packed(RUN_SCENE)
+	SceneChanger.change_scene(PARTY_SELECT)
 
 
 func _on_setting_button_pressed() -> void:

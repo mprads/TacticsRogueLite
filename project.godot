@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="TacticsRogueLite"
-run/main_scene="uid://r76gjny5escp"
+run/main_scene="uid://r7l5dv2hbg2g"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
 Events="*res://global/events.gd"
 RNG="*res://global/rng.gd"
+SceneChanger="*res://global/scene_changer.gd"
 
 [debug]
 

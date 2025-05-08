@@ -21,11 +21,11 @@ func set_unit_stats(value: UnitStats) -> void:
 
 	party_unit_ui.unit = unit_stats
 
-	_update_ability_visuals(unit_stats)
+	_update_ability_visuals()
 	line_edit.grab_focus()
 
 
-func _update_ability_visuals(unit_stats: UnitStats) -> void:
+func _update_ability_visuals() -> void:
 	for child in ability_container.get_children():
 		child.queue_free()
 

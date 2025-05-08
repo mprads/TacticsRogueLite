@@ -59,7 +59,6 @@ script = ExtResource("5_bk1v7")
 outline = ExtResource("8_xa4qb")
 filling = ExtResource("7_wchyp")
 potion = ExtResource("8_wchyp")
-refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [sub_resource type="Resource" id="Resource_pij53"]
@@ -67,7 +66,6 @@ resource_local_to_scene = true
 script = ExtResource("5_bk1v7")
 outline = ExtResource("8_xa4qb")
 filling = ExtResource("7_wchyp")
-refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [sub_resource type="Resource" id="Resource_7qsao"]
@@ -76,7 +74,6 @@ script = ExtResource("5_bk1v7")
 outline = ExtResource("8_xa4qb")
 filling = ExtResource("7_wchyp")
 potion = ExtResource("9_xa4qb")
-refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [resource]
