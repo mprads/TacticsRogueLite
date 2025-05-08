@@ -27,6 +27,14 @@ func _ready() -> void:
 	_play_animation("in")
 
 
+func set_disabled() -> void:
+	disabled = true
+
+
+func play_discard() -> void:
+	_play_animation("discard")
+
+
 func _update_ability_visuals(unit_stats: UnitStats) -> void:
 	for child in ability_container.get_children():
 		child.queue_free()
@@ -40,11 +48,13 @@ func _update_ability_visuals(unit_stats: UnitStats) -> void:
 
 
 func _play_animation(id: String) -> void:
+	printt("play", disabled)
+	if disabled: return
+	print("after")
 	if animation_player.is_playing():
 		animation_player.stop()
 
-	if not disabled:
-		animation_player.play(id)
+	animation_player.play(id)
 
 
 func set_unit_stats(value: UnitStats) -> void:
@@ -77,7 +87,6 @@ func set_contents(value: Array) -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse"):
 		_play_animation("selected")
-		disabled = true
 		panel_selected.emit(unit_stats, contents)
 
 

@@ -18,6 +18,7 @@ custom_minimum_size = Vector2(180, 48)
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 4
+mouse_filter = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cgww7")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jw2qo")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_c784x")
@@ -38,7 +39,6 @@ mouse_filter = 2
 [node name="UnitIconPanel" parent="HBoxContainer" instance=ExtResource("2_cgww7")]
 unique_name_in_owner = true
 layout_mode = 2
-mouse_filter = 2
 
 [node name="UnitDetailsPanel" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(90, 48)

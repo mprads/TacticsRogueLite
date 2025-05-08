@@ -32,6 +32,7 @@ const OPTION_COUNT := 3
 @onready var vial_container: HBoxContainer = %VialContainer
 @onready var inventory_container: HBoxContainer = %InventoryContainer
 @onready var gold_ui: GoldUI = %GoldUI
+@onready var unit_creator_ui: PanelContainer = %UnitCreatorUI
 
 
 func _ready() -> void:
@@ -56,9 +57,13 @@ func _set_up_connections() -> void:
 	inventory_manager.inventory_changed.connect(_on_inventory_changed)
 	party_manager.party_changed.connect(_on_party_changed)
 	vial_manager.vials_changed.connect(_on_vials_changed)
+	unit_creator_ui.unit_created.connect(_on_unit_created)
 
 
 func _generate_options() -> void:
+	for child in selection_container.get_children():
+		child.queue_free()
+
 	for option in OPTION_COUNT:
 		var unit_select_instance := UNIT_SELECT_PANEL_SCENE.instantiate()
 		selection_container.add_child(unit_select_instance)
@@ -85,6 +90,7 @@ func _generate_items() -> Array:
 	for item in OPTION_COUNT:
 			var chance := randf_range(0.0, 1.0)
 
+			# TODO Maybe this should be a weighted table for more granular control
 			if chance <= vial_odds:
 				var vial := Vial.new()
 				var potion: Potion = RNG.array_pick_random(starter_potions)
@@ -101,9 +107,15 @@ func _generate_items() -> Array:
 	return item_contents
 
 
-func _on_panel_selected(unit_stats: UnitStats, contents: Array) -> void:
-	party_manager.add_unit(unit_stats)
+func _show_unit_creator(unit_stats: UnitStats) -> void:
+	for child in selection_container.get_children():
+		child.play_discard()
 
+	unit_creator_ui.unit_stats = unit_stats
+	unit_creator_ui.visible = true
+
+
+func _on_panel_selected(unit_stats: UnitStats, contents: Array) -> void:
 	for content in contents:
 		if content.item is Item:
 			inventory_manager.add_item(content.item, content.quantity)
@@ -113,6 +125,8 @@ func _on_panel_selected(unit_stats: UnitStats, contents: Array) -> void:
 			pass
 		else:
 			inventory_manager.add_gold(content.quantity)
+
+	_show_unit_creator(unit_stats)
 
 
 func _on_inventory_changed() -> void:
@@ -150,3 +164,9 @@ func _on_vials_changed() -> void:
 		var vial_button_instance := VIAL_BUTTON_SCENE.instantiate()
 		vial_container.add_child(vial_button_instance)
 		vial_button_instance.vial = vial
+
+
+func _on_unit_created(unit_stats: UnitStats) -> void:
+	unit_creator_ui.visible = false
+	party_manager.add_unit(unit_stats)
+	_generate_options()
