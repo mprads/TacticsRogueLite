@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="2_btp8x"]
 [ext_resource type="Script" uid="uid://dvv6iov5fd7fy" path="res://resources/battles/battle_stats.gd" id="3_e0v1j"]
 [ext_resource type="Resource" uid="uid://diod565xfdrwf" path="res://resources/enemies/ghost.tres" id="3_kdbe1"]
-[ext_resource type="Resource" uid="uid://ddgsppdhtad44" path="res://resources/items/green_herb.tres" id="5_r1vei"]
-[ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/red_mushroom.tres" id="6_dfpcj"]
+[ext_resource type="Resource" uid="uid://ddgsppdhtad44" path="res://resources/items/herb.tres" id="5_r1vei"]
+[ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/mushroom.tres" id="6_dfpcj"]
 [ext_resource type="Resource" uid="uid://43dujorcxsl6" path="res://resources/items/venom.tres" id="7_45rb0"]
 
 [resource]

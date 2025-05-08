@@ -23,8 +23,16 @@ func get_inventory() -> Dictionary[ItemConfig.KEYS, int]:
 	return run_stats.inventory
 
 
-func _add_item(key: ItemConfig.KEYS) -> void:
-	run_stats.add_item_to_inventory(key)
+func add_item(item: Item, count: int = 1) -> void:
+	_add_item(item.key, count)
+
+
+func add_gold(value: int) -> void:
+	_update_gold(value)
+
+
+func _add_item(key: ItemConfig.KEYS, count: int = 1) -> void:
+	run_stats.add_item_to_inventory(key, count)
 	inventory_changed.emit()
 
 

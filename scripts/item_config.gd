@@ -3,8 +3,8 @@ class_name ItemConfig
 
 enum KEYS {
 	#plants
-	GREEN_HERB,
-	RED_MUSHROOM,
+	HERB,
+	MUSHROOM,
 	#components
 	VENOM,
 	ZINC,
@@ -27,8 +27,8 @@ const POTION_KEYS: Array[KEYS] = [
 
 const ITEM_RESOURCE_PATHS := {
 	#plants
-	KEYS.GREEN_HERB: "res://resources/items/green_herb.tres",
-	KEYS.RED_MUSHROOM: "res://resources/items/red_mushroom.tres",
+	KEYS.HERB: "res://resources/items/herb.tres",
+	KEYS.MUSHROOM: "res://resources/items/mushroom.tres",
 	#components
 	KEYS.VENOM: "res://resources/items/venom.tres",
 	KEYS.ZINC: "res://resources/items/zinc.tres",

@@ -1,29 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfc7nmxs6r00g"]
+[gd_scene load_steps=6 format=3 uid="uid://bfc7nmxs6r00g"]
 
 [ext_resource type="Script" uid="uid://5bg4aw7ppm3c" path="res://scenes/kiln/kiln.gd" id="1_54vod"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_11imp"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="2_cs22t"]
 [ext_resource type="Texture2D" uid="uid://cp13xdyr7y5js" path="res://assets/sprites/kiln/Kiln.png" id="2_tcpd7"]
 [ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="4_11imp"]
-
-[sub_resource type="Gradient" id="Gradient_54vod"]
-offsets = PackedFloat32Array(0.132075, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.170313, 0.0763066, 0.0039254, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cs22t"]
-gradient = SubResource("Gradient_54vod")
 
 [node name="Kiln" type="Node2D"]
 script = ExtResource("1_54vod")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 
-[node name="Background" type="TextureRect" parent="BackgroundLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_cs22t")
+[node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_11imp")]
 
 [node name="Kiln" type="TextureRect" parent="BackgroundLayer"]
 custom_minimum_size = Vector2(260, 180)

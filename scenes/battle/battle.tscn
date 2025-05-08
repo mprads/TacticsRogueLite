@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=21 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://ccxsj7lmuvtu4" path="res://resources/battle_maps/battle_map_pool.tres" id="2_mvulk"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://mle1y0lql1qp" path="res://scenes/target_selector_ui/target_selector.tscn" id="13_t1kk3"]
 [ext_resource type="Script" uid="uid://etyxvtkdpd6h" path="res://scenes/target_selector_ui/target_selector.gd" id="15_6ofp8"]
 [ext_resource type="PackedScene" uid="uid://dm2vpxif7k43a" path="res://scenes/ui/battle/party_selection_container.tscn" id="16_6ofp8"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="19_w40i5"]
 
 [sub_resource type="Curve" id="Curve_icg0e"]
 _limits = [0.2, 1.0, 0.0, 1.0]
@@ -129,6 +130,11 @@ script = ExtResource("15_6ofp8")
 width = 4.0
 width_curve = SubResource("Curve_icg0e")
 default_color = Color(0.984314, 0.419608, 0.113725, 1)
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="AnimatedBackground" parent="Background" instance=ExtResource("19_w40i5")]
 
 [node name="UI" type="CanvasLayer" parent="."]
 

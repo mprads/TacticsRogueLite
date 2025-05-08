@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
 [ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="3_40wdo"]
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="3_gl05p"]
-[ext_resource type="PackedScene" uid="uid://0ec0jkwp2ku4" path="res://managers/modifier_manager.tscn" id="3_tjssy"]
+[ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="4_cwlon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
 size = Vector2(32, 32)
@@ -39,7 +39,8 @@ shape = SubResource("RectangleShape2D_a3pup")
 position = Vector2(0, -11)
 script = ExtResource("3_gl05p")
 
-[node name="ModifierManager" parent="." instance=ExtResource("3_tjssy")]
+[node name="ModifierManager" type="Node" parent="."]
+script = ExtResource("4_cwlon")
 
 [node name="StatusManager" parent="." instance=ExtResource("3_40wdo")]
 offset_left = -15.0

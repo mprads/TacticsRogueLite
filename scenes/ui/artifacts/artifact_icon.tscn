@@ -6,6 +6,7 @@
 custom_minimum_size = Vector2(24, 24)
 offset_right = 24.0
 offset_bottom = 24.0
+pivot_offset = Vector2(12, 12)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 5

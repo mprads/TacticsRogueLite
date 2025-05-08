@@ -20,6 +20,7 @@ offset_right = 24.0
 offset_bottom = 24.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dhlm0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_76heb")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_752eq")

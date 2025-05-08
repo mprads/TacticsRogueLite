@@ -34,12 +34,12 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 
 
 func _ready() -> void:
+	run_stats = SceneChanger.get_run_stats()
+
 	if not run_stats:
 		run_stats = RunStats.new()
-		_start_run()
-	else:
-		#TODO add loading a run from save state
-		_start_run()
+
+	_start_run()
 
 
 func _start_run() -> void:	

@@ -1,7 +1,7 @@
 extends Control
 class_name InventoryUI
 
-const ITEM_PANEL_UI = preload("res://scenes/ui/item_panel.tscn")
+const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
 
 @export var inventory_manager: InventoryManager : set = set_inventory_manager
 @export var party_manager: PartyManager : set = set_party_manager
@@ -27,7 +27,7 @@ func _update_inventory() -> void:
 		item_ui.queue_free()
 
 	for item in inventory:
-		var item_ui_instance = ITEM_PANEL_UI.instantiate()
+		var item_ui_instance = ITEM_PANEL_SCENE.instantiate()
 		inventory_items.add_child(item_ui_instance)
 		item_ui_instance.item = ItemConfig.get_item_resource(item)
 		item_ui_instance.count = inventory[item]

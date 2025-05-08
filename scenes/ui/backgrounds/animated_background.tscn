@@ -1,0 +1,25 @@
+[gd_scene load_steps=13 format=3 uid="uid://bquoh0o3sb282"]
+
+[ext_resource type="Script" uid="uid://42kt5ep332ce" path="res://scenes/ui/backgrounds/animated_background.gd" id="1_pevly"]
+[ext_resource type="PackedScene" uid="uid://btlt5m7anmyag" path="res://scenes/ui/backgrounds/horizontal_GBA.tscn" id="2_f3q1f"]
+[ext_resource type="PackedScene" uid="uid://dy6liprqu6pp0" path="res://scenes/ui/backgrounds/horizontal_single_wave.tscn" id="3_14e7t"]
+[ext_resource type="PackedScene" uid="uid://co2ekdtfhr82i" path="res://scenes/ui/backgrounds/horizontal_waves.tscn" id="4_e17ot"]
+[ext_resource type="PackedScene" uid="uid://bhba5v58kiff8" path="res://scenes/ui/backgrounds/vertical_single_wave.tscn" id="6_vw02e"]
+[ext_resource type="PackedScene" uid="uid://c7oi1gr3n8n25" path="res://scenes/ui/backgrounds/vertical_waves.tscn" id="7_7tym3"]
+[ext_resource type="Texture2D" uid="uid://80at4quv28mp" path="res://assets/palettes/Blue.png" id="8_h1bph"]
+[ext_resource type="Texture2D" uid="uid://kv37i86ksntm" path="res://assets/palettes/DarkPurple.png" id="9_lcgod"]
+[ext_resource type="Texture2D" uid="uid://7axr7to6eyoq" path="res://assets/palettes/Green.png" id="10_8e61w"]
+[ext_resource type="Texture2D" uid="uid://d1wlpy3cwgohi" path="res://assets/palettes/Greyish.png" id="11_ypmuh"]
+[ext_resource type="Texture2D" uid="uid://b3l8xnvae07pb" path="res://assets/palettes/Maroon.png" id="12_aj6lk"]
+[ext_resource type="Texture2D" uid="uid://cne7ra4vuptm2" path="res://assets/palettes/Purple.png" id="13_xnlap"]
+
+[node name="AnimatedBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pevly")
+backgrounds = Array[PackedScene]([ExtResource("2_f3q1f"), ExtResource("3_14e7t"), ExtResource("4_e17ot"), ExtResource("6_vw02e"), ExtResource("7_7tym3")])
+paletts = Array[CompressedTexture2D]([ExtResource("8_h1bph"), ExtResource("9_lcgod"), ExtResource("11_ypmuh"), ExtResource("13_xnlap"), ExtResource("12_aj6lk"), ExtResource("10_8e61w")])

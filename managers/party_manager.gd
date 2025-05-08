@@ -10,6 +10,11 @@ func _ready() -> void:
 	Events.unit_died.connect(_on_unit_died)
 
 
+func add_unit(unit_stats: UnitStats) -> void:
+	run_stats.party.append(unit_stats)
+	party_changed.emit()
+
+
 func get_party() -> Array[UnitStats]:
 	return run_stats.party
 

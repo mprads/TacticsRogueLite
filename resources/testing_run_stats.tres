@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
 [ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_qn745"]
 [ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
-[ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/never_ending_drip.tres" id="3_1l1ep"]
+[ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/eternal_drip.tres" id="3_1l1ep"]
 [ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="4_7qsao"]
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
 [ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="5_pbn6o"]
@@ -59,7 +59,6 @@ script = ExtResource("5_bk1v7")
 outline = ExtResource("8_xa4qb")
 filling = ExtResource("7_wchyp")
 potion = ExtResource("8_wchyp")
-refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [sub_resource type="Resource" id="Resource_pij53"]
@@ -67,7 +66,6 @@ resource_local_to_scene = true
 script = ExtResource("5_bk1v7")
 outline = ExtResource("8_xa4qb")
 filling = ExtResource("7_wchyp")
-refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [sub_resource type="Resource" id="Resource_7qsao"]
@@ -76,7 +74,6 @@ script = ExtResource("5_bk1v7")
 outline = ExtResource("8_xa4qb")
 filling = ExtResource("7_wchyp")
 potion = ExtResource("9_xa4qb")
-refill_quantity = 1
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [resource]

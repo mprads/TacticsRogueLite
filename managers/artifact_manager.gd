@@ -1,6 +1,8 @@
 extends Node
 class_name ArtifactManager
 
+signal artifacts_changed
+
 const ARTIFACT_ICON = preload("res://scenes/ui/artifacts/artifact_icon.tscn")
 const ARTIFACT_ACTIVATION_DELAY := 0.5
 
@@ -11,6 +13,10 @@ const ARTIFACT_ACTIVATION_DELAY := 0.5
 func _ready() -> void:
 	Events.activate_artifacts_by_type.connect(activate_artifacts_by_type)
 	Events.request_add_artifact.connect(_on_request_add_artifact)
+
+
+func add_artifact(artifact: Artifact) -> void:
+	run_stats.artifacts.append(artifact)
 
 
 func init_artifacts() -> void:
@@ -58,5 +64,6 @@ func _on_request_add_artifact(artifact: Artifact) -> void:
 	if run_stats.artifacts.has(artifact):
 		Events.request_add_gold.emit(floori(artifact.gold_cost / 3))
 	else:
-		init_artifact(artifact)
 		run_stats.artifacts.append(artifact)
+		init_artifact(artifact)
+		artifacts_changed.emit()

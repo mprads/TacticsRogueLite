@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bb13lcap1d54e"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bb13lcap1d54e"]
 
 [ext_resource type="FontFile" uid="uid://djlcyps6kpr80" path="res://assets/fonts/pixel_arial_11/PIXEARG_.TTF" id="1_x504n"]
 
@@ -29,7 +29,7 @@ corner_radius_bottom_left = 5
 corner_detail = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8kr5"]
-bg_color = Color(0.353189, 0.368184, 0.35075, 1)
+bg_color = Color(0.575743, 0.565092, 0.655428, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -70,6 +70,13 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgst1"]
+bg_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x504n"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -93,4 +100,5 @@ Button/styles/focus = SubResource("StyleBoxFlat_btemj")
 Button/styles/hover = SubResource("StyleBoxFlat_f8kr5")
 Button/styles/normal = SubResource("StyleBoxFlat_1ffvk")
 Button/styles/pressed = SubResource("StyleBoxFlat_1j1hj")
+Panel/styles/panel = SubResource("StyleBoxFlat_kgst1")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_x504n")

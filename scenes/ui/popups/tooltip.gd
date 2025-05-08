@@ -16,19 +16,19 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		_toggle_secondary_tooltip(false)
 
 
-func _toggle_secondary_tooltip(is_visible: bool) -> void:
+func _toggle_secondary_tooltip(show_tooltip: bool) -> void:
 	var secondary_tooltips= get_tree().get_nodes_in_group("secondary_tooltip")
 
 	for tooltip in secondary_tooltips:
-		tooltip.visible = is_visible
+		tooltip.visible = show_tooltip
 
 	set_process_unhandled_key_input(true)
 
 
-func _create_tooltip(name: String, description: String) -> Panel:
+func _create_tooltip(header: String, description: String) -> Panel:
 	var tooltip_instance := TOOLTIP_PANEL_SCENE.instantiate()
 	add_child(tooltip_instance)
-	tooltip_instance.get_node("%NameLabel").text = name
+	tooltip_instance.get_node("%NameLabel").text = header
 	tooltip_instance.get_node("%DescriptionLabel").text = description
 	return tooltip_instance
 
