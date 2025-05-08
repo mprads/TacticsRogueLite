@@ -124,6 +124,13 @@ func _show_unit_creator(unit_stats: UnitStats) -> void:
 	unit_creator_ui.visible = true
 
 
+func _fill_placeholders(container: HBoxContainer) -> void:
+	for empty_slot in (OPTION_COUNT - container.get_child_count()):
+		var panel_instance = Panel.new()
+		container.add_child(panel_instance)
+		panel_instance.custom_minimum_size = Vector2(48, 48)
+
+
 func _on_panel_selected(unit_stats: UnitStats, contents: Array) -> void:
 	for content in contents:
 		if content.item is Item:
@@ -154,6 +161,7 @@ func _on_inventory_changed() -> void:
 func _on_party_changed() -> void:
 	for child in party_container.get_children():
 		child.queue_free()
+		party_container.remove_child(child)
 
 	var party := party_manager.get_party()
 
@@ -162,17 +170,26 @@ func _on_party_changed() -> void:
 		party_container.add_child(unit_panel_instance)
 		unit_panel_instance.unit = unit_stats
 
+	_fill_placeholders(party_container)
+
 
 func _on_vials_changed() -> void:
 	for child in vial_container.get_children():
 		child.queue_free()
+		vial_container.remove_child(child)
 
 	var vials := vial_manager.get_vials()
 
 	for vial in vials:
 		var vial_button_instance := VIAL_BUTTON_SCENE.instantiate()
-		vial_container.add_child(vial_button_instance)
+		var panel_instance := Panel.new()
+		vial_container.add_child(panel_instance)
+		panel_instance.custom_minimum_size = Vector2(48, 48)
+		panel_instance.add_child(vial_button_instance)
+		vial_button_instance.position = Vector2(12, 12)
 		vial_button_instance.vial = vial
+
+	_fill_placeholders(vial_container)
 
 
 func _on_unit_created(unit_stats: UnitStats) -> void:
