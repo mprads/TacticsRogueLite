@@ -21,7 +21,7 @@ func set_artifact(value: Artifact) -> void:
 func _on_artifact_activated() -> void:
 	var tween := create_tween()
 	tween.tween_property(self, "scale", Vector2(1.25, 1.25), .25)
-	tween.tween_property(self, "scale", Vector2(1, 1), .1)
+	tween.chain().tween_property(self, "scale", Vector2(1, 1), .1)
 
 
 func _on_mouse_entered() -> void:

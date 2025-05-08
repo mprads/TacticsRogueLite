@@ -15,6 +15,10 @@ func _ready() -> void:
 	Events.request_add_artifact.connect(_on_request_add_artifact)
 
 
+func add_artifact(artifact: Artifact) -> void:
+	run_stats.artifacts.append(artifact)
+
+
 func init_artifacts() -> void:
 	for child in artifact_ui.get_children():
 		child.queue_free()
@@ -60,6 +64,6 @@ func _on_request_add_artifact(artifact: Artifact) -> void:
 	if run_stats.artifacts.has(artifact):
 		Events.request_add_gold.emit(floori(artifact.gold_cost / 3))
 	else:
-		init_artifact(artifact)
 		run_stats.artifacts.append(artifact)
+		init_artifact(artifact)
 		artifacts_changed.emit()

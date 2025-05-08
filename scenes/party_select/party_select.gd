@@ -61,7 +61,7 @@ func _set_up_connections() -> void:
 	unit_creator_ui.unit_created.connect(_on_unit_created)
 
 
-func _generate_options() -> void:
+func _generate_options(final: bool = false) -> void:
 	for child in selection_container.get_children():
 		child.queue_free()
 
@@ -72,7 +72,10 @@ func _generate_options() -> void:
 		unit_select_instance.unit_stats = unit_stats
 		unit_select_instance.panel_selected.connect(_on_panel_selected)
 
-		unit_select_instance.contents = _generate_items()
+		if final:
+			unit_select_instance.contents = _generate_artifact()
+		else:
+			unit_select_instance.contents = _generate_items()
 
 
 func _generate_unit_stats() -> UnitStats:
@@ -108,6 +111,11 @@ func _generate_items() -> Array:
 	return item_contents
 
 
+func _generate_artifact() -> Array[Dictionary]:
+	var starter_artifact = RNG.array_pick_random(starter_artifacts)
+	return [{ "item": starter_artifact, "quantity": 1 }]
+
+
 func _show_unit_creator(unit_stats: UnitStats) -> void:
 	for child in selection_container.get_children():
 		child.play_discard()
@@ -122,8 +130,8 @@ func _on_panel_selected(unit_stats: UnitStats, contents: Array) -> void:
 			inventory_manager.add_item(content.item, content.quantity)
 		elif content.item is Vial:
 			vial_manager.add_vial(content.item)
-		elif content is Artifact:
-			pass
+		elif content.item is Artifact:
+			artifact_manager.add_artifact(content.item)
 		else:
 			inventory_manager.add_gold(content.quantity)
 
@@ -173,5 +181,7 @@ func _on_unit_created(unit_stats: UnitStats) -> void:
 
 	if party_manager.get_party().size() >= 3:
 		SceneChanger.change_scene(RUN_SCENE, run_stats)
+	elif party_manager.get_party().size() >= 2:
+		_generate_options(true)
 	else:
 		_generate_options()
