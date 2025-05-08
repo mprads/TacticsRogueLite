@@ -50,7 +50,7 @@ func _update_ability_visuals() -> void:
 func _play_animation(id: String) -> void:
 	if disabled: return
 
-	if animation_player.is_playing():
+	if animation_player.is_playing() and not animation_player.current_animation == id:
 		animation_player.queue(id)
 	else:
 		animation_player.play(id)

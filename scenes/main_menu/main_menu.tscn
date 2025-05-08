@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://r7l5dv2hbg2g"]
+[gd_scene load_steps=20 format=3 uid="uid://r7l5dv2hbg2g"]
 
 [ext_resource type="Script" uid="uid://dno8aa2qkwhud" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_a1gy5"]
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="2_lqpn7"]
 [ext_resource type="Resource" uid="uid://rh433c6ika0r" path="res://resources/units/test_round_unit.tres" id="3_ob46e"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="4_qel0l"]
@@ -16,12 +17,6 @@
 [ext_resource type="Script" uid="uid://dj6o3c6q523ek" path="res://scripts/states/unit_state_machine.gd" id="11_4ujhu"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="12_vnpsp"]
 [ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="14_a1gy5"]
-
-[sub_resource type="Gradient" id="Gradient_1b6gl"]
-colors = PackedColorArray(0.197848, 0.000479815, 0.372599, 1, 0.196078, 0, 0.372549, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fsom3"]
-gradient = SubResource("Gradient_1b6gl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bq5lc"]
 resource_local_to_scene = true
@@ -45,14 +40,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uqeha")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="AnimatedBackground" parent="." instance=ExtResource("2_a1gy5")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture1D_fsom3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
