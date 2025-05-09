@@ -67,6 +67,10 @@ func _move_unit(unit: Node, arena: Arena, tile: Vector2i) -> void:
 
 
 func _move_along_path(unit: Node, arena: Arena, path: Array[Vector2i]) -> void:
+	if path.is_empty():
+		unit.move_cleanup()
+		return
+
 	var current_tile: Vector2i = path.pop_front()
 	
 	if not current_tile and path.is_empty():

@@ -87,3 +87,6 @@ func set_artifact_manager(value: ArtifactManager) -> void:
 func _on_inventory_gold_changed() -> void:
 	for shop_item in item_shelf.get_children():
 		shop_item.update(inventory_manager.get_gold())
+
+	for shop_item in artifact_shelf.get_children():
+		shop_item.update(inventory_manager.get_gold())

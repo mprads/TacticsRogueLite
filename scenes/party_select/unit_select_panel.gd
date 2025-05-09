@@ -3,7 +3,6 @@ class_name UnitSelectPanel
 
 signal panel_selected(unit_stats: UnitStats, items: Array)
 
-const TEST_ROUND_UNIT = preload("res://resources/units/test_round_unit.tres")
 const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 const STARTING_ITEM_PANEL_SCENE = preload("res://scenes/party_select/starting_item_panel.tscn")
 const GOLD_ICON = preload("res://assets/icons/gold.png")
@@ -22,7 +21,6 @@ var disabled := false
 func _ready() -> void:
 	gui_input.connect(_on_gui_input)
 	mouse_entered.connect(_on_mouse_entered)
-	unit_stats = TEST_ROUND_UNIT
 
 	_play_animation("in")
 
