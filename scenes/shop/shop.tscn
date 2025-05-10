@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://q7xyee7lyj2t"]
+[gd_scene load_steps=21 format=3 uid="uid://q7xyee7lyj2t"]
 
 [ext_resource type="Script" uid="uid://dkc5fw5v2355l" path="res://scenes/shop/shop.gd" id="1_100s2"]
 [ext_resource type="PackedScene" uid="uid://bx3amx8rinwo" path="res://scenes/shop/shop_item.tscn" id="2_7lxhl"]
@@ -7,19 +7,26 @@
 [ext_resource type="Resource" uid="uid://d1aqyupi7ysw3" path="res://resources/items/sulfur.tres" id="3_xcdpw"]
 [ext_resource type="Resource" uid="uid://43dujorcxsl6" path="res://resources/items/venom.tres" id="4_tp26b"]
 [ext_resource type="Resource" uid="uid://d0rt6xe2qw4c" path="res://resources/items/zinc.tres" id="5_vk20h"]
+[ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="6_hbyua"]
 [ext_resource type="Resource" uid="uid://ddgsppdhtad44" path="res://resources/items/herb.tres" id="6_tp26b"]
+[ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="7_36j3v"]
 [ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/mushroom.tres" id="7_vk20h"]
+[ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="8_5y7fm"]
 [ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="8_131kw"]
 [ext_resource type="Resource" uid="uid://cyi8lynrukcin" path="res://resources/artifacts/lasting_shield.tres" id="9_xoc10"]
 [ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/eternal_drip.tres" id="10_k5co3"]
 [ext_resource type="PackedScene" uid="uid://bqjho2cnvyfic" path="res://scenes/shop/planter_item.tscn" id="10_vk20h"]
 [ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="11_6kbe7"]
+[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="15_xoc10"]
+[ext_resource type="PackedScene" uid="uid://c05jbl2pod8hb" path="res://scenes/shop/shop_bottle.tscn" id="17_5y7fm"]
+[ext_resource type="PackedScene" uid="uid://c1xgosjtjf1n3" path="res://scenes/shop/shop_artifact.tscn" id="18_toxgp"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_100s2")
 shop_items = Array[ExtResource("2_ge4d2")]([ExtResource("3_xcdpw"), ExtResource("4_tp26b"), ExtResource("5_vk20h")])
-shop_plants = Array[ExtResource("2_ge4d2")]([ExtResource("6_tp26b"), ExtResource("7_vk20h")])
+shop_bottles = Array[ExtResource("6_hbyua")]([ExtResource("7_36j3v"), ExtResource("8_5y7fm")])
 shop_artifacts = Array[ExtResource("8_131kw")]([ExtResource("9_xoc10"), ExtResource("10_k5co3"), ExtResource("11_6kbe7")])
+shop_plants = Array[ExtResource("2_ge4d2")]([ExtResource("6_tp26b"), ExtResource("7_vk20h")])
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = 0
@@ -57,11 +64,11 @@ theme_override_font_sizes/font_size = 16
 text = "Leave"
 
 [node name="ShopContents" type="VBoxContainer" parent="UI"]
-offset_left = 139.0
-offset_top = 152.0
-offset_right = 389.0
-offset_bottom = 286.0
-theme_override_constants/separation = 26
+offset_left = 140.0
+offset_top = 122.0
+offset_right = 390.0
+offset_bottom = 302.0
+theme_override_constants/separation = 9
 
 [node name="ItemShelf" type="HBoxContainer" parent="UI/ShopContents"]
 unique_name_in_owner = true
@@ -81,19 +88,34 @@ layout_mode = 2
 [node name="ShopItem4" parent="UI/ShopContents/ItemShelf" instance=ExtResource("2_7lxhl")]
 layout_mode = 2
 
+[node name="BottleShelf" type="HBoxContainer" parent="UI/ShopContents"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ShopBottle" parent="UI/ShopContents/BottleShelf" instance=ExtResource("17_5y7fm")]
+layout_mode = 2
+
+[node name="ShopBottle2" parent="UI/ShopContents/BottleShelf" instance=ExtResource("17_5y7fm")]
+layout_mode = 2
+
+[node name="ShopBottle3" parent="UI/ShopContents/BottleShelf" instance=ExtResource("17_5y7fm")]
+layout_mode = 2
+
 [node name="ArtifactShelf" type="HBoxContainer" parent="UI/ShopContents"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="ShopItem" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("2_7lxhl")]
+[node name="ShopArtifact" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("18_toxgp")]
 layout_mode = 2
 
-[node name="ShopItem2" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("2_7lxhl")]
+[node name="ShopArtifact2" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("18_toxgp")]
 layout_mode = 2
 
-[node name="ShopItem3" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("2_7lxhl")]
+[node name="ShopArtifact3" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("18_toxgp")]
 layout_mode = 2
 
 [node name="PlanterContents" type="HBoxContainer" parent="UI"]
@@ -106,3 +128,27 @@ offset_bottom = 318.0
 
 [node name="PlanterItem" parent="UI/PlanterContents" instance=ExtResource("10_vk20h")]
 layout_mode = 2
+
+[node name="RoundBottleCost" type="HBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(32, 10)
+offset_left = 335.0
+offset_top = 338.0
+offset_right = 367.0
+offset_bottom = 349.0
+theme_override_constants/separation = 0
+
+[node name="GoldIcon" type="TextureRect" parent="UI/RoundBottleCost"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("15_xoc10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldCost" type="Label" parent="UI/RoundBottleCost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "50"
+horizontal_alignment = 2
