@@ -1,7 +1,7 @@
 extends Control
 class_name ShopBottle
 
-signal request_purchase(bottle: Bottle)
+signal request_purchase(bottle: Bottle, clean_up_callback: Callable)
 
 @export var bottle: Bottle : set = set_bottle
 
@@ -31,6 +31,10 @@ func update(player_gold: int) -> void:
 		gold_cost.modulate = Color.WHITE
 
 
+func purchased_cleanup() -> void:
+	bottle_container.queue_free()
+
+
 func set_bottle(value: Bottle) -> void:
 	bottle = value
 
@@ -51,4 +55,4 @@ func _on_mouse_exited() -> void:
 
 
 func _on_button_pressed() -> void:
-	request_purchase.emit(bottle)
+	request_purchase.emit(bottle, purchased_cleanup)

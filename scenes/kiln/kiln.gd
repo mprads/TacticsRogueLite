@@ -2,7 +2,7 @@ extends Node2D
 
 @export var party_manager: PartyManager : set = set_party_manager
 
-@onready var party_ui: VBoxContainer = %PartyUI
+@onready var party_ui: PartyUI = %PartyUI
 @onready var kiln_unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var heal_button: Button = %HealButton
 @onready var leave_button: Button = %LeaveButton

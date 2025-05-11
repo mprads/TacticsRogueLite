@@ -132,7 +132,7 @@ func _on_inventory_gold_changed() -> void:
 		round_bottle_gold_cost.modulate = Color.WHITE
 
 
-func _on_bottle_request_purchase(bottle: Bottle) -> void:
+func _on_bottle_request_purchase(bottle: Bottle, clean_up_callback: Callable = func():) -> void:
 	var party := party_manager.get_party()
 
 	if party.size() < party_manager.get_max_party_size():
@@ -140,6 +140,7 @@ func _on_bottle_request_purchase(bottle: Bottle) -> void:
 		unit_stats.bottle = bottle
 		unit_creator_ui.unit_stats = unit_stats
 		unit_creator_ui.visible = true
+		clean_up_callback.call()
 	else:
 		discard_unit_ui.visible = true
 
@@ -148,6 +149,7 @@ func _on_unit_created(unit_stats: UnitStats) -> void:
 	party_manager.add_unit(unit_stats)
 	unit_creator_ui.unit_stats = null
 	unit_creator_ui.visible = false
+	Events.request_add_gold.emit(-unit_stats.bottle.gold_cost)
 
 
 func _on_unit_removed() -> void:
