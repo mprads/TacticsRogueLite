@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends GridContainer
 class_name PartyUI
 
 signal unit_selected(unit: UnitStats)
@@ -13,8 +13,8 @@ var party: Array[UnitStats] = []
 func _update_party() -> void:
 	party = party_manager.get_party()
 
-	for unit_ui in get_children():
-		unit_ui.queue_free()
+	for child in get_children():
+		child.queue_free()
 
 	for unit in party:
 		var unit_ui_instance = PARTY_UNIT_UI.instantiate()

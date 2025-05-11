@@ -19,6 +19,8 @@ func _ready() -> void:
 func set_unit_stats(value: UnitStats) -> void:
 	unit_stats = value
 
+	if not unit_stats: return
+
 	party_unit_ui.unit = unit_stats
 
 	_update_ability_visuals()

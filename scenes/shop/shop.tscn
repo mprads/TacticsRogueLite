@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://q7xyee7lyj2t"]
+[gd_scene load_steps=23 format=3 uid="uid://q7xyee7lyj2t"]
 
 [ext_resource type="Script" uid="uid://dkc5fw5v2355l" path="res://scenes/shop/shop.gd" id="1_100s2"]
 [ext_resource type="PackedScene" uid="uid://bx3amx8rinwo" path="res://scenes/shop/shop_item.tscn" id="2_7lxhl"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="15_xoc10"]
 [ext_resource type="PackedScene" uid="uid://c05jbl2pod8hb" path="res://scenes/shop/shop_bottle.tscn" id="17_5y7fm"]
 [ext_resource type="PackedScene" uid="uid://c1xgosjtjf1n3" path="res://scenes/shop/shop_artifact.tscn" id="18_toxgp"]
+[ext_resource type="PackedScene" uid="uid://bb1m0r2sstiwk" path="res://scenes/ui/unit_creator_ui.tscn" id="21_toxgp"]
+[ext_resource type="PackedScene" uid="uid://b8t2vqmevv3nx" path="res://scenes/ui/discard_unit_ui.tscn" id="22_u2jek"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_100s2")
@@ -129,12 +131,21 @@ offset_bottom = 318.0
 [node name="PlanterItem" parent="UI/PlanterContents" instance=ExtResource("10_vk20h")]
 layout_mode = 2
 
+[node name="RoundBottleButton" type="TextureButton" parent="UI"]
+unique_name_in_owner = true
+offset_left = 317.0
+offset_top = 313.0
+offset_right = 390.0
+offset_bottom = 359.0
+
 [node name="RoundBottleCost" type="HBoxContainer" parent="UI"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 10)
 offset_left = 335.0
 offset_top = 338.0
 offset_right = 367.0
 offset_bottom = 349.0
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="GoldIcon" type="TextureRect" parent="UI/RoundBottleCost"]
@@ -145,10 +156,18 @@ texture = ExtResource("15_xoc10")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GoldCost" type="Label" parent="UI/RoundBottleCost"]
+[node name="RoundBottleGoldCost" type="Label" parent="UI/RoundBottleCost"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "50"
 horizontal_alignment = 2
+
+[node name="UnitCreatorUI" parent="UI" instance=ExtResource("21_toxgp")]
+unique_name_in_owner = true
+visible = false
+
+[node name="DiscardUnitUI" parent="UI" instance=ExtResource("22_u2jek")]
+unique_name_in_owner = true
+visible = false

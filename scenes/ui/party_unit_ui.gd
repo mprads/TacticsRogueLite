@@ -6,6 +6,7 @@ class_name PartyUnitUI
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var health_label: Label = %HealthLabel
 @onready var oz_label: Label = %OzLabel
+@onready var movement_label: Label = %MovementLabel
 
 
 func set_unit(value: UnitStats) -> void:
@@ -26,3 +27,4 @@ func _set_details() -> void:
 		var oz_string = "OZ: %s / %s"
 		health_label.text = health_string % [str(unit.health), str(unit.max_health)]
 		oz_label.text = oz_string % [str(unit.oz), str(unit.max_oz)]
+		movement_label.text = "MOVE %s" % str(unit.bottle.base_movement)

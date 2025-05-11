@@ -7,7 +7,7 @@ const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
 @export var party_manager: PartyManager : set = set_party_manager
 
 @onready var inventory_items: GridContainer = %InventoryItems
-@onready var party_ui: VBoxContainer = %PartyUI
+@onready var party_ui: PartyUI = %PartyUI
 
 var inventory: Dictionary[ItemConfig.KEYS, int]
 

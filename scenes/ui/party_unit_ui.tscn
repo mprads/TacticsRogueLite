@@ -14,11 +14,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c26iq"]
 
 [node name="PartyUnitUI" type="Button"]
-custom_minimum_size = Vector2(180, 48)
+custom_minimum_size = Vector2(120, 48)
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 4
-mouse_filter = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cgww7")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jw2qo")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_c784x")
@@ -41,7 +40,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="UnitDetailsPanel" type="Panel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(90, 48)
+custom_minimum_size = Vector2(50, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -53,23 +52,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.5
-offset_top = -24.0
-offset_right = 40.5
-offset_bottom = 24.0
+offset_left = -20.5
+offset_top = -20.5
+offset_right = 20.5
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="HealthLabel" type="Label" parent="HBoxContainer/UnitDetailsPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
 text = "HP 5/20"
-horizontal_alignment = 1
 
 [node name="OzLabel" type="Label" parent="HBoxContainer/UnitDetailsPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
 text = "OZ 5/20"
-horizontal_alignment = 1
+
+[node name="MovementLabel" type="Label" parent="HBoxContainer/UnitDetailsPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MOVE 5"
