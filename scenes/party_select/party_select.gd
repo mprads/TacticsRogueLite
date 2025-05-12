@@ -33,7 +33,7 @@ const OPTION_COUNT := 3
 @onready var vial_container: HBoxContainer = %VialContainer
 @onready var inventory_container: HBoxContainer = %InventoryContainer
 @onready var gold_ui: GoldUI = %GoldUI
-@onready var unit_creator_ui: PanelContainer = %UnitCreatorUI
+@onready var unit_creator_ui: Control = %UnitCreatorUI
 
 
 func _ready() -> void:
@@ -168,7 +168,7 @@ func _on_party_changed() -> void:
 	for unit_stats in party:
 		var unit_panel_instance := UNIT_ICON_PANEL_SCENE.instantiate()
 		party_container.add_child(unit_panel_instance)
-		unit_panel_instance.unit = unit_stats
+		unit_panel_instance.unit_stats = unit_stats
 
 	_fill_placeholders(party_container)
 

@@ -1,30 +1,16 @@
 extends Button
 class_name PartyUnitUI
 
-@export var unit: UnitStats : set = set_unit
+@export var unit_stats: UnitStats : set = set_unit_stats
 
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
-@onready var health_label: Label = %HealthLabel
-@onready var oz_label: Label = %OzLabel
-@onready var movement_label: Label = %MovementLabel
+@onready var unit_details_panel: unit_detail_panel = %UnitDetailsPanel
 
 
-func set_unit(value: UnitStats) -> void:
-	unit = value
+func set_unit_stats(value: UnitStats) -> void:
+	unit_stats = value
 
-	if not unit: return 
+	if not unit_stats: return 
 
-	if not unit.changed.is_connected(_set_details):
-		unit.changed.connect(_set_details)
-
-	unit_icon_panel.unit = unit
-	_set_details()
-
-
-func _set_details() -> void:
-	if unit:
-		var health_string = "HP: %s / %s"
-		var oz_string = "OZ: %s / %s"
-		health_label.text = health_string % [str(unit.health), str(unit.max_health)]
-		oz_label.text = oz_string % [str(unit.oz), str(unit.max_oz)]
-		movement_label.text = "MOVE %s" % str(unit.bottle.base_movement)
+	unit_icon_panel.unit_stats = unit_stats
+	unit_details_panel.unit_stats = unit_stats

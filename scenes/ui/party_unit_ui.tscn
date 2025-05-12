@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnvnj7pvvkjhu"]
+[gd_scene load_steps=9 format=3 uid="uid://cnvnj7pvvkjhu"]
 
 [ext_resource type="Script" uid="uid://nxhu47ih1nti" path="res://scenes/ui/party_unit_ui.gd" id="1_cgww7"]
 [ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="2_cgww7"]
+[ext_resource type="PackedScene" uid="uid://cy4lefedf1dqo" path="res://scenes/ui/unit_details_panel.tscn" id="3_jw2qo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgww7"]
 
@@ -14,7 +15,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c26iq"]
 
 [node name="PartyUnitUI" type="Button"]
-custom_minimum_size = Vector2(120, 48)
+custom_minimum_size = Vector2(132, 48)
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 4
@@ -26,7 +27,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_c26iq")
 script = ExtResource("1_cgww7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(120, 48)
+custom_minimum_size = Vector2(132, 48)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,38 +40,6 @@ mouse_filter = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UnitDetailsPanel" type="Panel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(50, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/UnitDetailsPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -20.5
-offset_right = 20.5
-offset_bottom = 20.5
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="HealthLabel" type="Label" parent="HBoxContainer/UnitDetailsPanel/VBoxContainer"]
+[node name="UnitDetailsPanel" parent="HBoxContainer" instance=ExtResource("3_jw2qo")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "HP 5/20"
-
-[node name="OzLabel" type="Label" parent="HBoxContainer/UnitDetailsPanel/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "OZ 5/20"
-
-[node name="MovementLabel" type="Label" parent="HBoxContainer/UnitDetailsPanel/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "MOVE 5"

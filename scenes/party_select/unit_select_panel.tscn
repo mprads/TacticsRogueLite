@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjdocmvvhnve6"]
+[gd_scene load_steps=11 format=3 uid="uid://cjdocmvvhnve6"]
 
 [ext_resource type="Script" uid="uid://vpw60phgdmen" path="res://scenes/party_select/unit_select_panel.gd" id="1_b4pj3"]
-[ext_resource type="PackedScene" uid="uid://cnvnj7pvvkjhu" path="res://scenes/ui/party_unit_ui.tscn" id="1_m7b6t"]
 [ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="2_b4pj3"]
+[ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="2_ctdop"]
+[ext_resource type="PackedScene" uid="uid://cy4lefedf1dqo" path="res://scenes/ui/unit_details_panel.tscn" id="3_hwfjf"]
 
 [sub_resource type="Animation" id="Animation_b4pj3"]
 length = 0.001
@@ -191,7 +192,15 @@ theme_override_constants/margin_bottom = 8
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PartyUnitUI" parent="MarginContainer/ContentsContainer" instance=ExtResource("1_m7b6t")]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ContentsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="UnitIconPanel" parent="MarginContainer/ContentsContainer/HBoxContainer" instance=ExtResource("2_ctdop")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UnitDetailsPanel" parent="MarginContainer/ContentsContainer/HBoxContainer" instance=ExtResource("3_hwfjf")]
 unique_name_in_owner = true
 layout_mode = 2
 

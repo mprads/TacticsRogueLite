@@ -10,8 +10,9 @@ const GOLD_ICON = preload("res://assets/icons/gold.png")
 @export var unit_stats: UnitStats : set = set_unit_stats
 @export var contents: Array : set = set_contents
 
+@onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
+@onready var unit_details_panel: unit_detail_panel = %UnitDetailsPanel
 @onready var ability_container: HBoxContainer = %AbilityContainer
-@onready var party_unit_ui: PartyUnitUI = %PartyUnitUI
 @onready var contents_container: VBoxContainer = %ContentsContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -56,7 +57,8 @@ func _play_animation(id: String) -> void:
 
 func set_unit_stats(value: UnitStats) -> void:
 	unit_stats = value
-	party_unit_ui.unit = unit_stats
+	unit_icon_panel.unit_stats = unit_stats
+	unit_details_panel.unit_stats = unit_stats
 
 	_update_ability_visuals()
 
