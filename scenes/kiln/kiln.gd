@@ -2,7 +2,7 @@ extends Node2D
 
 @export var party_manager: PartyManager : set = set_party_manager
 
-@onready var party_ui: VBoxContainer = %PartyUI
+@onready var party_ui: PartyUI = %PartyUI
 @onready var kiln_unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var heal_button: Button = %HealButton
 @onready var leave_button: Button = %LeaveButton
@@ -13,7 +13,7 @@ func _ready() -> void:
 	leave_button.pressed.connect(Events.kiln_exited.emit)
 	party_ui.unit_selected.connect(_on_party_unit_selected)
 
-	kiln_unit_icon_panel.unit = null
+	kiln_unit_icon_panel.unit_stats = null
 
 
 func set_party_manager(value: PartyManager) -> void:
@@ -28,11 +28,11 @@ func set_party_manager(value: PartyManager) -> void:
 func _on_heal_button_pressed() -> void:
 	heal_button.disabled = true
 
-	if kiln_unit_icon_panel.unit:
-		kiln_unit_icon_panel.unit.heal(ceili(kiln_unit_icon_panel.unit.max_health * 0.3))
+	if kiln_unit_icon_panel.unit_stats:
+		kiln_unit_icon_panel.unit_stats.heal(ceili(kiln_unit_icon_panel.unit.max_health * 0.3))
 
 	Events.kiln_exited.emit()
 
 
-func _on_party_unit_selected(unit: UnitStats) -> void:
-	kiln_unit_icon_panel.unit = unit
+func _on_party_unit_selected(unit_stats: UnitStats) -> void:
+	kiln_unit_icon_panel.unit_stats = unit_stats

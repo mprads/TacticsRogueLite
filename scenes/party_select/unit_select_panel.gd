@@ -3,7 +3,6 @@ class_name UnitSelectPanel
 
 signal panel_selected(unit_stats: UnitStats, items: Array)
 
-const TEST_ROUND_UNIT = preload("res://resources/units/test_round_unit.tres")
 const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 const STARTING_ITEM_PANEL_SCENE = preload("res://scenes/party_select/starting_item_panel.tscn")
 const GOLD_ICON = preload("res://assets/icons/gold.png")
@@ -11,8 +10,9 @@ const GOLD_ICON = preload("res://assets/icons/gold.png")
 @export var unit_stats: UnitStats : set = set_unit_stats
 @export var contents: Array : set = set_contents
 
+@onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
+@onready var unit_details_panel: unit_detail_panel = %UnitDetailsPanel
 @onready var ability_container: HBoxContainer = %AbilityContainer
-@onready var party_unit_ui: PartyUnitUI = %PartyUnitUI
 @onready var contents_container: VBoxContainer = %ContentsContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -22,7 +22,6 @@ var disabled := false
 func _ready() -> void:
 	gui_input.connect(_on_gui_input)
 	mouse_entered.connect(_on_mouse_entered)
-	unit_stats = TEST_ROUND_UNIT
 
 	_play_animation("in")
 
@@ -58,7 +57,8 @@ func _play_animation(id: String) -> void:
 
 func set_unit_stats(value: UnitStats) -> void:
 	unit_stats = value
-	party_unit_ui.unit = unit_stats
+	unit_icon_panel.unit_stats = unit_stats
+	unit_details_panel.unit_stats = unit_stats
 
 	_update_ability_visuals()
 

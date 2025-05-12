@@ -18,4 +18,5 @@ base_health = 50
 max_oz = 30
 base_movement = 2
 base_abilities = Array[ExtResource("1_m578e")]([ExtResource("2_vonuk"), ExtResource("3_hyiig")])
+gold_cost = 100
 metadata/_custom_type_script = "uid://cene0083pbi52"

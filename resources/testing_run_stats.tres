@@ -1,56 +1,49 @@
-[gd_resource type="Resource" script_class="RunStats" load_steps=21 format=3 uid="uid://cog76ftpquwhv"]
+[gd_resource type="Resource" script_class="RunStats" load_steps=22 format=3 uid="uid://cog76ftpquwhv"]
 
 [ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="1_23n1j"]
 [ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_qn745"]
 [ext_resource type="Script" uid="uid://caa81aywox71a" path="res://resources/run_stats.gd" id="2_3wu10"]
-[ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/eternal_drip.tres" id="3_1l1ep"]
+[ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="2_pij53"]
 [ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="4_7qsao"]
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
 [ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="5_pbn6o"]
 [ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="6_i18qs"]
+[ext_resource type="Resource" uid="uid://db7k12qw1ywca" path="res://resources/potions/balance_potion.tres" id="7_i18qs"]
 [ext_resource type="Texture2D" uid="uid://bs1lylhmwysak" path="res://assets/sprites/vials/vial_filling.png" id="7_wchyp"]
 [ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="8_mnkgj"]
 [ext_resource type="Resource" uid="uid://dkprjh86h5yx4" path="res://resources/potions/defence_potion.tres" id="8_wchyp"]
 [ext_resource type="Texture2D" uid="uid://du7qqpfyjfxw4" path="res://assets/sprites/vials/base_vial.png" id="8_xa4qb"]
 [ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="9_xa4qb"]
+[ext_resource type="Resource" uid="uid://raksx0j8qtki" path="res://resources/potions/support_potion.tres" id="12_mnkgj"]
 
 [sub_resource type="Resource" id="Resource_pbn6o"]
 script = ExtResource("1_23n1j")
-name = "Bottlesworth"
-bottle = ExtResource("4_7qsao")
-oz = 0
-max_health = 15
-health = 5
+name = "John"
+bottle = ExtResource("8_mnkgj")
+potion = ExtResource("9_xa4qb")
+oz = 30
+max_health = 20
+health = 20
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_i18qs"]
 script = ExtResource("1_23n1j")
-name = "Bottlesworth"
-bottle = ExtResource("4_7qsao")
-potion = ExtResource("5_pbn6o")
+name = "Joe"
+bottle = ExtResource("6_i18qs")
+potion = ExtResource("7_i18qs")
 oz = 20
-max_health = 20
-health = 20
+max_health = 50
+health = 40
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_mnkgj"]
 script = ExtResource("1_23n1j")
-name = "Bottlesworth"
-bottle = ExtResource("6_i18qs")
-potion = ExtResource("8_wchyp")
-oz = 17
-max_health = 20
-health = 20
-metadata/_custom_type_script = "uid://l8imbubpscrj"
-
-[sub_resource type="Resource" id="Resource_isr74"]
-script = ExtResource("1_23n1j")
-name = "Bottlesworth"
-bottle = ExtResource("8_mnkgj")
-potion = ExtResource("9_xa4qb")
-oz = 20
-max_health = 20
-health = 20
+name = "Jim"
+bottle = ExtResource("4_7qsao")
+potion = ExtResource("5_pbn6o")
+oz = 30
+max_health = 30
+health = 25
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_eqed4"]
@@ -73,7 +66,7 @@ resource_local_to_scene = true
 script = ExtResource("5_bk1v7")
 outline = ExtResource("8_xa4qb")
 filling = ExtResource("7_wchyp")
-potion = ExtResource("9_xa4qb")
+potion = ExtResource("12_mnkgj")
 metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [resource]
@@ -85,8 +78,8 @@ inventory = Dictionary[int, int]({
 2: 7,
 3: 4
 })
-artifacts = Array[ExtResource("1_qn745")]([ExtResource("3_1l1ep")])
-party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pbn6o"), SubResource("Resource_i18qs"), SubResource("Resource_mnkgj"), SubResource("Resource_isr74")])
+artifacts = Array[ExtResource("1_qn745")]([ExtResource("2_pij53")])
+party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pbn6o"), SubResource("Resource_i18qs"), SubResource("Resource_mnkgj")])
 max_party_size = 5
 vials = Array[ExtResource("5_bk1v7")]([SubResource("Resource_eqed4"), SubResource("Resource_pij53"), SubResource("Resource_7qsao")])
 max_vial_count = 3

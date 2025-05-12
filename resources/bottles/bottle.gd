@@ -13,3 +13,6 @@ class_name Bottle
 @export var max_oz := 1
 @export var base_movement := 1
 @export var base_abilities: Array[Ability]
+
+@export_category("Shop")
+@export var gold_cost := 50

@@ -15,6 +15,11 @@ func add_unit(unit_stats: UnitStats) -> void:
 	party_changed.emit()
 
 
+func remove_unit(unit_stats: UnitStats) -> void:
+	run_stats.party.erase(unit_stats)
+	party_changed.emit()
+
+
 func get_party() -> Array[UnitStats]:
 	return run_stats.party
 

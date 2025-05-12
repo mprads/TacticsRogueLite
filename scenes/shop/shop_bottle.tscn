@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://c05jbl2pod8hb"]
+
+[ext_resource type="Script" uid="uid://bl53onrhy0wqc" path="res://scenes/shop/shop_bottle.gd" id="1_bw825"]
+[ext_resource type="Texture2D" uid="uid://dp2ah3k7uejr3" path="res://assets/sprites/potions/base_triangle.png" id="2_07bai"]
+[ext_resource type="Texture2D" uid="uid://dm5conpiemvp2" path="res://assets/icons/items/32x32sale_tag.png" id="2_662jd"]
+[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="4_facan"]
+
+[node name="ShopBottle" type="Control"]
+custom_minimum_size = Vector2(32, 54)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 54.0
+script = ExtResource("1_bw825")
+
+[node name="SaleTag" type="TextureRect" parent="."]
+layout_mode = 2
+offset_top = 22.0
+offset_right = 32.0
+offset_bottom = 54.0
+texture = ExtResource("2_662jd")
+stretch_mode = 5
+
+[node name="BottleContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 46)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 46.0
+theme_override_constants/separation = 3
+
+[node name="BottleIconButton" type="TextureButton" parent="BottleContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("2_07bai")
+texture_disabled = ExtResource("2_07bai")
+stretch_mode = 5
+
+[node name="CostContainer" type="HBoxContainer" parent="BottleContainer"]
+custom_minimum_size = Vector2(32, 10)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="GoldIcon" type="TextureRect" parent="BottleContainer/CostContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_facan")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldCost" type="Label" parent="BottleContainer/CostContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "999"
+horizontal_alignment = 2

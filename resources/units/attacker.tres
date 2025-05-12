@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=4 format=3 uid="uid://ejd1q8k3emso"]
+
+[ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="1_6piug"]
+[ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="2_xary2"]
+[ext_resource type="Script" uid="uid://l8imbubpscrj" path="res://resources/units/unit_stats.gd" id="3_xg7bn"]
+
+[resource]
+script = ExtResource("3_xg7bn")
+name = "John"
+bottle = ExtResource("1_6piug")
+potion = ExtResource("2_xary2")
+oz = 30
+max_health = 20
+health = 20
+metadata/_custom_type_script = "uid://l8imbubpscrj"

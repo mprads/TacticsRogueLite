@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dno8aa2qkwhud" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_a1gy5"]
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="2_lqpn7"]
-[ext_resource type="Resource" uid="uid://rh433c6ika0r" path="res://resources/units/test_round_unit.tres" id="3_ob46e"]
+[ext_resource type="Resource" uid="uid://rh433c6ika0r" path="res://resources/units/main_menu_placeholder.tres" id="3_ob46e"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="4_qel0l"]
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="4_uqeha"]
 [ext_resource type="Shader" uid="uid://cpn30gm2odhph" path="res://assets/shaders/liquid.tres" id="5_rrgl4"]
