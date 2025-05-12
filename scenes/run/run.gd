@@ -20,6 +20,7 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 @onready var inventory_button: TextureButton = %InventoryButton
 @onready var settings_button: TextureButton = %SettingsButton
 @onready var settings_ui: Control = %SettingsUI
+@onready var unit_fill_ui: UnitFillUI = %UnitFillUI
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map

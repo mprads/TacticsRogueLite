@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://r76gjny5escp"]
+[gd_scene load_steps=17 format=3 uid="uid://r76gjny5escp"]
 
 [ext_resource type="Script" uid="uid://b88pduqxgjpng" path="res://scenes/run/run.gd" id="1_l7o68"]
 [ext_resource type="Resource" uid="uid://cog76ftpquwhv" path="res://resources/testing_run_stats.tres" id="2_cnkn7"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dpxmxey3qs0o6" path="res://scenes/inventory/inventory_ui.tscn" id="11_g42ja"]
 [ext_resource type="PackedScene" uid="uid://c3ndgvvb3dsdg" path="res://scenes/ui/settings/settings_ui.tscn" id="12_cnkn7"]
 [ext_resource type="PackedScene" uid="uid://delw0ryy5peue" path="res://scenes/ui/popups/tooltip.tscn" id="15_x53nd"]
+[ext_resource type="PackedScene" uid="uid://kxbhppakiums" path="res://scenes/ui/unit_fill_ui.tscn" id="16_l6p45"]
 
 [node name="Run" type="Node"]
 script = ExtResource("1_l7o68")
@@ -154,3 +155,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Tooltip" parent="UI" instance=ExtResource("15_x53nd")]
+
+[node name="UnitFillUI" parent="UI" instance=ExtResource("16_l6p45")]
+unique_name_in_owner = true
+visible = false
