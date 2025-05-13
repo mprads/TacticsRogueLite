@@ -39,7 +39,10 @@ func _on_request_show_tooltip(tooltip_owner: Node, main: Dictionary, secondary: 
 	if tooltip_owner.global_position.x <= (get_viewport_rect().size.x / 2):
 		global_position.x = tooltip_owner.global_position.x + tooltip_owner.size.x
 	else:
-		global_position.x = tooltip_owner.global_position.x - size.x
+		global_position.x = tooltip_owner.global_position.x - (size.x + (size.x / 3))
+
+	if get_viewport_rect().size.y <= global_position.y + size.y:
+		global_position.y = global_position.y - tooltip_owner.size.y
 
 	var main_tooltip = _create_tooltip(main.name, main.description)
 	main_tooltip.visible = true

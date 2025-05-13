@@ -6,8 +6,6 @@ const SHOP_BOTTLE_SCENE = preload("res://scenes/shop/shop_bottle.tscn")
 const SHOP_ARTIFACT_SCENE = preload("res://scenes/shop/shop_artifact.tscn")
 const PLANTER_ITEM_SCENE = preload("res://scenes/shop/planter_item.tscn")
 
-const ROUND_BOTTLE_RESOURCE = preload("res://resources/bottles/round_bottle.tres")
-
 @export var shop_items: Array[Item]
 @export var shop_bottles: Array[Bottle]
 @export var shop_artifacts: Array[Artifact]
@@ -27,10 +25,8 @@ const ROUND_BOTTLE_RESOURCE = preload("res://resources/bottles/round_bottle.tres
 @onready var artifact_shelf: HBoxContainer = %ArtifactShelf
 @onready var planter_contents: HBoxContainer = %PlanterContents
 @onready var leave_button: Button = %LeaveButton
+@onready var round_bottle_button: RoundBottleButton = %RoundBottleButton
 
-@onready var round_bottle_cost: HBoxContainer = %RoundBottleCost
-@onready var round_bottle_button: TextureButton = %RoundBottleButton
-@onready var round_bottle_gold_cost: Label = %RoundBottleGoldCost
 
 @onready var unit_creator_ui: UnitCreatorUI = %UnitCreatorUI
 @onready var discard_unit_ui: DiscardUnitUI = %DiscardUnitUI
@@ -38,7 +34,7 @@ const ROUND_BOTTLE_RESOURCE = preload("res://resources/bottles/round_bottle.tres
 
 func _ready() -> void:
 	leave_button.pressed.connect(Events.shop_exited.emit)
-	round_bottle_button.pressed.connect(_on_bottle_request_purchase.bind(ROUND_BOTTLE_RESOURCE))
+	round_bottle_button.request_purchase.connect(_on_bottle_request_purchase)
 	unit_creator_ui.unit_created.connect(_on_unit_created)
 	discard_unit_ui.unit_removed.connect(_on_unit_removed)
 
@@ -123,13 +119,7 @@ func _on_inventory_gold_changed() -> void:
 	for shop_item in artifact_shelf.get_children():
 		shop_item.update(player_gold)
 
-	# TODO pull bottle box sprite off back drop and make own scene
-	if ROUND_BOTTLE_RESOURCE.gold_cost > player_gold:
-		round_bottle_button.disabled = true
-		round_bottle_gold_cost.modulate = Color.RED
-	else:
-		round_bottle_button.disabled = false
-		round_bottle_gold_cost.modulate = Color.WHITE
+	round_bottle_button.update(player_gold)
 
 
 func _on_bottle_request_purchase(bottle: Bottle, clean_up_callback: Callable = func():) -> void:
