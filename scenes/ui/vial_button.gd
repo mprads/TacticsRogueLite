@@ -16,4 +16,7 @@ func _update_visuals() -> void:
 
 func set_vial(value: Vial) -> void:
 	vial = value
+	if vial.potion:
+		disabled = false
+
 	_update_visuals()

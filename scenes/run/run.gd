@@ -103,12 +103,14 @@ func _set_up_event_connections() -> void:
 
 func _set_up_top_bar() -> void:
 	inventory_button.pressed.connect(inventory_ui.toggle_view)
+	vial_ui.request_use_vial.connect(_on_request_use_vial)
 
 	artifact_manager.init_artifacts()
 	vial_ui.vial_manager = vial_manager
 	gold_ui.inventory_manager = inventory_manager
 	inventory_ui.inventory_manager = inventory_manager
 	inventory_ui.party_manager = party_manager
+	unit_fill_ui.party_manager = party_manager
 
 
 func _change_view(scene: PackedScene) -> Node:
@@ -193,3 +195,8 @@ func _on_brewing_entered() -> void:
 func _on_kiln_entered() -> void:
 	var kiln := _change_view(KILN_SCNE)
 	kiln.party_manager = party_manager
+
+
+func _on_request_use_vial(vial: Vial) -> void:
+	unit_fill_ui.vial = vial
+	unit_fill_ui.toggle_view()

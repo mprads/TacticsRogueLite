@@ -26,6 +26,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_76heb")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_752eq")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vngn7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_45lri")
+disabled = true
 script = ExtResource("1_dhlm0")
 
 [node name="VialOutline" type="TextureRect" parent="."]

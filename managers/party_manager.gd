@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func add_unit(unit_stats: UnitStats) -> void:
 	run_stats.party.append(unit_stats)
+	unit_stats.changed.connect(party_changed.emit)
 	party_changed.emit()
 
 
@@ -38,4 +39,4 @@ func set_run_stats(value: RunStats) -> void:
 
 
 func _on_unit_died(unit: Unit) -> void:
-	run_stats.party.erase(unit.stats)
+	remove_unit(unit.stats)

@@ -154,8 +154,8 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 visible = false
 
-[node name="Tooltip" parent="UI" instance=ExtResource("15_x53nd")]
-
 [node name="UnitFillUI" parent="UI" instance=ExtResource("16_l6p45")]
 unique_name_in_owner = true
 visible = false
+
+[node name="Tooltip" parent="UI" instance=ExtResource("15_x53nd")]

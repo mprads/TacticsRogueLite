@@ -1,6 +1,8 @@
 extends HBoxContainer
 class_name VialUI
 
+signal request_use_vial(vial: Vial)
+
 const VIAL_BUTTON = preload("res://scenes/ui/vial_button.tscn")
 
 @export var vial_manager: VialManager : set = set_vial_manager
@@ -14,6 +16,7 @@ func _update_vials() -> void:
 		var vial_button_instance := VIAL_BUTTON.instantiate()
 		add_child(vial_button_instance)
 		vial_button_instance.vial = vial
+		vial_button_instance.pressed.connect(_on_vial_pressed.bind(vial))
 
 
 func set_vial_manager(value: VialManager) -> void:
@@ -23,3 +26,7 @@ func set_vial_manager(value: VialManager) -> void:
 		vial_manager.vials_changed.connect(_update_vials)
 
 	_update_vials()
+
+
+func _on_vial_pressed(vial: Vial) -> void:
+	request_use_vial.emit(vial)
