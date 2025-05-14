@@ -4,6 +4,7 @@ class_name Tooltip
 const TOOLTIP_PANEL_SCENE := preload("res://scenes/ui/popups/tooltip_panel.tscn")
 const OFFSET := 5
 
+
 func _ready() -> void:
 	Events.request_show_tooltip.connect(_on_request_show_tooltip)
 	Events.hide_tooltip.connect(_on_hide_tooltip)
@@ -34,14 +35,17 @@ func _create_tooltip(header: String, description: String) -> Panel:
 
 
 func _on_request_show_tooltip(tooltip_owner: Node, main: Dictionary, secondary: Array) -> void:
+	var main_tooltip = _create_tooltip(main.name, main.description)
 	global_position = tooltip_owner.global_position
 
 	if tooltip_owner.global_position.x <= (get_viewport_rect().size.x / 2):
 		global_position.x = tooltip_owner.global_position.x + tooltip_owner.size.x
 	else:
-		global_position.x = tooltip_owner.global_position.x - size.x
+		global_position.x = tooltip_owner.global_position.x - main_tooltip.size.x
 
-	var main_tooltip = _create_tooltip(main.name, main.description)
+	if get_viewport_rect().size.y <= global_position.y + main_tooltip.size.y:
+		global_position.y = global_position.y - (global_position.y + main_tooltip.size.y - get_viewport_rect().size.y)
+
 	main_tooltip.visible = true
 
 	if not secondary.is_empty():

@@ -17,9 +17,9 @@
 [ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/eternal_drip.tres" id="10_k5co3"]
 [ext_resource type="PackedScene" uid="uid://bqjho2cnvyfic" path="res://scenes/shop/planter_item.tscn" id="10_vk20h"]
 [ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="11_6kbe7"]
-[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="15_xoc10"]
 [ext_resource type="PackedScene" uid="uid://c05jbl2pod8hb" path="res://scenes/shop/shop_bottle.tscn" id="17_5y7fm"]
 [ext_resource type="PackedScene" uid="uid://c1xgosjtjf1n3" path="res://scenes/shop/shop_artifact.tscn" id="18_toxgp"]
+[ext_resource type="PackedScene" uid="uid://twvbfvqbtx8b" path="res://scenes/shop/round_bottle_button.tscn" id="20_u2jek"]
 [ext_resource type="PackedScene" uid="uid://bb1m0r2sstiwk" path="res://scenes/ui/unit_creator_ui.tscn" id="21_toxgp"]
 [ext_resource type="PackedScene" uid="uid://b8t2vqmevv3nx" path="res://scenes/ui/discard_unit_ui.tscn" id="22_u2jek"]
 
@@ -131,38 +131,8 @@ offset_bottom = 318.0
 [node name="PlanterItem" parent="UI/PlanterContents" instance=ExtResource("10_vk20h")]
 layout_mode = 2
 
-[node name="RoundBottleButton" type="TextureButton" parent="UI"]
+[node name="RoundBottleButton" parent="UI" instance=ExtResource("20_u2jek")]
 unique_name_in_owner = true
-offset_left = 317.0
-offset_top = 313.0
-offset_right = 390.0
-offset_bottom = 359.0
-
-[node name="RoundBottleCost" type="HBoxContainer" parent="UI"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 10)
-offset_left = 335.0
-offset_top = 338.0
-offset_right = 367.0
-offset_bottom = 349.0
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="GoldIcon" type="TextureRect" parent="UI/RoundBottleCost"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("15_xoc10")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="RoundBottleGoldCost" type="Label" parent="UI/RoundBottleCost"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "50"
-horizontal_alignment = 2
 
 [node name="UnitCreatorUI" parent="UI" instance=ExtResource("21_toxgp")]
 unique_name_in_owner = true

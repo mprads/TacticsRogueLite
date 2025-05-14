@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://kxbhppakiums"]
+
+[ext_resource type="Script" uid="uid://bvavk8dr4vmw5" path="res://scenes/ui/unit_fill_ui.gd" id="1_652yj"]
+[ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="1_a7goa"]
+[ext_resource type="PackedScene" uid="uid://bkyqjyhlg3ia0" path="res://scenes/ui/vial_button.tscn" id="2_stg2u"]
+[ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="3_ua4pe"]
+
+[node name="UnitFillUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_652yj")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -134.0
+offset_right = 150.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Select Unit To Top Off Or Replace Potion"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VialButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_stg2u")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityContainer" instance=ExtResource("3_ua4pe")]
+layout_mode = 2
+
+[node name="AbilityPanel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityContainer" instance=ExtResource("3_ua4pe")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PartyUI" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_a7goa")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="CancelLabel" type="Label" parent="PanelContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Press [esc] to cancel"

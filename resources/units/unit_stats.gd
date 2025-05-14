@@ -37,6 +37,7 @@ func set_bottle(value: Bottle) -> void:
 	movement = bottle.base_movement
 
 	health = max_health
+	oz = 0
 
 
 func set_potion(value: Potion) -> void:

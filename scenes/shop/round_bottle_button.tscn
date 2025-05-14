@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://twvbfvqbtx8b"]
+
+[ext_resource type="Texture2D" uid="uid://chu8qossn8o6n" path="res://assets/sprites/shop/shop_bottles.png" id="1_hdoyi"]
+[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="2_b513c"]
+[ext_resource type="Script" uid="uid://cmfvmqy7h3dvt" path="res://scenes/shop/round_bottle_button.gd" id="2_gcyj8"]
+[ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="3_gcyj8"]
+
+[node name="RoundBottleButton" type="TextureButton"]
+offset_left = 317.0
+offset_top = 308.0
+offset_right = 390.0
+offset_bottom = 357.0
+texture_normal = ExtResource("1_hdoyi")
+texture_pressed = ExtResource("1_hdoyi")
+texture_hover = ExtResource("1_hdoyi")
+texture_disabled = ExtResource("1_hdoyi")
+script = ExtResource("2_gcyj8")
+bottle = ExtResource("3_gcyj8")
+
+[node name="RoundBottleCost" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(32, 10)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 28.0
+offset_right = 50.0
+offset_bottom = 39.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="GoldIcon" type="TextureRect" parent="RoundBottleCost"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_b513c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldCost" type="Label" parent="RoundBottleCost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "50"
+horizontal_alignment = 2

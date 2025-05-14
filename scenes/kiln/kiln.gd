@@ -29,7 +29,7 @@ func _on_heal_button_pressed() -> void:
 	heal_button.disabled = true
 
 	if kiln_unit_icon_panel.unit_stats:
-		kiln_unit_icon_panel.unit_stats.heal(ceili(kiln_unit_icon_panel.unit.max_health * 0.3))
+		kiln_unit_icon_panel.unit_stats.heal(ceili(kiln_unit_icon_panel.unit_stats.max_health * 0.3))
 
 	Events.kiln_exited.emit()
 
