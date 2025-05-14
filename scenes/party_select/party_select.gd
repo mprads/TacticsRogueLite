@@ -131,6 +131,12 @@ func _fill_placeholders(container: HBoxContainer) -> void:
 		panel_instance.custom_minimum_size = Vector2(48, 48)
 
 
+func _add_empty_vials() -> void:
+	for remaining_vial in RunStats.STARTING_VIAL_COUNT - vial_manager.get_vials().size():
+		var empty_vial = Vial.new()
+		vial_manager.add_vial(empty_vial)
+
+
 func _on_panel_selected(unit_stats: UnitStats, contents: Array) -> void:
 	for content in contents:
 		if content.item is Item:
@@ -197,6 +203,7 @@ func _on_unit_created(unit_stats: UnitStats) -> void:
 	party_manager.add_unit(unit_stats)
 
 	if party_manager.get_party().size() >= 3:
+		_add_empty_vials()
 		SceneChanger.change_scene(RUN_SCENE, run_stats)
 	elif party_manager.get_party().size() >= 2:
 		_generate_options(true)
