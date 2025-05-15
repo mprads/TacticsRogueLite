@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://twvbfvqbtx8b"]
+[gd_scene load_steps=6 format=3 uid="uid://twvbfvqbtx8b"]
 
+[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="1_7dy2u"]
 [ext_resource type="Texture2D" uid="uid://chu8qossn8o6n" path="res://assets/sprites/shop/shop_bottles.png" id="1_hdoyi"]
 [ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="2_b513c"]
 [ext_resource type="Script" uid="uid://cmfvmqy7h3dvt" path="res://scenes/shop/round_bottle_button.gd" id="2_gcyj8"]
 [ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="3_gcyj8"]
 
 [node name="RoundBottleButton" type="TextureButton"]
+material = ExtResource("1_7dy2u")
 offset_left = 317.0
 offset_top = 308.0
 offset_right = 390.0

@@ -46,6 +46,7 @@ func _on_purchase_artifact() -> void:
 
 
 func _on_mouse_entered() -> void:
+	artifact_icon_button.material.set_shader_parameter('outline_thickness', 1.0)
 	var main_tooltip := { "name": artifact.name, "description": artifact.get_tooltip() }
 	var secondary := []
 
@@ -60,4 +61,5 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	artifact_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
 	Events.hide_tooltip.emit()

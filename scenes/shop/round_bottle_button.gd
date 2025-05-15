@@ -38,6 +38,7 @@ func _on_pressed() -> void:
 
 
 func _on_mouse_entered() -> void:
+	material.set_shader_parameter('outline_thickness', 1.0)
 	var description := "HP: %s\nOZ: %s\nMovement: %s" % [bottle.base_health, bottle.max_oz, bottle.base_movement]
 	var main_tooltip := { "name": bottle.name, "description": description }
 
@@ -45,4 +46,5 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	material.set_shader_parameter('outline_thickness', 0.0)
 	Events.hide_tooltip.emit()

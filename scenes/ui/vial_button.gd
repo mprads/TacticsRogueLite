@@ -4,6 +4,12 @@ class_name VialButton
 @export var vial: Vial : set = set_vial
 
 @onready var vial_filling: TextureRect = %VialFilling
+@onready var vial_outline: TextureRect = %VialOutline
+
+
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 
 func _update_visuals() -> void:
@@ -20,3 +26,11 @@ func set_vial(value: Vial) -> void:
 		disabled = false
 
 	_update_visuals()
+
+
+func _on_mouse_entered() -> void:
+	vial_outline.material.set_shader_parameter('outline_thickness', 1.0)
+
+
+func _on_mouse_exited() -> void:
+	vial_outline.material.set_shader_parameter('outline_thickness', 0.0)

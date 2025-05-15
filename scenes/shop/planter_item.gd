@@ -8,6 +8,8 @@ class_name PlanterItem
 
 
 func _ready() -> void:
+	plant_icon_button.mouse_entered.connect(_on_mouse_entered)
+	plant_icon_button.mouse_exited.connect(_on_mouse_exited)
 	plant_icon_button.pressed.connect(_on_harvest_plant)
 
 
@@ -23,3 +25,11 @@ func set_plant(value: Item) -> void:
 func _on_harvest_plant() -> void:
 	plant_icon_button.queue_free()
 	Events.request_add_item.emit(plant)
+
+
+func _on_mouse_entered() -> void:
+	plant_icon_button.material.set_shader_parameter('outline_thickness', 1.0)
+
+
+func _on_mouse_exited() -> void:
+	plant_icon_button.material.set_shader_parameter('outline_thickness', 0.0)

@@ -9,6 +9,10 @@ class_name ShopItem
 
 
 func _ready() -> void:
+	item_icon_button.mouse_entered.connect(_on_mouse_entered)
+	item_icon_button.mouse_exited.connect(_on_mouse_exited)
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 	item_icon_button.pressed.connect(_on_purchase_item)
 
 
@@ -39,3 +43,11 @@ func set_item(value: Item) -> void:
 func _on_purchase_item() -> void:
 	item_container.queue_free()
 	Events.request_purchase_item.emit(item)
+
+
+func _on_mouse_entered() -> void:
+	item_icon_button.material.set_shader_parameter('outline_thickness', 1.0)
+
+
+func _on_mouse_exited() -> void:
+	item_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
