@@ -13,7 +13,6 @@ anchors_preset = 0
 offset_right = 32.0
 offset_bottom = 54.0
 script = ExtResource("1_oba1r")
-outline_thickness = 1.0
 
 [node name="SaleTag" type="TextureRect" parent="."]
 layout_mode = 2

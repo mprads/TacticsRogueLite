@@ -11,6 +11,7 @@ signal request_change_active_unit
 signal unit_selected(unit: Unit)
 
 @export var stats: UnitStats : set = set_stats
+@export var outline_thickness: float = 1.0
 
 @onready var visuals: CanvasGroup = $Visuals
 @onready var outline: Sprite2D = $Visuals/Outline

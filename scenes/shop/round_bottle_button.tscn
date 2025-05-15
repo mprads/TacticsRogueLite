@@ -18,7 +18,6 @@ texture_hover = ExtResource("1_hdoyi")
 texture_disabled = ExtResource("1_hdoyi")
 script = ExtResource("2_gcyj8")
 bottle = ExtResource("3_gcyj8")
-outline_thickness = 1.0
 
 [node name="RoundBottleCost" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(32, 10)

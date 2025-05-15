@@ -4,7 +4,7 @@ class_name RoundBottleButton
 signal request_purchase(bottle: Bottle)
 
 @export var bottle: Bottle : set = set_bottle
-@export var outline_thickness: float = 2.0
+@export var outline_thickness: float = 1.0
 
 @onready var gold_cost: Label = %GoldCost
 

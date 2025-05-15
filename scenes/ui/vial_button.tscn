@@ -29,7 +29,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_vngn7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_45lri")
 disabled = true
 script = ExtResource("1_dhlm0")
-outline_thickness = 1.0
 
 [node name="VialOutline" type="TextureRect" parent="."]
 unique_name_in_owner = true

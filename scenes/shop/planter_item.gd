@@ -2,7 +2,7 @@ extends Control
 class_name PlanterItem
 
 @export var plant:Item : set = set_plant
-@export var outline_thickness: float = 2.0
+@export var outline_thickness: float = 1.0
 
 @onready var plant_icon_button: TextureButton = $PlantIconButton
 

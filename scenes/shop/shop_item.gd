@@ -2,7 +2,7 @@ extends Control
 class_name ShopItem
 
 @export var item: Item : set = set_item
-@export var outline_thickness: float = 2.0
+@export var outline_thickness: float = 1.0
 
 @onready var item_icon_button: TextureButton = %ItemIconButton
 @onready var gold_cost: Label = %GoldCost
@@ -47,8 +47,12 @@ func _on_purchase_item() -> void:
 
 
 func _on_mouse_entered() -> void:
+	if not item or not item_container: return
+
 	item_icon_button.material.set_shader_parameter('outline_thickness', outline_thickness)
 
 
 func _on_mouse_exited() -> void:
+	if not item or not item_container: return
+
 	item_icon_button.material.set_shader_parameter('outline_thickness', 0.0)

@@ -2,7 +2,7 @@ extends Control
 class_name ShopArtifact
 
 @export var artifact: Artifact : set = set_artifact
-@export var outline_thickness: float = 2.0
+@export var outline_thickness: float = 1.0
 
 @onready var artifact_icon_button: TextureButton = %ArtifactIconButton
 @onready var gold_cost: Label = %GoldCost
@@ -47,6 +47,8 @@ func _on_purchase_artifact() -> void:
 
 
 func _on_mouse_entered() -> void:
+	if not artifact or not artifact_container: return
+
 	artifact_icon_button.material.set_shader_parameter('outline_thickness', outline_thickness)
 	var main_tooltip := { "name": artifact.name, "description": artifact.get_tooltip() }
 	var secondary := []
@@ -62,5 +64,7 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	if not artifact or not artifact_container: return
+
 	artifact_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
 	Events.hide_tooltip.emit()
