@@ -12,5 +12,5 @@ movement = 3
 attack_range = 1
 ability = ExtResource("1_ubxei")
 max_health = 30
-health = 25
+health = 30
 metadata/_custom_type_script = "uid://co20nystqenxu"
