@@ -1,26 +1,22 @@
 shader_type canvas_item;
 
-uniform vec4 outline_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
-uniform float outline_thickness: hint_range(0.0, 5.0) = 0.0;
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform float outline_thickness : hint_range(0, 10) = 1.0;
 
-float is_solid(float value) {
-	return max(0.0, sign(value));
-}
-
-float has_solid_neighbour(sampler2D texture_sample, vec2 uv_coord, vec2 pixel_size) {
-	vec2 offset = outline_thickness * pixel_size;
-	float sum_alpha = texture(texture_sample, uv_coord + vec2(1.0, 1.0) * offset).a +
-		texture(texture_sample, uv_coord + vec2(-1.0, 0.0) * offset).a +
-		texture(texture_sample, uv_coord + vec2(0.0, 1.0) * offset).a +
-		texture(texture_sample, uv_coord + vec2(0.0, -1.0) * offset).a;
-	return is_solid(sum_alpha);
-}
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1), 
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
 
 void fragment() {
-	if (COLOR.a == 0.0) {
-		float outline_mask = has_solid_neighbour(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
-		if (outline_mask > 0.0) {
-			COLOR = outline_color;
-		}
+	vec2 size = TEXTURE_PIXEL_SIZE * outline_thickness;
+	float outline = 0.0;
+	
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
 	}
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
 }
