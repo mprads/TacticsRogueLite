@@ -4,6 +4,7 @@ class_name RoundBottleButton
 signal request_purchase(bottle: Bottle)
 
 @export var bottle: Bottle : set = set_bottle
+@export var outline_thickness: float = 2.0
 
 @onready var gold_cost: Label = %GoldCost
 
@@ -38,7 +39,7 @@ func _on_pressed() -> void:
 
 
 func _on_mouse_entered() -> void:
-	material.set_shader_parameter('outline_thickness', 1.0)
+	material.set_shader_parameter('outline_thickness', outline_thickness)
 	var description := "HP: %s\nOZ: %s\nMovement: %s" % [bottle.base_health, bottle.max_oz, bottle.base_movement]
 	var main_tooltip := { "name": bottle.name, "description": description }
 

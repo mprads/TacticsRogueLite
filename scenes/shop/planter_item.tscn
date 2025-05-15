@@ -9,6 +9,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_udg3v")
+outline_thickness = 1.0
 
 [node name="PlantIconButton" type="TextureButton" parent="."]
 material = ExtResource("2_1i2n5")
