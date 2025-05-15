@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform vec4 outline_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
-uniform float outline_thickness: hint_range(1.0, 5.0) = 1.0;
+uniform float outline_thickness: hint_range(0.0, 5.0) = 0.0;
 
 float is_solid(float value) {
 	return max(0.0, sign(value));
