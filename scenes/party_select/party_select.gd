@@ -37,10 +37,12 @@ const OPTION_COUNT := 3
 
 
 func _ready() -> void:
+	run_stats = SceneChanger.get_run_stats()
+
 	if not run_stats:
 		run_stats = RunStats.new()
-		_set_up_managers()
 
+	_set_up_managers()
 	_set_up_connections()
 	_generate_options()
 
@@ -92,7 +94,7 @@ func _generate_items() -> Array:
 	var item_contents := []
 
 	for item in OPTION_COUNT:
-			var chance := randf_range(0.0, 1.0)
+			var chance := RNG.instance.randf_range(0.0, 1.0)
 
 			# TODO Maybe this should be a weighted table for more granular control
 			if chance <= vial_odds:

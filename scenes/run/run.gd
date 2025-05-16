@@ -21,6 +21,7 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 @onready var settings_button: TextureButton = %SettingsButton
 @onready var settings_ui: Control = %SettingsUI
 @onready var unit_fill_ui: UnitFillUI = %UnitFillUI
+@onready var rng_seed_label: Label = %RNGSeedLabel
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
@@ -111,6 +112,7 @@ func _set_up_top_bar() -> void:
 	inventory_ui.inventory_manager = inventory_manager
 	inventory_ui.party_manager = party_manager
 	unit_fill_ui.party_manager = party_manager
+	rng_seed_label.text = str(run_stats.rng_seed)
 
 
 func _change_view(scene: PackedScene) -> Node:

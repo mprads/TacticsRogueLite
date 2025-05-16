@@ -10,7 +10,7 @@ const PARTY_SELECT = preload("res://scenes/party_select/party_select.tscn")
 @onready var setting_button: Button = %SettingButton
 @onready var exit_button: Button = %ExitButton
 @onready var settings_ui: Control = %SettingsUI
-
+@onready var rng_seed_line_edit: LineEdit = $RNGSeedTextEdit
 @onready var unit: Unit = $Unit
 
 
@@ -31,7 +31,17 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_new_run_button_pressed() -> void:
-	SceneChanger.change_scene(PARTY_SELECT)
+	var run_stats = RunStats.new()
+	run_stats.rng_seed = RNG.instance.seed
+
+	if rng_seed_line_edit.text:
+		if int(rng_seed_line_edit.text) == 0:
+			RNG.set_seed(hash(rng_seed_line_edit.text))
+			run_stats.rng_seed = hash(rng_seed_line_edit.text)
+		else:
+			RNG.set_seed(int(rng_seed_line_edit.text))
+			run_stats.rng_seed = int(rng_seed_line_edit.text)
+	SceneChanger.change_scene(PARTY_SELECT, run_stats)
 
 
 func _on_setting_button_pressed() -> void:

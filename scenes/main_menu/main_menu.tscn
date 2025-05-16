@@ -179,3 +179,15 @@ texture = ExtResource("4_uqeha")
 [node name="SettingsUI" parent="." instance=ExtResource("5_wem23")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="RNGSeedTextEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(125, 20)
+layout_mode = 1
+offset_right = 125.0
+offset_bottom = 20.0
+placeholder_text = "Set Seed"
+alignment = 1
+max_length = 19
+expand_to_text_length = true
+emoji_menu_enabled = false
+virtual_keyboard_type = 2

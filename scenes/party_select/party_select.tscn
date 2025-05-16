@@ -162,7 +162,5 @@ offset_left = -150.0
 offset_top = -164.0
 offset_right = 150.0
 offset_bottom = 66.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Tooltip" parent="." instance=ExtResource("28_227sm")]
