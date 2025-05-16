@@ -84,7 +84,7 @@ func _get_random_starting_points() -> Array[int]:
 		indexes = []
 
 		for i in MAX_STARTS:
-			var starting_point := randi_range(0, MAP_HEIGHT - 1)
+			var starting_point := RNG.instance.randi_range(0, MAP_HEIGHT - 1)
 			if not indexes.has(starting_point):
 				unique_points += 1
 
@@ -98,7 +98,7 @@ func _setup_connection(row: int, column: int) -> int:
 	var current_room := map_data[row][column] as Room
 
 	while not next_room or _would_cross_existing_path(row, column, next_room):
-		var random_column := clampi(randi_range(column -1, column + 1), 0, MAP_HEIGHT - 1)
+		var random_column := clampi(RNG.instance.randi_range(column -1, column + 1), 0, MAP_HEIGHT - 1)
 		next_room = map_data[row + 1][random_column]
 
 	current_room.next_rooms.append(next_room)
@@ -236,7 +236,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 
 
 func _get_random_room_type_by_weight() -> Room.TYPE:
-	var roll := randf_range(0.0, random_room_type_total_weight)
+	var roll := RNG.instance.randf_range(0.0, random_room_type_total_weight)
 
 	for type in random_room_type_weights:
 		if random_room_type_weights[type] > roll:

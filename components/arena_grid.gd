@@ -42,11 +42,11 @@ func get_first_empty_tile() -> Vector2i:
 
 func get_random_empty_tile() -> Vector2i:
 	var keys := tiles.keys()
-	var tile: Vector2i = keys.pick_random()
+	var tile: Vector2i = RNG.array_pick_random(keys)
 	
 	while is_tile_occupied(tile):
 		keys.erase(tile)
-		tile = keys.pick_random()
+		tile = RNG.array_pick_random(keys)
 
 	return tile
 

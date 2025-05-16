@@ -62,7 +62,7 @@ func set_available(value: bool) -> void:
 		# that uses any colour causing it to overwrite the alpha, so I can't fade out unavailable rooms
 		available_sprite.show()
 		disabled_sprite.hide()
-		await get_tree().create_timer(RNG.instance.randf_range(0.0, .4)).timeout
+		await get_tree().create_timer(randf_range(0.0, .4)).timeout
 		animation_player.play("available")
 	else:
 		available_sprite.hide()

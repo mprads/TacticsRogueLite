@@ -32,6 +32,7 @@ func _on_continue_button_pressed() -> void:
 
 func _on_new_run_button_pressed() -> void:
 	var run_stats = RunStats.new()
+	run_stats.rng_seed = RNG.instance.seed
 
 	if rng_seed_line_edit.text:
 		if int(rng_seed_line_edit.text) == 0:
