@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene load_steps=16 format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
+[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_540om"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="2_l0n34"]
 [ext_resource type="Shader" uid="uid://cpn30gm2odhph" path="res://assets/shaders/liquid.tres" id="3_vqlpx"]
 [ext_resource type="Texture2D" uid="uid://dnxmwngq5lcri" path="res://assets/sprites/potions/round_liquid_mask.png" id="4_5im7a"]
@@ -24,18 +25,20 @@ shader_parameter/NoiseScale = 2
 shader_parameter/MinOpacity = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlit"]
-size = Vector2(36, 36)
+size = Vector2(32, 32)
 
 [node name="Unit" type="Area2D" groups=["player_unit"]]
 script = ExtResource("1_vh40f")
 
 [node name="Visuals" type="CanvasGroup" parent="."]
-position = Vector2(-1, -12)
+position = Vector2(0, -12)
 
 [node name="Outline" type="Sprite2D" parent="Visuals"]
+material = ExtResource("2_540om")
 texture = ExtResource("2_l0n34")
 
 [node name="Filling" type="Sprite2D" parent="Visuals"]
+visible = false
 material = SubResource("ShaderMaterial_l0n34")
 position = Vector2(0, -1)
 texture = ExtResource("4_5im7a")
@@ -48,7 +51,7 @@ script = ExtResource("8_540om")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, -11)
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_bhlit")
 
 [node name="FloatingTextSpawner" type="Node2D" parent="."]

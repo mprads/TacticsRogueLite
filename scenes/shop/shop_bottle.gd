@@ -4,6 +4,7 @@ class_name ShopBottle
 signal request_purchase(bottle: Bottle, clean_up_callback: Callable)
 
 @export var bottle: Bottle : set = set_bottle
+@export var outline_thickness: float = 1.0
 
 @onready var bottle_icon_button: TextureButton = %BottleIconButton
 @onready var bottle_container: VBoxContainer = %BottleContainer
@@ -44,6 +45,9 @@ func set_bottle(value: Bottle) -> void:
 
 
 func _on_mouse_entered() -> void:
+	if not bottle or not bottle_container: return
+
+	bottle_icon_button.material.set_shader_parameter('outline_thickness', outline_thickness)
 	var description := "HP: %s\nOZ: %s\nMovement: %s" % [bottle.base_health, bottle.max_oz, bottle.base_movement]
 	var main_tooltip := { "name": bottle.name, "description": description }
 
@@ -51,6 +55,9 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	if not bottle or not bottle_container: return
+
+	bottle_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
 	Events.hide_tooltip.emit()
 
 

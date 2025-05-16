@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c05jbl2pod8hb"]
+[gd_scene load_steps=6 format=3 uid="uid://c05jbl2pod8hb"]
 
 [ext_resource type="Script" uid="uid://bl53onrhy0wqc" path="res://scenes/shop/shop_bottle.gd" id="1_bw825"]
 [ext_resource type="Texture2D" uid="uid://dp2ah3k7uejr3" path="res://assets/sprites/potions/base_triangle.png" id="2_07bai"]
 [ext_resource type="Texture2D" uid="uid://dm5conpiemvp2" path="res://assets/icons/items/32x32sale_tag.png" id="2_662jd"]
+[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="3_662jd"]
 [ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="4_facan"]
 
 [node name="ShopBottle" type="Control"]
@@ -31,6 +32,7 @@ theme_override_constants/separation = 3
 
 [node name="BottleIconButton" type="TextureButton" parent="BottleContainer"]
 unique_name_in_owner = true
+material = ExtResource("3_662jd")
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("2_07bai")

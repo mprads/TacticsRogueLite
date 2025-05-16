@@ -11,6 +11,7 @@ signal request_clear_fill_layer
 
 @export var stats: EnemyStats : set = set_enemy_stats
 @export var ai: EnemyAI : set = set_enemy_ai
+@export var outline_thickness: float = 1.0
 
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
@@ -105,6 +106,7 @@ func _on_stats_changed() -> void:
 
 
 func _on_mouse_entered() -> void:
+	sprite_2d.material.set_shader_parameter('outline_thickness', outline_thickness)
 	selectable = true
 	# Clunky but when two enemies are next to each other the area2ds overlap
 	# and mouse entered signal seems to have priority over exit signal
@@ -118,6 +120,7 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	sprite_2d.material.set_shader_parameter('outline_thickness', 0.0)
 	selectable = false
 	request_clear_fill_layer.emit()
 	request_clear_intent.emit()

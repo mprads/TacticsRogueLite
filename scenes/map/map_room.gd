@@ -12,13 +12,23 @@ const ICONS := {
 	Room.TYPE.ELITE: [preload("res://assets/icons/map/Elite.png"), Vector2.ONE],
 }
 
+@export var outline_thickness: float = 1.0
+
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var line_2d: Line2D = $Visuals/Line2D
-@onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
 @onready var label: Label = $Label
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var disabled_sprite: Sprite2D = $Visuals/DisabledSprite
+@onready var available_sprite: Sprite2D = $Visuals/AvailableSprite
+
 
 var available := false : set = set_available
 var room: Room : set = set_room
+
+
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
@@ -34,8 +44,8 @@ func set_room(value: Room) -> void:
 	room = value
 	position = room.position
 	line_2d.rotation_degrees = randi_range(0, 360)
-	sprite_2d.texture = ICONS[room.type][0]
-	sprite_2d.scale = ICONS[room.type][1]
+	disabled_sprite.texture = ICONS[room.type][0]
+	available_sprite.texture = ICONS[room.type][0]
 
 	# TODO remove this once better debugging tools added
 	if room.battle_stats:
@@ -45,10 +55,28 @@ func set_room(value: Room) -> void:
 
 
 func set_available(value: bool) -> void:
-	# TODO activate outline highlighter and play pulsing animation
 	available = value
 
 	if available:
-		sprite_2d.modulate.a = 1
+		# Need two sprites because there is an Godot engine issue when a texture has a material
+		# that uses any colour causing it to overwrite the alpha, so I can't fade out unavailable rooms
+		available_sprite.show()
+		disabled_sprite.hide()
+		await get_tree().create_timer(RNG.instance.randf_range(0.0, .4)).timeout
+		animation_player.play("available")
 	else:
-		sprite_2d.modulate.a = 0.4
+		available_sprite.hide()
+		disabled_sprite.show()
+		animation_player.stop()
+
+
+func _on_mouse_entered() -> void:
+	if not available: return
+
+	available_sprite.material.set_shader_parameter('outline_thickness', outline_thickness)
+
+
+func _on_mouse_exited() -> void:
+	if not available: return
+
+	available_sprite.material.set_shader_parameter('outline_thickness', 0.0)

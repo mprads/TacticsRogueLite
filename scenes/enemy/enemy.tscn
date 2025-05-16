@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7xiv7x5cv04q"]
+[gd_scene load_steps=12 format=3 uid="uid://b7xiv7x5cv04q"]
 
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
+[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_cwlon"]
 [ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="3_40wdo"]
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="3_gl05p"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="4_cwlon"]
@@ -28,6 +29,7 @@ position = Vector2(0, -11)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 unique_name_in_owner = true
+material = ExtResource("2_cwlon")
 texture = ExtResource("1_4a83h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

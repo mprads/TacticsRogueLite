@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx3amx8rinwo"]
+[gd_scene load_steps=6 format=3 uid="uid://bx3amx8rinwo"]
 
 [ext_resource type="Texture2D" uid="uid://0ga0vi657us1" path="res://assets/icons/items/32x32venom.png" id="1_3rqce"]
 [ext_resource type="Script" uid="uid://ck43nvnbpa3f4" path="res://scenes/shop/shop_item.gd" id="1_35nb3"]
+[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="3_4oha2"]
 [ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="3_hannv"]
 [ext_resource type="Texture2D" uid="uid://dm5conpiemvp2" path="res://assets/icons/items/32x32sale_tag.png" id="3_kfj00"]
 
@@ -31,6 +32,7 @@ theme_override_constants/separation = 3
 
 [node name="ItemIconButton" type="TextureButton" parent="ItemContainer"]
 unique_name_in_owner = true
+material = ExtResource("3_4oha2")
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("1_3rqce")

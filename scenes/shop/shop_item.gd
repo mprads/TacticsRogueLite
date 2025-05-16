@@ -2,6 +2,7 @@ extends Control
 class_name ShopItem
 
 @export var item: Item : set = set_item
+@export var outline_thickness: float = 1.0
 
 @onready var item_icon_button: TextureButton = %ItemIconButton
 @onready var gold_cost: Label = %GoldCost
@@ -9,6 +10,10 @@ class_name ShopItem
 
 
 func _ready() -> void:
+	item_icon_button.mouse_entered.connect(_on_mouse_entered)
+	item_icon_button.mouse_exited.connect(_on_mouse_exited)
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 	item_icon_button.pressed.connect(_on_purchase_item)
 
 
@@ -39,3 +44,15 @@ func set_item(value: Item) -> void:
 func _on_purchase_item() -> void:
 	item_container.queue_free()
 	Events.request_purchase_item.emit(item)
+
+
+func _on_mouse_entered() -> void:
+	if not item or not item_container: return
+
+	item_icon_button.material.set_shader_parameter('outline_thickness', outline_thickness)
+
+
+func _on_mouse_exited() -> void:
+	if not item or not item_container: return
+
+	item_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
