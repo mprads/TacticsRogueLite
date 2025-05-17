@@ -56,8 +56,6 @@ func spawn_floating_text(text: String, text_color) -> void:
 	floating_text_spawner.spawn_text(text, text_color)
 
 
-# TODO this is only here because the unitMover calls this to trigger a 
-# state change in unit state machine. Move to event
 func move_cleanup() -> void:
 	if ai.in_range:
 		use_ability()

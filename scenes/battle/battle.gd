@@ -21,7 +21,12 @@ func _ready() -> void:
 func start_battle() -> void:
 	battle_manager.battle_stats = battle_stats
 	battle_manager.party_manager = party_manager
-	battle_manager.map = battle_map_pool.get_map()
+	if battle_stats.get("unique_map"):
+		print("has unique")
+		battle_manager.map = battle_stats.unique_map
+	else:
+		print("no unique")
+		battle_manager.map = battle_map_pool.get_map()
 	_generate_map()
 	battle_manager.start_deployment()
 

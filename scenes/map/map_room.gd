@@ -10,6 +10,7 @@ const ICONS := {
 	Room.TYPE.SHOP: [preload("res://assets/icons/map/Shop.png"), Vector2.ONE],
 	Room.TYPE.BATTLE: [preload("res://assets/icons/map/Battle.png"), Vector2.ONE],
 	Room.TYPE.ELITE: [preload("res://assets/icons/map/Elite.png"), Vector2.ONE],
+	Room.TYPE.BOSS: [preload("res://assets/icons/map/Boss.png"), Vector2.ONE],
 }
 
 @export var outline_thickness: float = 1.0
