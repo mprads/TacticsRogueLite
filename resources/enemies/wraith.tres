@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://b23yh8vu4af0y"]
+
+[ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="1_jt0ym"]
+[ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="2_td0p6"]
+[ext_resource type="Texture2D" uid="uid://2wukwoxi8j84" path="res://assets/sprites/enemies/Wraith.png" id="3_jt0ym"]
+
+[resource]
+script = ExtResource("2_td0p6")
+name = "Wraith"
+sprite = ExtResource("3_jt0ym")
+movement = 1
+attack_range = 1
+ability = ExtResource("1_jt0ym")
+max_health = 50
+health = 50
+metadata/_custom_type_script = "uid://co20nystqenxu"

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="BattleStats" load_steps=7 format=3 uid="uid://7r0othjistts"]
+[gd_resource type="Resource" script_class="BattleStats" load_steps=8 format=3 uid="uid://7r0othjistts"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_ra8gv"]
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_s51ow"]
 [ext_resource type="Resource" uid="uid://cdoqw6gma0bsq" path="res://resources/enemies/rat.tres" id="2_s51ow"]
 [ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="3_tpycx"]
 [ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/mushroom.tres" id="4_5vngm"]
@@ -16,4 +17,6 @@ max_gold_reward = 40
 max_drops = 1
 enemy_drops = Array[ExtResource("3_tpycx")]([ExtResource("4_5vngm"), ExtResource("5_dxxwu")])
 enemies = Array[ExtResource("1_ra8gv")]([ExtResource("2_s51ow"), ExtResource("2_s51ow")])
+artifact_drop = Array[ExtResource("1_s51ow")]([])
+is_elite = false
 metadata/_custom_type_script = "uid://dvv6iov5fd7fy"
