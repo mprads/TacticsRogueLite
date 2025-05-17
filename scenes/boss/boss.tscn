@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgix1ig8gku2x"]
+
+[ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_40x6t"]
+[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_ee08l"]
+[ext_resource type="Texture2D" uid="uid://2wukwoxi8j84" path="res://assets/sprites/enemies/Wraith.png" id="3_i4fbv"]
+[ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="4_ynkbp"]
+[ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="5_58iuw"]
+[ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="6_5duv4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
+size = Vector2(104, 109)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a83h"]
+bg_color = Color(0.222923, 0.102412, 0.0593943, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3pup"]
+bg_color = Color(0.207843, 0.803922, 0.211765, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a3pup"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40wdo"]
+bg_color = Color(0.976471, 0.760784, 0.168627, 0.588235)
+
+[node name="Boss" type="Area2D" groups=["enemy_unit"]]
+script = ExtResource("1_40x6t")
+
+[node name="Visuals" type="CanvasGroup" parent="."]
+position = Vector2(0, -11)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+unique_name_in_owner = true
+material = ExtResource("2_ee08l")
+texture = ExtResource("3_i4fbv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, -11.5)
+shape = SubResource("RectangleShape2D_a3pup")
+
+[node name="FloatingTextSpawner" type="Node2D" parent="."]
+position = Vector2(0, -55)
+script = ExtResource("4_ynkbp")
+
+[node name="ModifierManager" type="Node" parent="."]
+script = ExtResource("5_58iuw")
+
+[node name="StatusManager" parent="." instance=ExtResource("6_5duv4")]
+offset_left = -15.0
+offset_top = 44.0
+offset_right = 9.0
+offset_bottom = 59.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 4)
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = -66.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4a83h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a3pup")
+value = 50.0
+show_percentage = false
+
+[node name="ShieldBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 4)
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = -66.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_a3pup")
+theme_override_styles/fill = SubResource("StyleBoxFlat_40wdo")
+value = 25.0
+show_percentage = false
