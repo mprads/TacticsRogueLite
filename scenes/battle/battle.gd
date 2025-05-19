@@ -11,12 +11,6 @@ const HALF_CELL_SIZE := Vector2(16, 16)
 
 @export var battle_map_pool: BattleMapPool
 
-@onready var button: Button = $UI/VBoxContainer/Button
-
-
-func _ready() -> void:
-	button.pressed.connect(Events.battle_won.emit)
-
 
 func start_battle() -> void:
 	battle_manager.battle_stats = battle_stats

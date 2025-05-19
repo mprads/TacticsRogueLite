@@ -33,6 +33,9 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 @onready var kiln_button: Button = %KilnButton
 @onready var brewing_button: Button = %BrewingButton
 @onready var shop_button: Button = %ShopButton
+@onready var unlock_map: Button = %UnlockMap
+@onready var win_battle: Button = %WinBattle
+@onready var lose_battle: Button = %LoseBattle
 
 
 func _ready() -> void:
@@ -79,6 +82,22 @@ func _set_up_debug() -> void:
 		settings_ui.visible = !settings_ui.visible
 		debug.visible = !debug.visible
 		_on_shop_entered()
+	)
+	win_battle.pressed.connect(func():
+		settings_ui.visible = !settings_ui.visible
+		debug.visible = !debug.visible
+		Events.battle_won.emit()
+	)
+	lose_battle.pressed.connect(func():
+		settings_ui.visible = !settings_ui.visible
+		debug.visible = !debug.visible
+		Events.battle_lost.emit()
+	)
+	unlock_map.pressed.connect(func():
+		settings_ui.visible = !settings_ui.visible
+		debug.visible = !debug.visible
+		for i in map.map_data.size():
+			map.unlock_row(i)
 	)
 
 
