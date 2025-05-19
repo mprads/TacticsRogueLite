@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://dn4qyxauut4vk"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://dn4qyxauut4vk"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_b3je8"]
 [ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="1_ubxei"]
+[ext_resource type="Resource" uid="uid://m14gsp85udo2" path="res://resources/enemy_ai/base_ai.tres" id="2_dt6p3"]
 [ext_resource type="Texture2D" uid="uid://buj7jvnkr855y" path="res://assets/sprites/enemies/Knight.png" id="3_dt6p3"]
 
 [resource]
@@ -11,6 +12,7 @@ sprite = ExtResource("3_dt6p3")
 movement = 3
 attack_range = 1
 ability = ExtResource("1_ubxei")
+ai = ExtResource("2_dt6p3")
 max_health = 30
 health = 30
 metadata/_custom_type_script = "uid://co20nystqenxu"

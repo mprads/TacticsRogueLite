@@ -10,3 +10,4 @@ class_name EnemyStats
 @export var attack_range := 1
 
 @export var ability: Ability
+@export var ai: EnemyAI

@@ -7,7 +7,6 @@ signal request_clear_intent
 signal all_enemies_defeated
 
 const ENEMY = preload("res://scenes/enemy/enemy.tscn")
-const BASE_AI = preload("res://resources/enemy_ai/base_ai.tres")
 
 @export var unit_mover: UnitMover
 @export var flood_filler: FloodFiller
@@ -31,7 +30,7 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 		var enemy_instance := ENEMY.instantiate()
 		add_child(enemy_instance)
 		enemy_instance.stats = stats.duplicate()
-		enemy_instance.ai = BASE_AI.duplicate()
+		enemy_instance.ai = stats.ai.duplicate()
 		unit_mover.setup_enemy(enemy_instance)
 		enemy_instance.status_manager.statuses_applied.connect(_on_enemy_statuses_applied.bind(enemy_instance))
 		enemy_instance.turn_completed.connect(_on_enemy_turn_completed.bind(enemy_instance))
