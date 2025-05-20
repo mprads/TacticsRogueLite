@@ -11,6 +11,7 @@ name = "Knight"
 sprite = ExtResource("3_dt6p3")
 movement = 3
 attack_range = 1
+dimensions = Vector2i(1, 1)
 ability = ExtResource("1_ubxei")
 ai = ExtResource("2_dt6p3")
 max_health = 30

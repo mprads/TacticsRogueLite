@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://cdoqw6gma0bsq"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://cdoqw6gma0bsq"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_heouu"]
 [ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="1_njj8f"]
+[ext_resource type="Resource" uid="uid://m14gsp85udo2" path="res://resources/enemy_ai/base_ai.tres" id="2_4b5vu"]
 [ext_resource type="Texture2D" uid="uid://1p5uorfdotcd" path="res://assets/sprites/enemies/Rat.png" id="2_r7hpx"]
 
 [resource]
@@ -10,7 +11,9 @@ name = "Rat"
 sprite = ExtResource("2_r7hpx")
 movement = 4
 attack_range = 1
+dimensions = Vector2i(1, 1)
 ability = ExtResource("1_njj8f")
+ai = ExtResource("2_4b5vu")
 max_health = 10
 health = 10
 metadata/_custom_type_script = "uid://co20nystqenxu"

@@ -45,9 +45,9 @@ script = ExtResource("3_gl05p")
 script = ExtResource("4_cwlon")
 
 [node name="StatusManager" parent="." instance=ExtResource("3_40wdo")]
-offset_left = -15.0
+offset_left = -12.0
 offset_top = 5.0
-offset_right = 9.0
+offset_right = 12.0
 offset_bottom = 20.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]

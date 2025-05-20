@@ -11,6 +11,7 @@ name = "Ghost"
 sprite = ExtResource("2_6khb5")
 movement = 6
 attack_range = 1
+dimensions = Vector2i(1, 1)
 ability = ExtResource("1_fadr6")
 ai = ExtResource("2_yj1c4")
 max_health = 5

@@ -11,6 +11,7 @@ name = "Golem"
 sprite = ExtResource("2_fedew")
 movement = 2
 attack_range = 1
+dimensions = Vector2i(1, 1)
 ability = ExtResource("1_t2e0f")
 ai = ExtResource("2_yriqn")
 max_health = 20

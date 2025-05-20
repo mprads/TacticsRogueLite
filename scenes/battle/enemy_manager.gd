@@ -6,8 +6,6 @@ signal show_enemy_intent(enemy: Enemy)
 signal request_clear_intent
 signal all_enemies_defeated
 
-const ENEMY = preload("res://scenes/enemy/enemy.tscn")
-
 @export var unit_mover: UnitMover
 @export var flood_filler: FloodFiller
 @export var arena: Arena
@@ -27,7 +25,7 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 	if enemy_stats.is_empty(): return
 
 	for stats in enemy_stats:
-		var enemy_instance := ENEMY.instantiate()
+		var enemy_instance := stats.scene.instantiate()
 		add_child(enemy_instance)
 		enemy_instance.stats = stats.duplicate()
 		enemy_instance.ai = stats.ai.duplicate()
@@ -43,11 +41,26 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 
 func add_enemies_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
 	var spawn_tiles := arena.get_enemy_spawns()
-	for enemy in get_children():
-		var empty_tile = RNG.array_pick_random(spawn_tiles)
-		spawn_tiles.erase(empty_tile)
-		enemy.global_position = tile_map.get_global_from_tile(empty_tile)
-		grid.add_unit(empty_tile, enemy)
+	for enemy: Enemy in get_children():
+		var valid_tiles: Array[Vector2i]
+
+		while valid_tiles.size() < enemy.stats.dimensions.x * enemy.stats.dimensions.y:
+			valid_tiles = []
+			var empty_tile = RNG.array_pick_random(spawn_tiles)
+
+			for i in enemy.stats.dimensions.x:
+				for j in enemy.stats.dimensions.y:
+					var temp_x = empty_tile.x - i
+					var temp_y = empty_tile.y - j
+					if not tile_map.is_tile_in_bounds(Vector2i(temp_x, temp_y)): continue
+					if grid.is_tile_occupied(Vector2i(temp_x, temp_y)): continue
+					valid_tiles.append(Vector2i(temp_x, temp_y))
+
+		for tile in valid_tiles:
+			spawn_tiles.erase(tile)
+			grid.add_unit(tile, enemy)
+
+		enemy.global_position = tile_map.get_global_from_tile(valid_tiles[0])
 
 
 func start_turn() -> void:

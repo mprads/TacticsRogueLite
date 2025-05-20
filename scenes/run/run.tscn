@@ -147,7 +147,7 @@ text = "Shop"
 [node name="UnlockMap" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Unlock Boss"
+text = "Unlock Map"
 
 [node name="WinBattle" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
