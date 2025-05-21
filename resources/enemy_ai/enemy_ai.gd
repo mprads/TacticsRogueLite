@@ -40,7 +40,7 @@ func select_target(get_id_path: Callable) -> void:
 		for tile in tiles:
 			var temp_path: Array[Vector2i] = get_id_path.call(starting_tile, tile)
 			if temp_path.size() - 1 > owner.stats.movement: continue
-			
+
 			var distance := temp_path.size()
 			var max_weight := (float(owner.stats.movement) / 100) + 0.1
 			var movement_weight := max_weight - (float(distance) / 100)
@@ -87,7 +87,7 @@ func _find_closest_target(get_id_path: Callable) -> void:
 			var distance := temp_path.size()
 
 			distance_by_tiles[tile] = distance
-			
+
 			if distance < shortest_distance:
 				current_target = target_unit
 				next_tile = temp_path[clampi(owner.stats.movement, 0, temp_path.size())]

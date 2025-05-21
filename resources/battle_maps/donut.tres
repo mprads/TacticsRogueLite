@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BattleMap" load_steps=3 format=3 uid="uid://dbbryw3skd3fl"]
 
 [ext_resource type="Script" uid="uid://c4nhtfaiomcsl" path="res://resources/battle_maps/battle_map.gd" id="1_7wcdb"]
-[ext_resource type="TileSet" uid="uid://beelur5ybttc6" path="res://resources/64prototype_tile_set.tres" id="2_m0ert"]
+[ext_resource type="TileSet" uid="uid://mkbnpwa6r6gr" path="res://resources/stone_tile_set.tres" id="2_7wcdb"]
 
 [resource]
 script = ExtResource("1_7wcdb")
@@ -182,4 +182,4 @@ tiles = Array[Dictionary]([{
 "coord": Vector2i(4, -5),
 "source_id": 0
 }])
-tile_set = ExtResource("2_m0ert")
+tile_set = ExtResource("2_7wcdb")
