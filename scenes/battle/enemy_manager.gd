@@ -94,19 +94,33 @@ func update_enemy_intent(enemy: Enemy) -> void:
 		var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
 		var filtered_neighbours: Array[Vector2i] = []
 
-		if distance <= enemy.stats.movement + enemy.stats.attack_range:
-			filtered_neighbours = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
-				if arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile:
-					return false
+		if enemy.stats.dimensions.x > 1 or enemy.stats.dimensions.y > 1 :
+			var enemy_tiles: Array[Vector2i] = []
+			for i in enemy.stats.dimensions.x:
+				for j in enemy.stats.dimensions.y:
+					enemy_tiles.append(Vector2i(enemy_tile.x - i, enemy_tile.y - j))
 
-				var neighbour_distance := Utils.get_distance_between_tiles(enemy_tile, neighbour_tile)
+			for tile in enemy_tiles:
+				var temp_filtered_neighbours = _filter_neighbours(
+				distance,
+				enemy.stats.movement,
+				enemy.stats.attack_range,
+				neighbour_tiles,
+				tile
+				)
 
-				return neighbour_distance <= enemy.stats.movement
-			)
+				for temp_neighbour in temp_filtered_neighbours:
+					if not filtered_neighbours.has(temp_neighbour):
+						filtered_neighbours.append(temp_neighbour)
 		else:
-			filtered_neighbours = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
-				return not arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile
-			)
+			filtered_neighbours = _filter_neighbours(
+				distance,
+				enemy.stats.movement,
+				enemy.stats.attack_range,
+				neighbour_tiles,
+				enemy_tile
+				)
+			
 
 		if not filtered_neighbours.is_empty():
 			result["tiles"] = filtered_neighbours
@@ -133,6 +147,29 @@ func verify_intent(enemy: Enemy) -> void:
 	if arena.arena_grid.is_tile_occupied(enemy.ai.next_tile):
 		update_enemy_intent(enemy)
 		return
+
+
+func _filter_neighbours(distance: int,
+	movement_range: int,
+	attack_range: int,
+	neighbour_tiles: Array[Vector2i],
+	enemy_tile: Vector2i) -> Array[Vector2i]:
+	var result: Array[Vector2i] = []
+	if distance <= movement_range + attack_range:
+		result = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
+			if arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile:
+				return false
+
+			var neighbour_distance := Utils.get_distance_between_tiles(enemy_tile, neighbour_tile)
+
+			return neighbour_distance <= movement_range
+		)
+	else:
+		result = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
+			return not arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile
+		)
+
+	return result
 
 
 func _next_enemy_turn() -> void:
