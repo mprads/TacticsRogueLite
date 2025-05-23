@@ -79,6 +79,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 	var targets = get_tree().get_nodes_in_group("player_unit")
 	var targets_in_range: Array[Dictionary] = []
 	var targets_out_of_range: Array[Dictionary] = []
+	var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 
 	for target in targets:
 		var result := {
@@ -88,7 +89,6 @@ func update_enemy_intent(enemy: Enemy) -> void:
 		}
 
 		var target_tile := arena.get_tile_from_global(target.global_position)
-		var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 
 		var distance := Utils.get_distance_between_tiles(enemy_tile, target_tile)
 		var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
@@ -118,7 +118,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 
 	enemy.ai.targets_in_range = targets_in_range
 	enemy.ai.targets_out_of_range = targets_out_of_range
-	enemy.ai.select_target(unit_mover.get_id_path)
+	enemy.ai.select_target(unit_mover.get_id_path, arena)
 
 
 func verify_intent(enemy: Enemy) -> void:

@@ -5,7 +5,7 @@ var next_tiles: Array[Vector2i]
 var target_tiles: Array[Vector2i]
 
 
-func select_target(get_id_path: Callable) -> void:
+func select_target(get_id_path: Callable, arena: Arena) -> void:
 	current_target = null
 	next_tile = Vector2i.ZERO
 

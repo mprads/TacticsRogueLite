@@ -9,7 +9,7 @@ var next_tile: Vector2i
 var in_range := false
 
 
-func select_target(get_id_path: Callable) -> void:
+func select_target(get_id_path: Callable, _arena: Arena) -> void:
 	current_target = null
 	next_tile = Vector2i.ZERO
 

@@ -95,6 +95,7 @@ func _generate_bench() -> void:
 	player_manager.setup_party(party)
 	player_manager.add_party_to_grid(bench_grid, bench)
 
+	# TODO Remove
 	_grid_label_helper(bench_grid.tiles.keys(), bench)
 
 
@@ -116,6 +117,7 @@ func _start_battle() -> void:
 	player_manager.start_turn()
 
 
+# TODO remove
 func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 	for tile in tiles:
 		var new_label = Label.new()
