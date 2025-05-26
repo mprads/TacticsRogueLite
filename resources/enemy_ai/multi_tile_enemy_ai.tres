@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WraithAI" load_steps=2 format=3 uid="uid://d0nry87mdmq3o"]
 
-[ext_resource type="Script" uid="uid://bu88w7nlwlyn8" path="res://resources/enemy_ai/wraith_ai.gd" id="1_jy3q6"]
+[ext_resource type="Script" uid="uid://bu88w7nlwlyn8" path="res://resources/enemy_ai/multi_tile_enemy_ai.gd" id="1_jy3q6"]
 
 [resource]
 script = ExtResource("1_jy3q6")

@@ -14,7 +14,7 @@ func select_target(get_id_path: Callable, _arena: Arena) -> void:
 	next_tile = Vector2i.ZERO
 
 	if targets_in_range.is_empty():
-		_find_closest_target(get_id_path)
+		_find_closest_target(get_id_path, _arena)
 
 	var highest_weight := 0.0
 
@@ -64,10 +64,10 @@ func select_target(get_id_path: Callable, _arena: Arena) -> void:
 			highest_weight = weight_sum
 
 	if not current_target:
-		_find_closest_target(get_id_path)
+		_find_closest_target(get_id_path, _arena)
 
 
-func _find_closest_target(get_id_path: Callable) -> void:
+func _find_closest_target(get_id_path: Callable, _arena: Arena) -> void:
 	current_target = null
 	next_tile = Vector2i.ZERO
 	in_range = false
