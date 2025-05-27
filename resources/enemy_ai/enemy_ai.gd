@@ -11,10 +11,10 @@ var in_range := false
 
 func select_target(get_id_path: Callable, _arena: Arena) -> void:
 	current_target = null
-	next_tile = Vector2i.ZERO
 
 	if targets_in_range.is_empty():
 		_find_closest_target(get_id_path, _arena)
+		return
 
 	var highest_weight := 0.0
 
@@ -27,7 +27,7 @@ func select_target(get_id_path: Callable, _arena: Arena) -> void:
 
 		# TODO added modifier logic to calculation. Maybe add shield to calc but can make for interesting 
 		# gameplay baiting attacks on a low life unit
-		var new_health: int = clampi(target_unit.stats.health - owner.stats.ability.base_damage, 0, target_unit.stats.health)
+		var new_health: int = clampi(target_unit.stats.health - owner.stats.melee_ability.base_damage, 0, target_unit.stats.health)
 		var remaining_percent := float(new_health) / target_unit.stats.max_health
 
 		var damage_weight = 1 - remaining_percent
@@ -69,7 +69,6 @@ func select_target(get_id_path: Callable, _arena: Arena) -> void:
 
 func _find_closest_target(get_id_path: Callable, _arena: Arena) -> void:
 	current_target = null
-	next_tile = Vector2i.ZERO
 	in_range = false
 
 	var shortest_distance := 99

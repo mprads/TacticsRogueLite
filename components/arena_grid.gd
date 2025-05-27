@@ -28,6 +28,10 @@ func remove_unit(tile: Vector2i) -> void:
 	arena_grid_changed.emit()
 
 
+func get_occupant(tile: Vector2i) -> Node:
+	return tiles[tile]
+
+
 func is_tile_occupied(tile: Vector2i) -> bool:
 	return tiles[tile] != null
 

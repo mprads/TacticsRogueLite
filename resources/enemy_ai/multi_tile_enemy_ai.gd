@@ -1,6 +1,7 @@
 extends EnemyAI
 class_name MultiTileEnemyAI
 
+var aoe_targets: Array[Node]
 var next_tiles: Array[Vector2i]
 var target_tiles: Array[Vector2i]
 
@@ -8,17 +9,23 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 	printt("in range: ", targets_in_range)
 	printt("out range: ", targets_out_of_range)
 	current_target = null
-	next_tile = Vector2i.ZERO
-#
+
 	if targets_in_range.is_empty():
 		_find_closest_target(get_id_path, arena)
-#
+		return
+
 	for target in targets_in_range:
 		var target_unit: Unit = target["target"]
 		var tiles: Array[Vector2i] = target["tiles"]
 		var starting_tile: Vector2i = target["starting_tile"]
 
 		for tile in tiles:
+			if tile == starting_tile:
+				current_target = target_unit
+				next_tile = starting_tile
+				in_range = true
+				continue
+
 			var temp_path: Array[Vector2i] = get_id_path.call(starting_tile, tile)
 			if temp_path.size() - 1 > owner.stats.movement: continue
 			if not _valid_ending_tile(tile, arena):
@@ -26,17 +33,59 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 					continue
 			current_target = target_unit
 			next_tile = tile
-#
+			in_range = true
+
 	if not current_target:
 		_find_closest_target(get_id_path, arena)
 
 
+func populate_multi_tile_targets(arena: Arena) -> void:
+	target_tiles = []
+	next_tiles = []
+	aoe_targets = []
+
+	if not current_target: return
+	var dimensions = owner.stats.dimensions
+	var target_tile := arena.get_tile_from_global(current_target.global_position)
+	var delta: Vector2i = (target_tile - next_tile).abs()
+	var ability := owner.stats.melee_ability
+
+	for i in dimensions.x:
+		for j in dimensions.y:
+			var temp_x = next_tile.x - i
+			var temp_y = next_tile.y - j
+			next_tiles.append(Vector2i(temp_x, temp_y))
+
+	if not in_range and owner.stats.ranged_ability:
+		ability = owner.stats.ranged_ability
+
+	if delta.x <= delta.y:
+		if delta.x == 0:
+			for tile in ability.shape:
+				target_tiles.append(target_tile + tile)
+		elif delta.x == 1:
+			for tile in ability.shape:
+				target_tiles.append(target_tile + (tile * -1))
+	else:
+		if delta.y == 0:
+			for tile in ability.shape:
+				var inverted_tile := Vector2i(tile.y, tile.x)
+				target_tiles.append(target_tile + inverted_tile)
+		elif delta.y == 1:
+			for tile in ability.shape:
+				var inverted_tile := Vector2i(tile.y, tile.x)
+				target_tiles.append(target_tile + (inverted_tile * -1))
+
+	if not target_tiles.is_empty():
+		for tile in target_tiles:
+			var target := arena.arena_grid.get_occupant(tile)
+			if target is Unit:
+				aoe_targets.append(target)
+
+
 func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 	current_target = null
-	next_tile = Vector2i.ZERO
 	in_range = false
-
-	var shortest_distance := 99
 
 	for target in targets_out_of_range:
 		var target_unit: Unit = target["target"]
@@ -44,6 +93,11 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 		var starting_tile: Vector2i = target["starting_tile"]
 
 		for tile in tiles:
+			if tile == starting_tile:
+				current_target = target_unit
+				next_tile = starting_tile
+				continue
+
 			var temp_path: Array[Vector2i] = get_id_path.call(starting_tile, tile)
 			if temp_path.is_empty(): continue
 			if not _valid_ending_tile(tile, arena):

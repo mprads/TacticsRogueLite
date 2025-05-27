@@ -94,7 +94,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 		var neighbour_tiles := arena.get_neighbour_tiles(target_tile)
 		var filtered_neighbours: Array[Vector2i] = []
 
-		if enemy.stats.dimensions.x > 1 or enemy.stats.dimensions.y > 1 :
+		if enemy.stats.dimensions.x * enemy.stats.dimensions.y > 1:
 			var enemy_tiles: Array[Vector2i] = []
 			for i in enemy.stats.dimensions.x:
 				for j in enemy.stats.dimensions.y:
@@ -120,7 +120,6 @@ func update_enemy_intent(enemy: Enemy) -> void:
 				neighbour_tiles,
 				enemy_tile
 				)
-			
 
 		if not filtered_neighbours.is_empty():
 			result["tiles"] = filtered_neighbours
@@ -133,6 +132,8 @@ func update_enemy_intent(enemy: Enemy) -> void:
 	enemy.ai.targets_in_range = targets_in_range
 	enemy.ai.targets_out_of_range = targets_out_of_range
 	enemy.ai.select_target(unit_mover.get_id_path, arena)
+	if enemy.stats.dimensions.x * enemy.stats.dimensions.y > 1:
+		enemy.ai.populate_multi_tile_targets(arena)
 
 
 func verify_intent(enemy: Enemy) -> void:
@@ -168,7 +169,6 @@ func _filter_neighbours(distance: int,
 		result = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
 			return not arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile
 		)
-
 	return result
 
 
