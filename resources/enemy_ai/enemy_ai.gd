@@ -6,6 +6,7 @@ var targets_in_range: Array[Dictionary]
 var targets_out_of_range: Array[Dictionary]
 var current_target: Unit
 var next_tile: Vector2i
+var selected_ability: Ability
 var in_range := false
 
 
@@ -60,6 +61,7 @@ func select_target(get_id_path: Callable, _arena: Arena) -> void:
 			current_target = target_unit
 			next_tile = weight_by_tiles.find_key(highest_tile_weight)
 			in_range = true
+			selected_ability = owner.stats.melee_ability
 
 			highest_weight = weight_sum
 
@@ -90,3 +92,4 @@ func _find_closest_target(get_id_path: Callable, _arena: Arena) -> void:
 			if distance < shortest_distance:
 				current_target = target_unit
 				next_tile = temp_path[clampi(owner.stats.movement, 0, temp_path.size())]
+				selected_ability = owner.stats.ranged_ability

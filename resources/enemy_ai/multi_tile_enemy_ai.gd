@@ -34,6 +34,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 			current_target = target_unit
 			next_tile = tile
 			in_range = true
+			selected_ability = owner.stats.melee_ability
 
 	if not current_target:
 		_find_closest_target(get_id_path, arena)
@@ -96,6 +97,7 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 			if tile == starting_tile:
 				current_target = target_unit
 				next_tile = starting_tile
+				selected_ability = owner.stats.ranged_ability
 				continue
 
 			var temp_path: Array[Vector2i] = get_id_path.call(starting_tile, tile)
@@ -103,9 +105,17 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 			if not _valid_ending_tile(tile, arena):
 				var surrounding_tiles := _try_surrounding_tiles(tile, arena, starting_tile)
 				if surrounding_tiles.is_empty():
+					current_target = target_unit
+					next_tile = starting_tile
+					selected_ability = owner.stats.ranged_ability
 					continue
 				else:
 					for new_tile in surrounding_tiles:
+						if new_tile == starting_tile:
+							current_target = target_unit
+							next_tile = starting_tile
+							selected_ability = owner.stats.ranged_ability
+							continue
 						temp_path = get_id_path.call(starting_tile, new_tile)
 
 			current_target = target_unit
