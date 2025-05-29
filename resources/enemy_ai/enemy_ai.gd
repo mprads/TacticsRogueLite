@@ -4,17 +4,21 @@ class_name EnemyAI
 var owner: Enemy
 var targets_in_range: Array[Dictionary]
 var targets_out_of_range: Array[Dictionary]
-var current_target: Unit
+
+var current_target: Area2D
+var aoe_targets: Array[Area2D]
+var target_tiles: Array[Vector2i]
 var next_tile: Vector2i
 var selected_ability: Ability
+
 var in_range := false
 
 
-func select_target(get_id_path: Callable, _arena: Arena) -> void:
+func select_target(get_id_path: Callable, arena: Arena) -> void:
 	current_target = null
 
 	if targets_in_range.is_empty():
-		_find_closest_target(get_id_path, _arena)
+		_find_closest_target(get_id_path, arena)
 		return
 
 	var highest_weight := 0.0
@@ -62,14 +66,16 @@ func select_target(get_id_path: Callable, _arena: Arena) -> void:
 			next_tile = weight_by_tiles.find_key(highest_tile_weight)
 			in_range = true
 			selected_ability = owner.stats.melee_ability
+			if owner.stats.melee_ability.target == Ability.TARGET.AOE:
+					_populate_aoe_targets(arena)
 
 			highest_weight = weight_sum
 
 	if not current_target:
-		_find_closest_target(get_id_path, _arena)
+		_find_closest_target(get_id_path, arena)
 
 
-func _find_closest_target(get_id_path: Callable, _arena: Arena) -> void:
+func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 	current_target = null
 	in_range = false
 
@@ -93,3 +99,37 @@ func _find_closest_target(get_id_path: Callable, _arena: Arena) -> void:
 				current_target = target_unit
 				next_tile = temp_path[clampi(owner.stats.movement, 0, temp_path.size())]
 				selected_ability = owner.stats.ranged_ability
+				if owner.stats.ranged_ability.target == Ability.TARGET.AOE:
+					_populate_aoe_targets(arena)
+
+
+func _populate_aoe_targets(arena: Arena) -> void:
+	aoe_targets = []
+
+	if not current_target: return
+	var target_tile := arena.get_tile_from_global(current_target.global_position)
+	var delta: Vector2i = (target_tile - next_tile).abs()
+	var ability := owner.stats.ranged_ability if in_range else owner.stats.melee_ability
+
+	if delta.x <= delta.y:
+		if delta.x == 0:
+			for tile in ability.shape:
+				target_tiles.append(target_tile + tile)
+		elif delta.x == 1:
+			for tile in ability.shape:
+				target_tiles.append(target_tile + (tile * -1))
+	else:
+		if delta.y == 0:
+			for tile in ability.shape:
+				var inverted_tile := Vector2i(tile.y, tile.x)
+				target_tiles.append(target_tile + inverted_tile)
+		elif delta.y == 1:
+			for tile in ability.shape:
+				var inverted_tile := Vector2i(tile.y, tile.x)
+				target_tiles.append(target_tile + (inverted_tile * -1))
+
+	if not target_tiles.is_empty():
+		for tile in target_tiles:
+			var target := arena.arena_grid.get_occupant(tile)
+			if target is Area2D:
+				aoe_targets.append(target)

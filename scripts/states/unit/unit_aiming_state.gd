@@ -11,7 +11,7 @@ func exit() -> void:
 	unit.aim_stopped.emit()
 
 
-func use_ability(targets: Array[Node]) -> void:
+func use_ability(targets: Array[Area2D]) -> void:
 	unit.selected_ability.apply_effects(targets, unit.modifier_manager)
 	unit.stats.oz -= unit.selected_ability.cost
 	unit.update_visuals()

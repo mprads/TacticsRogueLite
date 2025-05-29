@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=6 format=3 uid="uid://cdoqw6gma0bsq"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=7 format=3 uid="uid://cdoqw6gma0bsq"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_heouu"]
 [ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="1_njj8f"]
 [ext_resource type="Resource" uid="uid://m14gsp85udo2" path="res://resources/enemy_ai/base_ai.tres" id="2_4b5vu"]
 [ext_resource type="Texture2D" uid="uid://1p5uorfdotcd" path="res://assets/sprites/enemies/Rat.png" id="2_r7hpx"]
+[ext_resource type="Resource" uid="uid://bmokop7w8vl6v" path="res://resources/abilities/defend.tres" id="3_3u3hp"]
 [ext_resource type="PackedScene" uid="uid://b7xiv7x5cv04q" path="res://scenes/enemy/enemy.tscn" id="3_tpeme"]
 
 [resource]
@@ -14,6 +15,7 @@ movement = 4
 attack_range = 1
 dimensions = Vector2i(1, 1)
 melee_ability = ExtResource("1_njj8f")
+ranged_ability = ExtResource("3_3u3hp")
 ai = ExtResource("2_4b5vu")
 scene = ExtResource("3_tpeme")
 max_health = 10

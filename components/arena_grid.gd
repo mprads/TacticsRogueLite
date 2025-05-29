@@ -3,7 +3,7 @@ class_name ArenaGrid
 
 signal arena_grid_changed
 
-var tiles: Dictionary[Vector2i, Node]
+var tiles: Dictionary[Vector2i, Area2D]
 
 
 func populate_grid(arena: Array[Vector2i]) -> void:
@@ -11,11 +11,11 @@ func populate_grid(arena: Array[Vector2i]) -> void:
 		tiles[tile] = null
 
 
-func get_tiles() ->  Dictionary[Vector2i, Node]:
+func get_tiles() ->  Dictionary[Vector2i, Area2D]:
 	return tiles
 
 
-func add_unit(tile: Vector2i, unit: Node) -> void:
+func add_unit(tile: Vector2i, unit: Area2D) -> void:
 	tiles[tile] = unit
 	arena_grid_changed.emit()
 
@@ -28,7 +28,7 @@ func remove_unit(tile: Vector2i) -> void:
 	arena_grid_changed.emit()
 
 
-func get_occupant(tile: Vector2i) -> Node:
+func get_occupant(tile: Vector2i) -> Area2D:
 	return tiles[tile]
 
 
@@ -55,5 +55,5 @@ func get_random_empty_tile() -> Vector2i:
 	return tile
 
 
-func get_all_units() -> Array[Node]:
+func get_all_units() -> Array[Area2D]:
 	return tiles.values().filter(func(unit): return unit)

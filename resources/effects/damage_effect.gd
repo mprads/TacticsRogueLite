@@ -4,7 +4,7 @@ class_name DamageEffect
 var amount := 0
 
 
-func execute(targets: Array[Node]) -> void:
+func execute(targets: Array[Area2D]) -> void:
 	for target in targets:
 		if not target: continue
 
