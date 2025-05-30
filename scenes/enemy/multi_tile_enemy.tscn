@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bgix1ig8gku2x"]
 
-[ext_resource type="Script" uid="uid://btdnatmvto4ga" path="res://scenes/enemy/multi_tile_enemy.gd" id="1_i4fbv"]
+[ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_0ej8v"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_ee08l"]
 [ext_resource type="Texture2D" uid="uid://2wukwoxi8j84" path="res://assets/sprites/enemies/Wraith.png" id="3_i4fbv"]
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="4_ynkbp"]
@@ -22,7 +22,7 @@ bg_color = Color(0.207843, 0.803922, 0.211765, 1)
 bg_color = Color(0.976471, 0.760784, 0.168627, 0.588235)
 
 [node name="MultiTileEnemy" type="Area2D" groups=["enemy_unit"]]
-script = ExtResource("1_i4fbv")
+script = ExtResource("1_0ej8v")
 
 [node name="Visuals" type="CanvasGroup" parent="."]
 position = Vector2(-2, -52)

@@ -55,6 +55,7 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 
 		for tile in tiles:
 			if tile == starting_tile:
+				print("first match")
 				current_target = target_unit
 				next_tile = starting_tile
 				selected_ability = owner.stats.ranged_ability
@@ -67,6 +68,7 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 			if not _valid_ending_tile(tile, arena):
 				var surrounding_tiles := _try_surrounding_tiles(tile, arena, starting_tile)
 				if surrounding_tiles.is_empty():
+					print("surrounding empty")
 					current_target = target_unit
 					next_tile = starting_tile
 					selected_ability = owner.stats.ranged_ability
@@ -76,19 +78,22 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 				else:
 					for new_tile in surrounding_tiles:
 						if new_tile == starting_tile:
-							current_target = target_unit
 							next_tile = starting_tile
+						else:
+							current_target = target_unit
 							selected_ability = owner.stats.ranged_ability
 							if owner.stats.ranged_ability.target == Ability.TARGET.AOE:
 								_populate_aoe_targets(arena)
-							continue
-						temp_path = get_id_path.call(starting_tile, new_tile)
-
-			current_target = target_unit
-			next_tile = temp_path[clampi(owner.stats.movement, 0, temp_path.size())]
-			selected_ability = owner.stats.ranged_ability
-			if owner.stats.ranged_ability.target == Ability.TARGET.AOE:
-				_populate_aoe_targets(arena)
+							next_tile = temp_path[clampi(owner.stats.movement, 0, temp_path.size())]
+							return
+			else:
+				print("at end")
+				current_target = target_unit
+				next_tile = temp_path[clampi(owner.stats.movement, 0, temp_path.size())]
+				selected_ability = owner.stats.ranged_ability
+				if owner.stats.ranged_ability.target == Ability.TARGET.AOE:
+					_populate_aoe_targets(arena)
+				return
 
 
 func _valid_ending_tile(tile: Vector2i, arena: Arena) -> bool:
@@ -107,6 +112,7 @@ func _valid_ending_tile(tile: Vector2i, arena: Arena) -> bool:
 
 
 func _try_surrounding_tiles(tile, arena, starting_tile: Vector2i) -> Array[Vector2i]:
+	print(tile, arena, starting_tile)
 	var delta: Vector2i = (tile - starting_tile).abs()
 	var surrounding_tiles: Array[Vector2i] = []
 	var valid_tiles: Array[Vector2i] = []
@@ -126,6 +132,7 @@ func _try_surrounding_tiles(tile, arena, starting_tile: Vector2i) -> Array[Vecto
 		if not _valid_ending_tile(surrounding_tile, arena): continue
 
 		valid_tiles.append(surrounding_tile)
+	printt("valid: ", valid_tiles)
 	return valid_tiles
 
 

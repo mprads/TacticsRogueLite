@@ -57,13 +57,11 @@ func spawn_floating_text(text: String, text_color) -> void:
 
 
 func move_cleanup() -> void:
-	if ai.in_range:
-		var ability_target := [ai.current_target]
-		if stats.melee_ability.target == Ability.TARGET.AOE:
+	if ai.selected_ability:
+		var ability_target:Array[Area2D] = [ai.current_target]
+		if ai.selected_ability.target == Ability.TARGET.AOE:
 			ability_target = ai.aoe_targets
-		use_ability(stats.melee_ability, ability_target)
-	elif not ai.in_range and stats.ranged_ability:
-		use_ability(stats.ranged_ability, [ai.current_target])
+		use_ability(ai.selected_ability, ability_target)
 	else:
 		turn_completed.emit()
 
@@ -80,10 +78,11 @@ func update_enemy() -> void:
 
 
 func take_turn() -> void:
+	print(ai.next_tile)
 	request_enemy_move.emit(ai.next_tile)
 
 
-func use_ability(ability: Ability, targets: Array[Node]) -> void:
+func use_ability(ability: Ability, targets: Array[Area2D]) -> void:
 	ability.apply_effects(targets, modifier_manager)
 	await get_tree().create_timer(.5).timeout
 	turn_completed.emit()
