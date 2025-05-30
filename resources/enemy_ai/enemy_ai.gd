@@ -9,6 +9,7 @@ var current_target: Area2D
 var aoe_targets: Array[Area2D]
 var target_tiles: Array[Vector2i]
 var next_tile: Vector2i
+var next_tiles: Array[Vector2i]
 var selected_ability: Ability
 
 var in_range := false
@@ -43,14 +44,36 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 		# For each tile in range of target unit check the distance to starting tile
 		# weight less movement higher
 		for tile in tiles:
-			var temp_path: Array[Vector2i] = get_id_path.call(starting_tile, tile)
-			if temp_path.size() - 1 > owner.stats.movement: continue
+			# Placeholder so it can be replaced by try_surrounding_tiles if it is not a valid
+			# ending tile for enemies larger than 1 tile
+			var potential_tile := tile
+			var current_path: Array[Vector2i] = get_id_path.call(starting_tile, potential_tile)
+			if current_path.size() - 1 > owner.stats.movement: continue
+			if not _valid_ending_tile(potential_tile, arena):
+				var surrounding_tiles := _try_surrounding_tiles(potential_tile, arena, starting_tile)
+				if surrounding_tiles.is_empty(): continue
 
-			var distance := temp_path.size()
+				var closest_surrounding_tile := tile
+				var viable_path_length := 99
+				var potential_path := current_path
+				for surrounding_tile in surrounding_tiles:
+					var surrounding_path: Array[Vector2i] = get_id_path.call(starting_tile, surrounding_tile)
+					if surrounding_path.size() - 1 > owner.stats.movement: continue
+					if surrounding_path.size() < viable_path_length:
+						closest_surrounding_tile = surrounding_tile
+						viable_path_length = surrounding_path.size()
+						potential_path = surrounding_path
+				if closest_surrounding_tile != tile:
+					potential_tile = closest_surrounding_tile
+					current_path = potential_path
+				else:
+					continue
+
+			var distance := current_path.size()
 			var max_weight := (float(owner.stats.movement) / 100) + 0.1
 			var movement_weight := max_weight - (float(distance) / 100)
 
-			weight_by_tiles[tile] = movement_weight
+			weight_by_tiles[potential_tile] = movement_weight
 
 			if movement_weight > highest_tile_weight:
 				highest_tile_weight = movement_weight
@@ -89,15 +112,37 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 		var distance_by_tiles: Dictionary[Vector2i, int] = {}
 
 		for tile in tiles:
-			var temp_path: Array[Vector2i] = get_id_path.call(starting_tile, tile)
-			if temp_path.is_empty(): continue
-			var distance := temp_path.size()
+			# Placeholder so it can be replaced by try_surrounding_tiles if it is not a valid
+			# ending tile for enemies larger than 1 tile
+			var potential_tile := tile
+			var current_path: Array[Vector2i] = get_id_path.call(starting_tile, potential_tile)
+			if current_path.is_empty(): continue
 
-			distance_by_tiles[tile] = distance
+			if not _valid_ending_tile(potential_tile, arena):
+				var surrounding_tiles := _try_surrounding_tiles(potential_tile, arena, starting_tile)
+				if surrounding_tiles.is_empty(): continue
+
+				var closest_surrounding_tile := tile
+				var viable_path_length := 99
+				var potential_path := current_path
+				for surrounding_tile in surrounding_tiles:
+					var surrounding_path: Array[Vector2i] = get_id_path.call(starting_tile, surrounding_tile)
+					if surrounding_path.size() < viable_path_length:
+						closest_surrounding_tile = surrounding_tile
+						viable_path_length = surrounding_path.size()
+						potential_path = surrounding_path
+				if closest_surrounding_tile != tile:
+					potential_tile = closest_surrounding_tile
+					current_path = potential_path
+				else:
+					continue
+
+			var distance := current_path.size()
+			distance_by_tiles[potential_tile] = distance
 
 			if distance < shortest_distance:
 				current_target = target_unit
-				next_tile = temp_path[clampi(owner.stats.movement, 0, temp_path.size())]
+				next_tile = current_path[clampi(owner.stats.movement, 0, current_path.size())]
 				selected_ability = owner.stats.ranged_ability
 				if owner.stats.ranged_ability.target == Ability.TARGET.AOE:
 					_populate_aoe_targets(arena)
@@ -133,3 +178,54 @@ func _populate_aoe_targets(arena: Arena) -> void:
 			var target := arena.arena_grid.get_occupant(tile)
 			if target is Area2D:
 				aoe_targets.append(target)
+
+
+func _valid_ending_tile(tile: Vector2i, arena: Arena) -> bool:
+	var dimensions := owner.stats.dimensions
+	var valid_tiles: Array[Vector2i] = []
+
+	for i in dimensions.x:
+		for j in dimensions.y:
+			var temp_x = tile.x - i
+			var temp_y = tile.y - j
+			if not arena.is_tile_in_bounds(Vector2i(temp_x, temp_y)): continue
+			if arena.arena_grid.is_tile_occupied(Vector2i(temp_x, temp_y)): continue
+			valid_tiles.append(Vector2i(temp_x, temp_y))
+
+	return valid_tiles.size() == dimensions.x * dimensions.y
+
+
+func _try_surrounding_tiles(tile, arena, starting_tile: Vector2i) -> Array[Vector2i]:
+	var delta: Vector2i = (tile - starting_tile).abs()
+	var surrounding_tiles: Array[Vector2i] = []
+	var valid_tiles: Array[Vector2i] = []
+
+	if delta.y >= delta.x:
+		surrounding_tiles.append(tile + Vector2i.RIGHT)
+		surrounding_tiles.append(tile + Vector2i.LEFT)
+	else:
+		surrounding_tiles.append(tile + Vector2i.UP)
+		surrounding_tiles.append(tile + Vector2i.DOWN)
+
+	if surrounding_tiles.is_empty(): return []
+
+	for surrounding_tile in surrounding_tiles:
+		if not arena.is_tile_in_bounds(surrounding_tile): continue
+		if arena.arena_grid.is_tile_occupied(surrounding_tile): continue
+		if not _valid_ending_tile(surrounding_tile, arena): continue
+
+		valid_tiles.append(surrounding_tile)
+	return valid_tiles
+
+
+func _populate_next_tiles(arena: Arena) -> void:
+	next_tiles = []
+
+	if not current_target: return
+	var dimensions = owner.stats.dimensions
+
+	for i in dimensions.x:
+		for j in dimensions.y:
+			var temp_x = next_tile.x - i
+			var temp_y = next_tile.y - j
+			next_tiles.append(Vector2i(temp_x, temp_y))

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=7 format=3 uid="uid://b23yh8vu4af0y"]
 
+[ext_resource type="Resource" uid="uid://m14gsp85udo2" path="res://resources/enemy_ai/base_ai.tres" id="1_3tim7"]
 [ext_resource type="Resource" uid="uid://dwjkhnynqscd8" path="res://resources/abilities/slice.tres" id="1_jt0ym"]
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="2_td0p6"]
-[ext_resource type="Resource" uid="uid://d0nry87mdmq3o" path="res://resources/enemy_ai/multi_tile_enemy_ai.tres" id="2_ucpyl"]
 [ext_resource type="Resource" uid="uid://buwltkkp5pnbj" path="res://resources/abilities/encourage.tres" id="3_3tim7"]
 [ext_resource type="Texture2D" uid="uid://2wukwoxi8j84" path="res://assets/sprites/enemies/Wraith.png" id="3_jt0ym"]
 [ext_resource type="PackedScene" uid="uid://bgix1ig8gku2x" path="res://scenes/enemy/multi_tile_enemy.tscn" id="3_ucpyl"]
@@ -16,7 +16,7 @@ attack_range = 1
 dimensions = Vector2i(2, 2)
 melee_ability = ExtResource("1_jt0ym")
 ranged_ability = ExtResource("3_3tim7")
-ai = ExtResource("2_ucpyl")
+ai = ExtResource("1_3tim7")
 scene = ExtResource("3_ucpyl")
 max_health = 50
 health = 50

@@ -78,7 +78,6 @@ func update_enemy() -> void:
 
 
 func take_turn() -> void:
-	print(ai.next_tile)
 	request_enemy_move.emit(ai.next_tile)
 
 
