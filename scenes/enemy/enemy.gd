@@ -59,7 +59,11 @@ func spawn_floating_text(text: String, text_color) -> void:
 func move_cleanup() -> void:
 	if ai.selected_ability:
 		var ability_target:Array[Area2D] = [ai.current_target]
+		# TODO add to ai ability to self target for buffs
+		if not ai.in_range:
+			ability_target = [self]
 		if ai.selected_ability.target == Ability.TARGET.AOE:
+			print(ai.aoe_targets)
 			ability_target = ai.aoe_targets
 		use_ability(ai.selected_ability, ability_target)
 	else:

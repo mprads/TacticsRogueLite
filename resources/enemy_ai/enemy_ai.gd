@@ -17,6 +17,7 @@ var in_range := false
 
 func select_target(get_id_path: Callable, arena: Arena) -> void:
 	current_target = null
+	in_range = true
 
 	if targets_in_range.is_empty():
 		_find_closest_target(get_id_path, arena)
@@ -87,11 +88,9 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 		if weight_sum > highest_weight:
 			current_target = target_unit
 			next_tile = weight_by_tiles.find_key(highest_tile_weight)
-			in_range = true
 			selected_ability = owner.stats.melee_ability
 			if owner.stats.melee_ability.target == Ability.TARGET.AOE:
-					_populate_aoe_targets(arena)
-
+				_populate_aoe_targets(arena)
 			highest_weight = weight_sum
 
 	if not current_target:
@@ -150,11 +149,12 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 
 func _populate_aoe_targets(arena: Arena) -> void:
 	aoe_targets = []
+	target_tiles = []
 
 	if not current_target: return
 	var target_tile := arena.get_tile_from_global(current_target.global_position)
 	var delta: Vector2i = (target_tile - next_tile).abs()
-	var ability := owner.stats.ranged_ability if in_range else owner.stats.melee_ability
+	var ability := owner.stats.melee_ability if in_range else owner.stats.ranged_ability
 
 	if delta.x <= delta.y:
 		if delta.x == 0:
@@ -189,7 +189,9 @@ func _valid_ending_tile(tile: Vector2i, arena: Arena) -> bool:
 			var temp_x = tile.x - i
 			var temp_y = tile.y - j
 			if not arena.is_tile_in_bounds(Vector2i(temp_x, temp_y)): continue
-			if arena.arena_grid.is_tile_occupied(Vector2i(temp_x, temp_y)): continue
+			if arena.arena_grid.is_tile_occupied(Vector2i(temp_x, temp_y)):
+				if arena.arena_grid.get_occupant(Vector2i(temp_x, temp_y)) != owner:
+					continue
 			valid_tiles.append(Vector2i(temp_x, temp_y))
 
 	return valid_tiles.size() == dimensions.x * dimensions.y

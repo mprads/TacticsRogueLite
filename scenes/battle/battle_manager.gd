@@ -199,16 +199,15 @@ func _on_unit_selected(unit: Unit) -> void:
 
 
 func _on_show_enemy_intent(enemy: Enemy) -> void:
-	printt(enemy.ai.selected_ability)
 	if enemy.stats.dimensions.x * enemy.stats.dimensions.y > 1:
-		print(enemy.ai.next_tiles)
 		for tile in enemy.ai.next_tiles:
 			arena.enemy_flood_filler.fill_tile(tile, Vector2i(2, 2))
 	else:
 		arena.enemy_flood_filler.fill_tile(enemy.ai.next_tile, Vector2i(2, 2))
 
 	if enemy.ai.selected_ability.target == Ability.TARGET.AOE:
-		pass
+		for tile in enemy.ai.target_tiles:
+			arena.enemy_flood_filler.fill_tile(tile, Vector2i(2, 1))
 	else:
 		enemy_target_selector_ui.starting_position = enemy.global_position
 		enemy_target_selector_ui.ending_position = enemy.ai.current_target.global_position

@@ -132,8 +132,6 @@ func update_enemy_intent(enemy: Enemy) -> void:
 	enemy.ai.targets_in_range = targets_in_range
 	enemy.ai.targets_out_of_range = targets_out_of_range
 	enemy.ai.select_target(unit_mover.get_id_path, arena)
-	if enemy.stats.dimensions.x * enemy.stats.dimensions.y > 1:
-		enemy.ai.populate_multi_tile_targets(arena)
 
 
 func verify_intent(enemy: Enemy) -> void:
