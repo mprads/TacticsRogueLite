@@ -1,19 +1,34 @@
 extends Control
 class_name RunComplete
 
-const MAIN_MENU_SCENE := preload("res://scenes/main_menu/main_menu.tscn")
+const PARTY_SELECT = preload("res://scenes/party_select/party_select.tscn")
 
-@onready var main_menu_button: Button = %MainMenuButton
+@export var run_stats: RunStats
+
+@onready var fireworks: Node2D = %Fireworks
+@onready var title: Label = %Title
+@onready var new_run_button: Button = %NewRunButton
 @onready var quit_button: Button = %QuitButton
 
+var is_victory := false : set = set_is_victory
 
 func _ready() -> void:
-	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
+	new_run_button.pressed.connect(_on_new_run_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 
 
-func _on_main_menu_button_pressed() -> void:
-	SceneChanger.change_scene(MAIN_MENU_SCENE, null)
+func set_is_victory(value: bool) -> void:
+	is_victory = value
+
+	if is_victory:
+		pass
+	else:
+		title.text = "Defeat"
+		fireworks.visible = false
+
+
+func _on_new_run_button_pressed() -> void:
+	SceneChanger.change_scene(PARTY_SELECT, run_stats)
 
 
 func _on_quit_button_pressed() -> void:
