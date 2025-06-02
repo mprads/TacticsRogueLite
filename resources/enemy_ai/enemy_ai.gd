@@ -88,6 +88,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 		if weight_sum > highest_weight:
 			current_target = target_unit
 			next_tile = weight_by_tiles.find_key(highest_tile_weight)
+			_populate_next_tiles()
 			selected_ability = owner.stats.melee_ability
 			if owner.stats.melee_ability.target == Ability.TARGET.AOE:
 				_populate_aoe_targets(arena)
@@ -142,6 +143,7 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 			if distance < shortest_distance:
 				current_target = target_unit
 				next_tile = current_path[clampi(owner.stats.movement, 0, current_path.size())]
+				_populate_next_tiles()
 				selected_ability = owner.stats.ranged_ability
 				if owner.stats.ranged_ability.target == Ability.TARGET.AOE:
 					_populate_aoe_targets(arena)
@@ -220,7 +222,7 @@ func _try_surrounding_tiles(tile, arena, starting_tile: Vector2i) -> Array[Vecto
 	return valid_tiles
 
 
-func _populate_next_tiles(arena: Arena) -> void:
+func _populate_next_tiles() -> void:
 	next_tiles = []
 
 	if not current_target: return

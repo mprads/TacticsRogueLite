@@ -63,7 +63,6 @@ func move_cleanup() -> void:
 		if not ai.in_range:
 			ability_target = [self]
 		if ai.selected_ability.target == Ability.TARGET.AOE:
-			print(ai.aoe_targets)
 			ability_target = ai.aoe_targets
 		use_ability(ai.selected_ability, ability_target)
 	else:
