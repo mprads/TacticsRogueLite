@@ -1,7 +1,7 @@
 extends Control
 class_name Tooltip
 
-const TOOLTIP_PANEL_SCENE := preload("res://scenes/ui/popups/tooltip_panel.tscn")
+const TOOLTIP_PANEL_SCENE = preload("res://scenes/ui/popups/tooltip_panel.tscn")
 const OFFSET := 5
 
 

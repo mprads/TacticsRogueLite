@@ -1,7 +1,7 @@
 extends Control
 class_name MainMenu
 
-const RUN_SCENE := preload("res://scenes/run/run.tscn")
+const RUN_SCENE = preload("res://scenes/run/run.tscn")
 const TESTING_RUN_STATS = preload("res://resources/testing_run_stats.tres")
 const PARTY_SELECT = preload("res://scenes/party_select/party_select.tscn")
 
