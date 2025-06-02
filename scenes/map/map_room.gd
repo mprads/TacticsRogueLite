@@ -22,7 +22,6 @@ const ICONS := {
 @onready var disabled_sprite: Sprite2D = $Visuals/DisabledSprite
 @onready var available_sprite: Sprite2D = $Visuals/AvailableSprite
 
-
 var available := false : set = set_available
 var room: Room : set = set_room
 

@@ -7,6 +7,7 @@ const BATTLE_LOST_SCENE = preload("res://scenes/battle_lost/battle_lost.tscn")
 const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const BREWING_SCENE := preload("res://scenes/brewing/brewing.tscn")
 const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
+const RUN_COMPLETE_SCENE := preload("res://scenes/run_complete/run_complete.tscn")
 
 @export var run_stats: RunStats
 @onready var inventory_manager: InventoryManager = $InventoryManager
@@ -163,6 +164,11 @@ func _show_battle_lost() -> void:
 	lost_scene.party_manager = party_manager
 
 
+func _show_run_complete() -> void:
+	var run_complete_scene := _change_view(RUN_COMPLETE_SCENE)
+	#run_complete_scene.run_stats = run_stats
+
+
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.TYPE.BATTLE:
@@ -187,11 +193,18 @@ func _on_battle_entered(room: Room) -> void:
 
 
 func _on_battle_won() -> void:
-	_show_battle_reward()
+	if map.encounters == map.map_data.size():
+		_show_run_complete()
+	else:
+		_show_battle_reward()
 
 
 func _on_battle_lost() -> void:
-	_show_battle_lost()
+	print(party_manager.get_party())
+	if party_manager.get_party().size() < 1:
+		_show_run_complete()
+	else:
+		_show_battle_lost()
 
 
 func _on_retry_battle() -> void:
