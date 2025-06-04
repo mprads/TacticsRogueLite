@@ -188,6 +188,7 @@ func _on_enemy_statuses_applied(type: Status.TYPE, enemy: Enemy) -> void:
 			verify_intent(enemy)
 			enemy.take_turn()
 		Status.TYPE.END_OF_TURN:
+			verify_intent(enemy)
 			enemies_to_act.erase(enemy)
 			_next_enemy_turn()
 

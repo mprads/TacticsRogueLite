@@ -1,7 +1,7 @@
 extends Control
 class_name RunComplete
 
-const PARTY_SELECT = preload("res://scenes/party_select/party_select.tscn")
+const PARTY_SELECT_SCENE = preload("res://scenes/party_select/party_select.tscn")
 
 @export var run_stats: RunStats
 
@@ -28,7 +28,7 @@ func set_is_victory(value: bool) -> void:
 
 
 func _on_new_run_button_pressed() -> void:
-	SceneChanger.change_scene(PARTY_SELECT, run_stats)
+	SceneChanger.change_scene(PARTY_SELECT_SCENE, run_stats)
 
 
 func _on_quit_button_pressed() -> void:

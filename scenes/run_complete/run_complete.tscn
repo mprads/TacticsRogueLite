@@ -1,8 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1es6hg3xd4hf"]
+[gd_scene load_steps=14 format=3 uid="uid://c1es6hg3xd4hf"]
 
 [ext_resource type="Script" uid="uid://nkilyocdgd8x" path="res://scenes/run_complete/run_complete.gd" id="1_uwcho"]
 
+[sub_resource type="Curve" id="Curve_uwcho"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveTexture" id="CurveTexture_4ha23"]
+curve = SubResource("Curve_uwcho")
 
 [sub_resource type="Gradient" id="Gradient_4ha23"]
 offsets = PackedFloat32Array(0.512346, 1)
