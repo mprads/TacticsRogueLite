@@ -46,8 +46,7 @@ func take_damage(damage: int) -> void:
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
 	if stats.health <= 0:
-		Events.enemy_died.emit(self)
-		queue_free()
+		_death_cleanup()
 
 
 func spawn_floating_text(text: String, text_color) -> void:
@@ -103,6 +102,13 @@ func set_enemy_stats(value: EnemyStats) -> void:
 func set_enemy_ai(value: EnemyAI) -> void:
 	ai = value
 	ai.owner = self
+
+
+func _death_cleanup() -> void:
+	Events.enemy_died.emit(self)
+	request_clear_fill_layer.emit()
+	request_clear_intent.emit()
+	queue_free()
 
 
 func _on_stats_changed() -> void:
