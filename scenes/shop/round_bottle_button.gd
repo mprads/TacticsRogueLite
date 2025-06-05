@@ -1,9 +1,10 @@
-extends TextureButton
 class_name RoundBottleButton
+extends TextureButton
 
 signal request_purchase(bottle: Bottle)
 
-@export var bottle: Bottle : set = set_bottle
+@export var bottle: Bottle:
+	set = set_bottle
 @export var outline_thickness: float = 1.0
 
 @onready var gold_cost: Label = %GoldCost
@@ -30,7 +31,8 @@ func set_bottle(value: Bottle) -> void:
 	if not is_node_ready():
 		await ready
 
-	if not bottle: return
+	if not bottle:
+		return
 	gold_cost.text = str(bottle.gold_cost)
 
 
@@ -39,13 +41,15 @@ func _on_pressed() -> void:
 
 
 func _on_mouse_entered() -> void:
-	material.set_shader_parameter('outline_thickness', outline_thickness)
-	var description := "HP: %s\nOZ: %s\nMovement: %s" % [bottle.base_health, bottle.max_oz, bottle.base_movement]
-	var main_tooltip := { "name": bottle.name, "description": description }
+	material.set_shader_parameter("outline_thickness", outline_thickness)
+	var description := (
+		"HP: %s\nOZ: %s\nMovement: %s" % [bottle.base_health, bottle.max_oz, bottle.base_movement]
+	)
+	var main_tooltip := {"name": bottle.name, "description": description}
 
 	Events.request_show_tooltip.emit(self, main_tooltip, [])
 
 
 func _on_mouse_exited() -> void:
-	material.set_shader_parameter('outline_thickness', 0.0)
+	material.set_shader_parameter("outline_thickness", 0.0)
 	Events.hide_tooltip.emit()

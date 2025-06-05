@@ -1,5 +1,5 @@
-extends Resource
 class_name Room
+extends Resource
 
 enum TYPE { NOT_ASSIGNED, BATTLE, KILN, BREWING, SHOP, ELITE, BOSS }
 

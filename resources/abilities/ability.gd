@@ -1,5 +1,5 @@
-extends Resource
 class_name Ability
+extends Resource
 
 enum TYPE { ATTACK, STATUS }
 enum TARGET { SELF, SINGLE_ALLY, ALL_ALLIES, SINGLE_ENEMY, ALL_ENEMIES, AOE }

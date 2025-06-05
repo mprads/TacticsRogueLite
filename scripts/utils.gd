@@ -1,5 +1,5 @@
-extends Object
 class_name Utils
+extends Object
 
 
 static func get_distance_between_tiles(starting_tile: Vector2i, ending_tile: Vector2i) -> int:

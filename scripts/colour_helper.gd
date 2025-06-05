@@ -1,9 +1,9 @@
-extends Object
 class_name ColourHelper
+extends Object
 
 enum KEYS { DAMAGE, SHIELD, BUFF, DEBUFF }
 
-const colours := {
+const COLOURS := {
 	KEYS.DAMAGE: Color("#ea3b3b"),
 	KEYS.SHIELD: Color("#f9c22b"),
 	KEYS.BUFF: Color("#fb6b1d"),
@@ -12,4 +12,4 @@ const colours := {
 
 
 static func get_colour(key: KEYS) -> Color:
-	return colours.get(key)
+	return COLOURS.get(key)

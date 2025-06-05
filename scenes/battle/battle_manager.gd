@@ -1,7 +1,8 @@
-extends Node2D
 class_name BattleManager
+extends Node2D
 
-@export var party_manager: PartyManager : set = set_party_manager
+@export var party_manager: PartyManager:
+	set = set_party_manager
 @export var battle_stats: BattleStats
 
 @export var arena: Arena
@@ -51,7 +52,8 @@ func start_deployment() -> void:
 
 
 func generate_arena() -> void:
-	if not map: return
+	if not map:
+		return
 
 	arena.clear()
 
@@ -74,14 +76,17 @@ func generate_arena() -> void:
 func set_party_manager(value: PartyManager) -> void:
 	party_manager = value
 
-	if not party_manager: return
+	if not party_manager:
+		return
 
-	party =  party_manager.get_party()
+	party = party_manager.get_party()
 
 
 func _generate_bench() -> void:
-	if not party: return
-	if not map: return
+	if not party:
+		return
+	if not map:
+		return
 
 	bench.clear()
 
@@ -122,13 +127,16 @@ func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 	for tile in tiles:
 		var new_label = Label.new()
 		add_child(new_label)
-		new_label.global_position = area.get_global_from_tile(tile) - Battle.HALF_CELL_SIZE + Vector2(0, 8)
+		new_label.global_position = (
+			area.get_global_from_tile(tile) - Battle.HALF_CELL_SIZE + Vector2(0, 8)
+		)
 		new_label.text = str(tile)
 		new_label.modulate = Color.BLACK
 
 
 func _on_enemy_turn_ended() -> void:
-	if player_manager.get_child_count() == 0: return
+	if player_manager.get_child_count() == 0:
+		return
 	player_manager.start_turn()
 
 
@@ -140,7 +148,8 @@ func _on_enemy_manager_all_enemies_defeated() -> void:
 func _on_player_turn_ended() -> void:
 	unit_context_menu.unit = null
 
-	if enemy_manager.get_child_count() == 0: return
+	if enemy_manager.get_child_count() == 0:
+		return
 	enemy_manager.start_turn()
 
 
@@ -166,7 +175,8 @@ func _on_unit_moved_arenas() -> void:
 
 
 func _on_change_active_unit(unit: Unit) -> void:
-	if ability_manager.has_active_ability(): return
+	if ability_manager.has_active_ability():
+		return
 
 	unit_context_menu.unit = unit
 
@@ -177,7 +187,9 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	target_selector_ui.starting_position = unit.global_position
 	var i := unit_mover.get_arena_for_position(unit.global_position)
 	var tile := unit_mover.arenas[i].get_tile_from_global(unit.global_position)
-	arena.player_flood_filler.flood_fill_from_tile(tile, ability.max_range, false, ability.atlas_coord)
+	arena.player_flood_filler.flood_fill_from_tile(
+		tile, ability.max_range, false, ability.atlas_coord
+	)
 	player_manager.disable_drag_and_drop()
 	ability_manager.handle_unit_aim(unit, ability)
 
@@ -193,7 +205,7 @@ func _on_unit_aim_stopped() -> void:
 
 func _on_unit_selected(unit: Unit) -> void:
 	ability_manager.handle_selected_unit(unit)
-	
+
 	if not unit.disabled:
 		unit_context_menu.unit = unit
 
@@ -211,6 +223,7 @@ func _on_show_enemy_intent(enemy: Enemy) -> void:
 	else:
 		enemy_target_selector_ui.starting_position = enemy.global_position
 		enemy_target_selector_ui.ending_position = enemy.ai.current_target.global_position
+
 
 func _on_request_clear_intent() -> void:
 	enemy_target_selector_ui.starting_position = Vector2.ZERO

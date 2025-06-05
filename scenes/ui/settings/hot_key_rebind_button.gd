@@ -1,5 +1,5 @@
-extends Control
 class_name HotKeyRebindButton
+extends Control
 
 @export var action_name: String = ""
 @export var input_map_id: String = ""
@@ -23,7 +23,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _rebind_action_key(event) -> void:
 	InputMap.action_erase_events(input_map_id)
 	InputMap.action_add_event(input_map_id, event)
-	
+
 	set_process_unhandled_key_input(false)
 	_set_text_for_key()
 
@@ -45,7 +45,7 @@ func _on_button_toggled(button_pressed) -> void:
 			if key.input_map_id != self.input_map_id:
 				key.button.toggle_mode = false
 				key.set_process_unhandled_key_input(false)
-	else: 
+	else:
 		for key in get_tree().get_nodes_in_group("hot_key_button"):
 			if key.input_map_id != self.input_map_id:
 				key.button.toggle_mode = true

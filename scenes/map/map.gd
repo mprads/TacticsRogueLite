@@ -1,5 +1,5 @@
-extends Node2D
 class_name Map
+extends Node2D
 
 const SCROLL_SPEED := 15
 const MAP_ROOM = preload("res://scenes/map/map_room.tscn")
@@ -17,13 +17,14 @@ var last_room: Room
 var camera_edge_x: float
 
 
-func _ready() -> void:	
+func _ready() -> void:
 	# TODO find a better value to clamp max
 	camera_edge_x = MapGenerator.X_DIST * (MapGenerator.TOTAL_ENCOUNTERS - 3)
 
 
 func _input(event: InputEvent) -> void:
-	if not visible: return
+	if not visible:
+		return
 
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.x += SCROLL_SPEED
@@ -66,7 +67,7 @@ func _create_map() -> void:
 		for room in current_floor:
 			if room.next_rooms.size() > 0:
 				_spawn_room(room)
-	
+
 	var middle := floori(MapGenerator.MAP_HEIGHT * 0.5)
 	_spawn_room(map_data[MapGenerator.TOTAL_ENCOUNTERS - 1][middle])
 
@@ -86,7 +87,8 @@ func _spawn_room(room: Room) -> void:
 
 
 func _connect_lines(room: Room) -> void:
-	if room.next_rooms.is_empty(): return
+	if room.next_rooms.is_empty():
+		return
 
 	for next_room in room.next_rooms:
 		var line_instance := MAP_LINE.instantiate()

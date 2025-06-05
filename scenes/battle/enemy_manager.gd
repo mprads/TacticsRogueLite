@@ -1,5 +1,5 @@
-extends Node2D
 class_name EnemyManager
+extends Node2D
 
 signal enemy_selected(enemy: Enemy)
 signal show_enemy_intent(enemy: Enemy)
@@ -10,7 +10,7 @@ signal all_enemies_defeated
 @export var flood_filler: FloodFiller
 @export var arena: Arena
 
-var enemies_to_act: Array[Enemy] = [] 
+var enemies_to_act: Array[Enemy] = []
 
 
 func _ready() -> void:
@@ -22,7 +22,8 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 	for enemy in get_children():
 		enemy.queue_free()
 
-	if enemy_stats.is_empty(): return
+	if enemy_stats.is_empty():
+		return
 
 	for stats in enemy_stats:
 		var enemy_instance := stats.scene.instantiate()
@@ -30,13 +31,17 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 		enemy_instance.stats = stats.duplicate()
 		enemy_instance.ai = stats.ai.duplicate()
 		unit_mover.setup_enemy(enemy_instance)
-		enemy_instance.status_manager.statuses_applied.connect(_on_enemy_statuses_applied.bind(enemy_instance))
+		enemy_instance.status_manager.statuses_applied.connect(
+			_on_enemy_statuses_applied.bind(enemy_instance)
+		)
 		enemy_instance.turn_completed.connect(_on_enemy_turn_completed.bind(enemy_instance))
 		enemy_instance.enemy_selected.connect(_on_enemy_selected)
 		enemy_instance.show_intent.connect(_on_enemy_show_intent)
 		enemy_instance.request_clear_intent.connect(_on_enemy_request_clear_intent)
 		enemy_instance.request_flood_fill.connect(_on_enemy_request_flood_fill.bind(enemy_instance))
-		enemy_instance.request_clear_fill_layer.connect(_on_enemy_request_clear_fill_layer.bind(enemy_instance))
+		enemy_instance.request_clear_fill_layer.connect(
+			_on_enemy_request_clear_fill_layer.bind(enemy_instance)
+		)
 
 
 func add_enemies_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
@@ -52,8 +57,10 @@ func add_enemies_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
 				for j in enemy.stats.dimensions.y:
 					var temp_x = empty_tile.x - i
 					var temp_y = empty_tile.y - j
-					if not tile_map.is_tile_in_bounds(Vector2i(temp_x, temp_y)): continue
-					if grid.is_tile_occupied(Vector2i(temp_x, temp_y)): continue
+					if not tile_map.is_tile_in_bounds(Vector2i(temp_x, temp_y)):
+						continue
+					if grid.is_tile_occupied(Vector2i(temp_x, temp_y)):
+						continue
 					valid_tiles.append(Vector2i(temp_x, temp_y))
 
 		for tile in valid_tiles:
@@ -64,7 +71,8 @@ func add_enemies_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
 
 
 func start_turn() -> void:
-	if get_child_count() == 0 : return
+	if get_child_count() == 0:
+		return
 
 	enemies_to_act.clear()
 	for enemy in get_children():
@@ -82,11 +90,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 	var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 
 	for target in targets:
-		var result := {
-			"target": target,
-			"tiles": [],
-			"starting_tile": Vector2i.ZERO
-		}
+		var result := {"target": target, "tiles": [], "starting_tile": Vector2i.ZERO}
 
 		var target_tile := arena.get_tile_from_global(target.global_position)
 
@@ -102,11 +106,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 
 			for tile in enemy_tiles:
 				var temp_filtered_neighbours = _filter_neighbours(
-				distance,
-				enemy.stats.movement,
-				enemy.stats.attack_range,
-				neighbour_tiles,
-				tile
+					distance, enemy.stats.movement, enemy.stats.attack_range, neighbour_tiles, tile
 				)
 
 				for temp_neighbour in temp_filtered_neighbours:
@@ -119,7 +119,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 				enemy.stats.attack_range,
 				neighbour_tiles,
 				enemy_tile
-				)
+			)
 
 		if not filtered_neighbours.is_empty():
 			result["tiles"] = filtered_neighbours
@@ -135,7 +135,7 @@ func update_enemy_intent(enemy: Enemy) -> void:
 
 
 func verify_intent(enemy: Enemy) -> void:
-	if not enemy.ai.current_target: 
+	if not enemy.ai.current_target:
 		update_enemy_intent(enemy)
 		return
 
@@ -148,24 +148,36 @@ func verify_intent(enemy: Enemy) -> void:
 		return
 
 
-func _filter_neighbours(distance: int,
+func _filter_neighbours(
+	distance: int,
 	movement_range: int,
 	attack_range: int,
 	neighbour_tiles: Array[Vector2i],
-	enemy_tile: Vector2i) -> Array[Vector2i]:
+	enemy_tile: Vector2i
+) -> Array[Vector2i]:
 	var result: Array[Vector2i] = []
 	if distance <= movement_range + attack_range:
-		result = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
-			if arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile:
-				return false
+		result = neighbour_tiles.filter(
+			func(neighbour_tile: Vector2i) -> bool:
+				if (
+					arena.arena_grid.is_tile_occupied(neighbour_tile)
+					and neighbour_tile != enemy_tile
+				):
+					return false
 
-			var neighbour_distance := Utils.get_distance_between_tiles(enemy_tile, neighbour_tile)
+				var neighbour_distance := Utils.get_distance_between_tiles(
+					enemy_tile, neighbour_tile
+				)
 
-			return neighbour_distance <= movement_range
+				return neighbour_distance <= movement_range
 		)
 	else:
-		result = neighbour_tiles.filter(func(neighbour_tile: Vector2i) -> bool:
-			return not arena.arena_grid.is_tile_occupied(neighbour_tile) and neighbour_tile != enemy_tile
+		result = neighbour_tiles.filter(
+			func(neighbour_tile: Vector2i) -> bool:
+				return (
+					not arena.arena_grid.is_tile_occupied(neighbour_tile)
+					and neighbour_tile != enemy_tile
+				)
 		)
 	return result
 
@@ -218,7 +230,9 @@ func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enem
 			for j in enemy.stats.dimensions.y:
 				var temp_x = tile.x - i
 				var temp_y = tile.y - j
-				flood_filler.flood_fill_from_tile(Vector2i(temp_x, temp_y), max_distance, true, atlas_coord)
+				flood_filler.flood_fill_from_tile(
+					Vector2i(temp_x, temp_y), max_distance, true, atlas_coord
+				)
 
 
 func _on_enemy_request_clear_intent() -> void:

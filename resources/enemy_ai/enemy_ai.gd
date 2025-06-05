@@ -1,5 +1,5 @@
-extends Resource
 class_name EnemyAI
+extends Resource
 
 var owner: Enemy
 var targets_in_range: Array[Dictionary]
@@ -32,9 +32,13 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 		# Find new hp, then find the remaining hp. Minus remaining from 1 to prioritize kills
 		# and values closer to 0
 
-		# TODO added modifier logic to calculation. Maybe add shield to calc but can make for interesting 
+		# TODO added modifier logic to calculation. Maybe add shield to calc but can make for interesting
 		# gameplay baiting attacks on a low life unit
-		var new_health: int = clampi(target_unit.stats.health - owner.stats.melee_ability.base_damage, 0, target_unit.stats.health)
+		var new_health: int = clampi(
+			target_unit.stats.health - owner.stats.melee_ability.base_damage,
+			0,
+			target_unit.stats.health
+		)
 		var remaining_percent := float(new_health) / target_unit.stats.max_health
 
 		var damage_weight = 1 - remaining_percent
@@ -49,17 +53,24 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 			# ending tile for enemies larger than 1 tile
 			var potential_tile := tile
 			var current_path: Array[Vector2i] = get_id_path.call(starting_tile, potential_tile)
-			if current_path.size() - 1 > owner.stats.movement: continue
+			if current_path.size() - 1 > owner.stats.movement:
+				continue
 			if not _valid_ending_tile(potential_tile, arena):
-				var surrounding_tiles := _try_surrounding_tiles(potential_tile, arena, starting_tile)
-				if surrounding_tiles.is_empty(): continue
+				var surrounding_tiles := _try_surrounding_tiles(
+					potential_tile, arena, starting_tile
+				)
+				if surrounding_tiles.is_empty():
+					continue
 
 				var closest_surrounding_tile := tile
 				var viable_path_length := 99
 				var potential_path := current_path
 				for surrounding_tile in surrounding_tiles:
-					var surrounding_path: Array[Vector2i] = get_id_path.call(starting_tile, surrounding_tile)
-					if surrounding_path.size() - 1 > owner.stats.movement: continue
+					var surrounding_path: Array[Vector2i] = get_id_path.call(
+						starting_tile, surrounding_tile
+					)
+					if surrounding_path.size() - 1 > owner.stats.movement:
+						continue
 					if surrounding_path.size() < viable_path_length:
 						closest_surrounding_tile = surrounding_tile
 						viable_path_length = surrounding_path.size()
@@ -81,9 +92,10 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 
 		var weight_sum = damage_weight + highest_tile_weight
 
-		if weight_by_tiles.is_empty() or highest_tile_weight == 0.0: continue
+		if weight_by_tiles.is_empty() or highest_tile_weight == 0.0:
+			continue
 
-		# Should target the unit it can put the closest to low % hp, movement should only matter 
+		# Should target the unit it can put the closest to low % hp, movement should only matter
 		# if the % hp remaining of two targets is tied
 		if weight_sum > highest_weight:
 			current_target = target_unit
@@ -116,17 +128,23 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 			# ending tile for enemies larger than 1 tile
 			var potential_tile := tile
 			var current_path: Array[Vector2i] = get_id_path.call(starting_tile, potential_tile)
-			if current_path.is_empty(): continue
+			if current_path.is_empty():
+				continue
 
 			if not _valid_ending_tile(potential_tile, arena):
-				var surrounding_tiles := _try_surrounding_tiles(potential_tile, arena, starting_tile)
-				if surrounding_tiles.is_empty(): continue
+				var surrounding_tiles := _try_surrounding_tiles(
+					potential_tile, arena, starting_tile
+				)
+				if surrounding_tiles.is_empty():
+					continue
 
 				var closest_surrounding_tile := tile
 				var viable_path_length := 99
 				var potential_path := current_path
 				for surrounding_tile in surrounding_tiles:
-					var surrounding_path: Array[Vector2i] = get_id_path.call(starting_tile, surrounding_tile)
+					var surrounding_path: Array[Vector2i] = get_id_path.call(
+						starting_tile, surrounding_tile
+					)
 					if surrounding_path.size() < viable_path_length:
 						closest_surrounding_tile = surrounding_tile
 						viable_path_length = surrounding_path.size()
@@ -153,7 +171,8 @@ func _populate_aoe_targets(arena: Arena) -> void:
 	aoe_targets = []
 	target_tiles = []
 
-	if not current_target: return
+	if not current_target:
+		return
 	var target_tile := arena.get_tile_from_global(current_target.global_position)
 	var delta: Vector2i = (target_tile - next_tile).abs()
 	var ability := owner.stats.melee_ability if in_range else owner.stats.ranged_ability
@@ -190,7 +209,8 @@ func _valid_ending_tile(tile: Vector2i, arena: Arena) -> bool:
 		for j in dimensions.y:
 			var temp_x = tile.x - i
 			var temp_y = tile.y - j
-			if not arena.is_tile_in_bounds(Vector2i(temp_x, temp_y)): continue
+			if not arena.is_tile_in_bounds(Vector2i(temp_x, temp_y)):
+				continue
 			if arena.arena_grid.is_tile_occupied(Vector2i(temp_x, temp_y)):
 				if arena.arena_grid.get_occupant(Vector2i(temp_x, temp_y)) != owner:
 					continue
@@ -211,12 +231,16 @@ func _try_surrounding_tiles(tile, arena, starting_tile: Vector2i) -> Array[Vecto
 		surrounding_tiles.append(tile + Vector2i.UP)
 		surrounding_tiles.append(tile + Vector2i.DOWN)
 
-	if surrounding_tiles.is_empty(): return []
+	if surrounding_tiles.is_empty():
+		return []
 
 	for surrounding_tile in surrounding_tiles:
-		if not arena.is_tile_in_bounds(surrounding_tile): continue
-		if arena.arena_grid.is_tile_occupied(surrounding_tile): continue
-		if not _valid_ending_tile(surrounding_tile, arena): continue
+		if not arena.is_tile_in_bounds(surrounding_tile):
+			continue
+		if arena.arena_grid.is_tile_occupied(surrounding_tile):
+			continue
+		if not _valid_ending_tile(surrounding_tile, arena):
+			continue
 
 		valid_tiles.append(surrounding_tile)
 	return valid_tiles
@@ -225,7 +249,8 @@ func _try_surrounding_tiles(tile, arena, starting_tile: Vector2i) -> Array[Vecto
 func _populate_next_tiles() -> void:
 	next_tiles = []
 
-	if not current_target: return
+	if not current_target:
+		return
 	var dimensions = owner.stats.dimensions
 
 	for i in dimensions.x:

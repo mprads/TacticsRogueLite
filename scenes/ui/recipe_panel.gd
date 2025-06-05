@@ -1,9 +1,11 @@
+class_name RecipePanel
 extends Button
 
 const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
 const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 
-@export var potion_key: int : set = _potion_key
+@export var potion_key: int:
+	set = _potion_key
 @export var potion: Potion
 @export var recipe: BrewingRecipe
 
@@ -21,7 +23,8 @@ func _update_visuals() -> void:
 	for child in ability_containter.get_children():
 		child.queue_free()
 
-	if not potion or not recipe: return
+	if not potion or not recipe:
+		return
 
 	potion_label.text = potion.name
 	header_sb.bg_color = potion.color

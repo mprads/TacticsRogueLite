@@ -1,10 +1,12 @@
-extends Control
 class_name UnitFillUI
+extends Control
 
 const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 
-@export var vial: Vial : set = set_vial
-@export var party_manager: PartyManager : set = set_party_manager
+@export var vial: Vial:
+	set = set_vial
+@export var party_manager: PartyManager:
+	set = set_party_manager
 
 @onready var vial_button: VialButton = %VialButton
 @onready var ability_container: HBoxContainer = %AbilityContainer
@@ -43,7 +45,8 @@ func set_vial(value: Vial) -> void:
 
 	vial = value
 
-	if not vial: return 
+	if not vial:
+		return
 
 	vial_button.vial = vial
 	_update_abilities()

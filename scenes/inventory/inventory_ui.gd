@@ -1,10 +1,12 @@
-extends Control
 class_name InventoryUI
+extends Control
 
 const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
 
-@export var inventory_manager: InventoryManager : set = set_inventory_manager
-@export var party_manager: PartyManager : set = set_party_manager
+@export var inventory_manager: InventoryManager:
+	set = set_inventory_manager
+@export var party_manager: PartyManager:
+	set = set_party_manager
 
 @onready var inventory_items: GridContainer = %InventoryItems
 @onready var party_ui: PartyUI = %PartyUI
@@ -22,7 +24,7 @@ func toggle_view() -> void:
 
 func _update_inventory() -> void:
 	inventory = inventory_manager.get_inventory()
-	
+
 	for item_ui in inventory_items.get_children():
 		item_ui.queue_free()
 

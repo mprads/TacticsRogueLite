@@ -1,7 +1,8 @@
-extends Control
 class_name BattleLost
+extends Control
 
-@export var party_manager: PartyManager : set = set_party_manager
+@export var party_manager: PartyManager:
+	set = set_party_manager
 
 @onready var party_ui: PartyUI = %PartyUI
 @onready var retry_button: Button = %RetryButton

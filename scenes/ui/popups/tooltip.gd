@@ -1,5 +1,5 @@
-extends Control
 class_name Tooltip
+extends Control
 
 const TOOLTIP_PANEL_SCENE = preload("res://scenes/ui/popups/tooltip_panel.tscn")
 const OFFSET := 5
@@ -18,7 +18,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func _toggle_secondary_tooltip(show_tooltip: bool) -> void:
-	var secondary_tooltips= get_tree().get_nodes_in_group("secondary_tooltip")
+	var secondary_tooltips = get_tree().get_nodes_in_group("secondary_tooltip")
 
 	for tooltip in secondary_tooltips:
 		tooltip.visible = show_tooltip
@@ -44,15 +44,17 @@ func _on_request_show_tooltip(tooltip_owner: Node, main: Dictionary, secondary: 
 		global_position.x = tooltip_owner.global_position.x - main_tooltip.size.x
 
 	if get_viewport_rect().size.y <= global_position.y + main_tooltip.size.y:
-		global_position.y = global_position.y - (global_position.y + main_tooltip.size.y - get_viewport_rect().size.y)
+		global_position.y = (
+			global_position.y
+			- (global_position.y + main_tooltip.size.y - get_viewport_rect().size.y)
+		)
 
 	main_tooltip.visible = true
 
 	if not secondary.is_empty():
 		var keycode = Utils.get_keycode_from_input_id("expand")
-		main_tooltip.get_node("%ExpandLabel").text =  "[%s] to expand" % keycode
+		main_tooltip.get_node("%ExpandLabel").text = "[%s] to expand" % keycode
 		main_tooltip.get_node("%ExpandLabel").visible = true
-
 
 	var secondary_count := 1
 	for secondary_tooltip in secondary:

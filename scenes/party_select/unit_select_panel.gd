@@ -1,5 +1,5 @@
-extends PanelContainer
 class_name UnitSelectPanel
+extends PanelContainer
 
 signal panel_selected(unit_stats: UnitStats, items: Array)
 
@@ -11,7 +11,7 @@ const GOLD_ICON = preload("res://assets/icons/gold.png")
 @export var contents: Array : set = set_contents
 
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
-@onready var unit_details_panel: unit_detail_panel = %UnitDetailsPanel
+@onready var unit_details_panel: UnitDetailsPanel = %UnitDetailsPanel
 @onready var ability_container: HBoxContainer = %AbilityContainer
 @onready var contents_container: VBoxContainer = %ContentsContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

@@ -1,5 +1,5 @@
-extends Node
 class_name MapGenerator
+extends Node
 
 const X_DIST := 150
 const Y_DIST := 55
@@ -7,7 +7,7 @@ const PLACEMENT_RANDOMNESS := 5
 const TOTAL_ENCOUNTERS := 15
 const MAP_HEIGHT := 6
 const MAX_STARTS := 5
-const Min_STARTS := 3
+const MIN_STARTS := 3
 
 const BREWING_ROOM_WEIGHT := 2.5
 const KILN_ROOM_WEIGHT := 2.5
@@ -80,7 +80,7 @@ func _get_random_starting_points() -> Array[int]:
 	var indexes: Array[int]
 	var unique_points: int = 0
 
-	while unique_points < Min_STARTS:
+	while unique_points < MIN_STARTS:
 		unique_points = 0
 		indexes = []
 
@@ -99,12 +99,14 @@ func _setup_connection(row: int, column: int) -> int:
 	var current_room := map_data[row][column] as Room
 
 	while not next_room or _would_cross_existing_path(row, column, next_room):
-		var random_column := clampi(RNG.instance.randi_range(column -1, column + 1), 0, MAP_HEIGHT - 1)
+		var random_column := clampi(
+			RNG.instance.randi_range(column - 1, column + 1), 0, MAP_HEIGHT - 1
+		)
 		next_room = map_data[row + 1][random_column]
 
 	current_room.next_rooms.append(next_room)
 
-	return  next_room.column
+	return next_room.column
 
 
 func _would_cross_existing_path(row: int, column: int, room: Room) -> bool:
@@ -147,9 +149,19 @@ func _setup_boss_room() -> void:
 func _setup_random_room_weights() -> void:
 	random_room_type_weights[Room.TYPE.BATTLE] = BATTLE_ROOM_WEIGHT
 	random_room_type_weights[Room.TYPE.ELITE] = BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT
-	random_room_type_weights[Room.TYPE.KILN] = BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + KILN_ROOM_WEIGHT
-	random_room_type_weights[Room.TYPE.BREWING] = BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + KILN_ROOM_WEIGHT + BREWING_ROOM_WEIGHT
-	random_room_type_weights[Room.TYPE.SHOP] = BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + KILN_ROOM_WEIGHT + BREWING_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
+	random_room_type_weights[Room.TYPE.KILN] = (
+		BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + KILN_ROOM_WEIGHT
+	)
+	random_room_type_weights[Room.TYPE.BREWING] = (
+		BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + KILN_ROOM_WEIGHT + BREWING_ROOM_WEIGHT
+	)
+	random_room_type_weights[Room.TYPE.SHOP] = (
+		BATTLE_ROOM_WEIGHT
+		+ ELITE_ROOM_WEIGHT
+		+ KILN_ROOM_WEIGHT
+		+ BREWING_ROOM_WEIGHT
+		+ SHOP_ROOM_WEIGHT
+	)
 
 	random_room_type_total_weight = random_room_type_weights[Room.TYPE.SHOP]
 
@@ -191,14 +203,15 @@ func _set_room_randomly(room_to_set: Room) -> void:
 
 	var type_candidate: Room.TYPE
 
-	while (early_kiln 
-		or early_brewing 
-		or consecutive_kiln 
-		or consecutive_brewing 
+	while (
+		early_kiln
+		or early_brewing
+		or consecutive_kiln
+		or consecutive_brewing
 		or consecutive_shop
 		or kiln_before_half
 		or kiln_before_boss
-		):
+	):
 		type_candidate = _get_random_room_type_by_weight()
 
 		var is_kiln := type_candidate == Room.TYPE.KILN
@@ -225,7 +238,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 			battle_room_tier = 1
 
 		room_to_set.battle_stats = battle_stats_pool.get_battle_in_tier(battle_room_tier)
-	
+
 	if type_candidate == Room.TYPE.ELITE:
 		var elite_room_tier := 0
 

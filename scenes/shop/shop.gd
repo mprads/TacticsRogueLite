@@ -1,5 +1,5 @@
-extends Node2D
 class_name Shop
+extends Node2D
 
 const SHOP_ITEM_SCENE = preload("res://scenes/shop/shop_item.tscn")
 const SHOP_BOTTLE_SCENE = preload("res://scenes/shop/shop_bottle.tscn")
@@ -109,7 +109,7 @@ func set_party_manager(value: PartyManager) -> void:
 
 func _on_inventory_gold_changed() -> void:
 	var player_gold := inventory_manager.get_gold()
-	
+
 	for shop_item in item_shelf.get_children():
 		shop_item.update(player_gold)
 

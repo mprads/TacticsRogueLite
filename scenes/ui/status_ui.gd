@@ -1,7 +1,8 @@
-extends Control
 class_name StatusUI
+extends Control
 
-@export var status: Status : set = set_status
+@export var status: Status:
+	set = set_status
 
 @onready var icon: TextureRect = $Icon
 @onready var duration: Label = $Duration
@@ -14,7 +15,8 @@ func _ready() -> void:
 
 
 func set_status(value: Status) -> void:
-	if not is_node_ready(): await ready
+	if not is_node_ready():
+		await ready
 
 	status = value
 	icon.texture = status.icon
@@ -28,7 +30,8 @@ func set_status(value: Status) -> void:
 
 
 func _on_status_changed() -> void:
-	if not status: return
+	if not status:
+		return
 
 	if status.stack_type == Status.STACK_TYPE.DURATION and status.duration <= 0:
 		queue_free()
@@ -41,7 +44,7 @@ func _on_status_changed() -> void:
 
 
 func _on_mouse_entered() -> void:
-	var tooltip := { "name": status.name, "description": status.get_tooltip() }
+	var tooltip := {"name": status.name, "description": status.get_tooltip()}
 	Events.request_show_tooltip.emit(self, tooltip, [])
 
 

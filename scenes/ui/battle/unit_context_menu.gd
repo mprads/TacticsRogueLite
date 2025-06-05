@@ -1,7 +1,8 @@
-extends Control
 class_name UnitContextMenu
+extends Control
 
-@export var unit: Unit : set = set_unit
+@export var unit: Unit:
+	set = set_unit
 
 @onready var header_label: Label = %HeaderLabel
 @onready var ability_container: VBoxContainer = %AbilityContainer
@@ -17,7 +18,8 @@ class_name UnitContextMenu
 
 
 func _input(event: InputEvent) -> void:
-	if not unit: return
+	if not unit:
+		return
 
 	if event.is_action_pressed("ability_1"):
 		_on_ability_button_pressed(unit.stats.potion.abilities[0])
@@ -55,11 +57,15 @@ func _set_visuals() -> void:
 		header_sb.bg_color = unit.stats.potion.color
 		border_sb.border_color = unit.stats.potion.color
 		ability_container.visible = true
-		ability_button_1.pressed.connect(_on_ability_button_pressed.bind(unit.stats.potion.abilities[0]))
+		ability_button_1.pressed.connect(
+			_on_ability_button_pressed.bind(unit.stats.potion.abilities[0])
+		)
 		var keycode_1 = Utils.get_keycode_from_input_id("ability_1")
 		ability_button_1.text = unit.stats.potion.abilities[0].name + " [%s]" % keycode_1
 		ability_button_1.disabled = unit.stats.oz < unit.stats.potion.abilities[0].cost
-		ability_button_2.pressed.connect(_on_ability_button_pressed.bind(unit.stats.potion.abilities[1]))
+		ability_button_2.pressed.connect(
+			_on_ability_button_pressed.bind(unit.stats.potion.abilities[1])
+		)
 		var keycode_2 = Utils.get_keycode_from_input_id("ability_2")
 		ability_button_2.text = unit.stats.potion.abilities[1].name + " [%s]" % keycode_2
 		ability_button_2.disabled = unit.stats.oz < unit.stats.potion.abilities[1].cost
@@ -68,10 +74,14 @@ func _set_visuals() -> void:
 		header_sb.bg_color = Color("c7dcd0")
 		border_sb.border_color = Color("c7dcd0")
 
-	melee_button.pressed.connect(_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[0]))
+	melee_button.pressed.connect(
+		_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[0])
+	)
 	var keycode_melee = Utils.get_keycode_from_input_id("melee")
 	melee_button.text = unit.stats.bottle.base_abilities[0].name + " [%s]" % keycode_melee
-	defend_button.pressed.connect(_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[1]))
+	defend_button.pressed.connect(
+		_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[1])
+	)
 	var keycode_defend = Utils.get_keycode_from_input_id("defend")
 	defend_button.text = unit.stats.bottle.base_abilities[1].name + " [%s]" % keycode_defend
 

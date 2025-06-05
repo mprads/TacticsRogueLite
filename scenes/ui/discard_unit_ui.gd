@@ -1,9 +1,10 @@
-extends Control
 class_name DiscardUnitUI
+extends Control
 
 signal unit_removed
 
-@export var party_manager: PartyManager : set = set_party_manager
+@export var party_manager: PartyManager:
+	set = set_party_manager
 
 @onready var party_ui: PartyUI = %PartyUI
 @onready var cancel_label: Label = %CancelLabel

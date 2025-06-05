@@ -1,7 +1,8 @@
+class_name UnitDetailsPanel
 extends Panel
-class_name unit_detail_panel
 
-@export var unit_stats: UnitStats : set = set_unit_stats
+@export var unit_stats: UnitStats:
+	set = set_unit_stats
 
 @onready var health_label: Label = %HealthLabel
 @onready var oz_label: Label = %OzLabel
@@ -11,7 +12,8 @@ class_name unit_detail_panel
 func set_unit_stats(value: UnitStats) -> void:
 	unit_stats = value
 
-	if not unit_stats: return 
+	if not unit_stats:
+		return
 
 	if not unit_stats.changed.is_connected(_set_details):
 		unit_stats.changed.connect(_set_details)

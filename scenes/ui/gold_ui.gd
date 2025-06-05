@@ -1,13 +1,16 @@
-extends HBoxContainer
 class_name GoldUI
+extends HBoxContainer
 
-@export var inventory_manager: InventoryManager : set = set_inventory_manager
+@export var inventory_manager: InventoryManager:
+	set = set_inventory_manager
 
 @onready var label: Label = $Label
 
 var tween: Tween
 var gold: int = 0
-var fake_count: int = 0 : set = set_fake_count
+var fake_count: int = 0:
+	set = set_fake_count
+
 
 func _ready() -> void:
 	label.text = "0"

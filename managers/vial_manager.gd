@@ -1,9 +1,10 @@
-extends Node
 class_name VialManager
+extends Node
 
 signal vials_changed
 
-@export var run_stats: RunStats : set = set_run_stats
+@export var run_stats: RunStats:
+	set = set_run_stats
 
 
 func get_vials() -> Array[Vial]:
@@ -18,7 +19,8 @@ func add_vial(vial: Vial) -> void:
 func set_run_stats(value: RunStats) -> void:
 	run_stats = value
 
-	if not run_stats: return
+	if not run_stats:
+		return
 
 	for vial in run_stats.vials:
 		vial.changed.connect(vials_changed.emit)

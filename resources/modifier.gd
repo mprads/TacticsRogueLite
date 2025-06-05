@@ -1,5 +1,5 @@
-extends RefCounted
 class_name Modifier
+extends RefCounted
 
 enum TYPE { DAMAGE_DEALT, DAMAGE_TAKEN }
 enum VALUE_MODIFIER { PERCENT, FLAT }
@@ -12,15 +12,12 @@ var percent_value := 0.0
 
 
 static func create_modifier(
-	modifier_source: String,
-	modifier_type: TYPE,
-	value_type: VALUE_MODIFIER,
-	value: Variant
+	modifier_source: String, modifier_type: TYPE, value_type: VALUE_MODIFIER, value: Variant
 ) -> Modifier:
 	var modifier_instance := new()
 	modifier_instance.source = modifier_source
 	modifier_instance.type = modifier_type
-	
+
 	if value_type == VALUE_MODIFIER.PERCENT:
 		modifier_instance.percent_value = value
 	elif value_type == VALUE_MODIFIER.FLAT:

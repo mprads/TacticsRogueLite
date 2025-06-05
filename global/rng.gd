@@ -22,13 +22,15 @@ func set_state(old_state: int) -> void:
 
 
 func array_pick_random(array: Array) -> Variant:
-	if array.is_empty(): return null
-	
+	if array.is_empty():
+		return null
+
 	return array[instance.randi() % array.size()]
 
 
 func array_shuffle(array: Array) -> void:
-	if array.size() < 2: return
+	if array.size() < 2:
+		return
 
 	for i in range(array.size() - 1, 0, -1):
 		var j := instance.randi() % (i + 1)

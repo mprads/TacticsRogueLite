@@ -1,5 +1,5 @@
-extends Node
 class_name InventoryManager
+extends Node
 
 signal gold_changed
 signal inventory_changed

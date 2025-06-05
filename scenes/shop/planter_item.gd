@@ -1,11 +1,11 @@
-extends Control
 class_name PlanterItem
+extends Control
 
-@export var plant:Item : set = set_plant
+@export var plant: Item:
+	set = set_plant
 @export var outline_thickness: float = 1.0
 
 @onready var plant_icon_button: TextureButton = $PlantIconButton
-
 
 
 func _ready() -> void:
@@ -29,8 +29,8 @@ func _on_harvest_plant() -> void:
 
 
 func _on_mouse_entered() -> void:
-	plant_icon_button.material.set_shader_parameter('outline_thickness', outline_thickness)
+	plant_icon_button.material.set_shader_parameter("outline_thickness", outline_thickness)
 
 
 func _on_mouse_exited() -> void:
-	plant_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
+	plant_icon_button.material.set_shader_parameter("outline_thickness", 0.0)

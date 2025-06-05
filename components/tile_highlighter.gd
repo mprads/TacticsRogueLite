@@ -1,7 +1,8 @@
-extends Node
 class_name TileHighlighter
+extends Node
 
-@export var enabled: bool = true :  set = set_enabled
+@export var enabled: bool = true:
+	set = set_enabled
 @export var highlight_layer: TileMapLayer
 @export var tile: Vector2i
 

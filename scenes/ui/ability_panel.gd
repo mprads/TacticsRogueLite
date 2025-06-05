@@ -1,7 +1,8 @@
-extends Panel
 class_name AbilityPanel
+extends Panel
 
-@export var ability: Ability : set = set_ability
+@export var ability: Ability:
+	set = set_ability
 
 @onready var ability_label: Label = %AbilityLabel
 
@@ -17,13 +18,12 @@ func set_ability(value: Ability) -> void:
 
 
 func _on_mouse_entered() -> void:
-	var main_tooltip := { "name": ability.name, "description": ability.get_tooltip() }
+	var main_tooltip := {"name": ability.name, "description": ability.get_tooltip()}
 	var secondary := []
 
-	if ability.get("status") :
+	if ability.get("status"):
 		var status_tooltip := {
-			"name": ability.status.name,
-			"description": ability.status.get_tooltip()
+			"name": ability.status.name, "description": ability.status.get_tooltip()
 		}
 		secondary.append(status_tooltip)
 

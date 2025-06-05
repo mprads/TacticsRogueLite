@@ -1,10 +1,11 @@
-extends Panel
 class_name UnitIconPanel
+extends Panel
 
 const FILLING_SHEET = preload("res://assets/sprites/potions/filling_sheet.png")
 const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 
-@export var unit_stats: UnitStats : set = set_unit_stats
+@export var unit_stats: UnitStats:
+	set = set_unit_stats
 
 @onready var potion: TextureRect = %Potion
 @onready var bottle: TextureRect = %Bottle
@@ -25,15 +26,13 @@ func _set_visuals() -> void:
 		var outline = AtlasTexture.new()
 		var filling = AtlasTexture.new()
 		outline.set_atlas(OUTLINE_SHEET)
-		outline.region = Rect2(coords[0] * sprite_size,
-			coords[1] * sprite_size,
-			sprite_size,
-			sprite_size)
+		outline.region = Rect2(
+			coords[0] * sprite_size, coords[1] * sprite_size, sprite_size, sprite_size
+		)
 		filling.set_atlas(FILLING_SHEET)
-		filling.region = Rect2(coords[0] * sprite_size,
-			coords[1] * sprite_size,
-			sprite_size,
-			sprite_size)
+		filling.region = Rect2(
+			coords[0] * sprite_size, coords[1] * sprite_size, sprite_size, sprite_size
+		)
 
 		bottle.texture = outline
 		potion.texture = filling

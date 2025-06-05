@@ -1,5 +1,5 @@
-extends Node2D
 class_name Battle
+extends Node2D
 
 const CELL_SIZE := Vector2(32, 32)
 const HALF_CELL_SIZE := Vector2(16, 16)

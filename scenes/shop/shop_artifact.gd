@@ -1,5 +1,5 @@
-extends Control
 class_name ShopArtifact
+extends Control
 
 @export var artifact: Artifact : set = set_artifact
 @export var outline_thickness: float = 1.0

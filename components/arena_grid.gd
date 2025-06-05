@@ -1,5 +1,5 @@
-extends Node
 class_name ArenaGrid
+extends Node
 
 signal arena_grid_changed
 
@@ -11,7 +11,7 @@ func populate_grid(arena: Array[Vector2i]) -> void:
 		tiles[tile] = null
 
 
-func get_tiles() ->  Dictionary[Vector2i, Area2D]:
+func get_tiles() -> Dictionary[Vector2i, Area2D]:
 	return tiles
 
 
@@ -23,7 +23,8 @@ func add_unit(tile: Vector2i, unit: Area2D) -> void:
 func remove_unit(tile: Vector2i) -> void:
 	var unit := tiles[tile]
 
-	if not unit: return
+	if not unit:
+		return
 	tiles[tile] = null
 	arena_grid_changed.emit()
 
@@ -47,7 +48,7 @@ func get_first_empty_tile() -> Vector2i:
 func get_random_empty_tile() -> Vector2i:
 	var keys := tiles.keys()
 	var tile: Vector2i = RNG.array_pick_random(keys)
-	
+
 	while is_tile_occupied(tile):
 		keys.erase(tile)
 		tile = RNG.array_pick_random(keys)

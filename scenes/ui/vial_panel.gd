@@ -1,7 +1,8 @@
-extends Button
 class_name VialPanel
+extends Button
 
-@export var potion: Potion : set = _potion
+@export var potion: Potion:
+	set = _potion
 
 @onready var label: Label = %Label
 @onready var attack_container: HBoxContainer = %AttackContainer
@@ -13,7 +14,7 @@ class_name VialPanel
 
 
 func _update_visuals() -> void:
-	label.text = "%s Vial" %potion.name
+	label.text = "%s Vial" % potion.name
 	header_sb.bg_color = potion.color
 	border_sb.border_color = potion.color
 
@@ -24,6 +25,7 @@ func _potion(value: Potion) -> void:
 
 	potion = value
 
-	if not potion: return
+	if not potion:
+		return
 
 	_update_visuals()

@@ -1,10 +1,11 @@
-extends Control
 class_name BattleReward
+extends Control
 
 const REWARD_BUTTON = preload("res://scenes/battle_reward/reward_button.tscn")
 const GOLD_ICON = preload("res://assets/icons/gold.png")
 
-@export var battle_stats: BattleStats : set = set_battle_stats
+@export var battle_stats: BattleStats:
+	set = set_battle_stats
 
 @onready var rewards: VBoxContainer = %Rewards
 @onready var continue_button: Button = %ContinueButton
@@ -50,7 +51,8 @@ func _roll_loot_reward() -> void:
 func _roll_artifact_reward() -> void:
 	var drop = battle_stats.get_artifact_reward()
 
-	if not drop: return
+	if not drop:
+		return
 
 	var artifact_reward := REWARD_BUTTON.instantiate()
 	artifact_reward.reward_icon = drop.icon

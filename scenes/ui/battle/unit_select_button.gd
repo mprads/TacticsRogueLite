@@ -1,10 +1,11 @@
-extends Button
 class_name UnitSelectButton
+extends Button
 
 const FILLING_SHEET = preload("res://assets/sprites/potions/filling_sheet.png")
 const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 
-@export var unit: Unit : set = set_unit
+@export var unit: Unit:
+	set = set_unit
 
 @onready var move_icon: TextureRect = %MoveIcon
 @onready var attack_icon: TextureRect = %AttackIcon
@@ -31,7 +32,8 @@ func set_unit(value: Unit) -> void:
 
 	unit = value
 
-	if not unit: return
+	if not unit:
+		return
 
 	Events.player_turn_started.connect(_on_player_turn_started)
 	Events.unit_died.connect(_on_unit_died)
@@ -51,15 +53,13 @@ func _update_visuals() -> void:
 		var outline = AtlasTexture.new()
 		var filling = AtlasTexture.new()
 		outline.set_atlas(OUTLINE_SHEET)
-		outline.region = Rect2(coords[0] * sprite_size,
-			coords[1] * sprite_size,
-			sprite_size,
-			sprite_size)
+		outline.region = Rect2(
+			coords[0] * sprite_size, coords[1] * sprite_size, sprite_size, sprite_size
+		)
 		filling.set_atlas(FILLING_SHEET)
-		filling.region = Rect2(coords[0] * sprite_size,
-			coords[1] * sprite_size,
-			sprite_size,
-			sprite_size)
+		filling.region = Rect2(
+			coords[0] * sprite_size, coords[1] * sprite_size, sprite_size, sprite_size
+		)
 
 		bottle_icon.texture = outline
 		potion_icon.texture = filling
@@ -92,6 +92,7 @@ func _on_player_turn_started() -> void:
 
 
 func _on_unit_died(dead_unit: Unit) -> void:
-	if not unit == dead_unit: return
+	if not unit == dead_unit:
+		return
 
 	queue_free()

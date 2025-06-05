@@ -1,5 +1,5 @@
-extends Node
 class_name UnitStateMachine
+extends Node
 
 enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING }
 
@@ -7,8 +7,8 @@ enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING }
 
 @onready var state_debug: Label = $"../StateDebug"
 
-var current_state: UnitState
 var states: Dictionary[STATE, UnitState] = {}
+var current_state: UnitState
 
 
 func init(unit: Unit) -> void:
@@ -39,6 +39,11 @@ func on_input(event: InputEvent) -> void:
 		current_state.on_input(event)
 
 
+func use_ability(targets: Array[Area2D]) -> void:
+	if current_state:
+		current_state.use_ability(targets)
+
+
 func on_mouse_entered() -> void:
 	if current_state:
 		current_state.on_mouse_entered()
@@ -49,23 +54,21 @@ func on_mouse_exited() -> void:
 		current_state.on_mouse_exited()
 
 
-func use_ability(targets: Array[Area2D]) -> void:
-	if current_state:
-		current_state.use_ability(targets)
-
-
 func on_movement_complete() -> void:
 	if current_state:
 		current_state.on_movement_complete()
 
 
 func _on_transition_requested(from: UnitState, to: STATE) -> void:
-	if from != current_state: return
+	if from != current_state:
+		return
 
 	var new_state := states[to]
-	if not new_state: return
+	if not new_state:
+		return
 
-	if current_state: current_state.exit()
+	if current_state:
+		current_state.exit()
 
 	current_state = new_state
 	current_state.enter()

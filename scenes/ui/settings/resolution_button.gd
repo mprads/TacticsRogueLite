@@ -1,5 +1,5 @@
-extends Control
 class_name ResolutionButton
+extends Control
 
 const RESOLUTION_DICTIONARY: Dictionary[String, Vector2i] = {
 	"1920X1080": Vector2i(1920, 1080),
