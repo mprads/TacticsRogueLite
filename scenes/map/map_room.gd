@@ -1,5 +1,5 @@
-extends Area2D
 class_name MapRoom
+extends Area2D
 
 signal selected(room: Room)
 
@@ -22,8 +22,10 @@ const ICONS := {
 @onready var disabled_sprite: Sprite2D = $Visuals/DisabledSprite
 @onready var available_sprite: Sprite2D = $Visuals/AvailableSprite
 
-var available := false : set = set_available
-var room: Room : set = set_room
+var available := false:
+	set = set_available
+var room: Room:
+	set = set_room
 
 
 func _ready() -> void:
@@ -36,7 +38,7 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 		return
 
 	room.selected = true
-	line_2d.visible = true  
+	line_2d.visible = true
 	selected.emit(room)
 
 
@@ -71,12 +73,14 @@ func set_available(value: bool) -> void:
 
 
 func _on_mouse_entered() -> void:
-	if not available: return
+	if not available:
+		return
 
-	available_sprite.material.set_shader_parameter('outline_thickness', outline_thickness)
+	available_sprite.material.set_shader_parameter("outline_thickness", outline_thickness)
 
 
 func _on_mouse_exited() -> void:
-	if not available: return
+	if not available:
+		return
 
-	available_sprite.material.set_shader_parameter('outline_thickness', 0.0)
+	available_sprite.material.set_shader_parameter("outline_thickness", 0.0)
