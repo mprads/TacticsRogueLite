@@ -1,5 +1,5 @@
-extends Node
 class_name Run
+extends Node
 
 const BATTLE_SCENE = preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE = preload("res://scenes/battle_reward/battle_reward.tscn")
@@ -48,7 +48,7 @@ func _ready() -> void:
 	_start_run()
 
 
-func _start_run() -> void:	
+func _start_run() -> void:
 	_set_up_managers()
 	_set_up_top_bar()
 	_set_up_event_connections()
@@ -60,45 +60,53 @@ func _start_run() -> void:
 
 
 func _set_up_debug() -> void:
-	settings_button.pressed.connect(func():
-		settings_ui.visible = !settings_ui.visible
-		debug.visible = !debug.visible
+	settings_button.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
 	)
-	map_button.pressed.connect(func():
-		settings_ui.visible = !settings_ui.visible
-		debug.visible = !debug.visible
-		_show_map()
+	map_button.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			_show_map()
 	)
-	kiln_button.pressed.connect(func():
-		settings_ui.visible = !settings_ui.visible
-		debug.visible = !debug.visible
-		_on_kiln_entered()
+	kiln_button.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			_on_kiln_entered()
 	)
-	brewing_button.pressed.connect(func():
-		settings_ui.visible = !settings_ui.visible
-		debug.visible = !debug.visible
-		_on_brewing_entered()
+	brewing_button.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			_on_brewing_entered()
 	)
-	shop_button.pressed.connect(func():
-		settings_ui.visible = !settings_ui.visible
-		debug.visible = !debug.visible
-		_on_shop_entered()
+	shop_button.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			_on_shop_entered()
 	)
-	win_battle.pressed.connect(func():
-		settings_ui.visible = !settings_ui.visible
-		debug.visible = !debug.visible
-		Events.battle_won.emit()
+	win_battle.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			Events.battle_won.emit()
 	)
-	lose_battle.pressed.connect(func():
-		settings_ui.visible = !settings_ui.visible
-		debug.visible = !debug.visible
-		Events.battle_lost.emit()
+	lose_battle.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			Events.battle_lost.emit()
 	)
-	unlock_map.pressed.connect(func():
-		settings_ui.visible = !settings_ui.visible
-		debug.visible = !debug.visible
-		for i in map.map_data.size():
-			map.unlock_row(i)
+	unlock_map.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			for i in map.map_data.size():
+				map.unlock_row(i)
 	)
 
 
@@ -142,7 +150,7 @@ func _change_view(scene: PackedScene) -> Node:
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
 	map.hide_map()
-	
+
 	return new_view
 
 

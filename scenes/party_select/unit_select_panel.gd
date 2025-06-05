@@ -1,5 +1,5 @@
-extends PanelContainer
 class_name UnitSelectPanel
+extends PanelContainer
 
 signal panel_selected(unit_stats: UnitStats, items: Array)
 
@@ -7,8 +7,10 @@ const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 const STARTING_ITEM_PANEL_SCENE = preload("res://scenes/party_select/starting_item_panel.tscn")
 const GOLD_ICON = preload("res://assets/icons/gold.png")
 
-@export var unit_stats: UnitStats : set = set_unit_stats
-@export var contents: Array : set = set_contents
+@export var unit_stats: UnitStats:
+	set = set_unit_stats
+@export var contents: Array:
+	set = set_contents
 
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var unit_details_panel: unit_detail_panel = %UnitDetailsPanel
@@ -38,7 +40,8 @@ func _update_ability_visuals() -> void:
 	for child in ability_container.get_children():
 		child.queue_free()
 
-	if not unit_stats.potion: return
+	if not unit_stats.potion:
+		return
 
 	for ability in unit_stats.potion.abilities:
 		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
@@ -47,7 +50,8 @@ func _update_ability_visuals() -> void:
 
 
 func _play_animation(id: String) -> void:
-	if disabled: return
+	if disabled:
+		return
 
 	if animation_player.is_playing() and not animation_player.current_animation == id:
 		animation_player.queue(id)
@@ -72,7 +76,9 @@ func set_contents(value: Array) -> void:
 
 		if lineitem.item is Item:
 			item_panel_instance.get_node("%Icon").texture = lineitem.item.icon
-			item_panel_instance.get_node("%ContentLabel").text = "%s %s" %[str(lineitem.quantity), lineitem.item.name]
+			item_panel_instance.get_node("%ContentLabel").text = (
+				"%s %s" % [str(lineitem.quantity), lineitem.item.name]
+			)
 		elif lineitem.item is Vial:
 			item_panel_instance.get_node("%Icon").visible = false
 			item_panel_instance.get_node("%VialButton").visible = true
@@ -85,7 +91,7 @@ func set_contents(value: Array) -> void:
 			item_panel_instance.get_node("%ArtifactIcon").artifact = lineitem.item
 		else:
 			item_panel_instance.get_node("%Icon").texture = GOLD_ICON
-			item_panel_instance.get_node("%ContentLabel").text = "%s Gold"  % str(lineitem.quantity)
+			item_panel_instance.get_node("%ContentLabel").text = "%s Gold" % str(lineitem.quantity)
 
 
 func _on_gui_input(event: InputEvent) -> void:

@@ -1,5 +1,5 @@
-extends Node2D
 class_name Brewing
+extends Node2D
 
 enum STAGE {RECIPE, SELECTION, POTION, VIAL}
 

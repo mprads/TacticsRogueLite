@@ -1,8 +1,8 @@
-extends Control
 class_name RunComplete
+extends Control
 
 # Should just be a preload but engine issue #104769 where jumping between scenes is
-# nulling out packed scene references 
+# nulling out packed scene references
 @onready var MAIN_MENU_SCENE = load("res://scenes/main_menu/main_menu.tscn")
 @export var run_stats: RunStats
 
@@ -11,7 +11,9 @@ class_name RunComplete
 @onready var main_menu_button: Button = %MainMenuButton
 @onready var quit_button: Button = %QuitButton
 
-var is_victory := false : set = set_is_victory
+var is_victory := false:
+	set = set_is_victory
+
 
 func _ready() -> void:
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)

@@ -1,8 +1,8 @@
-extends Control
 class_name PartySelect
+extends Control
 
 # Should just be a preload but engine issue #104769 where jumping between scenes is
-# nulling out packed scene references 
+# nulling out packed scene references
 @onready var RUN_SCENE = load("res://scenes/run/run.tscn")
 const UNIT_SELECT_PANEL_SCENE = preload("res://scenes/party_select/unit_select_panel.tscn")
 const UNIT_ICON_PANEL_SCENE = preload("res://scenes/ui/unit_icon_panel.tscn")
@@ -96,28 +96,28 @@ func _generate_items() -> Array:
 	var item_contents := []
 
 	for item in OPTION_COUNT:
-			var chance := RNG.instance.randf_range(0.0, 1.0)
+		var chance := RNG.instance.randf_range(0.0, 1.0)
 
-			# TODO Maybe this should be a weighted table for more granular control
-			if chance <= vial_odds:
-				var vial := Vial.new()
-				var potion: Potion = RNG.array_pick_random(starter_potions)
-				vial.potion = potion
-				item_contents.append({ "item": vial, "quantity": 1 })
-			elif chance <= gold_odds:
-				var gold_value := RNG.instance.randi_range(gold_min, gold_max)
-				item_contents.append({ "item": "gold", "quantity": gold_value })
-			else:
-				var starter_item: Item = RNG.array_pick_random(starter_items)
-				var quantity := RNG.instance.randi_range(item_quantity_min, item_quantity_max)
-				item_contents.append({ "item": starter_item, "quantity": quantity })
+		# TODO Maybe this should be a weighted table for more granular control
+		if chance <= vial_odds:
+			var vial := Vial.new()
+			var potion: Potion = RNG.array_pick_random(starter_potions)
+			vial.potion = potion
+			item_contents.append({"item": vial, "quantity": 1})
+		elif chance <= gold_odds:
+			var gold_value := RNG.instance.randi_range(gold_min, gold_max)
+			item_contents.append({"item": "gold", "quantity": gold_value})
+		else:
+			var starter_item: Item = RNG.array_pick_random(starter_items)
+			var quantity := RNG.instance.randi_range(item_quantity_min, item_quantity_max)
+			item_contents.append({"item": starter_item, "quantity": quantity})
 
 	return item_contents
 
 
 func _generate_artifact() -> Array[Dictionary]:
 	var starter_artifact = RNG.array_pick_random(starter_artifacts)
-	return [{ "item": starter_artifact, "quantity": 1 }]
+	return [{"item": starter_artifact, "quantity": 1}]
 
 
 func _show_unit_creator(unit_stats: UnitStats) -> void:
@@ -129,7 +129,7 @@ func _show_unit_creator(unit_stats: UnitStats) -> void:
 
 
 func _fill_placeholders(container: HBoxContainer) -> void:
-	for empty_slot in (OPTION_COUNT - container.get_child_count()):
+	for empty_slot in OPTION_COUNT - container.get_child_count():
 		var panel_instance = Panel.new()
 		container.add_child(panel_instance)
 		panel_instance.custom_minimum_size = Vector2(48, 48)
