@@ -1,9 +1,10 @@
-extends Control
 class_name ShopBottle
+extends Control
 
 signal request_purchase(bottle: Bottle, clean_up_callback: Callable)
 
-@export var bottle: Bottle : set = set_bottle
+@export var bottle: Bottle:
+	set = set_bottle
 @export var outline_thickness: float = 1.0
 
 @onready var bottle_icon_button: TextureButton = %BottleIconButton
@@ -20,7 +21,8 @@ func _ready() -> void:
 
 
 func update(player_gold: int) -> void:
-	if not bottle or not bottle_container: return
+	if not bottle or not bottle_container:
+		return
 
 	gold_cost.text = str(bottle.gold_cost)
 
@@ -45,19 +47,23 @@ func set_bottle(value: Bottle) -> void:
 
 
 func _on_mouse_entered() -> void:
-	if not bottle or not bottle_container: return
+	if not bottle or not bottle_container:
+		return
 
-	bottle_icon_button.material.set_shader_parameter('outline_thickness', outline_thickness)
-	var description := "HP: %s\nOZ: %s\nMovement: %s" % [bottle.base_health, bottle.max_oz, bottle.base_movement]
-	var main_tooltip := { "name": bottle.name, "description": description }
+	bottle_icon_button.material.set_shader_parameter("outline_thickness", outline_thickness)
+	var description := (
+		"HP: %s\nOZ: %s\nMovement: %s" % [bottle.base_health, bottle.max_oz, bottle.base_movement]
+	)
+	var main_tooltip := {"name": bottle.name, "description": description}
 
 	Events.request_show_tooltip.emit(self, main_tooltip, [])
 
 
 func _on_mouse_exited() -> void:
-	if not bottle or not bottle_container: return
+	if not bottle or not bottle_container:
+		return
 
-	bottle_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
+	bottle_icon_button.material.set_shader_parameter("outline_thickness", 0.0)
 	Events.hide_tooltip.emit()
 
 

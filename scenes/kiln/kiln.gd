@@ -1,6 +1,8 @@
+class_name Kiln
 extends Node2D
 
-@export var party_manager: PartyManager : set = set_party_manager
+@export var party_manager: PartyManager:
+	set = set_party_manager
 
 @onready var party_ui: PartyUI = %PartyUI
 @onready var kiln_unit_icon_panel: UnitIconPanel = %UnitIconPanel
@@ -29,7 +31,9 @@ func _on_heal_button_pressed() -> void:
 	heal_button.disabled = true
 
 	if kiln_unit_icon_panel.unit_stats:
-		kiln_unit_icon_panel.unit_stats.heal(ceili(kiln_unit_icon_panel.unit_stats.max_health * 0.3))
+		kiln_unit_icon_panel.unit_stats.heal(
+			ceili(kiln_unit_icon_panel.unit_stats.max_health * 0.3)
+		)
 
 	Events.kiln_exited.emit()
 
