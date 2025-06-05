@@ -1,5 +1,5 @@
-extends UnitState
 class_name UnitMovingState
+extends UnitState
 
 
 func on_mouse_exited() -> void:

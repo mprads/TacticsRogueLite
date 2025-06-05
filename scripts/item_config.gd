@@ -1,5 +1,5 @@
-extends Object
 class_name ItemConfig
+extends Object
 
 enum KEYS {
 	#plants

@@ -1,5 +1,5 @@
-extends RefCounted
 class_name UnitState
+extends RefCounted
 
 signal transition_requested(from: UnitState, to: UnitStateMachine.STATE)
 

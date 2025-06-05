@@ -1,5 +1,5 @@
-extends UnitState
 class_name UnitIdleState
+extends UnitState
 
 
 func enter() -> void:
@@ -15,12 +15,12 @@ func on_input(event: InputEvent) -> void:
 
 
 func on_mouse_entered() -> void:
-	unit.outline.material.set_shader_parameter('outline_thickness', unit.outline_thickness)
+	unit.outline.material.set_shader_parameter("outline_thickness", unit.outline_thickness)
 	unit.selectable = true
 
 
 func on_mouse_exited() -> void:
-	unit.outline.material.set_shader_parameter('outline_thickness', 0.0)
+	unit.outline.material.set_shader_parameter("outline_thickness", 0.0)
 	unit.selectable = false
 
 

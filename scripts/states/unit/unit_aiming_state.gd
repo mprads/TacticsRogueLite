@@ -1,5 +1,5 @@
-extends UnitState
 class_name UnitAimingState
+extends UnitState
 
 
 func enter() -> void:
