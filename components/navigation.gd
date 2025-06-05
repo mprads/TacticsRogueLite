@@ -1,5 +1,5 @@
-extends Node
 class_name Navigation
+extends Node
 
 var astar_grid: AStarGrid2D
 

@@ -1,5 +1,5 @@
-extends TileMapLayer
 class_name Arena
+extends TileMapLayer
 
 const DIRECTIONS = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
 
@@ -10,7 +10,8 @@ const DIRECTIONS = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
 
 
 func _process(_delta: float) -> void:
-	if not tile_highlighter.enabled: return
+	if not tile_highlighter.enabled:
+		return
 
 	var selected_tile := get_hovered_tile()
 
@@ -49,9 +50,10 @@ func get_neighbour_tiles(tile: Vector2i) -> Array[Vector2i]:
 
 func get_enemy_spawns() -> Array[Vector2i]:
 	var tiles := get_used_cells()
-	return tiles.filter(func(tile) -> bool:
-		var data := get_cell_tile_data(tile)
-		return data.get_custom_data("enemy_spawn")
+	return tiles.filter(
+		func(tile) -> bool:
+			var data := get_cell_tile_data(tile)
+			return data.get_custom_data("enemy_spawn")
 	)
 
 

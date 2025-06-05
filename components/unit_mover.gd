@@ -1,7 +1,7 @@
-extends Node
 class_name UnitMover
+extends Node
 
-signal unit_moved_arenas()
+signal unit_moved_arenas
 
 @export var arenas: Array[Arena]
 @export var navigation: Navigation
@@ -52,7 +52,7 @@ func _set_flood_fillers(enabled: bool) -> void:
 func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) -> void:
 	var i := get_arena_for_position(starting_position)
 	var tile := arenas[i].get_tile_from_global(starting_position)
- 
+
 	unit.global_position = starting_position
 	arenas[i].arena_grid.add_unit(tile, unit)
 	unit.movement_cancelled.emit()
@@ -74,10 +74,10 @@ func _move_along_path(unit: Node, arena: Arena, path: Array[Vector2i]) -> void:
 	var current_tile: Vector2i = path.pop_front()
 	var all_occupied_tiles: Array[Vector2i] = [current_tile]
 	for i in unit.stats.dimensions.x:
-			for j in unit.stats.dimensions.y:
-				var temp_x = current_tile.x - i
-				var temp_y = current_tile.y - j
-				all_occupied_tiles.append(Vector2i(temp_x, temp_y))
+		for j in unit.stats.dimensions.y:
+			var temp_x = current_tile.x - i
+			var temp_y = current_tile.y - j
+			all_occupied_tiles.append(Vector2i(temp_x, temp_y))
 
 	if not current_tile and path.is_empty():
 		unit.move_cleanup()
@@ -109,7 +109,9 @@ func _on_unit_drag_started(unit: Unit) -> void:
 		arenas[i].arena_grid.remove_unit(tile)
 
 		if arenas[i].player_flood_filler:
-			arenas[i].player_flood_filler.flood_fill_from_tile(tile, unit.stats.movement, true, Vector2i(1, 0))
+			arenas[i].player_flood_filler.flood_fill_from_tile(
+				tile, unit.stats.movement, true, Vector2i(1, 0)
+			)
 
 
 func _on_unit_drag_cancelled(starting_position: Vector2, unit: Unit) -> void:
@@ -158,7 +160,7 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 		#var old_unit: Unit = new_arena.arena_grid.get_tiles()[new_tile]
 		#new_arena.arena_grid.remove_unit(new_tile)
 		#_move_unit(old_unit, old_arena, old_tile)
-	else :
+	else:
 		_move_unit(unit, new_arena, new_tile)
 
 		if new_arena != old_arena:

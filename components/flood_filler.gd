@@ -1,9 +1,10 @@
-extends Node
 class_name FloodFiller
+extends Node
 
 const DIRECTIONS = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
 
-@export var enabled: bool = true :  set = set_enabled
+@export var enabled: bool = true:
+	set = set_enabled
 @export var fill_layer: TileMapLayer
 @export var arena_grid: ArenaGrid
 
@@ -13,10 +14,8 @@ func clear() -> void:
 
 
 func flood_fill_from_tile(
-	starting_tile: Vector2i,
-	max_distance: int,
-	exclude_occupied: bool,
-	atlas_coord: Vector2i) -> void:
+	starting_tile: Vector2i, max_distance: int, exclude_occupied: bool, atlas_coord: Vector2i
+) -> void:
 	var tiles: Array[Vector2i] = []
 	var queue: Array[Vector2i] = [starting_tile]
 

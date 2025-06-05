@@ -1,5 +1,5 @@
-extends Node2D
 class_name FloatingTextSpawner
+extends Node2D
 
 const FLOATING_TEXT_SCENE = preload("res://scenes/effects/floating_text.tscn")
 
