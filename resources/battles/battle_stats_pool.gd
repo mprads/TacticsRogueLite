@@ -1,5 +1,5 @@
-extends Resource
 class_name BattleStatsPool
+extends Resource
 
 @export var pool: Array[BattleStats]
 
@@ -23,10 +23,7 @@ func get_battle_in_tier(tier: int) -> BattleStats:
 
 
 func _get_all_battles_in_tier(tier: int) -> Array[BattleStats]:
-	return pool.filter(
-		func(battle: BattleStats):
-			return battle.tier == tier
-	)
+	return pool.filter(func(battle: BattleStats): return battle.tier == tier)
 
 
 func _setup_weight_for_tier(tier: int) -> void:

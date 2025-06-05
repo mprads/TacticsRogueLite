@@ -1,12 +1,15 @@
-extends Stats
 class_name UnitStats
+extends Stats
 
 @export var name := "Bottlesworth"
 
-@export var bottle: Bottle : set = set_bottle
-@export var potion: Potion : set = set_potion
+@export var bottle: Bottle:
+	set = set_bottle
+@export var potion: Potion:
+	set = set_potion
 
-@export var oz: int : set = set_oz
+@export var oz: int:
+	set = set_oz
 
 var movement: int
 var max_oz: int
@@ -18,7 +21,7 @@ func refill(amount: int) -> void:
 
 func set_oz(value: int) -> void:
 	oz = clampi(value, 0, max_oz)
-	
+
 	if oz == 0:
 		potion = null
 

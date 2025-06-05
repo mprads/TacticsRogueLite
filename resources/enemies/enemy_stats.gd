@@ -1,5 +1,5 @@
-extends Stats
 class_name EnemyStats
+extends Stats
 
 @export_category("Visuals")
 @export var name: String

@@ -1,5 +1,5 @@
-extends Resource
 class_name Bottle
+extends Resource
 
 @export_category("Visuals")
 @export var name: String

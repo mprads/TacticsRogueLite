@@ -1,5 +1,5 @@
-extends Resource
 class_name Artifact
+extends Resource
 
 signal activated
 

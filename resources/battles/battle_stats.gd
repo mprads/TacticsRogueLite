@@ -1,5 +1,5 @@
-extends Resource
 class_name BattleStats
+extends Resource
 
 @export_range(0, 2) var tier: int
 @export_range(0.0, 10.0) var weight: float
@@ -28,6 +28,7 @@ func get_drop_reward() -> Array[Item]:
 
 
 func get_artifact_reward() -> Artifact:
-	if artifact_drop.is_empty(): return null
+	if artifact_drop.is_empty():
+		return null
 
 	return RNG.array_pick_random(artifact_drop)

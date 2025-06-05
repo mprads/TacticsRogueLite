@@ -1,5 +1,5 @@
-extends Resource
 class_name Potion
+extends Resource
 
 @export var key: ItemConfig.KEYS
 

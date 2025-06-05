@@ -1,5 +1,5 @@
-extends Resource
 class_name Status
+extends Resource
 
 signal status_applied(status: Status)
 
@@ -10,8 +10,10 @@ enum STACK_TYPE { NONE, INTENSITY, DURATION }
 @export var name: String
 @export var type: TYPE
 @export var stack_type: STACK_TYPE
-@export var duration: int : set = set_duration
-@export var stacks: int : set = set_stacks
+@export var duration: int:
+	set = set_duration
+@export var stacks: int:
+	set = set_stacks
 @export var modifier_type: Modifier.TYPE
 @export var modifier_value: float
 
@@ -25,10 +27,12 @@ func init(target: Node) -> void:
 	assert(target.get("modifier_manager"), "No modifier manager on %s" % target)
 
 	if not target.modifier_manager.get_modifier(id):
-		target.modifier_manager.add_modifier(id, modifier_type, Modifier.VALUE_MODIFIER.PERCENT, modifier_value)
+		target.modifier_manager.add_modifier(
+			id, modifier_type, Modifier.VALUE_MODIFIER.PERCENT, modifier_value
+		)
 
 	if not changed.is_connected(_on_status_changed):
-		changed.connect(_on_status_changed.bind(target.modifier_manager)) 
+		changed.connect(_on_status_changed.bind(target.modifier_manager))
 
 
 func apply(_target: Node) -> void:

@@ -1,5 +1,5 @@
-extends Resource
 class_name BattleMapPool
+extends Resource
 
 @export var pool: Array[BattleMap]
 

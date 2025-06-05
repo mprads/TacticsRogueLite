@@ -1,5 +1,5 @@
-extends Artifact
 class_name LastingShield
+extends Artifact
 
 @export var shield_amount := 5
 
