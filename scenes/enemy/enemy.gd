@@ -46,8 +46,7 @@ func take_damage(damage: int) -> void:
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
 	if stats.health <= 0:
-		Events.enemy_died.emit(self)
-		queue_free()
+		_death_cleanup()
 
 
 func spawn_floating_text(text: String, text_color) -> void:
@@ -56,11 +55,15 @@ func spawn_floating_text(text: String, text_color) -> void:
 	floating_text_spawner.spawn_text(text, text_color)
 
 
-# TODO this is only here because the unitMover calls this to trigger a 
-# state change in unit state machine. Move to event
 func move_cleanup() -> void:
-	if ai.in_range:
-		use_ability()
+	if ai.selected_ability:
+		var ability_target:Array[Area2D] = [ai.current_target]
+		# TODO add to ai ability to self target for buffs
+		if not ai.in_range:
+			ability_target = [self]
+		if ai.selected_ability.target == Ability.TARGET.AOE:
+			ability_target = ai.aoe_targets
+		use_ability(ai.selected_ability, ability_target)
 	else:
 		turn_completed.emit()
 
@@ -80,8 +83,8 @@ func take_turn() -> void:
 	request_enemy_move.emit(ai.next_tile)
 
 
-func use_ability() -> void:
-	stats.ability.apply_effects([ai.current_target], modifier_manager)
+func use_ability(ability: Ability, targets: Array[Area2D]) -> void:
+	ability.apply_effects(targets, modifier_manager)
 	await get_tree().create_timer(.5).timeout
 	turn_completed.emit()
 
@@ -99,6 +102,13 @@ func set_enemy_stats(value: EnemyStats) -> void:
 func set_enemy_ai(value: EnemyAI) -> void:
 	ai = value
 	ai.owner = self
+
+
+func _death_cleanup() -> void:
+	Events.enemy_died.emit(self)
+	request_clear_fill_layer.emit()
+	request_clear_intent.emit()
+	queue_free()
 
 
 func _on_stats_changed() -> void:

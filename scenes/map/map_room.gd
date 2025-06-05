@@ -10,6 +10,7 @@ const ICONS := {
 	Room.TYPE.SHOP: [preload("res://assets/icons/map/Shop.png"), Vector2.ONE],
 	Room.TYPE.BATTLE: [preload("res://assets/icons/map/Battle.png"), Vector2.ONE],
 	Room.TYPE.ELITE: [preload("res://assets/icons/map/Elite.png"), Vector2.ONE],
+	Room.TYPE.BOSS: [preload("res://assets/icons/map/Boss.png"), Vector2.ONE],
 }
 
 @export var outline_thickness: float = 1.0
@@ -20,7 +21,6 @@ const ICONS := {
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var disabled_sprite: Sprite2D = $Visuals/DisabledSprite
 @onready var available_sprite: Sprite2D = $Visuals/AvailableSprite
-
 
 var available := false : set = set_available
 var room: Room : set = set_room

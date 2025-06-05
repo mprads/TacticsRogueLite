@@ -95,6 +95,7 @@ func _generate_bench() -> void:
 	player_manager.setup_party(party)
 	player_manager.add_party_to_grid(bench_grid, bench)
 
+	# TODO Remove
 	_grid_label_helper(bench_grid.tiles.keys(), bench)
 
 
@@ -116,6 +117,7 @@ func _start_battle() -> void:
 	player_manager.start_turn()
 
 
+# TODO remove
 func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 	for tile in tiles:
 		var new_label = Label.new()
@@ -197,10 +199,18 @@ func _on_unit_selected(unit: Unit) -> void:
 
 
 func _on_show_enemy_intent(enemy: Enemy) -> void:
-	enemy_target_selector_ui.starting_position = enemy.global_position
-	enemy_target_selector_ui.ending_position = enemy.ai.current_target.global_position
-	arena.enemy_flood_filler.fill_tile(enemy.ai.next_tile, Vector2i(2, 2))
+	if enemy.stats.dimensions.x * enemy.stats.dimensions.y > 1:
+		for tile in enemy.ai.next_tiles:
+			arena.enemy_flood_filler.fill_tile(tile, Vector2i(2, 2))
+	else:
+		arena.enemy_flood_filler.fill_tile(enemy.ai.next_tile, Vector2i(2, 2))
 
+	if enemy.ai.selected_ability.target == Ability.TARGET.AOE:
+		for tile in enemy.ai.target_tiles:
+			arena.enemy_flood_filler.fill_tile(tile, Vector2i(2, 1))
+	else:
+		enemy_target_selector_ui.starting_position = enemy.global_position
+		enemy_target_selector_ui.ending_position = enemy.ai.current_target.global_position
 
 func _on_request_clear_intent() -> void:
 	enemy_target_selector_ui.starting_position = Vector2.ZERO

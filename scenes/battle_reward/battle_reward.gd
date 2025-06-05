@@ -18,6 +18,9 @@ func _ready() -> void:
 
 
 func set_battle_stats(value: BattleStats) -> void:
+	if not is_node_ready():
+		await ready
+
 	battle_stats = value
 	_roll_gold_reward()
 	_roll_loot_reward()

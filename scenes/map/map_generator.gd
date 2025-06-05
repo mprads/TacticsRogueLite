@@ -17,6 +17,7 @@ const BATTLE_ROOM_WEIGHT := 10.0
 
 @export var battle_stats_pool: BattleStatsPool
 @export var elite_battle_stats_pool: BattleStatsPool
+@export var boss_battle: BattleStats
 
 var random_room_type_weights = {
 	Room.TYPE.BATTLE: 0.0,
@@ -139,9 +140,8 @@ func _setup_boss_room() -> void:
 			current_room.next_rooms = [] as Array[Room]
 			current_room.next_rooms.append(boss_room)
 
-	# TODO change to boss type when added
-	boss_room.type = Room.TYPE.ELITE
-	boss_room.battle_stats = elite_battle_stats_pool.get_battle_in_tier(2)
+	boss_room.type = Room.TYPE.BOSS
+	boss_room.battle_stats = boss_battle
 
 
 func _setup_random_room_weights() -> void:

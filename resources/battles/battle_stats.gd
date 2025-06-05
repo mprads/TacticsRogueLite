@@ -9,6 +9,7 @@ class_name BattleStats
 @export var enemy_drops: Array[Item]
 @export var enemies: Array[EnemyStats]
 @export var artifact_drop: Array[Artifact]
+@export var unique_map: BattleMap
 @export var is_elite: bool
 
 var accumulated_weight := 0.0

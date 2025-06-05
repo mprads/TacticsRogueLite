@@ -72,19 +72,29 @@ func _move_along_path(unit: Node, arena: Arena, path: Array[Vector2i]) -> void:
 		return
 
 	var current_tile: Vector2i = path.pop_front()
-	
+	var all_occupied_tiles: Array[Vector2i] = [current_tile]
+	for i in unit.stats.dimensions.x:
+			for j in unit.stats.dimensions.y:
+				var temp_x = current_tile.x - i
+				var temp_y = current_tile.y - j
+				all_occupied_tiles.append(Vector2i(temp_x, temp_y))
+
 	if not current_tile and path.is_empty():
 		unit.move_cleanup()
 		return
 
 	if not path.is_empty():
-		arena.arena_grid.remove_unit(current_tile)
+		for tile in all_occupied_tiles:
+			arena.arena_grid.remove_unit(tile)
+
 		arena.arena_grid.add_unit(path[0], unit)
 		unit.global_position = arena.get_global_from_tile(path[0])
 		await get_tree().create_timer(.25).timeout
 		_move_along_path(unit, arena, path)
 	else:
-		navigation.set_id_occupied(current_tile)
+		for tile in all_occupied_tiles:
+			navigation.set_id_occupied(tile)
+
 		unit.move_cleanup()
 
 

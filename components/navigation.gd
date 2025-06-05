@@ -9,6 +9,7 @@ func init(region: Rect2i, tiles: Array[Vector2i]) -> void:
 	astar_grid.region = region
 	astar_grid.cell_size = Battle.CELL_SIZE
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar_grid.set_cell_shape(AStarGrid2D.CELL_SHAPE_ISOMETRIC_DOWN)
 	astar_grid.update()
 
 	astar_grid.fill_solid_region(region, true)

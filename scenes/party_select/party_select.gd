@@ -1,7 +1,9 @@
 extends Control
 class_name PartySelect
 
-const RUN_SCENE = preload("res://scenes/run/run.tscn")
+# Should just be a preload but engine issue #104769 where jumping between scenes is
+# nulling out packed scene references 
+@onready var RUN_SCENE = load("res://scenes/run/run.tscn")
 const UNIT_SELECT_PANEL_SCENE = preload("res://scenes/party_select/unit_select_panel.tscn")
 const UNIT_ICON_PANEL_SCENE = preload("res://scenes/ui/unit_icon_panel.tscn")
 const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")

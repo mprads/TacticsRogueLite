@@ -49,7 +49,7 @@ func on_mouse_exited() -> void:
 		current_state.on_mouse_exited()
 
 
-func use_ability(targets: Array[Node]) -> void:
+func use_ability(targets: Array[Area2D]) -> void:
 	if current_state:
 		current_state.use_ability(targets)
 

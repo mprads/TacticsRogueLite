@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_mst5s"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="2_tckur"]
 
-[node name="BattleReward" type="Control"]
+[node name="BattleLost" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,4 +60,3 @@ text = "Quit"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
-alignment = 0

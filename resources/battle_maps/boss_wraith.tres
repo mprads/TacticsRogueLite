@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="BattleMap" load_steps=3 format=3 uid="uid://bhogw7rkpaii1"]
+
+[ext_resource type="Script" uid="uid://c4nhtfaiomcsl" path="res://resources/battle_maps/battle_map.gd" id="1_jeuym"]
+[ext_resource type="TileSet" uid="uid://mkbnpwa6r6gr" path="res://resources/stone_tile_set.tres" id="2_jeuym"]
+
+[resource]
+script = ExtResource("1_jeuym")
+tiles = Array[Dictionary]([{
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(3, 1),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(2, 1),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(2, 0),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -1),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -1),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(3, 0),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -2),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -3),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -4),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(3, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -6),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -5),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -4),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(2, -7),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(2, -8),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(3, -8),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(2, 0),
+"coord": Vector2i(3, -7),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -3),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(0, 0),
+"coord": Vector2i(2, -2),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(2, 2),
+"source_id": 0
+}, {
+"atlas_coord": Vector2i(1, 0),
+"coord": Vector2i(3, 2),
+"source_id": 0
+}])
+tile_set = ExtResource("2_jeuym")

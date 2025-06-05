@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=7 format=3 uid="uid://0qsj8nrf6rw7"]
+
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_30wl2"]
+[ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="2_0f500"]
+[ext_resource type="Resource" uid="uid://b23yh8vu4af0y" path="res://resources/enemies/wraith.tres" id="3_2o6u5"]
+[ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="4_4pdol"]
+[ext_resource type="Resource" uid="uid://bhogw7rkpaii1" path="res://resources/battle_maps/boss_wraith.tres" id="6_0pfwc"]
+[ext_resource type="Script" uid="uid://dvv6iov5fd7fy" path="res://resources/battles/battle_stats.gd" id="7_qgfet"]
+
+[resource]
+script = ExtResource("7_qgfet")
+tier = 0
+weight = 0.0
+min_gold_reward = 100
+max_gold_reward = 150
+max_drops = 1
+enemy_drops = Array[ExtResource("4_4pdol")]([])
+enemies = Array[ExtResource("2_0f500")]([ExtResource("3_2o6u5")])
+artifact_drop = Array[ExtResource("1_30wl2")]([])
+unique_map = ExtResource("6_0pfwc")
+is_elite = true
+metadata/_custom_type_script = "uid://dvv6iov5fd7fy"

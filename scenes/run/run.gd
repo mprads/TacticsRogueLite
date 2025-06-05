@@ -1,12 +1,13 @@
 extends Node
 class_name Run
 
-const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
+const BATTLE_SCENE = preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE = preload("res://scenes/battle_reward/battle_reward.tscn")
 const BATTLE_LOST_SCENE = preload("res://scenes/battle_lost/battle_lost.tscn")
-const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
-const BREWING_SCENE := preload("res://scenes/brewing/brewing.tscn")
-const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
+const SHOP_SCENE = preload("res://scenes/shop/shop.tscn")
+const BREWING_SCENE = preload("res://scenes/brewing/brewing.tscn")
+const KILN_SCNE = preload("res://scenes/kiln/kiln.tscn")
+const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn")
 
 @export var run_stats: RunStats
 @onready var inventory_manager: InventoryManager = $InventoryManager
@@ -33,6 +34,9 @@ const KILN_SCNE := preload("res://scenes/kiln/kiln.tscn")
 @onready var kiln_button: Button = %KilnButton
 @onready var brewing_button: Button = %BrewingButton
 @onready var shop_button: Button = %ShopButton
+@onready var unlock_map: Button = %UnlockMap
+@onready var win_battle: Button = %WinBattle
+@onready var lose_battle: Button = %LoseBattle
 
 
 func _ready() -> void:
@@ -79,6 +83,22 @@ func _set_up_debug() -> void:
 		settings_ui.visible = !settings_ui.visible
 		debug.visible = !debug.visible
 		_on_shop_entered()
+	)
+	win_battle.pressed.connect(func():
+		settings_ui.visible = !settings_ui.visible
+		debug.visible = !debug.visible
+		Events.battle_won.emit()
+	)
+	lose_battle.pressed.connect(func():
+		settings_ui.visible = !settings_ui.visible
+		debug.visible = !debug.visible
+		Events.battle_lost.emit()
+	)
+	unlock_map.pressed.connect(func():
+		settings_ui.visible = !settings_ui.visible
+		debug.visible = !debug.visible
+		for i in map.map_data.size():
+			map.unlock_row(i)
 	)
 
 
@@ -144,11 +164,19 @@ func _show_battle_lost() -> void:
 	lost_scene.party_manager = party_manager
 
 
+func _show_run_complete(is_victory: bool) -> void:
+	var run_complete_scene := _change_view(RUN_COMPLETE_SCENE)
+	run_complete_scene.is_victory = is_victory
+	run_complete_scene.run_stats = run_stats
+
+
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.TYPE.BATTLE:
 			_on_battle_entered(room)
 		Room.TYPE.ELITE:
+			_on_battle_entered(room)
+		Room.TYPE.BOSS:
 			_on_battle_entered(room)
 		Room.TYPE.SHOP:
 			_on_shop_entered()
@@ -166,11 +194,17 @@ func _on_battle_entered(room: Room) -> void:
 
 
 func _on_battle_won() -> void:
-	_show_battle_reward()
+	if map.encounters == map.map_data.size():
+		_show_run_complete(true)
+	else:
+		_show_battle_reward()
 
 
 func _on_battle_lost() -> void:
-	_show_battle_lost()
+	if party_manager.get_party().size() < 1:
+		_show_run_complete(false)
+	else:
+		_show_battle_lost()
 
 
 func _on_retry_battle() -> void:
