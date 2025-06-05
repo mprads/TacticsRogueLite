@@ -1,9 +1,10 @@
-extends Node
 class_name PartyManager
+extends Node
 
 signal party_changed
 
-@export var run_stats: RunStats : set = set_run_stats
+@export var run_stats: RunStats:
+	set = set_run_stats
 
 
 func _ready() -> void:
@@ -32,7 +33,8 @@ func get_max_party_size() -> int:
 func set_run_stats(value: RunStats) -> void:
 	run_stats = value
 
-	if not run_stats: return
+	if not run_stats:
+		return
 
 	for unit in run_stats.party:
 		unit.changed.connect(party_changed.emit)

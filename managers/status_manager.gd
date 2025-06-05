@@ -1,5 +1,5 @@
-extends Control
 class_name StatusManager
+extends Control
 
 signal statuses_applied(type: Status.TYPE)
 
@@ -10,8 +10,7 @@ const STATUS_UI = preload("res://scenes/ui/status_ui.tscn")
 
 func apply_statuses_by_type(type: Status.TYPE) -> void:
 	var queue: Array[Status] = _get_all_statuses().filter(
-		func(status: Status) -> bool:
-			return status.type == type
+		func(status: Status) -> bool: return status.type == type
 	)
 
 	if queue.is_empty():
@@ -36,7 +35,8 @@ func add_status(status: Status) -> void:
 		status_ui_instance.status.status_applied.connect(_on_status_applied)
 		return
 
-	if not is_duration and not is_stacking: return
+	if not is_duration and not is_stacking:
+		return
 
 	if is_duration:
 		_get_status(status.id).duration += status.duration
