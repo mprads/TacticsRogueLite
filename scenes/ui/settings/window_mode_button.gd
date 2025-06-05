@@ -1,5 +1,5 @@
+class_name WindowModeButton
 extends Control
-class_name  WindowModeButton
 
 const WINDOW_MODE_ARRAY: Array[String] = [
 	"Windowed Borderless",
@@ -34,9 +34,8 @@ func _on_item_selected(index: int) -> void:
 		3:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
-
 #const WINDOW_MODE_ARRAY: Array[String] = [
-	#"640x360",
-	#"1289x720",
-	#"1920X1080",
+#"640x360",
+#"1289x720",
+#"1920X1080",
 #]

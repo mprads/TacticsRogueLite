@@ -1,11 +1,12 @@
-extends HBoxContainer
 class_name VialUI
+extends HBoxContainer
 
 signal request_use_vial(vial: Vial)
 
 const VIAL_BUTTON = preload("res://scenes/ui/vial_button.tscn")
 
-@export var vial_manager: VialManager : set = set_vial_manager
+@export var vial_manager: VialManager:
+	set = set_vial_manager
 
 
 func _update_vials() -> void:

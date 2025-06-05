@@ -1,11 +1,12 @@
-extends GridContainer
 class_name PartyUI
+extends GridContainer
 
 signal unit_selected(unit: UnitStats)
 
 const PARTY_UNIT_UI = preload("res://scenes/ui/party_unit_ui.tscn")
 
-@export var party_manager: PartyManager : set = set_party_manager
+@export var party_manager: PartyManager:
+	set = set_party_manager
 
 var party: Array[UnitStats] = []
 
@@ -37,6 +38,7 @@ func set_party_manager(value: PartyManager) -> void:
 
 
 func _on_unit_ui_pressed(unit: UnitStats) -> void:
-	if not unit: return
+	if not unit:
+		return
 
 	unit_selected.emit(unit)

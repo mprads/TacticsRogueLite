@@ -1,5 +1,5 @@
-extends Node2D
 class_name TargetSelectorUI
+extends Node2D
 
 const ARC_POINTS := 8
 

@@ -1,5 +1,5 @@
-extends Control
 class_name SettingsUI
+extends Control
 
 @onready var exit_button: Button = $ExitButton
 

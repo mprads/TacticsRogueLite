@@ -1,7 +1,8 @@
-extends TextureRect
 class_name ArtifactIcon
+extends TextureRect
 
-@export var artifact: Artifact : set = set_artifact
+@export var artifact: Artifact:
+	set = set_artifact
 
 
 func _ready() -> void:
@@ -25,13 +26,12 @@ func _on_artifact_activated() -> void:
 
 
 func _on_mouse_entered() -> void:
-	var main_tooltip := { "name": artifact.name, "description": artifact.get_tooltip() }
+	var main_tooltip := {"name": artifact.name, "description": artifact.get_tooltip()}
 	var secondary := []
 
-	if artifact.get("status") :
+	if artifact.get("status"):
 		var status_tooltip := {
-			"name": artifact.status.name,
-			"description": artifact.status.get_tooltip()
+			"name": artifact.status.name, "description": artifact.status.get_tooltip()
 		}
 		secondary.append(status_tooltip)
 

@@ -1,5 +1,5 @@
-extends VBoxContainer
 class_name PartySelectionContainer
+extends VBoxContainer
 
 signal unit_selected(unit: Unit)
 
