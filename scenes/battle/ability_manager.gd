@@ -1,5 +1,5 @@
-extends Node2D
 class_name AbilityManager
+extends Node2D
 
 @export var arena: Arena
 
@@ -21,13 +21,15 @@ func handle_unit_aim(unit: Unit, ability: Ability) -> void:
 func handle_aim_stopped() -> void:
 	aiming_unit = null
 	current_ability = null
-	
+
 	arena.tile_highlighter.enabled = false
 
 
 func handle_selected_unit(target: Unit) -> void:
-	if not current_ability: return
-	if not _within_range(target): return
+	if not current_ability:
+		return
+	if not _within_range(target):
+		return
 
 	match current_ability.target:
 		Ability.TARGET.SELF:
@@ -39,8 +41,10 @@ func handle_selected_unit(target: Unit) -> void:
 
 
 func handle_selected_enemy(target: Enemy) -> void:
-	if not current_ability: return
-	if not _within_range(target): return
+	if not current_ability:
+		return
+	if not _within_range(target):
+		return
 
 	if current_ability.target == Ability.TARGET.SINGLE_ENEMY:
 		if target.is_in_group("enemy_unit"):

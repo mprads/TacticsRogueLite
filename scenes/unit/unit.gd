@@ -1,5 +1,5 @@
-extends Area2D
 class_name Unit
+extends Area2D
 
 signal movement_complete
 signal movement_cancelled
@@ -10,7 +10,8 @@ signal turn_complete
 signal request_change_active_unit
 signal unit_selected(unit: Unit)
 
-@export var stats: UnitStats : set = set_stats
+@export var stats: UnitStats:
+	set = set_stats
 @export var outline_thickness: float = 1.0
 
 @onready var visuals: CanvasGroup = $Visuals
@@ -25,8 +26,10 @@ signal unit_selected(unit: Unit)
 
 @onready var moveable_debug: Label = $MoveableDebug
 
-var moveable := true : set = set_moveable
-var disabled := false : set = set_disabled
+var moveable := true:
+	set = set_moveable
+var disabled := false:
+	set = set_disabled
 var selectable := false
 
 var selected_ability: Ability
@@ -43,7 +46,8 @@ func _input(event: InputEvent) -> void:
 
 
 func take_damage(damage: int) -> void:
-	if not stats: return
+	if not stats:
+		return
 
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 
@@ -56,7 +60,8 @@ func take_damage(damage: int) -> void:
 
 
 func spawn_floating_text(text: String, text_color) -> void:
-	if not floating_text_spawner: return
+	if not floating_text_spawner:
+		return
 
 	floating_text_spawner.spawn_text(text, text_color)
 
@@ -66,16 +71,17 @@ func move_cleanup() -> void:
 
 
 func update_visuals() -> void:
-	if not stats: return
+	if not stats:
+		return
 
 	outline.texture = stats.bottle.bottle_sprite
 	filling.texture = stats.bottle.liquid_mask
 
 	if stats.potion:
 		filling.visible = true
-		filling.material.set_shader_parameter('Mask', stats.bottle.liquid_mask)
-		filling.material.set_shader_parameter('Color', stats.potion.color)
-		filling.material.set_shader_parameter('Fill', (float(stats.oz) / float(stats.bottle.max_oz)))
+		filling.material.set_shader_parameter("Mask", stats.bottle.liquid_mask)
+		filling.material.set_shader_parameter("Color", stats.potion.color)
+		filling.material.set_shader_parameter("Fill", float(stats.oz) / float(stats.bottle.max_oz))
 	else:
 		filling.visible = false
 
@@ -95,7 +101,7 @@ func set_stats(value: UnitStats) -> void:
 func set_moveable(value: bool) -> void:
 	moveable = value
 	if moveable:
-		moveable_debug.text = "Moveable" 
+		moveable_debug.text = "Moveable"
 	else:
 		moveable_debug.text = "Moved"
 

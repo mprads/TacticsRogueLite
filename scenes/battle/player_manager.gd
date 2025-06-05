@@ -1,5 +1,5 @@
-extends Node2D
 class_name PlayerManager
+extends Node2D
 
 signal change_active_unit(unit: Unit)
 signal unit_selected(unit: Unit)
@@ -22,7 +22,8 @@ func setup_party(party_stats: Array[UnitStats]) -> void:
 	for unit in get_children():
 		unit.queue_free()
 
-	if party_stats.is_empty(): return
+	if party_stats.is_empty():
+		return
 
 	for stats in party_stats:
 		var unit_instance := UNIT.instantiate()
@@ -65,7 +66,8 @@ func disable_drag_and_drop() -> void:
 
 func _on_unit_turn_complete() -> void:
 	for unit in get_children():
-		if not unit.disabled: return
+		if not unit.disabled:
+			return
 
 	for unit in get_children():
 		unit.status_manager.apply_statuses_by_type(Status.TYPE.END_OF_TURN)
@@ -86,7 +88,7 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 
 
 func _on_unit_aim_stopped() -> void:
-	unit_aim_stopped.emit( )
+	unit_aim_stopped.emit()
 
 
 func _on_unit_died(unit: Unit) -> void:

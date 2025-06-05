@@ -4,4 +4,4 @@ extends Sprite2D
 
 
 func _physics_process(_delta: float) -> void:
-	material.set_shader_parameter('SurfaceRotation', - pendulum.angle - global_rotation)
+	material.set_shader_parameter("SurfaceRotation", -pendulum.angle - global_rotation)

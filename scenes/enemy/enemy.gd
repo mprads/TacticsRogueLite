@@ -1,5 +1,5 @@
-extends Area2D
 class_name Enemy
+extends Area2D
 
 signal request_enemy_move(tile: Vector2i)
 signal turn_completed
