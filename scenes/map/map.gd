@@ -1,7 +1,10 @@
 class_name Map
 extends Node2D
 
-const SCROLL_SPEED := 15
+const SLOW_SCROLL_SPEED := 5
+const FAST_SCROLL_SPEED := 15
+const SLOW_SCROLL_THRESHOLD := 100
+const FAST_SCROLL_THRESHOLD := 40
 const MAP_ROOM = preload("res://scenes/map/map_room.tscn")
 const MAP_LINE = preload("res://scenes/map/map_line.tscn")
 
@@ -22,14 +25,30 @@ func _ready() -> void:
 	camera_edge_x = MapGenerator.X_DIST * (MapGenerator.TOTAL_ENCOUNTERS - 3)
 
 
+func _process(_delta: float) -> void:
+	var mouse_position: Vector2 = get_viewport().get_mouse_position()
+	var viewport_size: Vector2 = get_viewport_rect().size
+
+	if mouse_position.x >= viewport_size.x - FAST_SCROLL_THRESHOLD:
+		camera_2d.position.x += FAST_SCROLL_SPEED
+	elif mouse_position.x >= viewport_size.x - SLOW_SCROLL_THRESHOLD:
+		camera_2d.position.x += SLOW_SCROLL_SPEED
+	elif mouse_position.x <= FAST_SCROLL_THRESHOLD:
+		camera_2d.position.x -= FAST_SCROLL_SPEED
+	elif mouse_position.x <= SLOW_SCROLL_THRESHOLD:
+		camera_2d.position.x -= SLOW_SCROLL_SPEED
+
+	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
+
+
 func _input(event: InputEvent) -> void:
 	if not visible:
 		return
 
 	if event.is_action_pressed("scroll_up"):
-		camera_2d.position.x += SCROLL_SPEED
+		camera_2d.position.x += FAST_SCROLL_SPEED
 	elif event.is_action_pressed("scroll_down"):
-		camera_2d.position.x -= SCROLL_SPEED
+		camera_2d.position.x -= FAST_SCROLL_SPEED
 
 	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
 
