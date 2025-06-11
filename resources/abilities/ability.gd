@@ -9,6 +9,7 @@ enum TARGET { SELF, SINGLE_ALLY, ALL_ALLIES, SINGLE_ENEMY, ALL_ENEMIES, AOE }
 @export var cost := 1
 @export var atlas_coord: Vector2i
 @export_multiline var tooltip: String
+@export var sprite_sheet: SpriteFrames
 
 @export_category("Effects")
 @export var type: TYPE
