@@ -32,6 +32,11 @@ unique_name_in_owner = true
 material = ExtResource("2_cwlon")
 texture = ExtResource("1_4a83h")
 
+[node name="AbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+unique_name_in_owner = true
+position = Vector2(0, -36)
+animation = &""
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(1, -11)

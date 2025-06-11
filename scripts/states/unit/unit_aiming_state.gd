@@ -4,14 +4,19 @@ extends UnitState
 
 func enter() -> void:
 	unit.aim_started.emit(unit.selected_ability)
+	unit.ability_animated_sprite.set_sprite_frames(unit.selected_ability.sprite_sheet)
+	unit.ability_animated_sprite.play("aiming")
 
 
 func exit() -> void:
 	unit.selected_ability = null
+	unit.ability_animated_sprite.set_sprite_frames(null)
 	unit.aim_stopped.emit()
 
 
 func use_ability(targets: Array[Area2D]) -> void:
+	unit.ability_animated_sprite.play("activate")
+	await unit.ability_animated_sprite.animation_finished
 	unit.selected_ability.apply_effects(targets, unit.modifier_manager)
 	unit.stats.oz -= unit.selected_ability.cost
 	unit.update_visuals()
@@ -31,6 +36,8 @@ func on_ability_selected(ability: Ability) -> void:
 	unit.selected_ability = ability
 	unit.aim_stopped.emit()
 	unit.aim_started.emit(unit.selected_ability)
+	unit.ability_animated_sprite.set_sprite_frames(unit.selected_ability.sprite_sheet)
+	unit.ability_animated_sprite.play("aiming")
 
 
 func on_mouse_entered() -> void:
