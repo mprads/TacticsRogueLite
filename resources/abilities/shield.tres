@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b5r4cpgwt0p4n"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b5r4cpgwt0p4n"]
 
 [ext_resource type="Script" uid="uid://c361c7amybhf" path="res://resources/abilities/shield.gd" id="1_abwt8"]
+[ext_resource type="SpriteFrames" uid="uid://lhmsqlf76o16" path="res://assets/abilities/shield/shield.tres" id="2_j2s4t"]
 
 [resource]
 script = ExtResource("1_abwt8")
@@ -10,6 +11,7 @@ cost = 5
 atlas_coord = Vector2i(3, 0)
 tooltip = "Give an ally unit 10 [color=\"f9c22b\"]SHIELD[/color]
 Cost: 5"
+sprite_frames = ExtResource("2_j2s4t")
 type = 1
 target = 1
 shape = Array[Vector2i]([])

@@ -85,8 +85,8 @@ func take_turn() -> void:
 
 
 func use_ability(ability: Ability, targets: Array[Area2D]) -> void:
-	if ability.sprite_sheet:
-		ability_animated_sprite.set_sprite_frames(ability.sprite_sheet)
+	if ability.sprite_frames:
+		ability_animated_sprite.set_sprite_frames(ability.sprite_frames)
 		ability_animated_sprite.play("activate")
 		await ability_animated_sprite.animation_finished
 		ability_animated_sprite.set_sprite_frames(null)

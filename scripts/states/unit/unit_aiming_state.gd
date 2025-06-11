@@ -4,7 +4,7 @@ extends UnitState
 
 func enter() -> void:
 	unit.aim_started.emit(unit.selected_ability)
-	unit.ability_animated_sprite.set_sprite_frames(unit.selected_ability.sprite_sheet)
+	unit.ability_animated_sprite.set_sprite_frames(unit.selected_ability.sprite_frames)
 	unit.ability_animated_sprite.play("aiming")
 
 
@@ -36,7 +36,7 @@ func on_ability_selected(ability: Ability) -> void:
 	unit.selected_ability = ability
 	unit.aim_stopped.emit()
 	unit.aim_started.emit(unit.selected_ability)
-	unit.ability_animated_sprite.set_sprite_frames(unit.selected_ability.sprite_sheet)
+	unit.ability_animated_sprite.set_sprite_frames(unit.selected_ability.sprite_frames)
 	unit.ability_animated_sprite.play("aiming")
 
 
