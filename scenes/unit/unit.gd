@@ -17,7 +17,8 @@ signal unit_selected(unit: Unit)
 @onready var visuals: CanvasGroup = $Visuals
 @onready var outline: Sprite2D = $Visuals/Outline
 @onready var filling: Sprite2D = $Visuals/Filling
-@onready var ability_animated_sprite: AnimatedSprite2D = %AbilityAnimatedSprite
+@onready var aiming_ability_animated_sprite: AnimatedSprite2D = %AimingAbilityAnimatedSprite
+@onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
 
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
 @onready var unit_state_machine: UnitStateMachine = $UnitStateMachine

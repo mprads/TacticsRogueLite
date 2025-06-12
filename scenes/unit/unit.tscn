@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene load_steps=17 format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_540om"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="6_3po7s"]
 [ext_resource type="Script" uid="uid://bcgev77t65m02" path="res://scenes/unit/liquid.gd" id="7_540om"]
 [ext_resource type="Script" uid="uid://bv1gbgl3olxql" path="res://scenes/unit/pendulum.gd" id="8_540om"]
+[ext_resource type="Script" uid="uid://clc0ayjvpkdkd" path="res://components/ability_animated_sprite.gd" id="9_1ifho"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="11_540om"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l0n34"]
@@ -49,10 +50,16 @@ script = ExtResource("7_540om")
 position = Vector2(1, 2)
 script = ExtResource("8_540om")
 
-[node name="AbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+[node name="AimingAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
 unique_name_in_owner = true
 position = Vector2(0, -36)
 animation = &""
+script = ExtResource("9_1ifho")
+
+[node name="ActivateAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+unique_name_in_owner = true
+animation = &""
+script = ExtResource("9_1ifho")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

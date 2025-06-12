@@ -12,7 +12,8 @@ signal request_clear_fill_layer
 @export var stats: EnemyStats : set = set_enemy_stats
 @export var ai: EnemyAI : set = set_enemy_ai
 @export var outline_thickness: float = 1.0
-@onready var ability_animated_sprite: AnimatedSprite2D = %AbilityAnimatedSprite
+@onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
+
 
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
@@ -86,10 +87,10 @@ func take_turn() -> void:
 
 func use_ability(ability: Ability, targets: Array[Area2D]) -> void:
 	if ability.sprite_frames:
-		ability_animated_sprite.set_sprite_frames(ability.sprite_frames)
-		ability_animated_sprite.play("activate")
-		await ability_animated_sprite.animation_finished
-		ability_animated_sprite.set_sprite_frames(null)
+		for target in targets:
+			if target is Unit or target is Enemy:
+				target.activate_ability_animated_sprite.set_and_play(ability.sprite_frames, "activate")
+		await targets[0].activate_ability_animated_sprite.animation_finished
 	ability.apply_effects(targets, modifier_manager)
 	turn_completed.emit()
 

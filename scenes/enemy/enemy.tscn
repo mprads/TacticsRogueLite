@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7xiv7x5cv04q"]
+[gd_scene load_steps=13 format=3 uid="uid://b7xiv7x5cv04q"]
 
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="3_40wdo"]
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="3_gl05p"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="4_cwlon"]
+[ext_resource type="Script" uid="uid://clc0ayjvpkdkd" path="res://components/ability_animated_sprite.gd" id="4_nbhyu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
 size = Vector2(32, 32)
@@ -32,10 +33,10 @@ unique_name_in_owner = true
 material = ExtResource("2_cwlon")
 texture = ExtResource("1_4a83h")
 
-[node name="AbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+[node name="ActivateAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
 unique_name_in_owner = true
-position = Vector2(0, -36)
 animation = &""
+script = ExtResource("4_nbhyu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
