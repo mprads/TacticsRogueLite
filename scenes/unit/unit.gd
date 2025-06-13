@@ -19,6 +19,7 @@ signal unit_selected(unit: Unit)
 @onready var filling: Sprite2D = $Visuals/Filling
 @onready var aiming_ability_animated_sprite: AnimatedSprite2D = %AimingAbilityAnimatedSprite
 @onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
 @onready var unit_state_machine: UnitStateMachine = $UnitStateMachine
@@ -54,6 +55,7 @@ func take_damage(damage: int) -> void:
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 
 	stats.take_damage(modified_damage)
+	animation_player.play("damage")
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
 	if stats.health <= 0:

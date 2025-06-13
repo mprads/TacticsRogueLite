@@ -13,7 +13,7 @@ signal request_clear_fill_layer
 @export var ai: EnemyAI : set = set_enemy_ai
 @export var outline_thickness: float = 1.0
 @onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
-
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
@@ -45,6 +45,7 @@ func take_damage(damage: int) -> void:
 
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 	stats.take_damage(modified_damage)
+	animation_player.play("damage")
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
 	if stats.health <= 0:
@@ -58,6 +59,7 @@ func spawn_floating_text(text: String, text_color) -> void:
 
 
 func move_cleanup() -> void:
+	animation_player.stop()
 	if ai.selected_ability:
 		var ability_target:Array[Area2D] = [ai.current_target]
 		# TODO add to ai ability to self target for buffs
@@ -82,6 +84,7 @@ func update_enemy() -> void:
 
 
 func take_turn() -> void:
+	animation_player.play("walk")
 	request_enemy_move.emit(ai.next_tile)
 
 
