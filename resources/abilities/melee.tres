@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://02c36qgil0wx"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://02c36qgil0wx"]
 
 [ext_resource type="Script" uid="uid://c6mm720la6mee" path="res://resources/abilities/attack.gd" id="1_7f3yd"]
+[ext_resource type="SpriteFrames" uid="uid://d228t1jon8dop" path="res://assets/abilities/melee/melee.tres" id="2_v2mmo"]
 
 [resource]
 script = ExtResource("1_7f3yd")
@@ -8,6 +9,8 @@ base_damage = 5
 name = "Melee"
 cost = 0
 atlas_coord = Vector2i(2, 1)
+tooltip = ""
+sprite_frames = ExtResource("2_v2mmo")
 type = 0
 target = 3
 shape = Array[Vector2i]([])

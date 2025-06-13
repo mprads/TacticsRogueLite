@@ -158,12 +158,10 @@ script = ExtResource("8_540om")
 [node name="AimingAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
 unique_name_in_owner = true
 position = Vector2(0, -36)
-animation = &""
 script = ExtResource("9_1ifho")
 
 [node name="ActivateAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
 unique_name_in_owner = true
-animation = &""
 script = ExtResource("9_1ifho")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]

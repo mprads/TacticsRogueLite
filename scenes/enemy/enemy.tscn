@@ -152,7 +152,6 @@ texture = ExtResource("1_4a83h")
 
 [node name="ActivateAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
 unique_name_in_owner = true
-animation = &""
 script = ExtResource("4_nbhyu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]

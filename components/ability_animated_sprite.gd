@@ -4,6 +4,7 @@ extends AnimatedSprite2D
 
 func _ready() -> void:
 	animation_finished.connect(_on_animation_finished)
+	set_sprite_frames(null)
 
 
 func set_and_play(frames: SpriteFrames, animation_name: String) -> void:
