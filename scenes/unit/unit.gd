@@ -48,6 +48,13 @@ func _input(event: InputEvent) -> void:
 	unit_state_machine.on_input(event)
 
 
+func face_source(source_position: Vector2) -> void:
+	if source_position.x >= global_position.x:
+		outline.flip_h = false
+	else:
+		outline.flip_h = true
+
+
 func take_damage(damage: int) -> void:
 	if not stats:
 		return

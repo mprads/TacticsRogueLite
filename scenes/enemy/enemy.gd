@@ -40,6 +40,13 @@ func _input(event: InputEvent) -> void:
 		enemy_selected.emit(self)
 
 
+func face_source(source_position: Vector2) -> void:
+	if source_position.x <= global_position.x:
+		sprite_2d.flip_h = false
+	else:
+		sprite_2d.flip_h = true
+
+
 func take_damage(damage: int) -> void:
 	if not stats: return
 
@@ -92,6 +99,7 @@ func use_ability(ability: Ability, targets: Array[Area2D]) -> void:
 	if ability.sprite_frames:
 		for target in targets:
 			if target is Unit or target is Enemy:
+				face_source(target.global_position)
 				target.activate_ability_animated_sprite.set_and_play(ability.sprite_frames, "activate")
 		await targets[0].activate_ability_animated_sprite.animation_finished
 	ability.apply_effects(targets, modifier_manager)
