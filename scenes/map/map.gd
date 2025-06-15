@@ -26,6 +26,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if not visible:
+		return
+
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
 	var viewport_size: Vector2 = get_viewport_rect().size
 
