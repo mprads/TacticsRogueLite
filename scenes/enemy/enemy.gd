@@ -56,6 +56,8 @@ func take_damage(damage: int) -> void:
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
 	if stats.health <= 0:
+		animation_player.play("death")
+		await animation_player.animation_finished
 		_death_cleanup()
 
 
