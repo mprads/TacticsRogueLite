@@ -34,6 +34,18 @@ window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "purple",
+"res://components/": "orange",
+"res://global/": "gray",
+"res://managers/": "yellow",
+"res://resources/": "red",
+"res://scenes/": "green",
+"res://scripts/": "blue"
+}
+
 [gui]
 
 theme/custom="uid://bb13lcap1d54e"

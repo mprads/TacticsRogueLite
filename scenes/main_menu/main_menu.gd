@@ -11,7 +11,6 @@ const PARTY_SELECT = preload("res://scenes/party_select/party_select.tscn")
 @onready var exit_button: Button = %ExitButton
 @onready var settings_ui: Control = %SettingsUI
 @onready var rng_seed_line_edit: LineEdit = $RNGSeedTextEdit
-@onready var unit: Unit = $Unit
 
 
 func _ready() -> void:
@@ -19,11 +18,6 @@ func _ready() -> void:
 	new_run_button.pressed.connect(_on_new_run_button_pressed)
 	setting_button.pressed.connect(_on_setting_button_pressed)
 	exit_button.pressed.connect(_on_exit_button_pressed)
-
-	var tween := create_tween().set_loops()
-
-	tween.tween_property(unit, "position:x", unit.position.x + 50, .5)
-	tween.tween_property(unit, "position:x", unit.position.x - 50, 1)
 
 
 func _on_continue_button_pressed() -> void:

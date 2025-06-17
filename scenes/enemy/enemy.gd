@@ -12,6 +12,8 @@ signal request_clear_fill_layer
 @export var stats: EnemyStats : set = set_enemy_stats
 @export var ai: EnemyAI : set = set_enemy_ai
 @export var outline_thickness: float = 1.0
+@onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
@@ -38,14 +40,24 @@ func _input(event: InputEvent) -> void:
 		enemy_selected.emit(self)
 
 
+func face_source(source_position: Vector2) -> void:
+	if source_position.x <= global_position.x:
+		sprite_2d.flip_h = false
+	else:
+		sprite_2d.flip_h = true
+
+
 func take_damage(damage: int) -> void:
 	if not stats: return
 
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 	stats.take_damage(modified_damage)
+	animation_player.play("damage")
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
 	if stats.health <= 0:
+		animation_player.play("death")
+		await animation_player.animation_finished
 		_death_cleanup()
 
 
@@ -56,6 +68,7 @@ func spawn_floating_text(text: String, text_color) -> void:
 
 
 func move_cleanup() -> void:
+	animation_player.stop()
 	if ai.selected_ability:
 		var ability_target:Array[Area2D] = [ai.current_target]
 		# TODO add to ai ability to self target for buffs
@@ -80,12 +93,18 @@ func update_enemy() -> void:
 
 
 func take_turn() -> void:
+	animation_player.play("walk")
 	request_enemy_move.emit(ai.next_tile)
 
 
 func use_ability(ability: Ability, targets: Array[Area2D]) -> void:
+	if ability.sprite_frames:
+		for target in targets:
+			if target is Unit or target is Enemy:
+				target.activate_ability_animated_sprite.set_and_play(ability.sprite_frames, "activate")
+		face_source(targets[0].global_position)
+		await targets[0].activate_ability_animated_sprite.animation_finished
 	ability.apply_effects(targets, modifier_manager)
-	await get_tree().create_timer(.5).timeout
 	turn_completed.emit()
 
 

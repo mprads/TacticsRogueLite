@@ -1,0 +1,86 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://d228t1jon8dop"]
+
+[ext_resource type="Texture2D" uid="uid://1oe1du6gy5cm" path="res://assets/abilities/shared_sprite_sheets/Purple Effect Bullet Impact Explosion 32x32.png" id="1_xiq08"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe4xe"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyfh0"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxv87"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q7xu"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qju2"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s602"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1r53"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(352, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1682s"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(384, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6hbv"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(416, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5uwq"]
+atlas = ExtResource("1_xiq08")
+region = Rect2(448, 96, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe4xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyfh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxv87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q7xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qju2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s602")
+}],
+"loop": false,
+"name": &"activate",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1r53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1682s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6hbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5uwq")
+}],
+"loop": true,
+"name": &"aiming",
+"speed": 8.0
+}]

@@ -4,7 +4,12 @@ extends UnitState
 
 func enter() -> void:
 	unit.selectable = false
+	unit.animation_player.play("idle")
 	enable_drap_and_drop()
+
+
+func exit() -> void:
+	unit.animation_player.stop()
 
 
 func on_input(event: InputEvent) -> void:

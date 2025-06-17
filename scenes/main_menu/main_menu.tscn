@@ -1,35 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://r7l5dv2hbg2g"]
+[gd_scene load_steps=7 format=3 uid="uid://r7l5dv2hbg2g"]
 
 [ext_resource type="Script" uid="uid://dno8aa2qkwhud" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_a1gy5"]
-[ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="2_lqpn7"]
-[ext_resource type="Resource" uid="uid://rh433c6ika0r" path="res://resources/units/main_menu_placeholder.tres" id="3_ob46e"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="4_qel0l"]
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="4_uqeha"]
-[ext_resource type="Shader" uid="uid://cpn30gm2odhph" path="res://assets/shaders/liquid.tres" id="5_rrgl4"]
 [ext_resource type="PackedScene" uid="uid://c3ndgvvb3dsdg" path="res://scenes/ui/settings/settings_ui.tscn" id="5_wem23"]
-[ext_resource type="Texture2D" uid="uid://cvjn48j3w8g2l" path="res://assets/sprites/potions/liquid_fill.png" id="6_dn3lk"]
 [ext_resource type="Texture2D" uid="uid://dnxmwngq5lcri" path="res://assets/sprites/potions/round_liquid_mask.png" id="7_4ujhu"]
-[ext_resource type="Script" uid="uid://bcgev77t65m02" path="res://scenes/unit/liquid.gd" id="8_vnpsp"]
-[ext_resource type="Script" uid="uid://bv1gbgl3olxql" path="res://scenes/unit/pendulum.gd" id="9_a1gy5"]
-[ext_resource type="Script" uid="uid://ubw0jaxdt4pp" path="res://components/drag_and_drop.gd" id="10_dn3lk"]
-[ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="10_vnpsp"]
-[ext_resource type="Script" uid="uid://dj6o3c6q523ek" path="res://scripts/states/unit_state_machine.gd" id="11_4ujhu"]
-[ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="12_vnpsp"]
-[ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="14_a1gy5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bq5lc"]
-resource_local_to_scene = true
-shader = ExtResource("5_rrgl4")
-shader_parameter/Color = Color(1, 1, 1, 1)
-shader_parameter/SurfaceRotation = 0.0
-shader_parameter/Fill = 1.0
-shader_parameter/FillTexture = ExtResource("6_dn3lk")
-shader_parameter/NoiseScale = 2
-shader_parameter/MinOpacity = 1.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlit"]
-size = Vector2(36, 36)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -103,70 +79,6 @@ text = "Naming is Hard :)"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Unit" type="Area2D" parent="." groups=["player_unit"]]
-position = Vector2(310, 185)
-scale = Vector2(5, 5)
-script = ExtResource("2_lqpn7")
-stats = ExtResource("3_ob46e")
-
-[node name="Visuals" type="CanvasGroup" parent="Unit"]
-position = Vector2(-1, -12)
-
-[node name="Outline" type="Sprite2D" parent="Unit/Visuals"]
-texture = ExtResource("4_qel0l")
-
-[node name="Filling" type="Sprite2D" parent="Unit/Visuals"]
-material = SubResource("ShaderMaterial_bq5lc")
-position = Vector2(0, -1)
-texture = ExtResource("7_4ujhu")
-region_rect = Rect2(0, 0, 32, 32)
-script = ExtResource("8_vnpsp")
-
-[node name="Pendulum" type="Marker2D" parent="Unit/Visuals/Filling"]
-position = Vector2(1, 2)
-script = ExtResource("9_a1gy5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Unit"]
-visible = false
-position = Vector2(0, -11)
-shape = SubResource("RectangleShape2D_bhlit")
-
-[node name="FloatingTextSpawner" type="Node2D" parent="Unit"]
-position = Vector2(-1, -12)
-script = ExtResource("10_vnpsp")
-
-[node name="DragAndDrop" type="Node" parent="Unit" node_paths=PackedStringArray("target")]
-script = ExtResource("10_dn3lk")
-target = NodePath("..")
-
-[node name="UnitStateMachine" type="Node" parent="Unit"]
-script = ExtResource("11_4ujhu")
-initial_state = 4
-
-[node name="ModifierManager" type="Node" parent="Unit"]
-script = ExtResource("12_vnpsp")
-
-[node name="StatusManager" parent="Unit" node_paths=PackedStringArray("status_owner") instance=ExtResource("14_a1gy5")]
-status_owner = NodePath("..")
-
-[node name="StateDebug" type="Label" parent="Unit"]
-visible = false
-offset_left = -39.0
-offset_top = -46.0
-offset_right = 39.0
-offset_bottom = -24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "no state"
-
-[node name="MoveableDebug" type="Label" parent="Unit"]
-visible = false
-offset_left = -25.0
-offset_top = -37.0
-offset_right = 67.0
-offset_bottom = -15.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "moveable"
-
 [node name="Enemy" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 416.0
@@ -175,6 +87,25 @@ offset_right = 456.0
 offset_bottom = 77.0
 scale = Vector2(5, 5)
 texture = ExtResource("4_uqeha")
+
+[node name="UnitOutline" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 33.0
+offset_right = 244.0
+offset_bottom = 73.0
+scale = Vector2(5, 5)
+texture = ExtResource("4_qel0l")
+
+[node name="UnitFilling" type="TextureRect" parent="."]
+modulate = Color(0.654902, 0, 0, 1)
+layout_mode = 0
+offset_left = 204.0
+offset_top = 33.0
+offset_right = 244.0
+offset_bottom = 73.0
+scale = Vector2(5, 5)
+texture = ExtResource("7_4ujhu")
 
 [node name="SettingsUI" parent="." instance=ExtResource("5_wem23")]
 unique_name_in_owner = true

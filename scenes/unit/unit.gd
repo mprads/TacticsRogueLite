@@ -17,6 +17,9 @@ signal unit_selected(unit: Unit)
 @onready var visuals: CanvasGroup = $Visuals
 @onready var outline: Sprite2D = $Visuals/Outline
 @onready var filling: Sprite2D = $Visuals/Filling
+@onready var aiming_ability_animated_sprite: AnimatedSprite2D = %AimingAbilityAnimatedSprite
+@onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
 @onready var unit_state_machine: UnitStateMachine = $UnitStateMachine
@@ -45,6 +48,13 @@ func _input(event: InputEvent) -> void:
 	unit_state_machine.on_input(event)
 
 
+func face_source(source_position: Vector2) -> void:
+	if source_position.x >= global_position.x:
+		outline.flip_h = false
+	else:
+		outline.flip_h = true
+
+
 func take_damage(damage: int) -> void:
 	if not stats:
 		return
@@ -52,6 +62,7 @@ func take_damage(damage: int) -> void:
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 
 	stats.take_damage(modified_damage)
+	animation_player.play("damage")
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
 
 	if stats.health <= 0:
