@@ -13,16 +13,19 @@ const MAP_LINE = preload("res://scenes/map/map_line.tscn")
 @onready var lines: Node2D = %Lines
 @onready var rooms: Node2D = %Rooms
 @onready var map_generator: MapGenerator = %MapGenerator
+@onready var map_texture_panel: Panel = %MapTexturePanel
 
 var map_data: Array[Array]
 var encounters: int
 var last_room: Room
 var camera_edge_x: float
+var viewport_size: Vector2
 
 
 func _ready() -> void:
 	# TODO find a better value to clamp max
-	camera_edge_x = MapGenerator.X_DIST * (MapGenerator.TOTAL_ENCOUNTERS - 3)
+	viewport_size = get_viewport_rect().size
+	camera_edge_x = (MapGenerator.X_DIST * (MapGenerator.TOTAL_ENCOUNTERS + .5)) - viewport_size.x
 
 
 func _process(_delta: float) -> void:
@@ -30,18 +33,22 @@ func _process(_delta: float) -> void:
 		return
 
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
-	var viewport_size: Vector2 = get_viewport_rect().size
 
 	if mouse_position.x >= viewport_size.x - FAST_SCROLL_THRESHOLD:
 		camera_2d.position.x += FAST_SCROLL_SPEED
+		map_texture_panel.position.x -= FAST_SCROLL_SPEED
 	elif mouse_position.x >= viewport_size.x - SLOW_SCROLL_THRESHOLD:
 		camera_2d.position.x += SLOW_SCROLL_SPEED
+		map_texture_panel.position.x -= SLOW_SCROLL_SPEED
 	elif mouse_position.x <= FAST_SCROLL_THRESHOLD:
 		camera_2d.position.x -= FAST_SCROLL_SPEED
+		map_texture_panel.position.x += FAST_SCROLL_SPEED
 	elif mouse_position.x <= SLOW_SCROLL_THRESHOLD:
 		camera_2d.position.x -= SLOW_SCROLL_SPEED
+		map_texture_panel.position.x += SLOW_SCROLL_SPEED
 
 	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
+	map_texture_panel.position.x = clamp(map_texture_panel.position.x, -(map_texture_panel.size.x - viewport_size.x), 0)
 
 
 func _input(event: InputEvent) -> void:
@@ -50,16 +57,20 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.x += FAST_SCROLL_SPEED
+		map_texture_panel.position.x -= FAST_SCROLL_SPEED
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.x -= FAST_SCROLL_SPEED
+		map_texture_panel.position.x += FAST_SCROLL_SPEED
 
 	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
+	map_texture_panel.position.x = clamp(map_texture_panel.position.x, -(map_texture_panel.size.x - viewport_size.x), 0)
 
 
 func generate_new_map() -> void:
 	encounters = 0
 	map_data = map_generator.generate_map()
 	_create_map()
+	map_texture_panel.size.x = MapGenerator.X_DIST * MapGenerator.TOTAL_ENCOUNTERS
 
 
 func show_map() -> void:
