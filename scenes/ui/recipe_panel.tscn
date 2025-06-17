@@ -1,47 +1,57 @@
-[gd_scene load_steps=11 format=3 uid="uid://dir2ch11l46uj"]
+[gd_scene load_steps=14 format=3 uid="uid://bco8m3hvgdeh4"]
 
 [ext_resource type="Script" uid="uid://3yfbh6o15bpf" path="res://scenes/ui/recipe_panel.gd" id="1_1frvh"]
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_ppbwj"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="2_ppbwj"]
+[ext_resource type="Texture2D" uid="uid://c675cicgors76" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/Book.png" id="3_c0nwo"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1frvh"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wvyrg"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppbwj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3lsj"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0nwo"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jww1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvc3i"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_elpsr"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6sdw"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1nvh"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_visod"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjf10"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1frvh"]
-resource_local_to_scene = true
-bg_color = Color(0.536823, 0.536823, 9.62615e-07, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p1nvh"]
+texture = ExtResource("1_ppbwj")
+texture_margin_left = 14.0
+texture_margin_top = 5.0
+texture_margin_right = 13.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(112, 336, 32, 16)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppbwj"]
-resource_local_to_scene = true
-bg_color = Color(0.45098, 0.45098, 0, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.536823, 0.536823, 9.62615e-07, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjf10"]
+texture = ExtResource("1_ppbwj")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(225, 337, 30, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvyrg"]
+texture = ExtResource("3_c0nwo")
+texture_margin_left = 42.0
+texture_margin_right = 9.0
+region_rect = Rect2(306, 19, 76, 12)
 
 [node name="RecipePanel" type="Button"]
-custom_minimum_size = Vector2(300, 100)
-offset_right = 300.0
+custom_minimum_size = Vector2(225, 100)
+offset_right = 225.0
 offset_bottom = 100.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1frvh")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ppbwj")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_c0nwo")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_gvc3i")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_p6sdw")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_visod")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wvyrg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_q3lsj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8jww1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_elpsr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p1nvh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fjf10")
 script = ExtResource("1_1frvh")
 
-[node name="Background" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(280, 100)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,115 +59,85 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
 
-[node name="PotionVisuals" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = -4
-
-[node name="Header" type="Panel" parent="PotionVisuals"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 28)
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(220, 30)
 layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1frvh")
+theme_override_styles/panel = SubResource("StyleBoxTexture_p1nvh")
 
-[node name="PotionLabel" type="Label" parent="PotionVisuals/Header"]
+[node name="PotionLabel" type="Label" parent="VBoxContainer/Panel"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 32)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Potion Name"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PotionVisuals"]
-custom_minimum_size = Vector2(280, 48)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-mouse_filter = 2
-theme_override_constants/separation = 16
-
-[node name="ComponentContainer" type="HBoxContainer" parent="PotionVisuals/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
 mouse_filter = 2
 alignment = 1
 
-[node name="ItemPanel" parent="PotionVisuals/HBoxContainer/ComponentContainer" instance=ExtResource("2_ppbwj")]
-layout_mode = 2
-
-[node name="ItemPanel2" parent="PotionVisuals/HBoxContainer/ComponentContainer" instance=ExtResource("2_ppbwj")]
-layout_mode = 2
-
-[node name="AbilityContainter" type="HBoxContainer" parent="PotionVisuals/HBoxContainer"]
+[node name="AbilityContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 48)
 layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 2
+theme_override_constants/separation = 2
 
-[node name="Ability1" type="Panel" parent="PotionVisuals/HBoxContainer/AbilityContainter"]
-custom_minimum_size = Vector2(80, 48)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="AbilityLabel1" type="Label" parent="PotionVisuals/HBoxContainer/AbilityContainter/Ability1"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.03009, 0.994731)
-text = "Lightning Strike"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Ability2" type="Panel" parent="PotionVisuals/HBoxContainer/AbilityContainter"]
-custom_minimum_size = Vector2(80, 48)
+[node name="AbilityPanel" type="Panel" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+custom_minimum_size = Vector2(100, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_fjf10")
 
-[node name="AbilityLabel2" type="Label" parent="PotionVisuals/HBoxContainer/AbilityContainter/Ability2"]
-unique_name_in_owner = true
+[node name="AbilityLabel" type="Label" parent="VBoxContainer/HBoxContainer/AbilityContainer/AbilityPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.998954, 0.994731)
+text = "Lightning Strike"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AbilityPanel2" type="Panel" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+custom_minimum_size = Vector2(100, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_fjf10")
+
+[node name="AbilityLabel" type="Label" parent="VBoxContainer/HBoxContainer/AbilityContainer/AbilityPanel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Fireball"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
-[node name="Border" type="Panel" parent="."]
+[node name="ComponentContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ppbwj")
+layout_mode = 2
+
+[node name="ItemPanel" parent="VBoxContainer/HBoxContainer/ComponentContainer" instance=ExtResource("2_ppbwj")]
+layout_mode = 2
+
+[node name="ItemPanel2" parent="VBoxContainer/HBoxContainer/ComponentContainer" instance=ExtResource("2_ppbwj")]
+layout_mode = 2
+
+[node name="TextureSeparator" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 12)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_wvyrg")
