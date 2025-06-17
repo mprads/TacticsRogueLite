@@ -215,7 +215,8 @@ func _on_enemy_show_intent(enemy: Enemy) -> void:
 
 func _on_enemy_died(enemy: Enemy) -> void:
 	enemies_to_act.erase(enemy)
-	remove_child(enemy)
+	if is_instance_valid(enemy):
+		remove_child(enemy)
 	# TODO once dots are added going to to need to call _next_enemy_turn
 	if get_child_count() == 0:
 		all_enemies_defeated.emit()
