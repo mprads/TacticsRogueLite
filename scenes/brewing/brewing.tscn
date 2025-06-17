@@ -1,13 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkokbdb73arai"]
+[gd_scene load_steps=12 format=3 uid="uid://dkokbdb73arai"]
 
 [ext_resource type="Script" uid="uid://bypkjjcfg5vrv" path="res://scenes/brewing/brewing.gd" id="1_vb5it"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_jra8c"]
 [ext_resource type="Texture2D" uid="uid://b728al2il4cpu" path="res://assets/sprites/brewing/cauldron.png" id="2_m1eth"]
 [ext_resource type="Texture2D" uid="uid://dqyyo508w5ksl" path="res://assets/sprites/brewing/cauldron_contents.png" id="3_b2k4q"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="5_b2k4q"]
-[ext_resource type="PackedScene" uid="uid://dir2ch11l46uj" path="res://scenes/ui/recipe_panel.tscn" id="5_ix4mr"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="5_m1eth"]
+[ext_resource type="Texture2D" uid="uid://c675cicgors76" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/Book.png" id="6_wvyrg"]
 [ext_resource type="PackedScene" uid="uid://6m8egyaev33y" path="res://scenes/ui/vial_panel.tscn" id="8_jra8c"]
+[ext_resource type="PackedScene" uid="uid://bco8m3hvgdeh4" path="res://scenes/ui/recipe_panel.tscn" id="10_wvyrg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jww1"]
+atlas = ExtResource("6_wvyrg")
+region = Rect2(16, 32, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elpsr"]
+atlas = ExtResource("6_wvyrg")
+region = Rect2(192, 32, 80, 94)
 
 [node name="Brewing" type="Node2D"]
 script = ExtResource("1_vb5it")
@@ -65,6 +74,30 @@ layout_mode = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="OpenBook" type="TextureRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 28.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_8jww1")
+stretch_mode = 5
+
+[node name="ClosedBook" type="TextureRect" parent="UI"]
+visible = false
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -26.0
+offset_right = 306.0
+offset_bottom = 23.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_elpsr")
+stretch_mode = 5
+
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 custom_minimum_size = Vector2(640, 360)
 anchors_preset = 15
@@ -73,36 +106,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 32
+theme_override_constants/margin_left = 69
 theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_right = 69
+theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
-custom_minimum_size = Vector2(0, 310)
 layout_mode = 2
-size_flags_vertical = 0
 
 [node name="RecipeScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 100)
+custom_minimum_size = Vector2(225, 50)
 layout_mode = 2
 
 [node name="RecipeContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 310)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RecipePanel" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("10_wvyrg")]
 layout_mode = 2
 
-[node name="RecipePanel" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
+[node name="RecipePanel2" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("10_wvyrg")]
 layout_mode = 2
 
-[node name="RecipePanel2" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
-layout_mode = 2
-
-[node name="RecipePanel3" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
-layout_mode = 2
-
-[node name="RecipePanel4" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("5_ix4mr")]
+[node name="RecipePanel3" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("10_wvyrg")]
 layout_mode = 2
 
 [node name="PartyUI" parent="UI/MarginContainer/HBoxContainer" instance=ExtResource("5_b2k4q")]

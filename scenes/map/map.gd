@@ -14,6 +14,7 @@ const MAP_LINE = preload("res://scenes/map/map_line.tscn")
 @onready var rooms: Node2D = %Rooms
 @onready var map_generator: MapGenerator = %MapGenerator
 @onready var map_texture_panel: Panel = %MapTexturePanel
+@onready var background: CanvasLayer = %Background
 
 var map_data: Array[Array]
 var encounters: int
@@ -76,11 +77,13 @@ func generate_new_map() -> void:
 func show_map() -> void:
 	show()
 	camera_2d.enabled = true
+	background.visible = true
 
 
 func hide_map() -> void:
 	hide()
 	camera_2d.enabled = false
+	background.visible = false
 
 
 func unlock_row(row: int = encounters) -> void:

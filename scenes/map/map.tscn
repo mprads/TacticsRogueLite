@@ -40,6 +40,7 @@ elite_battle_stats_pool = ExtResource("4_ph54e")
 boss_battle = ExtResource("5_fcby6")
 
 [node name="Background" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = -1
 
 [node name="MapTexturePanel" type="Panel" parent="Background"]
