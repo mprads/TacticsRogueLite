@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://do85c02nl7l33"]
+[gd_scene load_steps=8 format=3 uid="uid://do85c02nl7l33"]
 
 [ext_resource type="Script" uid="uid://fiydsahgaxay" path="res://scenes/map/map_room.gd" id="1_gyfd6"]
 [ext_resource type="Texture2D" uid="uid://cna447ovou157" path="res://assets/icons/map/Battle.png" id="1_hwhxx"]
@@ -6,9 +6,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyfd6"]
 radius = 21.0238
-
-[sub_resource type="LabelSettings" id="LabelSettings_gyfd6"]
-font_size = 8
 
 [sub_resource type="Animation" id="Animation_wln44"]
 length = 0.001
@@ -113,13 +110,12 @@ visible = false
 shape = SubResource("CircleShape2D_gyfd6")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -20.0
 offset_top = 7.0
 offset_right = 20.0
 offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "null"
-label_settings = SubResource("LabelSettings_gyfd6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

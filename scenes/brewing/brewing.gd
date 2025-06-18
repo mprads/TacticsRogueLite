@@ -1,7 +1,7 @@
 class_name Brewing
 extends Node2D
 
-enum STAGE {RECIPE, SELECTION, POTION, VIAL}
+enum STAGE { RECIPE, SELECTION, POTION, VIAL }
 
 const RECIPE_PANEL = preload("res://scenes/ui/recipe_panel.tscn")
 const ITEM_PANEL = preload("res://scenes/ui/item_panel.tscn")
@@ -22,7 +22,6 @@ const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 @onready var selection_buttons: VBoxContainer = %SelectionButtons
 @onready var potion_button: Button = %PotionButton
 @onready var vial_button: Button = %VialButton
-@onready var back_button: Button = %BackButton
 @onready var leave_button: Button = %LeaveButton
 @onready var no_recipes_label: Label = %NoRecipesLabel
 
@@ -37,7 +36,6 @@ func _ready() -> void:
 	party_ui.unit_selected.connect(_on_party_unit_selected)
 	potion_button.pressed.connect(_on_potion_button_pressed)
 	vial_button.pressed.connect(_on_vial_button_pressed)
-	back_button.pressed.connect(_on_back_button_pressed)
 	leave_button.pressed.connect(Events.brewing_exited.emit)
 
 	for recipe in ItemConfig.POTION_KEYS:
@@ -55,39 +53,35 @@ func _update_view(next_stage: STAGE) -> void:
 			cauldron_contents.hide()
 			component_container.hide()
 			selection_buttons.hide()
-			back_button.hide()
 			leave_button.show()
 			current_potion = null
 			current_recipe = null
 
 		STAGE.SELECTION:
-			recipe_scroll_container.hide()
+			recipe_scroll_container.show()
 			party_ui.hide()
 			vial_container.hide()
 			cauldron_contents.show()
 			component_container.show()
 			selection_buttons.show()
-			back_button.show()
 			leave_button.hide()
 
 		STAGE.POTION:
-			recipe_scroll_container.hide()
+			recipe_scroll_container.show()
 			party_ui.show()
 			vial_container.hide()
 			cauldron_contents.show()
 			component_container.show()
 			selection_buttons.hide()
-			back_button.show()
 			leave_button.hide()
 
 		STAGE.VIAL:
-			recipe_scroll_container.hide()
+			recipe_scroll_container.show()
 			party_ui.hide()
 			vial_container.show()
 			cauldron_contents.show()
 			component_container.show()
 			selection_buttons.hide()
-			back_button.show()
 			leave_button.hide()
 
 	current_stage = next_stage
@@ -241,13 +235,3 @@ func _on_vial_panel_pressed(vial: Vial) -> void:
 	vial.potion = current_potion
 	_request_remove_components()
 	Events.brewing_exited.emit()
-
-
-func _on_back_button_pressed() -> void:
-	match current_stage:
-		STAGE.SELECTION:
-			_update_view(STAGE.RECIPE)
-		STAGE.POTION:
-			_update_view(STAGE.SELECTION)
-		STAGE.VIAL:
-			_update_view(STAGE.SELECTION)
