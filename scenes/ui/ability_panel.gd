@@ -18,7 +18,7 @@ func set_ability(value: Ability) -> void:
 
 
 func _on_mouse_entered() -> void:
-	var main_tooltip := {"name": ability.name, "description": ability.get_tooltip()}
+	var main_tooltip := { "name": ability.name, "description": ability.get_tooltip() }
 	var secondary := []
 
 	if ability.get("status"):

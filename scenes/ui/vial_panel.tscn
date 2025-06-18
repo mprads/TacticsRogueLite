@@ -1,16 +1,28 @@
 [gd_scene load_steps=11 format=3 uid="uid://6m8egyaev33y"]
 
+[ext_resource type="Texture2D" uid="uid://bnqdx5ci26pmj" path="res://assets/sprites/temp_sheets/UI assets pack 2/Time & weather.png" id="1_0i02h"]
 [ext_resource type="Script" uid="uid://b0ubd3d6nstte" path="res://scenes/ui/vial_panel.gd" id="1_wtuiq"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_2xtt4"]
-[ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="4_007u0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtuiq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv7aw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xtt4"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t8np3"]
+texture = ExtResource("1_0i02h")
+texture_margin_left = 8.0
+texture_margin_top = 10.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(223, 15, 49, 48)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_007u0"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_007u0"]
+texture = ExtResource("1_0i02h")
+texture_margin_left = 7.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 16, 48, 48)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0i02h"]
 
@@ -30,8 +42,8 @@ offset_right = 225.0
 offset_bottom = 50.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wtuiq")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_fv7aw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_2xtt4")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_007u0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t8np3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_007u0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0i02h")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_t8np3")
 script = ExtResource("1_wtuiq")
@@ -49,6 +61,7 @@ theme_override_constants/separation = 0
 [node name="Panel" type="Panel" parent="PotionVisuals"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_0i02h")
 
 [node name="Label" type="Label" parent="PotionVisuals/Panel"]
@@ -78,10 +91,4 @@ alignment = 1
 
 [node name="AbilityContainer" type="HBoxContainer" parent="PotionVisuals/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
-
-[node name="AbilityPanel" parent="PotionVisuals/HBoxContainer/AbilityContainer" instance=ExtResource("4_007u0")]
-layout_mode = 2
-
-[node name="AbilityPanel2" parent="PotionVisuals/HBoxContainer/AbilityContainer" instance=ExtResource("4_007u0")]
 layout_mode = 2

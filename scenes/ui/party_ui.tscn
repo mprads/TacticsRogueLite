@@ -4,13 +4,14 @@
 [ext_resource type="Script" uid="uid://dogqqcw6qw7ut" path="res://scenes/ui/party_ui.gd" id="1_wmevu"]
 
 [node name="PartyUI" type="GridContainer"]
+custom_minimum_size = Vector2(450, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -414.0
-offset_bottom = -2.0
+offset_right = -190.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 2
 script = ExtResource("1_wmevu")
 
 [node name="PartyUnitUI" parent="." instance=ExtResource("1_nk53i")]
