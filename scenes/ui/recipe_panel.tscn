@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bco8m3hvgdeh4"]
+[gd_scene load_steps=12 format=3 uid="uid://bco8m3hvgdeh4"]
 
 [ext_resource type="Script" uid="uid://3yfbh6o15bpf" path="res://scenes/ui/recipe_panel.gd" id="1_1frvh"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_ppbwj"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="2_ppbwj"]
-[ext_resource type="Texture2D" uid="uid://c675cicgors76" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/Book.png" id="3_c0nwo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wvyrg"]
 
@@ -33,16 +32,10 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(225, 337, 30, 15)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvyrg"]
-texture = ExtResource("3_c0nwo")
-texture_margin_left = 42.0
-texture_margin_right = 9.0
-region_rect = Rect2(306, 19, 76, 12)
-
 [node name="RecipePanel" type="Button"]
-custom_minimum_size = Vector2(225, 100)
+custom_minimum_size = Vector2(225, 85)
 offset_right = 225.0
-offset_bottom = 100.0
+offset_bottom = 90.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wvyrg")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q3lsj")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8jww1")
@@ -134,10 +127,3 @@ layout_mode = 2
 
 [node name="ItemPanel2" parent="VBoxContainer/HBoxContainer/ComponentContainer" instance=ExtResource("2_ppbwj")]
 layout_mode = 2
-
-[node name="TextureSeparator" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 12)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_wvyrg")
