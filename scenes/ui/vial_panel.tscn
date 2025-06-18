@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://6m8egyaev33y"]
+[gd_scene load_steps=11 format=3 uid="uid://6m8egyaev33y"]
 
 [ext_resource type="Script" uid="uid://b0ubd3d6nstte" path="res://scenes/ui/vial_panel.gd" id="1_wtuiq"]
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_2xtt4"]
+[ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="4_007u0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtuiq"]
 
@@ -14,23 +16,18 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t8np3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7prdj"]
-resource_local_to_scene = true
-bg_color = Color(0.780392, 0.862745, 0.815686, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtuiq"]
-resource_local_to_scene = true
-bg_color = Color(0.45098, 0.45098, 0, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.780392, 0.862745, 0.815686, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0i02h"]
+texture = ExtResource("2_2xtt4")
+texture_margin_left = 14.0
+texture_margin_top = 5.0
+texture_margin_right = 13.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(112, 336, 32, 16)
 
 [node name="VialPanel" type="Button"]
-custom_minimum_size = Vector2(300, 100)
-offset_right = 300.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(225, 50)
+offset_right = 225.0
+offset_bottom = 50.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wtuiq")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_fv7aw")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_2xtt4")
@@ -39,19 +36,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_0i02h")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_t8np3")
 script = ExtResource("1_wtuiq")
 
-[node name="Background" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(280, 100)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
 [node name="PotionVisuals" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(280, 100)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,43 +46,42 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Header" type="Panel" parent="PotionVisuals"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 28)
+[node name="Panel" type="Panel" parent="PotionVisuals"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7prdj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_0i02h")
 
-[node name="Label" type="Label" parent="PotionVisuals/Header"]
+[node name="Label" type="Label" parent="PotionVisuals/Panel"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 28)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 5.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -5.5
+offset_right = 32.5
+offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 8
 text = "Empty Vial"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="AttackContainer" type="HBoxContainer" parent="PotionVisuals"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 48)
+[node name="HBoxContainer" type="HBoxContainer" parent="PotionVisuals"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 3
 mouse_filter = 2
 alignment = 1
 
-[node name="Border" type="Panel" parent="."]
+[node name="AbilityContainer" type="HBoxContainer" parent="PotionVisuals/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wtuiq")
+layout_mode = 2
+
+[node name="AbilityPanel" parent="PotionVisuals/HBoxContainer/AbilityContainer" instance=ExtResource("4_007u0")]
+layout_mode = 2
+
+[node name="AbilityPanel2" parent="PotionVisuals/HBoxContainer/AbilityContainer" instance=ExtResource("4_007u0")]
+layout_mode = 2

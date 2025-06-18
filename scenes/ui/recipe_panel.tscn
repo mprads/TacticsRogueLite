@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bco8m3hvgdeh4"]
+[gd_scene load_steps=13 format=3 uid="uid://bco8m3hvgdeh4"]
 
 [ext_resource type="Script" uid="uid://3yfbh6o15bpf" path="res://scenes/ui/recipe_panel.gd" id="1_1frvh"]
+[ext_resource type="Texture2D" uid="uid://bnqdx5ci26pmj" path="res://assets/sprites/temp_sheets/UI assets pack 2/Time & weather.png" id="1_c0nwo"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_ppbwj"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="2_ppbwj"]
 
@@ -10,9 +11,21 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jww1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_elpsr"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0nwo"]
+texture = ExtResource("1_c0nwo")
+texture_margin_left = 7.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 16, 48, 48)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1nvh"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gvc3i"]
+texture = ExtResource("1_c0nwo")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 7.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(224, 15, 48, 50)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjf10"]
 
@@ -39,8 +52,8 @@ offset_bottom = 90.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wvyrg")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q3lsj")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8jww1")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_elpsr")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_p1nvh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c0nwo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gvc3i")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fjf10")
 script = ExtResource("1_1frvh")
 
@@ -56,6 +69,7 @@ mouse_filter = 2
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(220, 30)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_p1nvh")
 
 [node name="PotionLabel" type="Label" parent="VBoxContainer/Panel"]
@@ -87,6 +101,7 @@ custom_minimum_size = Vector2(100, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fjf10")
 
 [node name="AbilityLabel" type="Label" parent="VBoxContainer/HBoxContainer/AbilityContainer/AbilityPanel"]
@@ -105,6 +120,7 @@ custom_minimum_size = Vector2(100, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fjf10")
 
 [node name="AbilityLabel" type="Label" parent="VBoxContainer/HBoxContainer/AbilityContainer/AbilityPanel2"]

@@ -15,6 +15,7 @@ region_rect = Rect2(225, 337, 30, 15)
 custom_minimum_size = Vector2(100, 24)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_2rdgq")
 script = ExtResource("1_767w8")
 
