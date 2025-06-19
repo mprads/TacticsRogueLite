@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_4k3nb")
 key = 8
-name = "Debuff"
+name = "Debuff Potion"
 color = Color(0.0862745, 0.352941, 0.298039, 1)
 abilities = Array[ExtResource("1_bb76u")]([ExtResource("2_6bth3"), ExtResource("3_x5q70")])
 metadata/_custom_type_script = "uid://dgy3brauklt5w"

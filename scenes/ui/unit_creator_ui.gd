@@ -5,6 +5,7 @@ signal unit_created(unit_stats: UnitStats)
 
 const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 
+@export var header_text: String = "Give Your %s %s Unit A Name"
 @export var unit_stats: UnitStats:
 	set = set_unit_stats
 
@@ -14,8 +15,7 @@ const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 @onready var unit_details_panel: UnitDetailsPanel = %UnitDetailsPanel
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var bottle_ability_panel: AbilityPanel = %BottleAbilityPanel
-@onready var bottle_label: Label = %BottleLabel
-@onready var potion_label: Label = %PotionLabel
+@onready var header_label: Label = %HeaderLabel
 
 
 func _ready() -> void:
@@ -24,6 +24,8 @@ func _ready() -> void:
 
 func set_unit_stats(value: UnitStats) -> void:
 	unit_stats = value
+	var bottle_name := ""
+	var potion_name := ""
 
 	if not unit_stats:
 		return
@@ -31,11 +33,12 @@ func set_unit_stats(value: UnitStats) -> void:
 	unit_details_panel.unit_stats = unit_stats
 	unit_icon_panel.unit_stats = unit_stats
 
-	bottle_label.text = unit_stats.bottle.name
+	bottle_name = unit_stats.bottle.name
 
 	if unit_stats.potion:
-		potion_label.text = unit_stats.potion.name
+		potion_name = unit_stats.potion.name
 
+	header_label.text = header_text %[bottle_name, potion_name]
 	_update_ability_visuals()
 	line_edit.grab_focus()
 

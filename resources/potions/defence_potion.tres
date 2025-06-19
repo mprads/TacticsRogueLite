@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_rkasl")
 key = 5
-name = "Defence"
+name = "Defence Potion"
 color = Color(0.976471, 0.760784, 0.168627, 1)
 abilities = Array[ExtResource("1_5bqoi")]([ExtResource("2_s44ry"), ExtResource("3_kgyk8")])
 metadata/_custom_type_script = "uid://dgy3brauklt5w"

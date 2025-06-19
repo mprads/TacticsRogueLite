@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_prak7")
 key = 6
-name = "Offence"
+name = "Offence Potion"
 color = Color(0.909804, 0.231373, 0.231373, 1)
 abilities = Array[ExtResource("1_6h6ix")]([ExtResource("2_oqjad"), ExtResource("3_cvlcb")])
 metadata/_custom_type_script = "uid://dgy3brauklt5w"
