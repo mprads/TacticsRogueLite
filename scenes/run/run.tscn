@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://r76gjny5escp"]
+[gd_scene load_steps=19 format=3 uid="uid://r76gjny5escp"]
 
 [ext_resource type="Script" uid="uid://b88pduqxgjpng" path="res://scenes/run/run.gd" id="1_l7o68"]
 [ext_resource type="Resource" uid="uid://cog76ftpquwhv" path="res://resources/testing_run_stats.tres" id="2_cnkn7"]
@@ -11,11 +11,20 @@
 [ext_resource type="Script" uid="uid://mr05hbk8c26o" path="res://managers/artifact_manager.gd" id="7_y3spc"]
 [ext_resource type="PackedScene" uid="uid://digq3nyeei1di" path="res://scenes/ui/artifacts/artifact_ui.tscn" id="8_7yo0l"]
 [ext_resource type="PackedScene" uid="uid://bg1lcvjde6tv6" path="res://scenes/ui/vial_ui.tscn" id="8_cnkn7"]
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="8_kdgoc"]
 [ext_resource type="Texture2D" uid="uid://eum7lvresw1s" path="res://assets/icons/16x16cog.png" id="9_x53nd"]
 [ext_resource type="PackedScene" uid="uid://dpxmxey3qs0o6" path="res://scenes/inventory/inventory_ui.tscn" id="11_g42ja"]
 [ext_resource type="PackedScene" uid="uid://c3ndgvvb3dsdg" path="res://scenes/ui/settings/settings_ui.tscn" id="12_cnkn7"]
 [ext_resource type="PackedScene" uid="uid://delw0ryy5peue" path="res://scenes/ui/popups/tooltip.tscn" id="15_x53nd"]
 [ext_resource type="PackedScene" uid="uid://kxbhppakiums" path="res://scenes/ui/unit_fill_ui.tscn" id="16_l6p45"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3spc"]
+texture = ExtResource("8_kdgoc")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 16.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(722, 18, 46, 44)
 
 [node name="Run" type="Node"]
 script = ExtResource("1_l7o68")
@@ -40,12 +49,13 @@ script = ExtResource("7_y3spc")
 [node name="TopBar" type="CanvasLayer" parent="."]
 layer = 10
 
-[node name="ColorRect" type="ColorRect" parent="TopBar"]
+[node name="Panel" type="Panel" parent="TopBar"]
 custom_minimum_size = Vector2(0, 28)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-color = Color(0.243137, 0.207843, 0.27451, 1)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_y3spc")
 
 [node name="MarginContainer" type="MarginContainer" parent="TopBar"]
 custom_minimum_size = Vector2(0, 28)

@@ -61,7 +61,6 @@ corner_radius_bottom_left = 3
 default_font = ExtResource("1_x504n")
 default_font_size = 8
 Button/styles/disabled = SubResource("StyleBoxTexture_f8kr5")
-Button/styles/focus = null
 Button/styles/hover = SubResource("StyleBoxTexture_1ffvk")
 Button/styles/normal = SubResource("StyleBoxTexture_f1q2c")
 Button/styles/pressed = SubResource("StyleBoxTexture_btemj")

@@ -12,7 +12,7 @@ const GOLD_ICON = preload("res://assets/icons/gold.png")
 
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var unit_details_panel: UnitDetailsPanel = %UnitDetailsPanel
-@onready var ability_container: HBoxContainer = %AbilityContainer
+@onready var ability_container: VBoxContainer = %AbilityContainer
 @onready var contents_container: VBoxContainer = %ContentsContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
