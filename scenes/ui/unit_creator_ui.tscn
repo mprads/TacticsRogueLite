@@ -1,9 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb1m0r2sstiwk"]
+[gd_scene load_steps=9 format=3 uid="uid://bb1m0r2sstiwk"]
 
 [ext_resource type="Script" uid="uid://bquskkmalxqh0" path="res://scenes/ui/unit_creator_ui.gd" id="1_6jq4v"]
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_5rxw4"]
 [ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="2_6jq4v"]
 [ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="2_yjxky"]
 [ext_resource type="PackedScene" uid="uid://cy4lefedf1dqo" path="res://scenes/ui/unit_details_panel.tscn" id="3_yjxky"]
+[ext_resource type="Texture2D" uid="uid://c675cicgors76" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/Book.png" id="6_vbyal"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cw783"]
+texture = ExtResource("2_5rxw4")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
+region_rect = Rect2(611, 83, 42, 58)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ev7vh"]
+texture = ExtResource("6_vbyal")
+texture_margin_left = 43.0
+texture_margin_right = 31.0
+region_rect = Rect2(305, 19, 77, 12)
 
 [node name="UnitCreatorUI" type="Control"]
 layout_mode = 3
@@ -28,6 +44,7 @@ offset_right = 150.0
 offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cw783")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -51,12 +68,14 @@ size_flags_vertical = 4
 [node name="BottleContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 alignment = 1
 
 [node name="BottleLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BottleContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
+text = "Text Here"
 horizontal_alignment = 1
 
 [node name="UnitDetailsPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BottleContainer" instance=ExtResource("3_yjxky")]
@@ -87,8 +106,10 @@ layout_mode = 2
 [node name="AbilityPanel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer/AbilityContainer" instance=ExtResource("2_6jq4v")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ev7vh")
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

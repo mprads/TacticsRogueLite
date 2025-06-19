@@ -61,16 +61,28 @@ func _roll_artifact_reward() -> void:
 	artifact_reward.pressed.connect(_on_artifact_reward_taken.bind(drop))
 
 
+func _check_remaining_rewards() -> void:
+	# Because the signal has to be sent before its queue_free have to check if the single
+	# childed is queued for deletion or create a lambda to delay a frame
+	if rewards.get_child_count() == 1 and rewards.get_child(0).is_queued_for_deletion():
+		Events.battle_reward_exited.emit()
+	elif rewards.get_child_count() <= 0:
+		Events.battle_reward_exited.emit()
+
+
 func _on_gold_reward_taken(gold: int) -> void:
 	Events.request_add_gold.emit(gold)
+	_check_remaining_rewards()
 
 
 func _on_loot_reward_taken(item: Item) -> void:
 	Events.request_add_item.emit(item)
+	_check_remaining_rewards()
 
 
 func _on_artifact_reward_taken(artifact: Artifact) -> void:
 	Events.request_add_artifact.emit(artifact)
+	_check_remaining_rewards()
 
 
 func _on_continue_button_pressed() -> void:
