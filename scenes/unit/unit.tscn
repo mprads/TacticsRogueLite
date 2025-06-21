@@ -144,7 +144,6 @@ material = ExtResource("2_540om")
 texture = ExtResource("2_l0n34")
 
 [node name="Filling" type="Sprite2D" parent="Visuals"]
-visible = false
 material = SubResource("ShaderMaterial_l0n34")
 position = Vector2(0, -1)
 texture = ExtResource("4_5im7a")
@@ -171,7 +170,6 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_bhlit")
 
@@ -204,7 +202,7 @@ text = "no state"
 [node name="MoveableDebug" type="Label" parent="."]
 offset_left = -25.0
 offset_top = -37.0
-offset_right = 67.0
-offset_bottom = -15.0
+offset_right = 44.0
+offset_bottom = -24.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "moveable"
