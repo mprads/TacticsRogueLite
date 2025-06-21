@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=23 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://ccxsj7lmuvtu4" path="res://resources/battle_maps/battle_map_pool.tres" id="2_mvulk"]
@@ -19,11 +19,18 @@
 [ext_resource type="Script" uid="uid://etyxvtkdpd6h" path="res://scenes/target_selector_ui/target_selector.gd" id="15_6ofp8"]
 [ext_resource type="PackedScene" uid="uid://dm2vpxif7k43a" path="res://scenes/ui/battle/party_selection_container.tscn" id="16_6ofp8"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="19_w40i5"]
+[ext_resource type="Texture2D" uid="uid://c8d3c14kcslbc" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/UI.png" id="20_fe4ja"]
 
 [sub_resource type="Curve" id="Curve_icg0e"]
 _limits = [0.2, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.902439, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sgdsx"]
+texture = ExtResource("20_fe4ja")
+texture_margin_left = 47.0
+texture_margin_right = 47.0
+region_rect = Rect2(496, 209, 96, 30)
 
 [node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
@@ -159,3 +166,40 @@ offset_bottom = 235.0
 theme_override_font_sizes/font_size = 16
 disabled = true
 text = "Start Battle"
+
+[node name="TurnChangeBanner" type="Panel" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -83.0
+offset_right = 96.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_sgdsx")
+
+[node name="BannerLabel" type="Label" parent="UI/TurnChangeBanner"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -22.0
+offset_right = 49.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 16
+text = "Enemy Turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
