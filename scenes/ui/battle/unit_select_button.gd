@@ -13,7 +13,9 @@ const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 @onready var potion_icon: TextureRect = %PotionIcon
 @onready var bottle_icon: TextureRect = %BottleIcon
 @onready var health_bar: ProgressBar = %HealthBar
+@onready var shield_bar_outline: Panel = %ShieldBarOutline
 @onready var shield_bar: ProgressBar = %ShieldBar
+@onready var potion_bar_outline: Panel = %PotionBarOutline
 @onready var potion_bar: ProgressBar = %PotionBar
 @onready var keybind_label: Label = $KeybindLabel
 
@@ -69,6 +71,9 @@ func _update_visuals() -> void:
 		shield_bar.max_value = unit.stats.max_health
 		shield_bar.value = unit.stats.shield
 
+
+		shield_bar_outline.visible =  unit.stats.shield > 0
+
 		if unit.stats.potion:
 			potion_icon.visible = true
 			potion_icon.modulate = unit.stats.potion.color
@@ -77,7 +82,7 @@ func _update_visuals() -> void:
 			potion_bar.value = unit.stats.oz
 		else:
 			potion_icon.visible = false
-			potion_bar.visible = false
+			potion_bar_outline.visible = false
 	else:
 		bottle_icon.texture = null
 		potion_icon.texture = null
