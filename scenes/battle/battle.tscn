@@ -147,6 +147,10 @@ layer = -10
 
 [node name="PartySelectionContainer" parent="UI" instance=ExtResource("16_6ofp8")]
 unique_name_in_owner = true
+offset_left = 4.0
+offset_top = 32.0
+offset_right = 124.0
+offset_bottom = 322.0
 
 [node name="UnitContextMenu" parent="UI" instance=ExtResource("12_mxe8n")]
 unique_name_in_owner = true

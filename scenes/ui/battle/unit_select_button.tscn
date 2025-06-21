@@ -1,18 +1,35 @@
-[gd_scene load_steps=14 format=3 uid="uid://cr2pf64g056g3"]
+[gd_scene load_steps=20 format=3 uid="uid://cr2pf64g056g3"]
 
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="1_2unhm"]
+[ext_resource type="Texture2D" uid="uid://c8d3c14kcslbc" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/UI.png" id="1_057j8"]
 [ext_resource type="Script" uid="uid://b8wymhrjv0jlf" path="res://scenes/ui/battle/unit_select_button.gd" id="1_eqp6i"]
 [ext_resource type="Texture2D" uid="uid://cjh7q57rx3hfu" path="res://assets/sprites/potions/outline_sheet.png" id="2_eqp6i"]
+[ext_resource type="Texture2D" uid="uid://c675cicgors76" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/Book.png" id="2_erphx"]
 [ext_resource type="Texture2D" uid="uid://ci4b36vey6ara" path="res://assets/icons/16x16move.png" id="3_057j8"]
 [ext_resource type="Texture2D" uid="uid://c4i803i607t3t" path="res://assets/icons/16x16attack.png" id="4_rufao"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_egrrk"]
-atlas = ExtResource("2_eqp6i")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5j4w4"]
+texture = ExtResource("2_erphx")
+texture_margin_left = 36.0
+texture_margin_top = 36.0
+texture_margin_right = 36.0
+texture_margin_bottom = 36.0
+region_rect = Rect2(18, 290, 44, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_erphx"]
-atlas = ExtResource("1_2unhm")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp0f2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ydllm"]
+texture = ExtResource("1_057j8")
+texture_margin_left = 12.0
+texture_margin_top = 14.0
+texture_margin_right = 12.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(531, 241, 26, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rufao"]
+texture = ExtResource("1_057j8")
+texture_margin_right = 17.0
+region_rect = Rect2(558, 188, 31, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ktk7"]
 bg_color = Color(0.222923, 0.102412, 0.0593943, 1)
@@ -31,67 +48,93 @@ bg_color = Color(0.222923, 0.102412, 0.0593943, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydllm"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_egrrk"]
+atlas = ExtResource("2_eqp6i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erphx"]
+atlas = ExtResource("1_2unhm")
+region = Rect2(32, 0, 32, 32)
+
 [node name="UnitSelectButton" type="Button"]
-custom_minimum_size = Vector2(120, 36)
-offset_right = 4.0
-offset_bottom = 4.0
+custom_minimum_size = Vector2(112, 56)
+offset_right = 106.0
+offset_bottom = 45.0
+theme_override_styles/focus = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hp0f2")
 script = ExtResource("1_eqp6i")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="IconBorder" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 47.0
+offset_bottom = 47.0
 mouse_filter = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ydllm")
 
-[node name="InventoryUnitUI6" type="HBoxContainer" parent="MarginContainer"]
+[node name="Divider" type="Panel" parent="IconBorder"]
+custom_minimum_size = Vector2(62, 8)
+layout_mode = 0
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 106.0
+offset_bottom = 32.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rufao")
+
+[node name="KeybindLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 38.0
+offset_right = 150.0
+offset_bottom = 49.0
+text = "[Unassigned]"
+
+[node name="IconContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+offset_left = 48.0
+offset_top = 29.0
+offset_right = 84.0
+offset_bottom = 57.0
 mouse_filter = 2
 
-[node name="InventoryUnitIcon" type="Control" parent="MarginContainer/InventoryUnitUI6"]
-custom_minimum_size = Vector2(32, 32)
+[node name="MoveIcon" type="TextureRect" parent="IconContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
-
-[node name="BottleIcon" type="TextureRect" parent="MarginContainer/InventoryUnitUI6/InventoryUnitIcon"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-mouse_filter = 2
-texture = SubResource("AtlasTexture_egrrk")
+texture = ExtResource("3_057j8")
 stretch_mode = 5
 
-[node name="PotionIcon" type="TextureRect" parent="MarginContainer/InventoryUnitUI6/InventoryUnitIcon"]
+[node name="AttackIcon" type="TextureRect" parent="IconContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 0.168627, 1)
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-mouse_filter = 2
-texture = SubResource("AtlasTexture_erphx")
-stretch_mode = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/InventoryUnitUI6"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("4_rufao")
+stretch_mode = 5
+
+[node name="BarsContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 48.0
+offset_top = 11.0
+offset_right = 106.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="MarginContainer/InventoryUnitUI6/VBoxContainer"]
+[node name="Control" type="Control" parent="BarsContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="HealthBar" type="ProgressBar" parent="MarginContainer/InventoryUnitUI6/VBoxContainer/Control"]
+[node name="HealthBar" type="ProgressBar" parent="BarsContainer/Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 1
@@ -106,7 +149,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5j4w4")
 value = 100.0
 show_percentage = false
 
-[node name="ShieldBar" type="ProgressBar" parent="MarginContainer/InventoryUnitUI6/VBoxContainer/Control"]
+[node name="ShieldBar" type="ProgressBar" parent="BarsContainer/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -120,7 +163,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_057j8")
 value = 75.0
 show_percentage = false
 
-[node name="PotionBar" type="ProgressBar" parent="MarginContainer/InventoryUnitUI6/VBoxContainer"]
+[node name="PotionBar" type="ProgressBar" parent="BarsContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
@@ -131,32 +174,34 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ydllm")
 value = 50.0
 show_percentage = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/InventoryUnitUI6"]
+[node name="InventoryUnitIcon" type="Control" parent="."]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-mouse_filter = 2
-
-[node name="MoveIcon" type="TextureRect" parent="MarginContainer/InventoryUnitUI6/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 41.0
+offset_bottom = 41.0
 size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("3_057j8")
-stretch_mode = 5
 
-[node name="AttackIcon" type="TextureRect" parent="MarginContainer/InventoryUnitUI6/HBoxContainer"]
+[node name="BottleIcon" type="TextureRect" parent="InventoryUnitIcon"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-texture = ExtResource("4_rufao")
-stretch_mode = 5
-
-[node name="KeybindLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
-offset_left = 123.0
-offset_top = 11.0
-offset_right = 186.0
-offset_bottom = 22.0
-text = "[Unassigned]"
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_egrrk")
+stretch_mode = 5
+
+[node name="PotionIcon" type="TextureRect" parent="InventoryUnitIcon"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0.168627, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_erphx")
+stretch_mode = 5
