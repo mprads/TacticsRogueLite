@@ -11,11 +11,6 @@ extends Control
 @onready var melee_button: Button = %MeleeButton
 @onready var defend_button: Button = %DefendButton
 
-@onready var header: Panel = %Header
-@onready var border: Panel = %Border
-@onready var header_sb: StyleBoxFlat = header.get_theme_stylebox("panel")
-@onready var border_sb: StyleBoxFlat = border.get_theme_stylebox("panel")
-
 
 func _input(event: InputEvent) -> void:
 	if not unit:
@@ -54,8 +49,7 @@ func _set_visuals() -> void:
 	header_label.text = unit.stats.name
 
 	if unit.stats.potion:
-		header_sb.bg_color = unit.stats.potion.color
-		border_sb.border_color = unit.stats.potion.color
+		header_label.modulate = unit.stats.potion.color
 		ability_container.visible = true
 		ability_button_1.pressed.connect(
 			_on_ability_button_pressed.bind(unit.stats.potion.abilities[0])
@@ -71,8 +65,6 @@ func _set_visuals() -> void:
 		ability_button_2.disabled = unit.stats.oz < unit.stats.potion.abilities[1].cost
 	else:
 		ability_container.visible = false
-		header_sb.bg_color = Color("c7dcd0")
-		border_sb.border_color = Color("c7dcd0")
 
 	melee_button.pressed.connect(
 		_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[0])

@@ -7,7 +7,7 @@
 custom_minimum_size = Vector2(120, 36)
 offset_right = 120.0
 offset_bottom = 290.0
-theme_override_constants/separation = 0
+theme_override_constants/separation = -4
 script = ExtResource("1_mv4ic")
 
 [node name="UnitSelectButton" parent="." instance=ExtResource("1_dn27q")]

@@ -77,6 +77,7 @@ func _update_visuals() -> void:
 		if unit.stats.potion:
 			potion_icon.visible = true
 			potion_icon.modulate = unit.stats.potion.color
+			potion_bar_outline.visible = true
 			potion_bar.modulate = unit.stats.potion.color
 			potion_bar.max_value = unit.stats.max_oz
 			potion_bar.value = unit.stats.oz
