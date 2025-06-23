@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene load_steps=27 format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://ccxsj7lmuvtu4" path="res://resources/battle_maps/battle_map_pool.tres" id="2_mvulk"]
@@ -20,11 +20,38 @@
 [ext_resource type="PackedScene" uid="uid://dm2vpxif7k43a" path="res://scenes/ui/battle/party_selection_container.tscn" id="16_6ofp8"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="19_w40i5"]
 [ext_resource type="Texture2D" uid="uid://c8d3c14kcslbc" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/UI.png" id="20_fe4ja"]
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="20_sgdsx"]
 
 [sub_resource type="Curve" id="Curve_icg0e"]
 _limits = [0.2, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.902439, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5moxy"]
+texture = ExtResource("20_sgdsx")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(721, 65, 46, 46)
+modulate_color = Color(0.239216, 0.231373, 0.231373, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_156m4"]
+texture = ExtResource("20_sgdsx")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(721, 65, 46, 46)
+modulate_color = Color(0.701961, 0.717647, 0.717647, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pyfix"]
+texture = ExtResource("20_sgdsx")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(721, 65, 46, 46)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sgdsx"]
 texture = ExtResource("20_fe4ja")
@@ -154,6 +181,7 @@ offset_bottom = 322.0
 
 [node name="UnitContextMenu" parent="UI" instance=ExtResource("12_mxe8n")]
 unique_name_in_owner = true
+visible = false
 offset_left = 466.0
 offset_top = 256.0
 offset_right = 631.0
@@ -167,6 +195,11 @@ offset_top = 311.0
 offset_right = 398.0
 offset_bottom = 349.0
 theme_override_font_sizes/font_size = 16
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5moxy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_156m4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_156m4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_156m4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pyfix")
 disabled = true
 text = "Start Battle"
 

@@ -16,14 +16,15 @@ const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 @onready var party_ui: PartyUI = %PartyUI
 @onready var vial_container: VBoxContainer = %VialContainer
 
-@onready var component_container: HBoxContainer = %ComponentContainer
-@onready var cauldron_contents: TextureRect = %CauldronContents
-
 @onready var selection_buttons: VBoxContainer = %SelectionButtons
 @onready var potion_button: Button = %PotionButton
 @onready var vial_button: Button = %VialButton
 @onready var leave_button: Button = %LeaveButton
-@onready var no_recipes_label: Label = %NoRecipesLabel
+@onready var no_recipes_panel: Panel = %NoRecipesPanel
+
+@onready var open_book: TextureRect = %OpenBook
+@onready var closed_book: TextureRect = %ClosedBook
+
 
 var all_recipes_keys: Array[int] = []
 var filtered_recipes_keys: Array[int] =[]
@@ -50,8 +51,6 @@ func _update_view(next_stage: STAGE) -> void:
 			recipe_scroll_container.show()
 			party_ui.hide()
 			vial_container.hide()
-			cauldron_contents.hide()
-			component_container.hide()
 			selection_buttons.hide()
 			leave_button.show()
 			current_potion = null
@@ -61,28 +60,19 @@ func _update_view(next_stage: STAGE) -> void:
 			recipe_scroll_container.show()
 			party_ui.hide()
 			vial_container.hide()
-			cauldron_contents.show()
-			component_container.show()
 			selection_buttons.show()
-			leave_button.hide()
 
 		STAGE.POTION:
 			recipe_scroll_container.show()
 			party_ui.show()
 			vial_container.hide()
-			cauldron_contents.show()
-			component_container.show()
 			selection_buttons.hide()
-			leave_button.hide()
 
 		STAGE.VIAL:
 			recipe_scroll_container.show()
 			party_ui.hide()
 			vial_container.show()
-			cauldron_contents.show()
-			component_container.show()
 			selection_buttons.hide()
-			leave_button.hide()
 
 	current_stage = next_stage
 
@@ -121,22 +111,11 @@ func _update_recipes() -> void:
 
 func _handle_no_recipes() -> void:
 	if filtered_recipes_keys.is_empty():
-		no_recipes_label.show()
+		no_recipes_panel.show()
+		closed_book.show()
+		open_book.hide()
 	else:
-		no_recipes_label.hide()
-
-
-func _update_cauldron(potion: Potion, recipe: BrewingRecipe) -> void:	
-	for child in component_container.get_children():
-		child.queue_free()
-
-	for cost in recipe.costs:
-		var item_panel_instance := ITEM_PANEL.instantiate()
-		component_container.add_child(item_panel_instance)
-		item_panel_instance.item = ItemConfig.get_item_resource(cost.item_key)
-		item_panel_instance.count = cost.amount
-
-	cauldron_contents.modulate = potion.color
+		no_recipes_panel.hide()
 
 
 func _update_buttons(potion: Potion, recipe: BrewingRecipe) -> void:
@@ -163,19 +142,21 @@ func _update_vials() -> void:
 
 
 func _request_remove_components() -> void:
-	for component in component_container.get_children():
-		Events.request_remove_item.emit(component.item, component.count)
+	pass
+	#for component in component_container.get_children():
+		#Events.request_remove_item.emit(component.item, component.count)
 
 
 func _update_component_cost(is_vial: bool) -> void:
-	for component in component_container.get_children():
-		var cost_index = current_recipe.costs.find_custom(func(item): return item.item_key == component.item.key)
-		var cost = current_recipe.costs[cost_index]
-
-		if is_vial:
-			component.count = clampi(cost.amount / 2, 1, cost.amount)
-		else:
-			component.count = cost.amount
+	pass
+	#for component in component_container.get_children():
+		#var cost_index = current_recipe.costs.find_custom(func(item): return item.item_key == component.item.key)
+		#var cost = current_recipe.costs[cost_index]
+#
+		#if is_vial:
+			#component.count = clampi(cost.amount / 2, 1, cost.amount)
+		#else:
+			#component.count = cost.amount
 
 
 func set_inventory_manager(value: InventoryManager) -> void:
@@ -209,7 +190,6 @@ func _on_recipe_panel_pressed(potion: Potion, recipe: BrewingRecipe) -> void:
 	current_potion = potion
 	current_recipe = recipe
 
-	_update_cauldron(potion, recipe)
 	_update_buttons(potion, recipe)
 
 	_update_view(STAGE.SELECTION)
