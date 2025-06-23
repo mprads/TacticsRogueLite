@@ -49,7 +49,9 @@ func _process(_delta: float) -> void:
 		map_texture_panel.position.x += SLOW_SCROLL_SPEED
 
 	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
-	map_texture_panel.position.x = clamp(map_texture_panel.position.x, -(map_texture_panel.size.x - viewport_size.x), 0)
+	map_texture_panel.position.x = clamp(
+		map_texture_panel.position.x, -(map_texture_panel.size.x - viewport_size.x), 0
+	)
 
 
 func _input(event: InputEvent) -> void:
@@ -64,7 +66,9 @@ func _input(event: InputEvent) -> void:
 		map_texture_panel.position.x += FAST_SCROLL_SPEED
 
 	camera_2d.position.x = clamp(camera_2d.position.x, 0, camera_edge_x)
-	map_texture_panel.position.x = clamp(map_texture_panel.position.x, -(map_texture_panel.size.x - viewport_size.x), 0)
+	map_texture_panel.position.x = clamp(
+		map_texture_panel.position.x, -(map_texture_panel.size.x - viewport_size.x), 0
+	)
 
 
 func generate_new_map() -> void:

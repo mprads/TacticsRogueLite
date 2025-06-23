@@ -89,7 +89,6 @@ func _filter_recipes() -> void:
 					return false
 			else: 
 				return false
-
 		return true
 		)
 
