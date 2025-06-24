@@ -155,7 +155,6 @@ func _on_enemy_turn_ended() -> void:
 	_handle_turn_change("Player", player_manager.start_turn)
 
 
-
 func _on_enemy_manager_all_enemies_defeated() -> void:
 	Events.activate_artifacts_by_type.emit(Artifact.TYPE.END_OF_COMBAT)
 	Events.battle_won.emit()
@@ -166,7 +165,7 @@ func _on_player_turn_ended() -> void:
 
 	if enemy_manager.get_child_count() == 0:
 		return
-	
+
 	_handle_turn_change("Enemy", enemy_manager.start_turn)
 
 

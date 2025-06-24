@@ -52,7 +52,7 @@ texture_margin_bottom = 5.0
 region_rect = Rect2(112, 336, 32, 16)
 
 [node name="PartyUnitUI" type="Button"]
-custom_minimum_size = Vector2(225, 80)
+custom_minimum_size = Vector2(230, 85)
 offset_right = 225.0
 offset_bottom = 80.0
 size_flags_horizontal = 4
@@ -75,6 +75,7 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vr33k")
 
 [node name="PotionLabel" type="Label" parent="VBoxContainer/Panel"]

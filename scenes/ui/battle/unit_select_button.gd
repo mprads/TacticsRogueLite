@@ -8,7 +8,7 @@ const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 	set = set_unit
 
 @onready var move_icon: TextureRect = %MoveIcon
-@onready var attack_icon: TextureRect = %AttackIcon
+@onready var ability_icon: TextureRect = %AbilityIcon
 
 @onready var potion_icon: TextureRect = %PotionIcon
 @onready var bottle_icon: TextureRect = %BottleIcon
@@ -21,6 +21,11 @@ const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 
 var keycode: String = "Unassigned"
 var input_map_id: String = ""
+
+
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -40,6 +45,7 @@ func set_unit(value: Unit) -> void:
 	Events.player_turn_started.connect(_on_player_turn_started)
 	Events.unit_died.connect(_on_unit_died)
 	unit.movement_complete.connect(_on_movement_complete)
+	unit.turn_complete.connect(_on_turn_complete)
 	unit.stats.changed.connect(_update_visuals)
 	_update_visuals()
 
@@ -93,8 +99,13 @@ func _on_movement_complete() -> void:
 	move_icon.modulate = Color("3a3a3a")
 
 
+func _on_turn_complete() -> void:
+	ability_icon.modulate = Color("3a3a3a")
+
+
 func _on_player_turn_started() -> void:
 	move_icon.modulate = Color.WHITE
+	ability_icon.modulate = Color.WHITE
 
 
 func _on_unit_died(dead_unit: Unit) -> void:
@@ -102,3 +113,15 @@ func _on_unit_died(dead_unit: Unit) -> void:
 		return
 
 	queue_free()
+
+
+func _on_mouse_entered() -> void:
+	if not unit:
+		return
+	unit.on_mouse_entered()
+
+
+func _on_mouse_exited() -> void:
+	if not unit:
+		return
+	unit.on_mouse_exited()
