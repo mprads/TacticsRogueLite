@@ -140,22 +140,28 @@ func _update_vials() -> void:
 		vial_panel_instance.pressed.connect(_on_vial_panel_pressed.bind(vial))
 
 
-func _request_remove_components() -> void:
-	pass
-	#for component in component_container.get_children():
-		#Events.request_remove_item.emit(component.item, component.count)
+func _request_remove_components(is_vial: bool = false) -> void:
+	for cost in current_recipe.costs:
+		var count := cost.amount
+		if is_vial:
+			count = clampi(cost.amount / 2, 1, cost.amount)
+
+		Events.request_remove_item.emit(ItemConfig.get_item_resource(cost.item_key), count)
 
 
-func _update_component_cost(is_vial: bool) -> void:
-	pass
-	#for component in component_container.get_children():
-		#var cost_index = current_recipe.costs.find_custom(func(item): return item.item_key == component.item.key)
-		#var cost = current_recipe.costs[cost_index]
-#
-		#if is_vial:
-			#component.count = clampi(cost.amount / 2, 1, cost.amount)
-		#else:
-			#component.count = cost.amount
+func _update_component_cost(is_vial: bool = false) -> void:
+	for recipe_panel in recipe_container.get_children():
+		for item_panel in recipe_panel.component_container.get_children():
+			var cost_index = recipe_panel.recipe.costs.find_custom(
+				func(item): 
+					return item.item_key == item_panel.item.key
+			)
+			var cost = recipe_panel.recipe.costs[cost_index]
+			var new_cost = cost.amount
+			if is_vial:
+				new_cost = clampi(cost.amount / 2, 1, cost.amount)
+
+			item_panel.count = new_cost
 
 
 func set_inventory_manager(value: InventoryManager) -> void:
@@ -195,7 +201,7 @@ func _on_recipe_panel_pressed(potion: Potion, recipe: BrewingRecipe) -> void:
 
 
 func _on_potion_button_pressed() -> void:
-	_update_component_cost(false)
+	_update_component_cost()
 	_update_view(STAGE.POTION)
 
 
@@ -212,5 +218,5 @@ func _on_party_unit_selected(unit: UnitStats) -> void:
 
 func _on_vial_panel_pressed(vial: Vial) -> void:
 	vial.potion = current_potion
-	_request_remove_components()
+	_request_remove_components(true)
 	Events.brewing_exited.emit()

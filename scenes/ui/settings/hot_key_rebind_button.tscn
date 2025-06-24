@@ -1,6 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw3y62xvj16mh"]
+[gd_scene load_steps=8 format=3 uid="uid://cw3y62xvj16mh"]
 
 [ext_resource type="Script" uid="uid://d0wyowe6ra5sj" path="res://scenes/ui/settings/hot_key_rebind_button.gd" id="1_4aw71"]
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_2eeqn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2eeqn"]
+texture = ExtResource("2_2eeqn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(160, 272, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lae0g"]
+texture = ExtResource("2_2eeqn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(160, 272, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8c0b"]
+texture = ExtResource("2_2eeqn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(160, 272, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ns0jm"]
+texture = ExtResource("2_2eeqn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(160, 272, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5fwx"]
+texture = ExtResource("2_2eeqn")
+texture_margin_left = 4.0
+texture_margin_top = 3.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(80, 273, 32, 15)
 
 [node name="HotKeyRebindButton" type="Control" groups=["hot_key_button"]]
 custom_minimum_size = Vector2(320, 24)
@@ -43,5 +84,10 @@ custom_minimum_size = Vector2(140, 16)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxTexture_2eeqn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_lae0g")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f8c0b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ns0jm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_l5fwx")
 toggle_mode = true
 text = "Unassigned"
