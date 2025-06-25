@@ -8,6 +8,7 @@ const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 
 @onready var unit_icon_panel: UnitIconPanel = %UnitIconPanel
 @onready var unit_details_panel: UnitDetailsPanel = %UnitDetailsPanel
+@onready var potion_label: Label = %PotionLabel
 @onready var ability_container: VBoxContainer = %AbilityContainer
 
 
@@ -32,5 +33,6 @@ func set_unit_stats(value: UnitStats) -> void:
 
 	unit_icon_panel.unit_stats = unit_stats
 	unit_details_panel.unit_stats = unit_stats
+	potion_label.text = unit_stats.name
 	
 	_update_visuals()
