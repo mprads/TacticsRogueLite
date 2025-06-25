@@ -19,5 +19,5 @@ func set_item(value: Item) -> void:
 func set_count(value: int) -> void:
 	count = value
 
-	label.visible = count < 2
+	label.visible = count > 2
 	label.text = str(count)

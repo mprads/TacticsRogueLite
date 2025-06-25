@@ -12,6 +12,7 @@ offset_left = 1.0
 offset_right = -189.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 2

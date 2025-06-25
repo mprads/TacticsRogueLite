@@ -3,8 +3,9 @@ extends Node2D
 
 const SLOW_SCROLL_SPEED := 5
 const FAST_SCROLL_SPEED := 15
-const SLOW_SCROLL_THRESHOLD := 100
-const FAST_SCROLL_THRESHOLD := 40
+const SLOW_SCROLL_THRESHOLD := 50
+const FAST_SCROLL_THRESHOLD := 20
+const TOP_NAV_SCROLL_BUFFER := 50
 const MAP_ROOM = preload("res://scenes/map/map_room.tscn")
 const MAP_LINE = preload("res://scenes/map/map_line.tscn")
 
@@ -34,6 +35,9 @@ func _process(_delta: float) -> void:
 		return
 
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
+
+	if mouse_position.y <= TOP_NAV_SCROLL_BUFFER:
+		return
 
 	if mouse_position.x >= viewport_size.x - FAST_SCROLL_THRESHOLD:
 		camera_2d.position.x += FAST_SCROLL_SPEED
