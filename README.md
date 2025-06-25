@@ -1,6 +1,16 @@
 ## TacticsRogueLite
 Tactics rouge lite where your units are potions that you must fill to give abilities
 
+# Run Start Progress
+-Given 3 options with a randomized unit and 3 loot options
+
+-Loot can be monster drops, gold or a random vial
+
+-Final option gives you a chioce between random starting artifacts
+
+https://github.com/user-attachments/assets/4e03d9d6-7504-49e7-90f0-84950c1e27ff
+
+
 # Map Progress
 -See all generated paths
 
@@ -36,7 +46,7 @@ https://github.com/user-attachments/assets/4a9a4d63-8c7d-4a3f-ad6d-a475416339c2
 
 -Then either at a brewing room or with a vial fill that unit with a potion
 
-https://github.com/user-attachments/assets/13cf56b5-2616-4015-bb2d-429a13201f38
+https://github.com/user-attachments/assets/e3f0fe20-b226-4737-a6f2-a01855d3f4b1
 
 
 # Shop Progress
