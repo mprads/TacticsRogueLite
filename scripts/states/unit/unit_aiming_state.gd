@@ -18,7 +18,9 @@ func use_ability(targets: Array[Area2D]) -> void:
 	for target in targets:
 		if target is Unit or target is Enemy:
 			target.face_source(unit.global_position)
-			target.activate_ability_animated_sprite.set_and_play(unit.selected_ability.sprite_frames, "activate")
+			target.activate_ability_animated_sprite.set_and_play(
+				unit.selected_ability.sprite_frames, "activate"
+			)
 	unit.face_source(targets[0].global_position)
 	await targets[0].activate_ability_animated_sprite.animation_finished
 	unit.selected_ability.apply_effects(targets, unit.modifier_manager)

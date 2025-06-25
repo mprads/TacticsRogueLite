@@ -1,22 +1,27 @@
 class_name VialPanel
 extends Button
 
+const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
+
 @export var potion: Potion:
 	set = _potion
 
 @onready var label: Label = %Label
-@onready var attack_container: HBoxContainer = %AttackContainer
-
-@onready var header: Panel = %Header
-@onready var border: Panel = %Border
-@onready var header_sb: StyleBoxFlat = header.get_theme_stylebox("panel")
-@onready var border_sb: StyleBoxFlat = border.get_theme_stylebox("panel")
+@onready var ability_container: HBoxContainer = %AbilityContainer
 
 
 func _update_visuals() -> void:
+	for child in ability_container.get_children():
+		child.queue_free()
+
+	if not potion: 
+		return
+
 	label.text = "%s Vial" % potion.name
-	header_sb.bg_color = potion.color
-	border_sb.border_color = potion.color
+	for ability in potion.abilities:
+		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		ability_container.add_child(ability_panel_instance)
+		ability_panel_instance.ability = ability
 
 
 func _potion(value: Potion) -> void:

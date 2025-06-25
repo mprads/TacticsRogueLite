@@ -1,45 +1,122 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnvnj7pvvkjhu"]
+[gd_scene load_steps=14 format=3 uid="uid://cnvnj7pvvkjhu"]
 
+[ext_resource type="Texture2D" uid="uid://bnqdx5ci26pmj" path="res://assets/sprites/temp_sheets/UI assets pack 2/Time & weather.png" id="1_c26iq"]
 [ext_resource type="Script" uid="uid://nxhu47ih1nti" path="res://scenes/ui/party_unit_ui.gd" id="1_cgww7"]
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_c784x"]
 [ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="2_cgww7"]
 [ext_resource type="PackedScene" uid="uid://cy4lefedf1dqo" path="res://scenes/ui/unit_details_panel.tscn" id="3_jw2qo"]
+[ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="5_vr33k"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgww7"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ddgtq"]
+texture = ExtResource("1_c26iq")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 15, 48, 49)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jw2qo"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c784x"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c26iq"]
+texture = ExtResource("1_c26iq")
+texture_margin_left = 7.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 16, 48, 48)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vr33k"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_et72x"]
+texture = ExtResource("1_c26iq")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 15, 49, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g1pbf"]
+texture = ExtResource("1_c26iq")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 15, 48, 49)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c26iq"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vr33k"]
+texture = ExtResource("2_c784x")
+texture_margin_left = 14.0
+texture_margin_top = 5.0
+texture_margin_right = 13.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(112, 336, 32, 16)
+
 [node name="PartyUnitUI" type="Button"]
-custom_minimum_size = Vector2(132, 48)
-offset_right = 8.0
-offset_bottom = 8.0
+custom_minimum_size = Vector2(230, 85)
+offset_right = 225.0
+offset_bottom = 80.0
 size_flags_horizontal = 4
-theme_override_styles/focus = SubResource("StyleBoxEmpty_cgww7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ddgtq")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jw2qo")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_c784x")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_vr33k")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_c26iq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_et72x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g1pbf")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_c26iq")
 script = ExtResource("1_cgww7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(132, 48)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vr33k")
+
+[node name="PotionLabel" type="Label" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -5.5
+offset_right = 32.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "Bottlesworth"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(132, 48)
+layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="UnitIconPanel" parent="HBoxContainer" instance=ExtResource("2_cgww7")]
+[node name="UnitIconPanel" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_cgww7")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UnitDetailsPanel" parent="HBoxContainer" instance=ExtResource("3_jw2qo")]
+[node name="UnitDetailsPanel" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_jw2qo")]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityPanel" parent="VBoxContainer/HBoxContainer/AbilityContainer" instance=ExtResource("5_vr33k")]
+layout_mode = 2
+
+[node name="AbilityPanel2" parent="VBoxContainer/HBoxContainer/AbilityContainer" instance=ExtResource("5_vr33k")]
 layout_mode = 2

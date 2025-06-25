@@ -21,6 +21,8 @@ extends Node2D
 @onready var party_selection_container: VBoxContainer = %PartySelectionContainer
 @onready var unit_context_menu: Control = %UnitContextMenu
 @onready var start_battle_button: Button = %StartBattleButton
+@onready var turn_change_banner: Panel = %TurnChangeBanner
+@onready var banner_label: Label = %BannerLabel
 
 var party: Array[UnitStats] = []
 var map: BattleMap
@@ -119,7 +121,19 @@ func _start_battle() -> void:
 
 	unit_context_menu.unit = null
 	Events.activate_artifacts_by_type.emit(Artifact.TYPE.START_OF_COMBAT)
-	player_manager.start_turn()
+	_handle_turn_change("Player", player_manager.start_turn)
+
+
+func _handle_turn_change(label_text: String, start_next_turn: Callable) -> void:
+	banner_label.text = "%s Turn" %label_text
+	var tween: Tween
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_callback(turn_change_banner.show)
+	tween.tween_property(turn_change_banner, "modulate", Color.WHITE, .8)
+	tween.tween_interval(.5)
+	tween.tween_property(turn_change_banner, "modulate", Color.TRANSPARENT, .8)
+	tween.tween_callback(turn_change_banner.hide)
+	tween.tween_callback(start_next_turn)
 
 
 # TODO remove
@@ -137,7 +151,8 @@ func _grid_label_helper(tiles: Array[Vector2i], area: Arena) -> void:
 func _on_enemy_turn_ended() -> void:
 	if player_manager.get_child_count() == 0:
 		return
-	player_manager.start_turn()
+
+	_handle_turn_change("Player", player_manager.start_turn)
 
 
 func _on_enemy_manager_all_enemies_defeated() -> void:
@@ -150,7 +165,8 @@ func _on_player_turn_ended() -> void:
 
 	if enemy_manager.get_child_count() == 0:
 		return
-	enemy_manager.start_turn()
+
+	_handle_turn_change("Enemy", enemy_manager.start_turn)
 
 
 func _on_player_manager_all_units_defeated() -> void:

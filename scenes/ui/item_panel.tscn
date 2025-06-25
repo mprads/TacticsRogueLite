@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8xh1jbh84qru"]
+[gd_scene load_steps=5 format=3 uid="uid://b8xh1jbh84qru"]
 
 [ext_resource type="Script" uid="uid://wmq81pef0sus" path="res://scenes/ui/item_panel.gd" id="1_0k6an"]
+[ext_resource type="Texture2D" uid="uid://b8xkv0w7hhcbb" path="res://assets/sprites/temp_sheets/UI inventory assets mini pack/UI inventory.png" id="2_eojn8"]
 [ext_resource type="Texture2D" uid="uid://omr8v7dmu35c" path="res://assets/icons/items/32x32sulfur.png" id="2_ogmfo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vu1g7"]
+texture = ExtResource("2_eojn8")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(192, 16, 48, 48)
 
 [node name="ItemPanel" type="Control"]
 custom_minimum_size = Vector2(48, 48)
@@ -20,6 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vu1g7")
 
 [node name="ItemIcon" type="TextureRect" parent="Panel"]
 custom_minimum_size = Vector2(32, 32)

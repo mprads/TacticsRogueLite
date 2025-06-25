@@ -12,6 +12,7 @@ signal unit_selected(unit: Unit)
 
 @export var stats: UnitStats:
 	set = set_stats
+
 @export var outline_thickness: float = 1.0
 
 @onready var visuals: CanvasGroup = $Visuals
@@ -34,14 +35,15 @@ var moveable := true:
 var disabled := false:
 	set = set_disabled
 var selectable := false
+var selected := false
 
 var selected_ability: Ability
 
 
 func _ready() -> void:
 	unit_state_machine.init(self)
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
+	mouse_entered.connect(on_mouse_entered)
+	mouse_exited.connect(on_mouse_exited)
 
 
 func _input(event: InputEvent) -> void:
@@ -126,9 +128,9 @@ func set_disabled(value: bool) -> void:
 		visuals.modulate = Color.WHITE
 
 
-func _on_mouse_entered() -> void:
+func on_mouse_entered() -> void:
 	unit_state_machine.on_mouse_entered()
 
 
-func _on_mouse_exited() -> void:
+func on_mouse_exited() -> void:
 	unit_state_machine.on_mouse_exited()

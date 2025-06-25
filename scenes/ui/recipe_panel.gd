@@ -11,28 +11,22 @@ const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 
 @onready var potion_label: Label = %PotionLabel
 @onready var component_container: HBoxContainer = %ComponentContainer
-@onready var ability_containter: HBoxContainer = %AbilityContainter
-
-@onready var header: Panel = %Header
-@onready var border: Panel = %Border
-@onready var header_sb: StyleBoxFlat = header.get_theme_stylebox("panel")
-@onready var border_sb: StyleBoxFlat = border.get_theme_stylebox("panel")
+@onready var ability_container: VBoxContainer = %AbilityContainer
 
 
 func _update_visuals() -> void:
-	for child in ability_containter.get_children():
+	for child in ability_container.get_children():
 		child.queue_free()
 
 	if not potion or not recipe:
 		return
 
 	potion_label.text = potion.name
-	header_sb.bg_color = potion.color
-	border_sb.border_color = potion.color
+	potion_label.modulate = potion.color
 
 	for ability in potion.abilities:
 		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
-		ability_containter.add_child(ability_panel_instance)
+		ability_container.add_child(ability_panel_instance)
 		ability_panel_instance.ability = ability
 
 	_update_components()

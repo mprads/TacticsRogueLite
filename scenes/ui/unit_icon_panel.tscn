@@ -1,7 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://i84sei2wbdf7"]
+[gd_scene load_steps=8 format=3 uid="uid://i84sei2wbdf7"]
 
 [ext_resource type="Script" uid="uid://cspy1rjky5jjl" path="res://scenes/ui/unit_icon_panel.gd" id="1_j3g1x"]
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_nqdb0"]
 [ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="1_vcnjc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3riih"]
+texture = ExtResource("1_nqdb0")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+region_rect = Rect2(721, 17, 46, 46)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j3g1x"]
 load_path = "res://.godot/imported/outline_sheet.png-8b25bd81e000666fdf310f5690c429bd.ctex"
@@ -18,6 +27,7 @@ region = Rect2(64, 0, 32, 32)
 custom_minimum_size = Vector2(48, 48)
 size_flags_horizontal = 4
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3riih")
 script = ExtResource("1_j3g1x")
 
 [node name="UnitIcon" type="Control" parent="."]

@@ -4,28 +4,34 @@
 [ext_resource type="Script" uid="uid://dogqqcw6qw7ut" path="res://scenes/ui/party_ui.gd" id="1_wmevu"]
 
 [node name="PartyUI" type="GridContainer"]
-custom_minimum_size = Vector2(244, 152)
-offset_right = 244.0
-offset_bottom = 152.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
+custom_minimum_size = Vector2(450, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -178.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
 columns = 2
 script = ExtResource("1_wmevu")
 
-[node name="InventoryUnitUI" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI" parent="." instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="InventoryUnitUI2" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI2" parent="." instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="InventoryUnitUI3" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI3" parent="." instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="InventoryUnitUI4" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI4" parent="." instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="InventoryUnitUI5" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI5" parent="." instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="InventoryUnitUI6" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI6" parent="." instance=ExtResource("1_nk53i")]
 layout_mode = 2
