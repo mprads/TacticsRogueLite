@@ -1,0 +1,114 @@
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://cp0wgwpmx3rrl"]
+
+[ext_resource type="Texture2D" uid="uid://1oe1du6gy5cm" path="res://assets/abilities/shared_sprite_sheets/Purple Effect Bullet Impact Explosion 32x32.png" id="1_g08p1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7y3t"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(192, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iwvt"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(224, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77t0w"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(544, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utjap"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(512, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0ce5"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(256, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qihdo"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(288, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kchip"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(576, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xijei"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(608, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78j8e"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(256, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7b5m"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(288, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh5my"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(352, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhyne"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(384, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4hr8"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(416, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uim23"]
+atlas = ExtResource("1_g08p1")
+region = Rect2(448, 96, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7y3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iwvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77t0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utjap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0ce5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qihdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kchip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xijei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78j8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7b5m")
+}],
+"loop": false,
+"name": &"activate",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh5my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhyne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4hr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uim23")
+}],
+"loop": true,
+"name": &"aiming",
+"speed": 8.0
+}]
