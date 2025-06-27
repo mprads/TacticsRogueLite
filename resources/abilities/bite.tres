@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://58vgoswgqpov"]
+
+[ext_resource type="Script" uid="uid://c6mm720la6mee" path="res://resources/abilities/attack.gd" id="1_h6486"]
+[ext_resource type="SpriteFrames" uid="uid://cp0wgwpmx3rrl" path="res://assets/abilities/bite/bite.tres" id="2_bscgm"]
+[ext_resource type="Resource" uid="uid://1h3m11yrk8vw" path="res://resources/statuses/bleed.tres" id="3_bscgm"]
+
+[resource]
+script = ExtResource("1_h6486")
+base_damage = 5
+status = ExtResource("3_bscgm")
+status_chance = 0.3
+name = "Melee"
+cost = 0
+atlas_coord = Vector2i(2, 1)
+tooltip = ""
+sprite_frames = ExtResource("2_bscgm")
+type = 0
+target = 3
+shape = Array[Vector2i]([])
+max_range = 1
+metadata/_custom_type_script = "uid://dxqix5ovn77hl"

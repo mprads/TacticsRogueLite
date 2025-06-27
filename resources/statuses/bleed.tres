@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DamageOverTime" load_steps=3 format=3 uid="uid://1h3m11yrk8vw"]
+
+[ext_resource type="Script" uid="uid://b05fu1vfp8f5m" path="res://resources/statuses/damage_over_time.gd" id="1_ae8x6"]
+[ext_resource type="Texture2D" uid="uid://d2hv3w64o4hu5" path="res://assets/icons/statuses/10x10Bleed.png" id="1_wfeu7"]
+
+[resource]
+script = ExtResource("1_ae8x6")
+damage = 5
+id = "bleed"
+name = "Bleed"
+type = 0
+stack_type = 2
+duration = 2
+stacks = 0
+modifier_type = 2
+modifier_value = 0.0
+icon = ExtResource("1_wfeu7")
+color = Color(0.917647, 0.231373, 0.231373, 1)
+tooltip = "Take 5 damage at the start of the turn"
+metadata/_custom_type_script = "uid://b05fu1vfp8f5m"
