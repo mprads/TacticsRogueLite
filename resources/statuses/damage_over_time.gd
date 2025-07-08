@@ -1,7 +1,7 @@
 class_name DamageOverTime
 extends Status
 
-@export var damage := 0 
+@export var damage := 0
 
 
 func init(target: Node) -> void:

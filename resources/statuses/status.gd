@@ -16,6 +16,7 @@ enum STACK_TYPE { NONE, INTENSITY, DURATION }
 	set = set_stacks
 @export var modifier_type: Modifier.TYPE
 @export var modifier_value: float
+@export var is_negative_effect: bool = false
 
 @export_category("Visuals")
 @export var icon: Texture2D
@@ -54,7 +55,7 @@ func set_stacks(value: int) -> void:
 
 
 func _on_status_changed(modifier_manager: ModifierManager) -> void:
-	if duration <= 0 and stack_type == STACK_TYPE.DURATION and modifier_manager:
+	if (duration <= 0 or stacks <= 0) and modifier_manager:
 		modifier_manager.remove_modifier(id)
 
 	if stack_type == STACK_TYPE.INTENSITY and modifier_manager:

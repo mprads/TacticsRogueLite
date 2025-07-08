@@ -45,6 +45,14 @@ func add_status(status: Status) -> void:
 		_get_status(status.id).stacks += status.stacks
 
 
+func cleanse_negative_statuses() -> void:
+	var statuses := _get_all_statuses()
+	for status in statuses:
+		if status.is_negative_effect:
+			status.duration = 0
+			status.stacks = 0
+
+
 func _has_status(id: String) -> bool:
 	for ui in get_children():
 		if ui.status.id == id:

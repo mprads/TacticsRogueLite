@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dng0wsglcwumd"]
+[gd_resource type="Resource" script_class="Cleanse" load_steps=3 format=3 uid="uid://dng0wsglcwumd"]
 
-[ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_d4awf"]
+[ext_resource type="Script" uid="uid://gxaiqsy5m5o8" path="res://resources/abilities/cleanse.gd" id="1_d4awf"]
+[ext_resource type="SpriteFrames" uid="uid://dwvxbej0c5q2r" path="res://assets/abilities/cleanse/cleanse.tres" id="2_tbr46"]
 
 [resource]
 script = ExtResource("1_d4awf")
 name = "Cleanse"
 cost = 5
 atlas_coord = Vector2i(5, 0)
-tooltip = "Cleanses all statuses off a friendly unit
+tooltip = "Cleanses all negative statuses off a friendly unit
 Cost: 5"
-type = 1
+sprite_frames = ExtResource("2_tbr46")
+type = 2
 target = 1
 shape = Array[Vector2i]([])
 max_range = 3
