@@ -104,6 +104,9 @@ func update_visuals() -> void:
 func set_stats(value: UnitStats) -> void:
 	stats = value
 
+	if not value.changed.is_connected(update_visuals):
+		value.changed.connect(update_visuals)
+
 	if value == null:
 		return
 
