@@ -30,6 +30,23 @@ texture = ExtResource("1_057j8")
 texture_margin_right = 17.0
 region_rect = Rect2(558, 188, 31, 8)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_erphx"]
+texture = ExtResource("1_057j8")
+texture_margin_left = 6.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(769, 66, 46, 12)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rufao"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_egrrk"]
+texture = ExtResource("1_057j8")
+texture_margin_top = 2.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(871, 53, 38, 6)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ktk7"]
 texture = ExtResource("1_057j8")
 texture_margin_left = 2.0
@@ -47,23 +64,6 @@ texture_margin_top = 4.0
 texture_margin_right = 3.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(866, 19, 44, 10)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_erphx"]
-texture = ExtResource("1_057j8")
-texture_margin_left = 6.0
-texture_margin_top = 4.0
-texture_margin_right = 3.0
-texture_margin_bottom = 4.0
-region_rect = Rect2(769, 66, 46, 12)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rufao"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_egrrk"]
-texture = ExtResource("1_057j8")
-texture_margin_top = 2.0
-texture_margin_right = 1.0
-texture_margin_bottom = 2.0
-region_rect = Rect2(871, 53, 38, 6)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xu37h"]
 texture = ExtResource("1_057j8")
@@ -152,6 +152,29 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 1
 
+[node name="PotionBarOutline" type="Panel" parent="BarsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(46, 12)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_erphx")
+
+[node name="PotionBar" type="ProgressBar" parent="BarsContainer/PotionBarOutline"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 56.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_rufao")
+theme_override_styles/fill = SubResource("StyleBoxTexture_egrrk")
+value = 75.0
+fill_mode = 1
+show_percentage = false
+
 [node name="HealthBarOutline" type="Panel" parent="BarsContainer"]
 custom_minimum_size = Vector2(46, 12)
 layout_mode = 2
@@ -175,29 +198,6 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_erphx")
 theme_override_styles/fill = SubResource("StyleBoxTexture_hp0f2")
 step = 1.0
 value = 50.0
-fill_mode = 1
-show_percentage = false
-
-[node name="PotionBarOutline" type="Panel" parent="BarsContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(46, 12)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_erphx")
-
-[node name="PotionBar" type="ProgressBar" parent="BarsContainer/PotionBarOutline"]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 6.0
-offset_top = 3.0
-offset_right = 56.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_rufao")
-theme_override_styles/fill = SubResource("StyleBoxTexture_egrrk")
-value = 75.0
 fill_mode = 1
 show_percentage = false
 
