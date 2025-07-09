@@ -53,8 +53,10 @@ func _input(event: InputEvent) -> void:
 func face_source(source_position: Vector2) -> void:
 	if source_position.x >= global_position.x:
 		outline.flip_h = false
+		filling.flip_h = false
 	else:
 		outline.flip_h = true
+		filling.flip_h = true
 
 
 func take_damage(damage: int) -> void:
@@ -101,6 +103,9 @@ func update_visuals() -> void:
 
 func set_stats(value: UnitStats) -> void:
 	stats = value
+
+	if not value.changed.is_connected(update_visuals):
+		value.changed.connect(update_visuals)
 
 	if value == null:
 		return

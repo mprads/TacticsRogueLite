@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DamageOverTime" load_steps=3 format=3 uid="uid://c84321nbbm3t6"]
+
+[ext_resource type="Texture2D" uid="uid://ckj1fnnr61is3" path="res://assets/icons/statuses/10x10Poison.png" id="1_ukxhh"]
+[ext_resource type="Script" uid="uid://b05fu1vfp8f5m" path="res://resources/statuses/damage_over_time.gd" id="2_moyce"]
+
+[resource]
+script = ExtResource("2_moyce")
+damage = 10
+id = "poison"
+name = "Poison"
+type = 0
+stack_type = 2
+duration = 2
+stacks = 0
+modifier_type = 2
+modifier_value = 0.0
+is_negative_effect = true
+icon = ExtResource("1_ukxhh")
+color = Color(0.0862745, 0.352941, 0.298039, 1)
+tooltip = "Take 10 damage at the start of the turn"
+metadata/_custom_type_script = "uid://b05fu1vfp8f5m"

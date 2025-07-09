@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://ianstowvchpu"]
+
+[ext_resource type="Script" uid="uid://cspy1rjky5jjl" path="res://scenes/ui/unit_icon.gd" id="1_8cwqn"]
+[ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="1_y7yuh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j3g1x"]
+load_path = "res://.godot/imported/outline_sheet.png-8b25bd81e000666fdf310f5690c429bd.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl7fi"]
+atlas = SubResource("CompressedTexture2D_j3g1x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qukfq"]
+atlas = ExtResource("1_y7yuh")
+region = Rect2(0, 0, 32, 32)
+
+[node name="UnitIcon" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8cwqn")
+
+[node name="Bottle" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_kl7fi")
+stretch_mode = 5
+
+[node name="PotionFillProgress" type="TextureProgressBar" parent="Bottle"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+rounded = true
+fill_mode = 3
+texture_progress = SubResource("AtlasTexture_qukfq")

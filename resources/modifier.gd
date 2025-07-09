@@ -1,7 +1,7 @@
 class_name Modifier
 extends RefCounted
 
-enum TYPE { DAMAGE_DEALT, DAMAGE_TAKEN }
+enum TYPE { DAMAGE_DEALT, DAMAGE_TAKEN, NO_EFFECT }
 enum VALUE_MODIFIER { PERCENT, FLAT }
 
 var type: TYPE

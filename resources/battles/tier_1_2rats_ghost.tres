@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="BattleStats" load_steps=9 format=3 uid="uid://hxhvlofmgclm"]
+[gd_resource type="Resource" script_class="BattleStats" load_steps=10 format=3 uid="uid://hxhvlofmgclm"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_6wf6y"]
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_kdbe1"]
 [ext_resource type="Resource" uid="uid://cdoqw6gma0bsq" path="res://resources/enemies/rat.tres" id="2_204jn"]
 [ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="2_btp8x"]
 [ext_resource type="Script" uid="uid://dvv6iov5fd7fy" path="res://resources/battles/battle_stats.gd" id="3_e0v1j"]
@@ -15,6 +16,9 @@ tier = 1
 weight = 1.5
 min_gold_reward = 35
 max_gold_reward = 50
+max_drops = 1
 enemy_drops = Array[ExtResource("2_btp8x")]([ExtResource("5_r1vei"), ExtResource("6_dfpcj"), ExtResource("7_45rb0")])
 enemies = Array[ExtResource("1_6wf6y")]([ExtResource("2_204jn"), ExtResource("2_204jn"), ExtResource("3_kdbe1")])
+artifact_drop = Array[ExtResource("1_kdbe1")]([])
+is_elite = false
 metadata/_custom_type_script = "uid://dvv6iov5fd7fy"

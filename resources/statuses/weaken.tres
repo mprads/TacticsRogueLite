@@ -13,6 +13,7 @@ duration = 2
 stacks = 0
 modifier_type = 0
 modifier_value = -0.5
+is_negative_effect = true
 icon = ExtResource("1_asimt")
 color = Color(0.0862745, 0.352941, 0.298039, 1)
 tooltip = "Deal 50% less damage"
