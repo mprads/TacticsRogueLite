@@ -9,9 +9,8 @@ const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
 
 @onready var move_icon: TextureRect = %MoveIcon
 @onready var ability_icon: TextureRect = %AbilityIcon
+@onready var unit_icon: UnitIcon = $InventoryUnitIcon/UnitIcon
 
-@onready var potion_icon: TextureRect = %PotionIcon
-@onready var bottle_icon: TextureRect = %BottleIcon
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var shield_bar_outline: Panel = %ShieldBarOutline
 @onready var shield_bar: ProgressBar = %ShieldBar
@@ -69,8 +68,7 @@ func _update_visuals() -> void:
 			coords[0] * sprite_size, coords[1] * sprite_size, sprite_size, sprite_size
 		)
 
-		bottle_icon.texture = outline
-		potion_icon.texture = filling
+		unit_icon.unit_stats = unit.stats
 
 		health_bar.max_value = unit.stats.max_health
 		health_bar.value = unit.stats.health
@@ -81,18 +79,12 @@ func _update_visuals() -> void:
 		shield_bar_outline.visible =  unit.stats.shield > 0
 
 		if unit.stats.potion:
-			potion_icon.visible = true
-			potion_icon.modulate = unit.stats.potion.color
 			potion_bar_outline.visible = true
 			potion_bar.modulate = unit.stats.potion.color
 			potion_bar.max_value = unit.stats.max_oz
 			potion_bar.value = unit.stats.oz
 		else:
-			potion_icon.visible = false
 			potion_bar_outline.visible = false
-	else:
-		bottle_icon.texture = null
-		potion_icon.texture = null
 
 
 func _on_movement_complete() -> void:
