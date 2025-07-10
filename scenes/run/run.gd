@@ -14,6 +14,7 @@ const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn"
 @onready var party_manager: PartyManager = $PartyManager
 @onready var vial_manager: VialManager = $VialManager
 @onready var artifact_manager: ArtifactManager = $ArtifactManager
+@onready var run_data_manager: RunDataManager = $RunDataManager
 
 @onready var artifact_ui: HBoxContainer = %ArtifactUI
 @onready var vial_ui: VialUI = %VialUI
@@ -112,6 +113,7 @@ func _set_up_debug() -> void:
 
 func _set_up_managers() -> void:
 	inventory_manager.run_stats = run_stats
+	run_data_manager.run_stats = run_stats
 	party_manager.run_stats = run_stats
 	vial_manager.run_stats = run_stats
 	artifact_manager.run_stats = run_stats

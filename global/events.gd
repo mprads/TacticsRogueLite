@@ -45,3 +45,10 @@ signal request_remove_item(item: Item, count: int)
 #Tooltip Events
 signal request_show_tooltip(owner: Node, contents: Dictionary, secondary: Array)
 signal hide_tooltip
+
+#Run Stats Events
+signal run_stats_damage_dealt
+signal run_stats_damage_taken
+signal run_stats_oz_used
+signal run_stats_ability_used
+signal run_stats_potion_used
