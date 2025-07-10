@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://id8ej54jj67y"]
+
+[ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_oob38"]
+[ext_resource type="Script" uid="uid://d1f720il41hba" path="res://scenes/ui/stats_panel.gd" id="2_eeejb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eeejb"]
+texture = ExtResource("1_oob38")
+texture_margin_left = 7.0
+texture_margin_top = 6.0
+texture_margin_right = 7.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(656, 81, 48, 62)
+
+[node name="StatsPanel" type="Panel"]
+custom_minimum_size = Vector2(400, 360)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eeejb")
+script = ExtResource("2_eeejb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2

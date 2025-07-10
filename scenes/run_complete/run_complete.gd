@@ -8,6 +8,7 @@ extends Control
 
 @onready var fireworks: Node2D = %Fireworks
 @onready var title: Label = %Title
+@onready var stats_button: Button = %StatsButton
 @onready var main_menu_button: Button = %MainMenuButton
 @onready var quit_button: Button = %QuitButton
 
@@ -23,9 +24,7 @@ func _ready() -> void:
 func set_is_victory(value: bool) -> void:
 	is_victory = value
 
-	if is_victory:
-		pass
-	else:
+	if not is_victory:
 		title.text = "Defeat"
 		fireworks.visible = false
 
