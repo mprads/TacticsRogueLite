@@ -16,6 +16,7 @@ extends Node
 	#fallen_units: Array[String]
 	#ablities_used: Dictionary[String, int]
 	#potions_used: Dictionary[String, int]
+	#run_time: int
 
 
 func _ready() -> void:
@@ -27,6 +28,10 @@ func _ready() -> void:
 	Events.run_stats_oz_used.connect(_on_temp)
 	Events.run_stats_ability_used.connect(_on_temp)
 	Events.run_stats_potion_used.connect(_on_temp)
+
+
+func get_ticks() -> void:
+	print(Time.get_ticks_msec())
 
 
 func _on_temp() -> void:

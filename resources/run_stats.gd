@@ -27,6 +27,7 @@ const STARTING_VIAL_COUNT := 3
 @export var fallen_units: Array[String] = []
 @export var ablities_used := {}
 @export var potions_used := {}
+@export var run_time := 0
 
 
 func add_item_to_inventory(key: ItemConfig.KEYS, count: int) -> void:

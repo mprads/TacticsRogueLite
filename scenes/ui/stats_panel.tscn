@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://id8ej54jj67y"]
+[gd_scene load_steps=6 format=3 uid="uid://id8ej54jj67y"]
 
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_oob38"]
 [ext_resource type="Script" uid="uid://d1f720il41hba" path="res://scenes/ui/stats_panel.gd" id="2_eeejb"]
+[ext_resource type="Texture2D" uid="uid://c675cicgors76" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/Book.png" id="3_11bf3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eeejb"]
 texture = ExtResource("1_oob38")
@@ -10,6 +11,12 @@ texture_margin_top = 6.0
 texture_margin_right = 7.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(656, 81, 48, 62)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_en0tk"]
+texture = ExtResource("3_11bf3")
+texture_margin_left = 43.0
+texture_margin_right = 31.0
+region_rect = Rect2(305, 19, 77, 12)
 
 [node name="StatsPanel" type="Panel"]
 custom_minimum_size = Vector2(400, 360)
@@ -45,5 +52,118 @@ theme_override_font_sizes/font_size = 32
 text = "Stats"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="TextureSeparator" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_en0tk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SeedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Seed:"
+
+[node name="TotalGoldLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Total Gold:"
+
+[node name="GoldSpentLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Gold Spent:"
+
+[node name="TotalItemsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Total Items:"
+
+[node name="DamageDealtLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Damage Dealt:"
+
+[node name="DamageTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Damage Taken:"
+
+[node name="OZUsedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "OZ Used:"
+
+[node name="Right" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemiesDefeatedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Enemies Defeated:"
+
+[node name="TurnTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Turns Taken:"
+
+[node name="FallenUnitsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Fallen Units:"
+
+[node name="MostCommonAbilityLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Most Common Ability"
+
+[node name="MostCommonPotionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Most Common Potion:"
+
+[node name="MostDamageDealthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Most Damage Dealt:"
+
+[node name="MostDamageTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Most Damage Taken:"
