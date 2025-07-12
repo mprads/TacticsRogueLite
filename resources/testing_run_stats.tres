@@ -96,4 +96,5 @@ turns_taken = 0
 fallen_units = Array[String]([])
 ablities_used = {}
 potions_used = {}
+run_time = 0
 metadata/_custom_type_script = "uid://caa81aywox71a"

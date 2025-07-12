@@ -68,6 +68,7 @@ func take_damage(damage: int) -> void:
 	stats.take_damage(modified_damage)
 	animation_player.play("damage")
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+	Events.run_stats_damage_taken.emit(modified_damage)
 
 	if stats.health <= 0:
 		Events.unit_died.emit(self)
