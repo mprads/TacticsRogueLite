@@ -72,7 +72,6 @@ func move_cleanup() -> void:
 	animation_player.stop()
 	if ai.selected_ability:
 		var ability_target:Array[Area2D] = [ai.current_target]
-		# TODO add to ai ability to self target for buffs
 		if not ai.in_range:
 			ability_target = [self]
 		if ai.selected_ability.target == Ability.TARGET.AOE:
@@ -99,6 +98,10 @@ func take_turn() -> void:
 
 
 func use_ability(ability: Ability, targets: Array[Area2D]) -> void:
+	if targets.is_empty():
+		turn_completed.emit()
+		return
+
 	if ability.sprite_frames:
 		for target in targets:
 			if target is Unit or target is Enemy:

@@ -38,6 +38,7 @@ const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn"
 @onready var unlock_map: Button = %UnlockMap
 @onready var win_battle: Button = %WinBattle
 @onready var lose_battle: Button = %LoseBattle
+@onready var complete_run: Button = %CompleteRun
 
 
 func _ready() -> void:
@@ -108,6 +109,12 @@ func _set_up_debug() -> void:
 			debug.visible = !debug.visible
 			for i in map.map_data.size():
 				map.unlock_row(i)
+	)
+	complete_run.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			_show_run_complete(true)
 	)
 
 

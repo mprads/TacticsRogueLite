@@ -43,7 +43,7 @@ bottle = ExtResource("4_7qsao")
 potion = ExtResource("5_pbn6o")
 oz = 30
 max_health = 30
-health = 25
+health = 1
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_eqed4"]

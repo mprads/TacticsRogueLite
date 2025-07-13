@@ -14,7 +14,6 @@ const UNIT = preload("res://scenes/unit/unit.tscn")
 
 
 func _ready() -> void:
-	Events.unit_died.connect(_on_unit_died)
 	Events.artifacts_activated.connect(_on_artifacts_activated)
 
 
@@ -34,6 +33,7 @@ func setup_party(party_stats: Array[UnitStats]) -> void:
 		unit_instance.aim_stopped.connect(_on_unit_aim_stopped)
 		unit_instance.request_change_active_unit.connect(_on_request_change_active_unit)
 		unit_instance.unit_selected.connect(_on_unit_selected)
+		unit_instance.tree_exited.connect(_on_unit_tree_exited)
 
 
 func add_party_to_grid(grid: ArenaGrid, tile_map: TileMapLayer) -> void:
@@ -91,9 +91,7 @@ func _on_unit_aim_stopped() -> void:
 	unit_aim_stopped.emit()
 
 
-func _on_unit_died(unit: Unit) -> void:
-	remove_child(unit)
-
+func _on_unit_tree_exited() -> void:
 	if get_child_count() == 0:
 		all_units_defeated.emit()
 
