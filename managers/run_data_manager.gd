@@ -20,12 +20,14 @@ extends Node
 
 
 func _ready() -> void:
-	Events.unit_died.connect(_on_unit_died)
-	Events.enemy_died.connect(_on_enemy_died)
-	Events.player_turn_ended.connect(_generic_increment.bind(1, "turns_taken"))
+	Events.request_purchase_item.connect(_on_request_purchase)
+	Events.request_add_gold.connect(_generic_increment.bind("total_gold"))
 	Events.run_stats_damage_dealt.connect(_generic_increment.bind("damage_dealt"))
 	Events.run_stats_damage_taken.connect(_generic_increment.bind("damage_taken"))
 	Events.run_stats_ability_used.connect(_on_ability_used)
+	Events.enemy_died.connect(_on_enemy_died)
+	Events.player_turn_ended.connect(_generic_increment.bind(1, "turns_taken"))
+	Events.unit_died.connect(_on_unit_died)
 	Events.run_stats_potion_used.connect(_on_potion_used)
 
 
@@ -54,6 +56,10 @@ func _on_potion_used(potion: Potion) -> void:
 		run_stats.potions_used[potion.name] += 1
 	else:
 		run_stats.potions_used[potion.name] = 1
+
+
+func _on_request_purchase(item: Item) -> void:
+	run_stats.gold_spent += item.gold_cost
 
 
 func _generic_increment(value: int, path: String) -> void:

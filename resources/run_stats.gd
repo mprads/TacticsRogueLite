@@ -45,3 +45,14 @@ func remove_item_from_inventory(key: ItemConfig.KEYS, count: int) -> void:
 		inventory[key] -= count
 	else:
 		inventory.erase(key)
+
+
+func get_most_used(category: Dictionary) -> String:
+	var most_used := ""
+	var use_count := 0
+
+	for item in category:
+		if category[item] > use_count:
+			most_used = item
+			use_count = category[item]
+	return most_used

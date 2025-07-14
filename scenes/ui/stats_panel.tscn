@@ -71,49 +71,49 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Seed:"
+text = "Seed: "
 
 [node name="TotalGoldLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Total Gold:"
+text = "Total Gold: "
 
 [node name="GoldSpentLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Gold Spent:"
+text = "Gold Spent: "
 
 [node name="TotalItemsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Total Items:"
+text = "Total Items: "
 
 [node name="DamageDealtLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Damage Dealt:"
+text = "Damage Dealt: "
 
 [node name="DamageTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Damage Taken:"
+text = "Damage Taken: "
 
 [node name="OZUsedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "OZ Used:"
+text = "OZ Used: "
 
 [node name="Right" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -124,46 +124,46 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Enemies Defeated:"
+text = "Enemies Defeated: "
 
 [node name="TurnTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Turns Taken:"
+text = "Turns Taken: "
 
 [node name="FallenUnitsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Fallen Units:"
+text = "Fallen Units: "
 
 [node name="MostCommonAbilityLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Most Common Ability"
+text = "Most Common Ability: "
 
 [node name="MostCommonPotionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Most Common Potion:"
+text = "Most Common Potion: "
 
-[node name="MostDamageDealthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+[node name="MostDamageDealtLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Most Damage Dealt:"
+text = "Most Damage Dealt: "
 
 [node name="MostDamageTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Most Damage Taken:"
+text = "Most Damage Taken: "

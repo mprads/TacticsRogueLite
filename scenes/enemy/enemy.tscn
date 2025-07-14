@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7xiv7x5cv04q"]
+[gd_scene load_steps=18 format=3 uid="uid://b7xiv7x5cv04q"]
 
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="3_gl05p"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="4_cwlon"]
 [ext_resource type="Script" uid="uid://clc0ayjvpkdkd" path="res://components/ability_animated_sprite.gd" id="4_nbhyu"]
-[ext_resource type="PackedScene" uid="uid://vh15m4qw1i4k" path="res://scenes/ui/status_ui.tscn" id="8_13gj6"]
 
 [sub_resource type="Animation" id="Animation_13gj6"]
 length = 0.001
@@ -220,24 +219,6 @@ offset_left = -17.0
 offset_top = 5.0
 offset_right = 21.0
 offset_bottom = 37.0
-
-[node name="StatusUI" parent="StatusManager" instance=ExtResource("8_13gj6")]
-layout_mode = 2
-
-[node name="StatusUI2" parent="StatusManager" instance=ExtResource("8_13gj6")]
-layout_mode = 2
-
-[node name="StatusUI3" parent="StatusManager" instance=ExtResource("8_13gj6")]
-layout_mode = 2
-
-[node name="StatusUI4" parent="StatusManager" instance=ExtResource("8_13gj6")]
-layout_mode = 2
-
-[node name="StatusUI5" parent="StatusManager" instance=ExtResource("8_13gj6")]
-layout_mode = 2
-
-[node name="StatusUI6" parent="StatusManager" instance=ExtResource("8_13gj6")]
-layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(30, 4)
