@@ -29,6 +29,9 @@ func init_artifacts() -> void:
 
 
 func init_artifact(artifact: Artifact) -> void:
+	if not artifact_ui:
+		return
+
 	var artifact_icon_instance := ARTIFACT_ICON.instantiate()
 	artifact_ui.add_child(artifact_icon_instance)
 	artifact_icon_instance.artifact = artifact

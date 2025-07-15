@@ -29,6 +29,7 @@ const OPTION_COUNT := 3
 @onready var party_manager: PartyManager = $PartyManager
 @onready var vial_manager: VialManager = $VialManager
 @onready var artifact_manager: ArtifactManager = $ArtifactManager
+@onready var run_data_manager: RunDataManager = $RunDataManager
 
 @onready var selection_container: HBoxContainer = %SelectionContainer
 @onready var party_container: HBoxContainer = %PartyContainer
@@ -54,6 +55,7 @@ func _set_up_managers() -> void:
 	party_manager.run_stats = run_stats
 	vial_manager.run_stats = run_stats
 	artifact_manager.run_stats = run_stats
+	run_data_manager.run_stats = run_stats
 
 	gold_ui.inventory_manager = inventory_manager
 
@@ -144,13 +146,14 @@ func _add_empty_vials() -> void:
 func _on_panel_selected(unit_stats: UnitStats, contents: Array) -> void:
 	for content in contents:
 		if content.item is Item:
-			inventory_manager.add_item(content.item, content.quantity)
+			for count in content.quantity:
+				Events.request_add_item.emit(content.item)
 		elif content.item is Vial:
 			vial_manager.add_vial(content.item)
 		elif content.item is Artifact:
-			artifact_manager.add_artifact(content.item)
+			Events.request_add_artifact.emit(content.item)
 		else:
-			inventory_manager.add_gold(content.quantity)
+			Events.request_add_gold.emit(content.quantity)
 
 	_show_unit_creator(unit_stats)
 
