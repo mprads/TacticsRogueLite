@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://q7xyee7lyj2t"]
+[gd_scene load_steps=25 format=3 uid="uid://q7xyee7lyj2t"]
 
 [ext_resource type="Script" uid="uid://dkc5fw5v2355l" path="res://scenes/shop/shop.gd" id="1_100s2"]
 [ext_resource type="PackedScene" uid="uid://bx3amx8rinwo" path="res://scenes/shop/shop_item.tscn" id="2_7lxhl"]
@@ -22,6 +22,37 @@
 [ext_resource type="PackedScene" uid="uid://twvbfvqbtx8b" path="res://scenes/shop/round_bottle_button.tscn" id="20_u2jek"]
 [ext_resource type="PackedScene" uid="uid://bb1m0r2sstiwk" path="res://scenes/ui/unit_creator_ui.tscn" id="21_toxgp"]
 [ext_resource type="PackedScene" uid="uid://b8t2vqmevv3nx" path="res://scenes/ui/discard_unit_ui.tscn" id="22_u2jek"]
+
+[sub_resource type="Shader" id="Shader_u2jek"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform float outline_thickness : hint_range(0, 10) = 1.0;
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1), 
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * outline_thickness;
+	float outline = 0.0;
+	
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnu54"]
+resource_local_to_scene = true
+shader = SubResource("Shader_u2jek")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0.0
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_100s2")
@@ -133,6 +164,7 @@ layout_mode = 2
 
 [node name="RoundBottleButton" parent="UI" instance=ExtResource("20_u2jek")]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_bnu54")
 
 [node name="UnitCreatorUI" parent="UI" instance=ExtResource("21_toxgp")]
 unique_name_in_owner = true

@@ -25,7 +25,7 @@ func set_stats(value: RunStats) -> void:
 	if not run_stats:
 		return 
 
-	# A smarter man would probably make the label names match the variables and
+	# TODO A smarter man would probably make the label names match the variables and
 	# then loop over all the children of left and right but feels too coupled
 	# for a first pass at run data
 	seed_label.text += str(run_stats.rng_seed)

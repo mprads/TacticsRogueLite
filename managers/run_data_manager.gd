@@ -21,7 +21,9 @@ extends Node
 
 func _ready() -> void:
 	Events.request_purchase_item.connect(_on_request_purchase)
+	Events.request_purchase_bottle.connect(_on_request_purchase)
 	Events.request_add_gold.connect(_generic_increment.bind("total_gold"))
+	Events.request_add_item.connect(_on_add_item)
 	Events.run_stats_damage_dealt.connect(_generic_increment.bind("damage_dealt"))
 	Events.run_stats_damage_taken.connect(_generic_increment.bind("damage_taken"))
 	Events.run_stats_ability_used.connect(_on_ability_used)
@@ -43,6 +45,10 @@ func _on_enemy_died(_enemy: Enemy) -> void:
 	run_stats.enemies_defeated += 1
 
 
+func _on_add_item(_item: Item) -> void:
+	run_stats.total_items += 1
+
+
 func _on_ability_used(ability: Ability) -> void:
 	run_stats.oz_used += ability.cost
 	if run_stats.ablities_used.has(ability.name):
@@ -58,7 +64,9 @@ func _on_potion_used(potion: Potion) -> void:
 		run_stats.potions_used[potion.name] = 1
 
 
-func _on_request_purchase(item: Item) -> void:
+func _on_request_purchase(item: Variant) -> void:
+	if not item.gold_cost:
+		return
 	run_stats.gold_spent += item.gold_cost
 
 

@@ -25,6 +25,7 @@ signal request_add_artifact(artifact: Artifact)
 signal shop_exited
 signal shop_entered(shop: Shop)
 signal request_purchase_item(item: Item)
+signal request_purchase_bottle(bottle: Bottle)
 signal request_purchase_artifact(artifact: Artifact)
 
 #Brewing Events

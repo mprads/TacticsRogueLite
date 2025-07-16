@@ -139,7 +139,7 @@ func _on_unit_created(unit_stats: UnitStats) -> void:
 	party_manager.add_unit(unit_stats)
 	unit_creator_ui.unit_stats = null
 	unit_creator_ui.visible = false
-	Events.request_add_gold.emit(-unit_stats.bottle.gold_cost)
+	Events.request_purchase_bottle.emit(unit_stats.bottle)
 
 
 func _on_unit_removed() -> void:
