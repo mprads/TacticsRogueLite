@@ -183,6 +183,7 @@ func _show_battle_lost() -> void:
 
 func _show_run_complete(is_victory: bool) -> void:
 	var run_complete_scene := _change_view(RUN_COMPLETE_SCENE)
+	run_data_manager.set_run_time()
 	run_complete_scene.is_victory = is_victory
 	run_complete_scene.run_stats = run_stats
 

@@ -33,8 +33,14 @@ func _ready() -> void:
 	Events.run_stats_potion_used.connect(_on_potion_used)
 
 
-func get_ticks() -> void:
-	print(Time.get_ticks_msec())
+func set_run_time() -> void:
+	var elapsed_miliseconds := _get_ticks()
+	var elapsed_seconds := elapsed_miliseconds / 1000
+	run_stats.run_time = elapsed_seconds
+
+
+func _get_ticks() -> int:
+	return Time.get_ticks_msec()
 
 
 func _on_unit_died(unit: Unit) -> void:
