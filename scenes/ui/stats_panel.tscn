@@ -71,56 +71,49 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Seed: "
+text = "Seed: %s"
 
 [node name="RunTimeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Run Time:  "
+text = "Run Time:  %s"
 
 [node name="TotalGoldLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Total Gold: "
+text = "Total Gold: %s"
 
 [node name="GoldSpentLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Gold Spent: "
+text = "Gold Spent: %s"
 
 [node name="TotalItemsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Total Items: "
+text = "Total Items: %s"
 
 [node name="DamageDealtLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Damage Dealt: "
+text = "Damage Dealt: %s"
 
 [node name="DamageTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Damage Taken: "
-
-[node name="OZUsedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Left"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 8
-text = "OZ Used: "
+text = "Damage Taken: %s"
 
 [node name="Right" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -131,46 +124,39 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Enemies Defeated: "
+text = "Enemies Defeated: %s"
 
 [node name="TurnTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Turns Taken: "
+text = "Turns Taken: %s"
 
 [node name="FallenUnitsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Fallen Units: "
+text = "Fallen Units: %s"
+
+[node name="OZUsedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "OZ Used: %s"
 
 [node name="MostCommonAbilityLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Most Common Ability: "
+text = "Most Common Ability: %s"
 
 [node name="MostCommonPotionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "Most Common Potion: "
-
-[node name="MostDamageDealtLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 8
-text = "Most Damage Dealt: "
-
-[node name="MostDamageTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Right"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 8
-text = "Most Damage Taken: "
+text = "Most Common Potion: %s"

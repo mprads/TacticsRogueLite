@@ -16,8 +16,6 @@ extends Panel
 @onready var fallen_units_label: Label = %FallenUnitsLabel
 @onready var most_common_ability_label: Label = %MostCommonAbilityLabel
 @onready var most_common_potion_label: Label = %MostCommonPotionLabel
-@onready var most_damage_dealt_label: Label = %MostDamageDealtLabel
-@onready var most_damage_taken_label: Label = %MostDamageTakenLabel
 
 
 func set_stats(value: RunStats) -> void:
@@ -29,18 +27,16 @@ func set_stats(value: RunStats) -> void:
 	# TODO A smarter man would probably make the label names match the variables and
 	# then loop over all the children of left and right but feels too coupled
 	# for a first pass at run data
-	seed_label.text += str(run_stats.rng_seed)
-	run_time_label.text +=  "%s:%s" % [str(run_stats.run_time / 60), str(run_stats.run_time % 60)]
-	total_gold_label.text += str(run_stats.total_gold)
-	gold_spent_label.text += str(run_stats.gold_spent)
-	total_items_label.text += str(run_stats.total_items)
-	damage_dealt_label.text += str(run_stats.damage_dealt)
-	damage_taken_label.text += str(run_stats.damage_taken)
-	oz_used_label.text += str(run_stats.oz_used)
-	turn_taken_label.text += str(run_stats.turns_taken)
-	fallen_units_label.text += ", ".join(run_stats.fallen_units)
-	most_common_ability_label.text += run_stats.get_most_used(run_stats.ablities_used)
-	most_common_potion_label.text += run_stats.get_most_used(run_stats.potions_used)
-	most_damage_dealt_label.text += "TBD"
-	most_damage_taken_label.text += "TBD"
-	
+	seed_label.text = seed_label.text % str(run_stats.rng_seed)
+	run_time_label.text = run_time_label.text % Utils.format_seconds(run_stats.run_time)
+	total_gold_label.text = total_gold_label.text % str(run_stats.total_gold)
+	gold_spent_label.text = gold_spent_label.text % str(run_stats.gold_spent)
+	total_items_label.text = total_items_label.text % str(run_stats.total_items)
+	damage_dealt_label.text = damage_dealt_label.text % str(run_stats.damage_dealt)
+	damage_taken_label.text = damage_taken_label.text % str(run_stats.damage_taken)
+	oz_used_label.text = oz_used_label.text % str(run_stats.oz_used)
+	enemies_defeated_label.text = enemies_defeated_label.text % str(run_stats.enemies_defeated)
+	turn_taken_label.text = turn_taken_label.text % str(run_stats.turns_taken)
+	fallen_units_label.text = fallen_units_label.text % ", ".join(run_stats.fallen_units)
+	most_common_ability_label.text = most_common_ability_label.text % run_stats.get_most_used(run_stats.ablities_used)
+	most_common_potion_label.text = most_common_potion_label.text % run_stats.get_most_used(run_stats.potions_used)
