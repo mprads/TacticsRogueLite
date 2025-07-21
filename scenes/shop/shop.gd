@@ -122,7 +122,7 @@ func _on_inventory_gold_changed() -> void:
 	round_bottle_button.update(player_gold)
 
 
-func _on_bottle_request_purchase(bottle: Bottle, clean_up_callback: Callable = func():) -> void:
+func _on_bottle_request_purchase(bottle: Bottle, clean_up_callback: Callable = func(): return) -> void:
 	var party := party_manager.get_party()
 
 	if party.size() < party_manager.get_max_party_size():

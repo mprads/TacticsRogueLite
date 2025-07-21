@@ -88,7 +88,7 @@ grow_vertical = 0
 [node name="LeaveButton" type="Button" parent="UI/Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
+layout_mode = 0
 offset_left = -140.0
 offset_top = -47.0
 offset_right = -7.0
