@@ -51,6 +51,7 @@ script = ExtResource("6_kdgoc")
 script = ExtResource("7_y3spc")
 
 [node name="TopBar" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = 10
 
 [node name="Panel" type="Panel" parent="TopBar"]

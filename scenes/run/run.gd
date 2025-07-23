@@ -24,6 +24,7 @@ const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn"
 @onready var settings_ui: Control = %SettingsUI
 @onready var unit_fill_ui: UnitFillUI = %UnitFillUI
 @onready var rng_seed_label: Label = %RNGSeedLabel
+@onready var top_bar: CanvasLayer = %TopBar
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
@@ -182,6 +183,7 @@ func _show_battle_lost() -> void:
 
 
 func _show_run_complete(is_victory: bool) -> void:
+	top_bar.hide()
 	var run_complete_scene := _change_view(RUN_COMPLETE_SCENE)
 	run_data_manager.set_run_time()
 	run_complete_scene.is_victory = is_victory
