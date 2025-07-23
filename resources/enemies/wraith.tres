@@ -11,13 +11,11 @@
 script = ExtResource("2_td0p6")
 name = "Wraith"
 sprite = ExtResource("3_jt0ym")
-movement = 1
-attack_range = 1
 dimensions = Vector2i(2, 2)
 melee_ability = ExtResource("1_jt0ym")
 ranged_ability = ExtResource("3_3tim7")
 ai = ExtResource("1_3tim7")
 scene = ExtResource("3_ucpyl")
 max_health = 50
-health = 50
+health = 1
 metadata/_custom_type_script = "uid://co20nystqenxu"

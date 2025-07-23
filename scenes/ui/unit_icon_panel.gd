@@ -16,4 +16,6 @@ func show_name_label() -> void:
 func set_unit_stats(value: UnitStats) -> void:
 	unit_stats = value
 	unit_icon.unit_stats = value
+
+	if not unit_stats: return
 	name_label.text = unit_stats.name
