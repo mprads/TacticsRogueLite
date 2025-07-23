@@ -8,7 +8,6 @@ extends Control
 
 @onready var fireworks: Node2D = %Fireworks
 @onready var title: Label = %Title
-@onready var stats_button: Button = %StatsButton
 @onready var main_menu_button: Button = %MainMenuButton
 @onready var quit_button: Button = %QuitButton
 @onready var stats_panel: StatsPanel = $StatsPanel

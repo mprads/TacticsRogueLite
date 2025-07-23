@@ -1,7 +1,11 @@
 class_name StatsPanel
 extends Panel
 
+const UNIT_ICON_PANEL = preload("uid://i84sei2wbdf7")
+
 @export var run_stats: RunStats : set = set_stats
+
+@onready var party_container: GridContainer = $MarginContainer/VBoxContainer/VBoxContainer/PartyContainer
 
 @onready var seed_label: Label = %SeedLabel
 @onready var run_time_label: Label = %RunTimeLabel
@@ -22,7 +26,14 @@ func set_stats(value: RunStats) -> void:
 	run_stats = value
 
 	if not run_stats:
-		return 
+		return
+
+	for unit_stats: UnitStats in run_stats.party:
+		var new_unit_icon_panel := UNIT_ICON_PANEL.instantiate()
+		party_container.add_child(new_unit_icon_panel)
+		new_unit_icon_panel.unit_stats = unit_stats
+		new_unit_icon_panel.show_name_label()
+
 
 	# TODO A smarter man would probably make the label names match the variables and
 	# then loop over all the children of left and right but feels too coupled

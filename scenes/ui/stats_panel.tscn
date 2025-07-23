@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://id8ej54jj67y"]
+[gd_scene load_steps=6 format=3 uid="uid://id8ej54jj67y"]
 
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_oob38"]
 [ext_resource type="Script" uid="uid://d1f720il41hba" path="res://scenes/ui/stats_panel.gd" id="2_eeejb"]
 [ext_resource type="Texture2D" uid="uid://c675cicgors76" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/Book.png" id="3_11bf3"]
-[ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="4_en0tk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eeejb"]
 texture = ExtResource("1_oob38")
@@ -40,13 +39,14 @@ grow_vertical = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
@@ -62,33 +62,13 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_en0tk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="PartyContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="UnitIconPanel" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_en0tk")]
-layout_mode = 2
-
-[node name="UnitIconPanel2" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_en0tk")]
-layout_mode = 2
-
-[node name="UnitIconPanel3" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_en0tk")]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="UnitIconPanel" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("4_en0tk")]
-layout_mode = 2
-
-[node name="UnitIconPanel2" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("4_en0tk")]
-layout_mode = 2
-
-[node name="UnitIconPanel3" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("4_en0tk")]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 16
+columns = 3
 
 [node name="StatsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
@@ -106,8 +86,8 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_en0tk")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_right = 24
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -167,7 +147,7 @@ text = "Damage Taken: %s"
 
 [node name="Right" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 
 [node name="EnemiesDefeatedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right"]
 unique_name_in_owner = true
