@@ -138,6 +138,10 @@ func verify_intent(enemy: Enemy) -> void:
 	if not enemy.ai.current_target:
 		update_enemy_intent(enemy)
 		return
+	
+	if not enemy.ai.current_target.is_in_group("player_unit"):
+		update_enemy_intent(enemy)
+		return
 
 	if not get_tree().get_nodes_in_group("player_unit").has(enemy.ai.current_target):
 		update_enemy_intent(enemy)

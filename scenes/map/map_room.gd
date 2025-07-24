@@ -60,7 +60,7 @@ func set_available(value: bool) -> void:
 	available = value
 
 	if available:
-		# Need two sprites because there is an Godot engine issue when a texture has a material
+		# BUG Need two sprites because there is an Godot engine issue when a texture has a material
 		# that uses any colour causing it to overwrite the alpha, so I can't fade out unavailable rooms
 		available_sprite.show()
 		disabled_sprite.hide()

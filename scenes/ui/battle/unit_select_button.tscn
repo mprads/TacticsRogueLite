@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c4i803i607t3t" path="res://assets/icons/16x16attack.png" id="4_rufao"]
 [ext_resource type="PackedScene" uid="uid://ianstowvchpu" path="res://scenes/ui/unit_icon.tscn" id="6_057j8"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp0f2"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5j4w4"]
 texture = ExtResource("2_erphx")
 texture_margin_left = 36.0
@@ -14,8 +16,6 @@ texture_margin_top = 36.0
 texture_margin_right = 36.0
 texture_margin_bottom = 36.0
 region_rect = Rect2(18, 290, 44, 44)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp0f2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ydllm"]
 texture = ExtResource("1_057j8")
@@ -80,11 +80,11 @@ corner_radius_bottom_right = 2
 custom_minimum_size = Vector2(112, 58)
 offset_right = 112.0
 offset_bottom = 58.0
-theme_override_styles/focus = SubResource("StyleBoxTexture_5j4w4")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_5j4w4")
-theme_override_styles/hover = SubResource("StyleBoxTexture_5j4w4")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5j4w4")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hp0f2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5j4w4")
 script = ExtResource("1_eqp6i")
 
 [node name="IconBorder" type="Panel" parent="."]
@@ -115,7 +115,7 @@ offset_bottom = 53.0
 text = "[Unassigned]"
 
 [node name="IconContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_left = 50.0
 offset_top = 33.0
 offset_right = 86.0
@@ -141,7 +141,8 @@ texture = ExtResource("4_rufao")
 stretch_mode = 5
 
 [node name="BarsContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 0
 offset_left = 108.0
 offset_top = 4.0
 offset_right = 166.0
@@ -160,7 +161,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_erphx")
 
 [node name="PotionBar" type="ProgressBar" parent="BarsContainer/PotionBarOutline"]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
 offset_left = 6.0
 offset_top = 3.0
 offset_right = 56.0
@@ -178,6 +179,7 @@ show_percentage = false
 [node name="HealthBarOutline" type="Panel" parent="BarsContainer"]
 custom_minimum_size = Vector2(46, 12)
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_styles/panel = SubResource("StyleBoxTexture_3ktk7")
 
 [node name="HealthBar" type="ProgressBar" parent="BarsContainer/HealthBarOutline"]
@@ -201,34 +203,20 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="InventoryUnitIcon" type="Control" parent="."]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-anchors_preset = 0
-offset_left = 11.0
-offset_top = 13.0
-offset_right = 43.0
-offset_bottom = 45.0
-size_flags_vertical = 4
-mouse_filter = 2
-
-[node name="UnitIcon" parent="InventoryUnitIcon" instance=ExtResource("6_057j8")]
-layout_mode = 1
-
 [node name="ShieldBarOutline" type="Panel" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(14, 14)
 layout_mode = 0
-offset_left = 48.0
-offset_top = 4.0
-offset_right = 62.0
-offset_bottom = 18.0
+offset_left = 50.0
+offset_top = 17.0
+offset_right = 64.0
+offset_bottom = 31.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_xu37h")
 
 [node name="ShieldBar" type="ProgressBar" parent="ShieldBarOutline"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(44, 10)
-layout_mode = 2
+layout_mode = 0
 offset_left = 13.0
 offset_top = 1.0
 offset_right = 57.0
@@ -240,3 +228,16 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_eqp6i")
 theme_override_styles/fill = SubResource("StyleBoxFlat_057j8")
 value = 75.0
 show_percentage = false
+
+[node name="InventoryUnitIcon" type="Control" parent="."]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 43.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="UnitIcon" parent="InventoryUnitIcon" instance=ExtResource("6_057j8")]
+layout_mode = 1

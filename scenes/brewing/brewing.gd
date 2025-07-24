@@ -213,6 +213,7 @@ func _on_vial_button_pressed() -> void:
 func _on_party_unit_selected(unit: UnitStats) -> void:
 	unit.potion = current_potion
 	_request_remove_components()
+	Events.run_stats_potion_used.emit(current_potion)
 	Events.brewing_exited.emit()
 
 

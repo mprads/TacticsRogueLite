@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://r76gjny5escp"]
+[gd_scene load_steps=20 format=3 uid="uid://r76gjny5escp"]
 
 [ext_resource type="Script" uid="uid://b88pduqxgjpng" path="res://scenes/run/run.gd" id="1_l7o68"]
 [ext_resource type="Resource" uid="uid://cog76ftpquwhv" path="res://resources/testing_run_stats.tres" id="2_cnkn7"]
 [ext_resource type="PackedScene" uid="uid://b2i3e6qlmmf13" path="res://scenes/map/map.tscn" id="2_wdonh"]
 [ext_resource type="Script" uid="uid://ctiuirox8gkl7" path="res://managers/inventory_manager.gd" id="4_x53nd"]
+[ext_resource type="Script" uid="uid://bv25sgkbmwjvo" path="res://managers/run_data_manager.gd" id="4_y3spc"]
 [ext_resource type="Script" uid="uid://bjy04jhtmlsly" path="res://managers/party_manager.gd" id="5_l6p45"]
 [ext_resource type="Script" uid="uid://d1vqvvglo106p" path="res://managers/vial_manager.gd" id="6_kdgoc"]
 [ext_resource type="PackedScene" uid="uid://o0flfk67550c" path="res://scenes/ui/gold_ui.tscn" id="6_ux63y"]
@@ -34,6 +35,9 @@ run_stats = ExtResource("2_cnkn7")
 
 [node name="Map" parent="." instance=ExtResource("2_wdonh")]
 
+[node name="RunDataManager" type="Node" parent="."]
+script = ExtResource("4_y3spc")
+
 [node name="InventoryManager" type="Node" parent="."]
 script = ExtResource("4_x53nd")
 
@@ -47,6 +51,7 @@ script = ExtResource("6_kdgoc")
 script = ExtResource("7_y3spc")
 
 [node name="TopBar" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = 10
 
 [node name="Panel" type="Panel" parent="TopBar"]
@@ -168,6 +173,11 @@ text = "Win"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lose"
+
+[node name="CompleteRun" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Complete"
 
 [node name="RNGSeedLabel" type="Label" parent="TopBar"]
 unique_name_in_owner = true

@@ -95,7 +95,7 @@ func _get_random_starting_points() -> Array[int]:
 
 
 func _setup_connection(row: int, column: int) -> int:
-	var next_room: Room
+	var next_room: Room = null
 	var current_room := map_data[row][column] as Room
 
 	while not next_room or _would_cross_existing_path(row, column, next_room):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://i84sei2wbdf7"]
+[gd_scene load_steps=6 format=3 uid="uid://i84sei2wbdf7"]
 
 [ext_resource type="Script" uid="uid://c4u7dscyngdu0" path="res://scenes/ui/unit_icon_panel.gd" id="1_j3g1x"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_nqdb0"]
@@ -12,9 +12,18 @@ texture_margin_right = 15.0
 texture_margin_bottom = 15.0
 region_rect = Rect2(721, 17, 46, 46)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqdb0"]
+texture = ExtResource("1_nqdb0")
+texture_margin_left = 14.0
+texture_margin_top = 5.0
+texture_margin_right = 13.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(112, 336, 32, 16)
+
 [node name="UnitIconPanel" type="Panel"]
 custom_minimum_size = Vector2(48, 48)
 size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3riih")
 script = ExtResource("1_j3g1x")
@@ -22,3 +31,40 @@ script = ExtResource("1_j3g1x")
 [node name="UnitIcon" parent="." instance=ExtResource("2_j3g1x")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="NamePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -12.0
+offset_right = 23.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nqdb0")
+
+[node name="NameLabel" type="Label" parent="NamePanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -5.5
+offset_right = 32.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "Bottlesworth"
+horizontal_alignment = 1
+vertical_alignment = 1

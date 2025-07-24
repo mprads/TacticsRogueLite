@@ -73,6 +73,7 @@ func _on_unit_selected(unit_stats: UnitStats) -> void:
 		unit_stats.potion = vial.potion
 		unit_stats.oz = floori(unit_stats.max_oz / 2)
 
+	Events.run_stats_potion_used.emit(vial.potion)
 	vial.potion = null
 	vial = null
 	visible = false

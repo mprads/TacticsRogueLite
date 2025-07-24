@@ -44,3 +44,4 @@ func _set_visuals() -> void:
 			potion_fill_progress.value = 0
 	else:
 		bottle.texture = null
+		potion_fill_progress.value = 0

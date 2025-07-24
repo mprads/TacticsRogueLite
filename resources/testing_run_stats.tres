@@ -43,7 +43,7 @@ bottle = ExtResource("4_7qsao")
 potion = ExtResource("5_pbn6o")
 oz = 30
 max_health = 30
-health = 25
+health = 1
 metadata/_custom_type_script = "uid://l8imbubpscrj"
 
 [sub_resource type="Resource" id="Resource_eqed4"]
@@ -81,8 +81,4 @@ inventory = Dictionary[int, int]({
 artifacts = Array[ExtResource("1_qn745")]([ExtResource("2_pij53")])
 party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pbn6o"), SubResource("Resource_i18qs"), SubResource("Resource_mnkgj")])
 vials = Array[ExtResource("5_bk1v7")]([SubResource("Resource_eqed4"), SubResource("Resource_pij53"), SubResource("Resource_7qsao")])
-max_party_size = 5
-max_vial_count = 3
-rng_seed = 0
-rng_state = 0
 metadata/_custom_type_script = "uid://caa81aywox71a"

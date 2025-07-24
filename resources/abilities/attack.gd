@@ -14,9 +14,9 @@ func apply_effects(targets: Array[Area2D], modifier_manager: ModifierManager) ->
 	damage_effect.execute(targets)
 
 	if status:
-		for target in targets:
+		for entity in targets:
 			if RNG.instance.randf_range(0.0, 1.0) <= status_chance:
 				var status_effect := StatusEffect.new()
 				var status_instance := status.duplicate()
 				status_effect.status = status_instance
-				status_effect.execute([target])
+				status_effect.execute([entity])

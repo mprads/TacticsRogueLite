@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dyaf53aaous6t"]
+[gd_scene load_steps=30 format=3 uid="uid://dyaf53aaous6t"]
 
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="1_4jmb0"]
 [ext_resource type="Script" uid="uid://bkfym5x8dw3p2" path="res://scenes/party_select/party_select.gd" id="1_vhtjw"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cjdocmvvhnve6" path="res://scenes/party_select/unit_select_panel.tscn" id="21_xrrf1"]
 [ext_resource type="Script" uid="uid://d1vqvvglo106p" path="res://managers/vial_manager.gd" id="22_lc1ic"]
 [ext_resource type="Script" uid="uid://mr05hbk8c26o" path="res://managers/artifact_manager.gd" id="23_syo35"]
+[ext_resource type="Script" uid="uid://bv25sgkbmwjvo" path="res://managers/run_data_manager.gd" id="24_rrx7l"]
 [ext_resource type="PackedScene" uid="uid://bb1m0r2sstiwk" path="res://scenes/ui/unit_creator_ui.tscn" id="27_r3g8i"]
 [ext_resource type="PackedScene" uid="uid://delw0ryy5peue" path="res://scenes/ui/popups/tooltip.tscn" id="28_227sm"]
 [ext_resource type="PackedScene" uid="uid://o0flfk67550c" path="res://scenes/ui/gold_ui.tscn" id="29_rrx7l"]
@@ -59,6 +60,9 @@ script = ExtResource("22_lc1ic")
 
 [node name="ArtifactManager" type="Node" parent="."]
 script = ExtResource("23_syo35")
+
+[node name="RunDataManager" type="Node" parent="."]
+script = ExtResource("24_rrx7l")
 
 [node name="AnimatedBackground" parent="." instance=ExtResource("1_4jmb0")]
 layout_mode = 1

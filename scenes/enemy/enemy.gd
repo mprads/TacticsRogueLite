@@ -54,6 +54,7 @@ func take_damage(damage: int) -> void:
 	stats.take_damage(modified_damage)
 	animation_player.play("damage")
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+	Events.run_stats_damage_dealt.emit(modified_damage)
 
 	if stats.health <= 0:
 		animation_player.play("death")
@@ -71,7 +72,6 @@ func move_cleanup() -> void:
 	animation_player.stop()
 	if ai.selected_ability:
 		var ability_target:Array[Area2D] = [ai.current_target]
-		# TODO add to ai ability to self target for buffs
 		if not ai.in_range:
 			ability_target = [self]
 		if ai.selected_ability.target == Ability.TARGET.AOE:
@@ -98,6 +98,10 @@ func take_turn() -> void:
 
 
 func use_ability(ability: Ability, targets: Array[Area2D]) -> void:
+	if targets.is_empty():
+		turn_completed.emit()
+		return
+
 	if ability.sprite_frames:
 		for target in targets:
 			if target is Unit or target is Enemy:

@@ -66,12 +66,14 @@ func take_damage(damage: int) -> void:
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 
 	stats.take_damage(modified_damage)
-	animation_player.play("damage")
+	play_animation("damage")
 	spawn_floating_text(str(modified_damage), ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+	Events.run_stats_damage_taken.emit(modified_damage)
 
 	if stats.health <= 0:
+		self.remove_from_group("player_unit")
 		Events.unit_died.emit(self)
-		queue_free()
+		play_animation("death")
 
 
 func spawn_floating_text(text: String, text_color) -> void:
@@ -83,6 +85,10 @@ func spawn_floating_text(text: String, text_color) -> void:
 
 func move_cleanup() -> void:
 	unit_state_machine.on_movement_complete()
+
+
+func death_cleanup() -> void:
+	queue_free()
 
 
 func update_visuals() -> void:
@@ -99,6 +105,12 @@ func update_visuals() -> void:
 		filling.material.set_shader_parameter("Fill", float(stats.oz) / float(stats.bottle.max_oz))
 	else:
 		filling.visible = false
+
+
+func play_animation(animation_name: String) -> void:
+	if animation_player.current_animation:
+		animation_player.stop()
+	animation_player.play(animation_name)
 
 
 func set_stats(value: UnitStats) -> void:

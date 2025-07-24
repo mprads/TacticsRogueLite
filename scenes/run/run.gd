@@ -14,6 +14,7 @@ const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn"
 @onready var party_manager: PartyManager = $PartyManager
 @onready var vial_manager: VialManager = $VialManager
 @onready var artifact_manager: ArtifactManager = $ArtifactManager
+@onready var run_data_manager: RunDataManager = $RunDataManager
 
 @onready var artifact_ui: HBoxContainer = %ArtifactUI
 @onready var vial_ui: VialUI = %VialUI
@@ -23,6 +24,7 @@ const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn"
 @onready var settings_ui: Control = %SettingsUI
 @onready var unit_fill_ui: UnitFillUI = %UnitFillUI
 @onready var rng_seed_label: Label = %RNGSeedLabel
+@onready var top_bar: CanvasLayer = %TopBar
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
@@ -37,6 +39,7 @@ const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn"
 @onready var unlock_map: Button = %UnlockMap
 @onready var win_battle: Button = %WinBattle
 @onready var lose_battle: Button = %LoseBattle
+@onready var complete_run: Button = %CompleteRun
 
 
 func _ready() -> void:
@@ -108,10 +111,17 @@ func _set_up_debug() -> void:
 			for i in map.map_data.size():
 				map.unlock_row(i)
 	)
+	complete_run.pressed.connect(
+		func():
+			settings_ui.visible = !settings_ui.visible
+			debug.visible = !debug.visible
+			_show_run_complete(true)
+	)
 
 
 func _set_up_managers() -> void:
 	inventory_manager.run_stats = run_stats
+	run_data_manager.run_stats = run_stats
 	party_manager.run_stats = run_stats
 	vial_manager.run_stats = run_stats
 	artifact_manager.run_stats = run_stats
@@ -173,7 +183,9 @@ func _show_battle_lost() -> void:
 
 
 func _show_run_complete(is_victory: bool) -> void:
+	top_bar.hide()
 	var run_complete_scene := _change_view(RUN_COMPLETE_SCENE)
+	run_data_manager.set_run_time()
 	run_complete_scene.is_victory = is_victory
 	run_complete_scene.run_stats = run_stats
 

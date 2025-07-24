@@ -17,7 +17,8 @@ var in_range := false
 
 func select_target(get_id_path: Callable, arena: Arena) -> void:
 	current_target = null
-	in_range = true
+	in_range = false
+	selected_ability = owner.stats.ranged_ability
 
 	if targets_in_range.is_empty():
 		_find_closest_target(get_id_path, arena)
@@ -105,6 +106,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 			if owner.stats.melee_ability.target == Ability.TARGET.AOE:
 				_populate_aoe_targets(arena)
 			highest_weight = weight_sum
+			in_range = true
 
 	if not current_target:
 		_find_closest_target(get_id_path, arena)
@@ -113,6 +115,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 	current_target = null
 	in_range = false
+	selected_ability = owner.stats.ranged_ability
 
 	var shortest_distance := 99
 
