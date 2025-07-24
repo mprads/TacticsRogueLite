@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cicpptc3aniix"]
+
+[ext_resource type="Script" uid="uid://d31mtmhsgwdai" path="res://scenes/rest_area/rest_area.gd" id="1_p51k1"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_rmtjl"]
+
+[node name="RestArea" type="Node2D"]
+script = ExtResource("1_p51k1")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+
+[node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_rmtjl")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 592.0
+offset_top = 344.0
+offset_right = 592.0
+offset_bottom = 344.0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="LeaveButton" type="Button" parent="UI/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 0
+offset_left = -59.0
+offset_top = -28.0
+offset_right = 43.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 16
+text = "Leave"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 0
+offset_left = -575.0
+offset_top = -91.0
+offset_right = -393.0
+offset_bottom = -11.0
+
+[node name="KilnButton" type="Button" parent="UI/Control/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Go to Kiln"
+
+[node name="BrewingButton" type="Button" parent="UI/Control/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Go to Brewing"

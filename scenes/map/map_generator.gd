@@ -10,7 +10,7 @@ const MAX_STARTS := 5
 const MIN_STARTS := 3
 
 const BREWING_ROOM_WEIGHT := 2.5
-const KILN_ROOM_WEIGHT := 2.5
+const REST_ROOM_WEIGHT := 2.5
 const SHOP_ROOM_WEIGHT := 2.5
 const ELITE_ROOM_WEIGHT := 1.5
 const BATTLE_ROOM_WEIGHT := 10.0
@@ -22,7 +22,7 @@ const BATTLE_ROOM_WEIGHT := 10.0
 var random_room_type_weights = {
 	Room.TYPE.BATTLE: 0.0,
 	Room.TYPE.ELITE: 0.0,
-	Room.TYPE.KILN: 0.0,
+	Room.TYPE.REST: 0.0,
 	Room.TYPE.BREWING: 0.0,
 	Room.TYPE.SHOP: 0.0,
 }
@@ -149,16 +149,16 @@ func _setup_boss_room() -> void:
 func _setup_random_room_weights() -> void:
 	random_room_type_weights[Room.TYPE.BATTLE] = BATTLE_ROOM_WEIGHT
 	random_room_type_weights[Room.TYPE.ELITE] = BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT
-	random_room_type_weights[Room.TYPE.KILN] = (
-		BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + KILN_ROOM_WEIGHT
+	random_room_type_weights[Room.TYPE.REST] = (
+		BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + REST_ROOM_WEIGHT
 	)
 	random_room_type_weights[Room.TYPE.BREWING] = (
-		BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + KILN_ROOM_WEIGHT + BREWING_ROOM_WEIGHT
+		BATTLE_ROOM_WEIGHT + ELITE_ROOM_WEIGHT + REST_ROOM_WEIGHT + BREWING_ROOM_WEIGHT
 	)
 	random_room_type_weights[Room.TYPE.SHOP] = (
 		BATTLE_ROOM_WEIGHT
 		+ ELITE_ROOM_WEIGHT
-		+ KILN_ROOM_WEIGHT
+		+ REST_ROOM_WEIGHT
 		+ BREWING_ROOM_WEIGHT
 		+ SHOP_ROOM_WEIGHT
 	)
@@ -179,11 +179,11 @@ func _setup_room_types() -> void:
 
 	for room in map_data[floori(TOTAL_ENCOUNTERS / 2)]:
 		if room.next_rooms.size():
-			room.type = Room.TYPE.KILN
+			room.type = Room.TYPE.REST
 
 	for room in map_data[TOTAL_ENCOUNTERS - 2]:
 		if room.next_rooms.size():
-			room.type = Room.TYPE.KILN
+			room.type = Room.TYPE.REST
 
 	for current_row in map_data:
 		for room in current_row:
@@ -193,41 +193,41 @@ func _setup_room_types() -> void:
 
 
 func _set_room_randomly(room_to_set: Room) -> void:
-	var early_kiln := true
+	var early_rest := true
 	var early_brewing := true
-	var consecutive_kiln := true
+	var consecutive_rest := true
 	var consecutive_brewing := true
 	var consecutive_shop := true
-	var kiln_before_half := true
-	var kiln_before_boss := true
+	var rest_before_half := true
+	var rest_before_boss := true
 
 	var type_candidate: Room.TYPE
 
 	while (
-		early_kiln
+		early_rest
 		or early_brewing
-		or consecutive_kiln
+		or consecutive_rest
 		or consecutive_brewing
 		or consecutive_shop
-		or kiln_before_half
-		or kiln_before_boss
+		or rest_before_half
+		or rest_before_boss
 	):
 		type_candidate = _get_random_room_type_by_weight()
 
-		var is_kiln := type_candidate == Room.TYPE.KILN
-		var has_kiln_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.KILN)
+		var is_rest := type_candidate == Room.TYPE.REST
+		var has_rest_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.REST)
 		var is_brewing := type_candidate == Room.TYPE.BREWING
 		var has_brewing_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.BREWING)
 		var is_shop := type_candidate == Room.TYPE.SHOP
 		var has_shop_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.SHOP)
 
-		early_kiln = is_kiln and room_to_set.row < 3
+		early_rest = is_rest and room_to_set.row < 3
 		early_brewing = is_brewing and room_to_set.row < 3
-		consecutive_kiln = is_kiln and has_kiln_parent
+		consecutive_rest = is_rest and has_rest_parent
 		consecutive_brewing = is_brewing and has_brewing_parent
 		consecutive_shop = is_shop and has_shop_parent
-		kiln_before_half = is_kiln and room_to_set.row == (floori(TOTAL_ENCOUNTERS / 2)) - 1
-		kiln_before_boss = is_kiln and room_to_set.row == TOTAL_ENCOUNTERS - 2
+		rest_before_half = is_rest and room_to_set.row == (floori(TOTAL_ENCOUNTERS / 2)) - 1
+		rest_before_boss = is_rest and room_to_set.row == TOTAL_ENCOUNTERS - 2
 
 	room_to_set.type = type_candidate
 
