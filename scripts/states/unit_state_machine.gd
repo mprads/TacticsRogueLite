@@ -1,7 +1,7 @@
 class_name UnitStateMachine
 extends Node
 
-enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING }
+enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING, WANDERING }
 
 @export var initial_state: STATE
 
@@ -22,6 +22,7 @@ func init(unit: Unit) -> void:
 	states[STATE.AIMING] = UnitAimingState.new()
 	states[STATE.DISABLED] = UnitDisabledState.new()
 	states[STATE.DEPLOYING] = UnitDeployingState.new()
+	states[STATE.WANDERING] = UnitWanderingState.new()
 
 	for state in states.values():
 		state.unit = unit
