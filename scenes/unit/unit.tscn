@@ -275,7 +275,6 @@ target = NodePath("..")
 
 [node name="UnitStateMachine" type="Node" parent="."]
 script = ExtResource("5_vgvef")
-initial_state = 4
 
 [node name="ModifierManager" type="Node" parent="."]
 script = ExtResource("11_540om")

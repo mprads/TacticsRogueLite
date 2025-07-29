@@ -3,11 +3,10 @@ extends Node
 
 enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING, WANDERING }
 
-@export var initial_state: STATE
-
 @onready var state_debug: Label = $"../StateDebug"
 
 var states: Dictionary[STATE, UnitState] = {}
+var initial_state := STATE.DEPLOYING
 var current_state: UnitState
 
 
@@ -33,6 +32,15 @@ func init(unit: Unit) -> void:
 		current_state = states[initial_state]
 
 		_update_debug_state_label()
+
+
+func force_state_transition(next_state: STATE) -> void:
+	_on_transition_requested(current_state, next_state)
+
+
+func on_physics_process(delta: float) -> void:
+	if current_state:
+		current_state.on_physics_process(delta)
 
 
 func on_input(event: InputEvent) -> void:

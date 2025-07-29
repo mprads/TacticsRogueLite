@@ -46,6 +46,10 @@ func _ready() -> void:
 	mouse_exited.connect(on_mouse_exited)
 
 
+func _physics_process(delta: float) -> void:
+	unit_state_machine.on_physics_process(delta)
+
+
 func _input(event: InputEvent) -> void:
 	unit_state_machine.on_input(event)
 

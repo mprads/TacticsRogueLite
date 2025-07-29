@@ -7,6 +7,7 @@
 script = ExtResource("1_p51k1")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_rmtjl")]
 

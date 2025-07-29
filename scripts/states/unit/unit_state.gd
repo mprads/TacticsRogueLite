@@ -18,6 +18,10 @@ func use_ability(_targets: Array[Area2D]) -> void:
 	pass
 
 
+func on_physics_process(_delta: float) -> void:
+	pass
+
+
 func on_input(_event: InputEvent) -> void:
 	pass
 

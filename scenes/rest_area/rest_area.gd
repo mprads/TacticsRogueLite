@@ -21,7 +21,7 @@ func _add_party_to_scene() -> void:
 	for unit_stats in party_manager.get_party():
 		var new_unit := UNIT_SCENE.instantiate()
 		add_child(new_unit)
-		new_unit.unit_state_machine.initial_state = UnitStateMachine.STATE.WANDERING
+		new_unit.unit_state_machine.force_state_transition(UnitStateMachine.STATE.WANDERING)
 		new_unit.stats = unit_stats
 		new_unit.global_position.x = get_viewport_rect().size.x / 2
 		new_unit.global_position.y = get_viewport_rect().size.y / 2
