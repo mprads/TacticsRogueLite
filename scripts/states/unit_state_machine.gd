@@ -34,6 +34,8 @@ func init(unit: Unit) -> void:
 		_update_debug_state_label()
 
 
+# TODO need a cleaner way to set an initial state, the init call being in
+# the unit _ready prevents setting initial state before it enters the tree
 func force_state_transition(next_state: STATE) -> void:
 	_on_transition_requested(current_state, next_state)
 

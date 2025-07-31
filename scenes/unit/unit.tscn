@@ -262,6 +262,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_bhlit")
 

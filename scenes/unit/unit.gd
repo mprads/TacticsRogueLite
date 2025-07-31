@@ -21,6 +21,7 @@ signal unit_selected(unit: Unit)
 @onready var aiming_ability_animated_sprite: AnimatedSprite2D = %AimingAbilityAnimatedSprite
 @onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
 @onready var unit_state_machine: UnitStateMachine = $UnitStateMachine
