@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cicpptc3aniix"]
+[gd_scene load_steps=5 format=3 uid="uid://cicpptc3aniix"]
 
 [ext_resource type="Script" uid="uid://d31mtmhsgwdai" path="res://scenes/rest_area/rest_area.gd" id="1_p51k1"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_rmtjl"]
+[ext_resource type="Texture2D" uid="uid://5n1wq0xwot21" path="res://assets/sprites/temp_sheets/Top-Down_Retro_Interior/TopDownHouse_FurnitureState2.png" id="3_us03u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prcxv"]
+texture = ExtResource("3_us03u")
+region_rect = Rect2(160, 32, 48, 32)
+modulate_color = Color(1, 0.70980394, 0.29803923, 1)
 
 [node name="RestArea" type="Node2D"]
 script = ExtResource("1_p51k1")
@@ -10,6 +16,20 @@ script = ExtResource("1_p51k1")
 layer = -1
 
 [node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_rmtjl")]
+
+[node name="Panel" type="Panel" parent="BackgroundLayer"]
+custom_minimum_size = Vector2(48, 32)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -256.0
+offset_right = 192.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_prcxv")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

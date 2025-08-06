@@ -1,6 +1,8 @@
 class_name UnitWanderingState
 extends UnitState
 
+const TOP_NAV_OFFSET := 28
+
 var wander_timer: Timer 
 var x_dir := 0.0
 var y_dir := 0.0
@@ -18,8 +20,8 @@ func enter() -> void:
 	x_screen_max = viewport_size.x - unit.collision_shape_2d.shape.size.x
 	x_screen_min = 0 + unit.collision_shape_2d.shape.size.x
 	y_screen_max = viewport_size.y - unit.collision_shape_2d.shape.size.y
-	y_screen_min = 0 + unit.collision_shape_2d.shape.size.y
-	
+	y_screen_min = 0 + unit.collision_shape_2d.shape.size.y + TOP_NAV_OFFSET
+
 	wander_timer = Timer.new()
 	unit.add_child(wander_timer)
 	wander_timer.wait_time = randf_range(0.5, 1.5)
