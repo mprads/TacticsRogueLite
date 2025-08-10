@@ -17,16 +17,16 @@ layer = -1
 
 [node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_rmtjl")]
 
-[node name="Panel" type="Panel" parent="BackgroundLayer"]
+[node name="Carpet" type="Panel" parent="BackgroundLayer"]
 custom_minimum_size = Vector2(48, 32)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -256.0
-offset_right = 192.0
+offset_left = -272.0
+offset_top = -320.0
+offset_right = 208.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_prcxv")

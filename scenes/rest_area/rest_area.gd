@@ -8,6 +8,18 @@ const RANDOM_OFFSET := 48
 
 @onready var kiln_button: Button = %KilnButton
 @onready var brewing_button: Button = %BrewingButton
+@onready var leave_button: Button = %LeaveButton
+
+
+func _ready() -> void:
+	var kiln_room := Room.new()
+	kiln_room.type = Room.TYPE.KILN
+	var brewing_room := Room.new()
+	brewing_room.type = Room.TYPE.BREWING
+
+	kiln_button.pressed.connect(Events.map_exited.emit.bind(kiln_room))
+	brewing_button.pressed.connect(Events.map_exited.emit.bind(brewing_room))
+	leave_button.pressed.connect(Events.rest_area_exited.emit)
 
 
 func set_party_manager(value: PartyManager) -> void:

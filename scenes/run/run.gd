@@ -138,6 +138,7 @@ func _set_up_event_connections() -> void:
 	Events.shop_exited.connect(_show_map)
 	Events.brewing_exited.connect(_show_map)
 	Events.kiln_exited.connect(_show_map)
+	Events.rest_area_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
 
 
