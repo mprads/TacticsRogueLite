@@ -141,24 +141,6 @@ tracks/2/keys = {
 "values": [0.0, -0.174533, 0.0872665, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_1ifho"]
-resource_name = "idle"
-length = 0.8
-loop_mode = 1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Outline:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 0.574349, 2.37841, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_8477q"]
 resource_name = "death"
 length = 0.8
@@ -214,6 +196,24 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.211765)]
 }
 
+[sub_resource type="Animation" id="Animation_1ifho"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Outline:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 0.574349, 2.37841, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bg1qp"]
 _data = {
 &"RESET": SubResource("Animation_u15f5"),
@@ -262,6 +262,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_bhlit")
 
@@ -275,7 +276,6 @@ target = NodePath("..")
 
 [node name="UnitStateMachine" type="Node" parent="."]
 script = ExtResource("5_vgvef")
-initial_state = 4
 
 [node name="ModifierManager" type="Node" parent="."]
 script = ExtResource("11_540om")
@@ -284,8 +284,6 @@ script = ExtResource("11_540om")
 offset_left = -17.0
 offset_right = 21.0
 offset_bottom = 32.0
-theme_override_constants/h_separation = 4
-theme_override_constants/v_separation = 2
 status_owner = NodePath("..")
 
 [node name="StateDebug" type="Label" parent="."]

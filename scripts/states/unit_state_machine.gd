@@ -1,13 +1,12 @@
 class_name UnitStateMachine
 extends Node
 
-enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING }
-
-@export var initial_state: STATE
+enum STATE { IDLE, MOVING, AIMING, DISABLED, DEPLOYING, WANDERING }
 
 @onready var state_debug: Label = $"../StateDebug"
 
 var states: Dictionary[STATE, UnitState] = {}
+var initial_state := STATE.DEPLOYING
 var current_state: UnitState
 
 
@@ -22,6 +21,7 @@ func init(unit: Unit) -> void:
 	states[STATE.AIMING] = UnitAimingState.new()
 	states[STATE.DISABLED] = UnitDisabledState.new()
 	states[STATE.DEPLOYING] = UnitDeployingState.new()
+	states[STATE.WANDERING] = UnitWanderingState.new()
 
 	for state in states.values():
 		state.unit = unit
@@ -32,6 +32,17 @@ func init(unit: Unit) -> void:
 		current_state = states[initial_state]
 
 		_update_debug_state_label()
+
+
+# TODO need a cleaner way to set an initial state, the init call being in
+# the unit _ready prevents setting initial state before it enters the tree
+func force_state_transition(next_state: STATE) -> void:
+	_on_transition_requested(current_state, next_state)
+
+
+func on_physics_process(delta: float) -> void:
+	if current_state:
+		current_state.on_physics_process(delta)
 
 
 func on_input(event: InputEvent) -> void:

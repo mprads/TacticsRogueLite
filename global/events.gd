@@ -35,6 +35,9 @@ signal brewing_entered(brewing: Brewing)
 #Kiln Events
 signal kiln_exited
 
+#Rest Area Events
+signal rest_area_exited
+
 #Map Events
 signal map_exited(room: Room)
 

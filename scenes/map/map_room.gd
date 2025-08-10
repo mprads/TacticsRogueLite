@@ -5,7 +5,7 @@ signal selected(room: Room)
 
 const ICONS := {
 	Room.TYPE.NOT_ASSIGNED: [null, Vector2.ONE],
-	Room.TYPE.KILN: [preload("res://assets/icons/map/Kiln.png"), Vector2.ONE],
+	Room.TYPE.REST: [preload("res://assets/icons/map/Kiln.png"), Vector2.ONE],
 	Room.TYPE.BREWING: [preload("res://assets/icons/map/Brewing.png"), Vector2.ONE],
 	Room.TYPE.SHOP: [preload("res://assets/icons/map/Shop.png"), Vector2.ONE],
 	Room.TYPE.BATTLE: [preload("res://assets/icons/map/Battle.png"), Vector2.ONE],

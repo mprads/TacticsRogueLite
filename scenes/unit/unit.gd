@@ -21,6 +21,7 @@ signal unit_selected(unit: Unit)
 @onready var aiming_ability_animated_sprite: AnimatedSprite2D = %AimingAbilityAnimatedSprite
 @onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
 @onready var unit_state_machine: UnitStateMachine = $UnitStateMachine
@@ -44,6 +45,10 @@ func _ready() -> void:
 	unit_state_machine.init(self)
 	mouse_entered.connect(on_mouse_entered)
 	mouse_exited.connect(on_mouse_exited)
+
+
+func _physics_process(delta: float) -> void:
+	unit_state_machine.on_physics_process(delta)
 
 
 func _input(event: InputEvent) -> void:

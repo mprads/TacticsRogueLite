@@ -5,6 +5,7 @@ const BATTLE_SCENE = preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE = preload("res://scenes/battle_reward/battle_reward.tscn")
 const BATTLE_LOST_SCENE = preload("res://scenes/battle_lost/battle_lost.tscn")
 const SHOP_SCENE = preload("res://scenes/shop/shop.tscn")
+const REST_AREA_SCENE = preload("uid://cicpptc3aniix")
 const BREWING_SCENE = preload("res://scenes/brewing/brewing.tscn")
 const KILN_SCNE = preload("res://scenes/kiln/kiln.tscn")
 const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn")
@@ -137,6 +138,7 @@ func _set_up_event_connections() -> void:
 	Events.shop_exited.connect(_show_map)
 	Events.brewing_exited.connect(_show_map)
 	Events.kiln_exited.connect(_show_map)
+	Events.rest_area_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
 
 
@@ -200,6 +202,8 @@ func _on_map_exited(room: Room) -> void:
 			_on_battle_entered(room)
 		Room.TYPE.SHOP:
 			_on_shop_entered()
+		Room.TYPE.REST:
+			_on_rest_area_entered()
 		Room.TYPE.BREWING:
 			_on_brewing_entered()
 		Room.TYPE.KILN:
@@ -238,6 +242,11 @@ func _on_shop_entered() -> void:
 	shop.party_manager = party_manager
 	shop.populate_shop()
 	Events.shop_entered.emit(shop)
+
+
+func _on_rest_area_entered() -> void:
+	var rest_area := _change_view(REST_AREA_SCENE)
+	rest_area.party_manager = party_manager
 
 
 func _on_brewing_entered() -> void:

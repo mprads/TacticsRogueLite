@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://cicpptc3aniix"]
+
+[ext_resource type="Script" uid="uid://d31mtmhsgwdai" path="res://scenes/rest_area/rest_area.gd" id="1_p51k1"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_rmtjl"]
+[ext_resource type="Texture2D" uid="uid://5n1wq0xwot21" path="res://assets/sprites/temp_sheets/Top-Down_Retro_Interior/TopDownHouse_FurnitureState2.png" id="3_us03u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prcxv"]
+texture = ExtResource("3_us03u")
+region_rect = Rect2(160, 32, 48, 32)
+modulate_color = Color(1, 0.70980394, 0.29803923, 1)
+
+[node name="RestArea" type="Node2D"]
+script = ExtResource("1_p51k1")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_rmtjl")]
+
+[node name="Carpet" type="Panel" parent="BackgroundLayer"]
+custom_minimum_size = Vector2(48, 32)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -272.0
+offset_top = -320.0
+offset_right = 208.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_prcxv")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 592.0
+offset_top = 344.0
+offset_right = 592.0
+offset_bottom = 344.0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="LeaveButton" type="Button" parent="UI/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 0
+offset_left = -59.0
+offset_top = -28.0
+offset_right = 43.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 16
+text = "Leave"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 0
+offset_left = -575.0
+offset_top = -91.0
+offset_right = -393.0
+offset_bottom = -11.0
+
+[node name="KilnButton" type="Button" parent="UI/Control/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Go to Kiln"
+
+[node name="BrewingButton" type="Button" parent="UI/Control/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Go to Brewing"
