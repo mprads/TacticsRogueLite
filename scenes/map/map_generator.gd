@@ -12,7 +12,8 @@ const MIN_STARTS := 3
 const BREWING_ROOM_WEIGHT := 2.5
 const REST_ROOM_WEIGHT := 2.5
 const SHOP_ROOM_WEIGHT := 2.5
-const ELITE_ROOM_WEIGHT := 1.5
+const EVENT_ROOM_WEIGHT := 1.0
+const ELITE_ROOM_WEIGHT := 1.0
 const BATTLE_ROOM_WEIGHT := 10.0
 
 @export var battle_stats_pool: BattleStatsPool
@@ -25,6 +26,7 @@ var random_room_type_weights = {
 	Room.TYPE.REST: 0.0,
 	Room.TYPE.BREWING: 0.0,
 	Room.TYPE.SHOP: 0.0,
+	Room.TYPE.EVENT: 0.0,
 }
 
 var random_room_type_total_weight := 0
@@ -162,8 +164,16 @@ func _setup_random_room_weights() -> void:
 		+ BREWING_ROOM_WEIGHT
 		+ SHOP_ROOM_WEIGHT
 	)
+	random_room_type_weights[Room.TYPE.EVENT] = (
+		BATTLE_ROOM_WEIGHT
+		+ ELITE_ROOM_WEIGHT
+		+ REST_ROOM_WEIGHT
+		+ BREWING_ROOM_WEIGHT
+		+ SHOP_ROOM_WEIGHT
+		+ EVENT_ROOM_WEIGHT
+	)
 
-	random_room_type_total_weight = random_room_type_weights[Room.TYPE.SHOP]
+	random_room_type_total_weight = random_room_type_weights[Room.TYPE.EVENT]
 
 
 func _setup_room_types() -> void:
@@ -198,6 +208,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 	var consecutive_rest := true
 	var consecutive_brewing := true
 	var consecutive_shop := true
+	var consecutive_event := true
 	var rest_before_half := true
 	var rest_before_boss := true
 
@@ -209,6 +220,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		or consecutive_rest
 		or consecutive_brewing
 		or consecutive_shop
+		or consecutive_event
 		or rest_before_half
 		or rest_before_boss
 	):
@@ -220,12 +232,15 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		var has_brewing_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.BREWING)
 		var is_shop := type_candidate == Room.TYPE.SHOP
 		var has_shop_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.SHOP)
+		var is_event := type_candidate == Room.TYPE.EVENT
+		var has_event_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.EVENT)
 
 		early_rest = is_rest and room_to_set.row < 3
 		early_brewing = is_brewing and room_to_set.row < 3
 		consecutive_rest = is_rest and has_rest_parent
 		consecutive_brewing = is_brewing and has_brewing_parent
 		consecutive_shop = is_shop and has_shop_parent
+		consecutive_event = is_event and has_event_parent
 		rest_before_half = is_rest and room_to_set.row == (floori(TOTAL_ENCOUNTERS / 2)) - 1
 		rest_before_boss = is_rest and room_to_set.row == TOTAL_ENCOUNTERS - 2
 

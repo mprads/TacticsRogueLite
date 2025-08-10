@@ -8,6 +8,7 @@ const ICONS := {
 	Room.TYPE.REST: [preload("res://assets/icons/map/Kiln.png"), Vector2.ONE],
 	Room.TYPE.BREWING: [preload("res://assets/icons/map/Brewing.png"), Vector2.ONE],
 	Room.TYPE.SHOP: [preload("res://assets/icons/map/Shop.png"), Vector2.ONE],
+	Room.TYPE.EVENT: [preload("uid://bud4wd3mipmmx"), Vector2.ONE],
 	Room.TYPE.BATTLE: [preload("res://assets/icons/map/Battle.png"), Vector2.ONE],
 	Room.TYPE.ELITE: [preload("res://assets/icons/map/Elite.png"), Vector2.ONE],
 	Room.TYPE.BOSS: [preload("res://assets/icons/map/Boss.png"), Vector2.ONE],
