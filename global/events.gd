@@ -38,6 +38,9 @@ signal kiln_exited
 #Rest Area Events
 signal rest_area_exited
 
+#Random Event Events
+signal random_event_exited
+
 #Map Events
 signal map_exited(room: Room)
 
