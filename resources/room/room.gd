@@ -10,3 +10,4 @@ enum TYPE { NOT_ASSIGNED, BATTLE, KILN, BREWING, SHOP, ELITE, BOSS, REST, EVENT 
 @export var next_rooms: Array[Room]
 @export var selected := false
 @export var battle_stats: BattleStats
+@export var random_event: RandomEvent

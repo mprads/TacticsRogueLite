@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RandomEventsPool" load_steps=3 format=3 uid="uid://b8mi2askuka5c"]
+
+[ext_resource type="Script" uid="uid://crmmyt7ujj58j" path="res://resources/random_events/random_events_pool.gd" id="1_3c6fp"]
+[ext_resource type="Resource" uid="uid://51kkbeh20rlt" path="res://resources/random_events/event_gamble.tres" id="1_8dioh"]
+
+[resource]
+script = ExtResource("1_3c6fp")
+pool = Array[Resource]([ExtResource("1_8dioh")])
+metadata/_custom_type_script = "uid://crmmyt7ujj58j"
