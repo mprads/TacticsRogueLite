@@ -8,7 +8,6 @@ const SHOP_SCENE = preload("res://scenes/shop/shop.tscn")
 const REST_AREA_SCENE = preload("uid://cicpptc3aniix")
 const BREWING_SCENE = preload("res://scenes/brewing/brewing.tscn")
 const KILN_SCNE = preload("res://scenes/kiln/kiln.tscn")
-const RANDOM_EVENT_SCENE = preload("uid://csk8p2bfq6qtb")
 const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn")
 
 @export var run_stats: RunStats
@@ -211,7 +210,7 @@ func _on_map_exited(room: Room) -> void:
 		Room.TYPE.KILN:
 			_on_kiln_entered()
 		Room.TYPE.EVENT:
-			_on_random_event_entered()
+			_on_random_event_entered(room)
 
 
 func _on_battle_entered(room: Room) -> void:
@@ -266,9 +265,8 @@ func _on_kiln_entered() -> void:
 	kiln.party_manager = party_manager
 
 
-func _on_random_event_entered() -> void:
-	var random_event := _change_view(RANDOM_EVENT_SCENE)
-	# Get random event from room or generate now
+func _on_random_event_entered(room: Room) -> void:
+	var random_event := _change_view(room.random_event.event_scene)
 
 
 func _on_request_use_vial(vial: Vial) -> void:

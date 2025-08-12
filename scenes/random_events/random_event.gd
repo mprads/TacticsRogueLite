@@ -1,4 +1,3 @@
-class_name RandomEvent
 extends Node2D
 
 @onready var leave_button: Button = %LeaveButton

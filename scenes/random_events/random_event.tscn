@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://csk8p2bfq6qtb"]
 
-[ext_resource type="Script" uid="uid://coinfcs3wpxnk" path="res://scenes/random_event/random_event.gd" id="1_jo2oo"]
+[ext_resource type="Script" uid="uid://coinfcs3wpxnk" path="res://scenes/random_events/random_event.gd" id="1_jo2oo"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="1_w8t2p"]
 
 [node name="RandomEvent" type="Node2D"]

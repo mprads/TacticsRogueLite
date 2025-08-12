@@ -18,6 +18,7 @@ const BATTLE_ROOM_WEIGHT := 10.0
 
 @export var battle_stats_pool: BattleStatsPool
 @export var elite_battle_stats_pool: BattleStatsPool
+@export var random_events_pool: RandomEventsPool
 @export var boss_battle: BattleStats
 
 var random_room_type_weights = {
@@ -45,6 +46,7 @@ func generate_map() -> Array[Array]:
 
 	battle_stats_pool.setup()
 	elite_battle_stats_pool.setup()
+	random_events_pool.setup()
 
 	_setup_boss_room()
 	_setup_random_room_weights()
@@ -261,6 +263,11 @@ func _set_room_randomly(room_to_set: Room) -> void:
 			elite_room_tier = 1
 
 		room_to_set.battle_stats = elite_battle_stats_pool.get_battle_in_tier(elite_room_tier)
+
+	if type_candidate == Room.TYPE.EVENT:
+		# Either increase tier per floor cleared, or for vertical slice by rooms cleared
+		var event_room_tier := 0
+		room_to_set.random_event = random_events_pool.get_event_in_tier(event_room_tier)
 
 
 func _get_random_room_type_by_weight() -> Room.TYPE:
