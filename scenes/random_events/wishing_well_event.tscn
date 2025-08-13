@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl1xv00auc23v"]
+
+[ext_resource type="Script" uid="uid://btrvs2fsshg6v" path="res://scenes/random_events/wishing_well_event.gd" id="1_ta0gp"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_pnne6"]
+
+[node name="WishingWellEvent" type="Node2D"]
+script = ExtResource("1_ta0gp")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_pnne6")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="VBoxContainer" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="ThrowGoldButton" type="Button" parent="UI/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Throw 10 Gold In The Well"
+
+[node name="LeaveButton" type="Button" parent="UI/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Leave"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RandomEvent" load_steps=3 format=3 uid="uid://br4xxhhmb3db4"]
+
+[ext_resource type="PackedScene" uid="uid://cl1xv00auc23v" path="res://scenes/random_events/wishing_well_event.tscn" id="1_dd2m2"]
+[ext_resource type="Script" uid="uid://cwweqnd6pt5yw" path="res://resources/random_events/random_event.gd" id="1_g0j21"]
+
+[resource]
+script = ExtResource("1_g0j21")
+weight = 1.0
+event_scene = ExtResource("1_dd2m2")
+metadata/_custom_type_script = "uid://cwweqnd6pt5yw"

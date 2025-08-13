@@ -51,9 +51,13 @@ func set_room(value: Room) -> void:
 	available_sprite.texture = ICONS[room.type][0]
 
 	# TODO remove this once better debugging tools added
-	if room.battle_stats:
+	if room.battle_stats or room.random_event:
 		label.visible = true
-		var text = room.battle_stats.resource_path.split("/")
+		var text = ""
+		if room.battle_stats:
+			text = room.battle_stats.resource_path.split("/")  
+		else:
+			text = room.random_event.resource_path.split("/")
 		label.text = text[4]
 
 

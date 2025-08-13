@@ -1,5 +1,7 @@
+class_name WishingWellEvent
 extends Node2D
 
+@onready var throw_gold_button: Button = %ThrowGoldButton
 @onready var leave_button: Button = %LeaveButton
 
 
