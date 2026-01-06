@@ -1,7 +1,7 @@
 class_name WeightedTable
 extends Resource
 
-@export var pool: Array
+@export var pool: Array[Resource]
 @export var tiers := 1
 
 var total_weights_by_tier: Array[float]

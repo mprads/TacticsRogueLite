@@ -16,8 +16,8 @@ const EVENT_ROOM_WEIGHT := 1.0
 const ELITE_ROOM_WEIGHT := 1.0
 const BATTLE_ROOM_WEIGHT := 10.0
 
-@export var battle_stats_pool: BattleStatsPool
-@export var elite_battle_stats_pool: BattleStatsPool
+@export var battle_stats_pool: WeightedTable
+@export var elite_battle_stats_pool: WeightedTable
 @export var random_events_pool: WeightedTable
 @export var boss_battle: BattleStats
 
@@ -182,12 +182,12 @@ func _setup_room_types() -> void:
 	for room in map_data[0]:
 		if room.next_rooms.size():
 			room.type = Room.TYPE.BATTLE
-			room.battle_stats = battle_stats_pool.get_battle_in_tier(0)
+			room.battle_stats = battle_stats_pool.get_item_in_tier(0)
 
 	for room in map_data[floori((TOTAL_ENCOUNTERS / 2) - 1)]:
 		if room.next_rooms.size():
 			room.type = Room.TYPE.ELITE
-			room.battle_stats = elite_battle_stats_pool.get_battle_in_tier(1)
+			room.battle_stats = elite_battle_stats_pool.get_item_in_tier(1)
 
 	for room in map_data[floori(TOTAL_ENCOUNTERS / 2)]:
 		if room.next_rooms.size():
@@ -254,7 +254,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		if room_to_set.row > floori(TOTAL_ENCOUNTERS / 3):
 			battle_room_tier = 1
 
-		room_to_set.battle_stats = battle_stats_pool.get_battle_in_tier(battle_room_tier)
+		room_to_set.battle_stats = battle_stats_pool.get_item_in_tier(battle_room_tier)
 
 	if type_candidate == Room.TYPE.ELITE:
 		var elite_room_tier := 0
@@ -262,7 +262,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		if room_to_set.row > floori(TOTAL_ENCOUNTERS / 3):
 			elite_room_tier = 1
 
-		room_to_set.battle_stats = elite_battle_stats_pool.get_battle_in_tier(elite_room_tier)
+		room_to_set.battle_stats = elite_battle_stats_pool.get_item_in_tier(elite_room_tier)
 
 	if type_candidate == Room.TYPE.EVENT:
 		# Either increase tier per floor cleared, or for vertical slice by rooms cleared
