@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" load_steps=3 format=3 uid="uid://eeiurvoylb7"]
+
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/random_events/wishing_well/reward.gd" id="1_728bq"]
+[ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/mushroom.tres" id="1_nc1o8"]
+
+[resource]
+script = ExtResource("1_728bq")
+weight = 1.0
+reward_res = ExtResource("1_nc1o8")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

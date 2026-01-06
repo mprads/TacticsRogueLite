@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Reward" load_steps=3 format=3 uid="uid://cv8tda6lbod2h"]
+
+[ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="1_oxxjq"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/random_events/wishing_well/reward.gd" id="2_1bfho"]
+
+[resource]
+script = ExtResource("2_1bfho")
+tier = 1
+weight = 1.0
+reward_res = ExtResource("1_oxxjq")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

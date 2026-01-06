@@ -47,6 +47,7 @@ signal map_exited(room: Room)
 #Inventory Events
 signal request_add_item(item: Item)
 signal request_add_gold(amount: int)
+signal request_remove_gold(amount: int)
 signal request_remove_item(item: Item, count: int)
 
 #Tooltip Events

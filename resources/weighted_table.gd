@@ -23,6 +23,10 @@ func get_item_in_tier(tier: int) -> Resource:
 	return null
 
 
+func get_highest_tier() -> int:
+	return tiers - 1
+
+
 func _get_all_items_in_tier(tier: int) -> Array:
 	return pool.filter(func(item): return item.tier == tier)
 

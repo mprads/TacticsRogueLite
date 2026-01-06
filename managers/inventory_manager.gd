@@ -14,6 +14,7 @@ func _ready() -> void:
 	Events.request_purchase_artifact.connect(_on_request_purchase_artifact)
 	Events.request_remove_item.connect(_on_request_remove_item)
 	Events.request_add_gold.connect(_update_gold)
+	Events.request_remove_gold.connect(_update_gold)
 
 
 func get_gold() -> int:

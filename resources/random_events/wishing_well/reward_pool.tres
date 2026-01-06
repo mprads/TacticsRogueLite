@@ -1,7 +1,16 @@
-[gd_resource type="Resource" script_class="WeightedTable" load_steps=2 format=3 uid="uid://dodx8xqb6jbuj"]
+[gd_resource type="Resource" script_class="WeightedTable" load_steps=9 format=3 uid="uid://dodx8xqb6jbuj"]
 
+[ext_resource type="Resource" uid="uid://bnanprql81fuj" path="res://resources/random_events/wishing_well/tier_0_herb.tres" id="1_dkxvj"]
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_y6eem"]
+[ext_resource type="Resource" uid="uid://eeiurvoylb7" path="res://resources/random_events/wishing_well/tier_0_mushroom.tres" id="2_han7b"]
+[ext_resource type="Resource" uid="uid://dnib3q5i1simb" path="res://resources/random_events/wishing_well/tier_0_venom.tres" id="3_5kssy"]
+[ext_resource type="Resource" uid="uid://cusf2wvvre566" path="res://resources/random_events/wishing_well/tier_0_zinc.tres" id="4_mbrut"]
+[ext_resource type="Resource" uid="uid://jlvg1bhquu6c" path="res://resources/random_events/wishing_well/tier_1_eternal_drip.tres" id="5_31mxj"]
+[ext_resource type="Resource" uid="uid://b4c8ilfk56vjr" path="res://resources/random_events/wishing_well/tier_1_lasting_shield.tres" id="6_n2krm"]
+[ext_resource type="Resource" uid="uid://cv8tda6lbod2h" path="res://resources/random_events/wishing_well/tier_1_rallying_cheer.tres" id="7_u7nnm"]
 
 [resource]
 script = ExtResource("1_y6eem")
+pool = Array[Resource]([ExtResource("1_dkxvj"), ExtResource("2_han7b"), ExtResource("3_5kssy"), ExtResource("4_mbrut"), ExtResource("5_31mxj"), ExtResource("6_n2krm"), ExtResource("7_u7nnm")])
+tiers = 2
 metadata/_custom_type_script = "uid://cwq24hkvk302e"

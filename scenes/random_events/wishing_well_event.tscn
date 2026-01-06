@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl1xv00auc23v"]
+[gd_scene load_steps=4 format=3 uid="uid://cl1xv00auc23v"]
 
 [ext_resource type="Script" uid="uid://btrvs2fsshg6v" path="res://scenes/random_events/wishing_well_event.gd" id="1_ta0gp"]
+[ext_resource type="Resource" uid="uid://dodx8xqb6jbuj" path="res://resources/random_events/wishing_well/reward_pool.tres" id="2_jpsaf"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_pnne6"]
 
 [node name="WishingWellEvent" type="Node2D"]
 script = ExtResource("1_ta0gp")
+reward_pool = ExtResource("2_jpsaf")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -32,14 +34,14 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Throw 100 Gold In The Well"
+text = "Large gold"
 
 [node name="ThrowSmallGoldButton" type="Button" parent="UI/Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Throw 10 Gold In The Well"
+text = "Small gold"
 
 [node name="LeaveButton" type="Button" parent="UI/Control"]
 unique_name_in_owner = true
