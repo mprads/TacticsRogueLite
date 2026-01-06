@@ -27,7 +27,14 @@ size_flags_horizontal = 10
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="ThrowGoldButton" type="Button" parent="UI/Control"]
+[node name="ThrowLargeGoldButton" type="Button" parent="UI/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Throw 100 Gold In The Well"
+
+[node name="ThrowSmallGoldButton" type="Button" parent="UI/Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2

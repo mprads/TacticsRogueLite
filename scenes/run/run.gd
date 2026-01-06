@@ -267,6 +267,11 @@ func _on_kiln_entered() -> void:
 
 func _on_random_event_entered(room: Room) -> void:
 	var random_event := _change_view(room.random_event.event_scene)
+	if "inventory_manager" in random_event:
+		random_event.inventory_manager = inventory_manager
+
+	if "artifact_manager" in random_event:
+		random_event.artifact_manager = artifact_manager
 
 
 func _on_request_use_vial(vial: Vial) -> void:
