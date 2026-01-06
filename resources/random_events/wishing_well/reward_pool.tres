@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="WeightedTable" load_steps=2 format=3 uid="uid://dodx8xqb6jbuj"]
+
+[ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_y6eem"]
+
+[resource]
+script = ExtResource("1_y6eem")
+metadata/_custom_type_script = "uid://cwq24hkvk302e"
