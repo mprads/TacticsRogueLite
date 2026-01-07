@@ -38,12 +38,16 @@ signal kiln_exited
 #Rest Area Events
 signal rest_area_exited
 
+#Random Event Events
+signal random_event_exited
+
 #Map Events
 signal map_exited(room: Room)
 
 #Inventory Events
 signal request_add_item(item: Item)
 signal request_add_gold(amount: int)
+signal request_remove_gold(amount: int)
 signal request_remove_item(item: Item, count: int)
 
 #Tooltip Events

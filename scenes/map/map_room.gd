@@ -8,6 +8,7 @@ const ICONS := {
 	Room.TYPE.REST: [preload("res://assets/icons/map/Kiln.png"), Vector2.ONE],
 	Room.TYPE.BREWING: [preload("res://assets/icons/map/Brewing.png"), Vector2.ONE],
 	Room.TYPE.SHOP: [preload("res://assets/icons/map/Shop.png"), Vector2.ONE],
+	Room.TYPE.EVENT: [preload("uid://bud4wd3mipmmx"), Vector2.ONE],
 	Room.TYPE.BATTLE: [preload("res://assets/icons/map/Battle.png"), Vector2.ONE],
 	Room.TYPE.ELITE: [preload("res://assets/icons/map/Elite.png"), Vector2.ONE],
 	Room.TYPE.BOSS: [preload("res://assets/icons/map/Boss.png"), Vector2.ONE],
@@ -50,9 +51,13 @@ func set_room(value: Room) -> void:
 	available_sprite.texture = ICONS[room.type][0]
 
 	# TODO remove this once better debugging tools added
-	if room.battle_stats:
+	if room.battle_stats or room.random_event:
 		label.visible = true
-		var text = room.battle_stats.resource_path.split("/")
+		var text = ""
+		if room.battle_stats:
+			text = room.battle_stats.resource_path.split("/")  
+		else:
+			text = room.random_event.resource_path.split("/")
 		label.text = text[4]
 
 

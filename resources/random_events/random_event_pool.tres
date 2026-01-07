@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeightedTable" load_steps=4 format=3 uid="uid://bcewqvo3hmhg0"]
+
+[ext_resource type="Resource" uid="uid://51kkbeh20rlt" path="res://resources/random_events/blood_gamble_event.tres" id="1_hg1rr"]
+[ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_uqowe"]
+[ext_resource type="Resource" uid="uid://br4xxhhmb3db4" path="res://resources/random_events/wishing_well_event.tres" id="2_50pr7"]
+
+[resource]
+script = ExtResource("1_uqowe")
+pool = [ExtResource("1_hg1rr"), ExtResource("2_50pr7")]
+metadata/_custom_type_script = "uid://cwq24hkvk302e"

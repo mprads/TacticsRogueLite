@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2i3e6qlmmf13"]
+[gd_scene load_steps=9 format=3 uid="uid://b2i3e6qlmmf13"]
 
 [ext_resource type="Script" uid="uid://b2j1u6d8rdmeh" path="res://scenes/map/map.gd" id="1_sxf4j"]
 [ext_resource type="Script" uid="uid://d1u1r3ppplyaa" path="res://scenes/map/map_generator.gd" id="2_tqkkf"]
-[ext_resource type="Resource" uid="uid://bvw6m71aaj4ta" path="res://resources/battles/battle_stats_pool.tres" id="3_a2pkv"]
-[ext_resource type="Resource" uid="uid://c57pduwq6dht" path="res://resources/battles/elite_battle_stats_pool.tres" id="4_ph54e"]
+[ext_resource type="Resource" uid="uid://btbuhnlhdjrcs" path="res://resources/battles/battle_stats_pool.tres" id="3_a2pkv"]
+[ext_resource type="Resource" uid="uid://bibyn3mytxcrf" path="res://resources/battles/elite_battle_stats_pool.tres" id="4_ph54e"]
+[ext_resource type="Resource" uid="uid://bcewqvo3hmhg0" path="res://resources/random_events/random_event_pool.tres" id="5_04w0f"]
 [ext_resource type="Resource" uid="uid://0qsj8nrf6rw7" path="res://resources/battles/boss_wraith.tres" id="5_fcby6"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="6_jcaow"]
 
@@ -37,6 +38,7 @@ unique_name_in_owner = true
 script = ExtResource("2_tqkkf")
 battle_stats_pool = ExtResource("3_a2pkv")
 elite_battle_stats_pool = ExtResource("4_ph54e")
+random_events_pool = ExtResource("5_04w0f")
 boss_battle = ExtResource("5_fcby6")
 
 [node name="Background" type="CanvasLayer" parent="."]

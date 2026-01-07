@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" load_steps=3 format=3 uid="uid://cusf2wvvre566"]
+
+[ext_resource type="Resource" uid="uid://d0rt6xe2qw4c" path="res://resources/items/zinc.tres" id="1_46l55"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/random_events/wishing_well/reward.gd" id="1_j1ryr"]
+
+[resource]
+script = ExtResource("1_j1ryr")
+weight = 1.0
+reward_res = ExtResource("1_46l55")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

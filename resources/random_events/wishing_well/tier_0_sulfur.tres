@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" load_steps=3 format=3 uid="uid://ddtx0ajsbjq0x"]
+
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/random_events/wishing_well/reward.gd" id="1_sas4r"]
+[ext_resource type="Resource" uid="uid://d1aqyupi7ysw3" path="res://resources/items/sulfur.tres" id="1_stnxv"]
+
+[resource]
+script = ExtResource("1_sas4r")
+weight = 1.0
+reward_res = ExtResource("1_stnxv")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

@@ -12,11 +12,13 @@ const MIN_STARTS := 3
 const BREWING_ROOM_WEIGHT := 2.5
 const REST_ROOM_WEIGHT := 2.5
 const SHOP_ROOM_WEIGHT := 2.5
-const ELITE_ROOM_WEIGHT := 1.5
+const EVENT_ROOM_WEIGHT := 1.0
+const ELITE_ROOM_WEIGHT := 1.0
 const BATTLE_ROOM_WEIGHT := 10.0
 
-@export var battle_stats_pool: BattleStatsPool
-@export var elite_battle_stats_pool: BattleStatsPool
+@export var battle_stats_pool: WeightedTable
+@export var elite_battle_stats_pool: WeightedTable
+@export var random_events_pool: WeightedTable
 @export var boss_battle: BattleStats
 
 var random_room_type_weights = {
@@ -25,6 +27,7 @@ var random_room_type_weights = {
 	Room.TYPE.REST: 0.0,
 	Room.TYPE.BREWING: 0.0,
 	Room.TYPE.SHOP: 0.0,
+	Room.TYPE.EVENT: 0.0,
 }
 
 var random_room_type_total_weight := 0
@@ -43,6 +46,7 @@ func generate_map() -> Array[Array]:
 
 	battle_stats_pool.setup()
 	elite_battle_stats_pool.setup()
+	random_events_pool.setup()
 
 	_setup_boss_room()
 	_setup_random_room_weights()
@@ -162,20 +166,28 @@ func _setup_random_room_weights() -> void:
 		+ BREWING_ROOM_WEIGHT
 		+ SHOP_ROOM_WEIGHT
 	)
+	random_room_type_weights[Room.TYPE.EVENT] = (
+		BATTLE_ROOM_WEIGHT
+		+ ELITE_ROOM_WEIGHT
+		+ REST_ROOM_WEIGHT
+		+ BREWING_ROOM_WEIGHT
+		+ SHOP_ROOM_WEIGHT
+		+ EVENT_ROOM_WEIGHT
+	)
 
-	random_room_type_total_weight = random_room_type_weights[Room.TYPE.SHOP]
+	random_room_type_total_weight = random_room_type_weights[Room.TYPE.EVENT]
 
 
 func _setup_room_types() -> void:
 	for room in map_data[0]:
 		if room.next_rooms.size():
 			room.type = Room.TYPE.BATTLE
-			room.battle_stats = battle_stats_pool.get_battle_in_tier(0)
+			room.battle_stats = battle_stats_pool.get_item_in_tier(0)
 
 	for room in map_data[floori((TOTAL_ENCOUNTERS / 2) - 1)]:
 		if room.next_rooms.size():
 			room.type = Room.TYPE.ELITE
-			room.battle_stats = elite_battle_stats_pool.get_battle_in_tier(1)
+			room.battle_stats = elite_battle_stats_pool.get_item_in_tier(1)
 
 	for room in map_data[floori(TOTAL_ENCOUNTERS / 2)]:
 		if room.next_rooms.size():
@@ -198,6 +210,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 	var consecutive_rest := true
 	var consecutive_brewing := true
 	var consecutive_shop := true
+	var consecutive_event := true
 	var rest_before_half := true
 	var rest_before_boss := true
 
@@ -209,6 +222,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		or consecutive_rest
 		or consecutive_brewing
 		or consecutive_shop
+		or consecutive_event
 		or rest_before_half
 		or rest_before_boss
 	):
@@ -220,12 +234,15 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		var has_brewing_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.BREWING)
 		var is_shop := type_candidate == Room.TYPE.SHOP
 		var has_shop_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.SHOP)
+		var is_event := type_candidate == Room.TYPE.EVENT
+		var has_event_parent := _room_has_parent_of_type(room_to_set, Room.TYPE.EVENT)
 
 		early_rest = is_rest and room_to_set.row < 3
 		early_brewing = is_brewing and room_to_set.row < 3
 		consecutive_rest = is_rest and has_rest_parent
 		consecutive_brewing = is_brewing and has_brewing_parent
 		consecutive_shop = is_shop and has_shop_parent
+		consecutive_event = is_event and has_event_parent
 		rest_before_half = is_rest and room_to_set.row == (floori(TOTAL_ENCOUNTERS / 2)) - 1
 		rest_before_boss = is_rest and room_to_set.row == TOTAL_ENCOUNTERS - 2
 
@@ -237,7 +254,7 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		if room_to_set.row > floori(TOTAL_ENCOUNTERS / 3):
 			battle_room_tier = 1
 
-		room_to_set.battle_stats = battle_stats_pool.get_battle_in_tier(battle_room_tier)
+		room_to_set.battle_stats = battle_stats_pool.get_item_in_tier(battle_room_tier)
 
 	if type_candidate == Room.TYPE.ELITE:
 		var elite_room_tier := 0
@@ -245,7 +262,12 @@ func _set_room_randomly(room_to_set: Room) -> void:
 		if room_to_set.row > floori(TOTAL_ENCOUNTERS / 3):
 			elite_room_tier = 1
 
-		room_to_set.battle_stats = elite_battle_stats_pool.get_battle_in_tier(elite_room_tier)
+		room_to_set.battle_stats = elite_battle_stats_pool.get_item_in_tier(elite_room_tier)
+
+	if type_candidate == Room.TYPE.EVENT:
+		# Either increase tier per floor cleared, or for vertical slice by rooms cleared
+		var event_room_tier := 0
+		room_to_set.random_event = random_events_pool.get_item_in_tier(event_room_tier)
 
 
 func _get_random_room_type_by_weight() -> Room.TYPE:

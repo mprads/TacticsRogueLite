@@ -139,6 +139,7 @@ func _set_up_event_connections() -> void:
 	Events.brewing_exited.connect(_show_map)
 	Events.kiln_exited.connect(_show_map)
 	Events.rest_area_exited.connect(_show_map)
+	Events.random_event_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
 
 
@@ -208,6 +209,8 @@ func _on_map_exited(room: Room) -> void:
 			_on_brewing_entered()
 		Room.TYPE.KILN:
 			_on_kiln_entered()
+		Room.TYPE.EVENT:
+			_on_random_event_entered(room)
 
 
 func _on_battle_entered(room: Room) -> void:
@@ -260,6 +263,17 @@ func _on_brewing_entered() -> void:
 func _on_kiln_entered() -> void:
 	var kiln := _change_view(KILN_SCNE)
 	kiln.party_manager = party_manager
+
+
+func _on_random_event_entered(room: Room) -> void:
+	var random_event := _change_view(room.random_event.event_scene)
+
+	if "inventory_manager" in random_event:
+		random_event.inventory_manager = inventory_manager
+	if "artifact_manager" in random_event:
+		random_event.artifact_manager = artifact_manager
+	if "party_manager" in random_event:
+		random_event.party_manager = party_manager
 
 
 func _on_request_use_vial(vial: Vial) -> void:
