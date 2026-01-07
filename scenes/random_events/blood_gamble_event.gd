@@ -27,6 +27,14 @@ func set_party_manager(value: PartyManager) -> void:
 	party_manager = value
 	party_ui.party_manager = value
 
+	_verify_party_health()
+
+
+func _verify_party_health() -> void:
+	for unit in party_manager.get_party():
+		if unit.health > starting_damage:
+			pay_life_button.disabled = false
+
 
 func _on_pay_life_button_pressed() -> void:
 	pay_life_button.hide()
