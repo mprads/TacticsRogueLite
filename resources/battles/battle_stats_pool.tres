@@ -9,6 +9,6 @@
 
 [resource]
 script = ExtResource("1_ca0oo")
-pool = [ExtResource("2_rs6b3"), ExtResource("3_ub4hj"), ExtResource("4_0ysoa"), ExtResource("5_g07uh"), ExtResource("6_vsorx")]
+pool = Array[Resource]([ExtResource("2_rs6b3"), ExtResource("3_ub4hj"), ExtResource("4_0ysoa"), ExtResource("5_g07uh"), ExtResource("6_vsorx")])
 tiers = 3
 metadata/_custom_type_script = "uid://cwq24hkvk302e"
