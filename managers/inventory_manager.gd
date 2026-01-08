@@ -46,6 +46,7 @@ func _remove_item(key: ItemConfig.KEYS, count: int) -> void:
 func _update_gold(value: int) -> void:
 	run_stats.gold = clampi(run_stats.gold + value, 0, 999)
 	gold_changed.emit()
+	SFXPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.GAIN_GOLD))
 
 
 func _on_request_add_item(item: Item) -> void:

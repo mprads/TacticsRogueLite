@@ -10,6 +10,7 @@ func play(audio: AudioStream, single = false) -> void:
 
 	for player: AudioStreamPlayer in get_children():
 		if not player.playing:
+			player.stream = audio
 			player.play()
 			return
 
