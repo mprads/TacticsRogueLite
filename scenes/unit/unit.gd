@@ -68,6 +68,7 @@ func take_damage(damage: int) -> void:
 	if not stats:
 		return
 
+	SFXPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.GLASS_CLINK))
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 
 	stats.take_damage(modified_damage)
@@ -76,6 +77,7 @@ func take_damage(damage: int) -> void:
 	Events.run_stats_damage_taken.emit(modified_damage)
 
 	if stats.health <= 0:
+		SFXPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.GLASS_BREAK))
 		self.remove_from_group("player_unit")
 		Events.unit_died.emit(self)
 		play_animation("death")

@@ -12,6 +12,7 @@ enum KEYS {
 	MELEE_HIT,
 	RANGED_HIT,
 	AOE_HIT,
+	GAIN_SHIELD,
 	#ROOMS
 	KILN,
 	BREWING,
@@ -29,6 +30,7 @@ const SFX_PATHS := {
 	KEYS.MELEE_HIT: "uid://c1do5s6xe8b08",
 	KEYS.RANGED_HIT: "uid://c706lvxdejdau",
 	KEYS.AOE_HIT: "uid://dqx8knkf8bl80",
+	KEYS.GAIN_SHIELD: "uid://db33oru7wik6t",
 	#ROOMS
 	KEYS.KILN: "uid://b2cs7vy1mhquq",
 	KEYS.BREWING: "uid://c23i1nuxxo72y",
