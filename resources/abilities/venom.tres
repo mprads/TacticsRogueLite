@@ -15,6 +15,6 @@ Cost: 5"
 sprite_frames = ExtResource("2_dbtjg")
 type = 1
 target = 3
-shape = Array[Vector2i]([])
 max_range = 3
+sfx_key = 5
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

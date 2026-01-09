@@ -12,8 +12,7 @@ atlas_coord = Vector2i(2, 1)
 tooltip = "Deal base 5 damage from range
 Cost: 5"
 sprite_frames = ExtResource("2_6sfer")
-type = 0
 target = 3
-shape = Array[Vector2i]([])
 max_range = 3
+sfx_key = 5
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

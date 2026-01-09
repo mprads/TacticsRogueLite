@@ -5,7 +5,6 @@
 
 [resource]
 script = ExtResource("1_abwt8")
-base_shield = 10
 name = "Shield"
 cost = 5
 atlas_coord = Vector2i(3, 0)
@@ -14,6 +13,6 @@ Cost: 5"
 sprite_frames = ExtResource("2_j2s4t")
 type = 1
 target = 1
-shape = Array[Vector2i]([])
 max_range = 2
+sfx_key = 9
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

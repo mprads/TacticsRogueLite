@@ -16,6 +16,7 @@ enum TARGET { SELF, SINGLE_ALLY, ALL_ALLIES, SINGLE_ENEMY, ALL_ENEMIES, AOE }
 @export var target: TARGET
 @export var shape: Array[Vector2i]
 @export var max_range := 1
+@export var sfx_key := SFXConfig.KEYS.MELEE_HIT
 
 
 func apply_effects(_targets: Array[Area2D], _modifier_manager: ModifierManager) -> void:
@@ -24,3 +25,9 @@ func apply_effects(_targets: Array[Area2D], _modifier_manager: ModifierManager) 
 
 func get_tooltip() -> String:
 	return tooltip
+
+
+func _play_sfx() -> void:
+	if not sfx_key: return
+
+	SFXPlayer.play(SFXConfig.get_audio_stream(sfx_key))
