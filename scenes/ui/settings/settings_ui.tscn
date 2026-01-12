@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3ndgvvb3dsdg"]
+[gd_scene load_steps=18 format=3 uid="uid://c3ndgvvb3dsdg"]
 
 [ext_resource type="Script" uid="uid://c7mdv2uhhibcf" path="res://scenes/ui/settings/settings_ui.gd" id="1_ejmdu"]
 [ext_resource type="PackedScene" uid="uid://c0epmpoa6jodq" path="res://scenes/ui/settings/window_mode_button.tscn" id="1_v461p"]
@@ -24,6 +24,15 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 2.0
 region_rect = Rect2(113, 17, 14, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfrmm"]
+texture = ExtResource("2_6ixfs")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(113, 17, 14, 15)
+modulate_color = Color(0.712129, 0.712129, 0.712129, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qmnq"]
 texture = ExtResource("2_6ixfs")
@@ -75,6 +84,7 @@ texture_margin_bottom = 4.0
 region_rect = Rect2(160, 272, 32, 16)
 
 [node name="SettingsUI" type="Control"]
+visible = false
 custom_minimum_size = Vector2(360, 300)
 layout_mode = 3
 anchors_preset = 8
@@ -93,6 +103,7 @@ size_flags_vertical = 4
 script = ExtResource("1_ejmdu")
 
 [node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(360, 300)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,11 +117,11 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 8
 theme_override_styles/panel = SubResource("StyleBoxTexture_wiwya")
 theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_j7mfc")
+theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_kfrmm")
 theme_override_styles/tab_selected = SubResource("StyleBoxTexture_1qmnq")
-current_tab = 2
+current_tab = 0
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -219,6 +230,7 @@ action_name = "Unit 6"
 input_map_id = "unit_6"
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -236,6 +248,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="MasterVolumeSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer" instance=ExtResource("7_pdude")]
 layout_mode = 2

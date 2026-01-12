@@ -9,12 +9,12 @@ extends VBoxContainer
 var bus_index: int
 
 func _ready() -> void:
-	h_slider.value_changed.connect(_on_value_changed)
 	bus_index = AudioServer.get_bus_index(bus_name)
-
 	h_slider.value = db_to_linear(
 		AudioServer.get_bus_volume_db(bus_index)
 	)
+
+	h_slider.value_changed.connect(_on_value_changed)
 
 	label.text = "%s Volume" % bus_name
 
