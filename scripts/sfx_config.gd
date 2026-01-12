@@ -17,6 +17,9 @@ enum KEYS {
 	KILN,
 	BREWING,
 	SHOP_PURCHASE,
+	#MENU
+	SFX_TEST,
+	MUSIC_TEST,
 }
 
 const SFX_PATHS := {
@@ -35,6 +38,8 @@ const SFX_PATHS := {
 	KEYS.KILN: "uid://b2cs7vy1mhquq",
 	KEYS.BREWING: "uid://c23i1nuxxo72y",
 	KEYS.SHOP_PURCHASE: "uid://doytb5id2b5du",
+	KEYS.SFX_TEST: "uid://d51xdv1f4jd6",
+	KEYS.MUSIC_TEST: "uid://cu0xcpwowafoa",
 }
 
 

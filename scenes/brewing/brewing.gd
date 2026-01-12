@@ -10,6 +10,7 @@ const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 @export var inventory_manager: InventoryManager : set = set_inventory_manager
 @export var party_manager: PartyManager : set = set_party_manager
 @export var vial_manager: VialManager : set = set_vial_manager
+@export var sfx_key := SFXConfig.KEYS.BREWING
 
 @onready var recipe_scroll_container: ScrollContainer = %RecipeScrollContainer
 @onready var recipe_container: VBoxContainer = %RecipeContainer
@@ -25,7 +26,6 @@ const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 @onready var open_book: TextureRect = %OpenBook
 @onready var closed_book: TextureRect = %ClosedBook
 
-
 var all_recipes_keys: Array[int] = []
 var filtered_recipes_keys: Array[int] =[]
 var current_stage := STAGE.RECIPE
@@ -37,7 +37,9 @@ func _ready() -> void:
 	party_ui.unit_selected.connect(_on_party_unit_selected)
 	potion_button.pressed.connect(_on_potion_button_pressed)
 	vial_button.pressed.connect(_on_vial_button_pressed)
-	leave_button.pressed.connect(Events.brewing_exited.emit)
+	leave_button.pressed.connect(_on_leave_button_pressed)
+
+	SFXPlayer.play(SFXConfig.get_audio_stream(sfx_key))
 
 	for recipe in ItemConfig.POTION_KEYS:
 		all_recipes_keys.append(recipe)
@@ -208,6 +210,11 @@ func _on_potion_button_pressed() -> void:
 func _on_vial_button_pressed() -> void:
 	_update_component_cost(true)
 	_update_view(STAGE.VIAL)
+
+
+func _on_leave_button_pressed() -> void:
+	SFXPlayer.stop()
+	Events.brewing_exited.emit()
 
 
 func _on_party_unit_selected(unit: UnitStats) -> void:
