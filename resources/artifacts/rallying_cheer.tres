@@ -12,8 +12,8 @@ id = "rallying_cheer"
 type = 2
 icon = ExtResource("1_i3p0d")
 tooltip = "At the start of combat a random unit gains [color=\"fb6b1d\"]ENCOURAGE[/color]"
+sfx_key = 13
 can_appear_in_shop = true
 can_be_reward = true
-elite_reward = false
 gold_cost = 180
 metadata/_custom_type_script = "uid://d03wgd6dnkyes"

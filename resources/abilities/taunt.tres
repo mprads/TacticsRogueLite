@@ -13,5 +13,5 @@ tooltip = "Give yourself [color=\"fb6b1d\"]TAUNT[/color] forcing all enemies in 
 Cost: 5"
 type = 1
 max_range = 0
-sfx_key = 5
+sfx_key = 3
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"
