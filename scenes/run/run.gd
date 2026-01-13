@@ -49,6 +49,8 @@ func _ready() -> void:
 	if not run_stats:
 		run_stats = RunStats.new()
 
+	MusicPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.MAIN_MUSIC), true)
+
 	_start_run()
 
 
@@ -178,6 +180,8 @@ func _show_map() -> void:
 func _show_battle_reward() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE)
 	reward_scene.battle_stats = map.last_room.battle_stats
+
+	MusicPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.MAIN_MUSIC), true)
 
 
 func _show_battle_lost() -> void:

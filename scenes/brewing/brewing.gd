@@ -193,6 +193,11 @@ func set_vial_manager(value: VialManager) -> void:
 	_update_vials()
 
 
+func _leave_cleanup() -> void:
+	SFXPlayer.stop()
+	Events.brewing_exited.emit()
+
+
 func _on_recipe_panel_pressed(potion: Potion, recipe: BrewingRecipe) -> void:
 	current_potion = potion
 	current_recipe = recipe
@@ -213,18 +218,17 @@ func _on_vial_button_pressed() -> void:
 
 
 func _on_leave_button_pressed() -> void:
-	SFXPlayer.stop()
-	Events.brewing_exited.emit()
+	_leave_cleanup()
 
 
 func _on_party_unit_selected(unit: UnitStats) -> void:
 	unit.potion = current_potion
 	_request_remove_components()
 	Events.run_stats_potion_used.emit(current_potion)
-	Events.brewing_exited.emit()
+	_leave_cleanup()
 
 
 func _on_vial_panel_pressed(vial: Vial) -> void:
 	vial.potion = current_potion
 	_request_remove_components(true)
-	Events.brewing_exited.emit()
+	_leave_cleanup()

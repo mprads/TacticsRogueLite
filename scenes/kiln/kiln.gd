@@ -30,6 +30,11 @@ func set_party_manager(value: PartyManager) -> void:
 	party_ui.party_manager = party_manager
 
 
+func _leave_cleanup() -> void:
+	SFXPlayer.stop()
+	Events.kiln_exited.emit()
+
+
 func _on_heal_button_pressed() -> void:
 	heal_button.disabled = true
 
@@ -38,12 +43,11 @@ func _on_heal_button_pressed() -> void:
 			ceili(kiln_unit_icon_panel.unit_stats.max_health * 0.3)
 		)
 
-	Events.kiln_exited.emit()
+	_leave_cleanup()
 
 
 func _on_leave_button_pressed() -> void:
-	SFXPlayer.stop()
-	Events.kiln_exited.emit()
+	_leave_cleanup()
 
 
 func _on_party_unit_selected(unit_stats: UnitStats) -> void:
