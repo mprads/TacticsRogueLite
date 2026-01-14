@@ -23,5 +23,3 @@ func _on_value_changed(value: float) -> void:
 
 	if bus_index == 1:
 		SFXPlayer.play(SFXConfig.get_audio_stream(test_sound), true)
-	elif bus_index == 2:
-		MusicPlayer.play(SFXConfig.get_audio_stream(test_sound), true)

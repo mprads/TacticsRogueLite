@@ -20,7 +20,6 @@ enum KEYS {
 	POTION_FILL,
 	TITLE_MUSIC,
 	MAIN_MUSIC,
-	BATTLE_MUSIC,
 }
 
 const SFX_PATHS := {
@@ -46,8 +45,7 @@ const SFX_PATHS := {
 	KEYS.POTION_FILL: "uid://dmm4ubyfmihhm",
 	#MUSIC
 	KEYS.TITLE_MUSIC: "uid://dftkr0hhop7gc",
-	KEYS.MAIN_MUSIC: "uid://m7xtphd0x7d1",
-	KEYS.BATTLE_MUSIC: "uid://dgltquu8j218y",
+	KEYS.MAIN_MUSIC: "uid://dgltquu8j218y",
 }
 
 

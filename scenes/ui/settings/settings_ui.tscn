@@ -253,17 +253,17 @@ theme_override_constants/separation = 16
 [node name="MasterVolumeSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer" instance=ExtResource("7_pdude")]
 layout_mode = 2
 bus_name = "Master"
-test_sound = 14
+test_sound = 11
 
 [node name="MusicVolumeSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer" instance=ExtResource("7_pdude")]
 layout_mode = 2
 bus_name = "Music"
-test_sound = 14
+test_sound = 12
 
 [node name="SFXVolumeSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer" instance=ExtResource("7_pdude")]
 layout_mode = 2
 bus_name = "SFX"
-test_sound = 13
+test_sound = 11
 
 [node name="ExitButton" type="Button" parent="."]
 custom_minimum_size = Vector2(40, 20)

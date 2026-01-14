@@ -22,8 +22,6 @@ func start_battle() -> void:
 	_generate_map()
 	battle_manager.start_deployment()
 
-	MusicPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.BATTLE_MUSIC), true)
-
 
 func _generate_map() -> void:
 	if not map and not battle_manager:

@@ -181,8 +181,6 @@ func _show_battle_reward() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE)
 	reward_scene.battle_stats = map.last_room.battle_stats
 
-	MusicPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.MAIN_MUSIC), true)
-
 
 func _show_battle_lost() -> void:
 	var lost_scene := _change_view(BATTLE_LOST_SCENE)
