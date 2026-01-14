@@ -17,6 +17,7 @@ func activate() -> void:
 	status_effect.status = status_instance
 	status_effect.execute([target])
 
+	SFXPlayer.play(SFXConfig.get_audio_stream(sfx_key))
 	activated.emit()
 
 

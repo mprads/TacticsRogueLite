@@ -18,4 +18,6 @@ func _on_unit_shielded(unit: Unit) -> void:
 	# change this to a permanent status, but that that adds ui bloat.
 	unit.stats.shield += shield_amount
 	unit.spawn_floating_text(str(shield_amount), ColourHelper.get_colour(ColourHelper.KEYS.SHIELD))
+
+	SFXPlayer.play(SFXConfig.get_audio_stream(sfx_key))
 	activated.emit()
