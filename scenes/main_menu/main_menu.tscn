@@ -41,7 +41,7 @@ texture = SubResource("AtlasTexture_5seab")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="TextureRect"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 240.0
 offset_top = 73.0
 offset_right = 400.0

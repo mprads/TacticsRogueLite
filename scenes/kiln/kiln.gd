@@ -3,6 +3,7 @@ extends Node2D
 
 @export var party_manager: PartyManager:
 	set = set_party_manager
+@export var sfx_key := SFXConfig.KEYS.KILN
 
 @onready var party_ui: PartyUI = %PartyUI
 @onready var kiln_unit_icon_panel: UnitIconPanel = %UnitIconPanel
@@ -12,8 +13,10 @@ extends Node2D
 
 func _ready() -> void:
 	heal_button.pressed.connect(_on_heal_button_pressed)
-	leave_button.pressed.connect(Events.kiln_exited.emit)
+	leave_button.pressed.connect(_on_leave_button_pressed)
 	party_ui.unit_selected.connect(_on_party_unit_selected)
+
+	SFXPlayer.play(SFXConfig.get_audio_stream(sfx_key))
 
 	kiln_unit_icon_panel.unit_stats = null
 
@@ -27,6 +30,11 @@ func set_party_manager(value: PartyManager) -> void:
 	party_ui.party_manager = party_manager
 
 
+func _leave_cleanup() -> void:
+	SFXPlayer.stop()
+	Events.kiln_exited.emit()
+
+
 func _on_heal_button_pressed() -> void:
 	heal_button.disabled = true
 
@@ -35,7 +43,11 @@ func _on_heal_button_pressed() -> void:
 			ceili(kiln_unit_icon_panel.unit_stats.max_health * 0.3)
 		)
 
-	Events.kiln_exited.emit()
+	_leave_cleanup()
+
+
+func _on_leave_button_pressed() -> void:
+	_leave_cleanup()
 
 
 func _on_party_unit_selected(unit_stats: UnitStats) -> void:

@@ -73,6 +73,8 @@ func _on_unit_selected(unit_stats: UnitStats) -> void:
 		unit_stats.potion = vial.potion
 		unit_stats.oz = floori(unit_stats.max_oz / 2)
 
+	SFXPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.POTION_FILL))
+
 	Events.run_stats_potion_used.emit(vial.potion)
 	vial.potion = null
 	vial = null

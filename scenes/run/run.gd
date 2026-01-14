@@ -49,6 +49,8 @@ func _ready() -> void:
 	if not run_stats:
 		run_stats = RunStats.new()
 
+	MusicPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.MAIN_MUSIC), true)
+
 	_start_run()
 
 

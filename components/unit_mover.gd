@@ -122,6 +122,7 @@ func _on_unit_drag_cancelled(starting_position: Vector2, unit: Unit) -> void:
 
 
 func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
+	SFXPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.UNIT_PLACED))
 	dragging = false
 	_set_highlters(false)
 	_set_flood_fillers(false)

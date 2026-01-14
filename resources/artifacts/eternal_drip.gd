@@ -18,6 +18,7 @@ func activate() -> void:
 		unit.stats.oz += refill_amount
 		unit.spawn_floating_text(str(refill_amount), unit.stats.potion.color)
 
+	SFXPlayer.play(SFXConfig.get_audio_stream(sfx_key))
 	activated.emit()
 
 

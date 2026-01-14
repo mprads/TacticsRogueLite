@@ -6,6 +6,7 @@ extends Ability
 
 
 func apply_effects(targets: Array[Area2D], modifier_manager: ModifierManager) -> void:
+	_play_sfx()
 	var damage_effect := DamageEffect.new()
 
 	damage_effect.amount = modifier_manager.get_modified_value(

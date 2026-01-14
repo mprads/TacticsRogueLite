@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb0jhyb3te2ed"]
+
+[ext_resource type="Script" uid="uid://wlnty5vwycqf" path="res://global/audio_player/audio_player.gd" id="1_pv6mp"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_pv6mp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

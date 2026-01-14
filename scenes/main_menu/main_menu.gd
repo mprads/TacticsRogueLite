@@ -19,6 +19,8 @@ func _ready() -> void:
 	setting_button.pressed.connect(_on_setting_button_pressed)
 	exit_button.pressed.connect(_on_exit_button_pressed)
 
+	MusicPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.TITLE_MUSIC), true)
+
 
 func _on_continue_button_pressed() -> void:
 	SceneChanger.change_scene(RUN_SCENE, TESTING_RUN_STATS)

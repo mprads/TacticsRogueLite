@@ -20,6 +20,8 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 Events="*res://global/events.gd"
 RNG="*res://global/rng.gd"
 SceneChanger="*res://global/scene_changer.gd"
+MusicPlayer="*res://global/audio_player/music_player.tscn"
+SFXPlayer="*res://global/audio_player/sfx_player.tscn"
 
 [debug]
 
