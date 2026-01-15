@@ -175,6 +175,5 @@ func _on_enemy_request_move(new_tile: Vector2i, enemy: Enemy) -> void:
 	var tile := arenas[i].get_tile_from_global(enemy.global_position)
 
 	var id_path := navigation.create_id_path(tile, new_tile)
-
 	navigation.set_id_empty(tile)
 	_move_along_path(enemy, arenas[i], id_path)

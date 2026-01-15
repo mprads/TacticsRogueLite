@@ -42,6 +42,7 @@ func _ready() -> void:
 	enemy_manager.all_enemies_defeated.connect(_on_enemy_manager_all_enemies_defeated)
 	unit_mover.unit_moved_arenas.connect(_on_unit_moved_arenas)
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
+	arena_grid.tile_cleanup.connect(_on_arena_grid_tile_cleanup)
 
 	for child in party_selection_container.get_children():
 		child.queue_free()
@@ -249,3 +250,7 @@ func _on_request_clear_intent() -> void:
 func _on_enemy_selected(enemy: Enemy) -> void:
 	ability_manager.handle_selected_enemy(enemy)
 	_on_request_clear_intent()
+
+
+func _on_arena_grid_tile_cleanup(tile: Vector2i) -> void:
+	navigation.set_id_empty(tile)

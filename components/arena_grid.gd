@@ -1,7 +1,7 @@
 class_name ArenaGrid
 extends Node
 
-signal arena_grid_changed
+signal tile_cleanup(tile: Vector2i)
 
 var tiles: Dictionary[Vector2i, Area2D]
 
@@ -17,7 +17,7 @@ func get_tiles() -> Dictionary[Vector2i, Area2D]:
 
 func add_unit(tile: Vector2i, unit: Area2D) -> void:
 	tiles[tile] = unit
-	arena_grid_changed.emit()
+	unit.cleanup.connect(remove_unit.bind(tile))
 
 
 func remove_unit(tile: Vector2i) -> void:
@@ -25,8 +25,10 @@ func remove_unit(tile: Vector2i) -> void:
 
 	if not unit:
 		return
+
+	unit.cleanup.disconnect(remove_unit)
 	tiles[tile] = null
-	arena_grid_changed.emit()
+	tile_cleanup.emit(tile)
 
 
 func get_occupant(tile: Vector2i) -> Area2D:

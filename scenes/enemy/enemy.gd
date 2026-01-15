@@ -8,6 +8,7 @@ signal show_intent(enemy: Enemy)
 signal request_clear_intent
 signal request_flood_fill(max_distance: int, atlas_coord: Vector2i)
 signal request_clear_fill_layer
+signal cleanup
 
 @export var stats: EnemyStats : set = set_enemy_stats
 @export var ai: EnemyAI : set = set_enemy_ai
@@ -59,7 +60,6 @@ func take_damage(damage: int) -> void:
 	if stats.health <= 0:
 		animation_player.play("death")
 		await animation_player.animation_finished
-		_death_cleanup()
 
 
 func spawn_floating_text(text: String, text_color) -> void:
@@ -128,8 +128,9 @@ func set_enemy_ai(value: EnemyAI) -> void:
 	ai.owner = self
 
 
-func _death_cleanup() -> void:
+func death_cleanup() -> void:
 	Events.enemy_died.emit(self)
+	cleanup.emit()
 	request_clear_fill_layer.emit()
 	request_clear_intent.emit()
 	queue_free()

@@ -9,6 +9,7 @@ signal ability_selected(ability: Ability)
 signal turn_complete
 signal request_change_active_unit
 signal unit_selected(unit: Unit)
+signal cleanup
 
 @export var stats: UnitStats:
 	set = set_stats
@@ -95,6 +96,7 @@ func move_cleanup() -> void:
 
 
 func death_cleanup() -> void:
+	cleanup.emit()
 	queue_free()
 
 
