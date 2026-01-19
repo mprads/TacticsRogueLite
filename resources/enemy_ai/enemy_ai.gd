@@ -50,6 +50,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 		# For each tile in range of target unit check the distance to starting tile
 		# weight less movement higher
 		for tile in tiles:
+			#print(tile)
 			# Placeholder so it can be replaced by try_surrounding_tiles if it is not a valid
 			# ending tile for enemies larger than 1 tile
 			var potential_tile := tile
@@ -66,6 +67,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 				var closest_surrounding_tile := tile
 				var viable_path_length := 99
 				var potential_path := current_path
+				#print(surrounding_tiles.size())
 				for surrounding_tile in surrounding_tiles:
 					var surrounding_path: Array[Vector2i] = get_id_path.call(
 						starting_tile, surrounding_tile
@@ -83,6 +85,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 					continue
 
 			var distance := current_path.size()
+			#print(distance)
 			var max_weight := (float(owner.stats.movement) / 100) + 0.1
 			var movement_weight := max_weight - (float(distance) / 100)
 
@@ -110,6 +113,16 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 
 	if not current_target:
 		_find_closest_target(get_id_path, arena)
+
+
+func clear_intent() -> void:
+	print("clearing")
+	current_target = null
+	target_tiles = []
+	next_tile = Vector2i(INF, INF)
+	next_tiles = []
+	targets_in_range = []
+	targets_out_of_range = []
 
 
 func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
