@@ -129,12 +129,12 @@ func _handle_turn_change(label_text: String, start_next_turn: Callable) -> void:
 	banner_label.text = "%s Turn" %label_text
 	var tween: Tween
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_callback(start_next_turn)
 	tween.tween_callback(turn_change_banner.show)
 	tween.tween_property(turn_change_banner, "modulate", Color.WHITE, .8)
 	tween.tween_interval(.5)
 	tween.tween_property(turn_change_banner, "modulate", Color.TRANSPARENT, .8)
 	tween.tween_callback(turn_change_banner.hide)
-	tween.tween_callback(start_next_turn)
 
 
 # TODO remove
