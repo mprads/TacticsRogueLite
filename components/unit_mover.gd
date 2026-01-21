@@ -34,8 +34,8 @@ func get_arena_for_position(global: Vector2) -> int:
 	return dropped_area_index
 
 
-func get_id_path(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
-	return navigation.create_id_path(start, end)
+func get_id_path(start: Vector2i, end: Vector2i, allow_partial := false) -> Array[Vector2i]:
+	return navigation.create_id_path(start, end, allow_partial)
 
 
 func _set_highlters(enabled: bool) -> void:

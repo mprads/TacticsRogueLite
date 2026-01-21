@@ -84,11 +84,10 @@ func start_turn() -> void:
 
 
 func update_enemy_intent(enemy: Enemy) -> void:
-	enemy.ai.clear_intent()
+	var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 	var targets = get_tree().get_nodes_in_group("player_unit")
 	var targets_in_range: Array[Dictionary] = []
 	var targets_out_of_range: Array[Dictionary] = []
-	var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 
 	for target in targets:
 		var result := {"target": target, "tiles": [], "starting_tile": Vector2i.ZERO}
@@ -148,9 +147,6 @@ func verify_intent(enemy: Enemy) -> void:
 		update_enemy_intent(enemy)
 		return
 
-	printt(Utils.get_distance_between_tiles(enemy.ai.next_tile, arena.get_tile_from_global(enemy.global_position)), Utils.get_distance_between_tiles(arena.get_tile_from_global(enemy.ai.current_target.global_position), arena.get_tile_from_global(enemy.global_position)))
-
-
 	if arena.arena_grid.is_tile_occupied(enemy.ai.next_tile):
 		update_enemy_intent(enemy)
 		return
@@ -162,7 +158,6 @@ func verify_intent(enemy: Enemy) -> void:
 		arena.get_tile_from_global(enemy.ai.current_target.global_position),
 		arena.get_tile_from_global(enemy.global_position)
 	):
-		print("true")
 		update_enemy_intent(enemy)
 		return
 
@@ -202,7 +197,7 @@ func _filter_neighbours(
 
 
 func _next_enemy_turn() -> void:
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	if enemies_to_act.is_empty():
 		Events.enemy_turn_ended.emit()
 		return
@@ -267,6 +262,5 @@ func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:
 
 
 func _on_request_update_enemy_intent() -> void:
-	print("request")
 	for enemy in get_children():
 		verify_intent(enemy)

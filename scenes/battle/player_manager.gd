@@ -92,6 +92,7 @@ func _on_unit_aim_stopped() -> void:
 
 
 func _on_unit_tree_exited() -> void:
+	Events.request_update_enemy_intent.emit()
 	if get_child_count() == 0:
 		all_units_defeated.emit()
 

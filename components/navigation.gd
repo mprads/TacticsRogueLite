@@ -19,8 +19,12 @@ func init(region: Rect2i, tiles: Array[Vector2i]) -> void:
 	astar_grid.update()
 
 
-func create_id_path(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
-	return astar_grid.get_id_path(start, end)
+func create_id_path(start: Vector2i, end: Vector2i, allow_partial := false) -> Array[Vector2i]:
+	var path: Array[Vector2i] = astar_grid.get_id_path(start, end, allow_partial)
+	if path.is_empty():
+		return []
+
+	return path
 
 
 func set_id_occupied(id: Vector2i) -> void:
