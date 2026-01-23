@@ -1,6 +1,8 @@
 class_name StatusUI
 extends Control
 
+const STATUS_UI = preload("uid://vh15m4qw1i4k")
+
 @export var status: Status:
 	set = set_status
 
@@ -50,3 +52,9 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	Events.hide_tooltip.emit()
+
+
+static func create_new(new_status: Status) -> StatusUI:
+	var new_status_ui := STATUS_UI.instantiate()
+	new_status_ui.status = new_status
+	return new_status_ui

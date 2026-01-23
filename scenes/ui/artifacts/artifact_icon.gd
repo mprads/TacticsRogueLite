@@ -1,6 +1,8 @@
 class_name ArtifactIcon
 extends TextureRect
 
+const ARTIFACT_ICON = preload("res://scenes/ui/artifacts/artifact_icon.tscn")
+
 @export var artifact: Artifact:
 	set = set_artifact
 
@@ -40,3 +42,9 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	Events.hide_tooltip.emit()
+
+
+static func create_new(new_artifact: Artifact) -> ArtifactIcon:
+	var new_artifact_icon := ARTIFACT_ICON.instantiate()
+	new_artifact_icon.artifact = new_artifact
+	return new_artifact_icon

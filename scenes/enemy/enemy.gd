@@ -10,6 +10,9 @@ signal request_flood_fill(max_distance: int, atlas_coord: Vector2i)
 signal request_clear_fill_layer
 signal cleanup
 
+const DEFAULT_ENEMY = preload("uid://b7xiv7x5cv04q")
+const MULTI_TILE_ENEMY = preload("uid://bgix1ig8gku2x")
+
 @export var stats: EnemyStats : set = set_enemy_stats
 @export var ai: EnemyAI : set = set_enemy_ai
 @export var outline_thickness: float = 1.0
@@ -159,3 +162,10 @@ func _on_mouse_exited() -> void:
 	selectable = false
 	request_clear_fill_layer.emit()
 	request_clear_intent.emit()
+
+
+static func create_new(scene: PackedScene, new_stats: EnemyStats) -> Enemy:
+	var new_enemy: Enemy = scene.instantiate()
+	new_enemy.stats = new_stats
+	new_enemy.ai = new_stats.ai.duplicate()
+	return new_enemy

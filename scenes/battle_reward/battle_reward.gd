@@ -1,9 +1,6 @@
 class_name BattleReward
 extends Control
 
-const REWARD_BUTTON = preload("res://scenes/battle_reward/reward_button.tscn")
-const GOLD_ICON = preload("res://assets/icons/gold.png")
-
 @export var battle_stats: BattleStats:
 	set = set_battle_stats
 
@@ -29,10 +26,10 @@ func set_battle_stats(value: BattleStats) -> void:
 
 
 func _roll_gold_reward() -> void:
-	var gold_reward := REWARD_BUTTON.instantiate()
-	gold_reward.reward_icon = GOLD_ICON
+	#var gold_reward := REWARD_BUTTON.instantiate()
 	var gold = battle_stats.get_gold_reward()
-	gold_reward.reward_text = "%s Gold" % gold
+	var text := "%s Gold" % gold
+	var gold_reward := RewardButton.create_new(text)
 	rewards.add_child(gold_reward)
 	gold_reward.pressed.connect(_on_gold_reward_taken.bind(gold))
 
@@ -41,9 +38,7 @@ func _roll_loot_reward() -> void:
 	var drops = battle_stats.get_drop_reward()
 
 	for drop in drops:
-		var loot_reward := REWARD_BUTTON.instantiate()
-		loot_reward.reward_icon = drop.icon
-		loot_reward.reward_text = drop.name
+		var loot_reward := RewardButton.create_new(drop.name, drop.icon)
 		rewards.add_child(loot_reward)
 		loot_reward.pressed.connect(_on_loot_reward_taken.bind(drop))
 
@@ -54,9 +49,7 @@ func _roll_artifact_reward() -> void:
 	if not drop:
 		return
 
-	var artifact_reward := REWARD_BUTTON.instantiate()
-	artifact_reward.reward_icon = drop.icon
-	artifact_reward.reward_text = drop.name
+	var artifact_reward := RewardButton.create_new(drop.name, drop.icon)
 	rewards.add_child(artifact_reward)
 	artifact_reward.pressed.connect(_on_artifact_reward_taken.bind(drop))
 

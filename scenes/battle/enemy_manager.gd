@@ -26,10 +26,8 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 		return
 
 	for stats in enemy_stats:
-		var enemy_instance := stats.scene.instantiate()
+		var enemy_instance := Enemy.create_new(stats.scene, stats.duplicate())
 		add_child(enemy_instance)
-		enemy_instance.stats = stats.duplicate()
-		enemy_instance.ai = stats.ai.duplicate()
 		unit_mover.setup_enemy(enemy_instance)
 		enemy_instance.status_manager.statuses_applied.connect(
 			_on_enemy_statuses_applied.bind(enemy_instance)

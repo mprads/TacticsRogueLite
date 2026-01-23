@@ -3,8 +3,6 @@ extends Control
 
 signal statuses_applied(type: Status.TYPE)
 
-const STATUS_UI = preload("res://scenes/ui/status_ui.tscn")
-
 @export var status_owner: Node2D
 
 
@@ -28,10 +26,10 @@ func add_status(status: Status) -> void:
 	var is_duration := status.stack_type == Status.STACK_TYPE.DURATION
 
 	if not _has_status(status.id):
-		var status_ui_instance := STATUS_UI.instantiate()
+		var status_ui_instance := StatusUI.create_new(status)
 		add_child(status_ui_instance)
-		status_ui_instance.status = status
 		status_ui_instance.status.init(status_owner)
+
 		status_ui_instance.status.status_applied.connect(_on_status_applied)
 		return
 
