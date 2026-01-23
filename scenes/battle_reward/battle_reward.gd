@@ -26,7 +26,6 @@ func set_battle_stats(value: BattleStats) -> void:
 
 
 func _roll_gold_reward() -> void:
-	#var gold_reward := REWARD_BUTTON.instantiate()
 	var gold = battle_stats.get_gold_reward()
 	var text := "%s Gold" % gold
 	var gold_reward := RewardButton.create_new(text)

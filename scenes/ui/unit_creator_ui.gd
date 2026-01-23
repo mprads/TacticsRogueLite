@@ -3,8 +3,6 @@ extends Control
 
 signal unit_created(unit_stats: UnitStats)
 
-const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
-
 @export var header_text: String = "Give Your %s %s Unit A Name"
 @export var unit_stats: UnitStats:
 	set = set_unit_stats
@@ -53,9 +51,8 @@ func _update_ability_visuals() -> void:
 		return
 
 	for ability in unit_stats.potion.abilities:
-		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
-		ability_panel_instance.ability = ability
 
 
 func _on_line_edit_text_submitted(value: String) -> void:

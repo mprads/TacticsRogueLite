@@ -2,7 +2,6 @@ class_name RecipePanel
 extends Button
 
 const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
-const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 
 @export var potion_key: int:
 	set = _potion_key
@@ -25,9 +24,8 @@ func _update_visuals() -> void:
 	potion_label.modulate = potion.color
 
 	for ability in potion.abilities:
-		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
-		ability_panel_instance.ability = ability
 
 	_update_components()
 
