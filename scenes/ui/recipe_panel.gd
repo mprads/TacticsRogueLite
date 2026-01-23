@@ -1,8 +1,6 @@
 class_name RecipePanel
 extends Button
 
-const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
-
 @export var potion_key: int:
 	set = _potion_key
 @export var potion: Potion
@@ -35,10 +33,8 @@ func _update_components() -> void:
 		child.queue_free()
 
 	for cost in recipe.costs:
-		var item_panel_instance := ITEM_PANEL_SCENE.instantiate()
+		var item_panel_instance := ItemPanel.create_new(ItemConfig.get_item_resource(cost.item_key), cost.amount)
 		component_container.add_child(item_panel_instance)
-		item_panel_instance.item = ItemConfig.get_item_resource(cost.item_key)
-		item_panel_instance.count = cost.amount
 
 
 func _potion_key(value: int) -> void:

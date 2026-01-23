@@ -15,8 +15,7 @@ func _ready() -> void:
 
 
 func set_ability(value: Ability) -> void:
-	if not is_node_ready():
-		await ready
+	if not is_node_ready(): await ready
 
 	ability = value
 	ability_label.text = ability.name

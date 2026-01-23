@@ -6,7 +6,6 @@ extends Control
 @onready var RUN_SCENE = load("res://scenes/run/run.tscn")
 const UNIT_SELECT_PANEL_SCENE = preload("res://scenes/party_select/unit_select_panel.tscn")
 const UNIT_ICON_PANEL_SCENE = preload("res://scenes/ui/unit_icon_panel.tscn")
-const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
 const VIAL_BUTTON_SCENE = preload("res://scenes/ui/vial_button.tscn")
 const OPTION_COUNT := 3
 
@@ -165,10 +164,8 @@ func _on_inventory_changed() -> void:
 	var inventory := inventory_manager.get_inventory()
 
 	for item in inventory:
-		var item_panel_instance := ITEM_PANEL_SCENE.instantiate()
+		var item_panel_instance := ItemPanel.create_new(ItemConfig.get_item_resource(item), inventory[item])
 		inventory_container.add_child(item_panel_instance)
-		item_panel_instance.item = ItemConfig.get_item_resource(item)
-		item_panel_instance.count = inventory[item]
 
 
 func _on_party_changed() -> void:

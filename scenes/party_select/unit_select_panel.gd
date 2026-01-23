@@ -3,7 +3,6 @@ extends PanelContainer
 
 signal panel_selected(unit_stats: UnitStats, items: Array)
 
-const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
 const STARTING_ITEM_PANEL_SCENE = preload("res://scenes/party_select/starting_item_panel.tscn")
 const GOLD_ICON = preload("res://assets/icons/gold.png")
 
@@ -41,9 +40,8 @@ func _update_ability_visuals() -> void:
 	if not unit_stats.potion: return
 
 	for ability in unit_stats.potion.abilities:
-		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
-		ability_panel_instance.ability = ability
 
 
 func _play_animation(id: String) -> void:

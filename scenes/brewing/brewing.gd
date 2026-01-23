@@ -4,7 +4,6 @@ extends Node2D
 enum STAGE { RECIPE, SELECTION, POTION, VIAL }
 
 const RECIPE_PANEL = preload("res://scenes/ui/recipe_panel.tscn")
-const ITEM_PANEL = preload("res://scenes/ui/item_panel.tscn")
 const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
 
 @export var inventory_manager: InventoryManager : set = set_inventory_manager
