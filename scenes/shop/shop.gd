@@ -1,11 +1,6 @@
 class_name Shop
 extends Node2D
 
-const SHOP_ITEM_SCENE = preload("res://scenes/shop/shop_item.tscn")
-const SHOP_BOTTLE_SCENE = preload("res://scenes/shop/shop_bottle.tscn")
-const SHOP_ARTIFACT_SCENE = preload("res://scenes/shop/shop_artifact.tscn")
-const PLANTER_ITEM_SCENE = preload("res://scenes/shop/planter_item.tscn")
-
 @export var shop_items: Array[Item]
 @export var shop_bottles: Array[Bottle]
 @export var shop_artifacts: Array[Artifact]
@@ -53,17 +48,15 @@ func populate_shop() -> void:
 
 func _generate_shop_items() -> void:
 	for index in item_count:
-		var shop_item_instance := SHOP_ITEM_SCENE.instantiate()
+		var shop_item_instance := ShopItem.create_new(RNG.array_pick_random(shop_items))
 		item_shelf.add_child(shop_item_instance)
-		shop_item_instance.item = RNG.array_pick_random(shop_items)
 		shop_item_instance.update(inventory_manager.get_gold())
 
 
 func _generate_shop_bottles() -> void:
 	for index in bottle_count:
-		var shop_bottle_instance := SHOP_BOTTLE_SCENE.instantiate()
+		var shop_bottle_instance := ShopBottle.create_new(RNG.array_pick_random(shop_bottles))
 		bottle_shelf.add_child(shop_bottle_instance)
-		shop_bottle_instance.bottle = RNG.array_pick_random(shop_bottles)
 		shop_bottle_instance.update(inventory_manager.get_gold())
 		shop_bottle_instance.request_purchase.connect(_on_bottle_request_purchase)
 
@@ -75,19 +68,17 @@ func _generate_shop_artifacts() -> void:
 		filtered_artifacts.erase(artifact)
 
 	for index in clampi(filtered_artifacts.size(), 0, artifact_count):
-		var shop_artifact_instance := SHOP_ARTIFACT_SCENE.instantiate()
-		artifact_shelf.add_child(shop_artifact_instance)
 		var selected_artifact = RNG.array_pick_random(filtered_artifacts)
-		shop_artifact_instance.artifact = selected_artifact
+		var shop_artifact_instance := ShopArtifact.create_new(selected_artifact)
+		artifact_shelf.add_child(shop_artifact_instance)
 		filtered_artifacts.erase(selected_artifact)
 		shop_artifact_instance.update(inventory_manager.get_gold())
 
 
 func _generate_planter_items() -> void:
 	for index in plant_count:
-		var shop_plant_instance := PLANTER_ITEM_SCENE.instantiate()
+		var shop_plant_instance := PlanterItem.create_new(RNG.array_pick_random(shop_plants))
 		planter_contents.add_child(shop_plant_instance)
-		shop_plant_instance.plant = RNG.array_pick_random(shop_plants)
 
 
 func set_inventory_manager(value: InventoryManager) -> void:

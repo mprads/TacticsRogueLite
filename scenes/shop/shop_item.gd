@@ -1,6 +1,8 @@
 class_name ShopItem
 extends Control
 
+const SHOP_ITEM_SCENE = preload("uid://bx3amx8rinwo")
+
 @export var item: Item : set = set_item
 @export var outline_thickness: float = 1.0
 
@@ -56,3 +58,9 @@ func _on_mouse_exited() -> void:
 	if not item or not item_container: return
 
 	item_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
+
+
+static func create_new(new_item: Item) -> ShopItem:
+	var new_shop_item := SHOP_ITEM_SCENE.instantiate()
+	new_shop_item.item = new_item
+	return new_shop_item

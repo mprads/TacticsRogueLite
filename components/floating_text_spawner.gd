@@ -1,7 +1,7 @@
 class_name FloatingTextSpawner
 extends Node2D
 
-const FLOATING_TEXT_SCENE = preload("res://scenes/effects/floating_text.tscn")
+const FLOATING_TEXT_SCENE = preload("uid://cf5eeolalu6dd")
 
 @export var vertical_offset := 8
 @export var sibling_offset := 10

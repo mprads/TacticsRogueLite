@@ -4,7 +4,7 @@ extends Button
 const RECIPE_PANEL_SCENE = preload("uid://bco8m3hvgdeh4")
 
 @export var potion_key: int:
-	set = _potion_key
+	set = set_potion_key
 @export var potion: Potion
 @export var recipe: BrewingRecipe
 
@@ -39,7 +39,7 @@ func _update_components() -> void:
 		component_container.add_child(item_panel_instance)
 
 
-func _potion_key(value: int) -> void:
+func set_potion_key(value: int) -> void:
 	if not is_node_ready(): await ready
 
 	potion_key = value
