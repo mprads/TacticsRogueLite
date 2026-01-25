@@ -3,7 +3,7 @@ extends GridContainer
 
 signal unit_selected(unit: UnitStats)
 
-const PARTY_UNIT_UI = preload("res://scenes/ui/party_unit_ui.tscn")
+const PARTY_UNIT_UI_SCENE = preload("res://scenes/ui/party_unit_ui.tscn")
 
 @export var party_manager: PartyManager:
 	set = set_party_manager
@@ -18,7 +18,7 @@ func _update_party() -> void:
 		child.queue_free()
 
 	for unit_stats in party:
-		var unit_ui_instance = PARTY_UNIT_UI.instantiate()
+		var unit_ui_instance = PARTY_UNIT_UI_SCENE.instantiate()
 		add_child(unit_ui_instance)
 		unit_ui_instance.unit_stats = unit_stats
 		unit_ui_instance.pressed.connect(_on_unit_ui_pressed.bind(unit_stats))

@@ -1,7 +1,7 @@
 class_name StatusUI
 extends Control
 
-const STATUS_UI = preload("uid://vh15m4qw1i4k")
+const STATUS_UI_SCENE = preload("uid://vh15m4qw1i4k")
 
 @export var status: Status:
 	set = set_status
@@ -55,6 +55,6 @@ func _on_mouse_exited() -> void:
 
 
 static func create_new(new_status: Status) -> StatusUI:
-	var new_status_ui := STATUS_UI.instantiate()
+	var new_status_ui := STATUS_UI_SCENE.instantiate()
 	new_status_ui.status = new_status
 	return new_status_ui

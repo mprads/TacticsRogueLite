@@ -1,7 +1,7 @@
 class_name AbilityPanel
 extends Panel
 
-const ABILITY_PANEL = preload("uid://gqoxvqcgviwc")
+const ABILITY_PANEL_SCENE = preload("uid://gqoxvqcgviwc")
 
 @export var ability: Ability:
 	set = set_ability
@@ -39,6 +39,6 @@ func _on_mouse_exited() -> void:
 
 
 static func create_new(new_ability: Ability) -> AbilityPanel:
-	var new_ability_panel := ABILITY_PANEL.instantiate()
+	var new_ability_panel := ABILITY_PANEL_SCENE.instantiate()
 	new_ability_panel.ability = new_ability
 	return new_ability_panel

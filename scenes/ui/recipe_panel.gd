@@ -1,6 +1,8 @@
 class_name RecipePanel
 extends Button
 
+const RECIPE_PANEL_SCENE = preload("uid://bco8m3hvgdeh4")
+
 @export var potion_key: int:
 	set = _potion_key
 @export var potion: Potion
@@ -38,11 +40,16 @@ func _update_components() -> void:
 
 
 func _potion_key(value: int) -> void:
-	if not is_node_ready():
-		await ready
+	if not is_node_ready(): await ready
 
 	potion_key = value
 
 	potion = ItemConfig.get_potion_resource(potion_key)
 	recipe = ItemConfig.get_brewing_recipe(potion_key)
 	_update_visuals()
+
+
+static func create_new(key: ItemConfig.KEYS) -> RecipePanel:
+	var new_recipe_panel := RECIPE_PANEL_SCENE.instantiate()
+	new_recipe_panel.potion_key = key
+	return new_recipe_panel

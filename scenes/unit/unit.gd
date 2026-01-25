@@ -11,7 +11,7 @@ signal request_change_active_unit
 signal unit_selected(unit: Unit)
 signal cleanup
 
-const UNIT = preload("uid://bpkwnxxboplpn")
+const UNIT_SCENE = preload("uid://bpkwnxxboplpn")
 
 @export var stats: UnitStats:
 	set = set_stats
@@ -165,6 +165,6 @@ func on_mouse_exited() -> void:
 
 
 static func create_new(new_stats: UnitStats) -> Unit:
-	var new_unit := UNIT.instantiate()
+	var new_unit := UNIT_SCENE.instantiate()
 	new_unit.stats = new_stats
 	return new_unit

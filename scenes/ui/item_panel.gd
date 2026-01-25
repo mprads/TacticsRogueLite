@@ -1,7 +1,7 @@
 class_name ItemPanel
 extends Control
 
-const ITEM_PANEL = preload("uid://b8xh1jbh84qru")
+const ITEM_PANEL_SCENE = preload("uid://b8xh1jbh84qru")
 
 @export var item: Item:
 	set = set_item
@@ -29,7 +29,7 @@ func set_count(value: int) -> void:
 
 
 static func create_new(new_item: Item, new_count: int) -> ItemPanel:
-	var new_item_panel := ITEM_PANEL.instantiate()
+	var new_item_panel := ITEM_PANEL_SCENE.instantiate()
 	new_item_panel.item = new_item
 	new_item_panel.count = new_count
 	return new_item_panel
