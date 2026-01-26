@@ -1,6 +1,8 @@
 class_name PartyUnitUI
 extends Button
 
+const PARTY_UNIT_UI_SCENE = preload("uid://cnvnj7pvvkjhu")
+
 @export var unit_stats: UnitStats:
 	set = set_unit_stats
 
@@ -23,6 +25,9 @@ func _update_visuals() -> void:
 
 
 func set_unit_stats(value: UnitStats) -> void:
+	if not is_node_ready():
+		await ready
+
 	unit_stats = value
 
 	if not unit_stats:
@@ -33,3 +38,9 @@ func set_unit_stats(value: UnitStats) -> void:
 	potion_label.text = unit_stats.name
 	
 	_update_visuals()
+
+
+static func create_new(new_stats: UnitStats) -> PartyUnitUI:
+	var new_party_unit_ui := PARTY_UNIT_UI_SCENE.instantiate()
+	new_party_unit_ui.unit_stats = new_stats
+	return new_party_unit_ui

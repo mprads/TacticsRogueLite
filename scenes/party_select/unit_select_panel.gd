@@ -3,6 +3,7 @@ extends PanelContainer
 
 signal panel_selected(unit_stats: UnitStats, items: Array)
 
+const UNIT_SELECT_PANEL_SCENE = preload("uid://cjdocmvvhnve6")
 const STARTING_ITEM_PANEL_SCENE = preload("res://scenes/party_select/starting_item_panel.tscn")
 const GOLD_ICON = preload("res://assets/icons/gold.png")
 
@@ -54,6 +55,9 @@ func _play_animation(id: String) -> void:
 
 
 func set_unit_stats(value: UnitStats) -> void:
+	if not is_node_ready():
+		await ready
+
 	unit_stats = value
 	unit_icon_panel.unit_stats = unit_stats
 	unit_details_panel.unit_stats = unit_stats
@@ -94,3 +98,9 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _on_mouse_entered() -> void:
 	_play_animation("hover")
+
+
+static func create_new(new_stats: UnitStats) -> UnitSelectPanel:
+	var new_unit_select_panel := UNIT_SELECT_PANEL_SCENE.instantiate()
+	new_unit_select_panel.unit_stats = new_stats
+	return new_unit_select_panel

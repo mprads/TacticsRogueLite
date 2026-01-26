@@ -1,8 +1,6 @@
 class_name StatsPanel
 extends Panel
 
-const UNIT_ICON_PANEL = preload("uid://i84sei2wbdf7")
-
 @export var run_stats: RunStats : set = set_stats
 
 @onready var party_container: GridContainer = $MarginContainer/VBoxContainer/VBoxContainer/PartyContainer
@@ -29,9 +27,8 @@ func set_stats(value: RunStats) -> void:
 		return
 
 	for unit_stats: UnitStats in run_stats.party:
-		var new_unit_icon_panel := UNIT_ICON_PANEL.instantiate()
+		var new_unit_icon_panel := UnitIconPanel.create_new(unit_stats)
 		party_container.add_child(new_unit_icon_panel)
-		new_unit_icon_panel.unit_stats = unit_stats
 		new_unit_icon_panel.show_name_label()
 
 
