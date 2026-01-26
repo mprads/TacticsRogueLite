@@ -1,8 +1,9 @@
 class_name UnitSelectButton
 extends Button
 
-const FILLING_SHEET = preload("res://assets/sprites/potions/filling_sheet.png")
-const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
+const UNIT_SELECT_BUTTON_SCENE = preload("uid://cr2pf64g056g3")
+const OUTLINE_SHEET = preload("uid://cjh7q57rx3hfu")
+const FILLING_SHEET = preload("uid://dsme3d6yq3mxs")
 
 @export var unit: Unit:
 	set = set_unit
@@ -117,3 +118,11 @@ func _on_mouse_exited() -> void:
 	if not unit:
 		return
 	unit.on_mouse_exited()
+
+
+static func create_new(new_unit: Unit, index: int) -> UnitSelectButton:
+	var new_unit_select_button := UNIT_SELECT_BUTTON_SCENE.instantiate()
+	new_unit_select_button.unit = new_unit
+	new_unit_select_button.keycode = Utils.get_keycode_from_input_id("unit_%s" % index)
+	new_unit_select_button.input_map_id = "unit_%s" % index
+	return new_unit_select_button
