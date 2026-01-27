@@ -4,8 +4,6 @@ extends PanelContainer
 signal panel_selected(unit_stats: UnitStats, items: Array)
 
 const UNIT_SELECT_PANEL_SCENE = preload("uid://cjdocmvvhnve6")
-const STARTING_ITEM_PANEL_SCENE = preload("res://scenes/party_select/starting_item_panel.tscn")
-const GOLD_ICON = preload("res://assets/icons/gold.png")
 
 @export var unit_stats: UnitStats : set = set_unit_stats
 @export var contents: Array : set = set_contents
@@ -69,25 +67,8 @@ func set_contents(value: Array) -> void:
 	contents = value
 
 	for lineitem in contents:
-		var item_panel_instance := STARTING_ITEM_PANEL_SCENE.instantiate()
+		var item_panel_instance := StartingItemPanel.create_new(lineitem)
 		contents_container.add_child(item_panel_instance)
-
-		if lineitem.item is Item:
-			item_panel_instance.get_node("%Icon").texture = lineitem.item.icon
-			item_panel_instance.get_node("%ContentLabel").text = "%s %s" %[str(lineitem.quantity), lineitem.item.name]
-		elif lineitem.item is Vial:
-			item_panel_instance.get_node("%Icon").visible = false
-			item_panel_instance.get_node("%VialButton").visible = true
-			item_panel_instance.get_node("%ContentLabel").text = lineitem.item.potion.name
-			item_panel_instance.get_node("%VialButton").vial = lineitem.item
-		elif lineitem.item is Artifact:
-			item_panel_instance.get_node("%Icon").visible = false
-			item_panel_instance.get_node("%ArtifactIcon").visible = true
-			item_panel_instance.get_node("%ContentLabel").text = str(lineitem.item.name)
-			item_panel_instance.get_node("%ArtifactIcon").artifact = lineitem.item
-		else:
-			item_panel_instance.get_node("%Icon").texture = GOLD_ICON
-			item_panel_instance.get_node("%ContentLabel").text = "%s Gold"  % str(lineitem.quantity)
 
 
 func _on_gui_input(event: InputEvent) -> void:

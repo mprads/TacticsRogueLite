@@ -30,7 +30,6 @@ func _rebind_action_key(event) -> void:
 
 func _set_text_for_key() -> void:
 	var action_events = InputMap.action_get_events(input_map_id)
-	print(action_events.size())
 	var action_event = action_events[0]
 	var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
 
