@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqxnj7v55fakb"]
+[gd_scene load_steps=3 format=3 uid="uid://cqxnj7v55fakb"]
 
 [ext_resource type="Texture2D" uid="uid://deofj72lgrhxd" path="res://assets/icons/map/Line.png" id="1_hx6oq"]
+[ext_resource type="Script" uid="uid://dma5l2wmmwi1b" path="res://scenes/map/map_line.gd" id="2_dc1r2"]
 
 [node name="MapLine" type="Line2D"]
 texture_repeat = 2
 texture = ExtResource("1_hx6oq")
 texture_mode = 1
+script = ExtResource("2_dc1r2")
