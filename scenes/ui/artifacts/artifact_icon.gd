@@ -1,7 +1,7 @@
 class_name ArtifactIcon
 extends TextureRect
 
-const ARTIFACT_ICON_SCENE = preload("res://scenes/ui/artifacts/artifact_icon.tscn")
+const ARTIFACT_ICON_SCENE = preload("uid://06s5o3dm2r31")
 
 @export var artifact: Artifact:
 	set = set_artifact

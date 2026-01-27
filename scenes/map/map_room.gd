@@ -7,13 +7,13 @@ const MAP_ROOM_SCENE = preload("uid://do85c02nl7l33")
 
 const ICONS := {
 	Room.TYPE.NOT_ASSIGNED: [null, Vector2.ONE],
-	Room.TYPE.REST: [preload("res://assets/icons/map/Kiln.png"), Vector2.ONE],
-	Room.TYPE.BREWING: [preload("res://assets/icons/map/Brewing.png"), Vector2.ONE],
-	Room.TYPE.SHOP: [preload("res://assets/icons/map/Shop.png"), Vector2.ONE],
+	Room.TYPE.REST: [preload("uid://c8416pobm3nw0"), Vector2.ONE],
+	Room.TYPE.BREWING: [preload("uid://c2xnp6yfra23r"), Vector2.ONE],
+	Room.TYPE.SHOP: [preload("uid://dl767tu8oy851"), Vector2.ONE],
 	Room.TYPE.EVENT: [preload("uid://bud4wd3mipmmx"), Vector2.ONE],
-	Room.TYPE.BATTLE: [preload("res://assets/icons/map/Battle.png"), Vector2.ONE],
-	Room.TYPE.ELITE: [preload("res://assets/icons/map/Elite.png"), Vector2.ONE],
-	Room.TYPE.BOSS: [preload("res://assets/icons/map/Boss.png"), Vector2.ONE],
+	Room.TYPE.BATTLE: [preload("uid://cna447ovou157"), Vector2.ONE],
+	Room.TYPE.ELITE: [preload("uid://d0i6ur681i2gg"), Vector2.ONE],
+	Room.TYPE.BOSS: [preload("uid://bh1pq5r8ntvlq"), Vector2.ONE],
 }
 
 @export var outline_thickness: float = 1.0

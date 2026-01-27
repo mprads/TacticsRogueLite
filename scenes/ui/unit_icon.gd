@@ -1,8 +1,8 @@
 class_name UnitIcon
 extends Control
 
-const FILLING_SHEET = preload("res://assets/sprites/potions/filling_sheet.png")
-const OUTLINE_SHEET = preload("res://assets/sprites/potions/outline_sheet.png")
+const FILLING_SHEET = preload("uid://dsme3d6yq3mxs")
+const OUTLINE_SHEET = preload("uid://cjh7q57rx3hfu")
 
 @export var unit_stats: UnitStats:
 	set = set_unit_stats
