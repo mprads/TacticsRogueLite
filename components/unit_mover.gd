@@ -23,7 +23,7 @@ func is_dragging() -> bool:
 	return dragging
 
 
-func get_arena_for_position(global: Vector2) -> int:
+func get_arena_index_from_position(global: Vector2) -> int:
 	var dropped_area_index := -1
 
 	for i in arenas.size():
@@ -50,11 +50,11 @@ func _set_flood_fillers(enabled: bool) -> void:
 
 
 func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) -> void:
-	var i := get_arena_for_position(starting_position)
-	var tile := arenas[i].get_tile_from_global(starting_position)
+	var arena_index := get_arena_index_from_position(starting_position)
+	var tile := arenas[arena_index].get_tile_from_global(starting_position)
 
-	unit.global_position = starting_position
-	arenas[i].arena_grid.add_unit(tile, unit)
+	unit.global_position = arenas[arena_index].get_global_from_tile(tile)
+	arenas[arena_index].arena_grid.add_unit(tile, unit)
 	unit.movement_cancelled.emit()
 
 
@@ -102,7 +102,7 @@ func _on_unit_drag_started(unit: Unit) -> void:
 	dragging = true
 	_set_highlters(true)
 	_set_flood_fillers(true)
-	var i := get_arena_for_position(unit.global_position)
+	var i := get_arena_index_from_position(unit.global_position)
 
 	if i > -1:
 		var tile := arenas[i].get_tile_from_global(unit.global_position)
@@ -127,8 +127,8 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	_set_highlters(false)
 	_set_flood_fillers(false)
 
-	var old_arena_index := get_arena_for_position(starting_position)
-	var drop_arena_index := get_arena_for_position(unit.get_global_mouse_position())
+	var old_arena_index := get_arena_index_from_position(starting_position)
+	var drop_arena_index := get_arena_index_from_position(unit.get_global_mouse_position())
 
 	if drop_arena_index == -1:
 		_reset_unit_to_starting_position(starting_position, unit)
@@ -162,19 +162,20 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 			_reset_unit_to_starting_position(starting_position, occupant)
 		else:
 			_reset_unit_to_starting_position(starting_position, unit)
-	else:
-		_move_unit(unit, new_arena, new_tile)
+			return
 
-		if new_arena != old_arena:
-			unit_moved_arenas.emit()
-		else:
-			navigation.set_id_empty(old_tile)
+	_move_unit(unit, new_arena, new_tile)
+
+	if new_arena != old_arena:
+		unit_moved_arenas.emit()
+	else:
+		navigation.set_id_empty(old_tile)
 
 
 func _on_enemy_request_move(new_tile: Vector2i, enemy: Enemy) -> void:
-	var i := get_arena_for_position(enemy.global_position)
-	var tile := arenas[i].get_tile_from_global(enemy.global_position)
+	var arena_index := get_arena_index_from_position(enemy.global_position)
+	var tile := arenas[arena_index].get_tile_from_global(enemy.global_position)
 
 	var id_path := navigation.create_id_path(tile, new_tile)
 	navigation.set_id_empty(tile)
-	_move_along_path(enemy, arenas[i], id_path)
+	_move_along_path(enemy, arenas[arena_index], id_path)
