@@ -238,7 +238,7 @@ func _on_enemy_died(enemy: Enemy) -> void:
 func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enemy: Enemy) -> void:
 	if not unit_mover.is_dragging():
 		flood_filler.enabled = true
-		var arena_index := unit_mover.get_arena_for_position(enemy.global_position)
+		var arena_index := unit_mover.get_arena_index_from_position(enemy.global_position)
 		var tile := unit_mover.arenas[arena_index].get_tile_from_global(enemy.global_position)
 		for i in enemy.stats.dimensions.x:
 			for j in enemy.stats.dimensions.y:
@@ -255,8 +255,8 @@ func _on_enemy_request_clear_intent() -> void:
 
 func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:
 	if not unit_mover.is_dragging():
-		var i := unit_mover.get_arena_for_position(enemy.global_position)
-		unit_mover.arenas[i].clear_flood_filler("ENEMY")
+		var arena_index := unit_mover.get_arena_index_from_position(enemy.global_position)
+		unit_mover.arenas[arena_index].clear_flood_filler("ENEMY")
 
 
 func _on_request_update_enemy_intent() -> void:

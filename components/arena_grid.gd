@@ -16,6 +16,9 @@ func get_tiles() -> Dictionary[Vector2i, Area2D]:
 
 
 func add_unit(tile: Vector2i, unit: Area2D) -> void:
+	if unit.cleanup.is_connected(remove_unit):
+		unit.cleanup.disconnect(remove_unit)
+
 	tiles[tile] = unit
 	unit.cleanup.connect(remove_unit.bind(tile))
 
@@ -26,7 +29,9 @@ func remove_unit(tile: Vector2i) -> void:
 	if not unit:
 		return
 
-	unit.cleanup.disconnect(remove_unit)
+	if unit.cleanup.is_connected(remove_unit):
+		unit.cleanup.disconnect(remove_unit)
+
 	tiles[tile] = null
 	tile_cleanup.emit(tile)
 
