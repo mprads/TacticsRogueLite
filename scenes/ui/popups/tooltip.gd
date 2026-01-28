@@ -1,7 +1,6 @@
 class_name Tooltip
 extends Control
 
-const TOOLTIP_PANEL_SCENE = preload("res://scenes/ui/popups/tooltip_panel.tscn")
 const OFFSET := 10
 
 
@@ -26,16 +25,9 @@ func _toggle_secondary_tooltip(show_tooltip: bool) -> void:
 	set_process_unhandled_key_input(true)
 
 
-func _create_tooltip(header: String, description: String) -> Panel:
-	var tooltip_instance := TOOLTIP_PANEL_SCENE.instantiate()
-	add_child(tooltip_instance)
-	tooltip_instance.get_node("%NameLabel").text = header
-	tooltip_instance.get_node("%DescriptionLabel").text = description
-	return tooltip_instance
-
-
 func _on_request_show_tooltip(tooltip_owner: Node, main: Dictionary, secondary: Array) -> void:
-	var main_tooltip = _create_tooltip(main.name, main.description)
+	var main_tooltip = TooltipPanel.create_new(main.name, main.description)
+	add_child(main_tooltip)
 	global_position = tooltip_owner.global_position
 
 	if tooltip_owner.global_position.x <= (get_viewport_rect().size.x / 2):
@@ -58,7 +50,8 @@ func _on_request_show_tooltip(tooltip_owner: Node, main: Dictionary, secondary: 
 
 	var secondary_count := 1
 	for secondary_tooltip in secondary:
-		var tooltip = _create_tooltip(secondary_tooltip.name, secondary_tooltip.description)
+		var tooltip = TooltipPanel.create_new(secondary_tooltip.name, secondary_tooltip.description)
+		add_child(tooltip)
 		tooltip.add_to_group("secondary_tooltip")
 
 		if tooltip_owner.global_position.y <= (get_viewport_rect().size.y / 2):
