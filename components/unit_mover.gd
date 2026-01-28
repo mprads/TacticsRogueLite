@@ -149,18 +149,19 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 		return
 
 	if new_arena == old_arena:
-		var distance := Utils.get_distance_between_tiles(old_tile, new_tile)
+		if unit.unit_state_machine.current_state is not UnitDeployingState:
+			var distance := Utils.get_distance_between_tiles(old_tile, new_tile)
 
-		if distance > unit.stats.movement:
-			_reset_unit_to_starting_position(starting_position, unit)
-			return
+			if distance > unit.stats.movement:
+				_reset_unit_to_starting_position(starting_position, unit)
+				return
 
 	if new_arena.arena_grid.is_tile_occupied(new_tile):
-		_reset_unit_to_starting_position(starting_position, unit)
-		# TODO only enable swapping places during unit placement
-		#var old_unit: Unit = new_arena.arena_grid.get_tiles()[new_tile]
-		#new_arena.arena_grid.remove_unit(new_tile)
-		#_move_unit(old_unit, old_arena, old_tile)
+		if unit.unit_state_machine.current_state is UnitDeployingState:
+			var occupant := new_arena.arena_grid.get_occupant(new_tile)
+			_reset_unit_to_starting_position(starting_position, occupant)
+		else:
+			_reset_unit_to_starting_position(starting_position, unit)
 	else:
 		_move_unit(unit, new_arena, new_tile)
 
