@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cww77yoo4eekj"]
+
+[ext_resource type="Shader" uid="uid://uyqip055kntp" path="res://assets/shaders/damage.gdshader" id="1_w0tj1"]
+
+[sub_resource type="Gradient" id="Gradient_1ifho"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u15f5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bg1qp"]
+width = 500
+height = 500
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_u15f5")
+color_ramp = SubResource("Gradient_1ifho")
+
+[resource]
+shader = ExtResource("1_w0tj1")
+shader_parameter/sensitivity = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_bg1qp")
+shader_parameter/noise_config_size = Vector2(32, 32)
+shader_parameter/noise_seed = 0.0
+shader_parameter/crack_color = Color(0.78039217, 0.8627451, 0.8156863, 0.27450982)
+shader_parameter/replace_color = Color(0, 0, 0, 0)
+shader_parameter/edge_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/details_color = Color(1, 1, 1, 1)
+shader_parameter/details_opacity = 0.1
+shader_parameter/edge_bias_strength = 0.5
+shader_parameter/edge_remap_min = 0.0
+shader_parameter/edge_remap_max = 1.0
