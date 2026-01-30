@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene load_steps=28 format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
-[ext_resource type="Material" uid="uid://cww77yoo4eekj" path="res://assets/shaders/damage_material.tres" id="2_1ifho"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="2_l0n34"]
 [ext_resource type="Shader" uid="uid://cpn30gm2odhph" path="res://assets/shaders/liquid.tres" id="3_vqlpx"]
 [ext_resource type="Texture2D" uid="uid://dnxmwngq5lcri" path="res://assets/sprites/potions/round_liquid_mask.png" id="4_5im7a"]
@@ -55,6 +54,136 @@ shader_parameter/Fill = 1.0
 shader_parameter/FillTexture = ExtResource("4_7jhsn")
 shader_parameter/NoiseScale = 2
 shader_parameter/MinOpacity = 1.0
+
+[sub_resource type="Shader" id="Shader_540om"]
+code = "shader_type canvas_item;
+
+// Uniform parameters from both scripts
+uniform float sensitivity : hint_range(0.0, 1.0) = 0.5;
+const float edge_width = .15;
+uniform sampler2D noise_texture : repeat_enable;
+uniform vec2 noise_config_size = vec2(86.0, 120.0); // reference size the noise was designed at
+uniform float noise_seed : hint_range(0.0, 999.0) = 0.0;
+
+uniform vec4 crack_color : source_color = vec4(0, 0, 0, 1);
+uniform vec4 replace_color : source_color = vec4(0, 0, 0, 1); // Default replace color
+uniform vec4 edge_color : source_color = vec4(0.4, 0.4, 0.4, 1); // Default edge color
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0); // Outline color (ignored during replacement)
+uniform vec4 details_color : source_color = vec4(1, 1, 1, 1); // Details overlay color (minimally affected by damage)
+uniform float details_opacity : hint_range(0.0, 1.0) = 0.1; // Opacity of details overlay
+
+// Edge distance map for biasing damage toward edges
+uniform sampler2D edge_distance_map : repeat_enable, filter_nearest;
+uniform float edge_bias_strength : hint_range(0.0, 1.0) = 0.5; // Bias sensitivity threshold toward edges
+
+// Edge map remapping (to compensate for blur: remap from [edge_min, edge_max] -> [0, 1])
+uniform float edge_remap_min : hint_range(0.0, 1.0) = 0.0;  // value at true edge (darker)
+uniform float edge_remap_max : hint_range(0.0, 1.0) = 1.0;  // value in interior (lighter)
+
+// Small tolerance value for color comparison
+const float epsilon = 0.01;
+
+// Function to compare colors with a small tolerance
+bool compare_colors(vec4 c1, vec4 c2) {
+    return abs(c1.r - c2.r) < epsilon && abs(c1.g - c2.g) < epsilon && abs(c1.b - c2.b) < epsilon && abs(c1.a - c2.a) < epsilon;
+}
+
+float seeded_noise(float seed) {
+    return fract(sin(seed * 12.9898) * 43758.5453);
+}
+
+void fragment() {
+    // Sample the original texture
+    vec4 color = texture(TEXTURE, UV);
+
+    // Check if the pixel is transparent or matches the outline color to ignore
+    if (color.a < 0.01 || compare_colors(color, outline_color)) {
+        // Output the pixel as is
+        COLOR = color;
+    } else {
+        // Get the size of the texture in pixels
+        float size_x = float(textureSize(TEXTURE, 0).x);
+        float size_y = float(textureSize(TEXTURE, 0).y);
+
+        // Create a new UV coordinate that snaps to pixel grid for pixel-perfect effect
+        vec2 UVr = vec2(floor(UV.x * size_x) / size_x, floor(UV.y * size_y) / size_y);
+
+        // Normalize according to sprite vs. reference noise size so the pattern scales correctly
+        vec2 sprite_size = vec2(size_x, size_y);
+        vec2 base_noise_size = max(noise_config_size, vec2(1.0));
+        vec2 noise_scale = sprite_size / base_noise_size;
+        vec2 random_offset = vec2(seeded_noise(noise_seed), seeded_noise(noise_seed + 1.0));
+        vec2 noise_uv = vec2(UVr.x * noise_scale.x, UVr.y * noise_scale.y) + random_offset;
+
+        // Sample the noise texture at the adjusted UV coordinates
+        float noise_value = texture(noise_texture, noise_uv).r; // Assuming a grayscale noise texture
+
+        // Sample edge distance map (white = edge, black = interior)
+        float edge_distance = texture(edge_distance_map, UV).r;
+
+        // Remap edge_distance range to account for blur: stretch [edge_remap_min, edge_remap_max] -> [0, 1]
+        edge_distance = clamp((edge_distance - edge_remap_min) / (edge_remap_max - edge_remap_min), 0.0, 1.0);
+
+        // Bias sensitivity threshold toward edges (easier to damage at edges)
+        // After remap: 0 = edge, 1 = interior, so (1.0 - edge_distance) weights edges
+        float edge_bias = (1.0 - edge_distance) * edge_bias_strength;
+        float biased_sensitivity = sensitivity + edge_bias;
+        biased_sensitivity = clamp(biased_sensitivity, 0.0, 1.0);
+
+        // Define thresholds for smoothstep using biased sensitivity
+        float edge_lower = biased_sensitivity - edge_width;
+        float edge_upper = biased_sensitivity + edge_width;
+
+        // Calculate the interpolation factor using smoothstep
+        float factor = smoothstep(edge_lower, edge_upper, noise_value);
+
+        // Interpolate between colors based on the factor
+        // First, interpolate between replace_color and edge_color
+        vec4 color1 = mix(replace_color, edge_color, factor);
+	    vec4 finalColor = mix(color1, crack_color, factor);
+
+        if (compare_colors(crack_color, details_color)) {
+            finalColor = mix(finalColor, details_color, details_opacity);
+        }
+
+        COLOR = vec4(finalColor.rgb, finalColor.a);
+    }
+}
+
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_1ifho"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u15f5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1ifho"]
+width = 500
+height = 500
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_u15f5")
+color_ramp = SubResource("Gradient_1ifho")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u15f5"]
+resource_local_to_scene = true
+shader = SubResource("Shader_540om")
+shader_parameter/sensitivity = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_1ifho")
+shader_parameter/noise_config_size = Vector2(32, 32)
+shader_parameter/noise_seed = 0.0
+shader_parameter/crack_color = Color(0.78039217, 0.8627451, 0.8156863, 0.27450982)
+shader_parameter/replace_color = Color(0, 0, 0, 0)
+shader_parameter/edge_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/details_color = Color(1, 1, 1, 1)
+shader_parameter/details_opacity = 0.1
+shader_parameter/edge_bias_strength = 0.5
+shader_parameter/edge_remap_min = 0.0
+shader_parameter/edge_remap_max = 1.0
 
 [sub_resource type="Animation" id="Animation_u15f5"]
 length = 0.001
@@ -267,7 +396,6 @@ material = SubResource("ShaderMaterial_540om")
 texture = ExtResource("2_l0n34")
 
 [node name="Filling" type="Sprite2D" parent="Visuals"]
-visible = false
 material = SubResource("ShaderMaterial_l0n34")
 position = Vector2(0, -1)
 texture = ExtResource("4_5im7a")
@@ -279,7 +407,7 @@ position = Vector2(1, 2)
 script = ExtResource("8_540om")
 
 [node name="Damage" type="Sprite2D" parent="Visuals"]
-material = ExtResource("2_1ifho")
+material = SubResource("ShaderMaterial_u15f5")
 texture = ExtResource("4_5im7a")
 
 [node name="AimingAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]

@@ -21,6 +21,7 @@ const UNIT_SCENE = preload("uid://bpkwnxxboplpn")
 @onready var visuals: CanvasGroup = $Visuals
 @onready var outline: Sprite2D = $Visuals/Outline
 @onready var filling: Sprite2D = $Visuals/Filling
+@onready var damage_sprite: Sprite2D = $Visuals/Damage
 @onready var aiming_ability_animated_sprite: AnimatedSprite2D = %AimingAbilityAnimatedSprite
 @onready var activate_ability_animated_sprite: AnimatedSprite2D = %ActivateAbilityAnimatedSprite
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -62,9 +63,11 @@ func face_source(source_position: Vector2) -> void:
 	if source_position.x >= global_position.x:
 		outline.flip_h = false
 		filling.flip_h = false
+		damage_sprite.flip_h = false
 	else:
 		outline.flip_h = true
 		filling.flip_h = true
+		damage_sprite.flip_h = true
 
 
 func take_damage(damage: int) -> void:
@@ -108,6 +111,11 @@ func update_visuals() -> void:
 
 	outline.texture = stats.bottle.bottle_sprite
 	filling.texture = stats.bottle.liquid_mask
+	damage_sprite.texture = stats.bottle.liquid_mask
+
+	damage_sprite.material.set_shader_parameter("noise_seed", RNG.instance.randf_range(0.0, 999.0))
+	var damage_percent = (1 - (float(stats.health) / float(stats.max_health))) * .4
+	damage_sprite.material.set_shader_parameter("sensitivity", damage_percent)
 
 	if stats.potion:
 		filling.visible = true
@@ -125,6 +133,9 @@ func play_animation(animation_name: String) -> void:
 
 
 func set_stats(value: UnitStats) -> void:
+	if not is_node_ready():
+		await ready
+
 	stats = value
 
 	if not value.changed.is_connected(update_visuals):
@@ -132,9 +143,6 @@ func set_stats(value: UnitStats) -> void:
 
 	if value == null:
 		return
-
-	if not is_node_ready():
-		await ready
 
 	update_visuals()
 
