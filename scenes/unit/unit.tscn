@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene load_steps=24 format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
-[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_540om"]
+[ext_resource type="Material" uid="uid://cww77yoo4eekj" path="res://assets/shaders/damage_material.tres" id="2_1ifho"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="2_l0n34"]
 [ext_resource type="Shader" uid="uid://cpn30gm2odhph" path="res://assets/shaders/liquid.tres" id="3_vqlpx"]
 [ext_resource type="Texture2D" uid="uid://dnxmwngq5lcri" path="res://assets/sprites/potions/round_liquid_mask.png" id="4_5im7a"]
@@ -14,6 +14,37 @@
 [ext_resource type="Script" uid="uid://bv1gbgl3olxql" path="res://scenes/unit/pendulum.gd" id="8_540om"]
 [ext_resource type="Script" uid="uid://clc0ayjvpkdkd" path="res://components/ability_animated_sprite.gd" id="9_1ifho"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="11_540om"]
+
+[sub_resource type="Shader" id="Shader_kajhh"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform float outline_thickness : hint_range(0, 10) = 1.0;
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1), 
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * outline_thickness;
+	float outline = 0.0;
+	
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_540om"]
+resource_local_to_scene = true
+shader = SubResource("Shader_kajhh")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l0n34"]
 resource_local_to_scene = true
@@ -232,10 +263,11 @@ script = ExtResource("1_vh40f")
 position = Vector2(0, -12)
 
 [node name="Outline" type="Sprite2D" parent="Visuals"]
-material = ExtResource("2_540om")
+material = SubResource("ShaderMaterial_540om")
 texture = ExtResource("2_l0n34")
 
 [node name="Filling" type="Sprite2D" parent="Visuals"]
+visible = false
 material = SubResource("ShaderMaterial_l0n34")
 position = Vector2(0, -1)
 texture = ExtResource("4_5im7a")
@@ -245,6 +277,10 @@ script = ExtResource("7_540om")
 [node name="Pendulum" type="Marker2D" parent="Visuals/Filling"]
 position = Vector2(1, 2)
 script = ExtResource("8_540om")
+
+[node name="Damage" type="Sprite2D" parent="Visuals"]
+material = ExtResource("2_1ifho")
+texture = ExtResource("4_5im7a")
 
 [node name="AimingAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
 unique_name_in_owner = true
@@ -263,6 +299,7 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_bhlit")
 
