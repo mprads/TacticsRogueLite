@@ -2,6 +2,7 @@ class_name DamageOverTime
 extends Status
 
 @export var damage := 0
+@export var damage_sfx_key: SFXConfig.KEYS
 
 
 func init(target: Node) -> void:
@@ -10,5 +11,5 @@ func init(target: Node) -> void:
 
 
 func apply(target: Node) -> void:
-	target.take_damage(damage)
+	target.take_damage(damage, damage_sfx_key)
 	status_applied.emit(self)

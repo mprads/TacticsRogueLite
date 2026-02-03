@@ -17,6 +17,7 @@ const UNIT_SCENE = preload("uid://bpkwnxxboplpn")
 	set = set_stats
 
 @export var outline_thickness: float = 1.0
+@export var default_damage_sfx_key: SFXConfig.KEYS
 
 @onready var visuals: CanvasGroup = $Visuals
 @onready var outline: Sprite2D = $Visuals/Outline
@@ -70,11 +71,11 @@ func face_source(source_position: Vector2) -> void:
 		damage_sprite.flip_h = true
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, damage_sfx_key: SFXConfig.KEYS = default_damage_sfx_key) -> void:
 	if not stats:
 		return
 
-	SFXPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.GLASS_CLINK))
+	SFXPlayer.play(SFXConfig.get_audio_stream(damage_sfx_key))
 	var modified_damage = modifier_manager.get_modified_value(damage, Modifier.TYPE.DAMAGE_TAKEN)
 
 	stats.take_damage(modified_damage)
