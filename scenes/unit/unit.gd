@@ -114,7 +114,8 @@ func update_visuals() -> void:
 	damage_sprite.texture = stats.bottle.liquid_mask
 
 	damage_sprite.material.set_shader_parameter("noise_seed", RNG.instance.randf_range(0.0, 999.0))
-	var damage_percent = (1 - (float(stats.health) / float(stats.max_health))) * .4
+	# Shader sensitivity uses range between 0.0 and 1.0 but anything past .5 is too noisy
+	var damage_percent = (1 - (float(stats.health) / float(stats.max_health))) * .5
 	damage_sprite.material.set_shader_parameter("sensitivity", damage_percent)
 
 	if stats.potion:
