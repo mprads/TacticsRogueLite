@@ -2,8 +2,6 @@ class_name UnitSelectButton
 extends Button
 
 const UNIT_SELECT_BUTTON_SCENE = preload("uid://cr2pf64g056g3")
-const OUTLINE_SHEET = preload("uid://cjh7q57rx3hfu")
-const FILLING_SHEET = preload("uid://dsme3d6yq3mxs")
 
 @export var unit: Unit:
 	set = set_unit
@@ -51,31 +49,15 @@ func set_unit(value: Unit) -> void:
 
 
 func _update_visuals() -> void:
-	# TODO this is fully repeated in party unit ui, make a shared scene
 	keybind_label.text = "[%s]" % keycode
 
 	if unit:
-		var coords = unit.stats.bottle.sprite_coordinates
-		var sprite_size = unit.stats.bottle.sprite_size
-
-		var outline = AtlasTexture.new()
-		var filling = AtlasTexture.new()
-		outline.set_atlas(OUTLINE_SHEET)
-		outline.region = Rect2(
-			coords[0] * sprite_size, coords[1] * sprite_size, sprite_size, sprite_size
-		)
-		filling.set_atlas(FILLING_SHEET)
-		filling.region = Rect2(
-			coords[0] * sprite_size, coords[1] * sprite_size, sprite_size, sprite_size
-		)
-
 		unit_icon.unit_stats = unit.stats
 
 		health_bar.max_value = unit.stats.max_health
 		health_bar.value = unit.stats.health
 		shield_bar.max_value = unit.stats.max_health
 		shield_bar.value = unit.stats.shield
-
 
 		shield_bar_outline.visible =  unit.stats.shield > 0
 

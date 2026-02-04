@@ -3,6 +3,7 @@ extends Resource
 
 @export_category("Visuals")
 @export var name: String
+# Sprite coord and size currently unused till sprite and mask are moved back into sprite sheets
 @export var sprite_coordinates: Vector2i
 @export var sprite_size: int
 @export var bottle_sprite: Texture2D
