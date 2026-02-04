@@ -97,6 +97,14 @@ func spawn_floating_text(text: String, text_color) -> void:
 	floating_text_spawner.spawn_text(text, text_color)
 
 
+func enable_drag_and_drop() -> void:
+		unit_state_machine.enable_drag_and_drop()
+
+
+func disable_drag_and_drop() -> void:
+		unit_state_machine.disable_drag_and_drop()
+
+
 func move_cleanup() -> void:
 	unit_state_machine.on_movement_complete()
 
