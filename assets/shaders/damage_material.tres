@@ -14,6 +14,7 @@ noise = SubResource("FastNoiseLite_u15f5")
 color_ramp = SubResource("Gradient_1ifho")
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_w0tj1")
 shader_parameter/sensitivity = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_bg1qp")
