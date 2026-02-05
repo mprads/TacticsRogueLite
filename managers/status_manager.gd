@@ -1,9 +1,10 @@
 class_name StatusManager
-extends Control
+extends Node
 
 signal statuses_applied(type: Status.TYPE)
 
 @export var status_owner: Node2D
+@export var status_ui: StatusUI
 
 
 func apply_statuses_by_type(type: Status.TYPE) -> void:
@@ -26,11 +27,11 @@ func add_status(status: Status) -> void:
 	var is_duration := status.stack_type == Status.STACK_TYPE.DURATION
 
 	if not _has_status(status.id):
-		var status_ui_instance := StatusUI.create_new(status)
-		add_child(status_ui_instance)
-		status_ui_instance.status.init(status_owner)
+		var status_icon_instance := StatusIcon.create_new(status)
+		status_ui.add_child(status_icon_instance)
+		status_icon_instance.status.init(status_owner)
 
-		status_ui_instance.status.status_applied.connect(_on_status_applied)
+		status_icon_instance.status.status_applied.connect(_on_status_applied)
 		return
 
 	if not is_duration and not is_stacking:
@@ -52,24 +53,24 @@ func cleanse_negative_statuses() -> void:
 
 
 func _has_status(id: String) -> bool:
-	for ui in get_children():
-		if ui.status.id == id:
+	for icon in status_ui.get_children():
+		if icon.status.id == id:
 			return true
 
 	return false
 
 
 func _get_status(id: String) -> Status:
-	for ui in get_children():
-		if ui.status.id == id:
-			return ui.status
+	for icon in status_ui.get_children():
+		if icon.status.id == id:
+			return icon.status
 	return null
 
 
 func _get_all_statuses() -> Array[Status]:
 	var statuses: Array[Status] = []
-	for ui in get_children():
-		statuses.append(ui.status)
+	for icon in status_ui.get_children():
+		statuses.append(icon.status)
 
 	return statuses
 

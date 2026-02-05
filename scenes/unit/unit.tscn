@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene load_steps=27 format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="2_l0n34"]
@@ -7,11 +7,12 @@
 [ext_resource type="Script" uid="uid://ubw0jaxdt4pp" path="res://components/drag_and_drop.gd" id="4_bhlit"]
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="4_w7udy"]
 [ext_resource type="Script" uid="uid://dj6o3c6q523ek" path="res://scripts/states/unit_state_machine.gd" id="5_vgvef"]
-[ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="6_3po7s"]
 [ext_resource type="Script" uid="uid://bcgev77t65m02" path="res://scenes/unit/liquid.gd" id="7_540om"]
 [ext_resource type="Script" uid="uid://bv1gbgl3olxql" path="res://scenes/unit/pendulum.gd" id="8_540om"]
 [ext_resource type="Script" uid="uid://clc0ayjvpkdkd" path="res://components/ability_animated_sprite.gd" id="9_1ifho"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="11_540om"]
+[ext_resource type="Script" uid="uid://bwa4qgoeydcu5" path="res://managers/status_manager.gd" id="12_540om"]
+[ext_resource type="PackedScene" uid="uid://blrmf2uetd6b2" path="res://scenes/ui/status_ui.tscn" id="13_540om"]
 
 [sub_resource type="Shader" id="Shader_kajhh"]
 resource_local_to_scene = true
@@ -482,11 +483,16 @@ script = ExtResource("5_vgvef")
 [node name="ModifierManager" type="Node" parent="."]
 script = ExtResource("11_540om")
 
-[node name="StatusManager" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("6_3po7s")]
-offset_left = -17.0
-offset_right = 21.0
-offset_bottom = 32.0
+[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner", "status_ui")]
+script = ExtResource("12_540om")
 status_owner = NodePath("..")
+status_ui = NodePath("../StatusUI")
+
+[node name="StatusUI" parent="." instance=ExtResource("13_540om")]
+offset_left = -18.0
+offset_top = 1.0
+offset_right = 20.0
+offset_bottom = 33.0
 
 [node name="StateDebug" type="Label" parent="."]
 offset_left = -39.0

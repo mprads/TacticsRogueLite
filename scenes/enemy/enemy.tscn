@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://b7xiv7x5cv04q"]
+[gd_scene load_steps=19 format=3 uid="uid://b7xiv7x5cv04q"]
 
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_cwlon"]
-[ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="3_40wdo"]
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="3_gl05p"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="4_cwlon"]
 [ext_resource type="Script" uid="uid://clc0ayjvpkdkd" path="res://components/ability_animated_sprite.gd" id="4_nbhyu"]
+[ext_resource type="Script" uid="uid://bwa4qgoeydcu5" path="res://managers/status_manager.gd" id="7_13gj6"]
+[ext_resource type="PackedScene" uid="uid://blrmf2uetd6b2" path="res://scenes/ui/status_ui.tscn" id="8_13gj6"]
 
 [sub_resource type="Animation" id="Animation_13gj6"]
 length = 0.001
@@ -228,11 +229,16 @@ script = ExtResource("3_gl05p")
 [node name="ModifierManager" type="Node" parent="."]
 script = ExtResource("4_cwlon")
 
-[node name="StatusManager" parent="." instance=ExtResource("3_40wdo")]
+[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner", "status_ui")]
+script = ExtResource("7_13gj6")
+status_owner = NodePath("..")
+status_ui = NodePath("../StatusUI")
+
+[node name="StatusUI" parent="." instance=ExtResource("8_13gj6")]
 offset_left = -17.0
-offset_top = 5.0
+offset_top = 4.0
 offset_right = 21.0
-offset_bottom = 37.0
+offset_bottom = 36.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(30, 4)
