@@ -2,13 +2,15 @@ class_name StatusManager
 extends Node
 
 signal statuses_applied(type: Status.TYPE)
+signal statuses_updated
 
 @export var status_owner: Node2D
 @export var status_ui: StatusUI
+@export var statuses: Array[Status]
 
 
 func apply_statuses_by_type(type: Status.TYPE) -> void:
-	var queue: Array[Status] = _get_all_statuses().filter(
+	var queue: Array[Status] = statuses.filter(
 		func(status: Status) -> bool: return status.type == type
 	)
 
@@ -45,7 +47,6 @@ func add_status(status: Status) -> void:
 
 
 func cleanse_negative_statuses() -> void:
-	var statuses := _get_all_statuses()
 	for status in statuses:
 		if status.is_negative_effect:
 			status.duration = 0
@@ -53,26 +54,27 @@ func cleanse_negative_statuses() -> void:
 
 
 func _has_status(id: String) -> bool:
-	for icon in status_ui.get_children():
-		if icon.status.id == id:
+	for status in statuses:
+		if status.id == id:
 			return true
 
 	return false
 
 
 func _get_status(id: String) -> Status:
-	for icon in status_ui.get_children():
-		if icon.status.id == id:
-			return icon.status
+	for status in statuses:
+		if status.id == id:
+			return status
+
 	return null
 
 
-func _get_all_statuses() -> Array[Status]:
-	var statuses: Array[Status] = []
-	for icon in status_ui.get_children():
-		statuses.append(icon.status)
-
-	return statuses
+#func _get_all_statuses() -> Array[Status]:
+	#var statuses: Array[Status] = []
+	#for icon in status_ui.get_children():
+		#statuses.append(icon.status)
+#
+	#return statuses
 
 
 func _on_status_applied(status: Status) -> void:
