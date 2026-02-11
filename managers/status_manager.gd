@@ -6,13 +6,14 @@ signal statuses_updated
 
 @export var status_owner: Node2D
 @export var status_ui: StatusUI
-@export var statuses: Array[Status]
+@export var statuses: Dictionary[int, StatusIcon]
 
 
 func apply_statuses_by_type(type: Status.TYPE) -> void:
-	var queue: Array[Status] = statuses.filter(
-		func(status: Status) -> bool: return status.type == type
-	)
+	var queue: Array[Status] = []
+	for status_icon:StatusIcon in statuses.values():
+		if status_icon.status.type == type:
+			queue.append(status_icon.status)
 
 	if queue.is_empty():
 		statuses_applied.emit(type)
@@ -47,24 +48,24 @@ func add_status(status: Status) -> void:
 
 
 func cleanse_negative_statuses() -> void:
-	for status in statuses:
-		if status.is_negative_effect:
-			status.duration = 0
-			status.stacks = 0
+	for status_icon:StatusIcon in statuses.values():
+		if status_icon.status.is_negative_effect:
+			status_icon.statusstatus.duration = 0
+			status_icon.statusstatus.stacks = 0
 
 
 func _has_status(id: String) -> bool:
-	for status in statuses:
-		if status.id == id:
+	for status_id in statuses.keys():
+		if status_id == id:
 			return true
 
 	return false
 
 
 func _get_status(id: String) -> Status:
-	for status in statuses:
-		if status.id == id:
-			return status
+	for status_id in statuses.keys():
+		if status_id == id:
+			return statuses[status_id].status
 
 	return null
 
