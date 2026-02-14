@@ -33,6 +33,7 @@ const UNIT_SCENE = preload("uid://bpkwnxxboplpn")
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
 @onready var floating_text_spawner: FloatingTextSpawner = $FloatingTextSpawner
+@onready var status_ui: StatusUI = %StatusUI
 
 @onready var moveable_debug: Label = $MoveableDebug
 
@@ -50,6 +51,8 @@ func _ready() -> void:
 	unit_state_machine.init(self)
 	mouse_entered.connect(on_mouse_entered)
 	mouse_exited.connect(on_mouse_exited)
+
+	status_ui.status_manager = status_manager
 
 
 func _physics_process(delta: float) -> void:

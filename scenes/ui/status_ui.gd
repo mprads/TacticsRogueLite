@@ -9,15 +9,14 @@ func set_status_manager(value: StatusManager) -> void:
 		await ready
 
 	status_manager = value
-	if not status_manager.statuses_updated.is_connected(_on_status_manager_statuses_updated):
-		status_manager.statuses_updated.connect(_on_status_manager_statuses_updated)
-
-	_update_visuals()
+	if not status_manager.status_added.is_connected(_on_status_manager_status_added):
+		status_manager.status_added.connect(_on_status_manager_status_added)
 
 
-func _update_visuals() -> void:
-	pass
+func _add_status_icon(status: Status) -> void:
+	var status_icon_instance := StatusIcon.create_new(status)
+	add_child(status_icon_instance)
 
 
-func _on_status_manager_statuses_updated() -> void:
-	_update_visuals()
+func _on_status_manager_status_added(status: Status) -> void:
+	_add_status_icon(status)

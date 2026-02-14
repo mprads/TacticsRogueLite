@@ -229,12 +229,12 @@ script = ExtResource("3_gl05p")
 [node name="ModifierManager" type="Node" parent="."]
 script = ExtResource("4_cwlon")
 
-[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner", "status_ui")]
+[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner")]
 script = ExtResource("7_13gj6")
 status_owner = NodePath("..")
-status_ui = NodePath("../StatusUI")
 
 [node name="StatusUI" parent="." instance=ExtResource("8_13gj6")]
+unique_name_in_owner = true
 offset_left = -17.0
 offset_top = 4.0
 offset_right = 21.0

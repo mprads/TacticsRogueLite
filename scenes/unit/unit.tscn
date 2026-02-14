@@ -483,12 +483,12 @@ script = ExtResource("5_vgvef")
 [node name="ModifierManager" type="Node" parent="."]
 script = ExtResource("11_540om")
 
-[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner", "status_ui")]
+[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner")]
 script = ExtResource("12_540om")
 status_owner = NodePath("..")
-status_ui = NodePath("../StatusUI")
 
 [node name="StatusUI" parent="." instance=ExtResource("13_540om")]
+unique_name_in_owner = true
 offset_left = -18.0
 offset_top = 1.0
 offset_right = 20.0

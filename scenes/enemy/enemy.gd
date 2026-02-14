@@ -22,6 +22,7 @@ const MULTI_TILE_ENEMY = preload("uid://bgix1ig8gku2x")
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
 @onready var floating_text_spawner: FloatingTextSpawner = $FloatingTextSpawner
+@onready var status_ui: StatusUI = %StatusUI
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar
@@ -35,6 +36,7 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 
 	status_manager.status_owner = self
+	status_ui.status_manager= status_manager
 
 
 func _input(event: InputEvent) -> void:
