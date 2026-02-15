@@ -5,17 +5,20 @@ const UNIT_SELECT_BUTTON_SCENE = preload("uid://cr2pf64g056g3")
 
 @export var unit: Unit:
 	set = set_unit
+	
+@export var index: int:
+	set = set_index
 
 @onready var move_icon: TextureRect = %MoveIcon
 @onready var ability_icon: TextureRect = %AbilityIcon
-@onready var unit_icon: UnitIcon = $InventoryUnitIcon/UnitIcon
+@onready var unit_icon: UnitIcon = %UnitIcon
 
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var shield_bar_outline: Panel = %ShieldBarOutline
 @onready var shield_bar: ProgressBar = %ShieldBar
 @onready var potion_bar_outline: Panel = %PotionBarOutline
 @onready var potion_bar: ProgressBar = %PotionBar
-@onready var keybind_label: Label = $KeybindLabel
+@onready var keybind_label: Label = %KeybindLabel
 
 var keycode: String = "Unassigned"
 var input_map_id: String = ""
@@ -29,6 +32,15 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(input_map_id):
 		pressed.emit()
+
+
+func set_index(value: int) -> void:
+	if not is_node_ready():
+		await ready
+
+	index = value
+	keycode = Utils.get_keycode_from_input_id("unit_%s" % value)
+	input_map_id = "unit_%s" % value
 
 
 func set_unit(value: Unit) -> void:
@@ -45,6 +57,7 @@ func set_unit(value: Unit) -> void:
 	unit.movement_complete.connect(_on_movement_complete)
 	unit.turn_complete.connect(_on_turn_complete)
 	unit.stats.changed.connect(_update_visuals)
+
 	_update_visuals()
 
 
@@ -102,9 +115,8 @@ func _on_mouse_exited() -> void:
 	unit.on_mouse_exited()
 
 
-static func create_new(new_unit: Unit, index: int) -> UnitSelectButton:
+static func create_new(new_unit: Unit, new_index: int) -> UnitSelectButton:
 	var new_unit_select_button := UNIT_SELECT_BUTTON_SCENE.instantiate()
 	new_unit_select_button.unit = new_unit
-	new_unit_select_button.keycode = Utils.get_keycode_from_input_id("unit_%s" % index)
-	new_unit_select_button.input_map_id = "unit_%s" % index
+	new_unit_select_button.index = new_index
 	return new_unit_select_button

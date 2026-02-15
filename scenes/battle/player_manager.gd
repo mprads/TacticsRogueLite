@@ -50,7 +50,7 @@ func start_turn() -> void:
 
 func enable_drag_and_drop() -> void:
 	for unit in get_children():
-		unit.enable_drag_and_drop
+		unit.enable_drag_and_drop()
 
 
 func disable_drag_and_drop() -> void:

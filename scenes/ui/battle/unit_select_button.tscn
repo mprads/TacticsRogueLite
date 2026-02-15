@@ -83,8 +83,8 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 
 [node name="UnitSelectButton" type="Button"]
-custom_minimum_size = Vector2(112, 58)
-offset_right = 112.0
+custom_minimum_size = Vector2(115, 58)
+offset_right = 115.0
 offset_bottom = 58.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hp0f2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_057j8")
@@ -113,6 +113,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rufao")
 
 [node name="KeybindLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 92.0
 offset_top = 42.0
@@ -249,4 +250,5 @@ size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="UnitIcon" parent="InventoryUnitIcon" instance=ExtResource("6_057j8")]
+unique_name_in_owner = true
 layout_mode = 1

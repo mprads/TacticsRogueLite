@@ -44,9 +44,6 @@ func _ready() -> void:
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
 	arena_grid.tile_cleanup.connect(_on_arena_grid_tile_cleanup)
 
-	for child in party_selection_container.get_children():
-		child.queue_free()
-
 
 func start_deployment() -> void:
 	_generate_bench()
@@ -114,7 +111,7 @@ func _start_battle() -> void:
 		unit.queue_free()
 		await unit.tree_exited
 
-	party_selection_container.create_unit_select_buttons(player_manager.get_children())
+	party_selection_container.create_battle_unit_ui(player_manager.get_children())
 	party_selection_container.unit_selected.connect(_on_change_active_unit)
 
 	for enemy in enemy_manager.get_children():

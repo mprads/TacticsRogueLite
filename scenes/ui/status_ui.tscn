@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://blrmf2uetd6b2"]
+[gd_scene load_steps=3 format=3 uid="uid://blrmf2uetd6b2"]
 
 [ext_resource type="Script" uid="uid://brs0lk1v2mlm8" path="res://scenes/ui/status_ui.gd" id="1_qlv4y"]
+[ext_resource type="PackedScene" uid="uid://vh15m4qw1i4k" path="res://scenes/ui/status_icon.tscn" id="2_1aqle"]
 
 [node name="StatusUI" type="GridContainer"]
 custom_minimum_size = Vector2(38, 32)
@@ -10,3 +11,15 @@ theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 2
 columns = 3
 script = ExtResource("1_qlv4y")
+
+[node name="StatusUI" parent="." instance=ExtResource("2_1aqle")]
+layout_mode = 2
+
+[node name="StatusUI2" parent="." instance=ExtResource("2_1aqle")]
+layout_mode = 2
+
+[node name="StatusUI3" parent="." instance=ExtResource("2_1aqle")]
+layout_mode = 2
+
+[node name="StatusUI4" parent="." instance=ExtResource("2_1aqle")]
+layout_mode = 2

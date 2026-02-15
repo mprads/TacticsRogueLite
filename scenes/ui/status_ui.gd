@@ -4,6 +4,11 @@ extends GridContainer
 @export var status_manager: StatusManager : set = set_status_manager
 
 
+func _ready() -> void:
+	for child in get_children():
+		child.queue_free()
+
+
 func set_status_manager(value: StatusManager) -> void:
 	if not is_node_ready():
 		await ready
