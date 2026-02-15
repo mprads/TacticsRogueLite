@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://e0teld8gsvyy"]
+
+[ext_resource type="Script" uid="uid://jsat6uvs4ivy" path="res://scenes/ui/battle/battle_unit_ui.gd" id="1_7od8t"]
+[ext_resource type="PackedScene" uid="uid://cr2pf64g056g3" path="res://scenes/ui/battle/unit_select_button.tscn" id="1_mwff0"]
+[ext_resource type="Script" uid="uid://brs0lk1v2mlm8" path="res://scenes/ui/status_ui.gd" id="2_7od8t"]
+[ext_resource type="PackedScene" uid="uid://vh15m4qw1i4k" path="res://scenes/ui/status_icon.tscn" id="3_wqnns"]
+
+[node name="BattleUnitUI" type="Control"]
+custom_minimum_size = Vector2(155, 58)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 155.0
+offset_bottom = 58.0
+script = ExtResource("1_7od8t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 155.0
+offset_bottom = 58.0
+
+[node name="UnitSelectButton" parent="HBoxContainer" instance=ExtResource("1_mwff0")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatusUI" type="GridContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+columns = 3
+script = ExtResource("2_7od8t")
+metadata/_custom_type_script = "uid://brs0lk1v2mlm8"
+
+[node name="StatusUI" parent="HBoxContainer/StatusUI" instance=ExtResource("3_wqnns")]
+layout_mode = 2
+
+[node name="StatusUI2" parent="HBoxContainer/StatusUI" instance=ExtResource("3_wqnns")]
+layout_mode = 2
+
+[node name="StatusUI3" parent="HBoxContainer/StatusUI" instance=ExtResource("3_wqnns")]
+layout_mode = 2
+
+[node name="StatusUI4" parent="HBoxContainer/StatusUI" instance=ExtResource("3_wqnns")]
+layout_mode = 2
