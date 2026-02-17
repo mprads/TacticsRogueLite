@@ -42,6 +42,8 @@ func set_index(value: int) -> void:
 	keycode = Utils.get_keycode_from_input_id("unit_%s" % value)
 	input_map_id = "unit_%s" % value
 
+	_update_visuals()
+
 
 func set_unit(value: Unit) -> void:
 	if not is_node_ready():

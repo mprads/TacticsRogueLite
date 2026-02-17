@@ -26,7 +26,7 @@ func set_index(value: int) -> void:
 		await ready
 
 	index = value
-	unit_select_button.index = index
+	unit_select_button.index = value
 
 
 func set_unit(value: Unit) -> void:
