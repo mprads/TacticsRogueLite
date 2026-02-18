@@ -141,9 +141,12 @@ func verify_intent(enemy: Enemy) -> void:
 		update_enemy_intent(enemy)
 		return
 
-	if not get_tree().get_nodes_in_group("player_unit").has(enemy.ai.current_target):
-		update_enemy_intent(enemy)
-		return
+# Protection for alternate win conditions besides killing all enemies
+# Ensures the intent doesn't error out from unit_exit_tree
+	if is_inside_tree():
+		if not get_tree().get_nodes_in_group("player_unit").has(enemy.ai.current_target):
+			update_enemy_intent(enemy)
+			return
 
 	if arena.arena_grid.is_tile_occupied(enemy.ai.next_tile):
 		update_enemy_intent(enemy)
