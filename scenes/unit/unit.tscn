@@ -469,10 +469,6 @@ visible = false
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_bhlit")
 
-[node name="FloatingTextSpawner" type="Node2D" parent="."]
-position = Vector2(-1, -12)
-script = ExtResource("4_w7udy")
-
 [node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_bhlit")
 target = NodePath("..")
@@ -486,6 +482,15 @@ script = ExtResource("11_540om")
 [node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner")]
 script = ExtResource("12_540om")
 status_owner = NodePath("..")
+
+[node name="FloatingTextSpawner" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -12.0
+offset_right = -1.0
+offset_bottom = -12.0
+script = ExtResource("4_w7udy")
 
 [node name="StatusUI" parent="." instance=ExtResource("13_540om")]
 unique_name_in_owner = true

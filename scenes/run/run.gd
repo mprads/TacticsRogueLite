@@ -26,6 +26,7 @@ const RUN_COMPLETE_SCENE = preload("uid://c1es6hg3xd4hf")
 @onready var unit_fill_ui: UnitFillUI = %UnitFillUI
 @onready var rng_seed_label: Label = %RNGSeedLabel
 @onready var top_bar: CanvasLayer = %TopBar
+@onready var inventory_floating_text_spawner: FloatingTextSpawner = %InventoryFloatingTextSpawner
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
@@ -124,6 +125,7 @@ func _set_up_debug() -> void:
 
 func _set_up_managers() -> void:
 	inventory_manager.run_stats = run_stats
+	inventory_manager.floating_text_spawner = inventory_floating_text_spawner
 	run_data_manager.run_stats = run_stats
 	party_manager.run_stats = run_stats
 	vial_manager.run_stats = run_stats

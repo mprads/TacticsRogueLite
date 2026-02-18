@@ -1,5 +1,5 @@
 class_name FloatingTextSpawner
-extends Node2D
+extends Control
 
 const FLOATING_TEXT_SCENE = preload("uid://cf5eeolalu6dd")
 

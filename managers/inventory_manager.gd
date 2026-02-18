@@ -5,6 +5,7 @@ signal gold_changed
 signal inventory_changed
 
 @export var run_stats: RunStats
+@export var floating_text_spawner: FloatingTextSpawner
 
 
 func _ready() -> void:
@@ -35,11 +36,15 @@ func add_gold(value: int) -> void:
 
 func _add_item(key: ItemConfig.KEYS, count: int = 1) -> void:
 	run_stats.add_item_to_inventory(key, count)
+	var text = "+%s %s" % [count, ItemConfig.get_item_resource(key).name]
+	floating_text_spawner.spawn_text(text, ColourHelper.KEYS.BLACK) 
 	inventory_changed.emit()
 
 
 func _remove_item(key: ItemConfig.KEYS, count: int) -> void:
 	run_stats.remove_item_from_inventory(key, count)
+	var text = "-%s %s" % [count, ItemConfig.get_item_resource(key).name]
+	floating_text_spawner.spawn_text(text, ColourHelper.KEYS.BLACK) 
 	inventory_changed.emit()
 
 
