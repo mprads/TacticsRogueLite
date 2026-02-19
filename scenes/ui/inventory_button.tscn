@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://npk3rncmtr73"]
+[gd_scene load_steps=9 format=3 uid="uid://npk3rncmtr73"]
 
 [ext_resource type="Script" uid="uid://bv1enouv4e3bl" path="res://scenes/ui/inventory_button.gd" id="1_v1t68"]
 [ext_resource type="Texture2D" uid="uid://cysh4bb2hy3vt" path="res://assets/icons/18x18backpack.png" id="2_p2es3"]
@@ -12,6 +12,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o4de1"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b2sbn"]
+
 [node name="InventoryButton" type="Button"]
 material = ExtResource("2_u5csj")
 custom_minimum_size = Vector2(18, 18)
@@ -23,6 +25,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_u5csj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_p2es3")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ci7xw")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_o4de1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b2sbn")
 icon = ExtResource("2_p2es3")
 icon_alignment = 1
 script = ExtResource("1_v1t68")

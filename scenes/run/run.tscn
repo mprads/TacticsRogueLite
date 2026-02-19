@@ -259,13 +259,17 @@ visible = false
 [node name="InventoryFloatingTextSpawner" type="Control" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 3
-anchors_preset = 0
-offset_left = 549.0
-offset_top = 67.0
-offset_right = 637.0
-offset_bottom = 107.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_top = 87.0
+offset_right = -6.0
+offset_bottom = 127.0
+grow_horizontal = 0
 mouse_filter = 2
 script = ExtResource("19_0pc8y")
 vertical_offset = 0
+sibling_offset = 15
 
 [node name="Tooltip" parent="UI" instance=ExtResource("15_x53nd")]
