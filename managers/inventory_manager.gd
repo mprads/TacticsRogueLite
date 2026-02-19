@@ -37,14 +37,14 @@ func add_gold(value: int) -> void:
 func _add_item(key: ItemConfig.KEYS, count: int = 1) -> void:
 	run_stats.add_item_to_inventory(key, count)
 	var text = "+%s %s" % [count, ItemConfig.get_item_resource(key).name]
-	floating_text_spawner.spawn_text(text, ColourHelper.KEYS.BLACK) 
+	floating_text_spawner.spawn_text(text, ColourHelper.get_colour(ColourHelper.KEYS.DEBUFF)) 
 	inventory_changed.emit()
 
 
 func _remove_item(key: ItemConfig.KEYS, count: int) -> void:
 	run_stats.remove_item_from_inventory(key, count)
 	var text = "-%s %s" % [count, ItemConfig.get_item_resource(key).name]
-	floating_text_spawner.spawn_text(text, ColourHelper.KEYS.BLACK) 
+	floating_text_spawner.spawn_text(text, ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE)) 
 	inventory_changed.emit()
 
 

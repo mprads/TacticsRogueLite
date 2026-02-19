@@ -1,0 +1,31 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5b48tkcd7t15"]
+
+[ext_resource type="Script" uid="uid://duxga30em13ox" path="res://scenes/ui/settings_button.gd" id="2_ab84w"]
+[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_tln3d"]
+[ext_resource type="Texture2D" uid="uid://dkdgd486l67tp" path="res://assets/icons/18x18cog.png" id="2_uksen"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tln3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uksen"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfbut"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktq4w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_41ebm"]
+
+[node name="SettingsButton" type="Button"]
+material = ExtResource("2_tln3d")
+custom_minimum_size = Vector2(18, 18)
+offset_right = 16.0
+offset_bottom = 16.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tln3d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uksen")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tfbut")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktq4w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_41ebm")
+icon = ExtResource("2_uksen")
+icon_alignment = 1
+script = ExtResource("2_ab84w")

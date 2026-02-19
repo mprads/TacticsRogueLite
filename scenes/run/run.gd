@@ -20,8 +20,8 @@ const RUN_COMPLETE_SCENE = preload("uid://c1es6hg3xd4hf")
 @onready var artifact_ui: HBoxContainer = %ArtifactUI
 @onready var vial_ui: VialUI = %VialUI
 @onready var gold_ui: HBoxContainer = %GoldUI
-@onready var inventory_button: TextureButton = %InventoryButton
-@onready var settings_button: TextureButton = %SettingsButton
+@onready var inventory_button: Button = %InventoryButton
+@onready var settings_button: Button = %SettingsButton
 @onready var settings_ui: Control = %SettingsUI
 @onready var unit_fill_ui: UnitFillUI = %UnitFillUI
 @onready var rng_seed_label: Label = %RNGSeedLabel
@@ -66,6 +66,7 @@ func _start_run() -> void:
 	map.unlock_row(0)
 
 
+#TODO remove
 func _set_up_debug() -> void:
 	settings_button.pressed.connect(
 		func():
