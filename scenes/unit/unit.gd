@@ -141,6 +141,9 @@ func update_visuals() -> void:
 
 func play_animation(animation_name: String) -> void:
 	if animation_player.current_animation:
+		if animation_player.current_animation == "death":
+			return
+
 		animation_player.stop()
 	animation_player.play(animation_name)
 

@@ -123,6 +123,7 @@ func _start_battle() -> void:
 
 
 func _handle_turn_change(label_text: String, start_next_turn: Callable) -> void:
+	await get_tree().create_timer(.5).timeout
 	banner_label.text = "%s Turn" %label_text
 	var tween: Tween
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
