@@ -5,7 +5,7 @@ extends UnitState
 func enter() -> void:
 	unit.aim_started.emit(unit.selected_ability)
 	unit.aiming_ability_animated_sprite.set_and_play(unit.selected_ability.sprite_frames, "aiming")
-
+	unit.drag_and_drop.enabled = false
 
 func exit() -> void:
 	unit.selected_ability = null
