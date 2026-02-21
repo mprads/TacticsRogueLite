@@ -55,7 +55,8 @@ func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) ->
 
 	unit.global_position = arenas[arena_index].get_global_from_tile(tile)
 	arenas[arena_index].arena_grid.add_unit(tile, unit)
-	navigation.set_id_occupied(tile)
+	if navigation.has_node("EnemyFillLayer"):
+		navigation.set_id_occupied(tile)
 	unit.movement_cancelled.emit()
 
 

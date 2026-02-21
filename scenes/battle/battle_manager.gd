@@ -215,14 +215,11 @@ func _on_unit_aim_stopped() -> void:
 	target_selector_ui.starting_position = Vector2.ZERO
 	player_manager.enable_drag_and_drop()
 	ability_manager.handle_aim_stopped()
-	unit_context_menu.unit = null
+	unit_context_menu.reset_focus()
 
 
 func _on_unit_selected(unit: Unit) -> void:
 	ability_manager.handle_selected_unit(unit)
-
-	if not unit.disabled:
-		unit_context_menu.unit = unit
 
 
 func _on_show_enemy_intent(enemy: Enemy) -> void:
