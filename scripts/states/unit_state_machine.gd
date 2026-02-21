@@ -40,6 +40,16 @@ func force_state_transition(next_state: STATE) -> void:
 	_on_transition_requested(current_state, next_state)
 
 
+func enable_drag_and_drop() -> void:
+	if current_state:
+		current_state.enable_drag_and_drop()
+
+
+func disable_drag_and_drop() -> void:
+	if current_state:
+		current_state.disable_drag_and_drop()
+
+
 func on_physics_process(delta: float) -> void:
 	if current_state:
 		current_state.on_physics_process(delta)

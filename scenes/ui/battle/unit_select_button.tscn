@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cr2pf64g056g3"]
+[gd_scene load_steps=23 format=3 uid="uid://cr2pf64g056g3"]
 
 [ext_resource type="Texture2D" uid="uid://c8d3c14kcslbc" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/UI.png" id="1_057j8"]
 [ext_resource type="Script" uid="uid://b8wymhrjv0jlf" path="res://scenes/ui/battle/unit_select_button.gd" id="1_eqp6i"]
@@ -9,6 +9,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp0f2"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_057j8"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5j4w4"]
 texture = ExtResource("2_erphx")
 texture_margin_left = 36.0
@@ -16,6 +18,10 @@ texture_margin_top = 36.0
 texture_margin_right = 36.0
 texture_margin_bottom = 36.0
 region_rect = Rect2(18, 290, 44, 44)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egrrk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ktk7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ydllm"]
 texture = ExtResource("1_057j8")
@@ -77,14 +83,14 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 
 [node name="UnitSelectButton" type="Button"]
-custom_minimum_size = Vector2(112, 58)
-offset_right = 112.0
+custom_minimum_size = Vector2(115, 58)
+offset_right = 115.0
 offset_bottom = 58.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hp0f2")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_057j8")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5j4w4")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_5j4w4")
-theme_override_styles/focus = SubResource("StyleBoxTexture_5j4w4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_egrrk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ktk7")
 script = ExtResource("1_eqp6i")
 
 [node name="IconBorder" type="Panel" parent="."]
@@ -107,6 +113,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rufao")
 
 [node name="KeybindLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 92.0
 offset_top = 42.0
@@ -157,6 +164,7 @@ theme_override_constants/separation = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(46, 12)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_erphx")
 
 [node name="PotionBar" type="ProgressBar" parent="BarsContainer/PotionBarOutline"]
@@ -180,6 +188,7 @@ show_percentage = false
 custom_minimum_size = Vector2(46, 12)
 layout_mode = 2
 size_flags_vertical = 10
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3ktk7")
 
 [node name="HealthBar" type="ProgressBar" parent="BarsContainer/HealthBarOutline"]
@@ -211,6 +220,7 @@ offset_left = 50.0
 offset_top = 17.0
 offset_right = 64.0
 offset_bottom = 31.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_xu37h")
 
 [node name="ShieldBar" type="ProgressBar" parent="ShieldBarOutline"]
@@ -240,4 +250,5 @@ size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="UnitIcon" parent="InventoryUnitIcon" instance=ExtResource("6_057j8")]
+unique_name_in_owner = true
 layout_mode = 1

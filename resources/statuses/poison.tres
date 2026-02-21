@@ -6,14 +6,12 @@
 [resource]
 script = ExtResource("2_moyce")
 damage = 10
+damage_sfx_key = 18
 id = "poison"
 name = "Poison"
-type = 0
 stack_type = 2
 duration = 2
-stacks = 0
 modifier_type = 2
-modifier_value = 0.0
 is_negative_effect = true
 icon = ExtResource("1_ukxhh")
 color = Color(0.0862745, 0.352941, 0.298039, 1)

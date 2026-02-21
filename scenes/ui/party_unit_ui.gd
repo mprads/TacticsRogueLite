@@ -1,7 +1,7 @@
 class_name PartyUnitUI
 extends Button
 
-const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
+const PARTY_UNIT_UI_SCENE = preload("uid://cnvnj7pvvkjhu")
 
 @export var unit_stats: UnitStats:
 	set = set_unit_stats
@@ -20,12 +20,14 @@ func _update_visuals() -> void:
 		return
 
 	for ability in unit_stats.potion.abilities:
-		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
-		ability_panel_instance.ability = ability
 
 
 func set_unit_stats(value: UnitStats) -> void:
+	if not is_node_ready():
+		await ready
+
 	unit_stats = value
 
 	if not unit_stats:
@@ -36,3 +38,9 @@ func set_unit_stats(value: UnitStats) -> void:
 	potion_label.text = unit_stats.name
 	
 	_update_visuals()
+
+
+static func create_new(new_stats: UnitStats) -> PartyUnitUI:
+	var new_party_unit_ui := PARTY_UNIT_UI_SCENE.instantiate()
+	new_party_unit_ui.unit_stats = new_stats
+	return new_party_unit_ui

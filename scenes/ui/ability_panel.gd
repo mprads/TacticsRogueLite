@@ -1,6 +1,8 @@
 class_name AbilityPanel
 extends Panel
 
+const ABILITY_PANEL_SCENE = preload("uid://gqoxvqcgviwc")
+
 @export var ability: Ability:
 	set = set_ability
 
@@ -13,6 +15,8 @@ func _ready() -> void:
 
 
 func set_ability(value: Ability) -> void:
+	if not is_node_ready(): await ready
+
 	ability = value
 	ability_label.text = ability.name
 
@@ -32,3 +36,9 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	Events.hide_tooltip.emit()
+
+
+static func create_new(new_ability: Ability) -> AbilityPanel:
+	var new_ability_panel := ABILITY_PANEL_SCENE.instantiate()
+	new_ability_panel.ability = new_ability
+	return new_ability_panel

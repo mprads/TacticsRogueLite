@@ -8,6 +8,10 @@ signal show_intent(enemy: Enemy)
 signal request_clear_intent
 signal request_flood_fill(max_distance: int, atlas_coord: Vector2i)
 signal request_clear_fill_layer
+signal cleanup
+
+const DEFAULT_ENEMY = preload("uid://b7xiv7x5cv04q")
+const MULTI_TILE_ENEMY = preload("uid://bgix1ig8gku2x")
 
 @export var stats: EnemyStats : set = set_enemy_stats
 @export var ai: EnemyAI : set = set_enemy_ai
@@ -18,6 +22,7 @@ signal request_clear_fill_layer
 @onready var status_manager: StatusManager = $StatusManager
 @onready var modifier_manager: ModifierManager = $ModifierManager
 @onready var floating_text_spawner: FloatingTextSpawner = $FloatingTextSpawner
+@onready var status_ui: StatusUI = %StatusUI
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var health_bar: ProgressBar = $HealthBar
@@ -31,6 +36,7 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 
 	status_manager.status_owner = self
+	status_ui.status_manager= status_manager
 
 
 func _input(event: InputEvent) -> void:
@@ -59,7 +65,6 @@ func take_damage(damage: int) -> void:
 	if stats.health <= 0:
 		animation_player.play("death")
 		await animation_player.animation_finished
-		_death_cleanup()
 
 
 func spawn_floating_text(text: String, text_color) -> void:
@@ -128,8 +133,9 @@ func set_enemy_ai(value: EnemyAI) -> void:
 	ai.owner = self
 
 
-func _death_cleanup() -> void:
+func death_cleanup() -> void:
 	Events.enemy_died.emit(self)
+	cleanup.emit()
 	request_clear_fill_layer.emit()
 	request_clear_intent.emit()
 	queue_free()
@@ -158,3 +164,10 @@ func _on_mouse_exited() -> void:
 	selectable = false
 	request_clear_fill_layer.emit()
 	request_clear_intent.emit()
+
+
+static func create_new(scene: PackedScene, new_stats: EnemyStats) -> Enemy:
+	var new_enemy: Enemy = scene.instantiate()
+	new_enemy.stats = new_stats
+	new_enemy.ai = new_stats.ai.duplicate()
+	return new_enemy

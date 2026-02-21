@@ -1,6 +1,8 @@
 class_name ShopArtifact
 extends Control
 
+const SHOP_ARTIFACT_SCENE = preload("uid://c1xgosjtjf1n3")
+
 @export var artifact: Artifact : set = set_artifact
 @export var outline_thickness: float = 1.0
 
@@ -68,3 +70,9 @@ func _on_mouse_exited() -> void:
 
 	artifact_icon_button.material.set_shader_parameter('outline_thickness', 0.0)
 	Events.hide_tooltip.emit()
+
+
+static func create_new(new_artifact: Artifact) -> ShopArtifact:
+	var new_shop_artifact := SHOP_ARTIFACT_SCENE.instantiate()
+	new_shop_artifact.artifact = new_artifact
+	return new_shop_artifact

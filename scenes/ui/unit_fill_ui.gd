@@ -1,8 +1,6 @@
 class_name UnitFillUI
 extends Control
 
-const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
-
 @export var vial: Vial:
 	set = set_vial
 @export var party_manager: PartyManager:
@@ -57,9 +55,8 @@ func _update_abilities() -> void:
 		child.queue_free()
 
 	for ability in vial.potion.abilities:
-		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
-		ability_panel_instance.ability = ability
 
 
 func _on_unit_selected(unit_stats: UnitStats) -> void:

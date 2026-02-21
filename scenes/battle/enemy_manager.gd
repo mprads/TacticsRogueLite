@@ -26,10 +26,8 @@ func setup_enemies(enemy_stats: Array[EnemyStats]) -> void:
 		return
 
 	for stats in enemy_stats:
-		var enemy_instance := stats.scene.instantiate()
+		var enemy_instance := Enemy.create_new(stats.scene, stats.duplicate())
 		add_child(enemy_instance)
-		enemy_instance.stats = stats.duplicate()
-		enemy_instance.ai = stats.ai.duplicate()
 		unit_mover.setup_enemy(enemy_instance)
 		enemy_instance.status_manager.statuses_applied.connect(
 			_on_enemy_statuses_applied.bind(enemy_instance)
@@ -84,10 +82,10 @@ func start_turn() -> void:
 
 
 func update_enemy_intent(enemy: Enemy) -> void:
+	var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 	var targets = get_tree().get_nodes_in_group("player_unit")
 	var targets_in_range: Array[Dictionary] = []
 	var targets_out_of_range: Array[Dictionary] = []
-	var enemy_tile := arena.get_tile_from_global(enemy.global_position)
 
 	for target in targets:
 		var result := {"target": target, "tiles": [], "starting_tile": Vector2i.ZERO}
@@ -143,11 +141,24 @@ func verify_intent(enemy: Enemy) -> void:
 		update_enemy_intent(enemy)
 		return
 
-	if not get_tree().get_nodes_in_group("player_unit").has(enemy.ai.current_target):
+# Protection for alternate win conditions besides killing all enemies
+# Ensures the intent doesn't error out from unit_exit_tree
+	if is_inside_tree():
+		if not get_tree().get_nodes_in_group("player_unit").has(enemy.ai.current_target):
+			update_enemy_intent(enemy)
+			return
+
+	if arena.arena_grid.is_tile_occupied(enemy.ai.next_tile):
 		update_enemy_intent(enemy)
 		return
 
-	if arena.arena_grid.is_tile_occupied(enemy.ai.next_tile):
+	if Utils.get_distance_between_tiles(
+		enemy.ai.next_tile,
+		arena.get_tile_from_global(enemy.global_position)
+	) > Utils.get_distance_between_tiles(
+		arena.get_tile_from_global(enemy.ai.current_target.global_position),
+		arena.get_tile_from_global(enemy.global_position)
+	):
 		update_enemy_intent(enemy)
 		return
 
@@ -187,6 +198,7 @@ func _filter_neighbours(
 
 
 func _next_enemy_turn() -> void:
+	await get_tree().create_timer(1.0).timeout
 	if enemies_to_act.is_empty():
 		Events.enemy_turn_ended.emit()
 		return
@@ -229,7 +241,7 @@ func _on_enemy_died(enemy: Enemy) -> void:
 func _on_enemy_request_flood_fill(max_distance: int, atlas_coord: Vector2i, enemy: Enemy) -> void:
 	if not unit_mover.is_dragging():
 		flood_filler.enabled = true
-		var arena_index := unit_mover.get_arena_for_position(enemy.global_position)
+		var arena_index := unit_mover.get_arena_index_from_position(enemy.global_position)
 		var tile := unit_mover.arenas[arena_index].get_tile_from_global(enemy.global_position)
 		for i in enemy.stats.dimensions.x:
 			for j in enemy.stats.dimensions.y:
@@ -246,10 +258,10 @@ func _on_enemy_request_clear_intent() -> void:
 
 func _on_enemy_request_clear_fill_layer(enemy: Enemy) -> void:
 	if not unit_mover.is_dragging():
-		var i := unit_mover.get_arena_for_position(enemy.global_position)
-		unit_mover.arenas[i].clear_flood_filler("ENEMY")
+		var arena_index := unit_mover.get_arena_index_from_position(enemy.global_position)
+		unit_mover.arenas[arena_index].clear_flood_filler("ENEMY")
 
 
 func _on_request_update_enemy_intent() -> void:
 	for enemy in get_children():
-		update_enemy_intent(enemy)
+		verify_intent(enemy)

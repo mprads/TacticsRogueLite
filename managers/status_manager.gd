@@ -1,17 +1,18 @@
 class_name StatusManager
-extends Control
+extends Node
 
 signal statuses_applied(type: Status.TYPE)
-
-const STATUS_UI = preload("res://scenes/ui/status_ui.tscn")
+signal status_added(status: Status)
 
 @export var status_owner: Node2D
+@export var statuses: Dictionary[String, Status]
 
 
 func apply_statuses_by_type(type: Status.TYPE) -> void:
-	var queue: Array[Status] = _get_all_statuses().filter(
-		func(status: Status) -> bool: return status.type == type
-	)
+	var queue: Array[Status] = []
+	for status:Status in statuses.values():
+		if status.type == type:
+			queue.append(status)
 
 	if queue.is_empty():
 		statuses_applied.emit(type)
@@ -28,11 +29,11 @@ func add_status(status: Status) -> void:
 	var is_duration := status.stack_type == Status.STACK_TYPE.DURATION
 
 	if not _has_status(status.id):
-		var status_ui_instance := STATUS_UI.instantiate()
-		add_child(status_ui_instance)
-		status_ui_instance.status = status
-		status_ui_instance.status.init(status_owner)
-		status_ui_instance.status.status_applied.connect(_on_status_applied)
+		statuses[status.id] = status
+		status.init(status_owner)
+		status.status_applied.connect(_on_status_applied)
+		status.changed.connect(_on_status_changed.bind(status))
+		status_added.emit(status)
 		return
 
 	if not is_duration and not is_stacking:
@@ -46,34 +47,35 @@ func add_status(status: Status) -> void:
 
 
 func cleanse_negative_statuses() -> void:
-	var statuses := _get_all_statuses()
-	for status in statuses:
+	for status:Status in statuses.values():
 		if status.is_negative_effect:
 			status.duration = 0
 			status.stacks = 0
 
 
 func _has_status(id: String) -> bool:
-	for ui in get_children():
-		if ui.status.id == id:
+	for status_id in statuses.keys():
+		if status_id == id:
 			return true
 
 	return false
 
 
 func _get_status(id: String) -> Status:
-	for ui in get_children():
-		if ui.status.id == id:
-			return ui.status
+	for status_id in statuses.keys():
+		if status_id == id:
+			return statuses[status_id]
+
 	return null
 
 
-func _get_all_statuses() -> Array[Status]:
-	var statuses: Array[Status] = []
-	for ui in get_children():
-		statuses.append(ui.status)
+func _on_status_changed(status: Status) -> void:
+	if (status.stack_type == Status.STACK_TYPE.DURATION and status.duration <= 0)\
+	|| (status.stack_type == Status.STACK_TYPE.INTENSITY and status.stacks <= 0):
 
-	return statuses
+		status.status_applied.disconnect(_on_status_applied)
+		status.changed.disconnect(_on_status_changed)
+		statuses.erase(status.id)
 
 
 func _on_status_applied(status: Status) -> void:

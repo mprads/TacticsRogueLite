@@ -3,7 +3,6 @@ extends Node
 
 signal artifacts_changed
 
-const ARTIFACT_ICON = preload("res://scenes/ui/artifacts/artifact_icon.tscn")
 const ARTIFACT_ACTIVATION_DELAY := 0.5
 
 @export var run_stats: RunStats:
@@ -32,9 +31,8 @@ func init_artifact(artifact: Artifact) -> void:
 	if not artifact_ui:
 		return
 
-	var artifact_icon_instance := ARTIFACT_ICON.instantiate()
+	var artifact_icon_instance := ArtifactIcon.create_new(artifact)
 	artifact_ui.add_child(artifact_icon_instance)
-	artifact_icon_instance.artifact = artifact
 	artifact.init(artifact_icon_instance)
 
 

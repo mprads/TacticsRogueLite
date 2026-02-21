@@ -26,6 +26,13 @@ func _input(event: InputEvent) -> void:
 		_on_ability_button_pressed(unit.stats.bottle.base_abilities[1])
 
 
+func reset_focus() -> void:
+	ability_button_1.focus_mode = Control.FOCUS_NONE
+	ability_button_2.focus_mode = Control.FOCUS_NONE
+	melee_button.focus_mode = Control.FOCUS_NONE
+	defend_button.focus_mode = Control.FOCUS_NONE
+
+
 func set_unit(value: Unit) -> void:
 	if ability_button_1.pressed.is_connected(_on_ability_button_pressed):
 		ability_button_1.pressed.disconnect(_on_ability_button_pressed)

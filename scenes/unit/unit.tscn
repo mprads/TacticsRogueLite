@@ -1,29 +1,179 @@
-[gd_scene load_steps=22 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene load_steps=27 format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
-[ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_540om"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="2_l0n34"]
-[ext_resource type="Shader" uid="uid://cpn30gm2odhph" path="res://assets/shaders/liquid.tres" id="3_vqlpx"]
+[ext_resource type="Material" uid="uid://bbylq0plllj23" path="res://assets/shaders/liquid_material.tres" id="3_7jhsn"]
 [ext_resource type="Texture2D" uid="uid://dnxmwngq5lcri" path="res://assets/sprites/potions/round_liquid_mask.png" id="4_5im7a"]
-[ext_resource type="Texture2D" uid="uid://cvjn48j3w8g2l" path="res://assets/sprites/potions/liquid_fill.png" id="4_7jhsn"]
 [ext_resource type="Script" uid="uid://ubw0jaxdt4pp" path="res://components/drag_and_drop.gd" id="4_bhlit"]
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="4_w7udy"]
 [ext_resource type="Script" uid="uid://dj6o3c6q523ek" path="res://scripts/states/unit_state_machine.gd" id="5_vgvef"]
-[ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="6_3po7s"]
 [ext_resource type="Script" uid="uid://bcgev77t65m02" path="res://scenes/unit/liquid.gd" id="7_540om"]
 [ext_resource type="Script" uid="uid://bv1gbgl3olxql" path="res://scenes/unit/pendulum.gd" id="8_540om"]
 [ext_resource type="Script" uid="uid://clc0ayjvpkdkd" path="res://components/ability_animated_sprite.gd" id="9_1ifho"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="11_540om"]
+[ext_resource type="Script" uid="uid://bwa4qgoeydcu5" path="res://managers/status_manager.gd" id="12_540om"]
+[ext_resource type="PackedScene" uid="uid://blrmf2uetd6b2" path="res://scenes/ui/status_ui.tscn" id="13_540om"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0n34"]
+[sub_resource type="Shader" id="Shader_kajhh"]
 resource_local_to_scene = true
-shader = ExtResource("3_vqlpx")
-shader_parameter/Color = Color(1, 1, 1, 1)
-shader_parameter/SurfaceRotation = 0.0
-shader_parameter/Fill = 1.0
-shader_parameter/FillTexture = ExtResource("4_7jhsn")
-shader_parameter/NoiseScale = 2
-shader_parameter/MinOpacity = 1.0
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform float outline_thickness : hint_range(0, 10) = 1.0;
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1), 
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * outline_thickness;
+	float outline = 0.0;
+	
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_540om"]
+resource_local_to_scene = true
+shader = SubResource("Shader_kajhh")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0.0
+
+[sub_resource type="Shader" id="Shader_540om"]
+code = "shader_type canvas_item;
+
+// Uniform parameters from both scripts
+uniform float sensitivity : hint_range(0.0, 1.0) = 0.5;
+const float edge_width = .15;
+uniform sampler2D noise_texture : repeat_enable;
+uniform vec2 noise_config_size = vec2(86.0, 120.0); // reference size the noise was designed at
+uniform float noise_seed : hint_range(0.0, 999.0) = 0.0;
+
+uniform vec4 crack_color : source_color = vec4(0, 0, 0, 1);
+uniform vec4 replace_color : source_color = vec4(0, 0, 0, 1); // Default replace color
+uniform vec4 edge_color : source_color = vec4(0.4, 0.4, 0.4, 1); // Default edge color
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0); // Outline color (ignored during replacement)
+uniform vec4 details_color : source_color = vec4(1, 1, 1, 1); // Details overlay color (minimally affected by damage)
+uniform float details_opacity : hint_range(0.0, 1.0) = 0.1; // Opacity of details overlay
+
+// Edge distance map for biasing damage toward edges
+uniform sampler2D edge_distance_map : repeat_enable, filter_nearest;
+uniform float edge_bias_strength : hint_range(0.0, 1.0) = 0.5; // Bias sensitivity threshold toward edges
+
+// Edge map remapping (to compensate for blur: remap from [edge_min, edge_max] -> [0, 1])
+uniform float edge_remap_min : hint_range(0.0, 1.0) = 0.0;  // value at true edge (darker)
+uniform float edge_remap_max : hint_range(0.0, 1.0) = 1.0;  // value in interior (lighter)
+
+// Small tolerance value for color comparison
+const float epsilon = 0.01;
+
+// Function to compare colors with a small tolerance
+bool compare_colors(vec4 c1, vec4 c2) {
+    return abs(c1.r - c2.r) < epsilon && abs(c1.g - c2.g) < epsilon && abs(c1.b - c2.b) < epsilon && abs(c1.a - c2.a) < epsilon;
+}
+
+float seeded_noise(float seed) {
+    return fract(sin(seed * 12.9898) * 43758.5453);
+}
+
+void fragment() {
+    // Sample the original texture
+    vec4 color = texture(TEXTURE, UV);
+
+    // Check if the pixel is transparent or matches the outline color to ignore
+    if (color.a < 0.01 || compare_colors(color, outline_color)) {
+        // Output the pixel as is
+        COLOR = color;
+    } else {
+        // Get the size of the texture in pixels
+        float size_x = float(textureSize(TEXTURE, 0).x);
+        float size_y = float(textureSize(TEXTURE, 0).y);
+
+        // Create a new UV coordinate that snaps to pixel grid for pixel-perfect effect
+        vec2 UVr = vec2(floor(UV.x * size_x) / size_x, floor(UV.y * size_y) / size_y);
+
+        // Normalize according to sprite vs. reference noise size so the pattern scales correctly
+        vec2 sprite_size = vec2(size_x, size_y);
+        vec2 base_noise_size = max(noise_config_size, vec2(1.0));
+        vec2 noise_scale = sprite_size / base_noise_size;
+        vec2 random_offset = vec2(seeded_noise(noise_seed), seeded_noise(noise_seed + 1.0));
+        vec2 noise_uv = vec2(UVr.x * noise_scale.x, UVr.y * noise_scale.y) + random_offset;
+
+        // Sample the noise texture at the adjusted UV coordinates
+        float noise_value = texture(noise_texture, noise_uv).r; // Assuming a grayscale noise texture
+
+        // Sample edge distance map (white = edge, black = interior)
+        float edge_distance = texture(edge_distance_map, UV).r;
+
+        // Remap edge_distance range to account for blur: stretch [edge_remap_min, edge_remap_max] -> [0, 1]
+        edge_distance = clamp((edge_distance - edge_remap_min) / (edge_remap_max - edge_remap_min), 0.0, 1.0);
+
+        // Bias sensitivity threshold toward edges (easier to damage at edges)
+        // After remap: 0 = edge, 1 = interior, so (1.0 - edge_distance) weights edges
+        float edge_bias = (1.0 - edge_distance) * edge_bias_strength;
+        float biased_sensitivity = sensitivity + edge_bias;
+        biased_sensitivity = clamp(biased_sensitivity, 0.0, 1.0);
+
+        // Define thresholds for smoothstep using biased sensitivity
+        float edge_lower = biased_sensitivity - edge_width;
+        float edge_upper = biased_sensitivity + edge_width;
+
+        // Calculate the interpolation factor using smoothstep
+        float factor = smoothstep(edge_lower, edge_upper, noise_value);
+
+        // Interpolate between colors based on the factor
+        // First, interpolate between replace_color and edge_color
+        vec4 color1 = mix(replace_color, edge_color, factor);
+	    vec4 finalColor = mix(color1, crack_color, factor);
+
+        if (compare_colors(crack_color, details_color)) {
+            finalColor = mix(finalColor, details_color, details_opacity);
+        }
+
+        COLOR = vec4(finalColor.rgb, finalColor.a);
+    }
+}
+
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_1ifho"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u15f5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1ifho"]
+width = 850
+height = 850
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_u15f5")
+color_ramp = SubResource("Gradient_1ifho")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u15f5"]
+resource_local_to_scene = true
+shader = SubResource("Shader_540om")
+shader_parameter/sensitivity = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_1ifho")
+shader_parameter/noise_config_size = Vector2(32, 32)
+shader_parameter/noise_seed = 0.0
+shader_parameter/crack_color = Color(0.78039217, 0.8627451, 0.8156863, 0.27450982)
+shader_parameter/replace_color = Color(0, 0, 0, 0)
+shader_parameter/edge_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/details_color = Color(1, 1, 1, 1)
+shader_parameter/details_opacity = 0.1
+shader_parameter/edge_bias_strength = 0.5
+shader_parameter/edge_remap_min = 0.0
+shader_parameter/edge_remap_max = 1.0
 
 [sub_resource type="Animation" id="Animation_u15f5"]
 length = 0.001
@@ -98,6 +248,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Filling:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Damage:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_bg1qp"]
@@ -213,6 +387,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Filling:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 0.574349, 2.37841, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 0.574349, 2.37841, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bg1qp"]
 _data = {
@@ -232,11 +430,11 @@ script = ExtResource("1_vh40f")
 position = Vector2(0, -12)
 
 [node name="Outline" type="Sprite2D" parent="Visuals"]
-material = ExtResource("2_540om")
+material = SubResource("ShaderMaterial_540om")
 texture = ExtResource("2_l0n34")
 
 [node name="Filling" type="Sprite2D" parent="Visuals"]
-material = SubResource("ShaderMaterial_l0n34")
+material = ExtResource("3_7jhsn")
 position = Vector2(0, -1)
 texture = ExtResource("4_5im7a")
 region_rect = Rect2(0, 0, 32, 32)
@@ -245,6 +443,10 @@ script = ExtResource("7_540om")
 [node name="Pendulum" type="Marker2D" parent="Visuals/Filling"]
 position = Vector2(1, 2)
 script = ExtResource("8_540om")
+
+[node name="Damage" type="Sprite2D" parent="Visuals"]
+material = SubResource("ShaderMaterial_u15f5")
+texture = ExtResource("4_5im7a")
 
 [node name="AimingAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
 unique_name_in_owner = true
@@ -263,12 +465,9 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_bhlit")
-
-[node name="FloatingTextSpawner" type="Node2D" parent="."]
-position = Vector2(-1, -12)
-script = ExtResource("4_w7udy")
 
 [node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_bhlit")
@@ -280,11 +479,25 @@ script = ExtResource("5_vgvef")
 [node name="ModifierManager" type="Node" parent="."]
 script = ExtResource("11_540om")
 
-[node name="StatusManager" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("6_3po7s")]
-offset_left = -17.0
-offset_right = 21.0
-offset_bottom = 32.0
+[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner")]
+script = ExtResource("12_540om")
 status_owner = NodePath("..")
+
+[node name="FloatingTextSpawner" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -12.0
+offset_right = -1.0
+offset_bottom = -12.0
+script = ExtResource("4_w7udy")
+
+[node name="StatusUI" parent="." instance=ExtResource("13_540om")]
+unique_name_in_owner = true
+offset_left = -18.0
+offset_top = 1.0
+offset_right = 20.0
+offset_bottom = 33.0
 
 [node name="StateDebug" type="Label" parent="."]
 offset_left = -39.0

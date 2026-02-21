@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://x7wbmg7h50ei"]
+[gd_scene load_steps=7 format=3 uid="uid://x7wbmg7h50ei"]
 
 [ext_resource type="Texture2D" uid="uid://b8xkv0w7hhcbb" path="res://assets/sprites/temp_sheets/UI inventory assets mini pack/UI inventory.png" id="1_3ui0f"]
 [ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="1_p8dku"]
 [ext_resource type="PackedScene" uid="uid://bkyqjyhlg3ia0" path="res://scenes/ui/vial_button.tscn" id="1_rlmpa"]
+[ext_resource type="Script" uid="uid://by2vdryture37" path="res://scenes/party_select/starting_item_panel.gd" id="2_c7kbl"]
 [ext_resource type="PackedScene" uid="uid://06s5o3dm2r31" path="res://scenes/ui/artifacts/artifact_icon.tscn" id="2_uhwdh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c7kbl"]
@@ -19,6 +20,7 @@ offset_right = 150.0
 offset_bottom = 36.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_c7kbl")
+script = ExtResource("2_c7kbl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(150, 36)

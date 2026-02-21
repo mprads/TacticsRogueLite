@@ -5,7 +5,7 @@ extends UnitState
 func enter() -> void:
 	unit.selectable = false
 	unit.play_animation("idle")
-	enable_drap_and_drop()
+	enable_drag_and_drop()
 
 
 func exit() -> void:
@@ -29,13 +29,13 @@ func on_mouse_exited() -> void:
 	unit.selectable = false
 
 
-func disable_drag_and_drop() -> void:
-	unit.drag_and_drop.enabled = false
-
-
-func enable_drap_and_drop() -> void:
+func enable_drag_and_drop() -> void:
 	if unit.moveable:
 		unit.drag_and_drop.enabled = true
+
+
+func disable_drag_and_drop() -> void:
+	unit.drag_and_drop.enabled = false
 
 
 func on_ability_selected(ability: Ability) -> void:

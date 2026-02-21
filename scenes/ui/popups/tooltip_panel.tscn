@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4pft6ahlavju"]
+[gd_scene load_steps=6 format=3 uid="uid://4pft6ahlavju"]
 
 [ext_resource type="Texture2D" uid="uid://c8d3c14kcslbc" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/UI.png" id="1_emfjx"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_e01hb"]
+[ext_resource type="Script" uid="uid://cd4c7afji53x4" path="res://scenes/ui/popups/tooltip_panel.gd" id="2_qvb8y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvb8y"]
 texture = ExtResource("1_emfjx")
@@ -26,10 +27,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qvb8y")
+script = ExtResource("2_qvb8y")
 
 [node name="NameLabel" type="Label" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
 offset_left = -5.0
 offset_top = -10.0
 offset_right = 206.0

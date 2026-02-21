@@ -20,6 +20,7 @@ enum KEYS {
 	POTION_FILL,
 	TITLE_MUSIC,
 	MAIN_MUSIC,
+	STATUS_DAMAGE,
 }
 
 const SFX_PATHS := {
@@ -32,6 +33,7 @@ const SFX_PATHS := {
 	KEYS.RANGED_HIT: "uid://c706lvxdejdau",
 	KEYS.AOE_HIT: "uid://dqx8knkf8bl80",
 	KEYS.GAIN_SHIELD: "uid://db33oru7wik6t",
+	KEYS.STATUS_DAMAGE: "uid://ctmafhps385dd",
 	#ROOMS
 	KEYS.KILN: "uid://b2cs7vy1mhquq",
 	KEYS.BREWING: "uid://c23i1nuxxo72y",

@@ -1,52 +1,27 @@
 class_name StatusUI
-extends Control
+extends GridContainer
 
-@export var status: Status:
-	set = set_status
-
-@onready var icon: TextureRect = $Icon
-@onready var duration: Label = $Duration
-@onready var stacks: Label = $Stacks
+@export var status_manager: StatusManager : set = set_status_manager
 
 
 func _ready() -> void:
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
+	for child in get_children():
+		child.queue_free()
 
 
-func set_status(value: Status) -> void:
+func set_status_manager(value: StatusManager) -> void:
 	if not is_node_ready():
 		await ready
 
-	status = value
-	icon.texture = status.icon
-	duration.visible = status.stack_type == Status.STACK_TYPE.DURATION
-	stacks.visible = status.stack_type == Status.STACK_TYPE.INTENSITY
-
-	if not status.changed.is_connected(_on_status_changed):
-		status.changed.connect(_on_status_changed)
-
-	_on_status_changed()
+	status_manager = value
+	if not status_manager.status_added.is_connected(_on_status_manager_status_added):
+		status_manager.status_added.connect(_on_status_manager_status_added)
 
 
-func _on_status_changed() -> void:
-	if not status:
-		return
-
-	if status.stack_type == Status.STACK_TYPE.DURATION and status.duration <= 0:
-		queue_free()
-
-	if status.stack_type == Status.STACK_TYPE.INTENSITY and status.stacks <= 0:
-		queue_free()
-
-	duration.text = str(status.duration)
-	stacks.text = str(status.stacks)
+func _add_status_icon(status: Status) -> void:
+	var status_icon_instance := StatusIcon.create_new(status)
+	add_child(status_icon_instance)
 
 
-func _on_mouse_entered() -> void:
-	var tooltip := {"name": status.name, "description": status.get_tooltip()}
-	Events.request_show_tooltip.emit(self, tooltip, [])
-
-
-func _on_mouse_exited() -> void:
-	Events.hide_tooltip.emit()
+func _on_status_manager_status_added(status: Status) -> void:
+	_add_status_icon(status)

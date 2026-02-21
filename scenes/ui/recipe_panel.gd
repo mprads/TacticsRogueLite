@@ -1,11 +1,10 @@
 class_name RecipePanel
 extends Button
 
-const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
-const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
+const RECIPE_PANEL_SCENE = preload("uid://bco8m3hvgdeh4")
 
 @export var potion_key: int:
-	set = _potion_key
+	set = set_potion_key
 @export var potion: Potion
 @export var recipe: BrewingRecipe
 
@@ -25,9 +24,8 @@ func _update_visuals() -> void:
 	potion_label.modulate = potion.color
 
 	for ability in potion.abilities:
-		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
-		ability_panel_instance.ability = ability
 
 	_update_components()
 
@@ -37,18 +35,21 @@ func _update_components() -> void:
 		child.queue_free()
 
 	for cost in recipe.costs:
-		var item_panel_instance := ITEM_PANEL_SCENE.instantiate()
+		var item_panel_instance := ItemPanel.create_new(ItemConfig.get_item_resource(cost.item_key), cost.amount)
 		component_container.add_child(item_panel_instance)
-		item_panel_instance.item = ItemConfig.get_item_resource(cost.item_key)
-		item_panel_instance.count = cost.amount
 
 
-func _potion_key(value: int) -> void:
-	if not is_node_ready():
-		await ready
+func set_potion_key(value: int) -> void:
+	if not is_node_ready(): await ready
 
 	potion_key = value
 
 	potion = ItemConfig.get_potion_resource(potion_key)
 	recipe = ItemConfig.get_brewing_recipe(potion_key)
 	_update_visuals()
+
+
+static func create_new(key: ItemConfig.KEYS) -> RecipePanel:
+	var new_recipe_panel := RECIPE_PANEL_SCENE.instantiate()
+	new_recipe_panel.potion_key = key
+	return new_recipe_panel

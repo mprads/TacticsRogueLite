@@ -3,6 +3,8 @@ extends Control
 
 signal request_purchase(bottle: Bottle, clean_up_callback: Callable)
 
+const SHOP_BOTTLE_SCENE = preload("uid://c05jbl2pod8hb")
+
 @export var bottle: Bottle:
 	set = set_bottle
 @export var outline_thickness: float = 1.0
@@ -39,6 +41,9 @@ func purchased_cleanup() -> void:
 
 
 func set_bottle(value: Bottle) -> void:
+	if not is_node_ready():
+		await ready
+
 	bottle = value
 
 	gold_cost.text = str(bottle.gold_cost)
@@ -69,3 +74,9 @@ func _on_mouse_exited() -> void:
 
 func _on_button_pressed() -> void:
 	request_purchase.emit(bottle, purchased_cleanup)
+
+
+static func create_new(new_bottle: Bottle) -> ShopBottle:
+	var new_shop_bottle := SHOP_BOTTLE_SCENE.instantiate()
+	new_shop_bottle.bottle = new_bottle
+	return new_shop_bottle

@@ -1,9 +1,9 @@
 class_name MainMenu
 extends Control
 
-const RUN_SCENE = preload("res://scenes/run/run.tscn")
-const TESTING_RUN_STATS = preload("res://resources/testing_run_stats.tres")
-const PARTY_SELECT = preload("res://scenes/party_select/party_select.tscn")
+const RUN_SCENE = preload("uid://r76gjny5escp")
+const PARTY_SELECT_SCENE = preload("uid://dyaf53aaous6t")
+const TESTING_RUN_STATS = preload("uid://cog76ftpquwhv")
 
 @onready var contiune_button: Button = %ContiuneButton
 @onready var new_run_button: Button = %NewRunButton
@@ -37,7 +37,7 @@ func _on_new_run_button_pressed() -> void:
 		else:
 			RNG.set_seed(int(rng_seed_line_edit.text))
 			run_stats.rng_seed = int(rng_seed_line_edit.text)
-	SceneChanger.change_scene(PARTY_SELECT, run_stats)
+	SceneChanger.change_scene(PARTY_SELECT_SCENE, run_stats)
 
 
 func _on_setting_button_pressed() -> void:

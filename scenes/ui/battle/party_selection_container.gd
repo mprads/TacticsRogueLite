@@ -3,19 +3,19 @@ extends VBoxContainer
 
 signal unit_selected(unit: Unit)
 
-const UNIT_SELECT_BUTTON = preload("res://scenes/ui/battle/unit_select_button.tscn")
+
+func _ready() -> void:
+	for child in get_children():
+		child.queue_free()
 
 
-func create_unit_select_buttons(units: Array[Node]) -> void:
+func create_battle_unit_ui(units: Array[Node]) -> void:
 	for unit in units:
-		var unit_select_instance := UNIT_SELECT_BUTTON.instantiate()
-		add_child(unit_select_instance)
-		unit_select_instance.pressed.connect(_on_unit_select_instance_pressed.bind(unit))
 		var index = get_child_count()
-		unit_select_instance.keycode = Utils.get_keycode_from_input_id("unit_%s" % index)
-		unit_select_instance.input_map_id = "unit_%s" % index
-		unit_select_instance.unit = unit
+		var battle_unit_ui_instance := BattleUnitUI.create_new(unit, index)
+		add_child(battle_unit_ui_instance)
+		battle_unit_ui_instance.unit_selected.connect(_on_unit_selected)
 
 
-func _on_unit_select_instance_pressed(unit: Unit) -> void:
+func _on_unit_selected(unit: Unit) -> void:
 	unit_selected.emit(unit)

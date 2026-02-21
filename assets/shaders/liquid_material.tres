@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bbylq0plllj23"]
+
+[ext_resource type="Shader" uid="uid://cpn30gm2odhph" path="res://assets/shaders/liquid.tres" id="1_aboqk"]
+[ext_resource type="Texture2D" uid="uid://cvjn48j3w8g2l" path="res://assets/sprites/potions/liquid_fill.png" id="2_3uqxr"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_aboqk")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/SurfaceRotation = 0.0
+shader_parameter/Fill = 1.0
+shader_parameter/FillTexture = ExtResource("2_3uqxr")
+shader_parameter/NoiseScale = 2
+shader_parameter/MinOpacity = 1.0

@@ -4,10 +4,6 @@ extends Control
 # Should just be a preload but engine issue #104769 where jumping between scenes is
 # nulling out packed scene references
 @onready var RUN_SCENE = load("res://scenes/run/run.tscn")
-const UNIT_SELECT_PANEL_SCENE = preload("res://scenes/party_select/unit_select_panel.tscn")
-const UNIT_ICON_PANEL_SCENE = preload("res://scenes/ui/unit_icon_panel.tscn")
-const ITEM_PANEL_SCENE = preload("res://scenes/ui/item_panel.tscn")
-const VIAL_BUTTON_SCENE = preload("res://scenes/ui/vial_button.tscn")
 const OPTION_COUNT := 3
 
 @export_category("Pools")
@@ -72,10 +68,9 @@ func _generate_options(final: bool = false) -> void:
 		child.queue_free()
 
 	for option in OPTION_COUNT:
-		var unit_select_instance := UNIT_SELECT_PANEL_SCENE.instantiate()
-		selection_container.add_child(unit_select_instance)
 		var unit_stats := _generate_unit_stats()
-		unit_select_instance.unit_stats = unit_stats
+		var unit_select_instance := UnitSelectPanel.create_new(unit_stats)
+		selection_container.add_child(unit_select_instance)
 		unit_select_instance.panel_selected.connect(_on_panel_selected)
 
 		if final:
@@ -165,10 +160,8 @@ func _on_inventory_changed() -> void:
 	var inventory := inventory_manager.get_inventory()
 
 	for item in inventory:
-		var item_panel_instance := ITEM_PANEL_SCENE.instantiate()
+		var item_panel_instance := ItemPanel.create_new(ItemConfig.get_item_resource(item), inventory[item])
 		inventory_container.add_child(item_panel_instance)
-		item_panel_instance.item = ItemConfig.get_item_resource(item)
-		item_panel_instance.count = inventory[item]
 
 
 func _on_party_changed() -> void:
@@ -179,9 +172,8 @@ func _on_party_changed() -> void:
 	var party := party_manager.get_party()
 
 	for unit_stats in party:
-		var unit_panel_instance := UNIT_ICON_PANEL_SCENE.instantiate()
+		var unit_panel_instance := UnitIconPanel.create_new(unit_stats)
 		party_container.add_child(unit_panel_instance)
-		unit_panel_instance.unit_stats = unit_stats
 
 	_fill_placeholders(party_container)
 
@@ -194,13 +186,12 @@ func _on_vials_changed() -> void:
 	var vials := vial_manager.get_vials()
 
 	for vial in vials:
-		var vial_button_instance := VIAL_BUTTON_SCENE.instantiate()
+		var vial_button_instance := VialButton.create_new(vial)
 		var panel_instance := Panel.new()
 		vial_container.add_child(panel_instance)
 		panel_instance.custom_minimum_size = Vector2(48, 48)
 		panel_instance.add_child(vial_button_instance)
 		vial_button_instance.position = Vector2(12, 12)
-		vial_button_instance.vial = vial
 
 	_fill_placeholders(vial_container)
 

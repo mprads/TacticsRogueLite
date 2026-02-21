@@ -5,6 +5,7 @@ signal gold_changed
 signal inventory_changed
 
 @export var run_stats: RunStats
+@export var floating_text_spawner: FloatingTextSpawner
 
 
 func _ready() -> void:
@@ -35,18 +36,30 @@ func add_gold(value: int) -> void:
 
 func _add_item(key: ItemConfig.KEYS, count: int = 1) -> void:
 	run_stats.add_item_to_inventory(key, count)
+	var text := "+%s %s" % [count, ItemConfig.get_item_resource(key).name]
+	_spawn_floating_text(text, ColourHelper.get_colour(ColourHelper.KEYS.DEBUFF)) 
 	inventory_changed.emit()
 
 
 func _remove_item(key: ItemConfig.KEYS, count: int) -> void:
 	run_stats.remove_item_from_inventory(key, count)
+	var text := "-%s %s" % [count, ItemConfig.get_item_resource(key).name]
+	_spawn_floating_text(text, ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE)) 
 	inventory_changed.emit()
 
 
 func _update_gold(value: int) -> void:
 	run_stats.gold = clampi(run_stats.gold + value, 0, 999)
+	var text_colour := ColourHelper.get_colour(ColourHelper.KEYS.DEBUFF) if value > 0 else ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE)
+	var signed_value: String = str(value) if value < 0 else "+" + str(value)
+	_spawn_floating_text("%s Gold" % signed_value, text_colour) 
 	gold_changed.emit()
 	SFXPlayer.play(SFXConfig.get_audio_stream(SFXConfig.KEYS.GAIN_GOLD))
+
+
+func _spawn_floating_text(text: String, colour: Color) -> void:
+	if floating_text_spawner:
+		floating_text_spawner.spawn_text(text, colour)
 
 
 func _on_request_add_item(item: Item) -> void:

@@ -7,8 +7,6 @@ signal unit_aim_started(ability: Ability, unit: Unit)
 signal unit_aim_stopped(unit: Unit)
 signal all_units_defeated
 
-const UNIT = preload("res://scenes/unit/unit.tscn")
-
 @export var unit_mover: UnitMover
 @export var flood_filler: FloodFiller
 
@@ -25,9 +23,8 @@ func setup_party(party_stats: Array[UnitStats]) -> void:
 		return
 
 	for stats in party_stats:
-		var unit_instance := UNIT.instantiate()
+		var unit_instance := Unit.create_new(stats)
 		add_child(unit_instance)
-		unit_instance.stats = stats
 		unit_instance.turn_complete.connect(_on_unit_turn_complete)
 		unit_instance.aim_started.connect(_on_unit_aim_started.bind(unit_instance))
 		unit_instance.aim_stopped.connect(_on_unit_aim_stopped)
@@ -51,17 +48,14 @@ func start_turn() -> void:
 	Events.activate_artifacts_by_type.emit(Artifact.TYPE.START_OF_TURN)
 
 
-# TODO This should be moved into the state machine and be calling a function here
 func enable_drag_and_drop() -> void:
 	for unit in get_children():
-		if not unit.disabled and unit.moveable:
-			unit.drag_and_drop.enabled = true
+		unit.enable_drag_and_drop()
 
 
 func disable_drag_and_drop() -> void:
 	for unit in get_children():
-		if not unit.disabled:
-			unit.drag_and_drop.enabled = false
+		unit.disable_drag_and_drop()
 
 
 func _on_unit_turn_complete() -> void:
@@ -92,6 +86,7 @@ func _on_unit_aim_stopped() -> void:
 
 
 func _on_unit_tree_exited() -> void:
+	Events.request_update_enemy_intent.emit()
 	if get_child_count() == 0:
 		all_units_defeated.emit()
 

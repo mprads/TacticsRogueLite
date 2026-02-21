@@ -42,9 +42,7 @@ func _ready() -> void:
 	enemy_manager.all_enemies_defeated.connect(_on_enemy_manager_all_enemies_defeated)
 	unit_mover.unit_moved_arenas.connect(_on_unit_moved_arenas)
 	start_battle_button.pressed.connect(_on_start_battle_pressed)
-
-	for child in party_selection_container.get_children():
-		child.queue_free()
+	arena_grid.tile_cleanup.connect(_on_arena_grid_tile_cleanup)
 
 
 func start_deployment() -> void:
@@ -113,7 +111,7 @@ func _start_battle() -> void:
 		unit.queue_free()
 		await unit.tree_exited
 
-	party_selection_container.create_unit_select_buttons(player_manager.get_children())
+	party_selection_container.create_battle_unit_ui(player_manager.get_children())
 	party_selection_container.unit_selected.connect(_on_change_active_unit)
 
 	for enemy in enemy_manager.get_children():
@@ -125,15 +123,16 @@ func _start_battle() -> void:
 
 
 func _handle_turn_change(label_text: String, start_next_turn: Callable) -> void:
+	await get_tree().create_timer(.5).timeout
 	banner_label.text = "%s Turn" %label_text
 	var tween: Tween
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_callback(start_next_turn)
 	tween.tween_callback(turn_change_banner.show)
 	tween.tween_property(turn_change_banner, "modulate", Color.WHITE, .8)
 	tween.tween_interval(.5)
 	tween.tween_property(turn_change_banner, "modulate", Color.TRANSPARENT, .8)
 	tween.tween_callback(turn_change_banner.hide)
-	tween.tween_callback(start_next_turn)
 
 
 # TODO remove
@@ -201,8 +200,8 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	arena.enable_flood_filler("PLAYER")
 	target_selector_ui.enabled = true
 	target_selector_ui.starting_position = unit.global_position
-	var i := unit_mover.get_arena_for_position(unit.global_position)
-	var tile := unit_mover.arenas[i].get_tile_from_global(unit.global_position)
+	var arena_index := unit_mover.get_arena_index_from_position(unit.global_position)
+	var tile := unit_mover.arenas[arena_index].get_tile_from_global(unit.global_position)
 	arena.player_flood_filler.flood_fill_from_tile(
 		tile, ability.max_range, false, ability.atlas_coord
 	)
@@ -216,14 +215,11 @@ func _on_unit_aim_stopped() -> void:
 	target_selector_ui.starting_position = Vector2.ZERO
 	player_manager.enable_drag_and_drop()
 	ability_manager.handle_aim_stopped()
-	unit_context_menu.unit = null
+	unit_context_menu.reset_focus()
 
 
 func _on_unit_selected(unit: Unit) -> void:
 	ability_manager.handle_selected_unit(unit)
-
-	if not unit.disabled:
-		unit_context_menu.unit = unit
 
 
 func _on_show_enemy_intent(enemy: Enemy) -> void:
@@ -249,3 +245,7 @@ func _on_request_clear_intent() -> void:
 func _on_enemy_selected(enemy: Enemy) -> void:
 	ability_manager.handle_selected_enemy(enemy)
 	_on_request_clear_intent()
+
+
+func _on_arena_grid_tile_cleanup(tile: Vector2i) -> void:
+	navigation.set_id_empty(tile)

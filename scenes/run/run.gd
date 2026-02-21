@@ -1,14 +1,14 @@
 class_name Run
 extends Node
 
-const BATTLE_SCENE = preload("res://scenes/battle/battle.tscn")
-const BATTLE_REWARD_SCENE = preload("res://scenes/battle_reward/battle_reward.tscn")
-const BATTLE_LOST_SCENE = preload("res://scenes/battle_lost/battle_lost.tscn")
-const SHOP_SCENE = preload("res://scenes/shop/shop.tscn")
+const BATTLE_SCENE = preload("uid://dsuyyr5og7ilh")
+const BATTLE_REWARD_SCENE = preload("uid://ctvath266c3y7")
+const BATTLE_LOST_SCENE = preload("uid://dhcicj086k725")
+const SHOP_SCENE = preload("uid://q7xyee7lyj2t")
 const REST_AREA_SCENE = preload("uid://cicpptc3aniix")
-const BREWING_SCENE = preload("res://scenes/brewing/brewing.tscn")
-const KILN_SCNE = preload("res://scenes/kiln/kiln.tscn")
-const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn")
+const BREWING_SCENE = preload("uid://dkokbdb73arai")
+const KILN_SCNE = preload("uid://bfc7nmxs6r00g")
+const RUN_COMPLETE_SCENE = preload("uid://c1es6hg3xd4hf")
 
 @export var run_stats: RunStats
 @onready var inventory_manager: InventoryManager = $InventoryManager
@@ -20,12 +20,13 @@ const RUN_COMPLETE_SCENE = preload("res://scenes/run_complete/run_complete.tscn"
 @onready var artifact_ui: HBoxContainer = %ArtifactUI
 @onready var vial_ui: VialUI = %VialUI
 @onready var gold_ui: HBoxContainer = %GoldUI
-@onready var inventory_button: TextureButton = %InventoryButton
-@onready var settings_button: TextureButton = %SettingsButton
+@onready var inventory_button: Button = %InventoryButton
+@onready var settings_button: Button = %SettingsButton
 @onready var settings_ui: Control = %SettingsUI
 @onready var unit_fill_ui: UnitFillUI = %UnitFillUI
 @onready var rng_seed_label: Label = %RNGSeedLabel
 @onready var top_bar: CanvasLayer = %TopBar
+@onready var inventory_floating_text_spawner: FloatingTextSpawner = %InventoryFloatingTextSpawner
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Node2D = $Map
@@ -65,6 +66,7 @@ func _start_run() -> void:
 	map.unlock_row(0)
 
 
+#TODO remove
 func _set_up_debug() -> void:
 	settings_button.pressed.connect(
 		func():
@@ -124,6 +126,7 @@ func _set_up_debug() -> void:
 
 func _set_up_managers() -> void:
 	inventory_manager.run_stats = run_stats
+	inventory_manager.floating_text_spawner = inventory_floating_text_spawner
 	run_data_manager.run_stats = run_stats
 	party_manager.run_stats = run_stats
 	vial_manager.run_stats = run_stats

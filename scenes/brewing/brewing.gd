@@ -3,10 +3,6 @@ extends Node2D
 
 enum STAGE { RECIPE, SELECTION, POTION, VIAL }
 
-const RECIPE_PANEL = preload("res://scenes/ui/recipe_panel.tscn")
-const ITEM_PANEL = preload("res://scenes/ui/item_panel.tscn")
-const VIAL_PANEL = preload("res://scenes/ui/vial_panel.tscn")
-
 @export var inventory_manager: InventoryManager : set = set_inventory_manager
 @export var party_manager: PartyManager : set = set_party_manager
 @export var vial_manager: VialManager : set = set_vial_manager
@@ -100,9 +96,8 @@ func _update_recipes() -> void:
 		child.queue_free()
 
 	for key in filtered_recipes_keys:
-		var recipe_panel_instance := RECIPE_PANEL.instantiate()
+		var recipe_panel_instance := RecipePanel.create_new(key)
 		recipe_container.add_child(recipe_panel_instance)
-		recipe_panel_instance.potion_key = key
 		recipe_panel_instance.pressed.connect(
 			_on_recipe_panel_pressed.bind(recipe_panel_instance.potion, recipe_panel_instance.recipe)
 		)
@@ -136,9 +131,8 @@ func _update_vials() -> void:
 		child.queue_free()
 
 	for vial in vial_manager.get_vials():
-		var vial_panel_instance := VIAL_PANEL.instantiate()
+		var vial_panel_instance := VialPanel.create_new(vial.potion)
 		vial_container.add_child(vial_panel_instance)
-		vial_panel_instance.potion = vial.potion
 		vial_panel_instance.pressed.connect(_on_vial_panel_pressed.bind(vial))
 
 

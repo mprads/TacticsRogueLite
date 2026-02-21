@@ -1,10 +1,10 @@
 class_name VialPanel
 extends Button
 
-const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
+const VIAL_PANEL_SCENE = preload("uid://6m8egyaev33y")
 
 @export var potion: Potion:
-	set = _potion
+	set = set_potion
 
 @onready var label: Label = %Label
 @onready var ability_container: HBoxContainer = %AbilityContainer
@@ -19,12 +19,11 @@ func _update_visuals() -> void:
 
 	label.text = "%s Vial" % potion.name
 	for ability in potion.abilities:
-		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
-		ability_panel_instance.ability = ability
 
 
-func _potion(value: Potion) -> void:
+func set_potion(value: Potion) -> void:
 	if not is_node_ready():
 		await ready
 
@@ -34,3 +33,9 @@ func _potion(value: Potion) -> void:
 		return
 
 	_update_visuals()
+
+
+static func create_new(new_potion: Potion) -> VialPanel:
+	var new_vial_panel := VIAL_PANEL_SCENE.instantiate()
+	new_vial_panel.potion = new_potion
+	return new_vial_panel

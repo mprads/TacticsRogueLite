@@ -6,8 +6,6 @@ const FAST_SCROLL_SPEED := 15
 const SLOW_SCROLL_THRESHOLD := 50
 const FAST_SCROLL_THRESHOLD := 20
 const TOP_NAV_SCROLL_BUFFER := 50
-const MAP_ROOM = preload("res://scenes/map/map_room.tscn")
-const MAP_LINE = preload("res://scenes/map/map_line.tscn")
 
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var visuals: Node2D = %Visuals
@@ -123,9 +121,8 @@ func _unlock_next_rooms() -> void:
 
 
 func _spawn_room(room: Room) -> void:
-	var map_room_instance := MAP_ROOM.instantiate()
+	var map_room_instance := MapRoom.create_new(room)
 	rooms.add_child(map_room_instance)
-	map_room_instance.room = room
 	map_room_instance.selected.connect(_on_map_room_selected)
 	_connect_lines(room)
 
@@ -135,9 +132,7 @@ func _connect_lines(room: Room) -> void:
 		return
 
 	for next_room in room.next_rooms:
-		var line_instance := MAP_LINE.instantiate()
-		line_instance.add_point(room.position)
-		line_instance.add_point(next_room.position)
+		var line_instance := MapLine.create_new(room, next_room)
 		lines.add_child(line_instance)
 
 

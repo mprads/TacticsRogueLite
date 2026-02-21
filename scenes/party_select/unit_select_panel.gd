@@ -3,9 +3,7 @@ extends PanelContainer
 
 signal panel_selected(unit_stats: UnitStats, items: Array)
 
-const ABILITY_PANEL_SCENE = preload("res://scenes/ui/ability_panel.tscn")
-const STARTING_ITEM_PANEL_SCENE = preload("res://scenes/party_select/starting_item_panel.tscn")
-const GOLD_ICON = preload("res://assets/icons/gold.png")
+const UNIT_SELECT_PANEL_SCENE = preload("uid://cjdocmvvhnve6")
 
 @export var unit_stats: UnitStats : set = set_unit_stats
 @export var contents: Array : set = set_contents
@@ -41,9 +39,8 @@ func _update_ability_visuals() -> void:
 	if not unit_stats.potion: return
 
 	for ability in unit_stats.potion.abilities:
-		var ability_panel_instance := ABILITY_PANEL_SCENE.instantiate()
+		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
-		ability_panel_instance.ability = ability
 
 
 func _play_animation(id: String) -> void:
@@ -56,6 +53,9 @@ func _play_animation(id: String) -> void:
 
 
 func set_unit_stats(value: UnitStats) -> void:
+	if not is_node_ready():
+		await ready
+
 	unit_stats = value
 	unit_icon_panel.unit_stats = unit_stats
 	unit_details_panel.unit_stats = unit_stats
@@ -67,25 +67,8 @@ func set_contents(value: Array) -> void:
 	contents = value
 
 	for lineitem in contents:
-		var item_panel_instance := STARTING_ITEM_PANEL_SCENE.instantiate()
+		var item_panel_instance := StartingItemPanel.create_new(lineitem)
 		contents_container.add_child(item_panel_instance)
-
-		if lineitem.item is Item:
-			item_panel_instance.get_node("%Icon").texture = lineitem.item.icon
-			item_panel_instance.get_node("%ContentLabel").text = "%s %s" %[str(lineitem.quantity), lineitem.item.name]
-		elif lineitem.item is Vial:
-			item_panel_instance.get_node("%Icon").visible = false
-			item_panel_instance.get_node("%VialButton").visible = true
-			item_panel_instance.get_node("%ContentLabel").text = lineitem.item.potion.name
-			item_panel_instance.get_node("%VialButton").vial = lineitem.item
-		elif lineitem.item is Artifact:
-			item_panel_instance.get_node("%Icon").visible = false
-			item_panel_instance.get_node("%ArtifactIcon").visible = true
-			item_panel_instance.get_node("%ContentLabel").text = str(lineitem.item.name)
-			item_panel_instance.get_node("%ArtifactIcon").artifact = lineitem.item
-		else:
-			item_panel_instance.get_node("%Icon").texture = GOLD_ICON
-			item_panel_instance.get_node("%ContentLabel").text = "%s Gold"  % str(lineitem.quantity)
 
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -96,3 +79,9 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _on_mouse_entered() -> void:
 	_play_animation("hover")
+
+
+static func create_new(new_stats: UnitStats) -> UnitSelectPanel:
+	var new_unit_select_panel := UNIT_SELECT_PANEL_SCENE.instantiate()
+	new_unit_select_panel.unit_stats = new_stats
+	return new_unit_select_panel

@@ -1,7 +1,6 @@
 class_name RestArea
 extends Node2D
 
-const UNIT_SCENE = preload("uid://bpkwnxxboplpn")
 const RANDOM_OFFSET := 48
 
 @export var party_manager: PartyManager : set = set_party_manager
@@ -32,9 +31,8 @@ func set_party_manager(value: PartyManager) -> void:
 
 func _add_party_to_scene() -> void:
 	for unit_stats in party_manager.get_party():
-		var new_unit := UNIT_SCENE.instantiate()
+		var new_unit := Unit.create_new(unit_stats)
 		add_child(new_unit)
 		new_unit.unit_state_machine.force_state_transition(UnitStateMachine.STATE.WANDERING)
-		new_unit.stats = unit_stats
 		new_unit.global_position.x = (get_viewport_rect().size.x / 2) + randi_range(-RANDOM_OFFSET, RANDOM_OFFSET)
 		new_unit.global_position.y = (get_viewport_rect().size.y / 2) + randi_range(-RANDOM_OFFSET, RANDOM_OFFSET)

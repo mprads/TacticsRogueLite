@@ -1,17 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://ianstowvchpu"]
+[gd_scene load_steps=7 format=3 uid="uid://ianstowvchpu"]
 
 [ext_resource type="Script" uid="uid://cspy1rjky5jjl" path="res://scenes/ui/unit_icon.gd" id="1_8cwqn"]
-[ext_resource type="Texture2D" uid="uid://dsme3d6yq3mxs" path="res://assets/sprites/potions/filling_sheet.png" id="1_y7yuh"]
+[ext_resource type="Material" uid="uid://bbylq0plllj23" path="res://assets/shaders/liquid_material.tres" id="3_avjqe"]
+[ext_resource type="Texture2D" uid="uid://dnxmwngq5lcri" path="res://assets/sprites/potions/round_liquid_mask.png" id="4_mccfg"]
+[ext_resource type="Material" uid="uid://cww77yoo4eekj" path="res://assets/shaders/damage_material.tres" id="5_fhohe"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j3g1x"]
 load_path = "res://.godot/imported/outline_sheet.png-8b25bd81e000666fdf310f5690c429bd.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kl7fi"]
 atlas = SubResource("CompressedTexture2D_j3g1x")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qukfq"]
-atlas = ExtResource("1_y7yuh")
 region = Rect2(0, 0, 32, 32)
 
 [node name="UnitIcon" type="Control"]
@@ -40,15 +38,22 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_kl7fi")
 stretch_mode = 5
 
-[node name="PotionFillProgress" type="TextureProgressBar" parent="Bottle"]
+[node name="Filling" type="TextureRect" parent="Bottle"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-rounded = true
-fill_mode = 3
-texture_progress = SubResource("AtlasTexture_qukfq")
+material = ExtResource("3_avjqe")
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("4_mccfg")
+stretch_mode = 5
+
+[node name="Damage" type="TextureRect" parent="Bottle"]
+unique_name_in_owner = true
+material = ExtResource("5_fhohe")
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("4_mccfg")
+stretch_mode = 5

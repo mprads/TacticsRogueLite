@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgix1ig8gku2x"]
+[gd_scene load_steps=19 format=3 uid="uid://bgix1ig8gku2x"]
 
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_0ej8v"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_ee08l"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://clc0ayjvpkdkd" path="res://components/ability_animated_sprite.gd" id="4_vje06"]
 [ext_resource type="Script" uid="uid://cn8ytx1kecepl" path="res://components/floating_text_spawner.gd" id="4_ynkbp"]
 [ext_resource type="Script" uid="uid://kth54aoqodgd" path="res://managers/modifier_manager.gd" id="5_58iuw"]
-[ext_resource type="PackedScene" uid="uid://cgd0velq3mde1" path="res://managers/status_manager.tscn" id="6_5duv4"]
+[ext_resource type="Script" uid="uid://bwa4qgoeydcu5" path="res://managers/status_manager.gd" id="7_ygmlw"]
+[ext_resource type="PackedScene" uid="uid://blrmf2uetd6b2" path="res://scenes/ui/status_ui.tscn" id="8_6cr0n"]
 
 [sub_resource type="Animation" id="Animation_13gj6"]
 length = 0.001
@@ -215,11 +216,14 @@ script = ExtResource("4_ynkbp")
 [node name="ModifierManager" type="Node" parent="."]
 script = ExtResource("5_58iuw")
 
-[node name="StatusManager" parent="." instance=ExtResource("6_5duv4")]
-offset_left = -11.0
-offset_top = 1.0
-offset_right = 13.0
-offset_bottom = 16.0
+[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner", "status_ui")]
+script = ExtResource("7_ygmlw")
+status_owner = NodePath("..")
+status_ui = NodePath("../StatusUI")
+
+[node name="StatusUI" parent="." instance=ExtResource("8_6cr0n")]
+offset_left = -18.0
+offset_right = 20.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 4)
