@@ -83,9 +83,12 @@ func start_turn() -> void:
 
 func update_enemy_intent(enemy: Enemy) -> void:
 	var enemy_tile := arena.get_tile_from_global(enemy.global_position)
-	var targets = get_tree().get_nodes_in_group("player_unit")
+	var targets := get_tree().get_nodes_in_group("player_unit")
 	var targets_in_range: Array[Dictionary] = []
 	var targets_out_of_range: Array[Dictionary] = []
+
+	#for unit: Unit in targets:
+		#if unit.status_manager.has_status()
 
 	for target in targets:
 		var result := {"target": target, "tiles": [], "starting_tile": Vector2i.ZERO}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dsuyyr5og7ilh"]
+[gd_scene format=4 uid="uid://dsuyyr5og7ilh"]
 
 [ext_resource type="Script" uid="uid://bllx2ny3f4d5j" path="res://scenes/battle/battle.gd" id="1_xd4uy"]
 [ext_resource type="Resource" uid="uid://ccxsj7lmuvtu4" path="res://resources/battle_maps/battle_map_pool.tres" id="2_mvulk"]
@@ -59,12 +59,12 @@ texture_margin_left = 47.0
 texture_margin_right = 47.0
 region_rect = Rect2(496, 209, 96, 30)
 
-[node name="Battle" type="Node2D" node_paths=PackedStringArray("battle_manager")]
+[node name="Battle" type="Node2D" unique_id=522284138 node_paths=PackedStringArray("battle_manager")]
 script = ExtResource("1_xd4uy")
 battle_manager = NodePath("BattleManager")
 battle_map_pool = ExtResource("2_mvulk")
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("arena", "arena_grid", "bench", "bench_grid")]
+[node name="BattleManager" type="Node2D" parent="." unique_id=1786966408 node_paths=PackedStringArray("arena", "arena_grid", "bench", "bench_grid")]
 unique_name_in_owner = true
 script = ExtResource("3_0yh6x")
 arena = NodePath("ArenaTileMap")
@@ -72,7 +72,7 @@ arena_grid = NodePath("ArenaTileMap/ArenaGrid")
 bench = NodePath("BenchTileMap")
 bench_grid = NodePath("BenchTileMap/BenchGrid")
 
-[node name="ArenaTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter", "player_flood_filler", "enemy_flood_filler")]
+[node name="ArenaTileMap" type="TileMapLayer" parent="BattleManager" unique_id=670164840 node_paths=PackedStringArray("arena_grid", "tile_highlighter", "player_flood_filler", "enemy_flood_filler")]
 position = Vector2(138, 158)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAP7/AAAAAAAAAAABAP3/AAAAAAAAAAABAPz/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
@@ -83,33 +83,33 @@ player_flood_filler = NodePath("PlayerFloodFiller")
 enemy_flood_filler = NodePath("EnemyFloodFiller")
 metadata/_edit_lock_ = true
 
-[node name="PlayerFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
+[node name="PlayerFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap" unique_id=1718407371]
 tile_set = ExtResource("6_mvulk")
 
-[node name="EnemyFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
+[node name="EnemyFillLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap" unique_id=400621361]
 tile_set = ExtResource("6_mvulk")
 
-[node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap"]
+[node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/ArenaTileMap" unique_id=1875188886]
 tile_set = ExtResource("6_mvulk")
 
-[node name="ArenaGrid" type="Node2D" parent="BattleManager/ArenaTileMap"]
+[node name="ArenaGrid" type="Node2D" parent="BattleManager/ArenaTileMap" unique_id=241770841]
 script = ExtResource("5_h0kxc")
 
-[node name="PlayerFloodFiller" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("fill_layer", "arena_grid")]
+[node name="PlayerFloodFiller" type="Node" parent="BattleManager/ArenaTileMap" unique_id=91249146 node_paths=PackedStringArray("fill_layer", "arena_grid")]
 script = ExtResource("8_icoan")
 fill_layer = NodePath("../PlayerFillLayer")
 arena_grid = NodePath("../ArenaGrid")
 
-[node name="EnemyFloodFiller" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("fill_layer", "arena_grid")]
+[node name="EnemyFloodFiller" type="Node" parent="BattleManager/ArenaTileMap" unique_id=470214882 node_paths=PackedStringArray("fill_layer", "arena_grid")]
 script = ExtResource("8_icoan")
 fill_layer = NodePath("../EnemyFillLayer")
 arena_grid = NodePath("../ArenaGrid")
 
-[node name="ArenaHighlighter" type="Node" parent="BattleManager/ArenaTileMap" node_paths=PackedStringArray("highlight_layer")]
+[node name="ArenaHighlighter" type="Node" parent="BattleManager/ArenaTileMap" unique_id=623014643 node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("7_py4tk")
 highlight_layer = NodePath("../HighlightLayer")
 
-[node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
+[node name="BenchTileMap" type="TileMapLayer" parent="BattleManager" unique_id=1016728107 node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
 position = Vector2(10, 222)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAA=")
 tile_set = ExtResource("3_xd4uy")
@@ -118,68 +118,68 @@ arena_grid = NodePath("BenchGrid")
 tile_highlighter = NodePath("BenchHightlighter")
 metadata/_edit_lock_ = true
 
-[node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/BenchTileMap"]
+[node name="HighlightLayer" type="TileMapLayer" parent="BattleManager/BenchTileMap" unique_id=90344439]
 tile_set = ExtResource("6_mvulk")
 
-[node name="BenchGrid" type="Node2D" parent="BattleManager/BenchTileMap"]
+[node name="BenchGrid" type="Node2D" parent="BattleManager/BenchTileMap" unique_id=1885049187]
 script = ExtResource("5_h0kxc")
 
-[node name="BenchHightlighter" type="Node" parent="BattleManager/BenchTileMap" node_paths=PackedStringArray("highlight_layer")]
+[node name="BenchHightlighter" type="Node" parent="BattleManager/BenchTileMap" unique_id=991814755 node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("7_py4tk")
 highlight_layer = NodePath("../HighlightLayer")
 
-[node name="Navigation" type="Node" parent="BattleManager"]
+[node name="Navigation" type="Node" parent="BattleManager" unique_id=178301925]
 script = ExtResource("9_n6gaa")
 
-[node name="UnitMover" type="Node" parent="BattleManager" node_paths=PackedStringArray("arenas", "navigation")]
+[node name="UnitMover" type="Node" parent="BattleManager" unique_id=1322188091 node_paths=PackedStringArray("arenas", "navigation")]
 script = ExtResource("7_pll4o")
 arenas = [NodePath("../ArenaTileMap"), NodePath("../BenchTileMap")]
 navigation = NodePath("../Navigation")
 
-[node name="PlayerManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler")]
+[node name="PlayerManager" type="Node2D" parent="BattleManager" unique_id=730727443 node_paths=PackedStringArray("unit_mover", "flood_filler")]
 script = ExtResource("9_oiw7q")
 unit_mover = NodePath("../UnitMover")
 flood_filler = NodePath("../ArenaTileMap/PlayerFloodFiller")
 
-[node name="AbilityManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("arena")]
+[node name="AbilityManager" type="Node2D" parent="BattleManager" unique_id=345459439 node_paths=PackedStringArray("arena")]
 script = ExtResource("11_kd6yx")
 arena = NodePath("../ArenaTileMap")
 
-[node name="EnemyManager" type="Node2D" parent="BattleManager" node_paths=PackedStringArray("unit_mover", "flood_filler", "arena")]
+[node name="EnemyManager" type="Node2D" parent="BattleManager" unique_id=509055739 node_paths=PackedStringArray("unit_mover", "flood_filler", "arena")]
 script = ExtResource("9_agsc7")
 unit_mover = NodePath("../UnitMover")
 flood_filler = NodePath("../ArenaTileMap/EnemyFloodFiller")
 arena = NodePath("../ArenaTileMap")
 
-[node name="TargetSelectorUI" parent="BattleManager" instance=ExtResource("13_t1kk3")]
+[node name="TargetSelectorUI" parent="BattleManager" unique_id=1923819034 instance=ExtResource("13_t1kk3")]
 
-[node name="EnemyTargetSelectorUI" type="Node2D" parent="BattleManager"]
+[node name="EnemyTargetSelectorUI" type="Node2D" parent="BattleManager" unique_id=1850446243]
 script = ExtResource("15_6ofp8")
 
-[node name="MousePoint" type="Node2D" parent="BattleManager/EnemyTargetSelectorUI"]
+[node name="MousePoint" type="Node2D" parent="BattleManager/EnemyTargetSelectorUI" unique_id=368865964]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="BattleManager/EnemyTargetSelectorUI"]
+[node name="CanvasLayer" type="CanvasLayer" parent="BattleManager/EnemyTargetSelectorUI" unique_id=1317450032]
 
-[node name="Line2D" type="Line2D" parent="BattleManager/EnemyTargetSelectorUI/CanvasLayer"]
+[node name="Line2D" type="Line2D" parent="BattleManager/EnemyTargetSelectorUI/CanvasLayer" unique_id=644662442]
 width = 4.0
 width_curve = SubResource("Curve_icg0e")
 default_color = Color(0.984314, 0.419608, 0.113725, 1)
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=1308262510]
 layer = -10
 
-[node name="AnimatedBackground" parent="Background" instance=ExtResource("19_w40i5")]
+[node name="AnimatedBackground" parent="Background" unique_id=1865328391 instance=ExtResource("19_w40i5")]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1321302477]
 
-[node name="PartySelectionContainer" parent="UI" instance=ExtResource("16_6ofp8")]
+[node name="PartySelectionContainer" parent="UI" unique_id=1162267586 instance=ExtResource("16_6ofp8")]
 unique_name_in_owner = true
 offset_left = 4.0
 offset_top = 32.0
 offset_right = 124.0
 offset_bottom = 322.0
 
-[node name="UnitContextMenu" parent="UI" instance=ExtResource("12_mxe8n")]
+[node name="UnitContextMenu" parent="UI" unique_id=2101255614 instance=ExtResource("12_mxe8n")]
 unique_name_in_owner = true
 visible = false
 offset_left = 466.0
@@ -187,7 +187,7 @@ offset_top = 256.0
 offset_right = 631.0
 offset_bottom = 350.0
 
-[node name="StartBattleButton" type="Button" parent="UI"]
+[node name="StartBattleButton" type="Button" parent="UI" unique_id=1103126142]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 26)
 offset_left = 270.0
@@ -203,7 +203,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_5moxy")
 disabled = true
 text = "Start Battle"
 
-[node name="TurnChangeBanner" type="Panel" parent="UI"]
+[node name="TurnChangeBanner" type="Panel" parent="UI" unique_id=461425829]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 5
@@ -217,7 +217,7 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_sgdsx")
 
-[node name="BannerLabel" type="Label" parent="UI/TurnChangeBanner"]
+[node name="BannerLabel" type="Label" parent="UI/TurnChangeBanner" unique_id=541021488]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
