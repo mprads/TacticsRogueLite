@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://d1qnhqesyyeh6"]
+[gd_resource type="Resource" format=3 uid="uid://d1qnhqesyyeh6"]
 
 [ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_mnxqt"]
 [ext_resource type="SpriteFrames" uid="uid://coerj6dklef47" path="res://assets/abilities/weaken/weaken.tres" id="2_dbtjg"]
@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_mnxqt")
 status = ExtResource("3_mnxqt")
-name = "Weaken"
+name = "Venom"
 cost = 5
 atlas_coord = Vector2i(0, 1)
 tooltip = "Inflict an enemy with [color=\"165a4c\"]POISON[/color] for 2 turns

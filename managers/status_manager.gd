@@ -5,7 +5,7 @@ signal statuses_applied(type: Status.TYPE)
 signal status_added(status: Status)
 
 @export var status_owner: Node2D
-@export var statuses: Dictionary[String, Status]
+@export var statuses: Dictionary[StatusConfig.KEYS, Status]
 
 
 func apply_statuses_by_type(type: Status.TYPE) -> void:
@@ -28,7 +28,7 @@ func add_status(status: Status) -> void:
 	var is_stacking := status.stack_type == Status.STACK_TYPE.INTENSITY
 	var is_duration := status.stack_type == Status.STACK_TYPE.DURATION
 
-	if not _has_status(status.id):
+	if not has_status(status.id):
 		statuses[status.id] = status
 		status.init(status_owner)
 		status.status_applied.connect(_on_status_applied)
@@ -46,14 +46,7 @@ func add_status(status: Status) -> void:
 		_get_status(status.id).stacks += status.stacks
 
 
-func cleanse_negative_statuses() -> void:
-	for status:Status in statuses.values():
-		if status.is_negative_effect:
-			status.duration = 0
-			status.stacks = 0
-
-
-func _has_status(id: String) -> bool:
+func has_status(id: StatusConfig.KEYS) -> bool:
 	for status_id in statuses.keys():
 		if status_id == id:
 			return true
@@ -61,7 +54,14 @@ func _has_status(id: String) -> bool:
 	return false
 
 
-func _get_status(id: String) -> Status:
+func cleanse_negative_statuses() -> void:
+	for status:Status in statuses.values():
+		if status.is_negative_effect:
+			status.duration = 0
+			status.stacks = 0
+
+
+func _get_status(id: StatusConfig.KEYS) -> Status:
 	for status_id in statuses.keys():
 		if status_id == id:
 			return statuses[status_id]

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://cp0wgwpmx3rrl"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cp0wgwpmx3rrl"]
 
 [ext_resource type="Texture2D" uid="uid://1oe1du6gy5cm" path="res://assets/abilities/shared_sprite_sheets/Purple Effect Bullet Impact Explosion 32x32.png" id="1_g08p1"]
 

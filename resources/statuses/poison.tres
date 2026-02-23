@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageOverTime" load_steps=3 format=3 uid="uid://c84321nbbm3t6"]
+[gd_resource type="Resource" script_class="DamageOverTime" format=3 uid="uid://c84321nbbm3t6"]
 
 [ext_resource type="Texture2D" uid="uid://ckj1fnnr61is3" path="res://assets/icons/statuses/10x10Poison.png" id="1_ukxhh"]
 [ext_resource type="Script" uid="uid://b05fu1vfp8f5m" path="res://resources/statuses/damage_over_time.gd" id="2_moyce"]
@@ -7,7 +7,7 @@
 script = ExtResource("2_moyce")
 damage = 10
 damage_sfx_key = 18
-id = "poison"
+id = 4
 name = "Poison"
 stack_type = 2
 duration = 2

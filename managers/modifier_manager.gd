@@ -1,26 +1,29 @@
 class_name ModifierManager
 extends Node
 
-var modifiers: Dictionary[String, Modifier] = {}
+var modifiers: Dictionary[StatusConfig.KEYS, Modifier] = {}
 
 
 func add_modifier(
-	source: String, type: Modifier.TYPE, value_modifier: Modifier.VALUE_MODIFIER, value: Variant
+	source: StatusConfig.KEYS,
+	type: Modifier.TYPE,
+	value_modifier: Modifier.VALUE_MODIFIER,
+	value: Variant
 ) -> void:
 	var modifier_instance := Modifier.create_modifier(source, type, value_modifier, value)
 
 	modifiers[source] = modifier_instance
 
 
-func remove_modifier(source: String) -> void:
+func remove_modifier(source: StatusConfig.KEYS) -> void:
 	modifiers.erase(source)
 
 
-func get_modifier(source: String) -> Modifier:
+func get_modifier(source: StatusConfig.KEYS) -> Modifier:
 	return modifiers.get(source)
 
 
-func increase_modifier_value(source: String, value: float) -> void:
+func increase_modifier_value(source: StatusConfig.KEYS, value: float) -> void:
 	var modifier = get_modifier(source)
 
 	if not modifier:

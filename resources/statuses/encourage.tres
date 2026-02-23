@@ -1,17 +1,14 @@
-[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://278cm8aqrmdj"]
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://278cm8aqrmdj"]
 
 [ext_resource type="Script" uid="uid://cwaglw3nkm6mf" path="res://resources/statuses/status.gd" id="1_8lnyg"]
 [ext_resource type="Texture2D" uid="uid://bydvvcfeqb5jf" path="res://assets/icons/statuses/10x10Encourage.png" id="1_bava0"]
 
 [resource]
 script = ExtResource("1_8lnyg")
-id = "encourage"
+id = 2
 name = "Encourage"
-type = 0
 stack_type = 1
-duration = 0
 stacks = 1
-modifier_type = 0
 modifier_value = 0.25
 icon = ExtResource("1_bava0")
 color = Color(0.984314, 0.419608, 0.113725, 1)

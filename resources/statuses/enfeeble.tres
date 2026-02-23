@@ -1,16 +1,14 @@
-[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://cul7li777uqqw"]
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://cul7li777uqqw"]
 
 [ext_resource type="Texture2D" uid="uid://mld865oytrka" path="res://assets/icons/statuses/10x10Enfeeble.png" id="1_286xf"]
 [ext_resource type="Script" uid="uid://cwaglw3nkm6mf" path="res://resources/statuses/status.gd" id="1_uvd8s"]
 
 [resource]
 script = ExtResource("1_uvd8s")
-id = "enfeeble"
+id = 3
 name = "Enfeeble"
-type = 0
 stack_type = 2
 duration = 2
-stacks = 0
 modifier_type = 1
 modifier_value = 0.25
 is_negative_effect = true

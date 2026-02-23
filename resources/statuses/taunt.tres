@@ -1,17 +1,14 @@
-[gd_resource type="Resource" script_class="Taunt" load_steps=2 format=3 uid="uid://1pv8b0wkesmg"]
+[gd_resource type="Resource" script_class="Taunt" format=3 uid="uid://1pv8b0wkesmg"]
 
 [ext_resource type="Script" uid="uid://dpqnmsi11tigm" path="res://resources/statuses/taunt.gd" id="1_wlgb3"]
 
 [resource]
 script = ExtResource("1_wlgb3")
-id = "taunt"
+id = 5
 name = "Taunt"
-type = 0
 stack_type = 2
 duration = 1
-stacks = 0
 modifier_type = 2
-modifier_value = 0.0
 color = Color(0.984314, 0.419608, 0.113725, 1)
 tooltip = "Grab the attention of all enemies in range"
 metadata/_custom_type_script = "uid://cwaglw3nkm6mf"

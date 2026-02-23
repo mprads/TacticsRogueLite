@@ -1,16 +1,14 @@
-[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://glh47ax4w5r"]
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://glh47ax4w5r"]
 
 [ext_resource type="Script" uid="uid://cwaglw3nkm6mf" path="res://resources/statuses/status.gd" id="1_2x40f"]
 [ext_resource type="Texture2D" uid="uid://dc12d6uh2tbha" path="res://assets/icons/statuses/10x10Brace.png" id="1_um1x6"]
 
 [resource]
 script = ExtResource("1_2x40f")
-id = "brace"
+id = 1
 name = "Brace"
-type = 0
 stack_type = 2
 duration = 1
-stacks = 0
 modifier_type = 1
 modifier_value = -0.25
 icon = ExtResource("1_um1x6")

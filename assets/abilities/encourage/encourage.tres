@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=23 format=3 uid="uid://bus31d5ymnta4"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bus31d5ymnta4"]
 
 [ext_resource type="Texture2D" uid="uid://ctol0n7n7bj80" path="res://assets/abilities/shared_sprite_sheets/Super Package Retro Pixel Effects 32x32 pack 2 Free/09.png" id="1_5gagf"]
 [ext_resource type="Texture2D" uid="uid://oppu8n6if3d" path="res://assets/abilities/shared_sprite_sheets/Super Package Retro Pixel Effects 32x32 pack 2 Free/07.png" id="2_5gagf"]

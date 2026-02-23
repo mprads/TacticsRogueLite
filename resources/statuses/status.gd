@@ -6,7 +6,7 @@ signal status_applied(status: Status)
 enum TYPE { START_OF_TURN, END_OF_TURN }
 enum STACK_TYPE { NONE, INTENSITY, DURATION }
 
-@export var id: String
+@export var id: StatusConfig.KEYS
 @export var name: String
 @export var type: TYPE
 @export var stack_type: STACK_TYPE
