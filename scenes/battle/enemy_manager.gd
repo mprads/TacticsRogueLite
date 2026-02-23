@@ -87,8 +87,11 @@ func update_enemy_intent(enemy: Enemy) -> void:
 	var targets_in_range: Array[Dictionary] = []
 	var targets_out_of_range: Array[Dictionary] = []
 
-	#for unit: Unit in targets:
-		#if unit.status_manager.has_status()
+# If a player unit has the taunt status remove all targets besides the taunted unit
+	for unit: Unit in targets:
+		if unit.status_manager.has_status(StatusConfig.KEYS.TAUNT):
+			targets = [unit]
+			break
 
 	for target in targets:
 		var result := {"target": target, "tiles": [], "starting_tile": Vector2i.ZERO}
@@ -162,6 +165,11 @@ func verify_intent(enemy: Enemy) -> void:
 		arena.get_tile_from_global(enemy.ai.current_target.global_position),
 		arena.get_tile_from_global(enemy.global_position)
 	):
+		update_enemy_intent(enemy)
+		return
+
+# Sloppy invalidation after taunt expires
+	if enemy.ai.targets_in_range.size() + enemy.ai.targets_out_of_range.size() == 1:
 		update_enemy_intent(enemy)
 		return
 

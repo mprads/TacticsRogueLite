@@ -17,6 +17,7 @@ enum TYPE { START_OF_TURN, END_OF_TURN, START_OF_COMBAT, END_OF_COMBAT, EVENT }
 @export var can_appear_in_shop: bool
 @export var can_be_reward: bool
 @export var elite_reward: bool
+@export var is_curse := false
 
 @export var gold_cost := 0
 

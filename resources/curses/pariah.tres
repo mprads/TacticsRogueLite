@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Pariah" format=3 uid="uid://bkej1nah0p3id"]
+
+[ext_resource type="Texture2D" uid="uid://cfrkobxx32jtt" path="res://assets/icons/curses/24x24Pariah.png" id="1_blnxe"]
+[ext_resource type="Script" uid="uid://chlvppxmun8mf" path="res://resources/curses/pariah.gd" id="1_i6214"]
+[ext_resource type="Resource" uid="uid://1pv8b0wkesmg" path="res://resources/statuses/taunt.tres" id="2_blnxe"]
+
+[resource]
+script = ExtResource("1_i6214")
+status = ExtResource("2_blnxe")
+name = "Pariah"
+id = "pariah"
+type = 2
+icon = ExtResource("1_blnxe")
+tooltip = "At the start of combat a random unit gains [color=\"fb6b1d\"]TAUNT[/color]"
+sfx_key = 13
+metadata/_custom_type_script = "uid://b7k7c07e785wk"

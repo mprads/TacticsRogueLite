@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://r76gjny5escp"]
+[gd_scene format=3 uid="uid://r76gjny5escp"]
 
 [ext_resource type="Script" uid="uid://b88pduqxgjpng" path="res://scenes/run/run.gd" id="1_l7o68"]
 [ext_resource type="Resource" uid="uid://cog76ftpquwhv" path="res://resources/testing_run_stats.tres" id="2_cnkn7"]
@@ -90,34 +90,34 @@ shader = SubResource("Shader_u2bn2")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/outline_thickness = 0.0
 
-[node name="Run" type="Node"]
+[node name="Run" type="Node" unique_id=1196385578]
 script = ExtResource("1_l7o68")
 run_stats = ExtResource("2_cnkn7")
 
-[node name="CurrentView" type="Node" parent="."]
+[node name="CurrentView" type="Node" parent="." unique_id=1423132939]
 
-[node name="Map" parent="." instance=ExtResource("2_wdonh")]
+[node name="Map" parent="." unique_id=473304857 instance=ExtResource("2_wdonh")]
 
-[node name="RunDataManager" type="Node" parent="."]
+[node name="RunDataManager" type="Node" parent="." unique_id=930149429]
 script = ExtResource("4_y3spc")
 
-[node name="InventoryManager" type="Node" parent="."]
+[node name="InventoryManager" type="Node" parent="." unique_id=804924741]
 script = ExtResource("4_x53nd")
 
-[node name="PartyManager" type="Node" parent="."]
+[node name="PartyManager" type="Node" parent="." unique_id=419149645]
 script = ExtResource("5_l6p45")
 
-[node name="VialManager" type="Node" parent="."]
+[node name="VialManager" type="Node" parent="." unique_id=1299633012]
 script = ExtResource("6_kdgoc")
 
-[node name="ArtifactManager" type="Node" parent="."]
+[node name="ArtifactManager" type="Node" parent="." unique_id=1265752777]
 script = ExtResource("7_y3spc")
 
-[node name="TopBar" type="CanvasLayer" parent="."]
+[node name="TopBar" type="CanvasLayer" parent="." unique_id=494722955]
 unique_name_in_owner = true
 layer = 10
 
-[node name="Panel" type="Panel" parent="TopBar"]
+[node name="Panel" type="Panel" parent="TopBar" unique_id=385847270]
 custom_minimum_size = Vector2(0, 28)
 anchors_preset = 10
 anchor_right = 1.0
@@ -125,7 +125,7 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_y3spc")
 
-[node name="MarginContainer" type="MarginContainer" parent="TopBar"]
+[node name="MarginContainer" type="MarginContainer" parent="TopBar" unique_id=1970264504]
 custom_minimum_size = Vector2(0, 28)
 anchors_preset = 10
 anchor_right = 1.0
@@ -135,104 +135,106 @@ size_flags_vertical = 0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/MarginContainer" unique_id=918604509]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 alignment = 1
 
-[node name="ArtifactUI" parent="TopBar/MarginContainer/HBoxContainer" instance=ExtResource("8_7yo0l")]
+[node name="ArtifactUI" parent="TopBar/MarginContainer/HBoxContainer" unique_id=371625965 instance=ExtResource("8_7yo0l")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VialUI" parent="TopBar/MarginContainer/HBoxContainer" instance=ExtResource("8_cnkn7")]
+[node name="VialUI" parent="TopBar/MarginContainer/HBoxContainer" unique_id=1647031921 instance=ExtResource("8_cnkn7")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GoldUI" parent="TopBar/MarginContainer/HBoxContainer" instance=ExtResource("6_ux63y")]
+[node name="GoldUI" parent="TopBar/MarginContainer/HBoxContainer" unique_id=851273893 instance=ExtResource("6_ux63y")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 10
 
-[node name="NavigationUI" type="HBoxContainer" parent="TopBar/MarginContainer/HBoxContainer"]
+[node name="NavigationUI" type="HBoxContainer" parent="TopBar/MarginContainer/HBoxContainer" unique_id=1544209364]
+custom_minimum_size = Vector2(40, 28)
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/separation = 4
 alignment = 2
 
-[node name="InventoryButton" parent="TopBar/MarginContainer/HBoxContainer/NavigationUI" instance=ExtResource("13_0pc8y")]
+[node name="InventoryButton" parent="TopBar/MarginContainer/HBoxContainer/NavigationUI" unique_id=111229490 instance=ExtResource("13_0pc8y")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_txvia")
 layout_mode = 2
 
-[node name="SettingsButton" parent="TopBar/MarginContainer/HBoxContainer/NavigationUI" instance=ExtResource("14_txvia")]
+[node name="SettingsButton" parent="TopBar/MarginContainer/HBoxContainer/NavigationUI" unique_id=448467446 instance=ExtResource("14_txvia")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_psst2")
 layout_mode = 2
 
-[node name="Debug" type="PanelContainer" parent="TopBar"]
+[node name="Debug" type="PanelContainer" parent="TopBar" unique_id=1473253148]
 visible = false
 offset_left = 507.0
 offset_top = 51.0
 offset_right = 627.0
 offset_bottom = 158.0
 
-[node name="MarginContainer" type="MarginContainer" parent="TopBar/Debug"]
+[node name="MarginContainer" type="MarginContainer" parent="TopBar/Debug" unique_id=1102948703]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TopBar/Debug/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TopBar/Debug/MarginContainer" unique_id=970538531]
 custom_minimum_size = Vector2(80, 1)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=2131879827]
 layout_mode = 2
 text = "Debug"
 horizontal_alignment = 1
 
-[node name="MapButton" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="MapButton" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=716958705]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Map
 "
 
-[node name="KilnButton" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="KilnButton" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=125218917]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Kiln"
 
-[node name="BrewingButton" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="BrewingButton" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=844824771]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Brewing"
 
-[node name="ShopButton" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="ShopButton" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=2049958085]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Shop"
 
-[node name="UnlockMap" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="UnlockMap" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=11783997]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Unlock Map"
 
-[node name="WinBattle" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="WinBattle" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=835617836]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Win"
 
-[node name="LoseBattle" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="LoseBattle" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=671799490]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lose"
 
-[node name="CompleteRun" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer"]
+[node name="CompleteRun" type="Button" parent="TopBar/Debug/MarginContainer/VBoxContainer" unique_id=1973705228]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Complete"
 
-[node name="RNGSeedLabel" type="Label" parent="TopBar"]
+[node name="RNGSeedLabel" type="Label" parent="TopBar" unique_id=1947040626]
 unique_name_in_owner = true
 offset_left = 521.0
 offset_top = 28.0
@@ -242,21 +244,21 @@ theme_override_colors/font_color = Color(0.241156, 0.241156, 0.241156, 1)
 text = "12345678987654321234"
 horizontal_alignment = 2
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=130455605]
 layer = 5
 
-[node name="SettingsUI" parent="UI" instance=ExtResource("12_cnkn7")]
+[node name="SettingsUI" parent="UI" unique_id=298634103 instance=ExtResource("12_cnkn7")]
 unique_name_in_owner = true
 
-[node name="InventoryUI" parent="UI" instance=ExtResource("11_g42ja")]
-unique_name_in_owner = true
-visible = false
-
-[node name="UnitFillUI" parent="UI" instance=ExtResource("16_l6p45")]
+[node name="InventoryUI" parent="UI" unique_id=271749050 instance=ExtResource("11_g42ja")]
 unique_name_in_owner = true
 visible = false
 
-[node name="InventoryFloatingTextSpawner" type="Control" parent="UI"]
+[node name="UnitFillUI" parent="UI" unique_id=204607161 instance=ExtResource("16_l6p45")]
+unique_name_in_owner = true
+visible = false
+
+[node name="InventoryFloatingTextSpawner" type="Control" parent="UI" unique_id=1492183551]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 1
@@ -272,4 +274,4 @@ script = ExtResource("19_0pc8y")
 vertical_offset = 0
 sibling_offset = 15
 
-[node name="Tooltip" parent="UI" instance=ExtResource("15_x53nd")]
+[node name="Tooltip" parent="UI" unique_id=812937664 instance=ExtResource("15_x53nd")]
