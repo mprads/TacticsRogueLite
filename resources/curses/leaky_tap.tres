@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LeakyTap" format=3 uid="uid://bcwkm2xnfn6u3"]
+
+[ext_resource type="Texture2D" uid="uid://dvj26xtb0du21" path="res://assets/icons/curses/24x24LeakyTap.png" id="1_7nckv"]
+[ext_resource type="Script" uid="uid://j2rhinsp37jy" path="res://resources/curses/leaky_tap.gd" id="1_7w8q0"]
+
+[resource]
+script = ExtResource("1_7w8q0")
+name = "Leaky Tap"
+id = "leaky_tap"
+type = 1
+icon = ExtResource("1_7nckv")
+tooltip = "At the end of your turn, a random unit loses 2oz of potion"
+sfx_key = 13
+is_curse = true
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

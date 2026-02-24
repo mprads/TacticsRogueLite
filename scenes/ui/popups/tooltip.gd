@@ -2,7 +2,8 @@ class_name Tooltip
 extends Control
 
 const OFFSET := 10
-
+const TOP_NAV_HEIGHT := 28
+const TOP_NAV_OFFSET := 40
 
 func _ready() -> void:
 	Events.request_show_tooltip.connect(_on_request_show_tooltip)
@@ -40,6 +41,9 @@ func _on_request_show_tooltip(tooltip_owner: Node, main: Dictionary, secondary: 
 			global_position.y
 			- (global_position.y + main_tooltip.size.y - get_viewport_rect().size.y)
 		)
+
+	if global_position.y <= TOP_NAV_HEIGHT:
+		global_position.y = TOP_NAV_OFFSET
 
 	main_tooltip.visible = true
 

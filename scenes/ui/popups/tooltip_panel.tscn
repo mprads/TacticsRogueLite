@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://4pft6ahlavju"]
+[gd_scene format=3 uid="uid://4pft6ahlavju"]
 
 [ext_resource type="Texture2D" uid="uid://c8d3c14kcslbc" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/UI.png" id="1_emfjx"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_e01hb"]
@@ -20,8 +20,9 @@ texture_margin_right = 13.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(112, 336, 32, 16)
 
-[node name="TooltipPanel" type="Panel"]
+[node name="TooltipPanel" type="Panel" unique_id=1814060342]
 visible = false
+z_index = 99
 custom_minimum_size = Vector2(200, 80)
 offset_right = 40.0
 offset_bottom = 40.0
@@ -29,7 +30,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qvb8y")
 script = ExtResource("2_qvb8y")
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="." unique_id=1892885470]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = -5.0
@@ -41,7 +42,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_dsyn0")
 text = "Object Name"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1530160501]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,11 +59,11 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=43732418]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1877736488]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -75,12 +76,12 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/DescriptionLabel"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/DescriptionLabel" unique_id=2018940820]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 11.0
 
-[node name="ExpandLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="ExpandLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=983721309]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

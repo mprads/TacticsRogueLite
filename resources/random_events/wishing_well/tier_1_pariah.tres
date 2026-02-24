@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://cpvmqs8qtbpgj"]
+
+[ext_resource type="Resource" uid="uid://bkej1nah0p3id" path="res://resources/curses/pariah.tres" id="1_8kj2l"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/random_events/wishing_well/reward.gd" id="1_bemrt"]
+
+[resource]
+script = ExtResource("1_bemrt")
+tier = 1
+weight = 1.0
+reward_res = ExtResource("1_8kj2l")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"
