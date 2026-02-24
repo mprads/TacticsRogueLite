@@ -87,14 +87,16 @@ func update_enemy_intent(enemy: Enemy) -> void:
 	var targets_in_range: Array[Dictionary] = []
 	var targets_out_of_range: Array[Dictionary] = []
 
-# If a player unit has the taunt status remove all targets besides the taunted unit
+# If a player unit has the taunt status remove all targets besides the taunted units
 	for unit: Unit in targets:
 		if unit.status_manager.has_status(StatusConfig.KEYS.TAUNT):
-			targets = [unit]
+			targets = targets.filter(
+				func(filterable: Unit): return filterable.status_manager.has_status(StatusConfig.KEYS.TAUNT)
+			)
 			break
 
-	for target in targets:
-		var result := {"target": target, "tiles": [], "starting_tile": Vector2i.ZERO}
+	for target: Unit in targets:
+		var result := { "target": target, "tiles": [], "starting_tile": Vector2i.ZERO }
 
 		var target_tile := arena.get_tile_from_global(target.global_position)
 

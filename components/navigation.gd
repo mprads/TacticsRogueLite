@@ -20,10 +20,14 @@ func init(region: Rect2i, tiles: Array[Vector2i]) -> void:
 
 
 func create_id_path(start: Vector2i, end: Vector2i, allow_partial := false) -> Array[Vector2i]:
+	# TODO Something changed because astar will no longer give 1 step paths while the starting
+	# tile is set to solid, but works for other distances so setting back to occupied after
+	# getting the path so not to distrupt unit move flow of calling to set tiles to empty
+	set_id_empty(start)
 	var path: Array[Vector2i] = astar_grid.get_id_path(start, end, allow_partial)
+	set_id_occupied(start)
 	if path.is_empty():
 		return []
-
 	return path
 
 

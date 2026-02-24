@@ -76,6 +76,7 @@ func _on_status_changed(status: Status) -> void:
 		status.status_applied.disconnect(_on_status_applied)
 		status.changed.disconnect(_on_status_changed)
 		statuses.erase(status.id)
+		Events.request_update_enemy_intent.emit()
 
 
 func _on_status_applied(status: Status) -> void:
