@@ -198,6 +198,7 @@ func _on_change_active_unit(unit: Unit) -> void:
 
 func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	arena.enable_flood_filler("PLAYER")
+	arena.player_target_shape = ability.shape
 	target_selector_ui.enabled = true
 	target_selector_ui.starting_position = unit.global_position
 	var arena_index := unit_mover.get_arena_index_from_position(unit.global_position)
@@ -211,6 +212,7 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 
 func _on_unit_aim_stopped() -> void:
 	arena.clear_flood_filler("PLAYER")
+	arena.player_target_shape = []
 	target_selector_ui.enabled = false
 	target_selector_ui.starting_position = Vector2.ZERO
 	player_manager.enable_drag_and_drop()

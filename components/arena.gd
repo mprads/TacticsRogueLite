@@ -8,6 +8,8 @@ const DIRECTIONS = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
 @export var player_flood_filler: FloodFiller
 @export var enemy_flood_filler: FloodFiller
 
+var player_target_shape: Array[Vector2i]
+
 
 func _process(_delta: float) -> void:
 	if not tile_highlighter.enabled:
@@ -19,7 +21,17 @@ func _process(_delta: float) -> void:
 		tile_highlighter.clear()
 		return
 
-	tile_highlighter._update_tile(selected_tile)
+	if player_target_shape.is_empty():
+		tile_highlighter.update_tile(selected_tile)
+		return
+
+	var selected_tiles: Array[Vector2i] = []
+	for shape_position: Vector2i in player_target_shape:
+		var potential_tile := Vector2i(selected_tile.x + shape_position.x, selected_tile.y + shape_position.y)
+		if is_tile_in_bounds(potential_tile):
+			selected_tiles.append(potential_tile)
+
+	tile_highlighter.update_tiles(selected_tiles)
 
 
 func get_tile_from_global(global: Vector2) -> Vector2i:
