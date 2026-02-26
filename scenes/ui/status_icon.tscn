@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://vh15m4qw1i4k"]
+[gd_scene format=3 uid="uid://vh15m4qw1i4k"]
 
 [ext_resource type="Script" uid="uid://cawbehtjs2o67" path="res://scenes/ui/status_icon.gd" id="1_3lagt"]
 [ext_resource type="Texture2D" uid="uid://mld865oytrka" path="res://assets/icons/statuses/10x10Enfeeble.png" id="2_nk8x7"]
 
-[node name="StatusUI" type="Control"]
+[node name="StatusUI" type="Control" unique_id=440944486]
 custom_minimum_size = Vector2(10, 15)
 layout_mode = 3
 anchors_preset = 0
@@ -11,7 +11,7 @@ offset_right = 10.0
 offset_bottom = 15.0
 script = ExtResource("1_3lagt")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="." unique_id=448121931]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 0
 offset_right = 8.0
@@ -20,7 +20,7 @@ texture = ExtResource("2_nk8x7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Duration" type="Label" parent="."]
+[node name="Duration" type="Label" parent="." unique_id=578334557]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 6.0
@@ -29,7 +29,7 @@ offset_bottom = 17.0
 theme_override_font_sizes/font_size = 8
 text = "3"
 
-[node name="Stacks" type="Label" parent="."]
+[node name="Stacks" type="Label" parent="." unique_id=861136324]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 6.0

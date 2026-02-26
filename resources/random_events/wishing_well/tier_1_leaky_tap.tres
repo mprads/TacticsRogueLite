@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://cqpkntkkegbh8"]
+
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/random_events/wishing_well/reward.gd" id="1_360xj"]
+[ext_resource type="Resource" uid="uid://bcwkm2xnfn6u3" path="res://resources/curses/leaky_tap.tres" id="1_u8v88"]
+
+[resource]
+script = ExtResource("1_360xj")
+tier = 1
+weight = 1.0
+reward_res = ExtResource("1_u8v88")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"
