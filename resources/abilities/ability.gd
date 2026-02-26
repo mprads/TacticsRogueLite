@@ -2,7 +2,16 @@ class_name Ability
 extends Resource
 
 enum TYPE { ATTACK, STATUS, EFFECT }
-enum TARGET { SELF, SINGLE_ALLY, ALL_ALLIES, SINGLE_ENEMY, ALL_ENEMIES, AOE }
+enum TARGET {
+	SELF,
+	SINGLE_ALLY,
+	ALL_ALLIES,
+	SINGLE_ENEMY,
+	ALL_ENEMIES,
+	AOE_ALLY,
+	AOE_ENEMY,
+	AOE_ALL,
+	}
 
 @export_category("Visuals")
 @export var name: String

@@ -5,13 +5,14 @@
 
 [resource]
 script = ExtResource("1_o72n6")
+base_damage = 5
 name = "Lightning Strike"
 cost = 8
 atlas_coord = Vector2i(2, 1)
 tooltip = "Deal 5 base aoe damage in a cross pattern
 Cost: 8"
 sprite_frames = ExtResource("2_0q6jl")
-target = 5
+target = 6
 shape = Array[Vector2i]([Vector2i(0, 0), Vector2i(-1, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(0, -1)])
 max_range = 3
 sfx_key = 5

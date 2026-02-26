@@ -107,7 +107,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 			next_tile = weight_by_tiles.find_key(highest_tile_weight)
 			_populate_next_tiles()
 			selected_ability = owner.stats.melee_ability
-			if owner.stats.melee_ability.target == Ability.TARGET.AOE:
+			if owner.stats.melee_ability.target == Ability.TARGET.AOE_ALLY:
 				_populate_aoe_targets(arena)
 			highest_weight = weight_sum
 			in_range = true
@@ -170,7 +170,7 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 				next_tile = current_path[clampi(owner.stats.movement, 0, current_path.size() - 1)]
 				_populate_next_tiles()
 				selected_ability = owner.stats.ranged_ability
-				if owner.stats.ranged_ability.target == Ability.TARGET.AOE:
+				if owner.stats.ranged_ability.target == Ability.TARGET.AOE_ALLY:
 					_populate_aoe_targets(arena)
 
 

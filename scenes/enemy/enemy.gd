@@ -79,7 +79,7 @@ func move_cleanup() -> void:
 		var ability_target:Array[Area2D] = [ai.current_target]
 		if not ai.in_range:
 			ability_target = [self]
-		if ai.selected_ability.target == Ability.TARGET.AOE:
+		if ai.selected_ability.target == Ability.TARGET.AOE_ALLY:
 			ability_target = ai.aoe_targets
 		use_ability(ai.selected_ability, ability_target)
 	else:

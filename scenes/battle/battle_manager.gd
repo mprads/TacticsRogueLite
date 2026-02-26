@@ -231,7 +231,7 @@ func _on_show_enemy_intent(enemy: Enemy) -> void:
 	else:
 		arena.enemy_flood_filler.fill_tile(enemy.ai.next_tile, Vector2i(2, 2))
 
-	if enemy.ai.selected_ability.target == Ability.TARGET.AOE:
+	if enemy.ai.selected_ability.target == Ability.TARGET.AOE_ALLY:
 		for tile in enemy.ai.target_tiles:
 			arena.enemy_flood_filler.fill_tile(tile, Vector2i(2, 1))
 	else:
