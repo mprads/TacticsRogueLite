@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=7 format=3 uid="uid://dnh12v0qg35cr"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dnh12v0qg35cr"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_fedew"]
-[ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="1_t2e0f"]
+[ext_resource type="Resource" uid="uid://dcaimnxewl7d0" path="res://resources/abilities/smash.tres" id="2_2ed1i"]
 [ext_resource type="Texture2D" uid="uid://bpka0wu7fe7v2" path="res://assets/sprites/enemies/Golem.png" id="2_fedew"]
 [ext_resource type="Resource" uid="uid://m14gsp85udo2" path="res://resources/enemy_ai/base_ai.tres" id="2_yriqn"]
 [ext_resource type="PackedScene" uid="uid://b7xiv7x5cv04q" path="res://scenes/enemy/enemy.tscn" id="3_1wfg6"]
@@ -12,12 +12,10 @@ script = ExtResource("1_fedew")
 name = "Golem"
 sprite = ExtResource("2_fedew")
 movement = 2
-attack_range = 1
 dimensions = Vector2i(1, 1)
-melee_ability = ExtResource("1_t2e0f")
+melee_ability = ExtResource("2_2ed1i")
 ranged_ability = ExtResource("3_2ed1i")
 ai = ExtResource("2_yriqn")
-scene = ExtResource("3_1wfg6")
 max_health = 20
 health = 20
 metadata/_custom_type_script = "uid://co20nystqenxu"

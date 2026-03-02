@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="Status" format=3 uid="uid://7setwuc4h8j6"]
 
-[ext_resource type="Texture2D" uid="uid://iplda7kh0cux" path="res://assets/icons/statuses/10x10Weaken.png" id="1_asimt"]
-[ext_resource type="Script" uid="uid://cwaglw3nkm6mf" path="res://resources/statuses/status.gd" id="1_jeus3"]
+[ext_resource type="Texture2D" uid="uid://iplda7kh0cux" path="res://assets/icons/statuses/10x10Weaken.png" id="1_0wkw4"]
+[ext_resource type="Script" uid="uid://cwaglw3nkm6mf" path="res://resources/statuses/status.gd" id="2_jt2uv"]
 
 [resource]
-script = ExtResource("1_jeus3")
+script = ExtResource("2_jt2uv")
 id = 6
-name = "Weaken"
+name = "Feeble"
 type = 1
 stack_type = 2
 duration = 2
 modifier_value = -0.5
 is_negative_effect = true
-icon = ExtResource("1_asimt")
+icon = ExtResource("1_0wkw4")
 color = Color(0.0862745, 0.352941, 0.298039, 1)
 tooltip = "Deal 50% less damage"
 metadata/_custom_type_script = "uid://cwaglw3nkm6mf"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bmokop7w8vl6v"]
+[gd_resource type="Resource" format=3 uid="uid://bmokop7w8vl6v"]
 
 [ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_6m60s"]
 [ext_resource type="SpriteFrames" uid="uid://squkblvthq06" path="res://assets/abilities/block/block.tres" id="1_cifmo"]
@@ -9,7 +9,7 @@ script = ExtResource("1_6m60s")
 status = ExtResource("2_2sgek")
 name = "Defend"
 cost = 0
-atlas_coord = Vector2i(3, 0)
+highlight_atlas_coord = Vector2i(3, 0)
 sprite_frames = ExtResource("1_cifmo")
 type = 1
 max_range = 0

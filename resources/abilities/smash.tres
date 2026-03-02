@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://dcaimnxewl7d0"]
+
+[ext_resource type="Script" uid="uid://c6mm720la6mee" path="res://resources/abilities/attack.gd" id="1_jfnps"]
+[ext_resource type="SpriteFrames" uid="uid://dts5m6kxknx7x" path="res://assets/abilities/smash/smash.tres" id="2_4nslq"]
+[ext_resource type="Resource" uid="uid://cul7li777uqqw" path="res://resources/statuses/fragile.tres" id="3_f3kvj"]
+
+[resource]
+script = ExtResource("1_jfnps")
+base_damage = 5
+status = ExtResource("3_f3kvj")
+status_chance = 1.0
+name = "Smash"
+cost = 0
+sprite_frames = ExtResource("2_4nslq")
+target = 1
+shape = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(-1, 1)])
+metadata/_custom_type_script = "uid://dxqix5ovn77hl"

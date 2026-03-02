@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3 uid="uid://c8dola213qoyd"]
+
+[ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_1xyp0"]
+[ext_resource type="SpriteFrames" uid="uid://crausosdca0jh" path="res://assets/abilities/break/break.tres" id="2_1xyp0"]
+[ext_resource type="Resource" uid="uid://cul7li777uqqw" path="res://resources/statuses/fragile.tres" id="3_o28v7"]
+
+[resource]
+script = ExtResource("1_1xyp0")
+status = ExtResource("3_o28v7")
+name = "Break"
+cost = 5
+highlight_atlas_coord = Vector2i(1, 0)
+tooltip = "Inflict an enemy with [color=\"165a4c\"]FRAGILE[/color] for 2 turns
+Cost: 5"
+sprite_frames = ExtResource("2_1xyp0")
+type = 1
+target = 3
+max_range = 3
+sfx_key = 3
+metadata/_custom_type_script = "uid://dxqix5ovn77hl"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://buwltkkp5pnbj"]
+[gd_resource type="Resource" format=3 uid="uid://buwltkkp5pnbj"]
 
 [ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_hana2"]
 [ext_resource type="Resource" uid="uid://278cm8aqrmdj" path="res://resources/statuses/encourage.tres" id="2_o1hnt"]
@@ -9,7 +9,7 @@ script = ExtResource("1_hana2")
 status = ExtResource("2_o1hnt")
 name = "Encourage"
 cost = 5
-atlas_coord = Vector2i(3, 0)
+highlight_atlas_coord = Vector2i(2, 1)
 tooltip = "Gives a friendly ally 1 stack of [color=\"fb6b1d\"]ENCOURAGE[/color]
 Cost: 5"
 sprite_frames = ExtResource("2_pkr8m")

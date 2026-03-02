@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Potion" load_steps=5 format=3 uid="uid://bpwmv3lov181i"]
+[gd_resource type="Resource" script_class="Potion" format=3 uid="uid://bpwmv3lov181i"]
 
 [ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="1_4k3nb"]
 [ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_bb76u"]
-[ext_resource type="Resource" uid="uid://c8dola213qoyd" path="res://resources/abilities/enfeeble.tres" id="2_6bth3"]
+[ext_resource type="Resource" uid="uid://c8dola213qoyd" path="res://resources/abilities/break.tres" id="2_6bth3"]
 [ext_resource type="Resource" uid="uid://bytfe5idb40vq" path="res://resources/abilities/weaken.tres" id="3_x5q70"]
 
 [resource]
