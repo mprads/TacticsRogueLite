@@ -187,19 +187,23 @@ func _populate_aoe_targets(arena: Arena) -> void:
 	if delta.x <= delta.y:
 		if delta.x == 0:
 			for tile in ability.shape:
-				target_tiles.append(target_tile + tile)
+				if arena.is_tile_in_bounds(target_tile + tile):
+					target_tiles.append(target_tile + tile)
 		elif delta.x == 1:
 			for tile in ability.shape:
-				target_tiles.append(target_tile + (tile * -1))
+				if arena.is_tile_in_bounds(target_tile + (tile * -1)):
+					target_tiles.append(target_tile + (tile * -1))
 	else:
 		if delta.y == 0:
 			for tile in ability.shape:
 				var inverted_tile := Vector2i(tile.y, tile.x)
-				target_tiles.append(target_tile + inverted_tile)
+				if arena.is_tile_in_bounds(target_tile + inverted_tile):
+					target_tiles.append(target_tile + inverted_tile)
 		elif delta.y == 1:
 			for tile in ability.shape:
 				var inverted_tile := Vector2i(tile.y, tile.x)
-				target_tiles.append(target_tile + (inverted_tile * -1))
+				if arena.is_tile_in_bounds(target_tile + (inverted_tile * -1)):
+					target_tiles.append(target_tile + (inverted_tile * -1))
 
 	if not target_tiles.is_empty():
 		for tile in target_tiles:
