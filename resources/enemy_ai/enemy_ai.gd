@@ -103,14 +103,14 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 		# Should target the unit it can put the closest to low % hp, movement should only matter
 		# if the % hp remaining of two targets is tied
 		if weight_sum > highest_weight:
+			in_range = true
 			current_target = target_unit
 			next_tile = weight_by_tiles.find_key(highest_tile_weight)
 			_populate_next_tiles()
 			selected_ability = owner.stats.melee_ability
-			if owner.stats.melee_ability.target == Ability.TARGET.AOE_ALLY:
+			if owner.stats.melee_ability.target == Ability.TARGET.AOE_ALLY or owner.stats.melee_ability.target == Ability.TARGET.AOE_ALL:
 				_populate_aoe_targets(arena)
 			highest_weight = weight_sum
-			in_range = true
 
 	if not current_target:
 		_find_closest_target(get_id_path, arena)
@@ -170,7 +170,7 @@ func _find_closest_target(get_id_path: Callable, arena: Arena) -> void:
 				next_tile = current_path[clampi(owner.stats.movement, 0, current_path.size() - 1)]
 				_populate_next_tiles()
 				selected_ability = owner.stats.ranged_ability
-				if owner.stats.ranged_ability.target == Ability.TARGET.AOE_ALLY:
+				if owner.stats.ranged_ability.target == Ability.TARGET.AOE_ALLY or owner.stats.melee_ability.target == Ability.TARGET.AOE_ALLY:
 					_populate_aoe_targets(arena)
 
 
@@ -180,6 +180,7 @@ func _populate_aoe_targets(arena: Arena) -> void:
 
 	if not current_target:
 		return
+
 	var target_tile := arena.get_tile_from_global(current_target.global_position)
 	var delta: Vector2i = (target_tile - next_tile).abs()
 	var ability := owner.stats.melee_ability if in_range else owner.stats.ranged_ability
@@ -208,8 +209,12 @@ func _populate_aoe_targets(arena: Arena) -> void:
 	if not target_tiles.is_empty():
 		for tile in target_tiles:
 			var target := arena.arena_grid.get_occupant(tile)
-			if target is Area2D:
-				aoe_targets.append(target)
+			if ability.target == Ability.TARGET.AOE_ALLY:
+				if target is Unit:
+					aoe_targets.append(target)
+			else:
+				if target is Enemy or target is Unit:
+					aoe_targets.append(target)
 
 
 func _valid_ending_tile(tile: Vector2i, arena: Arena) -> bool:
