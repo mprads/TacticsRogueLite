@@ -19,6 +19,7 @@ signal battle_reward_exited
 signal activate_artifacts_by_type(type: Artifact.TYPE)
 signal artifacts_activated(type: Artifact.TYPE)
 signal unit_shielded(unit: Unit)
+signal unit_melee(targets: Array[Area2D], modifier_manager: ModifierManager)
 signal request_add_artifact(artifact: Artifact)
 
 #Shop Events
