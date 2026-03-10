@@ -25,9 +25,8 @@ func use_ability(targets: Array[Area2D]) -> void:
 	await targets[0].activate_ability_animated_sprite.animation_finished
 	unit.selected_ability.apply_effects(targets, unit.modifier_manager)
 	unit.stats.oz -= unit.selected_ability.cost
-	if unit.selected_ability.name == "Melee":
-		Events.unit_melee.emit(targets, unit.modifier_manager)
 	Events.run_stats_ability_used.emit(unit.selected_ability)
+	Events.unit_used_ability.emit(targets, unit.modifier_manager, unit.selected_ability)
 	unit.update_visuals()
 	transition_requested.emit(self, UnitStateMachine.STATE.DISABLED)
 

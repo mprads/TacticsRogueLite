@@ -5,7 +5,7 @@ extends Artifact
 
 
 func init(owner: ArtifactIcon) -> void:
-	Events.unit_melee.connect(_on_unit_melee)
+	Events.unit_used_ability.connect(_on_unit_used_ability)
 	artifact_icon = owner
 
 
@@ -13,7 +13,10 @@ func get_tooltip() -> String:
 	return tooltip
 
 
-func _on_unit_melee(targets: Array[Area2D], modifier_manager: ModifierManager) -> void:
+func _on_unit_used_ability(targets: Array[Area2D], modifier_manager: ModifierManager, ability: Ability) -> void:
+	if ability.name != "Melee":
+		return
+
 	var damage_effect := DamageEffect.new()
 
 	damage_effect.amount = modifier_manager.get_modified_value(
