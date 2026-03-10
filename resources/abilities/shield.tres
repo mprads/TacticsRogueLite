@@ -7,7 +7,7 @@
 script = ExtResource("1_abwt8")
 name = "Shield"
 cost = 5
-highlight_atlas_coord = Vector2i(2, 1)
+highlight_atlas_coord = Vector2i(3, 2)
 tooltip = "Give an ally unit 10 [color=\"f9c22b\"]SHIELD[/color]
 Cost: 5"
 sprite_frames = ExtResource("2_j2s4t")

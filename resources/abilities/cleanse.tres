@@ -7,7 +7,7 @@
 script = ExtResource("1_d4awf")
 name = "Cleanse"
 cost = 5
-highlight_atlas_coord = Vector2i(1, 2)
+highlight_atlas_coord = Vector2i(3, 2)
 tooltip = "Cleanses all negative statuses off a friendly unit
 Cost: 5"
 sprite_frames = ExtResource("2_tbr46")
