@@ -16,7 +16,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 
 		match current_ability.target:
-			Ability.TARGET.AOE_ALLY:
+			Ability.TARGET.AOE_UNIT:
 				_handle_aoe_targeting(Unit)
 			Ability.TARGET.AOE_ENEMY:
 				_handle_aoe_targeting(Enemy)
@@ -57,7 +57,7 @@ func handle_selected_unit(target: Unit) -> void:
 		Ability.TARGET.SINGLE_ALLY:
 			if target.is_in_group("player_unit") and target != aiming_unit:
 				aiming_unit.unit_state_machine.use_ability([target])
-		Ability.TARGET.AOE_ALLY:
+		Ability.TARGET.AOE_UNIT:
 			_handle_aoe_targeting(Unit)
 		Ability.TARGET.AOE_ENEMY:
 			_handle_aoe_targeting(Enemy)
