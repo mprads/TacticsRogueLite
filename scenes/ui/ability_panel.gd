@@ -18,11 +18,11 @@ func set_ability(value: Ability) -> void:
 	if not is_node_ready(): await ready
 
 	ability = value
-	ability_label.text = ability.name
+	ability_label.text = AbilityConfig.NAMES[ability.id]
 
 
 func _on_mouse_entered() -> void:
-	var main_tooltip := { "name": ability.name, "description": ability.get_tooltip() }
+	var main_tooltip := { "name": AbilityConfig.NAMES[ability.id], "description": ability.get_tooltip() }
 	var secondary := []
 
 	if ability.get("status"):

@@ -57,10 +57,10 @@ func _on_add_item(_item: Item) -> void:
 
 func _on_ability_used(ability: Ability) -> void:
 	run_stats.oz_used += ability.cost
-	if run_stats.ablities_used.has(ability.name):
-		run_stats.ablities_used[ability.name] += 1
+	if run_stats.ablities_used.has(ability.id):
+		run_stats.ablities_used[ability.id] += 1
 	else:
-		run_stats.ablities_used[ability.name] = 1
+		run_stats.ablities_used[ability.id] = 1
 
 
 func _on_potion_used(potion: Potion) -> void:

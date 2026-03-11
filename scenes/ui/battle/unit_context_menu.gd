@@ -62,13 +62,13 @@ func _set_visuals() -> void:
 			_on_ability_button_pressed.bind(unit.stats.potion.abilities[0])
 		)
 		var keycode_1 = Utils.get_keycode_from_input_id("ability_1")
-		ability_button_1.text = unit.stats.potion.abilities[0].name + " [%s]" % keycode_1
+		ability_button_1.text = AbilityConfig.NAMES[unit.stats.potion.abilities[0].id] + " [%s]" % keycode_1
 		ability_button_1.disabled = unit.stats.oz < unit.stats.potion.abilities[0].cost
 		ability_button_2.pressed.connect(
 			_on_ability_button_pressed.bind(unit.stats.potion.abilities[1])
 		)
 		var keycode_2 = Utils.get_keycode_from_input_id("ability_2")
-		ability_button_2.text = unit.stats.potion.abilities[1].name + " [%s]" % keycode_2
+		ability_button_2.text = AbilityConfig.NAMES[unit.stats.potion.abilities[1].id] + " [%s]" % keycode_2
 		ability_button_2.disabled = unit.stats.oz < unit.stats.potion.abilities[1].cost
 	else:
 		ability_container.visible = false
@@ -77,12 +77,12 @@ func _set_visuals() -> void:
 		_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[0])
 	)
 	var keycode_melee = Utils.get_keycode_from_input_id("melee")
-	melee_button.text = unit.stats.bottle.base_abilities[0].name + " [%s]" % keycode_melee
+	melee_button.text = AbilityConfig.NAMES[unit.stats.bottle.base_abilities[0].id] + " [%s]" % keycode_melee
 	defend_button.pressed.connect(
 		_on_ability_button_pressed.bind(unit.stats.bottle.base_abilities[1])
 	)
 	var keycode_defend = Utils.get_keycode_from_input_id("defend")
-	defend_button.text = unit.stats.bottle.base_abilities[1].name + " [%s]" % keycode_defend
+	defend_button.text = AbilityConfig.NAMES[unit.stats.bottle.base_abilities[1].id] + " [%s]" % keycode_defend
 
 
 func _on_ability_button_pressed(ability: Ability) -> void:

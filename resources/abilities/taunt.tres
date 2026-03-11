@@ -6,9 +6,8 @@
 [resource]
 script = ExtResource("1_6ny0t")
 status = ExtResource("2_qqhpg")
-name = "Taunt"
+id = 11
 cost = 5
-highlight_atlas_coord = Vector2i(3, 0)
 tooltip = "Give yourself [color=\"fb6b1d\"]TAUNT[/color] forcing all enemies in range to targat you
 Cost: 5"
 type = 1

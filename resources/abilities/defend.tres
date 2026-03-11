@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("1_6m60s")
 status = ExtResource("2_2sgek")
-name = "Defend"
+id = 3
 cost = 0
-highlight_atlas_coord = Vector2i(3, 0)
 sprite_frames = ExtResource("1_cifmo")
 type = 1
 max_range = 0

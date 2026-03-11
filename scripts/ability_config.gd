@@ -1,0 +1,50 @@
+class_name AbilityConfig
+extends Object
+
+enum KEYS {
+	BITE,
+	BREAK,
+	CLEANSE,
+	DEFEND,
+	ENCOURAGE,
+	FIREBALL,
+	LIGHTNING_STRIKE,
+	MELEE,
+	SHIELD,
+	SLICE,
+	SMASH,
+	TAUNT,
+	VENOM,
+	WEAKEN,
+}
+
+const NAMES := {
+	KEYS.BITE: "Bite",
+	KEYS.BREAK: "Break",
+	KEYS.CLEANSE: "Cleanse",
+	KEYS.DEFEND: "Defend",
+	KEYS.ENCOURAGE: "Encourage",
+	KEYS.FIREBALL: "Fireball",
+	KEYS.LIGHTNING_STRIKE: "Lightning Strike",
+	KEYS.MELEE: "Melee",
+	KEYS.SHIELD: "Shield",
+	KEYS.SLICE: "Slice",
+	KEYS.SMASH: "Smash",
+	KEYS.TAUNT: "Taunt",
+	KEYS.VENOM: "Venom",
+	KEYS.WEAKEN: "Weaken",
+}
+
+enum TARGET_TYPES {
+	SELF_BUFF,
+	ALLY_BUFF,
+	DEBUFF,
+	ATTACK,
+}
+
+const ATLAS_COORD_BY_TARGET_TYPE := {
+	TARGET_TYPES.SELF_BUFF: Vector2i(3, 0),
+	TARGET_TYPES.ALLY_BUFF: Vector2i(3, 2),
+	TARGET_TYPES.ATTACK: Vector2i(2, 1),
+	TARGET_TYPES.DEBUFF: Vector2i(0, 1),
+}

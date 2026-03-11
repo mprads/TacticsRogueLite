@@ -14,9 +14,9 @@ enum TARGET {
 	}
 
 @export_category("Visuals")
-@export var name: String
+@export var id: AbilityConfig.KEYS
 @export var cost := 1
-@export var highlight_atlas_coord: Vector2i
+@export var highlight_atlas_type: AbilityConfig.TARGET_TYPES
 @export_multiline var tooltip: String
 @export var sprite_frames: SpriteFrames
 

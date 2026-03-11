@@ -14,7 +14,7 @@ func get_tooltip() -> String:
 
 
 func _on_unit_used_ability(targets: Array[Area2D], modifier_manager: ModifierManager, ability: Ability) -> void:
-	if ability.name != "Melee":
+	if ability.id != AbilityConfig.KEYS.MELEE:
 		return
 
 	var damage_effect := DamageEffect.new()

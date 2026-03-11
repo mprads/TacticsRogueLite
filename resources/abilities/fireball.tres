@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_51cym")
 base_damage = 5
-name = "Fireball"
+id = 5
 cost = 5
-highlight_atlas_coord = Vector2i(2, 1)
+highlight_atlas_type = 3
 tooltip = "Deal base 5 damage from range
 Cost: 5"
 sprite_frames = ExtResource("2_6sfer")

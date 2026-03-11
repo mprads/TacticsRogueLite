@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_7f3yd")
 base_damage = 5
-name = "Melee"
+id = 7
 cost = 0
-highlight_atlas_coord = Vector2i(2, 1)
+highlight_atlas_type = 3
 tooltip = "Deal base 5 damage to adjacent enemies
 Cost: 0"
 sprite_frames = ExtResource("2_v2mmo")

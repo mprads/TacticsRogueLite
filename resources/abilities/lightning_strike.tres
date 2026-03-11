@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_o72n6")
 base_damage = 5
-name = "Lightning Strike"
+id = 6
 cost = 8
-highlight_atlas_coord = Vector2i(2, 1)
+highlight_atlas_type = 3
 tooltip = "Deal 5 base aoe damage in a cross pattern
 Cost: 8"
 sprite_frames = ExtResource("2_0q6jl")

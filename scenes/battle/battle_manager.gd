@@ -204,7 +204,7 @@ func _on_unit_aim_started(ability: Ability, unit: Unit) -> void:
 	var arena_index := unit_mover.get_arena_index_from_position(unit.global_position)
 	var tile := unit_mover.arenas[arena_index].get_tile_from_global(unit.global_position)
 	arena.player_flood_filler.flood_fill_from_tile(
-		tile, ability.max_range, false, ability.highlight_atlas_coord
+		tile, ability.max_range, false, AbilityConfig.ATLAS_COORD_BY_TARGET_TYPE[ability.highlight_atlas_type]
 	)
 	player_manager.disable_drag_and_drop()
 	ability_manager.handle_unit_aim(unit, ability)
