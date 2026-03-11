@@ -141,6 +141,10 @@ func update_enemy_intent(enemy: Enemy) -> void:
 
 
 func verify_intent(enemy: Enemy) -> void:
+	# This is only here to stop win debug button from crashing
+	if not is_inside_tree():
+		return
+
 	if not enemy.ai.current_target:
 		update_enemy_intent(enemy)
 		return

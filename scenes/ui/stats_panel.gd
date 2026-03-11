@@ -46,5 +46,5 @@ func set_stats(value: RunStats) -> void:
 	enemies_defeated_label.text = enemies_defeated_label.text % str(run_stats.enemies_defeated)
 	turn_taken_label.text = turn_taken_label.text % str(run_stats.turns_taken)
 	fallen_units_label.text = fallen_units_label.text % ", ".join(run_stats.fallen_units)
-	most_common_ability_label.text = most_common_ability_label.text % run_stats.get_most_used(run_stats.ablities_used)
+	most_common_ability_label.text = most_common_ability_label.text % run_stats.get_most_used(run_stats.ablities_used, AbilityConfig)
 	most_common_potion_label.text = most_common_potion_label.text % run_stats.get_most_used(run_stats.potions_used)
