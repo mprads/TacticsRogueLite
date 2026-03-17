@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SalesTag" format=3 uid="uid://c6jaj7um1t6q8"]
+
+[ext_resource type="Texture2D" uid="uid://vfjwnpuwemga" path="res://assets/icons/artifacts/24x24SalesTag.png" id="1_cjjj7"]
+[ext_resource type="Script" uid="uid://dnpytlbvtpluv" path="res://resources/artifacts/sales_tag.gd" id="1_kd88r"]
+
+[resource]
+script = ExtResource("1_kd88r")
+name = "Sales Tag"
+id = "sales_tag"
+type = 4
+icon = ExtResource("1_cjjj7")
+tooltip = "Applies a 15% discount when entering the shop"
+sfx_key = 13
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

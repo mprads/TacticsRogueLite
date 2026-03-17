@@ -3,8 +3,14 @@
 [ext_resource type="Resource" uid="uid://51kkbeh20rlt" path="res://resources/random_events/blood_gamble_event.tres" id="1_hg1rr"]
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_uqowe"]
 [ext_resource type="Resource" uid="uid://br4xxhhmb3db4" path="res://resources/random_events/wishing_well_event.tres" id="2_50pr7"]
+[ext_resource type="Resource" uid="uid://b41o1pdo6umv6" path="res://resources/random_events/chaos_shrine.tres" id="3_dsf8w"]
+[ext_resource type="Resource" uid="uid://dgsv6l8oiruu2" path="res://resources/random_events/dilapidated_lab.tres" id="4_4sdty"]
+[ext_resource type="Resource" uid="uid://d2emsls8qdph0" path="res://resources/random_events/duplicator.tres" id="5_p824g"]
+[ext_resource type="Resource" uid="uid://dlvqlhhkyn40f" path="res://resources/random_events/fallen_party.tres" id="6_ywisa"]
+[ext_resource type="Resource" uid="uid://46d5w8argx8c" path="res://resources/random_events/healing_pool.tres" id="7_dc2dw"]
+[ext_resource type="Resource" uid="uid://of7tp3bhfwth" path="res://resources/random_events/merchant.tres" id="8_vhlhg"]
 
 [resource]
 script = ExtResource("1_uqowe")
-pool = Array[Resource]([ExtResource("1_hg1rr"), ExtResource("2_50pr7")])
+pool = Array[Resource]([ExtResource("1_hg1rr"), ExtResource("2_50pr7"), ExtResource("3_dsf8w"), ExtResource("4_4sdty"), ExtResource("5_p824g"), ExtResource("6_ywisa"), ExtResource("7_dc2dw"), ExtResource("8_vhlhg")])
 metadata/_custom_type_script = "uid://cwq24hkvk302e"

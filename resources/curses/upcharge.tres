@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Artifact" format=3 uid="uid://bnlqfkbwy8bo"]
+
+[ext_resource type="Texture2D" uid="uid://d2wfehvxosrdt" path="res://assets/icons/curses/24x24Upcharge.png" id="1_c8vub"]
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_h4ucr"]
+
+[resource]
+script = ExtResource("1_h4ucr")
+name = "Upcharge"
+id = "upcharge"
+type = 4
+icon = ExtResource("1_c8vub")
+tooltip = "Applies a 10% increase to all prices in the shop"
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

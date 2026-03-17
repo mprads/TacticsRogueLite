@@ -19,7 +19,3 @@ func activate() -> void:
 
 	SFXPlayer.play(SFXConfig.get_audio_stream(sfx_key))
 	activated.emit()
-
-
-func get_tooltip() -> String:
-	return tooltip

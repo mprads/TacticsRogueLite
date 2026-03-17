@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="5_bk1v7"]
 [ext_resource type="Resource" uid="uid://iecsp474ini2" path="res://resources/artifacts/hidden_dagger.tres" id="5_ncqbe"]
 [ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="5_pbn6o"]
+[ext_resource type="Resource" uid="uid://c6jaj7um1t6q8" path="res://resources/artifacts/sales_tag.tres" id="6_fq33t"]
 [ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="6_i18qs"]
 [ext_resource type="Resource" uid="uid://db7k12qw1ywca" path="res://resources/potions/balance_potion.tres" id="7_i18qs"]
 [ext_resource type="Texture2D" uid="uid://bs1lylhmwysak" path="res://assets/sprites/vials/vial_filling.png" id="7_wchyp"]
@@ -81,7 +82,7 @@ inventory = Dictionary[int, int]({
 2: 7,
 3: 4
 })
-artifacts = Array[ExtResource("1_qn745")]([ExtResource("2_pij53"), ExtResource("3_mnkgj"), ExtResource("4_isr74"), ExtResource("5_ncqbe")])
+artifacts = Array[ExtResource("1_qn745")]([ExtResource("2_pij53"), ExtResource("3_mnkgj"), ExtResource("4_isr74"), ExtResource("5_ncqbe"), ExtResource("6_fq33t")])
 party = Array[ExtResource("1_23n1j")]([SubResource("Resource_pbn6o"), SubResource("Resource_i18qs"), SubResource("Resource_mnkgj")])
 vials = Array[ExtResource("5_bk1v7")]([SubResource("Resource_eqed4"), SubResource("Resource_pij53"), SubResource("Resource_7qsao")])
 metadata/_custom_type_script = "uid://caa81aywox71a"

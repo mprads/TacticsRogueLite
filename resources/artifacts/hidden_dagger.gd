@@ -9,16 +9,12 @@ func init(owner: ArtifactIcon) -> void:
 	artifact_icon = owner
 
 
-func get_tooltip() -> String:
-	return tooltip
-
-
 func _on_unit_used_ability(targets: Array[Area2D], modifier_manager: ModifierManager, ability: Ability) -> void:
 
 	if ability.target != Ability.TARGET.SINGLE_ENEMY and ability.target != Ability.TARGET.ALL_ENEMIES:
 		return
 
-	var filtered_targets := targets.filter(func(enemy: Enemy): enemy.stats.health > 0)
+	var filtered_targets := targets.filter(func(enemy: Enemy): return enemy.stats.health > 0)
 
 	modifier_manager.add_modifier(
 		StatusConfig.KEYS.HIDDEN_DAGGER_REDUCTION,

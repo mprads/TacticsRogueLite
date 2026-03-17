@@ -9,10 +9,6 @@ func init(owner: ArtifactIcon) -> void:
 	artifact_icon = owner
 
 
-func get_tooltip() -> String:
-	return tooltip
-
-
 func _on_unit_shielded(unit: Unit) -> void:
 	# TODO this should be a shield effect but that creates infinite recursion, maybe
 	# change this to a permanent status, but that that adds ui bloat.

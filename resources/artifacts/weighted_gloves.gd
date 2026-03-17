@@ -9,10 +9,6 @@ func init(owner: ArtifactIcon) -> void:
 	artifact_icon = owner
 
 
-func get_tooltip() -> String:
-	return tooltip
-
-
 func _on_unit_used_ability(targets: Array[Area2D], modifier_manager: ModifierManager, ability: Ability) -> void:
 	if ability.id != AbilityConfig.KEYS.MELEE:
 		return
