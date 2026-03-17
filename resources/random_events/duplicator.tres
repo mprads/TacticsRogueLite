@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RandomEvent" format=3 uid="uid://d2emsls8qdph0"]
+
+[ext_resource type="PackedScene" uid="uid://bu1ar8d4hkssn" path="res://scenes/random_events/duplicator.tscn" id="1_qvgmk"]
+[ext_resource type="Script" uid="uid://cwweqnd6pt5yw" path="res://resources/random_events/random_event.gd" id="2_jl20m"]
+
+[resource]
+script = ExtResource("2_jl20m")
+weight = 1.0
+event_scene = ExtResource("1_qvgmk")
+metadata/_custom_type_script = "uid://cwweqnd6pt5yw"

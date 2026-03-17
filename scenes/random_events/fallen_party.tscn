@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://co0ffg4yc44yy"]
+
+[ext_resource type="Script" uid="uid://ct4ja2xae6n52" path="res://scenes/random_events/blood_gamble_event.gd" id="1_p4npj"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_4ti00"]
+[ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="3_6dw4h"]
+
+[node name="FallenPartyEvent" type="Node2D" unique_id=2081530474]
+script = ExtResource("1_p4npj")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1653556037]
+layer = -1
+
+[node name="AnimatedBackground" parent="BackgroundLayer" unique_id=453259533 instance=ExtResource("2_4ti00")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=142193071]
+
+[node name="Control" type="VBoxContainer" parent="UI" unique_id=9645301]
+custom_minimum_size = Vector2(250, 80)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -272.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="PayLifeButton" type="Button" parent="UI/Control" unique_id=857025153]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "Loot with chance to get artifact or damage unit and gold"
+
+[node name="LeaveButton" type="Button" parent="UI/Control" unique_id=743143789]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Leave"
+
+[node name="PartyUI" parent="UI" unique_id=444852484 instance=ExtResource("3_6dw4h")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -123.0
+offset_right = 231.0
+offset_bottom = 136.0
+
+[node name="CostLabel" type="Label" parent="UI" unique_id=2054147266]
+unique_name_in_owner = true
+visible = false
+offset_left = 229.0
+offset_top = 31.0
+offset_right = 387.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 16
+text = "Sacrifice %s life"
+
+[node name="Label" type="Label" parent="UI" unique_id=2128431123]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -5.5
+offset_right = 20.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Insert collection of broken bottles with a
+slumped over indistinguisable cloaked figure"

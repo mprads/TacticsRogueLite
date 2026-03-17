@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RandomEvent" format=3 uid="uid://dgsv6l8oiruu2"]
+
+[ext_resource type="PackedScene" uid="uid://py7blws3v5s3" path="res://scenes/random_events/dilapidated_lab.tscn" id="1_3xiqa"]
+[ext_resource type="Script" uid="uid://cwweqnd6pt5yw" path="res://resources/random_events/random_event.gd" id="1_ltskx"]
+
+[resource]
+script = ExtResource("1_ltskx")
+weight = 1.0
+event_scene = ExtResource("1_3xiqa")
+metadata/_custom_type_script = "uid://cwweqnd6pt5yw"

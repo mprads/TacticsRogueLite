@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://b7gv0cgqfq7jg"]
+
+[ext_resource type="Script" uid="uid://ct4ja2xae6n52" path="res://scenes/random_events/blood_gamble_event.gd" id="1_541so"]
+[ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_q6ool"]
+[ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="3_jp0gs"]
+
+[node name="MerchantEvent" type="Node2D" unique_id=540653003]
+script = ExtResource("1_541so")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=826517414]
+layer = -1
+
+[node name="AnimatedBackground" parent="BackgroundLayer" unique_id=168641491 instance=ExtResource("2_q6ool")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1338218581]
+
+[node name="Control" type="VBoxContainer" parent="UI" unique_id=1378310336]
+custom_minimum_size = Vector2(250, 80)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -272.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="PayLifeButton" type="Button" parent="UI/Control" unique_id=670927623]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "Merchant selling valuable goods
+curses with upcharge if you buy nothing"
+
+[node name="LeaveButton" type="Button" parent="UI/Control" unique_id=200398712]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Leave"
+
+[node name="PartyUI" parent="UI" unique_id=1019888859 instance=ExtResource("3_jp0gs")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -123.0
+offset_right = 231.0
+offset_bottom = 136.0
+
+[node name="CostLabel" type="Label" parent="UI" unique_id=993084173]
+unique_name_in_owner = true
+visible = false
+offset_left = 229.0
+offset_top = 31.0
+offset_right = 387.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 16
+text = "Sacrifice %s life"
+
+[node name="Label" type="Label" parent="UI" unique_id=516545588]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -5.5
+offset_right = 20.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Insert creepy looking traveling 
+merchat with a large backpack"

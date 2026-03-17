@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RandomEvent" format=3 uid="uid://of7tp3bhfwth"]
+
+[ext_resource type="PackedScene" uid="uid://b7gv0cgqfq7jg" path="res://scenes/random_events/merchant.tscn" id="1_scj8o"]
+[ext_resource type="Script" uid="uid://cwweqnd6pt5yw" path="res://resources/random_events/random_event.gd" id="2_vyxu7"]
+
+[resource]
+script = ExtResource("2_vyxu7")
+weight = 1.0
+event_scene = ExtResource("1_scj8o")
+metadata/_custom_type_script = "uid://cwweqnd6pt5yw"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RandomEvent" format=3 uid="uid://dlvqlhhkyn40f"]
+
+[ext_resource type="Script" uid="uid://cwweqnd6pt5yw" path="res://resources/random_events/random_event.gd" id="1_vpcsy"]
+[ext_resource type="PackedScene" uid="uid://co0ffg4yc44yy" path="res://scenes/random_events/fallen_party.tscn" id="1_xd4uj"]
+
+[resource]
+script = ExtResource("1_vpcsy")
+weight = 1.0
+event_scene = ExtResource("1_xd4uj")
+metadata/_custom_type_script = "uid://cwweqnd6pt5yw"

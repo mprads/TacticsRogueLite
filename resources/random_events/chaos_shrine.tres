@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RandomEvent" format=3 uid="uid://b41o1pdo6umv6"]
+
+[ext_resource type="Script" uid="uid://cwweqnd6pt5yw" path="res://resources/random_events/random_event.gd" id="1_8gha4"]
+[ext_resource type="PackedScene" uid="uid://fwj3qy7oc3v0" path="res://scenes/random_events/chaos_shrine.tscn" id="1_p6ngp"]
+
+[resource]
+script = ExtResource("1_8gha4")
+weight = 1.0
+event_scene = ExtResource("1_p6ngp")
+metadata/_custom_type_script = "uid://cwweqnd6pt5yw"
