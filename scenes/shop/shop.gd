@@ -46,6 +46,26 @@ func populate_shop() -> void:
 	_generate_planter_items()
 
 
+func change_item_cost(amount: float) -> void:
+	for child: ShopItem in item_shelf.get_children():
+		if not child.item:
+			continue
+		child.item.update_gold_cost(floori(child.item.gold_cost * amount))
+		child.update(inventory_manager.get_gold())
+
+	for child: ShopBottle in bottle_shelf.get_children():
+		if not child.bottle:
+			continue
+		child.bottle.update_gold_cost(floori(child.bottle.gold_cost * amount))
+		child.update(inventory_manager.get_gold())
+
+	for child: ShopArtifact in artifact_shelf.get_children():
+		if not child.artifact:
+			continue
+		child.artifact.update_gold_cost(floori(child.artifact.gold_cost * amount))
+		child.update(inventory_manager.get_gold())
+
+
 func _generate_shop_items() -> void:
 	for index in item_count:
 		var shop_item_instance := ShopItem.create_new(RNG.array_pick_random(shop_items))

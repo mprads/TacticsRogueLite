@@ -23,6 +23,9 @@ func _ready() -> void:
 
 
 func update(player_gold: int) -> void:
+	if not is_node_ready():
+		await ready
+	
 	if not bottle or not bottle_container:
 		return
 

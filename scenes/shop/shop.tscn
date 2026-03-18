@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://q7xyee7lyj2t"]
+[gd_scene format=3 uid="uid://q7xyee7lyj2t"]
 
 [ext_resource type="Script" uid="uid://dkc5fw5v2355l" path="res://scenes/shop/shop.gd" id="1_100s2"]
 [ext_resource type="PackedScene" uid="uid://bx3amx8rinwo" path="res://scenes/shop/shop_item.tscn" id="2_7lxhl"]
@@ -54,17 +54,17 @@ shader = SubResource("Shader_u2jek")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/outline_thickness = 0.0
 
-[node name="Shop" type="Node2D"]
+[node name="Shop" type="Node2D" unique_id=740895701]
 script = ExtResource("1_100s2")
 shop_items = Array[ExtResource("2_ge4d2")]([ExtResource("3_xcdpw"), ExtResource("4_tp26b"), ExtResource("5_vk20h")])
 shop_bottles = Array[ExtResource("6_hbyua")]([ExtResource("7_36j3v"), ExtResource("8_5y7fm")])
 shop_artifacts = Array[ExtResource("8_131kw")]([ExtResource("9_xoc10"), ExtResource("10_k5co3"), ExtResource("11_6kbe7")])
 shop_plants = Array[ExtResource("2_ge4d2")]([ExtResource("6_tp26b"), ExtResource("7_vk20h")])
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=575874368]
 layer = 0
 
-[node name="Background" type="TextureRect" parent="Background"]
+[node name="Background" type="TextureRect" parent="Background" unique_id=1766446243]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -73,9 +73,9 @@ grow_vertical = 2
 texture = ExtResource("2_qaxay")
 metadata/_edit_lock_ = true
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1605780970]
 
-[node name="Control" type="Control" parent="UI"]
+[node name="Control" type="Control" parent="UI" unique_id=1818686764]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -85,7 +85,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="LeaveButton" type="Button" parent="UI/Control"]
+[node name="LeaveButton" type="Button" parent="UI/Control" unique_id=837052768]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 0
@@ -96,62 +96,62 @@ offset_bottom = -15.0
 theme_override_font_sizes/font_size = 16
 text = "Leave"
 
-[node name="ShopContents" type="VBoxContainer" parent="UI"]
+[node name="ShopContents" type="VBoxContainer" parent="UI" unique_id=1289112853]
 offset_left = 140.0
 offset_top = 122.0
 offset_right = 390.0
 offset_bottom = 302.0
 theme_override_constants/separation = 9
 
-[node name="ItemShelf" type="HBoxContainer" parent="UI/ShopContents"]
+[node name="ItemShelf" type="HBoxContainer" parent="UI/ShopContents" unique_id=187392722]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="ShopItem" parent="UI/ShopContents/ItemShelf" instance=ExtResource("2_7lxhl")]
+[node name="ShopItem" parent="UI/ShopContents/ItemShelf" unique_id=555914093 instance=ExtResource("2_7lxhl")]
 layout_mode = 2
 
-[node name="ShopItem2" parent="UI/ShopContents/ItemShelf" instance=ExtResource("2_7lxhl")]
+[node name="ShopItem2" parent="UI/ShopContents/ItemShelf" unique_id=1957181226 instance=ExtResource("2_7lxhl")]
 layout_mode = 2
 
-[node name="ShopItem3" parent="UI/ShopContents/ItemShelf" instance=ExtResource("2_7lxhl")]
+[node name="ShopItem3" parent="UI/ShopContents/ItemShelf" unique_id=1110696103 instance=ExtResource("2_7lxhl")]
 layout_mode = 2
 
-[node name="ShopItem4" parent="UI/ShopContents/ItemShelf" instance=ExtResource("2_7lxhl")]
+[node name="ShopItem4" parent="UI/ShopContents/ItemShelf" unique_id=56667913 instance=ExtResource("2_7lxhl")]
 layout_mode = 2
 
-[node name="BottleShelf" type="HBoxContainer" parent="UI/ShopContents"]
+[node name="BottleShelf" type="HBoxContainer" parent="UI/ShopContents" unique_id=1363584500]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="ShopBottle" parent="UI/ShopContents/BottleShelf" instance=ExtResource("17_5y7fm")]
+[node name="ShopBottle" parent="UI/ShopContents/BottleShelf" unique_id=193165680 instance=ExtResource("17_5y7fm")]
 layout_mode = 2
 
-[node name="ShopBottle2" parent="UI/ShopContents/BottleShelf" instance=ExtResource("17_5y7fm")]
+[node name="ShopBottle2" parent="UI/ShopContents/BottleShelf" unique_id=613164415 instance=ExtResource("17_5y7fm")]
 layout_mode = 2
 
-[node name="ShopBottle3" parent="UI/ShopContents/BottleShelf" instance=ExtResource("17_5y7fm")]
+[node name="ShopBottle3" parent="UI/ShopContents/BottleShelf" unique_id=248931530 instance=ExtResource("17_5y7fm")]
 layout_mode = 2
 
-[node name="ArtifactShelf" type="HBoxContainer" parent="UI/ShopContents"]
+[node name="ArtifactShelf" type="HBoxContainer" parent="UI/ShopContents" unique_id=1842973559]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="ShopArtifact" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("18_toxgp")]
+[node name="ShopArtifact" parent="UI/ShopContents/ArtifactShelf" unique_id=604933592 instance=ExtResource("18_toxgp")]
 layout_mode = 2
 
-[node name="ShopArtifact2" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("18_toxgp")]
+[node name="ShopArtifact2" parent="UI/ShopContents/ArtifactShelf" unique_id=1701859688 instance=ExtResource("18_toxgp")]
 layout_mode = 2
 
-[node name="ShopArtifact3" parent="UI/ShopContents/ArtifactShelf" instance=ExtResource("18_toxgp")]
+[node name="ShopArtifact3" parent="UI/ShopContents/ArtifactShelf" unique_id=1649541193 instance=ExtResource("18_toxgp")]
 layout_mode = 2
 
-[node name="PlanterContents" type="HBoxContainer" parent="UI"]
+[node name="PlanterContents" type="HBoxContainer" parent="UI" unique_id=1406800093]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 32)
 offset_left = 28.0
@@ -159,17 +159,17 @@ offset_top = 286.0
 offset_right = 96.0
 offset_bottom = 318.0
 
-[node name="PlanterItem" parent="UI/PlanterContents" instance=ExtResource("10_vk20h")]
+[node name="PlanterItem" parent="UI/PlanterContents" unique_id=566989611 instance=ExtResource("10_vk20h")]
 layout_mode = 2
 
-[node name="RoundBottleButton" parent="UI" instance=ExtResource("20_u2jek")]
+[node name="RoundBottleButton" parent="UI" unique_id=1460198614 instance=ExtResource("20_u2jek")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_bnu54")
 
-[node name="UnitCreatorUI" parent="UI" instance=ExtResource("21_toxgp")]
+[node name="UnitCreatorUI" parent="UI" unique_id=480508077 instance=ExtResource("21_toxgp")]
 unique_name_in_owner = true
 visible = false
 
-[node name="DiscardUnitUI" parent="UI" instance=ExtResource("22_u2jek")]
+[node name="DiscardUnitUI" parent="UI" unique_id=363875839 instance=ExtResource("22_u2jek")]
 unique_name_in_owner = true
 visible = false

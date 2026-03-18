@@ -9,3 +9,7 @@ extends Resource
 @export_category("Filters")
 @export var is_plant: bool = false
 @export var is_loot: bool = false
+
+
+func update_gold_cost(amount: int) -> void:
+	gold_cost = amount

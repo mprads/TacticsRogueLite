@@ -249,6 +249,7 @@ func _on_shop_entered() -> void:
 	shop.artifact_manager = artifact_manager
 	shop.party_manager = party_manager
 	shop.populate_shop()
+
 	Events.shop_entered.emit(shop)
 
 

@@ -20,6 +20,9 @@ func _ready() -> void:
 
 
 func update(player_gold: int) -> void:
+	if not is_node_ready():
+		await ready
+
 	if not artifact or not artifact_container: return
 
 	gold_cost.text = str(artifact.gold_cost)

@@ -34,3 +34,7 @@ func activate() -> void:
 
 func get_tooltip() -> String:
 	return tooltip
+
+
+func update_gold_cost(amount: int) -> void:
+	gold_cost = amount

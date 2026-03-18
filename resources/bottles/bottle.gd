@@ -17,3 +17,7 @@ extends Resource
 
 @export_category("Shop")
 @export var gold_cost := 50
+
+
+func update_gold_cost(amount: int) -> void:
+	gold_cost = amount
