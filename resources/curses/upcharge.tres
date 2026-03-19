@@ -10,4 +10,5 @@ id = "upcharge"
 type = 4
 icon = ExtResource("1_c8vub")
 tooltip = "Applies a 10% increase to all prices in the shop"
+is_curse = true
 metadata/_custom_type_script = "uid://d03wgd6dnkyes"

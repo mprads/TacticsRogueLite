@@ -276,4 +276,20 @@ script = ExtResource("19_0pc8y")
 vertical_offset = 0
 sibling_offset = 15
 
+[node name="ArtifactFloatingTextSpawner" type="Control" parent="UI" unique_id=409683311]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -620.0
+offset_top = 86.0
+offset_right = -564.0
+offset_bottom = 126.0
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("19_0pc8y")
+vertical_offset = 0
+sibling_offset = 15
+
 [node name="Tooltip" parent="UI" unique_id=812937664 instance=ExtResource("15_x53nd")]

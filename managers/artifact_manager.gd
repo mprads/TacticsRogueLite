@@ -5,6 +5,8 @@ signal artifacts_changed
 
 const ARTIFACT_ACTIVATION_DELAY := 0.5
 
+@export var floating_text_spawner: FloatingTextSpawner
+
 @export var run_stats: RunStats:
 	set = set_run_stats
 @export var artifact_ui: HBoxContainer
@@ -13,10 +15,6 @@ const ARTIFACT_ACTIVATION_DELAY := 0.5
 func _ready() -> void:
 	Events.activate_artifacts_by_type.connect(activate_artifacts_by_type)
 	Events.request_add_artifact.connect(_on_request_add_artifact)
-
-
-func add_artifact(artifact: Artifact) -> void:
-	run_stats.artifacts.append(artifact)
 
 
 func init_artifacts() -> void:
@@ -61,10 +59,17 @@ func set_run_stats(value: RunStats) -> void:
 	run_stats = value
 
 
+func _spawn_floating_text(text: String, colour: Color) -> void:
+	if floating_text_spawner:
+		floating_text_spawner.spawn_text(text, colour)
+
+
 func _on_request_add_artifact(artifact: Artifact) -> void:
 	if run_stats.artifacts.has(artifact):
 		Events.request_add_gold.emit(floori(artifact.gold_cost / 3))
 	else:
 		run_stats.artifacts.append(artifact)
+		var colour = ColourHelper.KEYS.DAMAGE if artifact.is_curse else ColourHelper.KEYS.DEBUFF
+		_spawn_floating_text(artifact.name, ColourHelper.get_colour(colour)) 
 		init_artifact(artifact)
 		artifacts_changed.emit()

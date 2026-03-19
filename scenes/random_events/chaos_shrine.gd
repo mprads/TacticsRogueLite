@@ -12,6 +12,9 @@ extends Node2D
 func _ready() -> void:
 	worship_button.pressed.connect(_on_worship_button_pressed)
 	leave_button.pressed.connect(Events.random_event_exited.emit)
+	
+	artifact_pool.setup()
+	curse_pool.setup()
 
 
 func set_artifact_manager(value: ArtifactManager) -> void:
@@ -19,8 +22,10 @@ func set_artifact_manager(value: ArtifactManager) -> void:
 
 
 func _on_worship_button_pressed() -> void:
-		var artifact_reward: Artifact = artifact_pool.get_item_in_tier(0).reward_res
-		Events.request_add_artifact.emit(artifact_reward)
+	var artifact_reward: Artifact = artifact_pool.get_item_in_tier(0).reward_res
+	Events.request_add_artifact.emit(artifact_reward)
 
-		var curse_reward: Artifact = curse_pool.get_item_in_tier(0).reward_res
-		Events.request_add_artifact.emit(curse_reward)
+	var curse_reward: Artifact = curse_pool.get_item_in_tier(0).reward_res
+	Events.request_add_artifact.emit(curse_reward)
+
+	Events.random_event_exited.emit

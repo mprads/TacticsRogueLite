@@ -13,4 +13,4 @@ type = 2
 icon = ExtResource("1_blnxe")
 tooltip = "At the start of combat a random unit gains [color=\"fb6b1d\"]TAUNT[/color]"
 sfx_key = 13
-metadata/_custom_type_script = "uid://b7k7c07e785wk"
+is_curse = true
