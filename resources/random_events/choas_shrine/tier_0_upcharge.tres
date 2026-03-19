@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://ddiotlcffrl8g"]
+
+[ext_resource type="Resource" uid="uid://bnlqfkbwy8bo" path="res://resources/curses/upcharge.tres" id="1_hpw5d"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/reward.gd" id="2_kpuj7"]
+
+[resource]
+script = ExtResource("2_kpuj7")
+weight = 1.0
+reward_res = ExtResource("1_hpw5d")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

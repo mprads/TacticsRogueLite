@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeightedTable" format=3 uid="uid://d24knhy0q26b5"]
+
+[ext_resource type="Resource" uid="uid://crf6j6w6e2fkp" path="res://resources/random_events/choas_shrine/tier_0_eternal_drip.tres" id="1_c1vgn"]
+[ext_resource type="Resource" uid="uid://0xyb5oikx76s" path="res://resources/random_events/choas_shrine/tier_0_hidden_dagger.tres" id="2_wofkf"]
+[ext_resource type="Resource" uid="uid://bsjqfsjsy2oo7" path="res://resources/random_events/choas_shrine/tier_0_lasting_shield.tres" id="3_37osf"]
+[ext_resource type="Resource" uid="uid://db005nc5qj03l" path="res://resources/random_events/choas_shrine/tier_0_rallying_cheer.tres" id="4_6a70d"]
+[ext_resource type="Resource" uid="uid://c536jwapobqwy" path="res://resources/random_events/choas_shrine/tier_0_sales_tag.tres" id="5_b718q"]
+[ext_resource type="Resource" uid="uid://c5n1toove6n17" path="res://resources/random_events/choas_shrine/tier_0_weighted_gloves.tres" id="6_n3ejm"]
+[ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="10_j0myx"]
+
+[resource]
+script = ExtResource("10_j0myx")
+pool = Array[Resource]([ExtResource("1_c1vgn"), ExtResource("2_wofkf"), ExtResource("3_37osf"), ExtResource("4_6a70d"), ExtResource("5_b718q"), ExtResource("6_n3ejm")])
+tiers = 2
+metadata/_custom_type_script = "uid://cwq24hkvk302e"

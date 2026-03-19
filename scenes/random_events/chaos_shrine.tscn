@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://fwj3qy7oc3v0"]
 
-[ext_resource type="Script" uid="uid://ct4ja2xae6n52" path="res://scenes/random_events/blood_gamble_event.gd" id="1_s2yop"]
+[ext_resource type="Script" uid="uid://pwvirf15563x" path="res://scenes/random_events/chaos_shrine.gd" id="1_s2yop"]
+[ext_resource type="Resource" uid="uid://d24knhy0q26b5" path="res://resources/random_events/choas_shrine/artifact_pool.tres" id="2_e5dqq"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_h0ckg"]
-[ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="3_e5dqq"]
+[ext_resource type="Resource" uid="uid://matmtwkdbn0w" path="res://resources/random_events/choas_shrine/curse_pool.tres" id="3_nlt28"]
 
 [node name="ChaosShrineEvent" type="Node2D" unique_id=1585544953]
 script = ExtResource("1_s2yop")
+artifact_pool = ExtResource("2_e5dqq")
+curse_pool = ExtResource("3_nlt28")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1522899574]
 layer = -1
@@ -30,13 +33,12 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="PayLifeButton" type="Button" parent="UI/Control" unique_id=7352641]
+[node name="WorshipButton" type="Button" parent="UI/Control" unique_id=7352641]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-disabled = true
-text = "Gain artifact and curse"
+text = "Worship?"
 
 [node name="LeaveButton" type="Button" parent="UI/Control" unique_id=2123694240]
 unique_name_in_owner = true
@@ -44,29 +46,6 @@ custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Leave"
-
-[node name="PartyUI" parent="UI" unique_id=1389058371 instance=ExtResource("3_e5dqq")]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -231.0
-offset_top = -123.0
-offset_right = 231.0
-offset_bottom = 136.0
-
-[node name="CostLabel" type="Label" parent="UI" unique_id=1034999201]
-unique_name_in_owner = true
-visible = false
-offset_left = 229.0
-offset_top = 31.0
-offset_right = 387.0
-offset_bottom = 53.0
-theme_override_font_sizes/font_size = 16
-text = "Sacrifice %s life"
 
 [node name="Label" type="Label" parent="UI" unique_id=836526427]
 anchors_preset = 8

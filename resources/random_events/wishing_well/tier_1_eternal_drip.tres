@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Reward" load_steps=3 format=3 uid="uid://jlvg1bhquu6c"]
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://jlvg1bhquu6c"]
 
 [ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/eternal_drip.tres" id="1_g0esy"]
-[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/random_events/wishing_well/reward.gd" id="1_oaolj"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/reward.gd" id="1_oaolj"]
 
 [resource]
 script = ExtResource("1_oaolj")
