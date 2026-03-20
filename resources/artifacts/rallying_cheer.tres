@@ -15,5 +15,6 @@ tooltip = "At the start of combat a random unit gains [color=\"fb6b1d\"]ENCOURAG
 sfx_key = 13
 can_appear_in_shop = true
 can_be_reward = true
+elite_reward = true
 gold_cost = 180
 metadata/_custom_type_script = "uid://d03wgd6dnkyes"

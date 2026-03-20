@@ -11,4 +11,5 @@ type = 4
 icon = ExtResource("1_cjjj7")
 tooltip = "Applies a 15% discount when entering the shop"
 sfx_key = 13
+can_be_reward = true
 metadata/_custom_type_script = "uid://d03wgd6dnkyes"

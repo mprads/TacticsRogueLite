@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PartyDecrease" format=3 uid="uid://c3bq505jk0u2n"]
+
+[ext_resource type="Texture2D" uid="uid://by8a3jukei4px" path="res://assets/icons/curses/24x24PartyDecrease.png" id="1_oqc75"]
+[ext_resource type="Script" uid="uid://cmxm4l8c2ea6j" path="res://resources/curses/party_decrease.gd" id="2_oqc75"]
+
+[resource]
+script = ExtResource("2_oqc75")
+name = "Party Decrease"
+id = "party_decrease"
+type = 4
+icon = ExtResource("1_oqc75")
+tooltip = "Max party size is reduced by 1"
+sfx_key = 13
+can_be_reward = true
+is_curse = true
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

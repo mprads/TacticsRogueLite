@@ -13,5 +13,6 @@ tooltip = "Use abilities a second time at a 50% damage reduction"
 sfx_key = 13
 can_appear_in_shop = true
 can_be_reward = true
+elite_reward = true
 gold_cost = 200
 metadata/_custom_type_script = "uid://d03wgd6dnkyes"
