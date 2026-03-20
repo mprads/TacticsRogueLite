@@ -1,37 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://0ek8bcdoiphi"]
+[gd_scene format=3 uid="uid://0ek8bcdoiphi"]
 
 [ext_resource type="PackedScene" uid="uid://cnvnj7pvvkjhu" path="res://scenes/ui/party_unit_ui.tscn" id="1_nk53i"]
 [ext_resource type="Script" uid="uid://dogqqcw6qw7ut" path="res://scenes/ui/party_ui.gd" id="1_wmevu"]
 
-[node name="PartyUI" type="GridContainer"]
+[node name="PartyUI" type="GridContainer" unique_id=1653817322]
 custom_minimum_size = Vector2(450, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -178.0
-offset_bottom = -101.0
+offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/h_separation = 2
-theme_override_constants/v_separation = 2
+theme_override_constants/v_separation = 0
 columns = 2
 script = ExtResource("1_wmevu")
 
-[node name="PartyUnitUI" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI" parent="." unique_id=372119876 instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="PartyUnitUI2" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI2" parent="." unique_id=366662192 instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="PartyUnitUI3" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI3" parent="." unique_id=1218260105 instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="PartyUnitUI4" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI4" parent="." unique_id=204487954 instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="PartyUnitUI5" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI5" parent="." unique_id=1721714201 instance=ExtResource("1_nk53i")]
 layout_mode = 2
 
-[node name="PartyUnitUI6" parent="." instance=ExtResource("1_nk53i")]
+[node name="PartyUnitUI6" parent="." unique_id=775834293 instance=ExtResource("1_nk53i")]
 layout_mode = 2
