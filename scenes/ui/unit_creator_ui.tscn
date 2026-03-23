@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bb1m0r2sstiwk"]
+[gd_scene format=3 uid="uid://bb1m0r2sstiwk"]
 
 [ext_resource type="Script" uid="uid://bquskkmalxqh0" path="res://scenes/ui/unit_creator_ui.gd" id="1_6jq4v"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_5rxw4"]
@@ -21,7 +21,7 @@ texture_margin_left = 43.0
 texture_margin_right = 31.0
 region_rect = Rect2(305, 19, 77, 12)
 
-[node name="UnitCreatorUI" type="Control"]
+[node name="UnitCreatorUI" type="Control" unique_id=875992341]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6jq4v")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=130640988]
 custom_minimum_size = Vector2(310, 250)
 layout_mode = 1
 anchors_preset = 8
@@ -46,17 +46,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_cw783")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1196757628]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1276734789]
 layout_mode = 2
 
-[node name="HeaderLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HeaderLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1222275483]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(268, 50)
 layout_mode = 2
@@ -66,44 +66,43 @@ text = "Give Your Square Bottle Offence Potion Unit A Name"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=114845113]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="UnitIconPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_yjxky")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="UnitDetailsPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_yjxky")]
+[node name="UnitIconPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1575387908 instance=ExtResource("2_yjxky")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PotionContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="UnitDetailsPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1590084766 instance=ExtResource("3_yjxky")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PotionContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1872592701]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BottleAbilityPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer" instance=ExtResource("2_6jq4v")]
+[node name="BottleAbilityPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer" unique_id=1580855036 instance=ExtResource("2_6jq4v")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer"]
+[node name="AbilityContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer" unique_id=332632964]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer/AbilityContainer" instance=ExtResource("2_6jq4v")]
+[node name="AbilityPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer/AbilityContainer" unique_id=87907501 instance=ExtResource("2_6jq4v")]
 layout_mode = 2
 
-[node name="AbilityPanel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer/AbilityContainer" instance=ExtResource("2_6jq4v")]
+[node name="AbilityPanel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PotionContainer/AbilityContainer" unique_id=618848289 instance=ExtResource("2_6jq4v")]
 layout_mode = 2
 
-[node name="TextureSeparator" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TextureSeparator" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1955144612]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ev7vh")
 
-[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1197437786]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(260, 55)
 layout_mode = 2

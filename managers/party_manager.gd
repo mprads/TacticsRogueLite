@@ -6,9 +6,12 @@ signal party_changed
 @export var run_stats: RunStats:
 	set = set_run_stats
 
+@onready var ui_layer: CanvasLayer = %UI
+
 
 func _ready() -> void:
 	Events.unit_died.connect(_on_unit_died)
+	Events.change_max_party_size.connect(_on_change_max_party_size)
 
 
 func add_unit(unit_stats: UnitStats) -> void:
@@ -42,3 +45,12 @@ func set_run_stats(value: RunStats) -> void:
 
 func _on_unit_died(unit: Unit) -> void:
 	remove_unit(unit.stats)
+
+
+func _on_change_max_party_size(amount: int) -> void:
+	var previous_max = run_stats.max_party_size
+	run_stats.max_party_size += amount
+	
+	if previous_max > run_stats.max_party_size:
+		var discard_unit_ui := DiscardUnitUI.create_new(self, false)
+		ui_layer.add_child(discard_unit_ui)

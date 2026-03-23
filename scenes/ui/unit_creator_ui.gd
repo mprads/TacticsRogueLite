@@ -3,6 +3,8 @@ extends Control
 
 signal unit_created(unit_stats: UnitStats)
 
+const UNIT_CREATOR_UI_SCENE = preload("uid://bb1m0r2sstiwk")
+
 @export var header_text: String = "Give Your %s %s Unit A Name"
 @export var unit_stats: UnitStats:
 	set = set_unit_stats
@@ -21,6 +23,9 @@ func _ready() -> void:
 
 
 func set_unit_stats(value: UnitStats) -> void:
+	if not is_node_ready():
+		await ready
+
 	unit_stats = value
 	var bottle_name := ""
 	var potion_name := ""
@@ -59,3 +64,10 @@ func _on_line_edit_text_submitted(value: String) -> void:
 	unit_stats.name = value
 	line_edit.clear()
 	unit_created.emit(unit_stats)
+	queue_free()
+
+
+static func create_new(new_unit_stats: UnitStats) -> UnitCreatorUI:
+	var new_unit_creator_ui := UNIT_CREATOR_UI_SCENE.instantiate()
+	new_unit_creator_ui.unit_stats = new_unit_stats
+	return new_unit_creator_ui

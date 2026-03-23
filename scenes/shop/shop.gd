@@ -21,17 +21,12 @@ extends Node2D
 @onready var planter_contents: HBoxContainer = %PlanterContents
 @onready var leave_button: Button = %LeaveButton
 @onready var round_bottle_button: RoundBottleButton = %RoundBottleButton
-
-
-@onready var unit_creator_ui: UnitCreatorUI = %UnitCreatorUI
-@onready var discard_unit_ui: DiscardUnitUI = %DiscardUnitUI
+@onready var ui_layer: CanvasLayer = %UI
 
 
 func _ready() -> void:
 	leave_button.pressed.connect(Events.shop_exited.emit)
 	round_bottle_button.request_purchase.connect(_on_bottle_request_purchase)
-	unit_creator_ui.unit_created.connect(_on_unit_created)
-	discard_unit_ui.unit_removed.connect(_on_unit_removed)
 
 	var cleanup := [item_shelf, bottle_shelf, artifact_shelf, planter_contents]
 	for section in cleanup:
@@ -115,7 +110,6 @@ func set_artifact_manager(value: ArtifactManager) -> void:
 
 func set_party_manager(value: PartyManager) -> void:
 	party_manager = value
-	discard_unit_ui.party_manager = party_manager
 
 
 func _on_inventory_gold_changed() -> void:
@@ -139,19 +133,15 @@ func _on_bottle_request_purchase(bottle: Bottle, clean_up_callback: Callable = f
 	if party.size() < party_manager.get_max_party_size():
 		var unit_stats = UnitStats.new()
 		unit_stats.bottle = bottle
-		unit_creator_ui.unit_stats = unit_stats
-		unit_creator_ui.visible = true
+		var unit_creator_ui := UnitCreatorUI.create_new(unit_stats)
+		ui_layer.add_child(unit_creator_ui)
+		unit_creator_ui.unit_created.connect(_on_unit_created)
 		clean_up_callback.call()
 	else:
-		discard_unit_ui.visible = true
+		var discard_unit_ui = DiscardUnitUI.create_new(party_manager, true)
+		ui_layer.add_child(discard_unit_ui)
 
 
 func _on_unit_created(unit_stats: UnitStats) -> void:
 	party_manager.add_unit(unit_stats)
-	unit_creator_ui.unit_stats = null
-	unit_creator_ui.visible = false
 	Events.request_purchase_bottle.emit(unit_stats.bottle)
-
-
-func _on_unit_removed() -> void:
-	discard_unit_ui.visible = false

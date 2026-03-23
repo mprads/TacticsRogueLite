@@ -22,6 +22,7 @@ signal unit_shielded(unit: Unit)
 signal unit_melee(targets: Array[Area2D], modifier_manager: ModifierManager)
 signal unit_used_ability(targets: Array[Area2D], modifier_manager: ModifierManager, ability: Ability)
 signal request_add_artifact(artifact: Artifact)
+signal change_max_party_size(amount: int)
 
 #Shop Events
 signal shop_exited
