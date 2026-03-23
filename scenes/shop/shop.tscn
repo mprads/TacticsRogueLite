@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://c05jbl2pod8hb" path="res://scenes/shop/shop_bottle.tscn" id="17_5y7fm"]
 [ext_resource type="PackedScene" uid="uid://c1xgosjtjf1n3" path="res://scenes/shop/shop_artifact.tscn" id="18_toxgp"]
 [ext_resource type="PackedScene" uid="uid://twvbfvqbtx8b" path="res://scenes/shop/round_bottle_button.tscn" id="20_u2jek"]
-[ext_resource type="PackedScene" uid="uid://bb1m0r2sstiwk" path="res://scenes/ui/unit_creator_ui.tscn" id="21_toxgp"]
 
 [sub_resource type="Shader" id="Shader_toxgp"]
 resource_local_to_scene = true
@@ -165,7 +164,3 @@ layout_mode = 2
 [node name="RoundBottleButton" parent="UI" unique_id=1460198614 instance=ExtResource("20_u2jek")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_u2jek")
-
-[node name="UnitCreatorUI" parent="UI" unique_id=480508077 instance=ExtResource("21_toxgp")]
-unique_name_in_owner = true
-visible = false
