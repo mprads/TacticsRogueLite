@@ -1,0 +1,46 @@
+class_name FallenParty
+extends Node2D
+
+@export var artifact_manager: ArtifactManager : set = set_artifact_manager
+@export var artifact_pool: WeightedTable
+@export var gold_reward_min: int = 50
+@export var gold_reward_max: int = 150
+@export var artifact_chance := 0.25
+@export var unit_option_count := 3
+
+@export var bottles: Array[Bottle]
+@export var potions: Array[Potion]
+
+@onready var loot_button: Button = %LootButton
+@onready var leave_button: Button = %LeaveButton
+@onready var option_container: GridContainer = %OptionContainer
+
+
+func _ready() -> void:
+	loot_button.pressed.connect(_on_loot_button_pressed)
+	leave_button.pressed.connect(Events.random_event_exited.emit)
+
+	artifact_pool.setup()
+
+
+func set_artifact_manager(value: ArtifactManager) -> void:
+	artifact_manager = value
+
+
+func _on_loot_button_pressed() -> void:
+	var roll := RNG.instance.randf()
+	
+	if roll <= artifact_chance:
+		var artifact_reward: Artifact = artifact_pool.get_item_in_tier(0).reward_res
+		Events.request_add_artifact.emit(artifact_reward)
+	else:
+		for unit in unit_option_count:
+			var unit_stats := UnitStats.new()
+			var bottle: Bottle = RNG.array_pick_random(bottles)
+			var potion: Potion = RNG.array_pick_random(potions)
+			unit_stats.bottle = bottle
+			unit_stats.potion = potion
+			var party_select_ui := PartyUnitUI.create_new(unit_stats)
+			option_container.add_child(party_select_ui)
+
+	#Events.random_event_exited.emit()

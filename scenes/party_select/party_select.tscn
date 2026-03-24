@@ -158,3 +158,5 @@ size_flags_horizontal = 10
 
 [node name="Tooltip" parent="." unique_id=772809285 instance=ExtResource("28_227sm")]
 layout_mode = 0
+offset_right = 150.0
+offset_bottom = 180.0

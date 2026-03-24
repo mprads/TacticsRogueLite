@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="WeightedTable" format=3 uid="uid://bcewqvo3hmhg0"]
 
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_uqowe"]
-[ext_resource type="Resource" uid="uid://b41o1pdo6umv6" path="res://resources/random_events/chaos_shrine.tres" id="3_dsf8w"]
+[ext_resource type="Resource" uid="uid://dlvqlhhkyn40f" path="res://resources/random_events/fallen_party.tres" id="1_vve7o"]
 
 [resource]
 script = ExtResource("1_uqowe")
-pool = Array[Resource]([ExtResource("3_dsf8w")])
+pool = Array[Resource]([ExtResource("1_vve7o")])
 metadata/_custom_type_script = "uid://cwq24hkvk302e"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fwj3qy7oc3v0"]
 
 [ext_resource type="Script" uid="uid://pwvirf15563x" path="res://scenes/random_events/chaos_shrine.gd" id="1_s2yop"]
-[ext_resource type="Resource" uid="uid://d24knhy0q26b5" path="res://resources/random_events/choas_shrine/artifact_pool.tres" id="2_e5dqq"]
+[ext_resource type="Resource" uid="uid://tcevcpupa70c" path="res://resources/random_events/choas_shrine/artifact_pool.tres" id="2_e5dqq"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_h0ckg"]
 [ext_resource type="Resource" uid="uid://matmtwkdbn0w" path="res://resources/random_events/choas_shrine/curse_pool.tres" id="3_nlt28"]
 

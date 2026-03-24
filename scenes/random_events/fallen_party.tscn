@@ -1,11 +1,23 @@
 [gd_scene format=3 uid="uid://co0ffg4yc44yy"]
 
-[ext_resource type="Script" uid="uid://ct4ja2xae6n52" path="res://scenes/random_events/blood_gamble_event.gd" id="1_p4npj"]
+[ext_resource type="Script" uid="uid://beas17w76fdl3" path="res://scenes/random_events/fallen_party.gd" id="1_p4npj"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_4ti00"]
-[ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="3_6dw4h"]
+[ext_resource type="Resource" uid="uid://bxcn0d6o8w665" path="res://resources/random_events/fallen_party/artifact_pool.tres" id="2_su4un"]
+[ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="2_x1lje"]
+[ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="3_su4un"]
+[ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="4_tn7h5"]
+[ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="5_2aajv"]
+[ext_resource type="Resource" uid="uid://db7k12qw1ywca" path="res://resources/potions/balance_potion.tres" id="6_g2qgk"]
+[ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="7_bhgog"]
+[ext_resource type="Resource" uid="uid://dkprjh86h5yx4" path="res://resources/potions/defence_potion.tres" id="8_q6ibt"]
+[ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="9_ag6p1"]
+[ext_resource type="Resource" uid="uid://raksx0j8qtki" path="res://resources/potions/support_potion.tres" id="10_6ssxc"]
 
 [node name="FallenPartyEvent" type="Node2D" unique_id=2081530474]
 script = ExtResource("1_p4npj")
+artifact_pool = ExtResource("2_su4un")
+bottles = Array[ExtResource("2_x1lje")]([ExtResource("3_su4un"), ExtResource("4_tn7h5")])
+potions = Array[ExtResource("5_2aajv")]([ExtResource("6_g2qgk"), ExtResource("7_bhgog"), ExtResource("8_q6ibt"), ExtResource("9_ag6p1"), ExtResource("10_6ssxc")])
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1653556037]
 layer = -1
@@ -30,12 +42,11 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="PayLifeButton" type="Button" parent="UI/Control" unique_id=857025153]
+[node name="LootButton" type="Button" parent="UI/Control" unique_id=857025153]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-disabled = true
 text = "Loot with chance to get artifact or damage unit and gold"
 
 [node name="LeaveButton" type="Button" parent="UI/Control" unique_id=743143789]
@@ -44,19 +55,6 @@ custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Leave"
-
-[node name="PartyUI" parent="UI" unique_id=444852484 instance=ExtResource("3_6dw4h")]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -231.0
-offset_top = -123.0
-offset_right = 231.0
-offset_bottom = 136.0
 
 [node name="CostLabel" type="Label" parent="UI" unique_id=2054147266]
 unique_name_in_owner = true
@@ -82,3 +80,20 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Insert collection of broken bottles with a
 slumped over indistinguisable cloaked figure"
+
+[node name="OptionContainer" type="GridContainer" parent="UI" unique_id=1769963268]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(450, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+columns = 2

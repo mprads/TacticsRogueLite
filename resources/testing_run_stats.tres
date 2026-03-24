@@ -71,7 +71,7 @@ metadata/_custom_type_script = "uid://bkslv2wck48to"
 
 [resource]
 script = ExtResource("2_3wu10")
-gold = 150
+gold = 500
 inventory = Dictionary[int, int]({
 0: 5,
 1: 5,
