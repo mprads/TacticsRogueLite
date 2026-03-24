@@ -104,8 +104,9 @@ script = ExtResource("4_y3spc")
 [node name="InventoryManager" type="Node" parent="." unique_id=804924741]
 script = ExtResource("4_x53nd")
 
-[node name="PartyManager" type="Node" parent="." unique_id=419149645]
+[node name="PartyManager" type="Node" parent="." unique_id=419149645 node_paths=PackedStringArray("ui_layer")]
 script = ExtResource("5_l6p45")
+ui_layer = NodePath("../UI")
 
 [node name="VialManager" type="Node" parent="." unique_id=1299633012]
 script = ExtResource("6_kdgoc")

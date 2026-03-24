@@ -6,8 +6,7 @@ signal party_changed
 @export var run_stats: RunStats:
 	set = set_run_stats
 
-@onready var ui_layer: CanvasLayer = %UI
-
+@export var ui_layer: CanvasLayer
 
 func _ready() -> void:
 	Events.unit_died.connect(_on_unit_died)

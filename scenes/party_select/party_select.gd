@@ -32,7 +32,6 @@ const OPTION_COUNT := 3
 @onready var vial_container: HBoxContainer = %VialContainer
 @onready var inventory_container: HBoxContainer = %InventoryContainer
 @onready var gold_ui: GoldUI = %GoldUI
-@onready var unit_creator_ui: Control = %UnitCreatorUI
 
 
 func _ready() -> void:
@@ -60,7 +59,6 @@ func _set_up_connections() -> void:
 	inventory_manager.inventory_changed.connect(_on_inventory_changed)
 	party_manager.party_changed.connect(_on_party_changed)
 	vial_manager.vials_changed.connect(_on_vials_changed)
-	unit_creator_ui.unit_created.connect(_on_unit_created)
 
 
 func _generate_options(final: bool = false) -> void:
@@ -121,8 +119,9 @@ func _show_unit_creator(unit_stats: UnitStats) -> void:
 	for child in selection_container.get_children():
 		child.play_discard()
 
-	unit_creator_ui.unit_stats = unit_stats
-	unit_creator_ui.visible = true
+	var unit_creator_ui := UnitCreatorUI.create_new(unit_stats)
+	add_child(unit_creator_ui)
+	unit_creator_ui.unit_created.connect(_on_unit_created)
 
 
 func _fill_placeholders(container: HBoxContainer) -> void:
@@ -197,7 +196,6 @@ func _on_vials_changed() -> void:
 
 
 func _on_unit_created(unit_stats: UnitStats) -> void:
-	unit_creator_ui.visible = false
 	party_manager.add_unit(unit_stats)
 
 	if party_manager.get_party().size() >= 3:
