@@ -130,16 +130,24 @@ func _on_inventory_gold_changed() -> void:
 func _on_bottle_request_purchase(bottle: Bottle, clean_up_callback: Callable = func(): return) -> void:
 	var party := party_manager.get_party()
 
+	var unit_stats = UnitStats.new()
+	unit_stats.bottle = bottle
+	var unit_creator_ui := UnitCreatorUI.create_new(unit_stats)
+
 	if party.size() < party_manager.get_max_party_size():
-		var unit_stats = UnitStats.new()
-		unit_stats.bottle = bottle
-		var unit_creator_ui := UnitCreatorUI.create_new(unit_stats)
 		ui_layer.add_child(unit_creator_ui)
 		unit_creator_ui.unit_created.connect(_on_unit_created)
 		clean_up_callback.call()
 	else:
 		var discard_unit_ui = DiscardUnitUI.create_new(party_manager, true)
 		ui_layer.add_child(discard_unit_ui)
+		discard_unit_ui.unit_removed.connect(_on_unit_removed.bind(unit_creator_ui, clean_up_callback))
+
+
+func _on_unit_removed(unit_creator_ui: UnitCreatorUI, clean_up_callback: Callable = func(): return) -> void:
+	ui_layer.add_child(unit_creator_ui)
+	unit_creator_ui.unit_created.connect(_on_unit_created)
+	clean_up_callback.call()
 
 
 func _on_unit_created(unit_stats: UnitStats) -> void:

@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c1xgosjtjf1n3" path="res://scenes/shop/shop_artifact.tscn" id="18_toxgp"]
 [ext_resource type="PackedScene" uid="uid://twvbfvqbtx8b" path="res://scenes/shop/round_bottle_button.tscn" id="20_u2jek"]
 
-[sub_resource type="Shader" id="Shader_toxgp"]
+[sub_resource type="Shader" id="Shader_5y7fm"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -46,9 +46,9 @@ void fragment() {
 	COLOR = mix(color, line_color, outline - color.a);
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2jek"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_toxgp"]
 resource_local_to_scene = true
-shader = SubResource("Shader_toxgp")
+shader = SubResource("Shader_5y7fm")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/outline_thickness = 0.0
 
@@ -163,4 +163,4 @@ layout_mode = 2
 
 [node name="RoundBottleButton" parent="UI" unique_id=1460198614 instance=ExtResource("20_u2jek")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_u2jek")
+material = SubResource("ShaderMaterial_toxgp")

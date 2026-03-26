@@ -51,5 +51,6 @@ func _on_change_max_party_size(amount: int) -> void:
 	run_stats.max_party_size += amount
 	
 	if previous_max > run_stats.max_party_size:
-		var discard_unit_ui := DiscardUnitUI.create_new(self, false)
-		ui_layer.add_child(discard_unit_ui)
+		if run_stats.max_party_size < run_stats.party.size():
+			var discard_unit_ui := DiscardUnitUI.create_new(self, false)
+			ui_layer.add_child(discard_unit_ui)
