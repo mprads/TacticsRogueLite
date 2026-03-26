@@ -48,7 +48,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Loot with chance to get artifact or damage unit and gold"
+text = "Loot "
 
 [node name="LeaveButton" type="Button" parent="UI/Control" unique_id=743143789]
 unique_name_in_owner = true
@@ -56,16 +56,6 @@ custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Leave"
-
-[node name="CostLabel" type="Label" parent="UI" unique_id=2054147266]
-unique_name_in_owner = true
-visible = false
-offset_left = 229.0
-offset_top = 31.0
-offset_right = 387.0
-offset_bottom = 53.0
-theme_override_font_sizes/font_size = 16
-text = "Sacrifice %s life"
 
 [node name="Label" type="Label" parent="UI" unique_id=2128431123]
 anchors_preset = 8

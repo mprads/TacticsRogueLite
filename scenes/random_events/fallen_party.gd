@@ -34,13 +34,18 @@ func set_party_manager(value: PartyManager) -> void:
 
 
 func _on_loot_button_pressed() -> void:
+	loot_button.disabled = true
+	loot_button.visible = false
+
 	var roll := RNG.instance.randf()
-	print(roll, artifact_chance)
 	if roll <= artifact_chance:
 		var artifact_reward: Artifact = artifact_pool.get_item_in_tier(0).reward_res
 		Events.request_add_artifact.emit(artifact_reward)
 		Events.random_event_exited.emit()
 	else:
+		var gold_reward = RNG.instance.randi_range(gold_reward_min, gold_reward_max)
+		Events.request_add_gold.emit(gold_reward)
+
 		for unit in unit_option_count:
 			var unit_stats := UnitStats.new()
 			var bottle: Bottle = RNG.array_pick_random(bottles)
