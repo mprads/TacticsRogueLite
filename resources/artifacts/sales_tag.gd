@@ -6,6 +6,7 @@ extends Artifact
 
 func init(owner: ArtifactIcon) -> void:
 	Events.shop_entered.connect(_on_shop_entered)
+	artifact_icon = owner
 
 
 func _on_shop_entered(shop: Shop) -> void:
