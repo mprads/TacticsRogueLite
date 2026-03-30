@@ -39,7 +39,11 @@ func _on_heal_curse_button_pressed() -> void:
 
 	var selected: Artifact = RNG.array_pick_random(filtered)
 	artifact_manager.remove_artifact(selected)
+	Events.random_event_exited.emit()
 
 
 func _on_heal_team_button_pressed() -> void:
-	pass
+	for unit: UnitStats in party_manager.get_party():
+		unit.heal(999)
+
+	Events.random_event_exited.emit()

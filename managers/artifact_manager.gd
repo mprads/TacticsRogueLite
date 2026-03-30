@@ -55,6 +55,17 @@ func get_artifacts() -> Array[Artifact]:
 	return run_stats.artifacts
 
 
+func remove_artifact(artifact: Artifact) -> void:
+	if not artifact:
+		return
+
+	for artifact_icon: ArtifactIcon in artifact_ui.get_children():
+		if artifact_icon.artifact == artifact:
+			_spawn_floating_text(artifact.name, ColourHelper.get_colour(ColourHelper.KEYS.DAMAGE))
+			artifact_icon.queue_free()
+			run_stats.artifacts.erase(artifact)
+
+
 func set_run_stats(value: RunStats) -> void:
 	run_stats = value
 
@@ -69,7 +80,7 @@ func _on_request_add_artifact(artifact: Artifact) -> void:
 		Events.request_add_gold.emit(floori(artifact.gold_cost / 3))
 	else:
 		run_stats.artifacts.append(artifact)
-		var colour = ColourHelper.KEYS.DAMAGE if artifact.is_curse else ColourHelper.KEYS.DEBUFF
+		var colour = ColourHelper.KEYS.CURSE if artifact.is_curse else ColourHelper.KEYS.DEBUFF
 		_spawn_floating_text(artifact.name, ColourHelper.get_colour(colour)) 
 		init_artifact(artifact)
 		artifacts_changed.emit()

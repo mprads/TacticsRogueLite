@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://bxvjog2tqr53p"]
+
+[ext_resource type="Resource" uid="uid://c6jaj7um1t6q8" path="res://resources/artifacts/sales_tag.tres" id="1_n7mj6"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/reward.gd" id="2_g16hg"]
+
+[resource]
+script = ExtResource("2_g16hg")
+weight = 1.0
+reward_res = ExtResource("1_n7mj6")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

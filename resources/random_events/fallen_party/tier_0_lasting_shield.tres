@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://otg4jgkwnqlp"]
+
+[ext_resource type="Resource" uid="uid://cyi8lynrukcin" path="res://resources/artifacts/lasting_shield.tres" id="1_i4w3o"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/reward.gd" id="2_v1owc"]
+
+[resource]
+script = ExtResource("2_v1owc")
+weight = 1.0
+reward_res = ExtResource("1_i4w3o")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

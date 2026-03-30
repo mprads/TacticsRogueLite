@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://c8o5f5i7mcnnl"]
+
+[ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/eternal_drip.tres" id="1_0si88"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/reward.gd" id="2_04366"]
+
+[resource]
+script = ExtResource("2_04366")
+weight = 1.0
+reward_res = ExtResource("1_0si88")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

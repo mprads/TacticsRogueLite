@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeightedTable" format=3 uid="uid://bcewqvo3hmhg0"]
 
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_uqowe"]
-[ext_resource type="Resource" uid="uid://dlvqlhhkyn40f" path="res://resources/random_events/fallen_party.tres" id="1_vve7o"]
+[ext_resource type="Resource" uid="uid://46d5w8argx8c" path="res://resources/random_events/healing_pool.tres" id="1_vve7o"]
 
 [resource]
 script = ExtResource("1_uqowe")

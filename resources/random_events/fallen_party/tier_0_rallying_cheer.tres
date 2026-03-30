@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://en55wh2lsuxe"]
+
+[ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="1_i2dgc"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/reward.gd" id="2_m2fwa"]
+
+[resource]
+script = ExtResource("2_m2fwa")
+weight = 1.0
+reward_res = ExtResource("1_i2dgc")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"
