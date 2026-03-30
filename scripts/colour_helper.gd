@@ -1,7 +1,7 @@
 class_name ColourHelper
 extends Object
 
-enum KEYS { DAMAGE, SHIELD, BUFF, DEBUFF, WHITE, BLACK }
+enum KEYS { DAMAGE, SHIELD, BUFF, DEBUFF, WHITE, BLACK, CURSE }
 
 const COLOURS := {
 	KEYS.WHITE: Color("#EAFAF7"),
@@ -10,6 +10,7 @@ const COLOURS := {
 	KEYS.SHIELD: Color("#f9c22b"),
 	KEYS.BUFF: Color("#fb6b1d"),
 	KEYS.DEBUFF: Color("#165a4c"),
+	KEYS.CURSE: Color("#6b3e75"),
 }
 
 
