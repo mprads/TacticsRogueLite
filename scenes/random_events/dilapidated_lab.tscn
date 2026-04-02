@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://dkprjh86h5yx4" path="res://resources/potions/defence_potion.tres" id="5_c4d6c"]
 [ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="6_3h5db"]
 [ext_resource type="Resource" uid="uid://raksx0j8qtki" path="res://resources/potions/support_potion.tres" id="7_0810u"]
-[ext_resource type="PackedScene" uid="uid://k3fq1svq2il6" path="res://scenes/ui/vial_select_button.tscn" id="9_c4d6c"]
+[ext_resource type="PackedScene" uid="uid://6m8egyaev33y" path="res://scenes/ui/vial_panel.tscn" id="9_jjxwb"]
 
 [node name="DilapidatedLabEvent" type="Node2D" unique_id=139537155]
 script = ExtResource("1_iid5m")
@@ -43,37 +43,39 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -70.0
-offset_right = 110.0
-offset_bottom = 70.0
+offset_left = -123.0
+offset_top = -154.0
+offset_right = 112.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" parent="UI/VialContainer" unique_id=757573606 instance=ExtResource("9_c4d6c")]
+[node name="VialPanel" parent="UI/VialContainer" unique_id=808952214 instance=ExtResource("9_jjxwb")]
 layout_mode = 2
 
-[node name="Button2" parent="UI/VialContainer" unique_id=1262541483 instance=ExtResource("9_c4d6c")]
+[node name="VialPanel2" parent="UI/VialContainer" unique_id=2098156946 instance=ExtResource("9_jjxwb")]
 layout_mode = 2
 
-[node name="Button3" parent="UI/VialContainer" unique_id=799992111 instance=ExtResource("9_c4d6c")]
+[node name="VialPanel3" parent="UI/VialContainer" unique_id=608944067 instance=ExtResource("9_jjxwb")]
 layout_mode = 2
 
-[node name="Button4" parent="UI/VialContainer" unique_id=100968285 instance=ExtResource("9_c4d6c")]
+[node name="VialPanel4" parent="UI/VialContainer" unique_id=1576465860 instance=ExtResource("9_jjxwb")]
 layout_mode = 2
 
-[node name="Button5" parent="UI/VialContainer" unique_id=992390410 instance=ExtResource("9_c4d6c")]
+[node name="VialPanel5" parent="UI/VialContainer" unique_id=452250524 instance=ExtResource("9_jjxwb")]
 layout_mode = 2
 
 [node name="Control" type="VBoxContainer" parent="UI" unique_id=406635536]
-custom_minimum_size = Vector2(250, 80)
+custom_minimum_size = Vector2(250, 40)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -272.0
-offset_top = -80.0
+offset_left = -257.0
+offset_top = -50.0
+offset_right = -7.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 10
@@ -85,5 +87,6 @@ theme_override_constants/separation = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_font_sizes/font_size = 16
 text = "Leave"
