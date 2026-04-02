@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://py7blws3v5s3"]
 
-[ext_resource type="Script" uid="uid://ct4ja2xae6n52" path="res://scenes/random_events/blood_gamble_event.gd" id="1_iid5m"]
+[ext_resource type="Script" uid="uid://b7kx18ifcio6j" path="res://scenes/random_events/dilapidated_lab.gd" id="1_iid5m"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_6vj46"]
-[ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="3_uc3y1"]
+[ext_resource type="Script" uid="uid://dgy3brauklt5w" path="res://resources/potions/potion.gd" id="2_jjxwb"]
+[ext_resource type="Resource" uid="uid://db7k12qw1ywca" path="res://resources/potions/balance_potion.tres" id="3_rpt07"]
+[ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="4_mun1h"]
+[ext_resource type="Resource" uid="uid://dkprjh86h5yx4" path="res://resources/potions/defence_potion.tres" id="5_c4d6c"]
+[ext_resource type="Resource" uid="uid://dghx2h1qrhdv" path="res://resources/potions/offence_potion.tres" id="6_3h5db"]
+[ext_resource type="Resource" uid="uid://raksx0j8qtki" path="res://resources/potions/support_potion.tres" id="7_0810u"]
+[ext_resource type="PackedScene" uid="uid://k3fq1svq2il6" path="res://scenes/ui/vial_select_button.tscn" id="9_c4d6c"]
 
 [node name="DilapidatedLabEvent" type="Node2D" unique_id=139537155]
 script = ExtResource("1_iid5m")
+potions = Array[ExtResource("2_jjxwb")]([ExtResource("3_rpt07"), ExtResource("4_mun1h"), ExtResource("5_c4d6c"), ExtResource("6_3h5db"), ExtResource("7_0810u")])
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1652855302]
 layer = -1
@@ -13,6 +20,50 @@ layer = -1
 [node name="AnimatedBackground" parent="BackgroundLayer" unique_id=1864769385 instance=ExtResource("2_6vj46")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=534211430]
+
+[node name="Label" type="Label" parent="UI" unique_id=739271626]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -5.5
+offset_right = 113.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Insert alchemy station in state of decay/disarry"
+
+[node name="VialContainer" type="VBoxContainer" parent="UI" unique_id=1359811723]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(235, 140)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -70.0
+offset_right = 110.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" parent="UI/VialContainer" unique_id=757573606 instance=ExtResource("9_c4d6c")]
+layout_mode = 2
+
+[node name="Button2" parent="UI/VialContainer" unique_id=1262541483 instance=ExtResource("9_c4d6c")]
+layout_mode = 2
+
+[node name="Button3" parent="UI/VialContainer" unique_id=799992111 instance=ExtResource("9_c4d6c")]
+layout_mode = 2
+
+[node name="Button4" parent="UI/VialContainer" unique_id=100968285 instance=ExtResource("9_c4d6c")]
+layout_mode = 2
+
+[node name="Button5" parent="UI/VialContainer" unique_id=992390410 instance=ExtResource("9_c4d6c")]
+layout_mode = 2
 
 [node name="Control" type="VBoxContainer" parent="UI" unique_id=406635536]
 custom_minimum_size = Vector2(250, 80)
@@ -30,54 +81,9 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="PayLifeButton" type="Button" parent="UI/Control" unique_id=834957134]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-disabled = true
-text = "Choose up to 3 potions from 5"
-
 [node name="LeaveButton" type="Button" parent="UI/Control" unique_id=1642996269]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Leave"
-
-[node name="PartyUI" parent="UI" unique_id=150563448 instance=ExtResource("3_uc3y1")]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -231.0
-offset_top = -123.0
-offset_right = 231.0
-offset_bottom = 136.0
-
-[node name="CostLabel" type="Label" parent="UI" unique_id=546927960]
-unique_name_in_owner = true
-visible = false
-offset_left = 229.0
-offset_top = 31.0
-offset_right = 387.0
-offset_bottom = 53.0
-theme_override_font_sizes/font_size = 16
-text = "Sacrifice %s life"
-
-[node name="Label" type="Label" parent="UI" unique_id=739271626]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -5.5
-offset_right = 20.0
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Insert alchemy station in state of decay/disarry"

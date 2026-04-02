@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://k3fq1svq2il6"]
+
+[ext_resource type="Texture2D" uid="uid://bnqdx5ci26pmj" path="res://assets/sprites/temp_sheets/UI assets pack 2/Time & weather.png" id="1_6ltt7"]
+[ext_resource type="PackedScene" uid="uid://bkyqjyhlg3ia0" path="res://scenes/ui/vial_button.tscn" id="2_hich1"]
+[ext_resource type="Script" uid="uid://s46j607rhm5a" path="res://scenes/ui/vial_select_button.gd" id="2_pqeb0"]
+[ext_resource type="PackedScene" uid="uid://gqoxvqcgviwc" path="res://scenes/ui/ability_panel.tscn" id="3_pqeb0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rpt07"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mun1h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c4d6c"]
+texture = ExtResource("1_6ltt7")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 15, 49, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mun1h"]
+texture = ExtResource("1_6ltt7")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 15, 49, 49)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3h5db"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3h5db"]
+texture = ExtResource("1_6ltt7")
+texture_margin_left = 7.0
+texture_margin_top = 10.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 15, 49, 49)
+
+[node name="Button" type="Button" unique_id=757573606]
+custom_minimum_size = Vector2(235, 28)
+offset_right = 235.0
+offset_bottom = 24.0
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rpt07")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mun1h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c4d6c")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_mun1h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3h5db")
+theme_override_styles/focus = SubResource("StyleBoxTexture_3h5db")
+script = ExtResource("2_pqeb0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1009339890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VialButton" parent="HBoxContainer" unique_id=849639819 instance=ExtResource("2_hich1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=1400705973]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AbilityPanel" parent="HBoxContainer/AbilityContainer" unique_id=354542068 instance=ExtResource("3_pqeb0")]
+layout_mode = 2
+
+[node name="AbilityPanel2" parent="HBoxContainer/AbilityContainer" unique_id=750355595 instance=ExtResource("3_pqeb0")]
+layout_mode = 2

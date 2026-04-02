@@ -282,6 +282,8 @@ func _on_random_event_entered(room: Room) -> void:
 		random_event.artifact_manager = artifact_manager
 	if "party_manager" in random_event:
 		random_event.party_manager = party_manager
+	if "vial_manager" in random_event:
+		random_event.vial_manager = vial_manager
 
 
 func _on_request_use_vial(vial: Vial) -> void:
