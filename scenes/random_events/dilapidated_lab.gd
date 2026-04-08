@@ -6,6 +6,11 @@ extends Node2D
 @export var count := 5
 
 @onready var vial_container: VBoxContainer = %VialContainer
+@onready var leave_button: Button = %LeaveButton
+
+
+func _ready() -> void:
+	leave_button.pressed.connect(Events.random_event_exited.emit)
 
 
 func set_vial_manager(value: VialManager) -> void:
