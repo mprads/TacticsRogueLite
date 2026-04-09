@@ -12,7 +12,13 @@ func get_vials() -> Array[Vial]:
 
 
 func add_vial(vial: Vial) -> void:
-	run_stats.vials.append(vial)
+	if run_stats.vials.size() == 3:
+		for existing_vial in run_stats.vials:
+			if not existing_vial.potion:
+				existing_vial.potion = vial.potion
+	else:
+		run_stats.vials.append(vial)
+
 	vials_changed.emit()
 
 
