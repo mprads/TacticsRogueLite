@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Reward" format=3 uid="uid://bny0icqclbdcc"]
+
+[ext_resource type="Resource" uid="uid://dorr67ytr5uh5" path="res://resources/curses/shattered_vial.tres" id="1_jeagm"]
+[ext_resource type="Script" uid="uid://cjpuq3akd5u0p" path="res://resources/reward.gd" id="2_dywmu"]
+
+[resource]
+script = ExtResource("2_dywmu")
+weight = 1.0
+reward_res = ExtResource("1_jeagm")
+metadata/_custom_type_script = "uid://cjpuq3akd5u0p"

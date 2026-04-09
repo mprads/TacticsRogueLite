@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ExtraPocket" format=3 uid="uid://dc6ywm6b32643"]
+
+[ext_resource type="Texture2D" uid="uid://ouqbb80d18xu" path="res://assets/icons/artifacts/24x24ExtraPocket.png" id="1_6b3q4"]
+[ext_resource type="Script" uid="uid://by7o4sr6l3c1a" path="res://resources/artifacts/extra_pocket.gd" id="1_o5nat"]
+
+[resource]
+script = ExtResource("1_o5nat")
+name = "Extra Pocket"
+id = "extra_pocket"
+type = 4
+icon = ExtResource("1_6b3q4")
+tooltip = "Max vial count increased by 1"
+sfx_key = 13
+can_be_reward = true
+elite_reward = true
+gold_cost = 250
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

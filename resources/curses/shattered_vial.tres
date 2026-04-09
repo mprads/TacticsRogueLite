@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShatteredVial" format=3 uid="uid://dorr67ytr5uh5"]
+
+[ext_resource type="Script" uid="uid://iar88i6i6fg5" path="res://resources/curses/shattered_vial.gd" id="1_00tuc"]
+[ext_resource type="Texture2D" uid="uid://h4xre125mw33" path="res://assets/icons/curses/24x24ShatteredVial.png" id="1_hjupn"]
+
+[resource]
+script = ExtResource("1_00tuc")
+name = "Shattered Vial"
+id = "shattered_vial"
+type = 4
+icon = ExtResource("1_hjupn")
+tooltip = "Max vial count is reduced by 1"
+sfx_key = 13
+is_curse = true
+metadata/_custom_type_script = "uid://d03wgd6dnkyes"

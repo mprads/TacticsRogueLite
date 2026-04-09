@@ -7,6 +7,10 @@ signal vials_changed
 	set = set_run_stats
 
 
+func _ready() -> void:
+	Events.change_max_vial_count.connect(_on_change_max_vial_count)
+
+
 func get_vials() -> Array[Vial]:
 	return run_stats.vials
 
@@ -30,3 +34,16 @@ func set_run_stats(value: RunStats) -> void:
 
 	for vial in run_stats.vials:
 		vial.changed.connect(vials_changed.emit)
+
+
+func _on_change_max_vial_count(amount: int) -> void:
+	var previous_max = run_stats.max_vial_count
+	run_stats.max_vial_count += amount
+
+	if previous_max < run_stats.max_vial_count:
+		add_vial(Vial.new())
+
+	#if previous_max > run_stats.max_vial_count:
+		#if run_stats.max_vial_count < run_stats.vials.size():
+			#var discard_unit_ui := DiscardUnitUI.create_new(self, false)
+			#ui_layer.add_child(discard_unit_ui)

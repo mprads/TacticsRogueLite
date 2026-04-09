@@ -7,8 +7,9 @@
 [ext_resource type="Resource" uid="uid://bxvjog2tqr53p" path="res://resources/random_events/fallen_party/tier_0_sales_tag.tres" id="5_m0sdu"]
 [ext_resource type="Resource" uid="uid://cnqbli2cm7e78" path="res://resources/random_events/fallen_party/tier_0_weighted_gloves.tres" id="6_gg6xw"]
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="7_dix55"]
+[ext_resource type="Resource" uid="uid://bgot7tx2qmpcf" path="res://resources/random_events/fallen_party/tier_0_extra_pocket.tres" id="7_gsrfy"]
 
 [resource]
 script = ExtResource("7_dix55")
-pool = Array[Resource]([ExtResource("1_vpkmk"), ExtResource("2_gsrfy"), ExtResource("3_caonf"), ExtResource("4_wf0bl"), ExtResource("5_m0sdu"), ExtResource("6_gg6xw")])
+pool = Array[Resource]([ExtResource("1_vpkmk"), ExtResource("2_gsrfy"), ExtResource("3_caonf"), ExtResource("4_wf0bl"), ExtResource("5_m0sdu"), ExtResource("6_gg6xw"), ExtResource("7_gsrfy")])
 metadata/_custom_type_script = "uid://cwq24hkvk302e"

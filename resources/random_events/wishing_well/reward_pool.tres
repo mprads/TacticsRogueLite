@@ -10,9 +10,11 @@
 [ext_resource type="Resource" uid="uid://cv8tda6lbod2h" path="res://resources/random_events/wishing_well/tier_1_rallying_cheer.tres" id="7_u7nnm"]
 [ext_resource type="Resource" uid="uid://cpvmqs8qtbpgj" path="res://resources/random_events/wishing_well/tier_1_pariah.tres" id="8_5kssy"]
 [ext_resource type="Resource" uid="uid://cqpkntkkegbh8" path="res://resources/random_events/wishing_well/tier_1_leaky_tap.tres" id="9_mbrut"]
+[ext_resource type="Resource" uid="uid://ds4jxlac0qgdu" path="res://resources/random_events/wishing_well/tier_1_extra_pocket.tres" id="10_31mxj"]
+[ext_resource type="Resource" uid="uid://b72uig8meq06p" path="res://resources/random_events/wishing_well/tier_1_shattered_vial.tres" id="11_n2krm"]
 
 [resource]
 script = ExtResource("1_y6eem")
-pool = Array[Resource]([ExtResource("1_dkxvj"), ExtResource("2_han7b"), ExtResource("3_5kssy"), ExtResource("4_mbrut"), ExtResource("5_31mxj"), ExtResource("6_n2krm"), ExtResource("7_u7nnm"), ExtResource("8_5kssy"), ExtResource("9_mbrut")])
+pool = Array[Resource]([ExtResource("1_dkxvj"), ExtResource("2_han7b"), ExtResource("3_5kssy"), ExtResource("4_mbrut"), ExtResource("5_31mxj"), ExtResource("6_n2krm"), ExtResource("7_u7nnm"), ExtResource("8_5kssy"), ExtResource("9_mbrut"), ExtResource("10_31mxj"), ExtResource("11_n2krm")])
 tiers = 2
 metadata/_custom_type_script = "uid://cwq24hkvk302e"
