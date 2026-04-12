@@ -6,6 +6,8 @@ signal vials_changed
 @export var run_stats: RunStats:
 	set = set_run_stats
 
+@export var ui_layer: CanvasLayer
+
 
 func _ready() -> void:
 	Events.change_max_vial_count.connect(_on_change_max_vial_count)
@@ -16,7 +18,7 @@ func get_vials() -> Array[Vial]:
 
 
 func add_vial(vial: Vial) -> void:
-	if run_stats.vials.size() == 3:
+	if run_stats.vials.size() == run_stats.max_vial_count:
 		for existing_vial in run_stats.vials:
 			if not existing_vial.potion:
 				existing_vial.potion = vial.potion
@@ -40,10 +42,11 @@ func _on_change_max_vial_count(amount: int) -> void:
 	var previous_max = run_stats.max_vial_count
 	run_stats.max_vial_count += amount
 
+	print(previous_max, run_stats.max_vial_count)
 	if previous_max < run_stats.max_vial_count:
 		add_vial(Vial.new())
 
-	#if previous_max > run_stats.max_vial_count:
-		#if run_stats.max_vial_count < run_stats.vials.size():
-			#var discard_unit_ui := DiscardUnitUI.create_new(self, false)
-			#ui_layer.add_child(discard_unit_ui)
+	if previous_max > run_stats.max_vial_count:
+		if run_stats.max_vial_count < run_stats.vials.size():
+			var discard_vial_ui := DiscardVialUI.create_new(self, false)
+			ui_layer.add_child(discard_vial_ui)

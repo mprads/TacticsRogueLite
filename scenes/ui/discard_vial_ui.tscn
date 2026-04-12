@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bdw8glp5ymklh"]
+
+[ext_resource type="Script" uid="uid://wdsfg0vsoitl" path="res://scenes/ui/discard_vial_ui.gd" id="1_hl2bd"]
+[ext_resource type="PackedScene" uid="uid://6m8egyaev33y" path="res://scenes/ui/vial_panel.tscn" id="2_hl2bd"]
+
+[node name="DiscardVialUI" type="Control" unique_id=1995645296]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hl2bd")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1260488152]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -151.0
+offset_right = 239.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=512813902]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1514093204]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1137317621]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Select A Vial To Remove"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=2056439145]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=664599971]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="VialContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1537890124]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="VialPanel" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/VialContainer" unique_id=2063783308 instance=ExtResource("2_hl2bd")]
+layout_mode = 2
+
+[node name="VialPanel2" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/VialContainer" unique_id=847359831 instance=ExtResource("2_hl2bd")]
+layout_mode = 2
+
+[node name="VialPanel3" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/VialContainer" unique_id=532910595 instance=ExtResource("2_hl2bd")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer" unique_id=1054504894]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="CancelLabel" type="Label" parent="PanelContainer/MarginContainer2" unique_id=1679203067]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Press [esc] to cancel"

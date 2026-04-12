@@ -108,8 +108,9 @@ script = ExtResource("4_x53nd")
 script = ExtResource("5_l6p45")
 ui_layer = NodePath("../UI")
 
-[node name="VialManager" type="Node" parent="." unique_id=1299633012]
+[node name="VialManager" type="Node" parent="." unique_id=1299633012 node_paths=PackedStringArray("ui_layer")]
 script = ExtResource("6_kdgoc")
+ui_layer = NodePath("../UI")
 
 [node name="ArtifactManager" type="Node" parent="." unique_id=1265752777]
 script = ExtResource("7_y3spc")
