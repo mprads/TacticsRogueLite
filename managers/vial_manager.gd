@@ -28,6 +28,17 @@ func add_vial(vial: Vial) -> void:
 	vials_changed.emit()
 
 
+func remove_vial(vial: Vial) -> void:
+	if not vial:
+		return
+
+	if not run_stats.vials.has(vial):
+		return
+
+	run_stats.vials.erase(vial)
+	vials_changed.emit()
+
+
 func set_run_stats(value: RunStats) -> void:
 	run_stats = value
 
@@ -42,11 +53,15 @@ func _on_change_max_vial_count(amount: int) -> void:
 	var previous_max = run_stats.max_vial_count
 	run_stats.max_vial_count += amount
 
-	print(previous_max, run_stats.max_vial_count)
 	if previous_max < run_stats.max_vial_count:
 		add_vial(Vial.new())
 
 	if previous_max > run_stats.max_vial_count:
 		if run_stats.max_vial_count < run_stats.vials.size():
 			var discard_vial_ui := DiscardVialUI.create_new(self, false)
+			discard_vial_ui.vial_selected.connect(_on_vial_selected)
 			ui_layer.add_child(discard_vial_ui)
+
+
+func _on_vial_selected(vial: Vial) -> void:
+	remove_vial(vial)

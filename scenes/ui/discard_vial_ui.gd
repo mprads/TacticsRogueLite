@@ -1,7 +1,7 @@
 class_name DiscardVialUI
 extends Control
 
-signal vial_removed
+signal vial_selected
 
 const DISCARD_VIAL_UI_SCENE = preload("uid://bdw8glp5ymklh")
 
@@ -45,8 +45,8 @@ func set_vial_manager(value: VialManager) -> void:
 
 
 func _on_vial_panel_pressed(vial: Vial) -> void:
-	print(vial)
-	#vial_manager.remove_child(vial)
+	vial_selected.emit(vial)
+	queue_free()
 
 
 static func create_new(new_vial_manager: VialManager, enable_cancel: bool = false) -> DiscardVialUI:
