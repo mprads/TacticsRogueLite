@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://o0flfk67550c"]
+[gd_scene format=3 uid="uid://o0flfk67550c"]
 
 [ext_resource type="Script" uid="uid://cau61ofs5nsej" path="res://scenes/ui/gold_ui.gd" id="1_h4fjr"]
-[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="1_xf85s"]
+[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/32x32gold.png" id="1_xf85s"]
 
 [node name="GoldUI" type="HBoxContainer"]
 size_flags_horizontal = 6

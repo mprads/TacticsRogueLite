@@ -9,6 +9,10 @@ const SHOP_ITEM_SCENE = preload("uid://bx3amx8rinwo")
 @onready var item_icon_button: TextureButton = %ItemIconButton
 @onready var gold_cost: Label = %GoldCost
 @onready var item_container: VBoxContainer = %ItemContainer
+@onready var discont_tag: Control = %DiscontTag
+@onready var discount_gold_cost: Label = %DiscountGoldCost
+@onready var upcharge_tag: Control = %UpchargeTag
+@onready var upcharge_gold_cost: Label = %UpchargeGoldCost
 
 
 func _ready() -> void:
@@ -19,20 +23,43 @@ func _ready() -> void:
 	item_icon_button.pressed.connect(_on_purchase_item)
 
 
+func update_gold_cost(change: float) -> void:
+	if not item or not change:
+		return
+
+	var new_cost := floori(item.gold_cost * change)
+	if new_cost > item.gold_cost:
+		upcharge_tag.visible = true
+	elif new_cost < item.gold_cost:
+		discont_tag.visible = true
+	else:
+		upcharge_tag.visible = false
+		discont_tag.visible = false
+
+	item.update_gold_cost(new_cost)
+
+
 func update(player_gold: int) -> void:
 	if not is_node_ready():
 		await ready
 
 	if not item or not item_container: return
 
-	gold_cost.text = str(item.gold_cost)
+	var item_gold_cost = str(item.gold_cost)
+	gold_cost.text = item_gold_cost
+	discount_gold_cost.text = item_gold_cost
+	upcharge_gold_cost.text = item_gold_cost
 
 	if item.gold_cost > player_gold:
 		item_icon_button.disabled = true
 		gold_cost.modulate = Color.RED
+		discount_gold_cost.modulate = Color.RED
+		upcharge_gold_cost.modulate = Color.RED
 	else:
 		item_icon_button.disabled = false
 		gold_cost.modulate = Color.WHITE
+		discount_gold_cost.modulate = Color.WHITE
+		upcharge_gold_cost.modulate = Color.WHITE
 
 
 func set_item(value: Item) -> void:
@@ -48,6 +75,8 @@ func set_item(value: Item) -> void:
 
 func _on_purchase_item() -> void:
 	item_container.queue_free()
+	discont_tag.queue_free()
+	upcharge_tag.queue_free()
 	Events.request_purchase_item.emit(item)
 
 

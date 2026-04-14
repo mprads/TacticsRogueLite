@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://0ga0vi657us1" path="res://assets/icons/items/32x32venom.png" id="1_3rqce"]
 [ext_resource type="Script" uid="uid://ck43nvnbpa3f4" path="res://scenes/shop/shop_item.gd" id="1_35nb3"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="3_4oha2"]
-[ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="3_hannv"]
 [ext_resource type="Texture2D" uid="uid://dm5conpiemvp2" path="res://assets/icons/items/32x32sale_tag.png" id="3_kfj00"]
+[ext_resource type="Texture2D" uid="uid://dlpuo7etifygv" path="res://assets/icons/8x8gold.png" id="5_cjtcq"]
+[ext_resource type="Texture2D" uid="uid://cgyk3wpstsmh1" path="res://assets/icons/items/32x32discount_tag.png" id="6_l6aef"]
+[ext_resource type="Texture2D" uid="uid://dglgg5psix11i" path="res://assets/icons/items/32x32upcharge_tag.png" id="7_cjtcq"]
 
 [node name="ShopItem" type="Control" unique_id=598345864]
 custom_minimum_size = Vector2(32, 54)
@@ -42,20 +44,127 @@ stretch_mode = 5
 [node name="CostContainer" type="HBoxContainer" parent="ItemContainer" unique_id=1986783377]
 custom_minimum_size = Vector2(32, 10)
 layout_mode = 2
-theme_override_constants/separation = 0
+mouse_filter = 2
+theme_override_constants/separation = 2
+alignment = 1
 
 [node name="GoldIcon" type="TextureRect" parent="ItemContainer/CostContainer" unique_id=361735568]
-custom_minimum_size = Vector2(10, 10)
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("3_hannv")
+texture = ExtResource("5_cjtcq")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="GoldCost" type="Label" parent="ItemContainer/CostContainer" unique_id=1711010422]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "999"
+horizontal_alignment = 2
+
+[node name="DiscontTag" type="Control" parent="." unique_id=880620810]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 0
+offset_top = 14.0
+offset_right = 32.0
+offset_bottom = 46.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="DiscontTag" unique_id=1011069959]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_l6aef")
+
+[node name="CostContainer" type="HBoxContainer" parent="DiscontTag" unique_id=1525849146]
+custom_minimum_size = Vector2(32, 10)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="GoldIcon" type="TextureRect" parent="DiscontTag/CostContainer" unique_id=656961529]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_cjtcq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DiscountGoldCost" type="Label" parent="DiscontTag/CostContainer" unique_id=1893027772]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "999"
+horizontal_alignment = 2
+
+[node name="UpchargeTag" type="Control" parent="." unique_id=681562066]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 0
+offset_top = 14.0
+offset_right = 32.0
+offset_bottom = 46.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UpchargeTag" unique_id=1929991261]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_cjtcq")
+
+[node name="CostContainer" type="HBoxContainer" parent="UpchargeTag" unique_id=1057054573]
+custom_minimum_size = Vector2(32, 10)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="GoldIcon" type="TextureRect" parent="UpchargeTag/CostContainer" unique_id=314006809]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_cjtcq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UpchargeGoldCost" type="Label" parent="UpchargeTag/CostContainer" unique_id=1738042645]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_vertical = 1
 text = "999"
 horizontal_alignment = 2

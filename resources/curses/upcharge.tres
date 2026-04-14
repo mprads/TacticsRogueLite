@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Artifact" format=3 uid="uid://bnlqfkbwy8bo"]
+[gd_resource type="Resource" script_class="Upcharge" format=3 uid="uid://bnlqfkbwy8bo"]
 
 [ext_resource type="Texture2D" uid="uid://d2wfehvxosrdt" path="res://assets/icons/curses/24x24Upcharge.png" id="1_c8vub"]
-[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_h4ucr"]
+[ext_resource type="Script" uid="uid://cxutkdowbl22f" path="res://resources/curses/upcharge.gd" id="2_c8vub"]
 
 [resource]
-script = ExtResource("1_h4ucr")
+script = ExtResource("2_c8vub")
 name = "Upcharge"
 id = "upcharge"
 type = 4

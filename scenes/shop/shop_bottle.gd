@@ -12,6 +12,10 @@ const SHOP_BOTTLE_SCENE = preload("uid://c05jbl2pod8hb")
 @onready var bottle_icon_button: TextureButton = %BottleIconButton
 @onready var bottle_container: VBoxContainer = %BottleContainer
 @onready var gold_cost: Label = %GoldCost
+@onready var discont_tag: Control = %DiscontTag
+@onready var discount_gold_cost: Label = %DiscountGoldCost
+@onready var upcharge_tag: Control = %UpchargeTag
+@onready var upcharge_gold_cost: Label = %UpchargeGoldCost
 
 
 func _ready() -> void:
@@ -22,6 +26,19 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 
 
+func update_gold_cost(change: float) -> void:
+	if not bottle or not change:
+		return
+
+	var new_cost := floori(bottle.gold_cost * change)
+	if new_cost > bottle.gold_cost:
+		upcharge_tag.visible = true
+	elif new_cost < bottle.gold_cost:
+		discont_tag.visible = true
+
+	bottle.update_gold_cost(floori(bottle.gold_cost * change))
+
+
 func update(player_gold: int) -> void:
 	if not is_node_ready():
 		await ready
@@ -29,18 +46,27 @@ func update(player_gold: int) -> void:
 	if not bottle or not bottle_container:
 		return
 
-	gold_cost.text = str(bottle.gold_cost)
+	var bottle_gold_cost = str(bottle.gold_cost)
+	gold_cost.text = bottle_gold_cost
+	discount_gold_cost.text = bottle_gold_cost
+	upcharge_gold_cost.text = bottle_gold_cost
 
 	if bottle.gold_cost > player_gold:
 		bottle_icon_button.disabled = true
 		gold_cost.modulate = Color.RED
+		discount_gold_cost.modulate = Color.RED
+		upcharge_gold_cost.modulate = Color.RED
 	else:
 		bottle_icon_button.disabled = false
 		gold_cost.modulate = Color.WHITE
+		discount_gold_cost.modulate = Color.WHITE
+		upcharge_gold_cost.modulate = Color.WHITE
 
 
 func purchased_cleanup() -> void:
 	bottle_container.queue_free()
+	discont_tag.queue_free()
+	upcharge_tag.queue_free()
 
 
 func set_bottle(value: Bottle) -> void:
