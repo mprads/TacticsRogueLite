@@ -18,6 +18,7 @@ func _update_visuals() -> void:
 		return
 
 	label.text = "%s Vial" % potion.name
+	label.modulate = potion.color
 	for ability in potion.abilities:
 		var ability_panel_instance := AbilityPanel.create_new(ability)
 		ability_container.add_child(ability_panel_instance)
