@@ -43,7 +43,10 @@ func update(player_gold: int) -> void:
 
 	if not artifact or not artifact_container: return
 
-	gold_cost.text = str(artifact.gold_cost)
+	var artifact_gold_cost = str(artifact.gold_cost)
+	gold_cost.text = artifact_gold_cost
+	discount_gold_cost.text = artifact_gold_cost
+	upcharge_gold_cost.text = artifact_gold_cost
 
 	if artifact.gold_cost > player_gold:
 		artifact_icon_button.disabled = true
