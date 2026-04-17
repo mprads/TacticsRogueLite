@@ -12,10 +12,12 @@
 [ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="8_xmhl7"]
 [ext_resource type="Resource" uid="uid://c6jaj7um1t6q8" path="res://resources/artifacts/sales_tag.tres" id="9_dmn7x"]
 [ext_resource type="Resource" uid="uid://ceb5ss4ku5xgx" path="res://resources/artifacts/weight_gloves.tres" id="10_g2ust"]
+[ext_resource type="Resource" uid="uid://bnlqfkbwy8bo" path="res://resources/curses/upcharge.tres" id="11_oh4d1"]
 
 [node name="MerchantEvent" type="Node2D" unique_id=540653003]
 script = ExtResource("1_541so")
 shop_artifacts = Array[ExtResource("2_ivkxe")]([ExtResource("3_oh4d1"), ExtResource("4_ox1gt"), ExtResource("5_s0dof"), ExtResource("6_5ak4k"), ExtResource("7_4gtvm"), ExtResource("8_xmhl7"), ExtResource("9_dmn7x"), ExtResource("10_g2ust")])
+no_purchase_curse = ExtResource("11_oh4d1")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=826517414]
 layer = -1
@@ -39,15 +41,6 @@ size_flags_horizontal = 10
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 2
-
-[node name="PayLifeButton" type="Button" parent="UI/Control" unique_id=670927623]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-disabled = true
-text = "Merchant selling valuable goods
-curses with upcharge if you buy nothing"
 
 [node name="LeaveButton" type="Button" parent="UI/Control" unique_id=200398712]
 unique_name_in_owner = true

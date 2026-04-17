@@ -31,13 +31,16 @@ custom_minimum_size = Vector2(32, 46)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 46.0
-theme_override_constants/separation = 3
+theme_override_constants/separation = 4
+alignment = 2
 
 [node name="ArtifactIconButton" type="TextureButton" parent="ArtifactContainer" unique_id=2057025125]
 unique_name_in_owner = true
 material = ExtResource("3_wrpmr")
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 texture_normal = ExtResource("3_oba1r")
 texture_disabled = ExtResource("3_oba1r")
 stretch_mode = 5
