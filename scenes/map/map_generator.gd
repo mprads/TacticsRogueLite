@@ -12,8 +12,8 @@ const MIN_STARTS := 3
 const BREWING_ROOM_WEIGHT := 2.5
 const REST_ROOM_WEIGHT := 2.5
 const SHOP_ROOM_WEIGHT := 2.5
-const EVENT_ROOM_WEIGHT := 1.0
-const ELITE_ROOM_WEIGHT := 1.0
+const EVENT_ROOM_WEIGHT := 1.5
+const ELITE_ROOM_WEIGHT := 1.5
 const BATTLE_ROOM_WEIGHT := 10.0
 
 @export var battle_stats_pool: WeightedTable

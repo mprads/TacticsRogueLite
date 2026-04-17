@@ -1,11 +1,21 @@
 [gd_scene format=3 uid="uid://b7gv0cgqfq7jg"]
 
-[ext_resource type="Script" uid="uid://ct4ja2xae6n52" path="res://scenes/random_events/blood_gamble_event.gd" id="1_541so"]
+[ext_resource type="Script" uid="uid://b1cq81pd66xh" path="res://scenes/random_events/merchant.gd" id="1_541so"]
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="2_ivkxe"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_q6ool"]
-[ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="3_jp0gs"]
+[ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/eternal_drip.tres" id="3_oh4d1"]
+[ext_resource type="Resource" uid="uid://dc6ywm6b32643" path="res://resources/artifacts/extra_pocket.tres" id="4_ox1gt"]
+[ext_resource type="PackedScene" uid="uid://c1xgosjtjf1n3" path="res://scenes/shop/shop_artifact.tscn" id="5_0kkg5"]
+[ext_resource type="Resource" uid="uid://iecsp474ini2" path="res://resources/artifacts/hidden_dagger.tres" id="5_s0dof"]
+[ext_resource type="Resource" uid="uid://cyi8lynrukcin" path="res://resources/artifacts/lasting_shield.tres" id="6_5ak4k"]
+[ext_resource type="Resource" uid="uid://bxg3r3fkp0lbn" path="res://resources/artifacts/party_increase.tres" id="7_4gtvm"]
+[ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="8_xmhl7"]
+[ext_resource type="Resource" uid="uid://c6jaj7um1t6q8" path="res://resources/artifacts/sales_tag.tres" id="9_dmn7x"]
+[ext_resource type="Resource" uid="uid://ceb5ss4ku5xgx" path="res://resources/artifacts/weight_gloves.tres" id="10_g2ust"]
 
 [node name="MerchantEvent" type="Node2D" unique_id=540653003]
 script = ExtResource("1_541so")
+shop_artifacts = Array[ExtResource("2_ivkxe")]([ExtResource("3_oh4d1"), ExtResource("4_ox1gt"), ExtResource("5_s0dof"), ExtResource("6_5ak4k"), ExtResource("7_4gtvm"), ExtResource("8_xmhl7"), ExtResource("9_dmn7x"), ExtResource("10_g2ust")])
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=826517414]
 layer = -1
@@ -46,40 +56,40 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Leave"
 
-[node name="PartyUI" parent="UI" unique_id=1019888859 instance=ExtResource("3_jp0gs")]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -231.0
-offset_top = -123.0
-offset_right = 231.0
-offset_bottom = 136.0
-
-[node name="CostLabel" type="Label" parent="UI" unique_id=993084173]
-unique_name_in_owner = true
-visible = false
-offset_left = 229.0
-offset_top = 31.0
-offset_right = 387.0
-offset_bottom = 53.0
-theme_override_font_sizes/font_size = 16
-text = "Sacrifice %s life"
-
 [node name="Label" type="Label" parent="UI" unique_id=516545588]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -5.5
-offset_right = 20.0
-offset_bottom = 5.5
+offset_left = -290.5
+offset_top = -12.5
+offset_right = 290.5
+offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Insert creepy looking traveling 
-merchat with a large backpack"
+merchat with a large backpack looking back at the player.
+Or opening a trench coat with the items. I dunno man art is hard"
+horizontal_alignment = 1
+
+[node name="ItemShelf" type="HBoxContainer" parent="UI" unique_id=762878925]
+unique_name_in_owner = true
+offset_left = 207.0
+offset_top = 105.0
+offset_right = 425.0
+offset_bottom = 159.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ShopArtifact" parent="UI/ItemShelf" unique_id=771362397 instance=ExtResource("5_0kkg5")]
+layout_mode = 2
+
+[node name="ShopArtifact2" parent="UI/ItemShelf" unique_id=459660526 instance=ExtResource("5_0kkg5")]
+layout_mode = 2
+
+[node name="ShopArtifact3" parent="UI/ItemShelf" unique_id=253142082 instance=ExtResource("5_0kkg5")]
+layout_mode = 2
+
+[node name="ShopArtifact4" parent="UI/ItemShelf" unique_id=379814395 instance=ExtResource("5_0kkg5")]
+layout_mode = 2
