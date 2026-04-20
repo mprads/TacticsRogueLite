@@ -17,6 +17,8 @@ const SHOP_BOTTLE_SCENE = preload("uid://c05jbl2pod8hb")
 @onready var upcharge_tag: Control = %UpchargeTag
 @onready var upcharge_gold_cost: Label = %UpchargeGoldCost
 
+var original_cost := 0
+
 
 func _ready() -> void:
 	bottle_icon_button.pressed.connect(_on_button_pressed)
@@ -30,13 +32,16 @@ func update_gold_cost(change: float) -> void:
 	if not bottle or not change:
 		return
 
-	var new_cost := floori(bottle.gold_cost * change)
-	if new_cost > bottle.gold_cost:
+	var new_cost := floori(original_cost * change)
+	var delta := new_cost - original_cost
+	bottle.update_gold_cost(floori(bottle.gold_cost + delta))
+	if bottle.gold_cost > original_cost:
 		upcharge_tag.visible = true
-	elif new_cost < bottle.gold_cost:
+	elif bottle.gold_cost < original_cost:
 		discont_tag.visible = true
-
-	bottle.update_gold_cost(floori(bottle.gold_cost * change))
+	else:
+		upcharge_tag.visible = false
+		discont_tag.visible = false
 
 
 func update(player_gold: int) -> void:
@@ -73,7 +78,8 @@ func set_bottle(value: Bottle) -> void:
 	if not is_node_ready():
 		await ready
 
-	bottle = value
+	bottle = value.duplicate()
+	original_cost = bottle.gold_cost
 
 	gold_cost.text = str(bottle.gold_cost)
 	bottle_icon_button.texture_normal = bottle.bottle_sprite

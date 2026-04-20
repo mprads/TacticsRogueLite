@@ -27,16 +27,17 @@ func update_gold_cost(change: float) -> void:
 	if not item or not change:
 		return
 
-	var new_cost := floori(item.gold_cost * change)
-	if new_cost > item.gold_cost:
+	var base_item := ItemConfig.get_item_resource(item.key)
+	var new_cost := floori(base_item.gold_cost * change)
+	var delta := new_cost - base_item.gold_cost
+	item.update_gold_cost(floori(item.gold_cost + delta))
+	if item.gold_cost > base_item.gold_cost:
 		upcharge_tag.visible = true
-	elif new_cost < item.gold_cost:
+	elif item.gold_cost < base_item.gold_cost:
 		discont_tag.visible = true
 	else:
 		upcharge_tag.visible = false
 		discont_tag.visible = false
-
-	item.update_gold_cost(new_cost)
 
 
 func update(player_gold: int) -> void:
@@ -66,7 +67,7 @@ func set_item(value: Item) -> void:
 	if not is_node_ready():
 		await ready
 
-	item = value
+	item = value.duplicate()
 
 	gold_cost.text = str(item.gold_cost)
 	item_icon_button.texture_normal = item.icon

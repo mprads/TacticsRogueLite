@@ -14,6 +14,7 @@ const SHOP_ARTIFACT_SCENE = preload("uid://c1xgosjtjf1n3")
 @onready var upcharge_tag: Control = %UpchargeTag
 @onready var upcharge_gold_cost: Label = %UpchargeGoldCost
 
+var original_cost := 0
 
 
 func _ready() -> void:
@@ -28,13 +29,16 @@ func update_gold_cost(change: float) -> void:
 	if not artifact or not change:
 		return
 
-	var new_cost := floori(artifact.gold_cost * change)
-	if new_cost > artifact.gold_cost:
+	var new_cost := floori(original_cost * change)
+	var delta := new_cost - original_cost
+	artifact.update_gold_cost(floori(artifact.gold_cost + delta))
+	if artifact.gold_cost > original_cost:
 		upcharge_tag.visible = true
-	elif new_cost < artifact.gold_cost:
+	elif artifact.gold_cost < original_cost:
 		discont_tag.visible = true
-	
-	artifact.update_gold_cost(floori(artifact.gold_cost * change))
+	else:
+		upcharge_tag.visible = false
+		discont_tag.visible = false
 
 
 func update(player_gold: int) -> void:
@@ -64,7 +68,8 @@ func set_artifact(value: Artifact) -> void:
 	if not is_node_ready():
 		await ready
 
-	artifact = value
+	artifact = value.duplicate()
+	original_cost = artifact.gold_cost
 
 	var artifact_gold_cost = str(artifact.gold_cost)
 	gold_cost.text = artifact_gold_cost
