@@ -1,8 +1,19 @@
 [gd_scene format=3 uid="uid://bu1ar8d4hkssn"]
 
-[ext_resource type="Script" uid="uid://ct4ja2xae6n52" path="res://scenes/random_events/blood_gamble_event.gd" id="1_8b01q"]
+[ext_resource type="Script" uid="uid://xkoo5ud1ywk5" path="res://scenes/random_events/duplicator.gd" id="1_8b01q"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_bsend"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="3_1iuxe"]
+[ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="4_bsend"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bsend"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1iuxe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfj7d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mc0hv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qbvyh"]
 
 [node name="DuplicatorEvent" type="Node2D" unique_id=262211079]
 script = ExtResource("1_8b01q")
@@ -45,40 +56,101 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Leave"
 
-[node name="PartyUI" parent="UI" unique_id=2138759066 instance=ExtResource("3_1iuxe")]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -231.0
-offset_top = -123.0
-offset_right = 231.0
-offset_bottom = 136.0
-
-[node name="CostLabel" type="Label" parent="UI" unique_id=1153766540]
-unique_name_in_owner = true
-visible = false
-offset_left = 229.0
-offset_top = 31.0
-offset_right = 387.0
-offset_bottom = 53.0
-theme_override_font_sizes/font_size = 16
-text = "Sacrifice %s life"
-
 [node name="Label" type="Label" parent="UI" unique_id=1503811765]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -5.5
-offset_right = 20.0
-offset_bottom = 5.5
+offset_left = -67.0
+offset_top = -41.0
+offset_right = 44.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Insert magic circle ritual that seem 
-already prepard for an object in the middle"
+text = "Some sort of pillar with
+cultist circle below it"
+
+[node name="SourceButton" type="Button" parent="UI" unique_id=781396604]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 53.0
+offset_right = 23.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bsend")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1iuxe")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qfj7d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mc0hv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qbvyh")
+
+[node name="SourceUnitIconPanel" parent="UI/SourceButton" unique_id=604165450 instance=ExtResource("4_bsend")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SacrificeButton" type="Button" parent="UI" unique_id=367750363]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -152.0
+offset_right = 20.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bsend")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1iuxe")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qfj7d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mc0hv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qbvyh")
+
+[node name="SacrificeUnitIconPanel" parent="UI/SacrificeButton" unique_id=1752539968 instance=ExtResource("4_bsend")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PartyUIPanel" type="Panel" parent="UI" unique_id=1796959027]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(480, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -150.0
+offset_right = 240.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PartyUI" parent="UI/PartyUIPanel" unique_id=2138759066 instance=ExtResource("3_1iuxe")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -129.5
+offset_right = 231.0
+offset_bottom = 129.5
