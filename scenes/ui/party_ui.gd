@@ -21,6 +21,17 @@ func _update_party() -> void:
 		unit_ui_instance.pressed.connect(_on_unit_ui_pressed.bind(unit_stats))
 
 
+func disable_button(unit: UnitStats) -> void:
+	for unit_ui: PartyUnitUI in get_children():
+		if unit_ui.unit_stats == unit:
+			unit_ui.disabled = true
+
+
+func reset_buttons() -> void:
+	for unit_ui: PartyUnitUI in get_children():
+		unit_ui.disabled = false
+
+
 func set_party_manager(value: PartyManager) -> void:
 	if not is_node_ready():
 		await ready

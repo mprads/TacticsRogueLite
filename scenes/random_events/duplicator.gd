@@ -5,6 +5,8 @@ extends Node2D
 
 @onready var source_button: Button = %SourceButton
 @onready var sacrifice_button: Button = %SacrificeButton
+@onready var duplicate_button: Button = %DuplicateButton
+@onready var leave_button: Button = %LeaveButton
 @onready var source_unit_icon_panel: UnitIconPanel = %SourceUnitIconPanel
 @onready var sacrifice_unit_icon_panel: UnitIconPanel = %SacrificeUnitIconPanel
 @onready var party_ui_panel: Panel = %PartyUIPanel
@@ -12,10 +14,24 @@ extends Node2D
 
 var selected_panel: UnitIconPanel
 
+
 func _ready() -> void:
-	source_button.pressed.connect(_on_source_button_pressed)
-	sacrifice_button.pressed.connect(_on_sacrifice_button_pressed)
+	duplicate_button.pressed.connect(_on_duplicate_button_pressed)
+	leave_button.pressed.connect(Events.random_event_exited.emit)
+	source_button.pressed.connect(_on_button_pressed.bind(source_unit_icon_panel))
+	sacrifice_button.pressed.connect(_on_button_pressed.bind(sacrifice_unit_icon_panel))
 	party_ui.unit_selected.connect(_on_unit_selected)
+
+	source_unit_icon_panel.unit_stats = null
+	sacrifice_unit_icon_panel.unit_stats = null
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("cancel"):
+		if party_ui_panel.visible and selected_panel.unit_stats:
+			selected_panel.unit_stats = null
+			party_ui_panel.visible = false
+			duplicate_button.disabled = true
 
 
 func set_party_manager(value: PartyManager) -> void:
@@ -23,16 +39,24 @@ func set_party_manager(value: PartyManager) -> void:
 	party_ui.party_manager = value
 
 
-func _on_source_button_pressed() -> void:
-	selected_panel = source_unit_icon_panel
-	party_ui_panel.show()
+func _on_duplicate_button_pressed() -> void:
+	pass
 
 
-func _on_sacrifice_button_pressed() -> void:
-	selected_panel = sacrifice_unit_icon_panel
+func _on_button_pressed(panel: UnitIconPanel) -> void:
+	selected_panel = panel
+
+	if source_unit_icon_panel.unit_stats or sacrifice_unit_icon_panel.unit_stats:
+		party_ui.reset_buttons()
+		party_ui.disable_button(source_unit_icon_panel.unit_stats)
+		party_ui.disable_button(sacrifice_unit_icon_panel.unit_stats)
+
 	party_ui_panel.show()
 
 
 func _on_unit_selected(unit: UnitStats) -> void:
 	selected_panel.unit_stats = unit
 	party_ui_panel.hide()
+
+	if source_unit_icon_panel.unit_stats and sacrifice_unit_icon_panel.unit_stats:
+		duplicate_button.disabled = false

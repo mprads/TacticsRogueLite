@@ -41,13 +41,13 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="PayLifeButton" type="Button" parent="UI/Control" unique_id=75991936]
+[node name="DuplicateButton" type="Button" parent="UI/Control" unique_id=75991936]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 disabled = true
-text = "Duplicate a unit by sacrifice"
+text = "Complete Ritual"
 
 [node name="LeaveButton" type="Button" parent="UI/Control" unique_id=61027362]
 unique_name_in_owner = true
@@ -154,3 +154,24 @@ offset_left = -231.0
 offset_top = -129.5
 offset_right = 231.0
 offset_bottom = 129.5
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PartyUIPanel" unique_id=1113857374]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="CancelLabel" type="Label" parent="UI/PartyUIPanel/MarginContainer" unique_id=1570718077]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Press [esc] to cancel"

@@ -15,11 +15,14 @@ func set_unit_stats(value: UnitStats) -> void:
 
 	unit_stats = value
 
-	if not value.changed.is_connected(_update_visuals):
-		value.changed.connect(_update_visuals)
-
 	if value == null:
+		bottle.texture = null
+		filling.texture = null
+		damage.texture = null
 		return
+
+	if not value.changed.is_connected(_update_visuals):
+			value.changed.connect(_update_visuals)
 
 	_update_visuals()
 
