@@ -11,6 +11,7 @@ extends Node2D
 @onready var sacrifice_unit_icon_panel: UnitIconPanel = %SacrificeUnitIconPanel
 @onready var party_ui_panel: Panel = %PartyUIPanel
 @onready var party_ui: PartyUI = %PartyUI
+@onready var ui_layer: CanvasLayer = %UI
 
 var selected_panel: UnitIconPanel
 
@@ -28,7 +29,7 @@ func _ready() -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("cancel"):
-		if party_ui_panel.visible and selected_panel.unit_stats:
+		if party_ui_panel.visible:
 			selected_panel.unit_stats = null
 			party_ui_panel.visible = false
 			duplicate_button.disabled = true
@@ -40,7 +41,11 @@ func set_party_manager(value: PartyManager) -> void:
 
 
 func _on_duplicate_button_pressed() -> void:
-	pass
+	party_manager.remove_unit(sacrifice_unit_icon_panel.unit_stats)
+	var new_unit_creator_ui: UnitCreatorUI = UnitCreatorUI.create_new(source_unit_icon_panel.unit_stats.duplicate())
+	ui_layer.add_child(new_unit_creator_ui)
+	new_unit_creator_ui.unit_created.connect(_on_unit_created)
+	
 
 
 func _on_button_pressed(panel: UnitIconPanel) -> void:
@@ -52,6 +57,11 @@ func _on_button_pressed(panel: UnitIconPanel) -> void:
 		party_ui.disable_button(sacrifice_unit_icon_panel.unit_stats)
 
 	party_ui_panel.show()
+
+
+func _on_unit_created(new_unit: UnitStats) -> void:
+	party_manager.add_unit(new_unit)
+	Events.random_event_exited.emit()
 
 
 func _on_unit_selected(unit: UnitStats) -> void:
