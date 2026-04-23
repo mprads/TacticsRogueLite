@@ -51,8 +51,8 @@ func _on_duplicate_button_pressed() -> void:
 func _on_button_pressed(panel: UnitIconPanel) -> void:
 	selected_panel = panel
 
+	party_ui.reset_buttons()
 	if source_unit_icon_panel.unit_stats or sacrifice_unit_icon_panel.unit_stats:
-		party_ui.reset_buttons()
 		party_ui.disable_button(source_unit_icon_panel.unit_stats)
 		party_ui.disable_button(sacrifice_unit_icon_panel.unit_stats)
 
