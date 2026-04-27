@@ -13,15 +13,18 @@
 [ext_resource type="Resource" uid="uid://ssldd00qq1w" path="res://resources/items/mushroom.tres" id="7_vk20h"]
 [ext_resource type="Resource" uid="uid://dq1krx3jsbqei" path="res://resources/bottles/triangle_bottle.tres" id="8_5y7fm"]
 [ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="8_131kw"]
+[ext_resource type="Resource" uid="uid://b81l0dgu2txuq" path="res://resources/artifacts/eternal_drip.tres" id="10_bnu54"]
 [ext_resource type="PackedScene" uid="uid://bqjho2cnvyfic" path="res://scenes/shop/planter_item.tscn" id="10_vk20h"]
 [ext_resource type="Resource" uid="uid://dc6ywm6b32643" path="res://resources/artifacts/extra_pocket.tres" id="11_5y7fm"]
 [ext_resource type="Resource" uid="uid://b8kbihmrh2sbq" path="res://resources/artifacts/rallying_cheer.tres" id="11_6kbe7"]
-[ext_resource type="Resource" uid="uid://dorr67ytr5uh5" path="res://resources/curses/shattered_vial.tres" id="12_toxgp"]
+[ext_resource type="Resource" uid="uid://iecsp474ini2" path="res://resources/artifacts/hidden_dagger.tres" id="12_noimi"]
+[ext_resource type="Resource" uid="uid://cyi8lynrukcin" path="res://resources/artifacts/lasting_shield.tres" id="13_f8gqx"]
+[ext_resource type="Resource" uid="uid://ceb5ss4ku5xgx" path="res://resources/artifacts/weight_gloves.tres" id="15_wjgtv"]
 [ext_resource type="PackedScene" uid="uid://c05jbl2pod8hb" path="res://scenes/shop/shop_bottle.tscn" id="17_5y7fm"]
 [ext_resource type="PackedScene" uid="uid://c1xgosjtjf1n3" path="res://scenes/shop/shop_artifact.tscn" id="18_toxgp"]
 [ext_resource type="PackedScene" uid="uid://twvbfvqbtx8b" path="res://scenes/shop/round_bottle_button.tscn" id="20_u2jek"]
 
-[sub_resource type="Shader" id="Shader_5y7fm"]
+[sub_resource type="Shader" id="Shader_cxrsv"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -46,9 +49,9 @@ void fragment() {
 	COLOR = mix(color, line_color, outline - color.a);
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_toxgp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jxaa"]
 resource_local_to_scene = true
-shader = SubResource("Shader_5y7fm")
+shader = SubResource("Shader_cxrsv")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/outline_thickness = 0.0
 
@@ -56,7 +59,7 @@ shader_parameter/outline_thickness = 0.0
 script = ExtResource("1_100s2")
 shop_items = Array[ExtResource("2_ge4d2")]([ExtResource("3_xcdpw"), ExtResource("4_tp26b"), ExtResource("5_vk20h")])
 shop_bottles = Array[ExtResource("6_hbyua")]([ExtResource("7_36j3v"), ExtResource("8_5y7fm")])
-shop_artifacts = Array[ExtResource("8_131kw")]([ExtResource("11_6kbe7"), ExtResource("11_5y7fm"), ExtResource("12_toxgp")])
+shop_artifacts = Array[ExtResource("8_131kw")]([ExtResource("10_bnu54"), ExtResource("11_5y7fm"), ExtResource("12_noimi"), ExtResource("13_f8gqx"), ExtResource("11_6kbe7"), ExtResource("15_wjgtv")])
 shop_plants = Array[ExtResource("2_ge4d2")]([ExtResource("6_tp26b"), ExtResource("7_vk20h")])
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=575874368]
@@ -163,4 +166,4 @@ layout_mode = 2
 
 [node name="RoundBottleButton" parent="UI" unique_id=1460198614 instance=ExtResource("20_u2jek")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_toxgp")
+material = SubResource("ShaderMaterial_8jxaa")

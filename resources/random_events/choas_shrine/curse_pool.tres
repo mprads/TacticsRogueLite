@@ -2,11 +2,10 @@
 
 [ext_resource type="Resource" uid="uid://beilunh5hc05p" path="res://resources/random_events/choas_shrine/tier_0_leaky_tap.tres" id="1_gur8a"]
 [ext_resource type="Resource" uid="uid://bgvowomygrvx6" path="res://resources/random_events/choas_shrine/tier_0_pariah.tres" id="2_ky6re"]
-[ext_resource type="Resource" uid="uid://ddiotlcffrl8g" path="res://resources/random_events/choas_shrine/tier_0_upcharge.tres" id="3_kd33a"]
 [ext_resource type="Resource" uid="uid://bny0icqclbdcc" path="res://resources/random_events/choas_shrine/tier_0_shattered_vial.tres" id="4_ky6re"]
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="10_4ie7g"]
 
 [resource]
 script = ExtResource("10_4ie7g")
-pool = Array[Resource]([ExtResource("1_gur8a"), ExtResource("2_ky6re"), ExtResource("3_kd33a"), ExtResource("4_ky6re")])
+pool = Array[Resource]([ExtResource("1_gur8a"), ExtResource("2_ky6re"), ExtResource("4_ky6re")])
 metadata/_custom_type_script = "uid://cwq24hkvk302e"
