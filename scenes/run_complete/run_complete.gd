@@ -3,7 +3,7 @@ extends Control
 
 # Should just be a preload but engine issue #104769 where jumping between scenes is
 # nulling out packed scene references
-@onready var MAIN_MENU_SCENE = load("res://scenes/main_menu/main_menu.tscn")
+@onready var MAIN_MENU_SCENE = load("uid://r7l5dv2hbg2g")
 @export var run_stats: RunStats : set = set_run_stats
 
 @onready var fireworks: Node2D = %Fireworks
