@@ -9,9 +9,6 @@ const REST_AREA_SCENE = preload("uid://cicpptc3aniix")
 const BREWING_SCENE = preload("uid://dkokbdb73arai")
 const KILN_SCNE = preload("uid://bfc7nmxs6r00g")
 const RUN_COMPLETE_SCENE = preload("uid://c1es6hg3xd4hf")
-# Should just be a preload but engine issue #104769 where jumping between scenes is
-# nulling out packed scene references
-@onready var MAIN_MENU_SCENE = load("uid://r7l5dv2hbg2g")
 
 @export var run_stats: RunStats
 @onready var inventory_manager: InventoryManager = $InventoryManager
@@ -127,11 +124,6 @@ func _set_up_debug() -> void:
 			debug.visible = !debug.visible
 			_show_run_complete(true)
 	)
-	main_menu.pressed.connect(
-		func():
-			SceneChanger.change_scene(MAIN_MENU_SCENE, null)
-	)
-	
 
 
 func _set_up_managers() -> void:
