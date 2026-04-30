@@ -5,7 +5,8 @@ extends Artifact
 
 
 func init(owner: ArtifactIcon) -> void:
-	Events.unit_shielded.connect(_on_unit_shielded)
+	if not Events.unit_shielded.is_connected(_on_unit_shielded):
+		Events.unit_shielded.connect(_on_unit_shielded)
 	artifact_icon = owner
 
 

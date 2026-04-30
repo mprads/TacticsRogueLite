@@ -5,7 +5,8 @@ extends Artifact
 
 
 func init(_owner: ArtifactIcon) -> void:
-	Events.shop_entered.connect(_on_shop_entered)
+	if not Events.shop_entered.is_connected(_on_shop_entered):
+		Events.shop_entered.connect(_on_shop_entered)
 
 
 func _on_shop_entered(shop: Shop) -> void:
