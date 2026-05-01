@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SupportAI" format=3 uid="uid://bas3qrcwqfmdv"]
+
+[ext_resource type="Script" uid="uid://chdaqnfl0wyou" path="res://resources/enemy_ai/support_ai.gd" id="1_ucbpl"]
+
+[resource]
+script = ExtResource("1_ucbpl")
+metadata/_custom_type_script = "uid://cqgqqleyyykji"
