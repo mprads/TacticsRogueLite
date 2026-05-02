@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dcq4i35vym5xp"]
+
+[ext_resource type="Resource" uid="uid://m14gsp85udo2" path="res://resources/enemy_ai/base_ai.tres" id="1_o10hs"]
+[ext_resource type="Resource" uid="uid://dwjkhnynqscd8" path="res://resources/abilities/slice.tres" id="2_gm0l4"]
+[ext_resource type="Resource" uid="uid://buwltkkp5pnbj" path="res://resources/abilities/encourage.tres" id="3_yagta"]
+[ext_resource type="PackedScene" uid="uid://bgix1ig8gku2x" path="res://scenes/enemy/multi_tile_enemy.tscn" id="4_cpq65"]
+[ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="5_vkx4v"]
+[ext_resource type="Texture2D" uid="uid://bqnibcv6c1khx" path="res://assets/sprites/enemies/Ogre.png" id="6_o10hs"]
+
+[resource]
+script = ExtResource("5_vkx4v")
+name = "Ogre"
+sprite = ExtResource("6_o10hs")
+dimensions = Vector2i(2, 2)
+melee_ability = ExtResource("2_gm0l4")
+ranged_ability = ExtResource("3_yagta")
+ai = ExtResource("1_o10hs")
+scene = ExtResource("4_cpq65")
+max_health = 50
+health = 1
+metadata/_custom_type_script = "uid://co20nystqenxu"

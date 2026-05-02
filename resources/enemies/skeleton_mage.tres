@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://b2dixcjkpw3p1"]
+
+[ext_resource type="Resource" uid="uid://bas3qrcwqfmdv" path="res://resources/enemy_ai/support_ai.tres" id="1_4c8tp"]
+[ext_resource type="Resource" uid="uid://b5r4cpgwt0p4n" path="res://resources/abilities/shield.tres" id="2_pnaiw"]
+[ext_resource type="Resource" uid="uid://bmokop7w8vl6v" path="res://resources/abilities/defend.tres" id="3_dw4me"]
+[ext_resource type="PackedScene" uid="uid://b7xiv7x5cv04q" path="res://scenes/enemy/enemy.tscn" id="4_aeu4x"]
+[ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="5_e7r5f"]
+[ext_resource type="Texture2D" uid="uid://byoppe3emujy0" path="res://assets/sprites/enemies/SkeletonMage.png" id="6_4c8tp"]
+
+[resource]
+script = ExtResource("5_e7r5f")
+name = "Skeleton Mage"
+sprite = ExtResource("6_4c8tp")
+movement = 6
+dimensions = Vector2i(1, 1)
+melee_ability = ExtResource("2_pnaiw")
+ranged_ability = ExtResource("3_dw4me")
+ai = ExtResource("1_4c8tp")
+max_health = 5
+health = 5
+metadata/_custom_type_script = "uid://co20nystqenxu"
