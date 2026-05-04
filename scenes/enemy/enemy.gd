@@ -36,7 +36,7 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 
 	status_manager.status_owner = self
-	status_ui.status_manager= status_manager
+	status_ui.status_manager = status_manager
 
 
 func _input(event: InputEvent) -> void:
