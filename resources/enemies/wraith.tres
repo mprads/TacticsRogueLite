@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=7 format=3 uid="uid://b23yh8vu4af0y"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://b23yh8vu4af0y"]
 
 [ext_resource type="Resource" uid="uid://m14gsp85udo2" path="res://resources/enemy_ai/base_ai.tres" id="1_3tim7"]
 [ext_resource type="Resource" uid="uid://dwjkhnynqscd8" path="res://resources/abilities/slice.tres" id="1_jt0ym"]
@@ -12,8 +12,8 @@ script = ExtResource("2_td0p6")
 name = "Wraith"
 sprite = ExtResource("3_jt0ym")
 dimensions = Vector2i(2, 2)
-melee_ability = ExtResource("1_jt0ym")
-ranged_ability = ExtResource("3_3tim7")
+primary_ability = ExtResource("1_jt0ym")
+secondary_ability = ExtResource("3_3tim7")
 ai = ExtResource("1_3tim7")
 scene = ExtResource("3_ucpyl")
 max_health = 50

@@ -1,4 +1,4 @@
-class_name SupportAI
+class_name RangedAI
 extends EnemyAI
 
 
@@ -22,9 +22,14 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 
 		# TODO added modifier logic to calculation. Maybe add shield to calc but can make for interesting
 		# gameplay baiting attacks on a low life unit
+		var new_health: int = clampi(
+			target_unit.stats.health - owner.stats.primary_ability.base_damage,
+			0,
+			target_unit.stats.health
+		)
+		var remaining_percent := float(new_health) / target_unit.stats.max_health
 
-		var remaining_percent := float(target_unit.stats.health) / target_unit.stats.max_health
-		var heal_weight = 1 - remaining_percent
+		var damage_weight = 1 - remaining_percent
 
 		var weight_by_tiles: Dictionary[Vector2i, float] = {}
 		var highest_tile_weight := 0.0
@@ -77,7 +82,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 			if movement_weight > highest_tile_weight:
 				highest_tile_weight = movement_weight
 
-		var weight_sum = heal_weight + highest_tile_weight
+		var weight_sum = damage_weight + highest_tile_weight
 
 		if weight_by_tiles.is_empty() or highest_tile_weight == 0.0:
 			continue

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://21bpwg5uq1rj"]
 
-[ext_resource type="Resource" uid="uid://bas3qrcwqfmdv" path="res://resources/enemy_ai/support_ai.tres" id="1_o5lco"]
-[ext_resource type="Resource" uid="uid://b5r4cpgwt0p4n" path="res://resources/abilities/shield.tres" id="2_fe7nc"]
+[ext_resource type="Resource" uid="uid://bppjah536op3u" path="res://resources/enemy_ai/ranged_ai.tres" id="1_7ikt8"]
+[ext_resource type="Resource" uid="uid://bytfe5idb40vq" path="res://resources/abilities/weaken.tres" id="2_o5lco"]
 [ext_resource type="Resource" uid="uid://bmokop7w8vl6v" path="res://resources/abilities/defend.tres" id="3_s2y7u"]
 [ext_resource type="PackedScene" uid="uid://b7xiv7x5cv04q" path="res://scenes/enemy/enemy.tscn" id="4_rp0ji"]
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="5_imnei"]
@@ -13,9 +13,9 @@ name = "Trickster"
 sprite = ExtResource("6_o5lco")
 movement = 6
 dimensions = Vector2i(1, 1)
-melee_ability = ExtResource("2_fe7nc")
-ranged_ability = ExtResource("3_s2y7u")
-ai = ExtResource("1_o5lco")
+primary_ability = ExtResource("2_o5lco")
+secondary_ability = ExtResource("3_s2y7u")
+ai = ExtResource("1_7ikt8")
 max_health = 5
 health = 5
 metadata/_custom_type_script = "uid://co20nystqenxu"

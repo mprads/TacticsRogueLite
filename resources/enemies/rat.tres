@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=7 format=3 uid="uid://cdoqw6gma0bsq"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cdoqw6gma0bsq"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_heouu"]
 [ext_resource type="Resource" uid="uid://58vgoswgqpov" path="res://resources/abilities/bite.tres" id="2_3u3hp"]
@@ -12,12 +12,10 @@ script = ExtResource("1_heouu")
 name = "Rat"
 sprite = ExtResource("2_r7hpx")
 movement = 4
-attack_range = 1
 dimensions = Vector2i(1, 1)
-melee_ability = ExtResource("2_3u3hp")
-ranged_ability = ExtResource("3_3u3hp")
+primary_ability = ExtResource("2_3u3hp")
+secondary_ability = ExtResource("3_3u3hp")
 ai = ExtResource("2_4b5vu")
-scene = ExtResource("3_tpeme")
 max_health = 10
 health = 10
 metadata/_custom_type_script = "uid://co20nystqenxu"

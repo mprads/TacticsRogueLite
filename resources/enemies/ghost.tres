@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://diod565xfdrwf"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_6khb5"]
-[ext_resource type="Resource" uid="uid://bas3qrcwqfmdv" path="res://resources/enemy_ai/support_ai.tres" id="1_nun1m"]
+[ext_resource type="Resource" uid="uid://m14gsp85udo2" path="res://resources/enemy_ai/base_ai.tres" id="1_yj1c4"]
 [ext_resource type="Texture2D" uid="uid://bil2tyaa111kl" path="res://assets/sprites/enemies/Ghost.png" id="2_6khb5"]
-[ext_resource type="Resource" uid="uid://b5r4cpgwt0p4n" path="res://resources/abilities/shield.tres" id="2_nun1m"]
+[ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="2_nun1m"]
 [ext_resource type="Resource" uid="uid://bmokop7w8vl6v" path="res://resources/abilities/defend.tres" id="3_nun1m"]
 [ext_resource type="PackedScene" uid="uid://b7xiv7x5cv04q" path="res://scenes/enemy/enemy.tscn" id="3_yos3k"]
 
@@ -13,9 +13,9 @@ name = "Ghost"
 sprite = ExtResource("2_6khb5")
 movement = 6
 dimensions = Vector2i(1, 1)
-melee_ability = ExtResource("2_nun1m")
-ranged_ability = ExtResource("3_nun1m")
-ai = ExtResource("1_nun1m")
+primary_ability = ExtResource("2_nun1m")
+secondary_ability = ExtResource("3_nun1m")
+ai = ExtResource("1_yj1c4")
 max_health = 5
 health = 5
 metadata/_custom_type_script = "uid://co20nystqenxu"
