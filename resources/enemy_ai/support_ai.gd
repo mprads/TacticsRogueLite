@@ -14,7 +14,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 	var highest_weight := 0.0
 
 	for target in targets_in_range:
-		var target_unit: Unit = target["target"]
+		var target_unit: Area2D = target["target"]
 		var tiles: Array[Vector2i] = target["tiles"]
 		var starting_tile: Vector2i = target["starting_tile"]
 		# Find new hp, then find the remaining hp. Minus remaining from 1 to prioritize kills
@@ -23,7 +23,7 @@ func select_target(get_id_path: Callable, arena: Arena) -> void:
 		# TODO added modifier logic to calculation. Maybe add shield to calc but can make for interesting
 		# gameplay baiting attacks on a low life unit
 
-		var remaining_percent := float(target_unit.stats.health) / target_unit.stats.max_health
+		var remaining_percent: float = float(target_unit.stats.health) / target_unit.stats.max_health
 		var heal_weight = 1 - remaining_percent
 
 		var weight_by_tiles: Dictionary[Vector2i, float] = {}

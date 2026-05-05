@@ -83,19 +83,22 @@ func start_turn() -> void:
 
 func update_enemy_intent(enemy: Enemy) -> void:
 	var enemy_tile := arena.get_tile_from_global(enemy.global_position)
-	var targets := get_tree().get_nodes_in_group("player_unit")
+	var player_units := get_tree().get_nodes_in_group("player_unit")
+	var enemy_units := get_tree().get_nodes_in_group("enemy_unit")
 	var targets_in_range: Array[Dictionary] = []
 	var targets_out_of_range: Array[Dictionary] = []
 
-# If a player unit has the taunt status remove all targets besides the taunted units
-	for unit: Unit in targets:
+# If a player unit has the taunt status remove all player_units besides the taunted units
+	for unit: Unit in player_units:
 		if unit.status_manager.has_status(StatusConfig.KEYS.TAUNT):
-			targets = targets.filter(
+			player_units = player_units.filter(
 				func(filterable: Unit): return filterable.status_manager.has_status(StatusConfig.KEYS.TAUNT)
 			)
 			break
 
-	for target: Unit in targets:
+	var targets := enemy_units if enemy.ai is SupportAI else player_units
+
+	for target: Area2D in targets:
 		var result := { "target": target, "tiles": [], "starting_tile": Vector2i.ZERO }
 
 		var target_tile := arena.get_tile_from_global(target.global_position)
