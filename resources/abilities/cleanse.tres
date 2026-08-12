@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Cleanse" load_steps=3 format=3 uid="uid://dng0wsglcwumd"]
+[gd_resource type="Resource" script_class="Cleanse" format=3 uid="uid://dng0wsglcwumd"]
 
 [ext_resource type="Script" uid="uid://gxaiqsy5m5o8" path="res://resources/abilities/cleanse.gd" id="1_d4awf"]
 [ext_resource type="SpriteFrames" uid="uid://dwvxbej0c5q2r" path="res://assets/abilities/cleanse/cleanse.tres" id="2_tbr46"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bquoh0o3sb282"]
+[gd_scene format=3 uid="uid://bquoh0o3sb282"]
 
 [ext_resource type="Script" uid="uid://42kt5ep332ce" path="res://scenes/ui/backgrounds/animated_background.gd" id="1_pevly"]
 [ext_resource type="PackedScene" uid="uid://dy6liprqu6pp0" path="res://scenes/ui/backgrounds/horizontal_single_wave.tscn" id="3_14e7t"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d1wlpy3cwgohi" path="res://assets/palettes/Greyish.png" id="11_ypmuh"]
 [ext_resource type="Texture2D" uid="uid://b3l8xnvae07pb" path="res://assets/palettes/Maroon.png" id="12_aj6lk"]
 
-[node name="AnimatedBackground" type="Control"]
+[node name="AnimatedBackground" type="Control" unique_id=73991588]
 z_index = -1
 layout_mode = 3
 anchors_preset = 15

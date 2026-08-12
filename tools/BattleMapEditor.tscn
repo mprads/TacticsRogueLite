@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dbo4qt3dib03c"]
+[gd_scene format=4 uid="uid://dbo4qt3dib03c"]
 
 [ext_resource type="Script" uid="uid://bih3kl556waw7" path="res://tools/battle_map_editor.gd" id="1_1lmwt"]
 [ext_resource type="TileSet" uid="uid://beelur5ybttc6" path="res://resources/64prototype_tile_set.tres" id="2_fv4wy"]
@@ -9,12 +9,12 @@
 [ext_resource type="Script" uid="uid://dymludwl8mc4g" path="res://components/arena_grid.gd" id="5_mhptr"]
 [ext_resource type="Script" uid="uid://dmyacoedl35kb" path="res://components/tile_highlighter.gd" id="6_fty5p"]
 
-[node name="BattleMapEditor" type="Node2D" node_paths=PackedStringArray("test_arena", "file_name")]
+[node name="BattleMapEditor" type="Node2D" unique_id=1452892645 node_paths=PackedStringArray("test_arena", "file_name")]
 script = ExtResource("1_1lmwt")
 test_arena = NodePath("Arena")
 file_name = NodePath("file_name")
 
-[node name="Arena" type="TileMapLayer" parent="."]
+[node name="Arena" type="TileMapLayer" parent="." unique_id=1921593704]
 position = Vector2(138, 158)
 tile_map_data = PackedByteArray("AAADAAEAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAABAAAAAAADAP7/AAAAAAAAAAADAP3/AAAAAAAAAAADAPz/AAAAAAAAAAADAPv/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAACAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAPn/AAACAAAAAAACAPj/AAACAAAAAAADAPj/AAACAAAAAAADAPn/AAACAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAA=")
 tile_set = ExtResource("2_fv4wy")
@@ -22,7 +22,7 @@ script = ExtResource("3_tts6l")
 metadata/_custom_type_script = "uid://bm6kd3ocw6acs"
 metadata/_edit_lock_ = true
 
-[node name="BenchTileMap" type="TileMapLayer" parent="." node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
+[node name="BenchTileMap" type="TileMapLayer" parent="." unique_id=2061163574 node_paths=PackedStringArray("arena_grid", "tile_highlighter")]
 position = Vector2(10, 222)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAA=")
 tile_set = ExtResource("2_fv4wy")
@@ -31,25 +31,25 @@ arena_grid = NodePath("BenchGrid")
 tile_highlighter = NodePath("BenchHightlighter")
 metadata/_edit_lock_ = true
 
-[node name="HighlightLayer" type="TileMapLayer" parent="BenchTileMap"]
+[node name="HighlightLayer" type="TileMapLayer" parent="BenchTileMap" unique_id=1165960347]
 tile_set = ExtResource("4_ryfb6")
 
-[node name="BenchGrid" type="Node2D" parent="BenchTileMap"]
+[node name="BenchGrid" type="Node2D" parent="BenchTileMap" unique_id=217484921]
 script = ExtResource("5_mhptr")
 
-[node name="BenchHightlighter" type="Node" parent="BenchTileMap" node_paths=PackedStringArray("highlight_layer")]
+[node name="BenchHightlighter" type="Node" parent="BenchTileMap" unique_id=422698174 node_paths=PackedStringArray("highlight_layer")]
 script = ExtResource("6_fty5p")
 highlight_layer = NodePath("../HighlightLayer")
 
-[node name="file_name" type="Label" parent="."]
+[node name="file_name" type="Label" parent="." unique_id=1001640534]
 visible = false
 offset_right = 40.0
 offset_bottom = 11.0
 text = "boss_wraith"
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=424894879]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=1329771677]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -62,27 +62,27 @@ offset_bottom = -255.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="UI/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/VBoxContainer" unique_id=305811428]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Battle Scene"
 
-[node name="Button" type="Button" parent="UI/VBoxContainer"]
+[node name="Button" type="Button" parent="UI/VBoxContainer" unique_id=2082823052]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "End Battle"
 
-[node name="PartySelectionContainer" parent="UI" instance=ExtResource("4_tts6l")]
+[node name="PartySelectionContainer" parent="UI" unique_id=1988731180 instance=ExtResource("4_tts6l")]
 unique_name_in_owner = true
 
-[node name="UnitContextMenu" parent="UI" instance=ExtResource("5_6etuk")]
+[node name="UnitContextMenu" parent="UI" unique_id=382020139 instance=ExtResource("5_6etuk")]
 unique_name_in_owner = true
 offset_left = 439.0
 offset_top = 238.0
 offset_right = -1.0
 offset_bottom = -2.0
 
-[node name="StartBattleButton" type="Button" parent="UI"]
+[node name="StartBattleButton" type="Button" parent="UI" unique_id=803429839]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 26)
 offset_left = 516.0

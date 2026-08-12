@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://id8ej54jj67y"]
+[gd_scene format=3 uid="uid://id8ej54jj67y"]
 
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_oob38"]
 [ext_resource type="Script" uid="uid://d1f720il41hba" path="res://scenes/ui/stats_panel.gd" id="2_eeejb"]
@@ -18,7 +18,7 @@ texture_margin_left = 43.0
 texture_margin_right = 31.0
 region_rect = Rect2(305, 19, 77, 12)
 
-[node name="StatsPanel" type="Panel"]
+[node name="StatsPanel" type="Panel" unique_id=151536037]
 custom_minimum_size = Vector2(400, 360)
 anchors_preset = 13
 anchor_left = 0.5
@@ -29,7 +29,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_eeejb")
 script = ExtResource("2_eeejb")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=468812953]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,14 +41,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=161108795]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=54168797]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1357104402]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -56,13 +56,13 @@ theme_override_font_sizes/font_size = 26
 text = "Survivors"
 horizontal_alignment = 1
 
-[node name="TextureSeparator" type="Panel" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="TextureSeparator" type="Panel" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1863539542]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_en0tk")
 
-[node name="PartyContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="PartyContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=384855474]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -70,7 +70,7 @@ theme_override_constants/h_separation = 48
 theme_override_constants/v_separation = 16
 columns = 3
 
-[node name="StatsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="StatsLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=772009288]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -78,113 +78,113 @@ theme_override_font_sizes/font_size = 26
 text = "Stats"
 horizontal_alignment = 1
 
-[node name="TextureSeparator" type="Panel" parent="MarginContainer/VBoxContainer"]
+[node name="TextureSeparator" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1588591979]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_en0tk")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1445638919]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=420606842]
 layout_mode = 2
 
-[node name="Left" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Left" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=747377407]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SeedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left"]
+[node name="SeedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left" unique_id=1425931720]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Seed: %s"
 
-[node name="RunTimeLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left"]
+[node name="RunTimeLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left" unique_id=1406008876]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Run Time:  %s"
 
-[node name="TotalGoldLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left"]
+[node name="TotalGoldLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left" unique_id=745014992]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Total Gold: %s"
 
-[node name="GoldSpentLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left"]
+[node name="GoldSpentLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left" unique_id=1887590698]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Gold Spent: %s"
 
-[node name="TotalItemsLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left"]
+[node name="TotalItemsLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left" unique_id=1295740303]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Total Items: %s"
 
-[node name="DamageDealtLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left"]
+[node name="DamageDealtLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left" unique_id=1921014911]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Damage Dealt: %s"
 
-[node name="DamageTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left"]
+[node name="DamageTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Left" unique_id=1482134323]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Damage Taken: %s"
 
-[node name="Right" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Right" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=222057037]
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="EnemiesDefeatedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right"]
+[node name="EnemiesDefeatedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right" unique_id=205158497]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Enemies Defeated: %s"
 
-[node name="TurnTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right"]
+[node name="TurnTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right" unique_id=2142831488]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Turns Taken: %s"
 
-[node name="FallenUnitsLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right"]
+[node name="FallenUnitsLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right" unique_id=1730025932]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Fallen Units: %s"
 
-[node name="OZUsedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right"]
+[node name="OZUsedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right" unique_id=802921192]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "OZ Used: %s"
 
-[node name="MostCommonAbilityLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right"]
+[node name="MostCommonAbilityLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right" unique_id=1904185275]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Most Common Ability: %s"
 
-[node name="MostCommonPotionLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right"]
+[node name="MostCommonPotionLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Right" unique_id=734624542]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

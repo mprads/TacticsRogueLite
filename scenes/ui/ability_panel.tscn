@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://gqoxvqcgviwc"]
+[gd_scene format=3 uid="uid://gqoxvqcgviwc"]
 
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_0bstj"]
 [ext_resource type="Script" uid="uid://c351uesw6nov6" path="res://scenes/ui/ability_panel.gd" id="1_767w8"]
@@ -11,7 +11,7 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(225, 337, 30, 15)
 
-[node name="AbilityPanel" type="Panel"]
+[node name="AbilityPanel" type="Panel" unique_id=1143354554]
 custom_minimum_size = Vector2(100, 24)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -19,7 +19,7 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_2rdgq")
 script = ExtResource("1_767w8")
 
-[node name="AbilityLabel" type="Label" parent="."]
+[node name="AbilityLabel" type="Label" parent="." unique_id=565497173]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

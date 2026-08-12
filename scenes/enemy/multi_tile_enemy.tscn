@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgix1ig8gku2x"]
+[gd_scene format=3 uid="uid://bgix1ig8gku2x"]
 
 [ext_resource type="Script" uid="uid://bvfjj1klp5mdc" path="res://scenes/enemy/enemy.gd" id="1_0ej8v"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_ee08l"]
@@ -182,50 +182,47 @@ bg_color = Color(0.207843, 0.803922, 0.211765, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40wdo"]
 bg_color = Color(0.976471, 0.760784, 0.168627, 0.588235)
 
-[node name="MultiTileEnemy" type="Area2D" groups=["enemy_unit"]]
+[node name="MultiTileEnemy" type="Area2D" unique_id=547864587 groups=["enemy_unit"]]
 script = ExtResource("1_0ej8v")
 
-[node name="Visuals" type="CanvasGroup" parent="."]
+[node name="Visuals" type="CanvasGroup" parent="." unique_id=300068110]
 position = Vector2(-2, -52)
 
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1131125931]
 unique_name_in_owner = true
 material = ExtResource("2_ee08l")
 texture = ExtResource("3_i4fbv")
 
-[node name="ActivateAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+[node name="ActivateAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals" unique_id=627841055]
 unique_name_in_owner = true
 script = ExtResource("4_vje06")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=415707763]
 unique_name_in_owner = true
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_4efjx")
-}
+libraries/ = SubResource("AnimationLibrary_4efjx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1964160933]
 visible = false
 position = Vector2(-1, -51)
 shape = SubResource("RectangleShape2D_a3pup")
 
-[node name="FloatingTextSpawner" type="Node2D" parent="."]
+[node name="FloatingTextSpawner" type="Node2D" parent="." unique_id=1461407175]
 position = Vector2(0, -72)
 script = ExtResource("4_ynkbp")
 
-[node name="ModifierManager" type="Node" parent="."]
+[node name="ModifierManager" type="Node" parent="." unique_id=355108638]
 script = ExtResource("5_58iuw")
 
-[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner", "status_ui")]
+[node name="StatusManager" type="Node" parent="." unique_id=1516933202 node_paths=PackedStringArray("status_owner")]
 script = ExtResource("7_ygmlw")
 status_owner = NodePath("..")
-status_ui = NodePath("../StatusUI")
 
-[node name="StatusUI" parent="." instance=ExtResource("8_6cr0n")]
+[node name="StatusUI" parent="." unique_id=1439427605 instance=ExtResource("8_6cr0n")]
 offset_left = -18.0
 offset_right = 20.0
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=787236334]
 custom_minimum_size = Vector2(100, 4)
 offset_left = -50.0
 offset_top = -113.0
@@ -236,7 +233,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_a3pup")
 value = 50.0
 show_percentage = false
 
-[node name="ShieldBar" type="ProgressBar" parent="."]
+[node name="ShieldBar" type="ProgressBar" parent="." unique_id=946518046]
 custom_minimum_size = Vector2(100, 4)
 offset_left = -50.0
 offset_top = -113.0

@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0epmpoa6jodq"]
+[gd_scene format=3 uid="uid://c0epmpoa6jodq"]
 
 [ext_resource type="PackedScene" uid="uid://civfpljwjp8vc" path="res://scenes/ui/settings/options_button.tscn" id="1_5opdc"]
 [ext_resource type="Script" uid="uid://d170l311fwyin" path="res://scenes/ui/settings/window_mode_button.gd" id="2_5kfln"]
 
-[node name="WindowModeButton" instance=ExtResource("1_5opdc")]
+[node name="WindowModeButton" unique_id=1199083366 instance=ExtResource("1_5opdc")]
 script = ExtResource("2_5kfln")
 
-[node name="Label" parent="MarginContainer/HBoxContainer" index="0"]
+[node name="Label" parent="MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(536913854) index="0" unique_id=2129114093]
 text = "Window Mode"
 
-[node name="OptionButton" parent="MarginContainer/HBoxContainer" index="2"]
+[node name="OptionButton" parent="MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(536913854) index="2" unique_id=1043400770]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://4i7pwdm7f8yq"]
+[gd_resource type="Resource" format=3 uid="uid://4i7pwdm7f8yq"]
 
 [ext_resource type="Script" uid="uid://g8jeenix5gco" path="res://resources/abilities/status.gd" id="1_6ny0t"]
 [ext_resource type="Resource" uid="uid://1pv8b0wkesmg" path="res://resources/statuses/taunt.tres" id="2_qqhpg"]

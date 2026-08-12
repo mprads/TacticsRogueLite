@@ -1,14 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://civfpljwjp8vc"]
+[gd_scene format=3 uid="uid://civfpljwjp8vc"]
 
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_dom1n"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dom1n"]
-texture = ExtResource("1_dom1n")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-region_rect = Rect2(160, 272, 32, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0aop"]
 texture = ExtResource("1_dom1n")
@@ -18,7 +10,15 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(80, 273, 32, 15)
 
-[node name="OptionsButton" type="Control"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dom1n"]
+texture = ExtResource("1_dom1n")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(160, 272, 32, 16)
+
+[node name="OptionsButton" type="Control" unique_id=860063357]
 custom_minimum_size = Vector2(320, 24)
 layout_mode = 3
 anchors_preset = 0
@@ -27,7 +27,7 @@ offset_bottom = 24.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1920898894]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,12 +36,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=536913854]
 clip_contents = true
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2129114093]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -49,18 +49,18 @@ theme_override_font_sizes/font_size = 16
 text = "BASE_LABEL"
 horizontal_alignment = 3
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=192558275]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer"]
-clip_contents = true
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer" unique_id=1043400770]
 custom_minimum_size = Vector2(140, 16)
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxTexture_dom1n")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_dom1n")
-theme_override_styles/hover = SubResource("StyleBoxTexture_dom1n")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_dom1n")
 theme_override_styles/normal = SubResource("StyleBoxTexture_c0aop")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dom1n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dom1n")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_dom1n")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dom1n")
 alignment = 1

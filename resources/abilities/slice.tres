@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dwjkhnynqscd8"]
+[gd_resource type="Resource" format=3 uid="uid://dwjkhnynqscd8"]
 
 [ext_resource type="Script" uid="uid://c6mm720la6mee" path="res://resources/abilities/attack.gd" id="1_cbpg2"]
 [ext_resource type="SpriteFrames" uid="uid://d228t1jon8dop" path="res://assets/abilities/melee/melee.tres" id="2_cq21i"]

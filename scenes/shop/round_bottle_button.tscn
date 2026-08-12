@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://twvbfvqbtx8b"]
+[gd_scene format=3 uid="uid://twvbfvqbtx8b"]
 
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="1_7dy2u"]
 [ext_resource type="Texture2D" uid="uid://chu8qossn8o6n" path="res://assets/sprites/shop/shop_bottles.png" id="1_hdoyi"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cmfvmqy7h3dvt" path="res://scenes/shop/round_bottle_button.gd" id="2_gcyj8"]
 [ext_resource type="Resource" uid="uid://3dqm06n0wu44" path="res://resources/bottles/round_bottle.tres" id="3_gcyj8"]
 
-[node name="RoundBottleButton" type="TextureButton"]
+[node name="RoundBottleButton" type="TextureButton" unique_id=1938694896]
 material = ExtResource("1_7dy2u")
 offset_left = 317.0
 offset_top = 308.0
@@ -19,7 +19,7 @@ texture_disabled = ExtResource("1_hdoyi")
 script = ExtResource("2_gcyj8")
 bottle = ExtResource("3_gcyj8")
 
-[node name="RoundBottleCost" type="HBoxContainer" parent="."]
+[node name="RoundBottleCost" type="HBoxContainer" parent="." unique_id=1857055520]
 custom_minimum_size = Vector2(32, 10)
 layout_mode = 0
 offset_left = 19.0
@@ -29,7 +29,7 @@ offset_bottom = 42.0
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="GoldIcon" type="TextureRect" parent="RoundBottleCost"]
+[node name="GoldIcon" type="TextureRect" parent="RoundBottleCost" unique_id=182795114]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 4
@@ -38,7 +38,7 @@ texture = ExtResource("2_b513c")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GoldCost" type="Label" parent="RoundBottleCost"]
+[node name="GoldCost" type="Label" parent="RoundBottleCost" unique_id=174173017]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

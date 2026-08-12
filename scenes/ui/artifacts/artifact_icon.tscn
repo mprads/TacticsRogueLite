@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://06s5o3dm2r31"]
+[gd_scene format=3 uid="uid://06s5o3dm2r31"]
 
 [ext_resource type="Script" uid="uid://bwjh54dagy23x" path="res://scenes/ui/artifacts/artifact_icon.gd" id="1_367vn"]
 
-[node name="ArtifactIcon" type="TextureRect"]
+[node name="ArtifactIcon" type="TextureRect" unique_id=80648576]
 custom_minimum_size = Vector2(24, 24)
 offset_right = 24.0
 offset_bottom = 24.0

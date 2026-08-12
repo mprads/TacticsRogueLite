@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RallyingCheer" load_steps=4 format=3 uid="uid://b8kbihmrh2sbq"]
+[gd_resource type="Resource" script_class="RallyingCheer" format=3 uid="uid://b8kbihmrh2sbq"]
 
 [ext_resource type="Texture2D" uid="uid://bc6m08md0erqw" path="res://assets/icons/artifacts/24x24Speaker.png" id="1_i3p0d"]
 [ext_resource type="Script" uid="uid://df10tw8bfkxj" path="res://resources/artifacts/rallying_cheer.gd" id="2_i3p0d"]

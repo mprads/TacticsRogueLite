@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=26 format=3 uid="uid://lhmsqlf76o16"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://lhmsqlf76o16"]
 
 [ext_resource type="Texture2D" uid="uid://dauqn30qv66cj" path="res://assets/abilities/shared_sprite_sheets/Super Package Retro Pixel Effects 32x32 pack 2 Free/10.png" id="1_filue"]
 [ext_resource type="Texture2D" uid="uid://dfqekxoskhkw4" path="res://assets/abilities/shared_sprite_sheets/Super Package Retro Pixel Effects 32x32 pack 2 Free/08.png" id="2_mqgmc"]
@@ -131,7 +131,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f6gf8")
 }],
-"loop": false,
+"loop": 0,
 "name": &"activate",
 "speed": 24.0
 }, {
@@ -172,7 +172,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ywrnv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"aiming",
 "speed": 24.0
 }]

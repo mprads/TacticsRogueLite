@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkyqjyhlg3ia0"]
+[gd_scene format=3 uid="uid://bkyqjyhlg3ia0"]
 
 [ext_resource type="Script" uid="uid://c4xe268gffkp3" path="res://scenes/ui/vial_button.gd" id="1_dhlm0"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_76heb"]
@@ -15,7 +15,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dhlm0"]
 
-[node name="VialButton" type="Button"]
+[node name="VialButton" type="Button" unique_id=802195188]
 custom_minimum_size = Vector2(24, 24)
 offset_right = 24.0
 offset_bottom = 24.0
@@ -30,7 +30,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_dhlm0")
 disabled = true
 script = ExtResource("1_dhlm0")
 
-[node name="VialOutline" type="TextureRect" parent="."]
+[node name="VialOutline" type="TextureRect" parent="." unique_id=1807610528]
 unique_name_in_owner = true
 material = ExtResource("2_76heb")
 custom_minimum_size = Vector2(24, 24)
@@ -43,7 +43,7 @@ grow_vertical = 2
 texture = ExtResource("2_dhlm0")
 stretch_mode = 5
 
-[node name="VialFilling" type="TextureRect" parent="."]
+[node name="VialFilling" type="TextureRect" parent="." unique_id=853404530]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 1

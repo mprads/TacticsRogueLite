@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleStats" load_steps=7 format=3 uid="uid://0qsj8nrf6rw7"]
+[gd_resource type="Resource" script_class="BattleStats" format=3 uid="uid://0qsj8nrf6rw7"]
 
 [ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_30wl2"]
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="2_0f500"]
@@ -9,14 +9,9 @@
 
 [resource]
 script = ExtResource("7_qgfet")
-tier = 0
-weight = 0.0
 min_gold_reward = 100
 max_gold_reward = 150
-max_drops = 1
-enemy_drops = Array[ExtResource("4_4pdol")]([])
 enemies = Array[ExtResource("2_0f500")]([ExtResource("3_2o6u5")])
-artifact_drop = Array[ExtResource("1_30wl2")]([])
 unique_map = ExtResource("6_0pfwc")
 is_elite = true
 metadata/_custom_type_script = "uid://dvv6iov5fd7fy"

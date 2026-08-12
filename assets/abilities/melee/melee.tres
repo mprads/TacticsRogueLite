@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://d228t1jon8dop"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://d228t1jon8dop"]
 
 [ext_resource type="Texture2D" uid="uid://1oe1du6gy5cm" path="res://assets/abilities/shared_sprite_sheets/Purple Effect Bullet Impact Explosion 32x32.png" id="1_xiq08"]
 
@@ -63,7 +63,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0s602")
 }],
-"loop": false,
+"loop": 0,
 "name": &"activate",
 "speed": 24.0
 }, {
@@ -80,7 +80,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k5uwq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"aiming",
 "speed": 8.0
 }]

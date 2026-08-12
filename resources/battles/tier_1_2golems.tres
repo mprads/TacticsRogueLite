@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BattleStats" load_steps=7 format=3 uid="uid://b7okhj81e0xjm"]
+[gd_resource type="Resource" script_class="BattleStats" format=3 uid="uid://b7okhj81e0xjm"]
 
+[ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_8da8w"]
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_c5jnn"]
 [ext_resource type="Resource" uid="uid://dnh12v0qg35cr" path="res://resources/enemies/golem.tres" id="2_8dwqd"]
 [ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="2_fulsd"]

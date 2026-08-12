@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cr2pf64g056g3"]
+[gd_scene format=3 uid="uid://cr2pf64g056g3"]
 
 [ext_resource type="Texture2D" uid="uid://c8d3c14kcslbc" path="res://assets/sprites/temp_sheets/UI Assets pack_v.1_st/UI.png" id="1_057j8"]
 [ext_resource type="Script" uid="uid://b8wymhrjv0jlf" path="res://scenes/ui/battle/unit_select_button.gd" id="1_eqp6i"]
@@ -82,7 +82,7 @@ bg_color = Color(0.976471, 0.760784, 0.168627, 0.784314)
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 
-[node name="UnitSelectButton" type="Button"]
+[node name="UnitSelectButton" type="Button" unique_id=76761384]
 custom_minimum_size = Vector2(115, 58)
 offset_right = 115.0
 offset_bottom = 58.0
@@ -93,7 +93,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_egrrk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3ktk7")
 script = ExtResource("1_eqp6i")
 
-[node name="IconBorder" type="Panel" parent="."]
+[node name="IconBorder" type="Panel" parent="." unique_id=797400278]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 6.0
@@ -102,7 +102,7 @@ offset_bottom = 51.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ydllm")
 
-[node name="Divider" type="Panel" parent="IconBorder"]
+[node name="Divider" type="Panel" parent="IconBorder" unique_id=793234467]
 custom_minimum_size = Vector2(62, 8)
 layout_mode = 0
 offset_left = 44.0
@@ -112,7 +112,7 @@ offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rufao")
 
-[node name="KeybindLabel" type="Label" parent="."]
+[node name="KeybindLabel" type="Label" parent="." unique_id=2082379031]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 92.0
@@ -121,7 +121,7 @@ offset_right = 155.0
 offset_bottom = 53.0
 text = "[Unassigned]"
 
-[node name="IconContainer" type="HBoxContainer" parent="."]
+[node name="IconContainer" type="HBoxContainer" parent="." unique_id=1391912420]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 33.0
@@ -129,7 +129,7 @@ offset_right = 86.0
 offset_bottom = 61.0
 mouse_filter = 2
 
-[node name="MoveIcon" type="TextureRect" parent="IconContainer"]
+[node name="MoveIcon" type="TextureRect" parent="IconContainer" unique_id=18923822]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -138,7 +138,7 @@ mouse_filter = 2
 texture = ExtResource("3_057j8")
 stretch_mode = 5
 
-[node name="AbilityIcon" type="TextureRect" parent="IconContainer"]
+[node name="AbilityIcon" type="TextureRect" parent="IconContainer" unique_id=434739164]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -147,7 +147,7 @@ mouse_filter = 2
 texture = ExtResource("4_rufao")
 stretch_mode = 5
 
-[node name="BarsContainer" type="VBoxContainer" parent="."]
+[node name="BarsContainer" type="VBoxContainer" parent="." unique_id=787577430]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 0
 offset_left = 108.0
@@ -160,14 +160,14 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="PotionBarOutline" type="Panel" parent="BarsContainer"]
+[node name="PotionBarOutline" type="Panel" parent="BarsContainer" unique_id=391097760]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(46, 12)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_erphx")
 
-[node name="PotionBar" type="ProgressBar" parent="BarsContainer/PotionBarOutline"]
+[node name="PotionBar" type="ProgressBar" parent="BarsContainer/PotionBarOutline" unique_id=2123749815]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 6.0
@@ -184,14 +184,14 @@ value = 75.0
 fill_mode = 1
 show_percentage = false
 
-[node name="HealthBarOutline" type="Panel" parent="BarsContainer"]
+[node name="HealthBarOutline" type="Panel" parent="BarsContainer" unique_id=1124581512]
 custom_minimum_size = Vector2(46, 12)
 layout_mode = 2
 size_flags_vertical = 10
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3ktk7")
 
-[node name="HealthBar" type="ProgressBar" parent="BarsContainer/HealthBarOutline"]
+[node name="HealthBar" type="ProgressBar" parent="BarsContainer/HealthBarOutline" unique_id=1213541134]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(44, 10)
 layout_mode = 1
@@ -212,7 +212,7 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="ShieldBarOutline" type="Panel" parent="."]
+[node name="ShieldBarOutline" type="Panel" parent="." unique_id=1710787772]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(14, 14)
 layout_mode = 0
@@ -223,7 +223,7 @@ offset_bottom = 31.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_xu37h")
 
-[node name="ShieldBar" type="ProgressBar" parent="ShieldBarOutline"]
+[node name="ShieldBar" type="ProgressBar" parent="ShieldBarOutline" unique_id=62428488]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(44, 10)
 layout_mode = 0
@@ -239,7 +239,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_057j8")
 value = 75.0
 show_percentage = false
 
-[node name="InventoryUnitIcon" type="Control" parent="."]
+[node name="InventoryUnitIcon" type="Control" parent="." unique_id=1691619312]
 custom_minimum_size = Vector2(32, 32)
 anchors_preset = 0
 offset_left = 11.0
@@ -249,6 +249,6 @@ offset_bottom = 45.0
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="UnitIcon" parent="InventoryUnitIcon" instance=ExtResource("6_057j8")]
+[node name="UnitIcon" parent="InventoryUnitIcon" unique_id=487770915 instance=ExtResource("6_057j8")]
 unique_name_in_owner = true
 layout_mode = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2i3e6qlmmf13"]
+[gd_scene format=3 uid="uid://b2i3e6qlmmf13"]
 
 [ext_resource type="Script" uid="uid://b2j1u6d8rdmeh" path="res://scenes/map/map.gd" id="1_sxf4j"]
 [ext_resource type="Script" uid="uid://d1u1r3ppplyaa" path="res://scenes/map/map_generator.gd" id="2_tqkkf"]
@@ -16,24 +16,24 @@ texture_margin_right = 29.0
 texture_margin_bottom = 13.0
 region_rect = Rect2(611, 83, 42, 58)
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" unique_id=25403256]
 script = ExtResource("1_sxf4j")
 
-[node name="Visuals" type="Node2D" parent="."]
+[node name="Visuals" type="Node2D" parent="." unique_id=785930256]
 unique_name_in_owner = true
 position = Vector2(30, 79)
 metadata/_edit_lock_ = true
 
-[node name="Lines" type="Node2D" parent="Visuals"]
+[node name="Lines" type="Node2D" parent="Visuals" unique_id=1672095747]
 unique_name_in_owner = true
 
-[node name="Rooms" type="Node2D" parent="Visuals"]
+[node name="Rooms" type="Node2D" parent="Visuals" unique_id=487871268]
 unique_name_in_owner = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=553086024]
 offset = Vector2(320, 180)
 
-[node name="MapGenerator" type="Node" parent="."]
+[node name="MapGenerator" type="Node" parent="." unique_id=1949349283]
 unique_name_in_owner = true
 script = ExtResource("2_tqkkf")
 battle_stats_pool = ExtResource("3_a2pkv")
@@ -41,11 +41,11 @@ elite_battle_stats_pool = ExtResource("4_ph54e")
 random_events_pool = ExtResource("5_04w0f")
 boss_battle = ExtResource("5_fcby6")
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=60739805]
 unique_name_in_owner = true
 layer = -1
 
-[node name="MapTexturePanel" type="Panel" parent="Background"]
+[node name="MapTexturePanel" type="Panel" parent="Background" unique_id=12844369]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0

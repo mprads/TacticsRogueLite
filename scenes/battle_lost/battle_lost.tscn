@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhcicj086k725"]
+[gd_scene format=3 uid="uid://dhcicj086k725"]
 
 [ext_resource type="Script" uid="uid://oh22iqqgtwo6" path="res://scenes/battle_lost/battle_lost.gd" id="1_tckur"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_mst5s"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="2_tckur"]
 
-[node name="BattleLost" type="Control"]
+[node name="BattleLost" type="Control" unique_id=1400140724]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,10 +13,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tckur")
 
-[node name="AnimatedBackground" parent="." instance=ExtResource("2_mst5s")]
+[node name="AnimatedBackground" parent="." unique_id=1849519036 instance=ExtResource("2_mst5s")]
 layout_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1246016282]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,36 +27,36 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1409095936]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1985230820]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1229506128]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Defeat"
 horizontal_alignment = 1
 
-[node name="RetryButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="RetryButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=12765256]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Retry"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1237002914]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Quit"
 
-[node name="PartyUI" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_tckur")]
+[node name="PartyUI" parent="MarginContainer/HBoxContainer" unique_id=231654828 instance=ExtResource("2_tckur")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
