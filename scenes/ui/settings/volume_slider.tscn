@@ -1,17 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl8jrtuinnbp8"]
+[gd_scene format=3 uid="uid://cl8jrtuinnbp8"]
 
 [ext_resource type="Script" uid="uid://bneiimh14dbun" path="res://scenes/ui/settings/volume_slider.gd" id="1_0yn64"]
 
-[node name="VolumeSlider" type="VBoxContainer"]
+[node name="VolumeSlider" type="VBoxContainer" unique_id=1515452164]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_0yn64")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=905372847]
 layout_mode = 2
 text = "Blank Volume"
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="HSlider" type="HSlider" parent="." unique_id=293392131]
 layout_mode = 2
 max_value = 1.0
 step = 0.001

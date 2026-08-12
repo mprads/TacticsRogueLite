@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleStats" load_steps=10 format=3 uid="uid://topc3rypefwm"]
+[gd_resource type="Resource" script_class="BattleStats" format=3 uid="uid://topc3rypefwm"]
 
 [ext_resource type="Script" uid="uid://d03wgd6dnkyes" path="res://resources/artifacts/artifact.gd" id="1_2xdi8"]
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_l6i05"]
@@ -12,7 +12,6 @@
 
 [resource]
 script = ExtResource("3_6ru5m")
-tier = 0
 weight = 1.0
 min_gold_reward = 50
 max_gold_reward = 70

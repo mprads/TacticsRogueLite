@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="Vial" load_steps=5 format=3 uid="uid://bsdweqfkcpb0i"]
+[gd_resource type="Resource" script_class="Vial" format=3 uid="uid://bsdweqfkcpb0i"]
 
 [ext_resource type="Texture2D" uid="uid://bs1lylhmwysak" path="res://assets/sprites/vials/vial_filling.png" id="1_8bo8f"]
 [ext_resource type="Script" uid="uid://bkslv2wck48to" path="res://resources/vials/vial.gd" id="1_p0orm"]
 [ext_resource type="Texture2D" uid="uid://du7qqpfyjfxw4" path="res://assets/sprites/vials/base_vial.png" id="2_mv3nn"]
-[ext_resource type="Resource" uid="uid://clfji10vn38yo" path="res://resources/potions/green_potion.tres" id="5_luyiv"]
+
+[sub_resource type="Resource" id="Resource_2gcoo"]
+metadata/__load_path__ = "res://resources/potions/green_potion.tres"
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_p0orm")
 outline = ExtResource("2_mv3nn")
 filling = ExtResource("1_8bo8f")
-potion = ExtResource("5_luyiv")
-refill_quantity = 1
+potion = SubResource("Resource_2gcoo")
 metadata/_custom_type_script = "uid://bkslv2wck48to"

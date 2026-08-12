@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeightedTable" load_steps=7 format=3 uid="uid://btbuhnlhdjrcs"]
+[gd_resource type="Resource" script_class="WeightedTable" format=3 uid="uid://btbuhnlhdjrcs"]
 
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_ca0oo"]
 [ext_resource type="Resource" uid="uid://gl211recday" path="res://resources/battles/tier_0_2ghosts.tres" id="2_rs6b3"]

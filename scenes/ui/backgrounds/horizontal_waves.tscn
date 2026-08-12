@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://co2ekdtfhr82i"]
+[gd_scene format=3 uid="uid://co2ekdtfhr82i"]
 
 [ext_resource type="Texture2D" uid="uid://irg2dibpjslg" path="res://assets/backgrounds/Horizontal.png" id="1_yeje4"]
 
@@ -169,7 +169,7 @@ shader_parameter/width = 640.0
 shader_parameter/height = 360.0
 shader_parameter/palette_cycling_speed = 0.0
 
-[node name="HorizontalWaves" type="TextureRect"]
+[node name="HorizontalWaves" type="TextureRect" unique_id=144673183]
 texture_filter = 6
 texture_repeat = 3
 material = SubResource("ShaderMaterial_0aquh")

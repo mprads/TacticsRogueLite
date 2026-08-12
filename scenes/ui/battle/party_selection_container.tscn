@@ -1,29 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm2vpxif7k43a"]
+[gd_scene format=3 uid="uid://dm2vpxif7k43a"]
 
 [ext_resource type="Script" uid="uid://4fpfvvni2jsr" path="res://scenes/ui/battle/party_selection_container.gd" id="1_mv4ic"]
 [ext_resource type="PackedScene" uid="uid://e0teld8gsvyy" path="res://scenes/ui/battle/battle_unit_ui.tscn" id="2_mv4ic"]
 
-[node name="PartySelectionContainer" type="VBoxContainer"]
+[node name="PartySelectionContainer" type="VBoxContainer" unique_id=1684748526]
 custom_minimum_size = Vector2(120, 36)
 offset_right = 120.0
 offset_bottom = 290.0
 theme_override_constants/separation = -4
 script = ExtResource("1_mv4ic")
 
-[node name="BattleUnitUI" parent="." instance=ExtResource("2_mv4ic")]
+[node name="BattleUnitUI" parent="." unique_id=1124430455 instance=ExtResource("2_mv4ic")]
 layout_mode = 2
 
-[node name="BattleUnitUI2" parent="." instance=ExtResource("2_mv4ic")]
+[node name="BattleUnitUI2" parent="." unique_id=456405063 instance=ExtResource("2_mv4ic")]
 layout_mode = 2
 
-[node name="BattleUnitUI3" parent="." instance=ExtResource("2_mv4ic")]
+[node name="BattleUnitUI3" parent="." unique_id=1108558568 instance=ExtResource("2_mv4ic")]
 layout_mode = 2
 
-[node name="BattleUnitUI4" parent="." instance=ExtResource("2_mv4ic")]
+[node name="BattleUnitUI4" parent="." unique_id=58745574 instance=ExtResource("2_mv4ic")]
 layout_mode = 2
 
-[node name="BattleUnitUI5" parent="." instance=ExtResource("2_mv4ic")]
+[node name="BattleUnitUI5" parent="." unique_id=1238770240 instance=ExtResource("2_mv4ic")]
 layout_mode = 2
 
-[node name="BattleUnitUI6" parent="." instance=ExtResource("2_mv4ic")]
+[node name="BattleUnitUI6" parent="." unique_id=503430344 instance=ExtResource("2_mv4ic")]
 layout_mode = 2

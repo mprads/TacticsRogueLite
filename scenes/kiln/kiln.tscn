@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfc7nmxs6r00g"]
+[gd_scene format=3 uid="uid://bfc7nmxs6r00g"]
 
 [ext_resource type="Script" uid="uid://5bg4aw7ppm3c" path="res://scenes/kiln/kiln.gd" id="1_54vod"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_11imp"]
@@ -6,14 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cp13xdyr7y5js" path="res://assets/sprites/kiln/Kiln.png" id="2_tcpd7"]
 [ext_resource type="PackedScene" uid="uid://i84sei2wbdf7" path="res://scenes/ui/unit_icon_panel.tscn" id="4_11imp"]
 
-[node name="Kiln" type="Node2D"]
+[node name="Kiln" type="Node2D" unique_id=422160351]
 script = ExtResource("1_54vod")
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=845313867]
 
-[node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_11imp")]
+[node name="AnimatedBackground" parent="BackgroundLayer" unique_id=114128011 instance=ExtResource("2_11imp")]
 
-[node name="Kiln" type="TextureRect" parent="BackgroundLayer"]
+[node name="Kiln" type="TextureRect" parent="BackgroundLayer" unique_id=1786045696]
 custom_minimum_size = Vector2(260, 180)
 anchors_preset = 6
 anchor_left = 1.0
@@ -30,9 +30,9 @@ mouse_filter = 2
 texture = ExtResource("2_tcpd7")
 stretch_mode = 5
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=2116716844]
 
-[node name="Control" type="Control" parent="UI"]
+[node name="Control" type="Control" parent="UI" unique_id=1588655568]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 592.0
@@ -43,19 +43,18 @@ size_flags_horizontal = 10
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="UnitIconPanel" parent="UI/Control" instance=ExtResource("4_11imp")]
+[node name="UnitIconPanel" parent="UI/Control" unique_id=1826063374 instance=ExtResource("4_11imp")]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
 offset_left = -74.0
 offset_top = -246.0
 offset_right = -26.0
 offset_bottom = -198.0
-size_flags_vertical = 4
 
-[node name="HealButton" type="Button" parent="UI/Control"]
+[node name="HealButton" type="Button" parent="UI/Control" unique_id=205614039]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 32)
-layout_mode = 2
+layout_mode = 0
 offset_left = -125.0
 offset_top = -113.0
 offset_right = 25.0
@@ -63,10 +62,10 @@ offset_bottom = -75.0
 theme_override_font_sizes/font_size = 16
 text = "Heal 25%"
 
-[node name="LeaveButton" type="Button" parent="UI/Control"]
+[node name="LeaveButton" type="Button" parent="UI/Control" unique_id=2086151266]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
-layout_mode = 2
+layout_mode = 0
 offset_left = -59.0
 offset_top = -28.0
 offset_right = 43.0
@@ -74,7 +73,7 @@ offset_bottom = 10.0
 theme_override_font_sizes/font_size = 16
 text = "Leave"
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=878563523]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -86,6 +85,6 @@ theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="PartyUI" parent="UI/MarginContainer" instance=ExtResource("2_cs22t")]
+[node name="PartyUI" parent="UI/MarginContainer" unique_id=1227012061 instance=ExtResource("2_cs22t")]
 unique_name_in_owner = true
 layout_mode = 2

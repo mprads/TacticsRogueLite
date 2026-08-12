@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dyaf53aaous6t"]
+[gd_scene format=3 uid="uid://dyaf53aaous6t"]
 
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="1_4jmb0"]
 [ext_resource type="Script" uid="uid://bkfym5x8dw3p2" path="res://scenes/party_select/party_select.gd" id="1_vhtjw"]
@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://delw0ryy5peue" path="res://scenes/ui/popups/tooltip.tscn" id="28_227sm"]
 [ext_resource type="PackedScene" uid="uid://o0flfk67550c" path="res://scenes/ui/gold_ui.tscn" id="29_rrx7l"]
 
-[node name="PartySelect" type="Control"]
+[node name="PartySelect" type="Control" unique_id=592695314]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,25 +49,25 @@ gold_max = 50
 item_quantity_min = 2
 item_quantity_max = 4
 
-[node name="InventoryManager" type="Node" parent="."]
+[node name="InventoryManager" type="Node" parent="." unique_id=714076872]
 script = ExtResource("20_227sm")
 
-[node name="PartyManager" type="Node" parent="."]
+[node name="PartyManager" type="Node" parent="." unique_id=128169848]
 script = ExtResource("21_rrx7l")
 
-[node name="VialManager" type="Node" parent="."]
+[node name="VialManager" type="Node" parent="." unique_id=568109247]
 script = ExtResource("22_lc1ic")
 
-[node name="ArtifactManager" type="Node" parent="."]
+[node name="ArtifactManager" type="Node" parent="." unique_id=1084239870]
 script = ExtResource("23_syo35")
 
-[node name="RunDataManager" type="Node" parent="."]
+[node name="RunDataManager" type="Node" parent="." unique_id=1997902565]
 script = ExtResource("24_rrx7l")
 
-[node name="AnimatedBackground" parent="." instance=ExtResource("1_4jmb0")]
+[node name="AnimatedBackground" parent="." unique_id=68406990 instance=ExtResource("1_4jmb0")]
 layout_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1118677429]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,81 +79,81 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2016155005]
 layout_mode = 2
 
-[node name="SelectionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SelectionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=18097728]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(608, 250)
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="UnitSelectPanel" parent="MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("21_xrrf1")]
+[node name="UnitSelectPanel" parent="MarginContainer/VBoxContainer/SelectionContainer" unique_id=1019866252 instance=ExtResource("21_xrrf1")]
 layout_mode = 2
 
-[node name="UnitSelectPanel2" parent="MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("21_xrrf1")]
+[node name="UnitSelectPanel2" parent="MarginContainer/VBoxContainer/SelectionContainer" unique_id=224904612 instance=ExtResource("21_xrrf1")]
 layout_mode = 2
 
-[node name="UnitSelectPanel3" parent="MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("21_xrrf1")]
+[node name="UnitSelectPanel3" parent="MarginContainer/VBoxContainer/SelectionContainer" unique_id=1675973096 instance=ExtResource("21_xrrf1")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1668006584]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=547256564]
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/separation = 16
 
-[node name="PartyContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="PartyContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1187693868]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 10
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer" unique_id=1268825607]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer"]
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer" unique_id=211731077]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="Panel3" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer"]
+[node name="Panel3" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/PartyContainer" unique_id=531580736]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="VialContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="VialContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=245383886]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" unique_id=1356876995]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer"]
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" unique_id=871716319]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="Panel3" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer"]
+[node name="Panel3" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer2/VialContainer" unique_id=259204854]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="InventoryContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="InventoryContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1454023519]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 
-[node name="GoldUI" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("29_rrx7l")]
+[node name="GoldUI" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=148757247 instance=ExtResource("29_rrx7l")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="UnitCreatorUI" parent="." instance=ExtResource("27_r3g8i")]
+[node name="UnitCreatorUI" parent="." unique_id=299806072 instance=ExtResource("27_r3g8i")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -167,4 +167,7 @@ offset_top = -164.0
 offset_right = 150.0
 offset_bottom = 66.0
 
-[node name="Tooltip" parent="." instance=ExtResource("28_227sm")]
+[node name="Tooltip" parent="." unique_id=168409040 instance=ExtResource("28_227sm")]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 180.0

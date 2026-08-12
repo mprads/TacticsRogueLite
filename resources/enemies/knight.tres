@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=7 format=3 uid="uid://dn4qyxauut4vk"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dn4qyxauut4vk"]
 
 [ext_resource type="Script" uid="uid://co20nystqenxu" path="res://resources/enemies/enemy_stats.gd" id="1_b3je8"]
 [ext_resource type="Resource" uid="uid://02c36qgil0wx" path="res://resources/abilities/melee.tres" id="1_ubxei"]
@@ -12,12 +12,10 @@ script = ExtResource("1_b3je8")
 name = "Knight"
 sprite = ExtResource("3_dt6p3")
 movement = 3
-attack_range = 1
 dimensions = Vector2i(1, 1)
 melee_ability = ExtResource("1_ubxei")
 ranged_ability = ExtResource("3_jvue7")
 ai = ExtResource("2_dt6p3")
-scene = ExtResource("3_47c6y")
 max_health = 30
 health = 30
 metadata/_custom_type_script = "uid://co20nystqenxu"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://do85c02nl7l33"]
+[gd_scene format=3 uid="uid://do85c02nl7l33"]
 
 [ext_resource type="Script" uid="uid://fiydsahgaxay" path="res://scenes/map/map_room.gd" id="1_gyfd6"]
 [ext_resource type="Texture2D" uid="uid://cna447ovou157" path="res://assets/icons/map/Battle.png" id="1_hwhxx"]
@@ -81,35 +81,35 @@ _data = {
 &"available": SubResource("Animation_gyfd6")
 }
 
-[node name="MapRoom" type="Area2D"]
+[node name="MapRoom" type="Area2D" unique_id=1383528794]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_gyfd6")
 
-[node name="Visuals" type="Node2D" parent="."]
+[node name="Visuals" type="Node2D" parent="." unique_id=1436909840]
 
-[node name="Line2D" type="Line2D" parent="Visuals"]
+[node name="Line2D" type="Line2D" parent="Visuals" unique_id=931695003]
 visible = false
 points = PackedVector2Array(-14, -15, -19, -8, -20, -2, -20, 8, -14, 16, -8, 18, -1, 19, 6, 18, 15, 15, 18, 8, 18, -1, 18, -7, 15, -13, 8, -18, 0, -19, -9, -19)
 closed = true
 width = 4.0
 default_color = Color(0.868692, 0.788272, 0.677068, 1)
 
-[node name="AvailableSprite" type="Sprite2D" parent="Visuals"]
+[node name="AvailableSprite" type="Sprite2D" parent="Visuals" unique_id=847513429]
 visible = false
 modulate = Color(1, 1, 1, 0.156863)
 material = ExtResource("3_wln44")
 texture = ExtResource("1_hwhxx")
 
-[node name="DisabledSprite" type="Sprite2D" parent="Visuals"]
+[node name="DisabledSprite" type="Sprite2D" parent="Visuals" unique_id=515155743]
 modulate = Color(1, 1, 1, 0.156863)
 texture = ExtResource("1_hwhxx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=980212092]
 visible = false
 shape = SubResource("CircleShape2D_gyfd6")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=637120459]
 offset_left = -20.0
 offset_top = 7.0
 offset_right = 20.0
@@ -117,7 +117,5 @@ offset_bottom = 29.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "null"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_w2n1o")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=875314820]
+libraries/ = SubResource("AnimationLibrary_w2n1o")

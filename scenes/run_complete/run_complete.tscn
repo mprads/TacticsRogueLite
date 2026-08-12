@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1es6hg3xd4hf"]
+[gd_scene format=3 uid="uid://c1es6hg3xd4hf"]
 
 [ext_resource type="Script" uid="uid://nkilyocdgd8x" path="res://scenes/run_complete/run_complete.gd" id="1_uwcho"]
 [ext_resource type="PackedScene" uid="uid://id8ej54jj67y" path="res://scenes/ui/stats_panel.tscn" id="2_lm8b5"]
@@ -86,12 +86,12 @@ scale_max = 5.0
 scale_curve = SubResource("CurveTexture_mt223")
 color_ramp = SubResource("GradientTexture1D_uwcho")
 
-[node name="RunComplete" type="Control"]
+[node name="RunComplete" type="Control" unique_id=699216299]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_uwcho")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1369980633]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,10 +102,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0846899, 0.0846899, 0.0846899, 1)
 
-[node name="Fireworks" type="Node2D" parent="."]
+[node name="Fireworks" type="Node2D" parent="." unique_id=1000626416]
 unique_name_in_owner = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Fireworks"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Fireworks" unique_id=1320767745]
 self_modulate = Color(0.909804, 0.231373, 0.231373, 1)
 position = Vector2(428, 323)
 amount = 50
@@ -115,7 +115,7 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_uwcho")
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Fireworks"]
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Fireworks" unique_id=1109695611]
 self_modulate = Color(0.301961, 0.607843, 0.901961, 1)
 position = Vector2(450, 77)
 amount = 50
@@ -125,7 +125,7 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_la1w8")
 
-[node name="GPUParticles2D3" type="GPUParticles2D" parent="Fireworks"]
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Fireworks" unique_id=1985167007]
 self_modulate = Color(0.976471, 0.760784, 0.168627, 1)
 position = Vector2(594, 224)
 amount = 50
@@ -135,7 +135,7 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_lm8b5")
 
-[node name="GPUParticles2D4" type="GPUParticles2D" parent="Fireworks"]
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="Fireworks" unique_id=1766463383]
 self_modulate = Color(0.0862745, 0.352941, 0.298039, 1)
 position = Vector2(448, 222)
 amount = 50
@@ -145,7 +145,7 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_mt223")
 
-[node name="GPUParticles2D5" type="GPUParticles2D" parent="Fireworks"]
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="Fireworks" unique_id=411426507]
 self_modulate = Color(0.419608, 0.243137, 0.458824, 1)
 position = Vector2(574, 324)
 amount = 50
@@ -155,7 +155,7 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_8slvh")
 
-[node name="GPUParticles2D6" type="GPUParticles2D" parent="Fireworks"]
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="Fireworks" unique_id=719909831]
 self_modulate = Color(0.780392, 0.862745, 0.815686, 1)
 position = Vector2(569, 66)
 amount = 50
@@ -165,7 +165,7 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_4ha23")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1026816676]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -180,32 +180,32 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1496971119]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1693272468]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "You Win!"
 horizontal_alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1605037258]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Main Menu"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1745922435]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Quit"
 
-[node name="StatsPanel" parent="." instance=ExtResource("2_lm8b5")]
+[node name="StatsPanel" parent="." unique_id=1497019385 instance=ExtResource("2_lm8b5")]
 layout_mode = 1
 anchors_preset = 0
 anchor_left = 0.0

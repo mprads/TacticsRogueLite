@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ianstowvchpu"]
+[gd_scene format=3 uid="uid://ianstowvchpu"]
 
 [ext_resource type="Script" uid="uid://cspy1rjky5jjl" path="res://scenes/ui/unit_icon.gd" id="1_8cwqn"]
 [ext_resource type="Material" uid="uid://bbylq0plllj23" path="res://assets/shaders/liquid_material.tres" id="3_avjqe"]
@@ -12,7 +12,7 @@ load_path = "res://.godot/imported/outline_sheet.png-8b25bd81e000666fdf310f5690c
 atlas = SubResource("CompressedTexture2D_j3g1x")
 region = Rect2(0, 0, 32, 32)
 
-[node name="UnitIcon" type="Control"]
+[node name="UnitIcon" type="Control" unique_id=1378126704]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 8
@@ -29,7 +29,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8cwqn")
 
-[node name="Bottle" type="TextureRect" parent="."]
+[node name="Bottle" type="TextureRect" parent="." unique_id=921410087]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 32.0
@@ -38,7 +38,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_kl7fi")
 stretch_mode = 5
 
-[node name="Filling" type="TextureRect" parent="Bottle"]
+[node name="Filling" type="TextureRect" parent="Bottle" unique_id=370779122]
 unique_name_in_owner = true
 material = ExtResource("3_avjqe")
 layout_mode = 0
@@ -48,7 +48,7 @@ mouse_filter = 2
 texture = ExtResource("4_mccfg")
 stretch_mode = 5
 
-[node name="Damage" type="TextureRect" parent="Bottle"]
+[node name="Damage" type="TextureRect" parent="Bottle" unique_id=654197735]
 unique_name_in_owner = true
 material = ExtResource("5_fhohe")
 layout_mode = 0

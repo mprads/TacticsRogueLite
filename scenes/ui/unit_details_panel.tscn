@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy4lefedf1dqo"]
+[gd_scene format=3 uid="uid://cy4lefedf1dqo"]
 
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_7kc8y"]
 [ext_resource type="Script" uid="uid://vr410hxbggv0" path="res://scenes/ui/unit_details_panel.gd" id="1_blucq"]
@@ -11,7 +11,7 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(161, 336, 30, 16)
 
-[node name="UnitDetailsPanel" type="Panel"]
+[node name="UnitDetailsPanel" type="Panel" unique_id=230752896]
 custom_minimum_size = Vector2(65, 48)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -19,7 +19,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_51orv")
 script = ExtResource("1_blucq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2003752239]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,17 +35,17 @@ grow_vertical = 2
 theme_override_constants/separation = 2
 alignment = 1
 
-[node name="HealthLabel" type="Label" parent="VBoxContainer"]
+[node name="HealthLabel" type="Label" parent="VBoxContainer" unique_id=1798446]
 unique_name_in_owner = true
 layout_mode = 2
 text = "HP 99/99"
 
-[node name="OzLabel" type="Label" parent="VBoxContainer"]
+[node name="OzLabel" type="Label" parent="VBoxContainer" unique_id=558031098]
 unique_name_in_owner = true
 layout_mode = 2
 text = "OZ 1/99"
 
-[node name="MovementLabel" type="Label" parent="VBoxContainer"]
+[node name="MovementLabel" type="Label" parent="VBoxContainer" unique_id=1578621815]
 unique_name_in_owner = true
 layout_mode = 2
 text = "MOVE 5"

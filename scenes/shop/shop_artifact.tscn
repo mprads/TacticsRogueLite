@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1xgosjtjf1n3"]
+[gd_scene format=3 uid="uid://c1xgosjtjf1n3"]
 
 [ext_resource type="Script" uid="uid://dymjmy2fsjnls" path="res://scenes/shop/shop_artifact.gd" id="1_oba1r"]
 [ext_resource type="Texture2D" uid="uid://dm5conpiemvp2" path="res://assets/icons/items/32x32sale_tag.png" id="2_wrpmr"]
@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="3_wrpmr"]
 [ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/gold.png" id="4_fa1dj"]
 
-[node name="ShopArtifact" type="Control"]
+[node name="ShopArtifact" type="Control" unique_id=1204219983]
 custom_minimum_size = Vector2(32, 54)
 layout_mode = 3
 anchors_preset = 0
@@ -14,8 +14,8 @@ offset_right = 32.0
 offset_bottom = 54.0
 script = ExtResource("1_oba1r")
 
-[node name="SaleTag" type="TextureRect" parent="."]
-layout_mode = 2
+[node name="SaleTag" type="TextureRect" parent="." unique_id=2058965381]
+layout_mode = 0
 offset_top = 22.0
 offset_right = 32.0
 offset_bottom = 54.0
@@ -23,7 +23,7 @@ mouse_filter = 2
 texture = ExtResource("2_wrpmr")
 stretch_mode = 5
 
-[node name="ArtifactContainer" type="VBoxContainer" parent="."]
+[node name="ArtifactContainer" type="VBoxContainer" parent="." unique_id=1487609115]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 46)
 layout_mode = 0
@@ -31,7 +31,7 @@ offset_right = 32.0
 offset_bottom = 46.0
 theme_override_constants/separation = 3
 
-[node name="ArtifactIconButton" type="TextureButton" parent="ArtifactContainer"]
+[node name="ArtifactIconButton" type="TextureButton" parent="ArtifactContainer" unique_id=478201823]
 unique_name_in_owner = true
 material = ExtResource("3_wrpmr")
 custom_minimum_size = Vector2(32, 32)
@@ -40,13 +40,13 @@ texture_normal = ExtResource("3_oba1r")
 texture_disabled = ExtResource("3_oba1r")
 stretch_mode = 5
 
-[node name="CostContainer" type="HBoxContainer" parent="ArtifactContainer"]
+[node name="CostContainer" type="HBoxContainer" parent="ArtifactContainer" unique_id=2037890520]
 custom_minimum_size = Vector2(32, 10)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="GoldIcon" type="TextureRect" parent="ArtifactContainer/CostContainer"]
+[node name="GoldIcon" type="TextureRect" parent="ArtifactContainer/CostContainer" unique_id=1528651861]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 4
@@ -55,7 +55,7 @@ texture = ExtResource("4_fa1dj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GoldCost" type="Label" parent="ArtifactContainer/CostContainer"]
+[node name="GoldCost" type="Label" parent="ArtifactContainer/CostContainer" unique_id=312051665]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

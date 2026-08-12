@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpxmxey3qs0o6"]
+[gd_scene format=3 uid="uid://dpxmxey3qs0o6"]
 
 [ext_resource type="Script" uid="uid://fhmp1dkucxds" path="res://scenes/inventory/inventory_ui.gd" id="1_bxceu"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="1_tvok8"]
@@ -13,7 +13,7 @@ texture_margin_right = 7.0
 texture_margin_bottom = 7.0
 region_rect = Rect2(721, 65, 46, 46)
 
-[node name="InventoryUI" type="Control"]
+[node name="InventoryUI" type="Control" unique_id=1547583064]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bxceu")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=617810300]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,11 +34,11 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 8
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=2141447135]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_iy21j")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel" unique_id=2043561241]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,11 +54,11 @@ grow_vertical = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 4
 
-[node name="PartyUI" parent="MarginContainer/Panel/HBoxContainer" instance=ExtResource("3_8ojme")]
+[node name="PartyUI" parent="MarginContainer/Panel/HBoxContainer" unique_id=552293662 instance=ExtResource("3_8ojme")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="InventoryItems" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer"]
+[node name="InventoryItems" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer" unique_id=806398632]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 280)
 layout_mode = 2
@@ -67,38 +67,38 @@ theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 3
 
-[node name="InventoryItem" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=1675591802 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem2" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem2" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=711230557 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem3" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem3" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=41621193 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem4" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem4" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=301773432 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem5" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem5" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=150488611 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem6" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem6" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=737015197 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem7" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem7" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=1240565157 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem8" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem8" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=745199691 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem9" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem9" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=1115264319 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem10" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem10" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=2020681679 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem11" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem11" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=237060306 instance=ExtResource("1_tvok8")]
 layout_mode = 2
 
-[node name="InventoryItem12" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" instance=ExtResource("1_tvok8")]
+[node name="InventoryItem12" parent="MarginContainer/Panel/HBoxContainer/InventoryItems" unique_id=2077284442 instance=ExtResource("1_tvok8")]
 layout_mode = 2

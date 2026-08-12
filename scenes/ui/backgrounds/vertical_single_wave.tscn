@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhba5v58kiff8"]
+[gd_scene format=3 uid="uid://bhba5v58kiff8"]
 
 [ext_resource type="Texture2D" uid="uid://bcfeuq42le0qa" path="res://assets/backgrounds/SingleVertical.png" id="1_rhkjp"]
 
@@ -169,7 +169,7 @@ shader_parameter/width = 640.0
 shader_parameter/height = 360.0
 shader_parameter/palette_cycling_speed = 0.0
 
-[node name="VerticalSingleWave" type="TextureRect"]
+[node name="VerticalSingleWave" type="TextureRect" unique_id=1140464725]
 texture_filter = 6
 texture_repeat = 3
 material = SubResource("ShaderMaterial_mt6lf")

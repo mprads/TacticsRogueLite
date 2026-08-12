@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkokbdb73arai"]
+[gd_scene format=3 uid="uid://dkokbdb73arai"]
 
 [ext_resource type="Script" uid="uid://bypkjjcfg5vrv" path="res://scenes/brewing/brewing.gd" id="1_vb5it"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_jra8c"]
@@ -41,15 +41,15 @@ texture_margin_right = 13.0
 texture_margin_bottom = 13.0
 region_rect = Rect2(611, 83, 42, 58)
 
-[node name="Brewing" type="Node2D"]
+[node name="Brewing" type="Node2D" unique_id=814261035]
 script = ExtResource("1_vb5it")
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=89018111]
 layer = -1
 
-[node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_jra8c")]
+[node name="AnimatedBackground" parent="BackgroundLayer" unique_id=42849833 instance=ExtResource("2_jra8c")]
 
-[node name="OpenBook" type="TextureRect" parent="BackgroundLayer"]
+[node name="OpenBook" type="TextureRect" parent="BackgroundLayer" unique_id=1250470156]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +62,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_8jww1")
 stretch_mode = 5
 
-[node name="LazyPageOutlineBlocker" type="ColorRect" parent="BackgroundLayer/OpenBook"]
+[node name="LazyPageOutlineBlocker" type="ColorRect" parent="BackgroundLayer/OpenBook" unique_id=1377964442]
 modulate = Color(0.996078, 0.882353, 0.721569, 1)
 layout_mode = 0
 offset_left = 72.0
@@ -70,7 +70,7 @@ offset_top = 4.0
 offset_right = 289.0
 offset_bottom = 292.0
 
-[node name="SymbolContainer" type="VBoxContainer" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker"]
+[node name="SymbolContainer" type="VBoxContainer" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker" unique_id=1562518672]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -86,25 +86,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker/SymbolContainer"]
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker/SymbolContainer" unique_id=1678081066]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_6wabc")
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker/SymbolContainer"]
+[node name="TextureRect2" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker/SymbolContainer" unique_id=1473456010]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_wvyrg")
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker/SymbolContainer"]
+[node name="TextureRect3" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker/SymbolContainer" unique_id=2046606557]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_q3lsj")
 stretch_mode = 5
 
-[node name="LazyPageOutlineBlocker2" type="ColorRect" parent="BackgroundLayer/OpenBook"]
+[node name="LazyPageOutlineBlocker2" type="ColorRect" parent="BackgroundLayer/OpenBook" unique_id=364182335]
 modulate = Color(0.996078, 0.882353, 0.721569, 1)
 layout_mode = 0
 offset_left = 347.0
@@ -112,7 +112,7 @@ offset_top = 5.0
 offset_right = 564.0
 offset_bottom = 293.0
 
-[node name="SymbolContainer" type="VBoxContainer" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker2"]
+[node name="SymbolContainer" type="VBoxContainer" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker2" unique_id=450279444]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -128,25 +128,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker2/SymbolContainer"]
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker2/SymbolContainer" unique_id=353441863]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_6wabc")
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker2/SymbolContainer"]
+[node name="TextureRect2" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker2/SymbolContainer" unique_id=2029834919]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_wvyrg")
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker2/SymbolContainer"]
+[node name="TextureRect3" type="TextureRect" parent="BackgroundLayer/OpenBook/LazyPageOutlineBlocker2/SymbolContainer" unique_id=1500697293]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_q3lsj")
 stretch_mode = 5
 
-[node name="ClosedBook" type="TextureRect" parent="BackgroundLayer"]
+[node name="ClosedBook" type="TextureRect" parent="BackgroundLayer" unique_id=1277410786]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 15
@@ -158,7 +158,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_elpsr")
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/ClosedBook"]
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/ClosedBook" unique_id=1997859327]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -174,9 +174,9 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_ix4mr")
 stretch_mode = 4
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1689293770]
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=250231713]
 custom_minimum_size = Vector2(640, 360)
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,38 +189,38 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 72
 theme_override_constants/margin_bottom = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer" unique_id=1285300542]
 layout_mode = 2
 
-[node name="RecipeScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/HBoxContainer"]
+[node name="RecipeScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/HBoxContainer" unique_id=1441509103]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 50)
 layout_mode = 2
 
-[node name="RecipeContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer"]
+[node name="RecipeContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer" unique_id=303902349]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="RecipePanel" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("10_wvyrg")]
+[node name="RecipePanel" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" unique_id=1384373383 instance=ExtResource("10_wvyrg")]
 layout_mode = 2
 
-[node name="RecipePanel2" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("10_wvyrg")]
+[node name="RecipePanel2" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" unique_id=84905435 instance=ExtResource("10_wvyrg")]
 layout_mode = 2
 
-[node name="RecipePanel3" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" instance=ExtResource("10_wvyrg")]
+[node name="RecipePanel3" parent="UI/MarginContainer/HBoxContainer/RecipeScrollContainer/RecipeContainer" unique_id=1739739011 instance=ExtResource("10_wvyrg")]
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="UI/MarginContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="UI/MarginContainer/HBoxContainer" unique_id=1410955408]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RightPage" type="Control" parent="UI/MarginContainer/HBoxContainer"]
+[node name="RightPage" type="Control" parent="UI/MarginContainer/HBoxContainer" unique_id=1647789031]
 custom_minimum_size = Vector2(230, 280)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/HBoxContainer/RightPage"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/HBoxContainer/RightPage" unique_id=1518901302]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,39 +228,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PartyUI" type="GridContainer" parent="UI/MarginContainer/HBoxContainer/RightPage/ScrollContainer"]
+[node name="PartyUI" type="GridContainer" parent="UI/MarginContainer/HBoxContainer/RightPage/ScrollContainer" unique_id=332608288]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 script = ExtResource("8_wvyrg")
 
-[node name="PartyUnitUI" parent="UI/MarginContainer/HBoxContainer/RightPage/ScrollContainer/PartyUI" instance=ExtResource("9_q3lsj")]
+[node name="PartyUnitUI" parent="UI/MarginContainer/HBoxContainer/RightPage/ScrollContainer/PartyUI" unique_id=1149694001 instance=ExtResource("9_q3lsj")]
 layout_mode = 2
 
-[node name="VialContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RightPage"]
+[node name="VialContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/RightPage" unique_id=478196670]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_right = 225.0
 offset_bottom = 248.0
 
-[node name="VialPanel" parent="UI/MarginContainer/HBoxContainer/RightPage/VialContainer" instance=ExtResource("8_jra8c")]
+[node name="VialPanel" parent="UI/MarginContainer/HBoxContainer/RightPage/VialContainer" unique_id=322113076 instance=ExtResource("8_jra8c")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VialPanel2" parent="UI/MarginContainer/HBoxContainer/RightPage/VialContainer" instance=ExtResource("8_jra8c")]
+[node name="VialPanel2" parent="UI/MarginContainer/HBoxContainer/RightPage/VialContainer" unique_id=1808471585 instance=ExtResource("8_jra8c")]
 layout_mode = 2
 
-[node name="VialPanel3" parent="UI/MarginContainer/HBoxContainer/RightPage/VialContainer" instance=ExtResource("8_jra8c")]
+[node name="VialPanel3" parent="UI/MarginContainer/HBoxContainer/RightPage/VialContainer" unique_id=1797523560 instance=ExtResource("8_jra8c")]
 layout_mode = 2
 
-[node name="ButtonContainer" type="Control" parent="UI/MarginContainer"]
+[node name="ButtonContainer" type="Control" parent="UI/MarginContainer" unique_id=2070862879]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="SelectionButtons" type="VBoxContainer" parent="UI/MarginContainer/ButtonContainer"]
+[node name="SelectionButtons" type="VBoxContainer" parent="UI/MarginContainer/ButtonContainer" unique_id=851832377]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -276,19 +276,19 @@ grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PotionButton" type="Button" parent="UI/MarginContainer/ButtonContainer/SelectionButtons"]
+[node name="PotionButton" type="Button" parent="UI/MarginContainer/ButtonContainer/SelectionButtons" unique_id=1235062806]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Brew Potion"
 
-[node name="VialButton" type="Button" parent="UI/MarginContainer/ButtonContainer/SelectionButtons"]
+[node name="VialButton" type="Button" parent="UI/MarginContainer/ButtonContainer/SelectionButtons" unique_id=1092060312]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Brew Vial"
 
-[node name="LeaveButton" type="Button" parent="UI/MarginContainer/ButtonContainer"]
+[node name="LeaveButton" type="Button" parent="UI/MarginContainer/ButtonContainer" unique_id=305978181]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = -30.0
@@ -298,7 +298,7 @@ offset_bottom = 40.0
 theme_override_font_sizes/font_size = 16
 text = "Leave"
 
-[node name="NoRecipesPanel" type="Panel" parent="UI/MarginContainer/ButtonContainer"]
+[node name="NoRecipesPanel" type="Panel" parent="UI/MarginContainer/ButtonContainer" unique_id=2059806626]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -307,7 +307,7 @@ offset_top = -109.0
 offset_right = -118.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_wvyrg")
 
-[node name="NoRecipesLabel" type="Label" parent="UI/MarginContainer/ButtonContainer/NoRecipesPanel"]
+[node name="NoRecipesLabel" type="Label" parent="UI/MarginContainer/ButtonContainer/NoRecipesPanel" unique_id=764355504]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

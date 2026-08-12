@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bb13lcap1d54e"]
+[gd_resource type="Theme" format=3 uid="uid://bb13lcap1d54e"]
 
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_1ffvk"]
 [ext_resource type="FontFile" uid="uid://djlcyps6kpr80" path="res://assets/fonts/pixel_arial_11/PIXEARG_.TTF" id="1_x504n"]

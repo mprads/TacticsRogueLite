@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d1aqyupi7ysw3"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://d1aqyupi7ysw3"]
 
 [ext_resource type="Texture2D" uid="uid://omr8v7dmu35c" path="res://assets/icons/items/32x32sulfur.png" id="1_a3w43"]
 [ext_resource type="Script" uid="uid://dtp5lwmsrrerr" path="res://resources/items/item.gd" id="1_ulv3p"]
@@ -9,5 +9,4 @@ name = "Sulfur"
 key = 4
 icon = ExtResource("1_a3w43")
 gold_cost = 25
-is_plant = false
 metadata/_custom_type_script = "uid://dtp5lwmsrrerr"

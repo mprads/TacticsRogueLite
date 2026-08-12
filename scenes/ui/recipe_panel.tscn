@@ -1,23 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bco8m3hvgdeh4"]
+[gd_scene format=3 uid="uid://bco8m3hvgdeh4"]
 
 [ext_resource type="Script" uid="uid://3yfbh6o15bpf" path="res://scenes/ui/recipe_panel.gd" id="1_1frvh"]
 [ext_resource type="Texture2D" uid="uid://bnqdx5ci26pmj" path="res://assets/sprites/temp_sheets/UI assets pack 2/Time & weather.png" id="1_c0nwo"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_ppbwj"]
 [ext_resource type="PackedScene" uid="uid://b8xh1jbh84qru" path="res://scenes/ui/item_panel.tscn" id="2_ppbwj"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wvyrg"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3lsj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jww1"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0nwo"]
-texture = ExtResource("1_c0nwo")
-texture_margin_left = 7.0
-texture_margin_top = 9.0
-texture_margin_right = 7.0
-texture_margin_bottom = 8.0
-region_rect = Rect2(224, 16, 48, 48)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjf10"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gvc3i"]
 texture = ExtResource("1_c0nwo")
@@ -27,7 +15,19 @@ texture_margin_right = 7.0
 texture_margin_bottom = 9.0
 region_rect = Rect2(224, 15, 48, 50)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjf10"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0nwo"]
+texture = ExtResource("1_c0nwo")
+texture_margin_left = 7.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(224, 16, 48, 48)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jww1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3lsj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wvyrg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p1nvh"]
 texture = ExtResource("1_ppbwj")
@@ -45,19 +45,19 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(225, 337, 30, 15)
 
-[node name="RecipePanel" type="Button"]
+[node name="RecipePanel" type="Button" unique_id=645488469]
 custom_minimum_size = Vector2(225, 85)
 offset_right = 225.0
 offset_bottom = 90.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wvyrg")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_q3lsj")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8jww1")
-theme_override_styles/hover = SubResource("StyleBoxTexture_c0nwo")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gvc3i")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fjf10")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gvc3i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c0nwo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8jww1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_q3lsj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wvyrg")
 script = ExtResource("1_1frvh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1378108056]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,13 +66,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=1154611970]
 custom_minimum_size = Vector2(220, 30)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_p1nvh")
 
-[node name="PotionLabel" type="Label" parent="VBoxContainer/Panel"]
+[node name="PotionLabel" type="Label" parent="VBoxContainer/Panel" unique_id=437652026]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -85,18 +85,18 @@ text = "Potion Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=750686374]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="AbilityContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="AbilityContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1793794047]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="AbilityPanel" type="Panel" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+[node name="AbilityPanel" type="Panel" parent="VBoxContainer/HBoxContainer/AbilityContainer" unique_id=479975114]
 custom_minimum_size = Vector2(100, 24)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -104,7 +104,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fjf10")
 
-[node name="AbilityLabel" type="Label" parent="VBoxContainer/HBoxContainer/AbilityContainer/AbilityPanel"]
+[node name="AbilityLabel" type="Label" parent="VBoxContainer/HBoxContainer/AbilityContainer/AbilityPanel" unique_id=1340207846]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,7 +115,7 @@ text = "Lightning Strike"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AbilityPanel2" type="Panel" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+[node name="AbilityPanel2" type="Panel" parent="VBoxContainer/HBoxContainer/AbilityContainer" unique_id=945484288]
 custom_minimum_size = Vector2(100, 24)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -123,7 +123,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fjf10")
 
-[node name="AbilityLabel" type="Label" parent="VBoxContainer/HBoxContainer/AbilityContainer/AbilityPanel2"]
+[node name="AbilityLabel" type="Label" parent="VBoxContainer/HBoxContainer/AbilityContainer/AbilityPanel2" unique_id=296985976]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -134,12 +134,12 @@ text = "Fireball"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ComponentContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="ComponentContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=307623874]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ItemPanel" parent="VBoxContainer/HBoxContainer/ComponentContainer" instance=ExtResource("2_ppbwj")]
+[node name="ItemPanel" parent="VBoxContainer/HBoxContainer/ComponentContainer" unique_id=1098208940 instance=ExtResource("2_ppbwj")]
 layout_mode = 2
 
-[node name="ItemPanel2" parent="VBoxContainer/HBoxContainer/ComponentContainer" instance=ExtResource("2_ppbwj")]
+[node name="ItemPanel2" parent="VBoxContainer/HBoxContainer/ComponentContainer" unique_id=951293039 instance=ExtResource("2_ppbwj")]
 layout_mode = 2

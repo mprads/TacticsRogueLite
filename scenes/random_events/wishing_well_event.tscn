@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl1xv00auc23v"]
+[gd_scene format=3 uid="uid://cl1xv00auc23v"]
 
 [ext_resource type="Script" uid="uid://btrvs2fsshg6v" path="res://scenes/random_events/wishing_well_event.gd" id="1_ta0gp"]
 [ext_resource type="Resource" uid="uid://dodx8xqb6jbuj" path="res://resources/random_events/wishing_well/reward_pool.tres" id="2_jpsaf"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_pnne6"]
 
-[node name="WishingWellEvent" type="Node2D"]
+[node name="WishingWellEvent" type="Node2D" unique_id=606181762]
 script = ExtResource("1_ta0gp")
 reward_pool = ExtResource("2_jpsaf")
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1993630320]
 layer = -1
 
-[node name="AnimatedBackground" parent="BackgroundLayer" instance=ExtResource("2_pnne6")]
+[node name="AnimatedBackground" parent="BackgroundLayer" unique_id=1732849995 instance=ExtResource("2_pnne6")]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1896509382]
 
-[node name="Control" type="VBoxContainer" parent="UI"]
+[node name="Control" type="VBoxContainer" parent="UI" unique_id=942514268]
 custom_minimum_size = Vector2(250, 0)
 anchors_preset = 3
 anchor_left = 1.0
@@ -30,21 +30,21 @@ size_flags_horizontal = 10
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="ThrowLargeGoldButton" type="Button" parent="UI/Control"]
+[node name="ThrowLargeGoldButton" type="Button" parent="UI/Control" unique_id=847640434]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Large gold"
 
-[node name="ThrowSmallGoldButton" type="Button" parent="UI/Control"]
+[node name="ThrowSmallGoldButton" type="Button" parent="UI/Control" unique_id=626030521]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Small gold"
 
-[node name="LeaveButton" type="Button" parent="UI/Control"]
+[node name="LeaveButton" type="Button" parent="UI/Control" unique_id=1370002913]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bpkwnxxboplpn"]
+[gd_scene format=3 uid="uid://bpkwnxxboplpn"]
 
 [ext_resource type="Script" uid="uid://dftlshhixgwqk" path="res://scenes/unit/unit.gd" id="1_vh40f"]
 [ext_resource type="Texture2D" uid="uid://ekhm7y63sy1a" path="res://assets/sprites/potions/base_round.png" id="2_l0n34"]
@@ -423,67 +423,65 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlit"]
 size = Vector2(32, 32)
 
-[node name="Unit" type="Area2D" groups=["player_unit"]]
+[node name="Unit" type="Area2D" unique_id=1847182506 groups=["player_unit"]]
 script = ExtResource("1_vh40f")
 
-[node name="Visuals" type="CanvasGroup" parent="."]
+[node name="Visuals" type="CanvasGroup" parent="." unique_id=1992437657]
 position = Vector2(0, -12)
 
-[node name="Outline" type="Sprite2D" parent="Visuals"]
+[node name="Outline" type="Sprite2D" parent="Visuals" unique_id=1768770474]
 material = SubResource("ShaderMaterial_540om")
 texture = ExtResource("2_l0n34")
 
-[node name="Filling" type="Sprite2D" parent="Visuals"]
+[node name="Filling" type="Sprite2D" parent="Visuals" unique_id=801710552]
 material = ExtResource("3_7jhsn")
 position = Vector2(0, -1)
 texture = ExtResource("4_5im7a")
 region_rect = Rect2(0, 0, 32, 32)
 script = ExtResource("7_540om")
 
-[node name="Pendulum" type="Marker2D" parent="Visuals/Filling"]
+[node name="Pendulum" type="Marker2D" parent="Visuals/Filling" unique_id=682712100]
 position = Vector2(1, 2)
 script = ExtResource("8_540om")
 
-[node name="Damage" type="Sprite2D" parent="Visuals"]
+[node name="Damage" type="Sprite2D" parent="Visuals" unique_id=389332639]
 material = SubResource("ShaderMaterial_u15f5")
 texture = ExtResource("4_5im7a")
 
-[node name="AimingAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+[node name="AimingAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals" unique_id=1664214336]
 unique_name_in_owner = true
 position = Vector2(0, -36)
 script = ExtResource("9_1ifho")
 
-[node name="ActivateAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+[node name="ActivateAbilityAnimatedSprite" type="AnimatedSprite2D" parent="Visuals" unique_id=1771673618]
 unique_name_in_owner = true
 script = ExtResource("9_1ifho")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=403245068]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_bg1qp")
-}
+libraries/ = SubResource("AnimationLibrary_bg1qp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=205890250]
 unique_name_in_owner = true
 visible = false
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_bhlit")
 
-[node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
+[node name="DragAndDrop" type="Node" parent="." unique_id=853945140 node_paths=PackedStringArray("target")]
 script = ExtResource("4_bhlit")
 target = NodePath("..")
 
-[node name="UnitStateMachine" type="Node" parent="."]
+[node name="UnitStateMachine" type="Node" parent="." unique_id=1037444938]
 script = ExtResource("5_vgvef")
 
-[node name="ModifierManager" type="Node" parent="."]
+[node name="ModifierManager" type="Node" parent="." unique_id=495413788]
 script = ExtResource("11_540om")
 
-[node name="StatusManager" type="Node" parent="." node_paths=PackedStringArray("status_owner")]
+[node name="StatusManager" type="Node" parent="." unique_id=449933236 node_paths=PackedStringArray("status_owner")]
 script = ExtResource("12_540om")
 status_owner = NodePath("..")
 
-[node name="FloatingTextSpawner" type="Control" parent="."]
+[node name="FloatingTextSpawner" type="Control" parent="." unique_id=1778804990]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1.0
@@ -492,14 +490,14 @@ offset_right = -1.0
 offset_bottom = -12.0
 script = ExtResource("4_w7udy")
 
-[node name="StatusUI" parent="." instance=ExtResource("13_540om")]
+[node name="StatusUI" parent="." unique_id=613681217 instance=ExtResource("13_540om")]
 unique_name_in_owner = true
 offset_left = -18.0
 offset_top = 1.0
 offset_right = 20.0
 offset_bottom = 33.0
 
-[node name="StateDebug" type="Label" parent="."]
+[node name="StateDebug" type="Label" parent="." unique_id=1081828109]
 offset_left = -39.0
 offset_top = -46.0
 offset_right = 39.0
@@ -507,7 +505,7 @@ offset_bottom = -24.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "no state"
 
-[node name="MoveableDebug" type="Label" parent="."]
+[node name="MoveableDebug" type="Label" parent="." unique_id=2139432985]
 offset_left = -25.0
 offset_top = -37.0
 offset_right = 44.0

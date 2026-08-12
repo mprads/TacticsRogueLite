@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RandomEvent" load_steps=3 format=3 uid="uid://51kkbeh20rlt"]
+[gd_resource type="Resource" script_class="RandomEvent" format=3 uid="uid://51kkbeh20rlt"]
 
 [ext_resource type="Script" uid="uid://cwweqnd6pt5yw" path="res://resources/random_events/random_event.gd" id="1_urrtd"]
 [ext_resource type="PackedScene" uid="uid://b105bxu4pao5u" path="res://scenes/random_events/blood_gamble_event.tscn" id="1_wd2qr"]

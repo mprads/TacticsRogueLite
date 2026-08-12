@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeightedTable" load_steps=9 format=3 uid="uid://dodx8xqb6jbuj"]
+[gd_resource type="Resource" script_class="WeightedTable" format=3 uid="uid://dodx8xqb6jbuj"]
 
 [ext_resource type="Resource" uid="uid://bnanprql81fuj" path="res://resources/random_events/wishing_well/tier_0_herb.tres" id="1_dkxvj"]
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_y6eem"]
