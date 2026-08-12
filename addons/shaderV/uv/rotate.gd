@@ -33,6 +33,8 @@ func _get_input_port_name(port: int):
 		2:
 			return "pivot"
 
+	return "uv"
+
 func _get_input_port_type(port: int):
 	match port:
 		0:
@@ -41,6 +43,8 @@ func _get_input_port_type(port: int):
 			return VisualShaderNode.PORT_TYPE_SCALAR
 		2:
 			return VisualShaderNode.PORT_TYPE_VECTOR_3D
+
+	return VisualShaderNode.PORT_TYPE_VECTOR_3D
 
 func _get_output_port_count() -> int:
 	return 1
