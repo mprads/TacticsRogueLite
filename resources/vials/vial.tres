@@ -9,4 +9,5 @@ resource_local_to_scene = true
 script = ExtResource("1_p0orm")
 outline = ExtResource("2_mv3nn")
 filling = ExtResource("1_8bo8f")
+potion = SubResource("Resource_2gcoo")
 metadata/_custom_type_script = "uid://bkslv2wck48to"

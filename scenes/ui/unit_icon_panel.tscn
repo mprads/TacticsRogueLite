@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://i84sei2wbdf7"]
+[gd_scene format=3 uid="uid://i84sei2wbdf7"]
 
 [ext_resource type="Script" uid="uid://c4u7dscyngdu0" path="res://scenes/ui/unit_icon_panel.gd" id="1_j3g1x"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_nqdb0"]
@@ -20,7 +20,7 @@ texture_margin_right = 13.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(112, 336, 32, 16)
 
-[node name="UnitIconPanel" type="Panel"]
+[node name="UnitIconPanel" type="Panel" unique_id=1618367379]
 custom_minimum_size = Vector2(48, 48)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -28,11 +28,11 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3riih")
 script = ExtResource("1_j3g1x")
 
-[node name="UnitIcon" parent="." instance=ExtResource("2_j3g1x")]
+[node name="UnitIcon" parent="." unique_id=292856146 instance=ExtResource("2_j3g1x")]
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="NamePanel" type="Panel" parent="."]
+[node name="NamePanel" type="Panel" parent="." unique_id=1195580422]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 20)
@@ -50,7 +50,7 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_nqdb0")
 
-[node name="NameLabel" type="Label" parent="NamePanel"]
+[node name="NameLabel" type="Label" parent="NamePanel" unique_id=595365918]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjdocmvvhnve6"]
+[gd_scene format=3 uid="uid://cjdocmvvhnve6"]
 
 [ext_resource type="Script" uid="uid://vpw60phgdmen" path="res://scenes/party_select/unit_select_panel.gd" id="1_b4pj3"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="1_ctdop"]
@@ -183,7 +183,7 @@ texture_margin_left = 43.0
 texture_margin_right = 31.0
 region_rect = Rect2(305, 19, 77, 12)
 
-[node name="UnitSelectPanel" type="PanelContainer"]
+[node name="UnitSelectPanel" type="PanelContainer" unique_id=204788453]
 custom_minimum_size = Vector2(210, 250)
 offset_right = 200.0
 offset_bottom = 250.0
@@ -193,43 +193,41 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_hwfjf")
 script = ExtResource("1_b4pj3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ctdop")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2009862746]
+libraries/ = SubResource("AnimationLibrary_ctdop")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1438054804]
 layout_mode = 2
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="ContentsContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContentsContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1647779923]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ContentsContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ContentsContainer" unique_id=1209910163]
 layout_mode = 2
 alignment = 1
 
-[node name="UnitIconPanel" parent="MarginContainer/ContentsContainer/HBoxContainer" instance=ExtResource("2_ctdop")]
+[node name="UnitIconPanel" parent="MarginContainer/ContentsContainer/HBoxContainer" unique_id=485454417 instance=ExtResource("2_ctdop")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UnitDetailsPanel" parent="MarginContainer/ContentsContainer/HBoxContainer" instance=ExtResource("3_hwfjf")]
+[node name="UnitDetailsPanel" parent="MarginContainer/ContentsContainer/HBoxContainer" unique_id=1285166280 instance=ExtResource("3_hwfjf")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityContainer" type="VBoxContainer" parent="MarginContainer/ContentsContainer"]
+[node name="AbilityContainer" type="VBoxContainer" parent="MarginContainer/ContentsContainer" unique_id=345707339]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityPanel" parent="MarginContainer/ContentsContainer/AbilityContainer" instance=ExtResource("2_b4pj3")]
+[node name="AbilityPanel" parent="MarginContainer/ContentsContainer/AbilityContainer" unique_id=750628952 instance=ExtResource("2_b4pj3")]
 layout_mode = 2
 
-[node name="AbilityPanel2" parent="MarginContainer/ContentsContainer/AbilityContainer" instance=ExtResource("2_b4pj3")]
+[node name="AbilityPanel2" parent="MarginContainer/ContentsContainer/AbilityContainer" unique_id=927835638 instance=ExtResource("2_b4pj3")]
 layout_mode = 2
 
-[node name="TextureSeparator" type="Panel" parent="MarginContainer/ContentsContainer"]
+[node name="TextureSeparator" type="Panel" parent="MarginContainer/ContentsContainer" unique_id=900777958]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 mouse_filter = 2

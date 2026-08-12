@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://r7l5dv2hbg2g"]
+[gd_scene format=3 uid="uid://r7l5dv2hbg2g"]
 
 [ext_resource type="Script" uid="uid://dno8aa2qkwhud" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
 [ext_resource type="PackedScene" uid="uid://bquoh0o3sb282" path="res://scenes/ui/backgrounds/animated_background.tscn" id="2_a1gy5"]
@@ -18,7 +18,7 @@ texture_margin_right = 14.0
 texture_margin_bottom = 15.0
 region_rect = Rect2(721, 17, 45, 46)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1795329603]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,10 +27,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uqeha")
 
-[node name="AnimatedBackground" parent="." instance=ExtResource("2_a1gy5")]
+[node name="AnimatedBackground" parent="." unique_id=879324142 instance=ExtResource("2_a1gy5")]
 layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1369202662]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +40,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_5seab")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Label" type="Label" parent="TextureRect" unique_id=374709086]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 73.0
@@ -55,7 +55,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Panel" type="Panel" parent="TextureRect"]
+[node name="Panel" type="Panel" parent="TextureRect" unique_id=1097964036]
 custom_minimum_size = Vector2(250, 130)
 layout_mode = 1
 anchors_preset = 8
@@ -73,7 +73,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxTexture_4xg86")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Panel" unique_id=1452015562]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,35 +90,35 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 2
 
-[node name="ContiuneButton" type="Button" parent="TextureRect/Panel/VBoxContainer"]
+[node name="ContiuneButton" type="Button" parent="TextureRect/Panel/VBoxContainer" unique_id=566931117]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 28)
 layout_mode = 2
 text = "Continue"
 
-[node name="NewRunButton" type="Button" parent="TextureRect/Panel/VBoxContainer"]
+[node name="NewRunButton" type="Button" parent="TextureRect/Panel/VBoxContainer" unique_id=869906795]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 28)
 layout_mode = 2
 text = "New Run"
 
-[node name="SettingButton" type="Button" parent="TextureRect/Panel/VBoxContainer"]
+[node name="SettingButton" type="Button" parent="TextureRect/Panel/VBoxContainer" unique_id=515474080]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 28)
 layout_mode = 2
 text = "Settings"
 
-[node name="ExitButton" type="Button" parent="TextureRect/Panel/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="TextureRect/Panel/VBoxContainer" unique_id=412013424]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 28)
 layout_mode = 2
 text = "Exit"
 
-[node name="SettingsUI" parent="." instance=ExtResource("5_wem23")]
+[node name="SettingsUI" parent="." unique_id=1796456855 instance=ExtResource("5_wem23")]
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="RNGSeedTextEdit" type="LineEdit" parent="."]
+[node name="RNGSeedTextEdit" type="LineEdit" parent="." unique_id=1409271198]
 custom_minimum_size = Vector2(125, 20)
 layout_mode = 1
 anchors_preset = 3

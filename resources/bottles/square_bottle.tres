@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Bottle" load_steps=7 format=3 uid="uid://diipyvd0sahiu"]
+[gd_resource type="Resource" script_class="Bottle" format=3 uid="uid://diipyvd0sahiu"]
 
 [ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="1_d1wuy"]
 [ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_m578e"]

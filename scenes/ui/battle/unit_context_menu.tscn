@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgioejj4mplt5"]
+[gd_scene format=3 uid="uid://bgioejj4mplt5"]
 
 [ext_resource type="Script" uid="uid://04x20oorpcqe" path="res://scenes/ui/battle/unit_context_menu.gd" id="1_oqchr"]
 [ext_resource type="Texture2D" uid="uid://c5fu8o4der4we" path="res://assets/sprites/temp_sheets/UI assets pack 2/UI books & more.png" id="2_okpkv"]
@@ -40,7 +40,7 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(161, 336, 30, 16)
 
-[node name="UnitContextMenu" type="Panel"]
+[node name="UnitContextMenu" type="Panel" unique_id=799734288]
 custom_minimum_size = Vector2(165, 94)
 offset_right = 165.0
 offset_bottom = 94.0
@@ -50,7 +50,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vmu5k")
 script = ExtResource("1_oqchr")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=779593502]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,7 +67,7 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_6mc4k")
 stretch_mode = 4
 
-[node name="HeaderBanner" type="Panel" parent="."]
+[node name="HeaderBanner" type="Panel" parent="." unique_id=1806088786]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 0
 offset_left = -7.0
@@ -77,7 +77,7 @@ offset_bottom = 19.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_x33sw")
 
-[node name="HeaderLabel" type="Label" parent="HeaderBanner"]
+[node name="HeaderLabel" type="Label" parent="HeaderBanner" unique_id=174096980]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 18)
 layout_mode = 1
@@ -93,7 +93,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2067656636]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -109,14 +109,14 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = -4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1917865537]
 custom_minimum_size = Vector2(100, 28)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 mouse_filter = 2
 
-[node name="AbilityContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="AbilityContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1602183829]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
@@ -124,7 +124,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="AbilityButton1" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+[node name="AbilityButton1" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer" unique_id=1543923053]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 32)
 layout_mode = 2
@@ -138,7 +138,7 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_6mc4k")
 text = "Lightnig Strike"
 autowrap_mode = 2
 
-[node name="AbilityButton2" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer"]
+[node name="AbilityButton2" type="Button" parent="VBoxContainer/HBoxContainer/AbilityContainer" unique_id=1612629074]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 32)
 layout_mode = 2
@@ -152,14 +152,14 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_6mc4k")
 text = "Encourage"
 autowrap_mode = 2
 
-[node name="BaseOption" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="BaseOption" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=920284893]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 alignment = 1
 
-[node name="MeleeButton" type="Button" parent="VBoxContainer/HBoxContainer/BaseOption"]
+[node name="MeleeButton" type="Button" parent="VBoxContainer/HBoxContainer/BaseOption" unique_id=2076860321]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 32)
 layout_mode = 2
@@ -173,7 +173,7 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_6mc4k")
 text = "Melee"
 autowrap_mode = 2
 
-[node name="DefendButton" type="Button" parent="VBoxContainer/HBoxContainer/BaseOption"]
+[node name="DefendButton" type="Button" parent="VBoxContainer/HBoxContainer/BaseOption" unique_id=1029853534]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 32)
 layout_mode = 2

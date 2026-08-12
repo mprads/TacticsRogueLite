@@ -137,4 +137,5 @@ void fragment(){
 	if (horizontal_scan_line) COLOR = mix(vec4(0.0, 0.0, 0.0, 1.0), COLOR, float(int(UV.y * height) % 2));
 	if (vertical_scan_line) COLOR = mix(vec4(0.0, 0.0, 0.0, 1.0), COLOR, float(int(UV.x * width) % 2));
 
-}"
+}
+"

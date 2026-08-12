@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://dc1ckl4ucnndy" path="res://scenes/battle_reward/reward_button.gd" id="1_8kxeg"]
 [ext_resource type="Texture2D" uid="uid://8dorcsr83rfq" path="res://assets/icons/32x32gold.png" id="2_hdtdk"]
 
-[node name="RewardButton" type="Button"]
+[node name="RewardButton" type="Button" unique_id=760276281]
 custom_minimum_size = Vector2(0, 40)
 offset_right = 220.0
 offset_bottom = 36.0
 size_flags_horizontal = 3
 script = ExtResource("1_8kxeg")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1120871510]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,17 +20,17 @@ grow_vertical = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=779148485]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=562568274]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("2_hdtdk")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=790459677]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16

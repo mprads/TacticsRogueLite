@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=4 format=3 uid="uid://78mnvt6dw5ep"]
+[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://78mnvt6dw5ep"]
 
 [ext_resource type="Resource" uid="uid://diipyvd0sahiu" path="res://resources/bottles/square_bottle.tres" id="1_1q7i5"]
 [ext_resource type="Resource" uid="uid://bpwmv3lov181i" path="res://resources/potions/debuff_potion.tres" id="2_xgxwr"]

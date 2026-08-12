@@ -11,6 +11,7 @@ status = ExtResource("3_bscgm")
 status_chance = 1.0
 cost = 0
 highlight_atlas_type = 3
+atlas_coord = Vector2i(2, 1)
 sprite_frames = ExtResource("2_bscgm")
 target = 3
 metadata/_custom_type_script = "uid://dxqix5ovn77hl"

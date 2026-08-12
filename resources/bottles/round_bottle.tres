@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Bottle" load_steps=7 format=3 uid="uid://3dqm06n0wu44"]
+[gd_resource type="Resource" script_class="Bottle" format=3 uid="uid://3dqm06n0wu44"]
 
 [ext_resource type="Script" uid="uid://cene0083pbi52" path="res://resources/bottles/bottle.gd" id="1_44iwc"]
 [ext_resource type="Script" uid="uid://dxqix5ovn77hl" path="res://resources/abilities/ability.gd" id="1_gw2ly"]
@@ -10,7 +10,6 @@
 [resource]
 script = ExtResource("1_44iwc")
 name = "Round Bottle"
-sprite_coordinates = Vector2i(0, 0)
 sprite_size = 32
 bottle_sprite = ExtResource("5_qr7tq")
 liquid_mask = ExtResource("6_p3ih0")
@@ -18,5 +17,4 @@ base_health = 30
 max_oz = 30
 base_movement = 3
 base_abilities = Array[ExtResource("1_gw2ly")]([ExtResource("2_m0m78"), ExtResource("3_qr7tq")])
-gold_cost = 50
 metadata/_custom_type_script = "uid://cene0083pbi52"

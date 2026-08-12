@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BrewingRecipe" load_steps=5 format=3 uid="uid://dx18ivjsutjem"]
+[gd_resource type="Resource" script_class="BrewingRecipe" format=3 uid="uid://dx18ivjsutjem"]
 
 [ext_resource type="Script" uid="uid://br0jdvojiswd6" path="res://resources/brewing_recipe/recipe_cost_data.gd" id="1_8pqla"]
 [ext_resource type="Script" uid="uid://c465f3gelto1d" path="res://resources/brewing_recipe/brewing_recipe.gd" id="2_nihfh"]

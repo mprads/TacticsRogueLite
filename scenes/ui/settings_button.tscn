@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5b48tkcd7t15"]
+[gd_scene format=3 uid="uid://c5b48tkcd7t15"]
 
 [ext_resource type="Script" uid="uid://duxga30em13ox" path="res://scenes/ui/settings_button.gd" id="2_ab84w"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_tln3d"]
@@ -14,7 +14,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_41ebm"]
 
-[node name="SettingsButton" type="Button"]
+[node name="SettingsButton" type="Button" unique_id=1856396198]
 material = ExtResource("2_tln3d")
 custom_minimum_size = Vector2(18, 18)
 offset_right = 16.0

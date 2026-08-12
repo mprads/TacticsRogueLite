@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeightedTable" load_steps=5 format=3 uid="uid://bibyn3mytxcrf"]
+[gd_resource type="Resource" script_class="WeightedTable" format=3 uid="uid://bibyn3mytxcrf"]
 
 [ext_resource type="Script" uid="uid://cwq24hkvk302e" path="res://resources/weighted_table.gd" id="1_aarar"]
 [ext_resource type="Resource" uid="uid://topc3rypefwm" path="res://resources/battles/elite_tier_0.tres" id="2_e38lo"]

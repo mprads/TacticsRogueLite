@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqjho2cnvyfic"]
+[gd_scene format=3 uid="uid://bqjho2cnvyfic"]
 
 [ext_resource type="Texture2D" uid="uid://e2b6q7hyp2w7" path="res://assets/icons/items/32x32red_mushroom.png" id="1_ttibd"]
 [ext_resource type="Script" uid="uid://ctqjlvwjxj8sx" path="res://scenes/shop/planter_item.gd" id="1_udg3v"]
 [ext_resource type="Material" uid="uid://b63ad8bo2t73d" path="res://assets/shaders/outline_material.tres" id="2_1i2n5"]
 
-[node name="PlanterItem" type="Control"]
+[node name="PlanterItem" type="Control" unique_id=1308618792]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_udg3v")
 
-[node name="PlantIconButton" type="TextureButton" parent="."]
+[node name="PlantIconButton" type="TextureButton" parent="." unique_id=1814748921]
 material = ExtResource("2_1i2n5")
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 0

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://delw0ryy5peue"]
+[gd_scene format=3 uid="uid://delw0ryy5peue"]
 
 [ext_resource type="Script" uid="uid://do868lbyg7mgw" path="res://scenes/ui/popups/tooltip.gd" id="1_x5xom"]
 
-[node name="Tooltip" type="Control"]
+[node name="Tooltip" type="Control" unique_id=1718391018]
 custom_minimum_size = Vector2(150, 180)
 layout_mode = 3
 anchors_preset = 0

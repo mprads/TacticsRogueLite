@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageOverTime" load_steps=3 format=3 uid="uid://1h3m11yrk8vw"]
+[gd_resource type="Resource" script_class="DamageOverTime" format=3 uid="uid://1h3m11yrk8vw"]
 
 [ext_resource type="Script" uid="uid://b05fu1vfp8f5m" path="res://resources/statuses/damage_over_time.gd" id="1_ae8x6"]
 [ext_resource type="Texture2D" uid="uid://d2hv3w64o4hu5" path="res://assets/icons/statuses/10x10Bleed.png" id="1_wfeu7"]

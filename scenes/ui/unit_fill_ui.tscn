@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kxbhppakiums"]
+[gd_scene format=3 uid="uid://kxbhppakiums"]
 
 [ext_resource type="Script" uid="uid://bvavk8dr4vmw5" path="res://scenes/ui/unit_fill_ui.gd" id="1_652yj"]
 [ext_resource type="PackedScene" uid="uid://0ek8bcdoiphi" path="res://scenes/ui/party_ui.tscn" id="1_a7goa"]
@@ -14,7 +14,7 @@ texture_margin_right = 3.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(209, 18, 46, 45)
 
-[node name="UnitFillUI" type="Control"]
+[node name="UnitFillUI" type="Control" unique_id=190920943]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_652yj")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=423174770]
 custom_minimum_size = Vector2(300, 230)
 layout_mode = 1
 anchors_preset = 8
@@ -39,18 +39,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_re2y4")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1103232820]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=574645865]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1482169202]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -59,39 +59,39 @@ text = "Select Unit To Top Off Or Replace Potion"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1121002957]
 layout_mode = 2
 alignment = 1
 
-[node name="VialButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_stg2u")]
+[node name="VialButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1059771277 instance=ExtResource("2_stg2u")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="AbilityContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2093289546]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityContainer" instance=ExtResource("3_ua4pe")]
+[node name="AbilityPanel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityContainer" unique_id=2045367125 instance=ExtResource("3_ua4pe")]
 layout_mode = 2
 
-[node name="AbilityPanel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityContainer" instance=ExtResource("3_ua4pe")]
+[node name="AbilityPanel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityContainer" unique_id=642360451 instance=ExtResource("3_ua4pe")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1038535287]
 layout_mode = 2
 
-[node name="PartyUI" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_a7goa")]
+[node name="PartyUI" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1598800593 instance=ExtResource("1_a7goa")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer" unique_id=1948541938]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="CancelLabel" type="Label" parent="PanelContainer/MarginContainer2"]
+[node name="CancelLabel" type="Label" parent="PanelContainer/MarginContainer2" unique_id=1602308326]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

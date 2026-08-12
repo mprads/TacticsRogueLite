@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleMapPool" load_steps=7 format=3 uid="uid://ccxsj7lmuvtu4"]
+[gd_resource type="Resource" script_class="BattleMapPool" format=3 uid="uid://ccxsj7lmuvtu4"]
 
 [ext_resource type="Script" uid="uid://c4nhtfaiomcsl" path="res://resources/battle_maps/battle_map.gd" id="1_25asy"]
 [ext_resource type="Script" uid="uid://d3wpyr2advgh5" path="res://resources/battle_maps/battle_map_pool.gd" id="2_4wead"]
